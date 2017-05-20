@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 
 public class Player {
 	private String name;
-	public Colour colour;
+	public Color colour;
 	private PersonalBoard board;
 	private FamilyMember[] family;
 	private ExcommunicationCard [] excommunication;

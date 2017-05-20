@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-import it.polimi.ingsw.ps29.model.action.ActionSpace;
-import it.polimi.ingsw.ps29.model.game.Colour;
-import it.polimi.ingsw.ps29.model.game.DiceColour;
+import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 public class FamilyMember implements FamilyMemberInterface{
 	
@@ -10,9 +9,8 @@ public class FamilyMember implements FamilyMemberInterface{
 	
 	private int power;
 	private boolean busy;
-	private DiceColour colour;
-	private Colour playerColor;
-	private ActionSpace space;
+	private DiceColor familiarColor;
+	private Color playerColor;
 
 	//public int setPower()
 	// qui definiamo come associare il power in base al dado
@@ -41,6 +39,14 @@ public class FamilyMember implements FamilyMemberInterface{
 	public int getPower() {
 		return this.power;
 	}
-	
+
+	public DiceColor getFamiliarColor() {
+		return familiarColor;
+	}
+
+	public Color getPlayerColor() {
+		return playerColor;
+	}
+
 	
 }

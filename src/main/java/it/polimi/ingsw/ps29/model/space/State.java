@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.action;
+package it.polimi.ingsw.ps29.model.space;
 
 public interface State {
 	

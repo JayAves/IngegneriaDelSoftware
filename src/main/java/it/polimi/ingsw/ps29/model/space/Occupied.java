@@ -1,11 +1,11 @@
-package it.polimi.ingsw.ps29.model.action;
+package it.polimi.ingsw.ps29.model.space;
 
 public class Occupied implements State{
 
 	@Override
 	public void returnStatus() {
 		//lancia eccezione
-		System.out.println("� occupato");
+		System.out.println("E' occupato!");
 	}
 
 	//@Override

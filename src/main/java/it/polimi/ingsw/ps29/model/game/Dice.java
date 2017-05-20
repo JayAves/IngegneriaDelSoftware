@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Dice {
 	private int value;
-	private DiceColour colour;
+	private DiceColor colour;
 	
 	public void rollDice(){
 		
@@ -12,7 +12,7 @@ public class Dice {
 		value=random.nextInt(5)+1;
 	}
 
-	public Dice(DiceColour colour) {
+	public Dice(DiceColor colour) {
 		
 		this.colour = colour;
 	}

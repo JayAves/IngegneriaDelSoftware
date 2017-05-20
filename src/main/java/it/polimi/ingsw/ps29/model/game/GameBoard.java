@@ -20,9 +20,9 @@ public class GameBoard {
 		
 		this.playersOrder = playersOrder;
 		
-		dices.add(new Dice(DiceColour.BLACK));
-		dices.add(new Dice(DiceColour.WHITE));
-		dices.add(new Dice(DiceColour.ORANGE));
+		dices.add(new Dice(DiceColor.BLACK));
+		dices.add(new Dice(DiceColor.WHITE));
+		dices.add(new Dice(DiceColor.ORANGE));
 		//manca aggiunta degli action spaces al tabellone!
 	}
 
@@ -30,7 +30,7 @@ public class GameBoard {
 		return spaces;
 	}
 
-	public HarvestSpace getHarvestSpace () {
+	public HarvestArea getHarvestSpace () {
 		for(ActionSpace temp: spaces) {
 			if(temp.getClass().equals(HarvestAction.class))
 				return (HarvestSpace) temp;
