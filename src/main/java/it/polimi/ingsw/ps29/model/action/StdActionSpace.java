@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.provvisorio.packageSpazio;
+package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 

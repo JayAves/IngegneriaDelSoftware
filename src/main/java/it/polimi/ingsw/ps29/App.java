@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29;
 
 import it.polimi.ingsw.ps29.controller.Controller;
 import it.polimi.ingsw.ps29.model.game.GameEngine;
-import it.polimi.ingsw.ps29.view.Client;
+import it.polimi.ingsw.ps29.view_client.Client;
 
 /**
  * Hello world!

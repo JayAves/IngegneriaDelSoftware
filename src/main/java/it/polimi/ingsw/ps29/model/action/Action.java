@@ -1,15 +1,23 @@
 package it.polimi.ingsw.ps29.model.action;
 
-import it.polimi.ingsw.ps29.model.game.resources.*;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Servants;
-import it.polimi.ingsw.ps29.model.game.FamilyMember;
+import it.polimi.ingsw.ps29.view.Move;
 
-public interface Action {
+abstract class Action {
 	
-	abstract void standardPlacement (FamilyMember familyMember, int servants);
+	protected Move move;
 	
-	abstract boolean isPlaceable (FamilyMember familyMember, int servants);
+	public Action(Move move) {
+		this.move = move;
+	}
+
+	/*abstract void standardPlacement (FamilyMember familyMember, Servant servants);
 	
-	abstract void performAction ();
+	abstract boolean isPlaceable (FamilyMember familyMember, Servant servants);
+	
+	abstract void performAction ();*/
+	
+	abstract boolean isEnoughPowerful();
+		
+	
 
 }

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view;
+package it.polimi.ingsw.ps29.view_client;
 
 import com.sun.xml.internal.stream.buffer.AbstractCreator;
 

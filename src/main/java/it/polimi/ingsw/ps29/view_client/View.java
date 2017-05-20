@@ -1,21 +1,20 @@
-package it.polimi.ingsw.ps29.view;
+package it.polimi.ingsw.ps29.view_client;
 
 import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
-public class CLIInput extends Input {
+public class View extends Observable implements Runnable, Observer {
 
 	@Override
 	public void run() {
+		System.out.println("1) raccolto\n 2)Produzione \n 3)Torre\nScelta: ");
 		Scanner s = new Scanner(System.in);
-		System.out.println("Inserisci nome: ");
-		String nome = s.next();
-		
-		System.out.println("1) raccolto\n2)Produzione\n3)Torre\nScelta: ");
 		String text = s.next();
-		
 		setChanged();
-		notifyObservers(nome+";"+text);
+		notifyObservers(text);
+		
+		
 		
 	}
 
@@ -24,6 +23,5 @@ public class CLIInput extends Input {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }

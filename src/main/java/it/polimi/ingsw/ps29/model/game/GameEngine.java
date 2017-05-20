@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps29.model.action.HarvestAction;
 import it.polimi.ingsw.ps29.model.action.ManageAction;
 import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
-import it.polimi.ingsw.ps29.view.View;
+import it.polimi.ingsw.ps29.view_client.View;
 
 public class GameEngine {
 	
