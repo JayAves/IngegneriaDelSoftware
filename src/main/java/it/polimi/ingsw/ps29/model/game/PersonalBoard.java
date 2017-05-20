@@ -15,5 +15,9 @@ public class PersonalBoard {
 	private ArrayList <VentureCard> ventureSlot;
 	private PersonalBonusTile personalTile;
 	private Resource [] resources;
+	
+	public void addCard(CharacterCard card){
+		characterSlot.add(card);
+	}
 
 }
