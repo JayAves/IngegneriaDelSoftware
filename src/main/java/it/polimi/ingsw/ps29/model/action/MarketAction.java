@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps29.model.action;
 
-import org.omg.PortableServer.Servant;
 
-import it.polimi.ingsw.ps29.model.game.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
 public class MarketAction implements Action {
 

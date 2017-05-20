@@ -1,16 +1,38 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import it.polimi.ingsw.ps29.model.action.ActionSpace;
-import it.polimi.ingsw.ps29.model.action.HarvestAction;
-import it.polimi.ingsw.ps29.model.action.HarvestSpace;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Resource;
+import it.polimi.ingsw.ps29.model.space.ActionSpace;
+import it.polimi.ingsw.ps29.model.space.ActivityArea;
+import it.polimi.ingsw.ps29.model.space.MarketArea;
+import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
+import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
+import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
 public class GameBoard {
 	private ArrayList <Player> playersOrder;
 	private ArrayList <Dice> dices;
-	private ArrayList <ActionSpace> spaces;
+	private HashMap <String, ActionSpace> spaces;
 	
+	public GameBoard () {
+		initSpaces();
+	}
+	
+	private void initSpaces () {
+		ArrayList <Resource> resources = new ArrayList <Resource> ();
+		
+		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
+		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
+		spaces.put("TerritoryTower", new TowerArea (null, null, null));
+		spaces.put("BuildingTower", new TowerArea (null, null, null));
+		spaces.put("CharcaterTower", new TowerArea (null, null, null));
+		spaces.put("VentureTower", new TowerArea (null, null, null));
+		resources.add(new Resource (5, ResourceType.COIN));
+		spaces.put("FirstMarket", new MarketArea(1, resources));
+	}
 
 	public ArrayList <Player> getPlayers () {
 		return playersOrder;
@@ -26,20 +48,8 @@ public class GameBoard {
 		//manca aggiunta degli action spaces al tabellone!
 	}
 
-	public ArrayList <ActionSpace> getSpaces() {
-		return spaces;
-	}
-
-	public HarvestArea getHarvestSpace () {
-		for(ActionSpace temp: spaces) {
-			if(temp.getClass().equals(HarvestAction.class))
-				return (HarvestSpace) temp;
-		}
-		return null;
-	}
-	
-	public void setSpaces(ArrayList <ActionSpace> spaces) {
-		this.spaces = spaces;
+	public ActivityArea getHarvestSpace () {
+		return (ActivityArea) spaces.get("Harvest");
 	}
 	
 }

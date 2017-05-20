@@ -9,13 +9,26 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 public class QueueActionSpace {
 	
 	private ArrayList<FamilyMember> queue;
-	final int powerRequired = 4;
+	final int powerRequired;
+	
+	public QueueActionSpace (int power) {
+		queue = null;
+		powerRequired = power;
+	}
 	
 	public boolean familiarHere (Color playerColor) {
 		for (FamilyMember member: queue) 
 			if (member.getPlayerColor() == playerColor && member.getFamiliarColor()!=DiceColor.NEUTRAL) 
 				return true;
 		return false;
+	}
+	
+	public boolean isEnoughPowerful (int valuePlacement) {
+		return valuePlacement >= powerRequired;
+	}
+	
+	public void addMember (FamilyMember member) {
+		queue.add(member);
 	}
 
 }
