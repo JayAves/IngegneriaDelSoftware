@@ -2,10 +2,10 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 public class Resources implements ResourcesInterface{
 	
-	int coins;
-	int stones;
-	int servants;
-	int woods;
+	private int coins;
+	private int stones;
+	private int servants;
+	private int woods;
 	
   //tutti i set devono lanciare un eccezione nel caso il valore vada sotto 0
 	
