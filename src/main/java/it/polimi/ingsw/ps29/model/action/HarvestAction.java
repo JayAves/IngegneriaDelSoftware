@@ -26,13 +26,13 @@ public class HarvestAction implements Action {
 	}
 
 	@Override
-	public void standardPlacement(FamilyMember familyMember, Servant servants) {
+	public void standardPlacement(FamilyMember familyMember,int servants) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean isPlaceable(FamilyMember familyMember, Servant servants) {
+	public boolean isPlaceable(FamilyMember familyMember, int servants) {
 		space = board.getHarvestSpace();
 		return !space.familiarHere(familyMember.getPlayerColor()); 
 	}

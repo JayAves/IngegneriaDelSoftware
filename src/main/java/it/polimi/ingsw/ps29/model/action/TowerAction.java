@@ -10,13 +10,21 @@ public class TowerAction implements Action {
 	CharacterTower tower;
 
 	@Override
+<<<<<<< HEAD
 	public void standardPlacement(FamilyMember familyMember, Servants servants) {
+=======
+	public void standardPlacement(FamilyMember familyMember, int servants) {
+>>>>>>> 0c17943064297feeeebc626efe776f3e5cfce82b
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+<<<<<<< HEAD
 	public boolean isPlaceable(FamilyMember familyMember, Servants servants) {
+=======
+	public boolean isPlaceable(FamilyMember familyMember, int servants) {
+>>>>>>> 0c17943064297feeeebc626efe776f3e5cfce82b
 		// TODO Auto-generated method stub
 		return false;
 	}

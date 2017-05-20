@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps29.model.cards;
 
 import it.polimi.ingsw.ps29.model.game.Period;
-import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Resource;
 
 public class BuildingCard extends Card{
 	
