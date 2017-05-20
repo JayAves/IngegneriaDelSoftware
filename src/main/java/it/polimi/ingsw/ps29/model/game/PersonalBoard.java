@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.CharacterCard;
-import it.polimi.ingsw.ps29.model.cards.Resource;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.VentureCard;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class PersonalBoard {
 	private ArrayList <TerritoryCard> territorySlot;

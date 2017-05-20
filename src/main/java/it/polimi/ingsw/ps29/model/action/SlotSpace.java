@@ -2,9 +2,9 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.cards.Resource;
 import it.polimi.ingsw.ps29.model.game.Colour;
 import it.polimi.ingsw.ps29.model.game.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class SlotSpace implements ActionSpace{
 	

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.cards;
+package it.polimi.ingsw.ps29.model.game.resources;
 
 public class Resource {
 	private int amount;

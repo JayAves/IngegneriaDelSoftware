@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.model.cards;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
+
 public class EmpowermentPlacementEffect extends EmpowermentDiceEffect {
 
 	private ArrayList<Resource> discount;
