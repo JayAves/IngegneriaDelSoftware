@@ -1,10 +1,11 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
 public class Player {
 	private String name;
-	public Color colour;
+	private Color color;
 	private PersonalBoard board;
 	private FamilyMember[] family;
 	private ExcommunicationCard [] excommunication;

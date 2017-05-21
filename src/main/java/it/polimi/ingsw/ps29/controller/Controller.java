@@ -1,9 +1,7 @@
-package it.polimi.ingsw.ps29.controller;
+/*package it.polimi.ingsw.ps29.controller;
 
 import java.util.Observable;
 import java.util.Observer;
-
-import it.polimi.ingsw.ps29.model.game.GameEngine;
 
 public class Controller implements Observer {
 	GameEngine model;
@@ -21,3 +19,4 @@ public class Controller implements Observer {
 	}
 
 }
+*/

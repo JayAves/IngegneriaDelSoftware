@@ -12,10 +12,12 @@ import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
-public class GameBoard {
+public class GameBoard implements Cloneable {
 	private ArrayList <Player> playersOrder;
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
+	private StateOfActionIdentifier stateOfAction; //utilizzato per permettere lo scambio di informazioni tra model e view
+	//serve per sapere se terminare il turno oppure richiedere informazioni aggiuntive al giocatore
 	
 	public GameBoard () {
 		initSpaces();
@@ -32,6 +34,8 @@ public class GameBoard {
 		spaces.put("VentureTower", new TowerArea (null, null, null));
 		resources.add(new Resource (5, ResourceType.COIN));
 		spaces.put("FirstMarket", new MarketArea(1, resources));
+		
+		stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
 	}
 
 	public ArrayList <Player> getPlayers () {
@@ -50,6 +54,24 @@ public class GameBoard {
 
 	public ActivityArea getHarvestSpace () {
 		return (ActivityArea) spaces.get("Harvest");
+	}
+	
+	@Override 
+	public GameBoard clone () {
+		GameBoard copy = new GameBoard ();
+		copy.playersOrder = this.playersOrder;
+		copy.dices = this.dices;
+		copy.spaces = this.spaces;
+		copy.stateOfAction = this.stateOfAction;
+		return copy;
+	}
+	
+	public StateOfActionIdentifier getStateOfAction () {
+		return stateOfAction;
+	}
+	
+	public void setStateOfAction (StateOfActionIdentifier newState) {
+		stateOfAction = newState; 
 	}
 	
 }

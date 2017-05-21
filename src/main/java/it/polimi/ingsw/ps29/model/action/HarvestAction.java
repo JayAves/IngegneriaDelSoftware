@@ -12,7 +12,7 @@ public class HarvestAction implements Action {
 		this.move = move;
 		space = move.getMatch().getBoard().getHarvestSpace();
 	}
-
+	
 	@Override
 	public boolean isForbidden(Move move) {
 		// TODO Auto-generated method stub

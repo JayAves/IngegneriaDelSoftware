@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.model.game.Move;
 
-interface Action {
+public interface Action {
 	
 	//questo metodo controlla se la mossa è impedita da una scomunica
 	abstract boolean isForbidden (Move move); 

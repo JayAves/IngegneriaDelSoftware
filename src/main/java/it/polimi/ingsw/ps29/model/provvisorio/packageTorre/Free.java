@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.provvisorio.packageTorre;
+/*package it.polimi.ingsw.ps29.model.provvisorio.packageTorre;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
@@ -13,3 +13,4 @@ public class Free implements TowerState{
 	}
 
 }
+*/

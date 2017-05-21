@@ -13,9 +13,9 @@ public class CharacterTower {
 	Floor fourthFloor;
 	TowerState state;
 	
-	public Floor getFloor(){
+	/*public Floor getFloor(){
 		return
-	}
+	}*/
 	
 	public Card placeFamilyMember(FamilyMember dude, Resources stuff, Floor floor){
 		return state.placeFamilyMember(dude, stuff, floor);

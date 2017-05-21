@@ -1,8 +1,10 @@
 package it.polimi.ingsw.ps29.model.game;
 
-public class Match {
+import java.util.Observable;
+
+public class Match extends Observable {
 	
-	private static int id;
+	private static int id = 1;
 	private GameBoard board;
 	
 	public Match () {
@@ -13,4 +15,15 @@ public class Match {
 	public GameBoard getBoard() {
 		return board;
 	}
+	
+	public GameBoard getBoardForView () {
+		return board.clone ();
+	}
+	
+	public void informView () {
+		setChanged();
+		notifyObservers(getBoardForView());
+	}
+	
+	
 }
