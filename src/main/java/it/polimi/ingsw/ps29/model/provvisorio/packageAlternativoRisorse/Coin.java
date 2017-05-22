@@ -4,9 +4,11 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class Coin extends Resource {
 
-	public Coin(ResourceType type) {
-		super(type);
+	public Coin(int amount) {
+		super(amount);
+		type=ResourceType.COIN;
 		// TODO Auto-generated constructor stub
+		
 	}
 
 

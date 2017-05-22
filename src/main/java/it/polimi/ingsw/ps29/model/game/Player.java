@@ -25,7 +25,9 @@ public class Player {
 		return null;
 	}
 	
-	
+	public PersonalBoard getPersonalBoard() {
+		return board;
+	}
 	
 
 }

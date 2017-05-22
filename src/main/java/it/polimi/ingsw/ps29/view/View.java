@@ -9,8 +9,6 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.StateOfActionIdentifier;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
-import it.polimi.ingsw.ps29.model.space.ActionSpace;
 
 public class View extends Observable implements Observer {
 	
@@ -32,11 +30,21 @@ public class View extends Observable implements Observer {
 		playerOrder = order;
 	}
 	
-	public Move askNextAction (GameBoard board) {
+	
+	private int[] askNextAction(GameBoard board) {
+		int[] move = new int[4];
+		move[0]= board.getIdPartita();
+		move[1]=inputOutput.askTypeOfAction();
+		move[2]=inputOutput.askNumberOfServants();
+		move[3]=inputOutput.askFamiliarColor();
+		return move;
+	}
+	
+	/*public Move askNextAction (GameBoard board) {
 		ActionSpace space = MoveCreator.getActionSpace(board, inputOutput.askTypeOfAction());
 		FamilyMember member = MoveCreator.getFamilyMember(board, inputOutput.askFamiliarColor());
 		return new Move (board.getIdPartita(), board.getPlayers().get(0), space, inputOutput.askNumberOfServants(), member);
-	}
+	}*/
 	
 	private void manageStateOfAction (GameBoard board, StateOfActionIdentifier stateOfAction) {
 		if(stateOfAction == StateOfActionIdentifier.PERFORMED) {

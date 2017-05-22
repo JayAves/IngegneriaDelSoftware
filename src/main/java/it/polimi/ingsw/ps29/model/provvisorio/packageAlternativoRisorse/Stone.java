@@ -4,8 +4,9 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class Stone extends Resource{
 
-	public Stone(ResourceType type) {
-		super(type);
+	public Stone(int amount) {
+		super(amount);
+		type=ResourceType.STONE;
 		// TODO Auto-generated constructor stub
 	}
 

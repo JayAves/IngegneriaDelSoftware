@@ -18,6 +18,22 @@ public abstract class Card {
 		this.period = period;
 		this.type = type;
 	}
+
+	public ArrayList<Effect> getImmediateEffects() {
+		return immediateEffects;
+	}
+
+	public void setImmediateEffects(ArrayList<Effect> immediateEffects) {
+		this.immediateEffects = immediateEffects;
+	}
+
+	public ArrayList<Effect> getPermanentEffects() {
+		return permanentEffects;
+	}
+
+	public void setPermanentEffects(ArrayList<Effect> permanentEffects) {
+		this.permanentEffects = permanentEffects;
+	}
 	
 	
 }

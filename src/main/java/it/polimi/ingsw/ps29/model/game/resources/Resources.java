@@ -48,7 +48,15 @@ public class Resources implements ResourcesInterface{
 	public void setWoods(int woods) {
 		this.woods += woods;
 	}
+
+	public Resources() {
+		coins=0;
+		stones=0;
+		servants=0;
+		woods=0;
+	}
 		
+	
 }
 	
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
@@ -34,7 +35,7 @@ public class GameBoard implements Cloneable {
 		spaces.put("BuildingTower", new TowerArea (null, null, null));
 		spaces.put("CharcaterTower", new TowerArea (null, null, null));
 		spaces.put("VentureTower", new TowerArea (null, null, null));
-		resources.add(new Resource (5, ResourceType.COIN));
+		resources.add(new Coin(5));
 		spaces.put("FirstMarket", new MarketArea(1, resources));
 		//mancano altri spazi mercato
 		

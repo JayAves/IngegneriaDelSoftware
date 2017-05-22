@@ -12,4 +12,9 @@ public class TerritoryCard extends Card {
 		this.harvestForce=harvestForce;
 	}
 
+	public int getHarvestForce() {
+		return harvestForce;
+	}
+
+
 }

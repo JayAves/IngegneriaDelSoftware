@@ -4,8 +4,9 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class Servants extends Resource {
 
-	public Servants(ResourceType type) {
-		super(type);
+	public Servants(int amount) {
+		super(amount);
+		type=ResourceType.SERVANT;
 		// TODO Auto-generated constructor stub
 	}
 

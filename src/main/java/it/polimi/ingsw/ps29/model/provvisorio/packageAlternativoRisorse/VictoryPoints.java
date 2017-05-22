@@ -4,8 +4,9 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class VictoryPoints extends Resource {
 
-	public VictoryPoints(ResourceType type) {
-		super(type);
+	public VictoryPoints(int amount) {
+		super(amount);
+		type=ResourceType.VICTORY;
 		// TODO Auto-generated constructor stub
 	}
 
