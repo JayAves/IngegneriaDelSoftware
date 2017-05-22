@@ -9,6 +9,8 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.StateOfActionIdentifier;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.space.ActionSpace;
 
 public class View extends Observable implements Observer {
 	
@@ -19,7 +21,12 @@ public class View extends Observable implements Observer {
 	public View (String inputType) {
 		inputOutput = inputOutputFactory.getInput(inputType);
 		playerOrder = null;
-		
+	}
+	
+	public void gameEngine () {
+		while (true) {
+			
+		}
 	}
 	
 	public String getPlayerActive () {
@@ -30,13 +37,19 @@ public class View extends Observable implements Observer {
 		playerOrder = order;
 	}
 	
+	public Move askNextAction (GameBoard board) {
+		ActionSpace space = MoveCreator.getActionSpace(board, inputOutput.askTypeOfAction());
+		FamilyMember member = MoveCreator.getFamilyMember(board, inputOutput.askFamiliarColor());
+		return new Move (board.getIdPartita(), board.getPlayers().get(0), space, inputOutput.askNumberOfServants(), member);
+	}
 	
-	private void manageStateOfAction (StateOfActionIdentifier stateOfAction) {
+	private void manageStateOfAction (GameBoard board, StateOfActionIdentifier stateOfAction) {
 		if(stateOfAction == StateOfActionIdentifier.PERFORMED) {
 			//azione eseguita, cambia il giocatore di turno
 			Player temp = playerOrder.get(0);
 			playerOrder.remove(0);
 			playerOrder.add(temp);
+			notifyObservers(askNextAction (board));
 		}
 		else if (stateOfAction == StateOfActionIdentifier.REJECTED) {
 			//azione respinta, bisogna chiedere al giocatore di fare una nuova mossa
@@ -59,8 +72,8 @@ public class View extends Observable implements Observer {
 		}
 		if(playerOrder==null) //la prima volta è null il vettore dei player
 			setPlayerOrder(((GameBoard)arg).getPlayers());
-		 inputOutput.showUpdatedSituation ((GameBoard)arg); //da implementare nella classe GUI e nella classe CLI
-		 manageStateOfAction (((GameBoard)arg).getStateOfAction());
+		inputOutput.showUpdatedSituation ((GameBoard)arg); //da implementare nella classe GUI e nella classe CLI
+		manageStateOfAction ((GameBoard)arg, ((GameBoard)arg).getStateOfAction());
 	}
 	
 	public void informController (Move move) {

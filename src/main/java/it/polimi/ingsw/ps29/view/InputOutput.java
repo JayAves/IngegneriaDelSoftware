@@ -8,10 +8,10 @@ public interface InputOutput {
 	
 	abstract void showMessage (String message);
 	
-	abstract String askTypeOfAction ();
+	abstract int askTypeOfAction ();
 	
-	abstract String askNumberOfServants ();
+	abstract int askNumberOfServants ();
 	
-	abstract String askFamiliarColor ();
+	abstract int askFamiliarColor ();
 
 }

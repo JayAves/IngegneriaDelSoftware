@@ -17,21 +17,21 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public String askTypeOfAction() {
+	public int askTypeOfAction() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public String askNumberOfServants() {
+	public int askNumberOfServants() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public String askFamiliarColor() {
+	public int askFamiliarColor() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 }

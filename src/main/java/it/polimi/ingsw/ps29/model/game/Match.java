@@ -9,7 +9,7 @@ public class Match extends Observable {
 	
 	public Match () {
 		id++;
-		board = new GameBoard();
+		board = new GameBoard(id);
 	}
 
 	public GameBoard getBoard() {

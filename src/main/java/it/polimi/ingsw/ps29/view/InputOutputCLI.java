@@ -24,7 +24,7 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 	
-	public String askTypeOfAction () {
+	public int askTypeOfAction () {
 		int choice;
 		System.out.println("\nInsert the number of the action you want to perform.");
 		do {
@@ -44,18 +44,18 @@ public class InputOutputCLI implements InputOutput {
 				"\nChoice: ");
 			choice = scanner.nextInt();
 		} while (choice<1 || choice>12);
-		return new Integer(choice).toString();
+		return choice;
 			
 	}
 	
-	public String askNumberOfServants () {
+	public int askNumberOfServants () {
 		int number;
 		System.out.println("Insert the number of servant you want to use: ");
 		number = scanner.nextInt();
-		return new Integer(number).toString();
+		return number;
 	}
 	
-	public String askFamiliarColor () {
+	public int askFamiliarColor () {
 		int choice;
 		System.out.println("\nInsert the color of the familiar member you want to use.");
 		do {
@@ -67,7 +67,7 @@ public class InputOutputCLI implements InputOutput {
 				"\nChoice: ");
 			choice = scanner.nextInt();
 		} while (choice<1 || choice>4);
-		return new Integer(choice).toString();
+		return choice;
 		
 	}
 

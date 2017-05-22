@@ -13,13 +13,15 @@ import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
 public class GameBoard implements Cloneable {
+	private int id_partita;
 	private ArrayList <Player> playersOrder;
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
 	private StateOfActionIdentifier stateOfAction; //utilizzato per permettere lo scambio di informazioni tra model e view
 	//serve per sapere se terminare il turno oppure richiedere informazioni aggiuntive al giocatore
 	
-	public GameBoard () {
+	public GameBoard (int id_partita) {
+		this.id_partita = id_partita;
 		initSpaces();
 	}
 	
@@ -51,14 +53,22 @@ public class GameBoard implements Cloneable {
 		dices.add(new Dice(DiceColor.ORANGE));
 		//manca aggiunta degli action spaces al tabellone!
 	}
+	
+	public int getIdPartita () {
+		return id_partita;
+	}
 
 	public ActivityArea getHarvestSpace () {
 		return (ActivityArea) spaces.get("Harvest");
 	}
 	
+	public ActivityArea getProductionSpace () {
+		return (ActivityArea) spaces.get("Production");
+	}
+	
 	@Override 
 	public GameBoard clone () {
-		GameBoard copy = new GameBoard ();
+		GameBoard copy = new GameBoard (this.id_partita);
 		copy.playersOrder = this.playersOrder;
 		copy.dices = this.dices;
 		copy.spaces = this.spaces;
