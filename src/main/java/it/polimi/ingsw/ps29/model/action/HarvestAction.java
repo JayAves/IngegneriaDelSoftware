@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.Effect;
+import it.polimi.ingsw.ps29.model.cards.ResourcesOrPointsEffect;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
@@ -34,15 +35,17 @@ public class HarvestAction implements Action {
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
 		else space.queuePlacement(move.getFamiliar());
 		
-		//per ogni elemento dell'arrayList territory
-		//per ogni effetto di tale carta
-		//se ho sufficiente potere attivo effetto permanente
+		ArrayList<ResourcesOrPointsEffect> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
+		//ciclo lettura bonus della bonus tile
+		for(ResourcesOrPointsEffect effect: bonusFromTile) {
+			effect.performEffect();
+		}
 		
 		ArrayList<TerritoryCard> importedSlot= move.getPlayer().getPersonalBoard().getTerritorySlot();
 		for(TerritoryCard card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
 				if (move.getFamiliar().getHarvestPower()> card.getHarvestForce()) {
-					//effect.performEffect(); da vedere effetti!
+					effect.performEffect();
 				}
 			}
 		}

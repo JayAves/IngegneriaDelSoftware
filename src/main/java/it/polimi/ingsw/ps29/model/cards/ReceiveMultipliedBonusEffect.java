@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps29.model.action.BonusAndMalusPlayer;
 public class ReceiveMultipliedBonusEffect extends Effect {
 
 	@Override
-	protected void performEffect(BonusAndMalusPlayer modifier) {
+	public void performEffect() {
 		// TODO Auto-generated method stub
 		
 	}

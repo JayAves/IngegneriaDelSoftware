@@ -14,7 +14,7 @@ public class ExchangeResourcesOrPointsEffect extends Effect {
 	
 	
 	@Override
-	protected void performEffect(BonusAndMalusPlayer modifier) {
+	public void performEffect() {
 		// TODO Auto-generated method stub
 		
 	}

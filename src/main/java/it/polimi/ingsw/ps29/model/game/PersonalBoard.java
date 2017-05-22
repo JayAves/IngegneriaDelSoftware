@@ -60,7 +60,15 @@ public class PersonalBoard {
 		return territorySlot;
 		
 	}
+
+	public ArrayList<BuildingCard> getBuildingSlot() {
+		// TODO Auto-generated method stub
+		return buildingSlot;
+	}
 	
-	
+	public PersonalBonusTile getPersonalBonusTile() {
+		// TODO Auto-generated method stub
+		return personalTile;
+	}
 
 }

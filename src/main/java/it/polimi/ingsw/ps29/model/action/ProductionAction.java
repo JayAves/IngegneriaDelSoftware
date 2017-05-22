@@ -1,5 +1,10 @@
 package it.polimi.ingsw.ps29.model.action;
 
+import java.util.ArrayList;
+
+import it.polimi.ingsw.ps29.model.cards.BuildingCard;
+import it.polimi.ingsw.ps29.model.cards.Effect;
+import it.polimi.ingsw.ps29.model.cards.ResourcesOrPointsEffect;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 
@@ -29,7 +34,23 @@ public class ProductionAction implements Action {
 		//placement
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
 		else space.queuePlacement(move.getFamiliar());
-		//manca production()
+		
+				
+		ArrayList<ResourcesOrPointsEffect> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
+		//ciclo lettura bonus della bonus tile
+		for(ResourcesOrPointsEffect effect: bonusFromTile) {
+			effect.performEffect();
+		}
+		
+		ArrayList<BuildingCard> importedSlot= move.getPlayer().getPersonalBoard().getBuildingSlot(); 
+		//ciclo lettura effetti da personalboard
+		for(BuildingCard card: importedSlot) {
+					for(Effect effect: card.getPermanentEffects()) {
+						if (move.getFamiliar().getProductionPower()> card.getProductionForce()) {
+							effect.performEffect();
+						}
+					}
+				}
 		
 	}
 	

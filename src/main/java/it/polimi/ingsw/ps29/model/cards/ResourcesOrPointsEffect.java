@@ -10,7 +10,7 @@ public class ResourcesOrPointsEffect extends Effect {
 	private ArrayList<Resource> resourceGain;
 	
 	@Override
-	protected void performEffect(BonusAndMalusPlayer modifier) {
+	public void performEffect() {
 		// TODO Auto-generated method stub
 		
 		

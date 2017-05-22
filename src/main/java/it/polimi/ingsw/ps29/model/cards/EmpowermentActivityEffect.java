@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29.model.cards;
 
-import it.polimi.ingsw.ps29.model.action.BonusAndMalusPlayer;
-
 public class EmpowermentActivityEffect extends EmpowermentDiceEffect {
 	
 
@@ -10,8 +8,8 @@ public class EmpowermentActivityEffect extends EmpowermentDiceEffect {
 	
 	
 	
-	@Override
-	protected void performEffect(BonusAndMalusPlayer modifier) {
+	/*@Override
+	public void performEffect(BonusAndMalusPlayer modifier) {
 		// TODO Auto-generated method stub
 	if (activityName=="PRODUCTION"){
 		
@@ -24,14 +22,14 @@ public class EmpowermentActivityEffect extends EmpowermentDiceEffect {
 		}
 	}
 
-
+*/
 	public EmpowermentActivityEffect(int diceEmpowerment, int activityEmpowerment, String activityName) {
 		super(diceEmpowerment);
 		this.activityEmpowerment = activityEmpowerment;
 		this.activityName = activityName;
 	}
 		
-	
+
 
 }
 	
