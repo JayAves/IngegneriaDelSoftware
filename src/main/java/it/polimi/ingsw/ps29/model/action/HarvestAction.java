@@ -10,7 +10,7 @@ public class HarvestAction implements Action {
 	
 	public HarvestAction (Move move) {
 		this.move = move;
-		space = move.getMatch().getBoard().getHarvestSpace();
+		space = (ActivityArea) move.getSpace();
 	}
 	
 	@Override

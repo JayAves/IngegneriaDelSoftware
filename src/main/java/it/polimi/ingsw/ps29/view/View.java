@@ -23,11 +23,6 @@ public class View extends Observable implements Observer {
 		playerOrder = null;
 	}
 	
-	public void gameEngine () {
-		while (true) {
-			
-		}
-	}
 	
 	public String getPlayerActive () {
 		return playerOrder.get(0).getName();

@@ -36,6 +36,7 @@ public class GameBoard implements Cloneable {
 		spaces.put("VentureTower", new TowerArea (null, null, null));
 		resources.add(new Resource (5, ResourceType.COIN));
 		spaces.put("FirstMarket", new MarketArea(1, resources));
+		//mancano altri spazi mercato
 		
 		stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
 	}
