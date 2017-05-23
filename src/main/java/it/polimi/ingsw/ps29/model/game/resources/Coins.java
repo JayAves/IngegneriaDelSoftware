@@ -1,6 +1,14 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-public class Coins {
+public class Coins extends Resource{
+	
+	public Coins(int n){
+		amount = n;
+	}
+	
+	public Coins(){
+		
+	}
 	
 	int amount;
 
@@ -8,7 +16,7 @@ public class Coins {
 		return amount;
 	}
 
-	public void modifyAmount(int amount) {
+	public void modifyAmount(int amount) {//da implementare eccezione nel caso diventa < 0
 		this.amount += amount;
 	}
 	

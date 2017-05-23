@@ -19,7 +19,6 @@ public class MarketAction implements Action{
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 
 }

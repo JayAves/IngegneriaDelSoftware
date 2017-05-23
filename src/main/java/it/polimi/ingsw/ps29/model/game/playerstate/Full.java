@@ -7,7 +7,7 @@ public class Full implements PlayerState{
 
 	@Override
     public void checkPlayerFamiliarsInThisSpace(FamilyMember member){
-          throw FullException;
+          //lancia una FullException
      }
   
 

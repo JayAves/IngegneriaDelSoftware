@@ -17,7 +17,7 @@ public class Resources implements ResourcesInterface{
 
 	@Override
 	public void modifyCoins(int coins) {
-		this.modifyCoins(coins);
+		this.coins.modifyAmount(coins);
 	}
 
 	@Override
