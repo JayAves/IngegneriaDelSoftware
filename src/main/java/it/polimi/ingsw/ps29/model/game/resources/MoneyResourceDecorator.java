@@ -10,11 +10,11 @@ public class MoneyResourceDecorator extends ResourcesDecorator{
 	}
 	
 	@Override
-	public void setCoins(int coins) {
+	public void modifyCoins(int coins) {
 		if (coins < 0 )
-			super.setCoins(coins);
+			super.modifyCoins(coins);
 		else 
-			super.setCoins(coins + moneyGetterModifier);
+			super.modifyCoins(coins + moneyGetterModifier);
 	}
 	
 }

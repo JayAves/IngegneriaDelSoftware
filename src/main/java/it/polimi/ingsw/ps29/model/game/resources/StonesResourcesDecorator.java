@@ -10,11 +10,11 @@ public class StonesResourcesDecorator extends ResourcesDecorator{
 	}
 
 	@Override
-	public void setStones(int stones) {
+	public void modifyStones(int stones) {
 		if (stones < 0)
-		   super.setStones(stones);
+		   super.modifyStones(stones);
 		else
-			super.setStones(stones + stonesModifier);
+			super.modifyStones(stones + stonesModifier);
 			
 	}
 	

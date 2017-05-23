@@ -10,11 +10,11 @@ public class WoodResoucresDecorator extends ResourcesDecorator{
 	}
 
 	@Override
-	public void setWoods(int woods) {
+	public void modifyWoods(int woods) {
 		if (woods < 0)
-			super.setWoods(woods);
+			super.modifyWoods(woods);
 		else
-			super.setWoods(woods + woodModifier);
+			super.modifyWoods(woods + woodModifier);
 	}
 	
 	

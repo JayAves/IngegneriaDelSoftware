@@ -2,58 +2,52 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 public class Resources implements ResourcesInterface{
 	
-	private int coins;
-	private int stones;
-	private int servants;
-	private int woods;
+	private Coins coins;
+	private Stones stones;
+	private Servants servants;
+	private Woods woods;
 	
   //tutti i set devono lanciare un eccezione nel caso il valore vada sotto 0
 	
+
 	@Override
 	public int getCoins() {
-		return coins;
-	}
-	
-	@Override
-	public void setCoins(int coins) {
-		this.coins += coins;
-	}
-	
-	@Override
-	public int getStones() {
-		return stones;
-	}
-	
-	@Override
-	public void setStones(int stones) {
-		this.stones += stones;
-	}
-	
-	@Override
-	public int getServants() {
-		return servants;
-	}
-	
-	@Override
-	public void setServants(int servants) {
-		this.servants += servants;
-	}
-	
-	@Override
-	public int getWoods() {
-		return woods;
-	}
-	
-	@Override
-	public void setWoods(int woods) {
-		this.woods += woods;
+		return coins.getAmount();
 	}
 
-	public Resources() {
-		coins=0;
-		stones=0;
-		servants=0;
-		woods=0;
+	@Override
+	public void modifyCoins(int coins) {
+		this.modifyCoins(coins);
+	}
+
+	@Override
+	public int getWoods() {
+		return woods.getAmount();
+	}
+
+	@Override
+	public void modifyWoods(int woods) {
+		this.woods.modifyAmount(woods);
+	}
+
+	@Override
+	public int getStones() {
+		return stones.getAmount();
+	}
+
+	@Override
+	public void modifyStones(int stones) {
+		this.stones.modifyAmount(stones);
+	}
+
+	@Override
+	public int getServants() {
+		return servants.getAmount();
+	}
+
+	@Override
+	public void modifyServants(int servants) {
+		this.servants.modifyAmount(servants);
 	}
 		
 	

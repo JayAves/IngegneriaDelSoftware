@@ -4,18 +4,18 @@ public interface ResourcesInterface {
 	
 	public int getCoins();
 	
-	public void setCoins(int coins);
+	public void modifyCoins(int coins);
 	
     public int getWoods();
 	
-	public void setWoods(int woods);
+	public void modifyWoods(int woods);
 	
     public int getStones();
 	
-	public void setStones(int stones);
+	public void modifyStones(int stones);
 	
     public int getServants();
 	
-	public void setServants(int servants);
+	public void modifyServants(int servants);
 		
 }

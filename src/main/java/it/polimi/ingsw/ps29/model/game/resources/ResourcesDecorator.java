@@ -13,32 +13,32 @@ public abstract class ResourcesDecorator implements ResourcesInterface {
 		return decoratedResources.getCoins();
 	}
 
-	public void setCoins(int coins) {
-		decoratedResources.setCoins(coins);
+	public void modifyCoins(int coins) {
+		decoratedResources.modifyCoins(coins);
 	}
 
 	public int getStones() {
 		return decoratedResources.getStones();
 	}
 
-	public void setStones(int stones) {
-		decoratedResources.setStones(stones);
+	public void modifyStones(int stones) {
+		decoratedResources.modifyStones(stones);
 	}
 
 	public int getServants() {
 		return decoratedResources.getServants();
 	}
 
-	public void setServants(int servants) {
-		decoratedResources.setServants(servants);
+	public void modifyServants(int servants) {
+		decoratedResources.modifyServants(servants);
 	}
 
 	public int getWoods() {
 		return decoratedResources.getWoods();
 	}
 
-	public void setWoods(int woods) {
-		decoratedResources.setWoods(woods);
+	public void modifyWoods(int woods) {
+		decoratedResources.modifyWoods(woods);
 	}
 	
 	
