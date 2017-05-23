@@ -52,7 +52,7 @@ public class PersonalBoard {
 		resources.add(new Stone(0));
 		resources.add(new VictoryPoints(0));
 		resources.add(new Wood(0));*/
-		this.resources=new Resources();
+		resources = new Resources ();
 		
 	}
 	
@@ -69,6 +69,10 @@ public class PersonalBoard {
 	public PersonalBonusTile getPersonalBonusTile() {
 		// TODO Auto-generated method stub
 		return personalTile;
+	}
+
+	public Resources getResources() {
+		return resources;
 	}
 
 }

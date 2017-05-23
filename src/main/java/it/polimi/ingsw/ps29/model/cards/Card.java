@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.cards;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.Period;
 
 public abstract class Card {

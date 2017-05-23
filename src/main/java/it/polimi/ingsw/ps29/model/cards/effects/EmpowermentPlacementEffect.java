@@ -1,12 +1,13 @@
-package it.polimi.ingsw.ps29.model.cards;
+package it.polimi.ingsw.ps29.model.cards.effects;
 
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 
-public class EmpowermentPlacementEffect extends EmpowermentDiceEffect {
+public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 
 	private ArrayList<Resource> discount;
 	private ArrayList<CardType> placementType;

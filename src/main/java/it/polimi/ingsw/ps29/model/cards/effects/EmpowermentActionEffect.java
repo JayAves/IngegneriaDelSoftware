@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps29.model.cards;
+package it.polimi.ingsw.ps29.model.cards.effects;
 
-public class EmpowermentDiceEffect extends Effect {
+public class EmpowermentActionEffect extends Effect {
 
 	private int diceEmpowerment;
 
@@ -20,7 +20,7 @@ public class EmpowermentDiceEffect extends Effect {
 		modifier.setDiceModifier(a+=diceEmpowerment);
 	}
 	*/
-	public EmpowermentDiceEffect(int diceEmpowerment) {
+	public EmpowermentActionEffect(int diceEmpowerment) {
 		this.diceEmpowerment = diceEmpowerment;
 	}
 

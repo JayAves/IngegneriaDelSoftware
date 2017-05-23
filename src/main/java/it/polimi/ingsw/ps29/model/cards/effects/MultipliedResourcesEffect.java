@@ -1,8 +1,8 @@
-package it.polimi.ingsw.ps29.model.cards;
+package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.action.BonusAndMalusPlayer;
 
-public class ReceiveMultipliedBonusEffect extends Effect {
+public class MultipliedResourcesEffect extends Effect {
 
 	@Override
 	public void performEffect() {

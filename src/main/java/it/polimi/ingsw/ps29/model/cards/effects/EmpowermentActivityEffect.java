@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps29.model.cards;
+package it.polimi.ingsw.ps29.model.cards.effects;
 
-public class EmpowermentActivityEffect extends EmpowermentDiceEffect {
+public class EmpowermentActivityEffect extends EmpowermentActionEffect {
 	
 
 	private int activityEmpowerment;

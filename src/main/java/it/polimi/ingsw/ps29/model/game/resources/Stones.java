@@ -4,13 +4,13 @@ public class Stones extends Resource{
 	
 	public Stones(int n){
 		amount = n;
+		type = ResourceType.STONE;
 	}
 	
 	public Stones(){
-		
+		type = ResourceType.STONE;		
 	}
 	
-	int amount;
 
 	public int getAmount() {
 		return amount;

@@ -3,8 +3,8 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
-import it.polimi.ingsw.ps29.model.cards.Effect;
-import it.polimi.ingsw.ps29.model.cards.ResourcesOrPointsEffect;
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
+import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 
@@ -36,9 +36,9 @@ public class ProductionAction implements Action {
 		else space.queuePlacement(move.getFamiliar());
 		
 				
-		ArrayList<ResourcesOrPointsEffect> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
+		ArrayList<GainResourcesEffect> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
 		//ciclo lettura bonus della bonus tile
-		for(ResourcesOrPointsEffect effect: bonusFromTile) {
+		for(GainResourcesEffect effect: bonusFromTile) {
 			effect.performEffect();
 		}
 		

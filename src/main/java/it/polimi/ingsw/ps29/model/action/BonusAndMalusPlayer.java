@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.cards.Effect;
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 
 public class BonusAndMalusPlayer {
 	
