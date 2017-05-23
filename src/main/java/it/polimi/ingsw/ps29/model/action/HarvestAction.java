@@ -77,5 +77,29 @@ public class HarvestAction implements Action {
 		return false;
 	}*/
 
+	
+	
+	/*
+	 * 
+	private Model model;
+    private Move move;
+    private FamilyMember member;
+
+    public HarvestAction(Model model, Move move) {
+        this.model = model;
+        this.move = move;
+    }
+
+    member = model.currentPlayer.getSelectedFamilyMember(move.member);
+
+    model.currentPlayer.HarvestState.checkPlayerFamiliarsInThisSpace(member);
+
+    ////tutta la sbatta
+
+
+    model.currentPlayer.HarvestState.setNewState();
+
+
+	 */
 
 }

@@ -29,5 +29,46 @@ public class Player {
 		return board;
 	}
 	
+	/*
+	 FamilyMember neutralFamilyMember;
+     FamilyMember orangeFamilyMember;
+     FamilyMember blackFamilyMember;
+     FamilyMember whiteFamilyMember;
+
+     private playerState HarvestState;
+     private playerState ProductionState;
+     private playerState CTowerState;
+     private playerState HTowerState;
+     private playerState PTowerState;
+     private playerState VTowerState;
+
+     public void checkPlayersFamiliarsInThisSpace(){
+
+     public FamilyMember getSelectedFamilyMember(String member) {
+            
+            switch (member){
+                case "neutral" return neutralFamilyMember;
+                               break;
+                case "orange"  return orangeFamilyMember; 
+                               break;
+                case "black"   return balckFamilyMember;
+                               break;
+                case "white"   return whiteFamilyMember;
+                               break;
+                               
+    }
+
+
+    public void resetStates() {
+    
+        HarvestState = new Free();
+        ProductionState = new Free();
+        CTowerState = new Free();
+        HTowerState = newFree();
+        
+        }
+        
+	 */
+	
 
 }
