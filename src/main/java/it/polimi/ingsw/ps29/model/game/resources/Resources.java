@@ -49,8 +49,25 @@ public class Resources implements ResourcesInterface{
 	public void modifyServants(int servants) {
 		this.servants.modifyAmount(servants);
 	}
-		
 	
+	public void modifyResources(String resource, int n){
+		switch(resource){
+		case "coins": this.modifyCoins(n);
+		              break;
+		case "woods": this.modifyWoods(n);
+		              break;
+		case "stones": this.modifyStones(n);
+		               break;
+		case "servants": this.modifyServants(n);
+		                 break;
+		}
+	}
+	
+    public void swapResources(String swapped, String swappedFor, int n, int m){
+    	this.modifyResources(swapped, -n);
+    	this.modifyResources(swappedFor, m);
+    }
+
 }
 	
 	
