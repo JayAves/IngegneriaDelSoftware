@@ -1,3 +1,4 @@
+package it.polimi.ingsw.ps29.model;
 /*package it.polimi.ingsw.ps29.model.game;
 
 public class GameEngine {
