@@ -5,9 +5,7 @@ import java.util.HashMap;
 
 import javax.annotation.Resource;
 
-import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
@@ -29,6 +27,7 @@ public class GameBoard implements Cloneable {
 	}
 	
 	private void initSpaces () {
+		
 		ArrayList <Resource> resources = new ArrayList <Resource> ();
 		
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
