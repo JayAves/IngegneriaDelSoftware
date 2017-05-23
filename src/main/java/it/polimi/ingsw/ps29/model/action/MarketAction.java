@@ -28,8 +28,12 @@ public class MarketAction implements Action{
 	}
 
 	@Override
-	public void performAction() {
-		// TODO Auto-generated method stub
+	public void performAction(/*Player currentPlayer, MarketArea area*/) {
+		/*
+		 * ArrayList <Gift> giftsCopy = area.getGifts();
+		 * ciclo for in cui per ogni gift di tipo Gift nell'ArrayList viene eseguito
+		 * currentPlayer.Resources.getResources(gift.getResource();, gift.getAmount();)
+		 */
 		
 	}
 	

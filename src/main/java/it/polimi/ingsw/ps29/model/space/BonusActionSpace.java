@@ -19,8 +19,16 @@ public class BonusActionSpace extends SingleSlotActionSpace {
 		return bonus;
 	}
 	
-	
-	
+	/*
+	 * private ArrayList <Gift> gifts;
+	 * 
+	 * public BonusActionSpace(int power, ArrayList <Gift> gifts) {
+	 *	   super(power);
+	 *	   this.gifts = gifts;
+	 *
+	 *public ArrayList <Gift> getGift(){
+	 *    return gifts;
+	 */
 	
 
 }

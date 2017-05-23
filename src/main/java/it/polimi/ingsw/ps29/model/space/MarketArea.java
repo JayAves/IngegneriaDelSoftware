@@ -29,6 +29,10 @@ public class MarketArea implements ActionSpace {
 		return slot.isEnoughPowerful(valuePlacement);
 	}
 	
-	
+	/*
+	 * public ArrayList <Gift> getGifts(){
+	 *     return  slot.getGift();
+	 * }
+	 */
 
 }
