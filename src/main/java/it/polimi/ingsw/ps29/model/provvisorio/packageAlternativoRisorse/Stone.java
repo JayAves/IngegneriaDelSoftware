@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse;
 
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
-public class Stone extends Resource{
+public class Stone extends ResourceOld{
 
 	public Stone(int amount) {
 		super(amount);

@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps29.model.game.resources.Resources;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.FaithPoints;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.MilitaryPoints;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Resource;
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Servants;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Stone;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.VictoryPoints;

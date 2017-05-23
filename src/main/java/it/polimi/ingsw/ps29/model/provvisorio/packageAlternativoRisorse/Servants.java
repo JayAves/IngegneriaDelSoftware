@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse;
 
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
-public class Servants extends Resource {
+public class Servants extends ResourceOld {
 
 	public Servants(int amount) {
 		super(amount);

@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps29.model.cards;
 
+import javax.annotation.Resource;
+
 import it.polimi.ingsw.ps29.model.game.Period;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Resource;
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 
 public class CharacterCard extends Card {
 	

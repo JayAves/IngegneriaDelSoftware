@@ -2,7 +2,9 @@ package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Resource;
+import javax.annotation.Resource;
+
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 
 public class BonusActionSpace extends SingleSlotActionSpace {
 

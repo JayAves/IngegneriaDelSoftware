@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse;
 
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
-public class FaithPoints extends Resource{
+public class FaithPoints extends ResourceOld{
 
 	public FaithPoints(int amount) {
 		super(amount);
