@@ -1,9 +1,11 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.resources.Container;
 
 public abstract class Effect {
 	
-	public abstract void performEffect();
+	abstract void performEffect (Player player);
+	
 
 }

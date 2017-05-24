@@ -13,11 +13,11 @@ public abstract class Card {
 	private ArrayList<Effect> permanentEffects;
 	//private ArrayList<ResourceOrPoint> cost;
 	
-	public Card(String name, Period period, CardType type) {
+	public Card(String name, Period period, String type) {
 		
 		this.name = name;
 		this.period = period;
-		this.type = type;
+		this.type = CardType.parseInput(type);
 	}
 
 	public ArrayList<Effect> getImmediateEffects() {
@@ -34,6 +34,10 @@ public abstract class Card {
 
 	public void setPermanentEffects(ArrayList<Effect> permanentEffects) {
 		this.permanentEffects = permanentEffects;
+	}
+
+	public String getType() {
+		return type.getType();
 	}
 	
 	

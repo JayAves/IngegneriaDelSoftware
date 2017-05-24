@@ -1,27 +1,32 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Container {
 	
-	private Map <String, Resource> container;
+	private HashMap <String, Resource> resources;
 	
 	public Container () {
-		container = new HashMap <String, Resource> ();
+		resources = new HashMap <String, Resource> ();
 	}
 	
-	private void addResource (Resource res) {
-		String index = res.type.getType();
-		//...
+	public void addResource (Resource res) {
+		if(resources.containsKey(res.getType())) 
+			resources.get(res.getType()).modifyAmount(res.getAmount());
+		else 
+			resources.put(res.getType(), res);
+		
 	}
 	
-	public void modifyResources (String res, int amount) {
-		container.get(res).modifyAmount(amount);
+	public Iterator getIterator () {
+		return resources.entrySet().iterator();
 	}
 	
-	public Resource getResource (String res) {
-		return container.get(res);
+	
+	public HashMap <String, Resource> getResources () {
+		return resources;
 	}
 	
 	/*private Coins coins;

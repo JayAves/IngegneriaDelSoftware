@@ -2,8 +2,13 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 public class Resource {
 	
-	protected int amount;
-	protected ResourceType type;
+	private int amount;
+	private final ResourceType type;
+	
+	public Resource (String type, int amount) {
+		this.amount = amount;
+		this.type = ResourceType.parseInput(type);
+	}
 
 	public int getAmount() {
 		return amount;
@@ -15,5 +20,9 @@ public class Resource {
 
 	public String getType () {
 		return type.getType();
+	}
+	
+	public void negativeAmount () {
+		this.amount *=-1;
 	}
 }

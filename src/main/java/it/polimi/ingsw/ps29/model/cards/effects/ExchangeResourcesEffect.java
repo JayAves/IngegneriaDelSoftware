@@ -2,22 +2,30 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import java.util.ArrayList;
 
-import javax.annotation.Resource;
-
-import it.polimi.ingsw.ps29.model.action.BonusAndMalusPlayer;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
+import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.resources.Container;
 
 public class ExchangeResourcesEffect extends Effect {
 
-	private ArrayList<Resource> firstDealCost;
-	private ArrayList<Resource> firstDealGain;
-	private ArrayList<Resource> secondDealCost;
-	private ArrayList<Resource> secondDealGain;
+	private ArrayList<ExchangeResourceHandler> choices;
 	
+	public ExchangeResourcesEffect() {
+		choices = new ArrayList <ExchangeResourceHandler> ();
+	}
 	
+	//aggiunge le alternative tra cui scegliere
+	void AddExchangeResource (ExchangeResourceHandler erh) {
+		choices.add(erh);
+	}
+	
+	ArrayList<ExchangeResourceHandler> getChoices () {
+		return choices;
+	}
+	
+
 	@Override
-	public void performEffect() {
-		// TODO Auto-generated method stub
+	void performEffect(Player player) {
+		//richiesta dello scambio
 		
 	}
 
