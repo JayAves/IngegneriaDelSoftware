@@ -8,6 +8,7 @@ public class Player {
 	private Color color;
 	private PersonalBoard board;
 	private FamilyMember[] family; //familymember del package (nuovo) familymember
+	public FamilyMember fakeFamiliar; //test per l'effetto empowerment
 	private ExcommunicationCard [] excommunication;
 	
 	public String getName() {

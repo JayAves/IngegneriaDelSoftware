@@ -1,16 +1,12 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
-public class EmpowermentActionEffect extends Effect {
+import it.polimi.ingsw.ps29.model.game.Player;
 
-	private int diceEmpowerment;
+abstract class EmpowermentActionEffect extends Effect {
 
-	@Override
-	public void performEffect() {
-		// TODO Auto-generated method stub
-		
-	}
+	protected int diceEmpowerment;
+
 	
-
 	
 	/*	
 	@Override
@@ -20,9 +16,5 @@ public class EmpowermentActionEffect extends Effect {
 		modifier.setDiceModifier(a+=diceEmpowerment);
 	}
 	*/
-	public EmpowermentActionEffect(int diceEmpowerment) {
-		this.diceEmpowerment = diceEmpowerment;
-	}
-
 	
 }

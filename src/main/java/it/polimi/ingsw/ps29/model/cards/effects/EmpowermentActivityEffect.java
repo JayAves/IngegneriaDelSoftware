@@ -1,9 +1,10 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
+import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberHarvestDecorator;
+
 public class EmpowermentActivityEffect extends EmpowermentActionEffect {
 	
-
-	private int activityEmpowerment;
 	private String activityName;
 	
 	
@@ -23,10 +24,20 @@ public class EmpowermentActivityEffect extends EmpowermentActionEffect {
 	}
 
 */
-	public EmpowermentActivityEffect(int diceEmpowerment, int activityEmpowerment, String activityName) {
-		super(diceEmpowerment);
-		this.activityEmpowerment = activityEmpowerment;
+	public EmpowermentActivityEffect(int diceEmpowerment, String activityName) {
+		this.diceEmpowerment = diceEmpowerment;
 		this.activityName = activityName;
+	}
+
+
+
+	@Override
+	void performEffect(Player player) {
+		if(activityName.equals("Harvest")) 
+			new FamilyMemberHarvestDecorator(player.fakeFamiliar, diceEmpowerment);
+		else
+			new FamilyMemberHarvestDecorator(player.fakeFamiliar, diceEmpowerment);
+		
 	}
 		
 

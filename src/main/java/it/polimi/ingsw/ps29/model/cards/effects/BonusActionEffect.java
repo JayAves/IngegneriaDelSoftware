@@ -1,11 +1,8 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
-public class BonusActionEffect extends Effect {
+import it.polimi.ingsw.ps29.model.game.Player;
 
-	@Override
-	public void performEffect() {
-		// TODO Auto-generated method stub
-		
-	}
-
+public abstract class BonusActionEffect extends Effect {
+	protected int valueAction;
+	
 }
