@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.resources.Resources;
+import it.polimi.ingsw.ps29.model.game.resources.Container;
 
 public class GainResourcesEffect extends Effect {
 

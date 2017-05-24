@@ -13,4 +13,7 @@ public class Resource {
 		this.amount += amount;
 	}
 
+	public String getType () {
+		return type.getType();
+	}
 }

@@ -4,7 +4,7 @@ public class MoneyResourceDecorator extends ResourcesDecorator{
 	
 	private int moneyGetterModifier;
 
-	public MoneyResourceDecorator(Resources decoratedResources, int n) {
+	public MoneyResourceDecorator(Container decoratedResources, int n) {
 		super(decoratedResources);
 		moneyGetterModifier = n;
 	}

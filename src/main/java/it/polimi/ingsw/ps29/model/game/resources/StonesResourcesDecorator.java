@@ -4,7 +4,7 @@ public class StonesResourcesDecorator extends ResourcesDecorator{
 	
 	int stonesModifier;
 
-	public StonesResourcesDecorator(Resources decoratedResources, int n) {
+	public StonesResourcesDecorator(Container decoratedResources, int n) {
 		super(decoratedResources);
 		stonesModifier = n;
 	}

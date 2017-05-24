@@ -2,14 +2,14 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 public abstract class ResourcesDecorator implements ResourcesInterface {
 	
-	private Resources decoratedResources;
+	private Container decoratedResources;
 
-	public ResourcesDecorator(Resources decoratedResources) {
+	public ResourcesDecorator(Container decoratedResources) {
 		super();
 		this.decoratedResources = decoratedResources;
 	}
 
-	public int getCoins() {
+	/*public int getCoins() {
 		return decoratedResources.getCoins();
 	}
 
@@ -40,6 +40,7 @@ public abstract class ResourcesDecorator implements ResourcesInterface {
 	public void modifyWoods(int woods) {
 		decoratedResources.modifyWoods(woods);
 	}
+	*/
 	
 	
 }

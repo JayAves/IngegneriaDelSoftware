@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.CharacterCard;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.VentureCard;
-import it.polimi.ingsw.ps29.model.game.resources.Resources;
+import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.FaithPoints;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.MilitaryPoints;
@@ -24,7 +24,7 @@ public class PersonalBoard {
 	private ArrayList <VentureCard> ventureSlot;
 	private PersonalBonusTile personalTile;
 	//private ArrayList<Resource> resources;
-	private Resources resources;
+	private Container resources;
 	
 	private void addCharacter(CharacterCard card){
 		characterSlot.add(card);
@@ -52,7 +52,7 @@ public class PersonalBoard {
 		resources.add(new Stone(0));
 		resources.add(new VictoryPoints(0));
 		resources.add(new Wood(0));*/
-		resources = new Resources ();
+		resources = new Container ();
 		
 	}
 	
@@ -71,7 +71,7 @@ public class PersonalBoard {
 		return personalTile;
 	}
 
-	public Resources getResources() {
+	public Container getResources() {
 		return resources;
 	}
 

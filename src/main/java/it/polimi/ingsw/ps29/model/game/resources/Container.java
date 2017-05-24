@@ -1,8 +1,30 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-public class Resources implements ResourcesInterface{
+import java.util.HashMap;
+import java.util.Map;
+
+public class Container {
 	
-	private Coins coins;
+	private Map <String, Resource> container;
+	
+	public Container () {
+		container = new HashMap <String, Resource> ();
+	}
+	
+	private void addResource (Resource res) {
+		String index = res.type.getType();
+		//...
+	}
+	
+	public void modifyResources (String res, int amount) {
+		container.get(res).modifyAmount(amount);
+	}
+	
+	public Resource getResource (String res) {
+		return container.get(res);
+	}
+	
+	/*private Coins coins;
 	private Stones stones;
 	private Servants servants;
 	private Woods woods;
@@ -66,7 +88,7 @@ public class Resources implements ResourcesInterface{
     public void swapResources(String swapped, String swappedFor, int n, int m){
     	this.modifyResources(swapped, -n);
     	this.modifyResources(swappedFor, m);
-    }
+    }*/
 
 }
 	
