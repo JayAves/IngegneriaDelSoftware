@@ -12,13 +12,4 @@ public class Servants extends Resource{
 		
 	}
 
-	int amount;
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void modifyAmount(int amount) {//da implementare eccezione nel caso amount diventa < 0
-		this.amount += amount;
-	}
 }

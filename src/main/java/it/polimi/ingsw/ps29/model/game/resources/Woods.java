@@ -11,15 +11,5 @@ public class Woods extends Resource{
 		type = ResourceType.WOOD;
 		
 	}
-
-	int amount;
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void modifyAmount(int amount) {
-		this.amount += amount;
-	}
 	
 }

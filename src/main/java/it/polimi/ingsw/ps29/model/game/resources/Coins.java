@@ -11,16 +11,5 @@ public class Coins extends Resource{
 		type = ResourceType.COIN;
 		
 	}
-	
-	int amount;
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void modifyAmount(int amount) {//da implementare eccezione nel caso diventa < 0
-		this.amount += amount;
-	}
-	
 
 }

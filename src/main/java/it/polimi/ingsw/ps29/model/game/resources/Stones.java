@@ -12,12 +12,4 @@ public class Stones extends Resource{
 	}
 	
 
-	public int getAmount() {
-		return amount;
-	}
-
-	public void modifyAmount(int amount) {// implementare eccezione nel caso amount < 0
-		this.amount += amount;
-	}
-
 }
