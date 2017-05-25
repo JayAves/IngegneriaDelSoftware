@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.game.resources;
+/*package it.polimi.ingsw.ps29.model.game.resources;
 
 public class ServantsResourcesDecorator extends ResourcesDecorator {
 	
@@ -20,4 +20,3 @@ public class ServantsResourcesDecorator extends ResourcesDecorator {
 	*/
 	
 
-}

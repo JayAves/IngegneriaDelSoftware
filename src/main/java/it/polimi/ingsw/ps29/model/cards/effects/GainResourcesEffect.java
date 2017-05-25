@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 public class GainResourcesEffect extends ResourcesArray {
 	
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		Container playerResources = player.getPersonalBoard().getResources();
 		for (Resource res: resourceGain)
 			playerResources.addResource(res);

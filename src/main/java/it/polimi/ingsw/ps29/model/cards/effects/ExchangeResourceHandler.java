@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
+
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;

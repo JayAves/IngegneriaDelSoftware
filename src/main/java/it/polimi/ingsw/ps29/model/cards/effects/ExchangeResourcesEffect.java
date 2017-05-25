@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.resources.Container;
 
 public class ExchangeResourcesEffect extends Effect {
 
@@ -24,7 +23,7 @@ public class ExchangeResourcesEffect extends Effect {
 	
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		//richiesta dello scambio
 		
 	}

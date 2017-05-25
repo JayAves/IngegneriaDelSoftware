@@ -17,7 +17,7 @@ public class LoseVictoryPoint extends ResourcesArray {
 
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		//da fare
 		
 	}

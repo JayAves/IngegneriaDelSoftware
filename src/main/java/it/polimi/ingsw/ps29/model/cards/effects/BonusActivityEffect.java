@@ -12,7 +12,7 @@ public class BonusActivityEffect extends BonusActionEffect {
 	}
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		//interazione con l'utente che passa il tipo di azione da cui si ricava lo spazio 
 		//all'utente è richiesto il numero di servitori
 		

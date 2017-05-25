@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.ResourcesArray;
@@ -38,14 +39,14 @@ public class HarvestAction implements Action {
 		ArrayList<ResourcesArray> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
 		//ciclo lettura bonus della bonus tile
 		for(ResourcesArray effect: bonusFromTile) {
-			effect.performEffect();
+			effect.performEffect(move.getPlayer());
 		}
 		
-		ArrayList<TerritoryCard> importedSlot= move.getPlayer().getPersonalBoard().getTerritorySlot();
-		for(TerritoryCard card: importedSlot) {
+		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Territory");
+		for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
-				if (move.getFamiliar().getHarvestPower()> card.getHarvestForce()) {
-					effect.performEffect();
+				if (move.getFamiliar().getHarvestPower()> ((TerritoryCard)card).getHarvestForce()) {
+					effect.performEffect(move.getPlayer());
 				}
 			}
 		}

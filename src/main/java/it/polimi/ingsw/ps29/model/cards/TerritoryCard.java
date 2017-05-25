@@ -6,7 +6,7 @@ public class TerritoryCard extends Card {
 
 	private final int harvestForce;
 	
-	public TerritoryCard(String name, Period period, CardType type, int harvestForce) {
+	public TerritoryCard(String name, Period period, String type, int harvestForce) {
 		super(name, period, type);
 		// TODO Auto-generated constructor stub
 		this.harvestForce=harvestForce;

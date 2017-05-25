@@ -20,7 +20,7 @@ public class BonusPlacementEffect extends BonusActionEffect {
 	}
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		//interazione con l'utente, a cui devo passare il tipo di carta relativa alla torre su 
 		//cui piazzare e il valore dell'azione (con eventuale sconto)
 		//Non essendo un effetto permanente non memorizzo lo sconto.

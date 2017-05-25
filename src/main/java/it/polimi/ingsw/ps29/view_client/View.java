@@ -15,7 +15,7 @@ public class View extends Observable implements Runnable, Observer {
 		notifyObservers(text);
 		
 		
-		
+		s.close();
 	}
 
 	@Override

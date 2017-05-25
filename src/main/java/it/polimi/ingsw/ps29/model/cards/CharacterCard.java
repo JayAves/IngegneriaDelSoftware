@@ -1,15 +1,14 @@
 package it.polimi.ingsw.ps29.model.cards;
 
-import javax.annotation.Resource;
 
 import it.polimi.ingsw.ps29.model.game.Period;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
+import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
 
 public class CharacterCard extends Card {
 	
-	private Resource coinCost;
+	private Coin coinCost;
 	
-	public CharacterCard(String name, Period period, CardType type) {
+	public CharacterCard(String name, Period period, String type, Coin cost) {
 		super(name, period, type);
 		// TODO Auto-generated constructor stub
 	}

@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 import it.polimi.ingsw.ps29.model.space.BonusActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 

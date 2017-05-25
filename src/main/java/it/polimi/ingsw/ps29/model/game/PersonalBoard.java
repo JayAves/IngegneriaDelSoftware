@@ -3,10 +3,7 @@ package it.polimi.ingsw.ps29.model.game;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.Card;
-import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
-import it.polimi.ingsw.ps29.model.cards.VentureCard;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 
 public class PersonalBoard {
@@ -25,6 +22,7 @@ public class PersonalBoard {
 		this.personalTile = personalTile;
 		resources = new Container ();
 	}
+	
 	
 	public void addCard(Card card){
 		cards.get(card.getType()).add(card);

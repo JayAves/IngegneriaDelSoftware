@@ -16,7 +16,7 @@ public class CLIInput extends Input {
 		
 		setChanged();
 		notifyObservers(nome+";"+text);
-		
+		s.close();
 	}
 
 	@Override

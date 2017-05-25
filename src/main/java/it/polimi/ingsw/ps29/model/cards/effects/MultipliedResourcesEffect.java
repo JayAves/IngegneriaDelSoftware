@@ -1,11 +1,9 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
-import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class MultipliedResourcesEffect extends Effect {
 	

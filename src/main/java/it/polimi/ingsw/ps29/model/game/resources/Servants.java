@@ -3,13 +3,8 @@ package it.polimi.ingsw.ps29.model.game.resources;
 public class Servants extends Resource{
 	
 	public Servants (int n){
-		amount = n;
-		type = ResourceType.SERVANT;
+		super("servant", n);
 	}
 	
-	public Servants(){
-		type = ResourceType.SERVANT;
-		
-	}
 
 }

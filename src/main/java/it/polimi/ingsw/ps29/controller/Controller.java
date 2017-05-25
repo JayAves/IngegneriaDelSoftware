@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps29.controller;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 

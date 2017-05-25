@@ -1,8 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 public class Container {
 	
@@ -18,10 +16,6 @@ public class Container {
 		else 
 			resources.put(res.getType(), res);
 		
-	}
-	
-	public Iterator getIterator () {
-		return resources.entrySet().iterator();
 	}
 	
 	

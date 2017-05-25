@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberMarketDecorator;
 
 public class GeneralExcommunications extends Effect{
 	
@@ -10,7 +9,7 @@ public class GeneralExcommunications extends Effect{
 	private boolean doubleCostServants;
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		if(noPlacementMarket){
 			//new FamilyMemberMarketDecorator(player.fakeFamiliar, 0);
 		}

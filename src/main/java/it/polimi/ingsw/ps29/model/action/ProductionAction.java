@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
+import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.ResourcesArray;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -39,15 +40,15 @@ public class ProductionAction implements Action {
 		ArrayList<ResourcesArray> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
 		//ciclo lettura bonus della bonus tile
 		for(ResourcesArray effect: bonusFromTile) {
-			effect.performEffect();
+			effect.performEffect(move.getPlayer());
 		}
 		
-		ArrayList<BuildingCard> importedSlot= move.getPlayer().getPersonalBoard().getBuildingSlot(); 
+		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Building");
 		//ciclo lettura effetti da personalboard
-		for(BuildingCard card: importedSlot) {
+		for(Card card: importedSlot) {
 					for(Effect effect: card.getPermanentEffects()) {
-						if (move.getFamiliar().getProductionPower()> card.getProductionForce()) {
-							effect.performEffect();
+						if (move.getFamiliar().getProductionPower()> ((BuildingCard)card).getProductionForce()) {
+							effect.performEffect(move.getPlayer());
 						}
 					}
 				}

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
-import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.ResourceOld;
 
 public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 
@@ -24,7 +22,7 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 	}
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		//deve applicare il valore aggiuntivo del dado alla singola torre (dipende da cardType, ev. All)
 		//sia positivo che negativo
 		//deve notificare lo sconto di risorse quando si prende lo specifico tipo di carta

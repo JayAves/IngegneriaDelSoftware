@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 public class Resource {
 	
-	private int amount;
-	private final ResourceType type;
+	protected int amount;
+	protected final ResourceType type;
 	
 	public Resource (String type, int amount) {
 		this.amount = amount;

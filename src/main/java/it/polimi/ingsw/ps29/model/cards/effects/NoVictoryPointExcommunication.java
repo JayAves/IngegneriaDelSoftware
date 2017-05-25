@@ -11,7 +11,7 @@ public class NoVictoryPointExcommunication extends Effect{
 	}
 
 	@Override
-	void performEffect(Player player) {
+	public void performEffect(Player player) {
 		//da implementare quando facciamo le funzioni di fine partita
 		
 	}
