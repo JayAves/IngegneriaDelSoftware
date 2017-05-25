@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.cards.effects.ResourcesArray;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 
@@ -35,9 +35,9 @@ public class HarvestAction implements Action {
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
 		else space.queuePlacement(move.getFamiliar());
 		
-		ArrayList<GainResourcesEffect> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
+		ArrayList<ResourcesArray> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
 		//ciclo lettura bonus della bonus tile
-		for(GainResourcesEffect effect: bonusFromTile) {
+		for(ResourcesArray effect: bonusFromTile) {
 			effect.performEffect();
 		}
 		

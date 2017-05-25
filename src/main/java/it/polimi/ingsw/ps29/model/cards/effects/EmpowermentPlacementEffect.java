@@ -26,9 +26,12 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 	@Override
 	void performEffect(Player player) {
 		//deve applicare il valore aggiuntivo del dado alla singola torre (dipende da cardType, ev. All)
+		//sia positivo che negativo
 		//deve notificare lo sconto di risorse quando si prende lo specifico tipo di carta
+		
 		//boolean che notifica la presenza di uno sconto di risorse da mettere su tutte le torri della board?
 		//se il valore è vero si cerca la carta con questo effetto permanente e se ne recuperano le risorse scontate
+		//non è un modificatore che vale sempre per la risorsa MA solo quando si paga in una certa torre
 		
 	}
 

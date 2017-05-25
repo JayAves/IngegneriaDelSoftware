@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps29.model.game.Player;
 abstract class EmpowermentActionEffect extends Effect {
 
 	protected int diceEmpowerment;
-
+	//può essere sia positivo (effetto permanente), sia negativo (scomunica)
 	
 	
 	/*	
