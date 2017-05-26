@@ -9,12 +9,13 @@ public abstract class ResourcesArray extends Effect {
 
 	protected ArrayList<Resource> resourceGain;
 	
-	public ResourcesArray() {
-		resourceGain = new ArrayList<Resource> ();
+	public ResourcesArray(ArrayList<Resource> resources) {
+		resourceGain = resources;
 	}
 	
-	void addResource (Resource res) {
+	
+	/*public void addResource (Resource res) {
 		resourceGain.add(res);
-	}
+	}*/
 	
 }

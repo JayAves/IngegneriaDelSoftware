@@ -2,9 +2,8 @@ package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 
-import javax.annotation.Resource;
-
 import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class MarketArea implements ActionSpace {
 	
@@ -12,6 +11,10 @@ public class MarketArea implements ActionSpace {
 	
 	public MarketArea (int power, ArrayList <Resource> bonus) {
 		slot = new BonusActionSpace (power, bonus);
+	}
+	
+	public BonusActionSpace getSlot () {
+		return slot;
 	}
 
 	@Override

@@ -2,10 +2,9 @@ package it.polimi.ingsw.ps29.model.space.tower;
 
 import java.util.ArrayList;
 
-import javax.annotation.Resource;
-
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.BonusActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 

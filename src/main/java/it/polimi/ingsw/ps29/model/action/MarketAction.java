@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.model.action;
 
+import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 
 public class MarketAction implements Action{
@@ -9,10 +11,10 @@ public class MarketAction implements Action{
 	private MarketArea space;
 	
 	
-	public MarketAction(Move move, MarketArea space) {
+	public MarketAction(Move move) {
 		super();
 		this.move = move;
-		this.space = space;
+		this.space = (MarketArea) move.getSpace();
 	}
 
 	@Override
@@ -23,7 +25,6 @@ public class MarketAction implements Action{
 
 	@Override
 	public boolean isPlaceable() {
-		// TODO Auto-generated method stub
 		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getMarketPower());
 	}
 
@@ -34,6 +35,9 @@ public class MarketAction implements Action{
 		 * ciclo for in cui per ogni gift di tipo Gift nell'ArrayList viene eseguito
 		 * currentPlayer.Resources.getResources(gift.getResource();, gift.getAmount();)
 		 */
+		
+		GainResourcesEffect effect = new GainResourcesEffect(space.getSlot().getBonus());
+		effect.performEffect(move.getPlayer());
 		
 	}
 	
