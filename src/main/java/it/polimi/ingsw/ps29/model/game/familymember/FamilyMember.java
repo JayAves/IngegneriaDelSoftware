@@ -12,6 +12,12 @@ public class FamilyMember implements FamilyMemberInterface{
 	private DiceColor familiarColor;
 	private Color playerColor;
 
+	public FamilyMember (DiceColor familiarColor, Color playerColor) {
+		this.busy = false;
+		this.familiarColor = familiarColor;
+		this.playerColor = playerColor;
+	}
+	
 	//public int setPower()
 	// qui definiamo come associare il power in base al dado
 	
@@ -48,6 +54,8 @@ public class FamilyMember implements FamilyMemberInterface{
 		return playerColor;
 	}
 
-	
+	public void setPower (int power) {
+		this.power = power;
+	}
 	
 }

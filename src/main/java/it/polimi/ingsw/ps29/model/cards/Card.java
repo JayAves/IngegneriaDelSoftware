@@ -18,6 +18,8 @@ public abstract class Card {
 		this.name = name;
 		this.period = period;
 		this.type = CardType.parseInput(type);
+		immediateEffects = new ArrayList<Effect> ();
+		permanentEffects = new ArrayList<Effect> ();
 	}
 
 	public ArrayList<Effect> getImmediateEffects() {

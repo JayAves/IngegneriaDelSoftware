@@ -10,9 +10,9 @@ public class MoveCreator {
 	public static ActionSpace getActionSpace (GameBoard board, int code) {
 		switch (code) {
 			case 1:
-				return board.getHarvestSpace();
+				return board.getSpace("Harvest");
 			case 2:
-				return board.getProductionSpace();
+				return board.getSpace("Production");
 			//aggiungere le 4 torri, i 4 market e il palazzo del consiglio
 			default:
 				return null;

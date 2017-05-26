@@ -10,7 +10,6 @@ public class PersonalBoard {
 	
 	private HashMap <String, ArrayList <Card>> cards;
 	private PersonalBonusTile personalTile;
-	//private ArrayList<Resource> resources;
 	private Container resources;
 	
 	public PersonalBoard (PersonalBonusTile personalTile) {

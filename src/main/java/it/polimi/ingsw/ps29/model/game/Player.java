@@ -9,8 +9,20 @@ public class Player {
 	private Color color;
 	private PersonalBoard board;
 	private FamilyMember[] family; //familymember del package (nuovo) familymember
-	public FamilyMemberDecorator fakeFamiliar; //test per l'effetto empowerment
+	public FamilyMemberDecorator fakeFamiliar; //test per l'effetto empowerment, sarà da cancellare
 	private ExcommunicationCard [] excommunication;
+	
+	public Player (String name, Color color, PersonalBonusTile pbt) {
+		this.name = name;
+		this.color = color;
+		this.board = new PersonalBoard(pbt);
+		family = new FamilyMember [4];
+		family[0] = new FamilyMember (DiceColor.BLACK, color); 
+		family[1] = new FamilyMember(DiceColor.ORANGE, color);
+		family[2] = new FamilyMember(DiceColor.WHITE, color);
+		family[3] = new FamilyMember(DiceColor.NEUTRAL, color);
+		excommunication = new ExcommunicationCard [3];
+	}
 	
 	public String getName() {
 		return name;

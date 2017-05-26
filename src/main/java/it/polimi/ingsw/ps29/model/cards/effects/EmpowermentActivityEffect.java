@@ -34,11 +34,11 @@ public class EmpowermentActivityEffect extends EmpowermentActionEffect {
 
 	@Override
 	public void performEffect(Player player) {
-		if(activityName.equals("Harvest")) 
+		/*if(activityName.equals("Harvest")) 
 			player.fakeFamiliar = new FamilyMemberHarvestDecorator(new FamilyMember(), diceEmpowerment);
 		else
 			player.fakeFamiliar = new FamilyMemberHarvestDecorator(new FamilyMember(), diceEmpowerment);
-		
+		*/
 	}
 		
 

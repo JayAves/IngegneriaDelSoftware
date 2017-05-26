@@ -2,9 +2,8 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.annotation.Resource;
-
+import it.polimi.ingsw.ps29.model.action.Action;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
@@ -23,12 +22,14 @@ public class GameBoard implements Cloneable {
 	
 	public GameBoard (int id_partita) {
 		this.id_partita = id_partita;
+		playersOrder = new ArrayList<Player>();
+		dices.add(new Dice(DiceColor.BLACK));
+		dices.add(new Dice(DiceColor.WHITE));
+		dices.add(new Dice(DiceColor.ORANGE));
 		initSpaces();
 	}
 	
 	private void initSpaces () {
-		
-		ArrayList <Resource> resources = new ArrayList <Resource> ();
 		
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
@@ -36,8 +37,7 @@ public class GameBoard implements Cloneable {
 		spaces.put("BuildingTower", new TowerArea (null, null, null));
 		spaces.put("CharcaterTower", new TowerArea (null, null, null));
 		spaces.put("VentureTower", new TowerArea (null, null, null));
-		resources.add((Resource) new Coin(5));
-		spaces.put("FirstMarket", new MarketArea(1, resources));
+		spaces.put("FirstMarket", new MarketArea(1, null));
 		//mancano altri spazi mercato
 		
 		stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
@@ -47,26 +47,18 @@ public class GameBoard implements Cloneable {
 		return playersOrder;
 	}
 
-	public GameBoard(ArrayList<Player> playersOrder) {
+	public void setPlayers (ArrayList<Player> playersOrder) {
 		
 		this.playersOrder = playersOrder;
 		
-		dices.add(new Dice(DiceColor.BLACK));
-		dices.add(new Dice(DiceColor.WHITE));
-		dices.add(new Dice(DiceColor.ORANGE));
-		//manca aggiunta degli action spaces al tabellone!
 	}
 	
 	public int getIdPartita () {
 		return id_partita;
 	}
 
-	public ActivityArea getHarvestSpace () {
-		return (ActivityArea) spaces.get("Harvest");
-	}
-	
-	public ActivityArea getProductionSpace () {
-		return (ActivityArea) spaces.get("Production");
+	public ActionSpace getSpace (String space) {
+		return spaces.get(space);
 	}
 	
 	@Override 
