@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-public class Resource {
+public class Resource implements ResourceInterface {
 	
 	protected int amount;
 	protected final ResourceType type;
