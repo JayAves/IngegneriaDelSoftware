@@ -39,16 +39,15 @@ public class CouncilPalaceAction implements Action{
 	@Override
 	public void performAction() {
 		
-		//move.getSpace().getQueue().add(move.getFamiliar());
+		((CouncilPalaceArea) move.getSpace()).getQueue().addMember(move.getFamiliar());
 		ArrayList<Resource> councilBonus = new ArrayList<Resource> ();
 		councilBonus.add(new Coins(1));
 		councilBonus.add(new Privilege());
 		GainResourcesEffect effect= new GainResourcesEffect(councilBonus);
 		effect.performEffect(move.getPlayer());
 		
-		
-		
-		
 	}
+	
+	
 
 }
