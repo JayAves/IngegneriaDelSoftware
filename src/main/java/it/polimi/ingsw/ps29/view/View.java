@@ -31,12 +31,14 @@ public class View extends Observable implements Observer {
 	}
 	
 	
-	private int[] askNextAction(GameBoard board) {
+	private int[] askNextAction(GameBoard board) { 
 		int[] move = new int[4];
+		/*
 		move[0]= board.getIdPartita();
 		move[1]=inputOutput.askTypeOfAction();
 		move[2]=inputOutput.askNumberOfServants();
 		move[3]=inputOutput.askFamiliarColor();
+		*/
 		return move;
 	}
 	
