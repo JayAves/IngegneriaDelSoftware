@@ -53,6 +53,14 @@ public class ExchangeResourceHandler {
 		return resourcesIn.get(index);
 	}
 	
+	//resources sono le risorse del player
+	public void performExchange (Container resources){
+		if(!isResourceToChoose()) 
+			performExchangeNoChoice(resources);
+		else {}
+			//metodo per chiedere la scelta all'utente
+	}
+	
 	// il metodo è chiamato se l'utente deve scegliere un'alternativa tra le resOut o le resIn
 	//la scelta è già stata effettuata ed è indicata dal parametro i
 	void performExchangeWithChoice (Container resources, int i) {
@@ -64,10 +72,7 @@ public class ExchangeResourceHandler {
 		
 		else if (chooseIn) 
 			resources.addResource(choiceInResource(i));
-			
-		
-			
-		
+				
 	}
 	
 	//metodo chiamato se nello scambio non è richiesta una scelta tra risorse

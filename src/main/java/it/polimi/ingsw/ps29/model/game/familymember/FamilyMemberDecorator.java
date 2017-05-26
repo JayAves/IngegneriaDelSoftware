@@ -2,9 +2,9 @@ package it.polimi.ingsw.ps29.model.game.familymember;
 
 public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 	
-	protected FamilyMember decoratedFamilyMember;
+	protected FamilyMemberInterface decoratedFamilyMember;
 	
-    public FamilyMemberDecorator(FamilyMember decoratedFamilyMember) {
+    public FamilyMemberDecorator(FamilyMemberInterface decoratedFamilyMember) {
 		super();
 		this.decoratedFamilyMember = decoratedFamilyMember;
 	}

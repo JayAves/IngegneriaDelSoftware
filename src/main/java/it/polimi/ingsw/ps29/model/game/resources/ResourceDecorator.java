@@ -1,11 +1,11 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-public abstract class ResourceDecorator implements ResourceInterface {
+public class ResourceDecorator implements ResourceInterface {
 	
 	int modifier;
-	private Resource decoratedResource;
+	private ResourceInterface decoratedResource;
 	
-	public ResourceDecorator (Resource decoratedResource, int n){
+	public ResourceDecorator (ResourceInterface decoratedResource, int n){
 		this.decoratedResource = decoratedResource;
 		modifier = n;
 	}

@@ -8,10 +8,10 @@ public abstract class Effect {
 	
 	/*
 	EFFECTS:
-		- GainResources (ResourcesArray)
+		- GainResources (ext ResourcesArray)
 		- MultipliedResources
-		- ExchangeResources
-		- BonusAction
+		- ExchangeResources (manca interazione con l'utente)
+		- BonusAction (manca interazione con l'utente)
 			- BonusActivity
 			- BonusPlacement
 		- EmpowermentAction
@@ -19,7 +19,7 @@ public abstract class Effect {
 			- EmpowermentPlacement
 			
 	EXCOMMUNCATIONS:
-		- MalusResources (ResourcesArray)
+		- MalusResources (ext ResourcesArray)
 		- DisempowermentAction ---> utilizzo EmpowermentAction
 		(attenzione a implementare anche la scomunica che abbassa di uno il valore dei familiari colorati)
 		- GeneralExcommunications
@@ -27,7 +27,7 @@ public abstract class Effect {
 		 2.perdita del primo turno
 		 3.costo doppio servitori)
 		- NoVictoryPoint
-		- LoseVictoryPoint (ResourceArray)
+		- LoseVictoryPoint (ext ResourceArray)
 		
 		
 	*/

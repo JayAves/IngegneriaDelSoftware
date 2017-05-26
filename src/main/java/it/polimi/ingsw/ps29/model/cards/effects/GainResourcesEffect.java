@@ -16,7 +16,7 @@ public class GainResourcesEffect extends ResourcesArray {
 	@Override
 	public void performEffect(Player player) {
 		Container playerResources = player.getPersonalBoard().getResources();
-		for (Resource res: resourceGain)
+		for (Resource res: resources)
 			playerResources.addResource(res);
 	}
 

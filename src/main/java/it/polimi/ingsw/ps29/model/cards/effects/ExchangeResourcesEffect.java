@@ -8,14 +8,15 @@ public class ExchangeResourcesEffect extends Effect {
 
 	private ArrayList<ExchangeResourceHandler> choices;
 	
-	public ExchangeResourcesEffect() {
-		choices = new ArrayList <ExchangeResourceHandler> ();
+	public ExchangeResourcesEffect(ArrayList <ExchangeResourceHandler> erh) {
+		choices = erh;
 	}
 	
+	/*
 	//aggiunge le alternative tra cui scegliere
 	void AddExchangeResource (ExchangeResourceHandler erh) {
 		choices.add(erh);
-	}
+	}*/
 	
 	ArrayList<ExchangeResourceHandler> getChoices () {
 		return choices;

@@ -4,18 +4,20 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+public abstract class ResourcesArray extends Effect{
 
-public abstract class ResourcesArray extends Effect {
-
-	protected ArrayList<Resource> resourceGain;
+	protected ArrayList<Resource> resources;
 	
 	public ResourcesArray(ArrayList<Resource> resources) {
-		resourceGain = resources;
+		this.resources = resources;
 	}
 	
+	public void addResource (Resource res) {
+		resources.add(res);
+	}
 	
-	/*public void addResource (Resource res) {
-		resourceGain.add(res);
-	}*/
+	public ArrayList<Resource> getResources () {
+		return resources;
+	}
 	
 }

@@ -3,7 +3,7 @@ public class FamilyMemberHarvestDecorator extends FamilyMemberDecorator {
 	
 	private int harvestModifier;
 
-	public FamilyMemberHarvestDecorator(FamilyMember decoratedFamilyMember, int n) {
+	public FamilyMemberHarvestDecorator(FamilyMemberInterface decoratedFamilyMember, int n) {
 		super(decoratedFamilyMember);
 		harvestModifier = n;
 	}

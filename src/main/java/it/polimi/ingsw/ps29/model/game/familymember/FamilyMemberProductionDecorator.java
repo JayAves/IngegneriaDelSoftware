@@ -4,7 +4,7 @@ public class FamilyMemberProductionDecorator extends FamilyMemberDecorator {
 	
 	int productionModifier;
 
-	public FamilyMemberProductionDecorator(FamilyMember decoratedFamilyMember, int n) {
+	public FamilyMemberProductionDecorator(FamilyMemberInterface decoratedFamilyMember, int n) {
 		super(decoratedFamilyMember);
 		productionModifier = n;
 	}

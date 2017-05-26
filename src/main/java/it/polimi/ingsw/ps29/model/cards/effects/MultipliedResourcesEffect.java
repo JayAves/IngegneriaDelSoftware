@@ -12,7 +12,6 @@ public class MultipliedResourcesEffect extends Effect {
 	private String cardType;
 
 	public MultipliedResourcesEffect(String resourceType, int amount, String cardType) {
-		super();
 		this.resourceType = resourceType;
 		this.amount = amount;
 		this.cardType = cardType;
@@ -27,5 +26,5 @@ public class MultipliedResourcesEffect extends Effect {
 	}
 
 	
-
+	
 }
