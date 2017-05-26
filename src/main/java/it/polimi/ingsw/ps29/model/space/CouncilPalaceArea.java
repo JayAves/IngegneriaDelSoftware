@@ -25,4 +25,11 @@ public class CouncilPalaceArea implements ActionSpace {
 		return queue.isEnoughPowerful(valuePlacement);
 	}
 
+	public QueueActionSpace getQueue() {
+		return queue;
+	}
+
+
+	
+	
 }

@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 public enum ResourceType {
 	COIN ("coin"), WOOD ("wood"), STONE ("stone"), SERVANT ("servant"), FAITH ("faith"),
-	MILITARY ("military"), VICTORY ("victory");
+	MILITARY ("military"), VICTORY ("victory"), PRIVILEGE("privilege") ;
 
 	private final String type;
 	
