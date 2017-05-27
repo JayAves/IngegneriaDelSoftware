@@ -13,7 +13,7 @@ public class TowerArea implements ActionSpace {
 	private Floor floors[];
 	private final int NUMBER_OF_FLOORS = 4;
 	private int placementFloor;
-	//questo attributo serve per poter implementare correttamente il metodo ereditato isEnoughPowerful(). 
+	//questo attributo serve per poter implementare correttamente il metodo ereditato isEnoughPowerful(). contiene indice del piano dove si vuole piazzare
 	//Ha valore compreso tra 1 e 4 
 	
 	public TowerArea (Card [] cards, ArrayList <Resource>[] bonus, int[] power) {
@@ -28,6 +28,12 @@ public class TowerArea implements ActionSpace {
 	public void setPlacementFloor (int placementFloor) {
 		this.placementFloor = placementFloor;
 	}
+	
+	public Floor getPlacementFloor(){ //serve per capire da quale piano devo togliere la carta
+		return this.floors[placementFloor-1];
+	}
+	
+	
 	@Override
 	public boolean isEmpty() {
 		for (Floor i: floors) 

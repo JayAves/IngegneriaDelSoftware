@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.resources.Coins;
 import it.polimi.ingsw.ps29.model.game.resources.Privilege;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
