@@ -44,7 +44,7 @@ public class TowerAction extends Action {
 		
 		if (!space.isEmpty()) move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monetef
 		
-		GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal oiano, se non ne ha aggiungo null
+		GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal piano, se non ne ha aggiungo null
 		
 		effect.performEffect(move.getPlayer()); //aggiungo le risorse al player, dobbiamo gestire il caso in cui non ci siano risorse
 		
@@ -58,6 +58,12 @@ public class TowerAction extends Action {
 		
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) {
 			
+			/*
+			if (immediateEffect instanceof BonusActionEffect)
+				model.getBoard().getStateOfAction(StateOfActionIdentifier.INCOMPLETE);
+			else
+				*/
+			
 			immediateEffect.performEffect(move.getPlayer());
 		}
 		
@@ -70,7 +76,7 @@ public class TowerAction extends Action {
 	}
 	
 	private boolean canAffordMalus() {
-		return (move.getPlayer().getPersonalBoard().getResources().getResource((String)"coin").getAmount()>3);
+		return (move.getPlayer().getPersonalBoard().getResources().getResource((String)"coin").getAmount()>=3);
 	}
 	
 	private boolean canAffordCard() {
@@ -102,9 +108,7 @@ public class TowerAction extends Action {
 	
 	private boolean enoughSlotSpace(){
 		
-		if (move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6) return true;
-		else return false;
-		
+		return move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6;
 	}
 
 

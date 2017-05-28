@@ -54,8 +54,6 @@ public class HarvestAction extends Action {
 			}
 		}
 		
-		//settare lo stato della board a PERFORMED
-		
 	}
 	
 	/*private Player player;

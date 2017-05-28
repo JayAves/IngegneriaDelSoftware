@@ -40,8 +40,10 @@ public class CouncilPalaceAction extends Action{
 		ArrayList<Resource> councilBonus = new ArrayList<Resource> ();
 		councilBonus.add(new Coins(1));
 		councilBonus.add(new Privilege());
+		//l'array andrebbe creato da un'altra parte, con le risorse caricate da file
 		GainResourcesEffect effect= new GainResourcesEffect(councilBonus);
 		effect.performEffect(move.getPlayer());
+		
 		
 	}
 	

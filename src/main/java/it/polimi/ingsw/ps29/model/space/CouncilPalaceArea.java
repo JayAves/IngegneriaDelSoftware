@@ -1,6 +1,10 @@
 package it.polimi.ingsw.ps29.model.space;
 
+import java.util.ArrayList;
+
 import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
 public class CouncilPalaceArea implements ActionSpace {
 	
@@ -27,6 +31,22 @@ public class CouncilPalaceArea implements ActionSpace {
 
 	public QueueActionSpace getQueue() {
 		return queue;
+	}
+	
+	public boolean containedIn(ArrayList<Color> order, FamilyMember fam) {
+		for (Color col: order) {
+			if(col==fam.getPlayerColor())
+				return true;
+		}
+		return false;
+	}
+	
+	public ArrayList<Color> playersOrder () {
+		ArrayList<Color> order = new ArrayList<Color> ();
+		for (int i=0; i<queue.getQueue().size(); i++)
+			if(!containedIn(order, queue.getQueue().get(i)))
+				order.add(queue.getQueue().get(i).getPlayerColor());
+		return order;
 	}
 
 

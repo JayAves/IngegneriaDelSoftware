@@ -23,6 +23,7 @@ public class TowerArea implements ActionSpace {
 			else
 				floors[i] = new Floor (cards[i], new BonusActionSpace (power[i], bonus[i+2]));
 		}
+		placementFloor = 0;
 	}
 
 	public void setPlacementFloor (int placementFloor) {

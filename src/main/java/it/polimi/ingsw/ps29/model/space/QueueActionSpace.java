@@ -30,5 +30,9 @@ public class QueueActionSpace {
 	public void addMember (FamilyMember member) {
 		queue.add(member);
 	}
+	
+	public ArrayList <FamilyMember> getQueue () {
+		return queue;
+	}
 
 }
