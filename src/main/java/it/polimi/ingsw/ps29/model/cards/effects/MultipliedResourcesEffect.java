@@ -22,7 +22,7 @@ public class MultipliedResourcesEffect extends Effect {
 		PersonalBoard board = player.getPersonalBoard();
 		Container resources = board.getResources();
 		int multiplier = board.getCards(cardType).size();
-		resources.addResource(new Resource(resourceType, multiplier*amount));
+		resources.updateResource(new Resource(resourceType, multiplier*amount));
 	}
 
 	

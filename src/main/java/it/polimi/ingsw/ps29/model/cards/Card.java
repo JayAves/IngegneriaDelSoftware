@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.Period;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public abstract class Card {
 	private final String name;
@@ -11,15 +12,16 @@ public abstract class Card {
 	private final CardType type;
 	private ArrayList<Effect> immediateEffects;
 	private ArrayList<Effect> permanentEffects;
-	//private ArrayList<ResourceOrPoint> cost;
+	private ArrayList<Resource> cost;
 	
-	public Card(String name, Period period, String type) {
+	public Card(String name, Period period, String type, ArrayList<Effect> immediate, ArrayList<Effect> permanent, ArrayList<Resource> cost) {
 		
 		this.name = name;
 		this.period = period;
 		this.type = CardType.parseInput(type);
-		immediateEffects = new ArrayList<Effect> ();
-		permanentEffects = new ArrayList<Effect> ();
+		this.immediateEffects = immediate;
+		this.permanentEffects = permanent;
+		this.cost= cost;
 	}
 
 	public ArrayList<Effect> getImmediateEffects() {
@@ -42,5 +44,7 @@ public abstract class Card {
 		return type.getType();
 	}
 	
-	
+	public ArrayList<Resource> getCost() {
+		return this.cost;
+	}
 }
