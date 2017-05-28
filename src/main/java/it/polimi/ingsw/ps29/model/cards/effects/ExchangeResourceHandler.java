@@ -51,19 +51,19 @@ public class ExchangeResourceHandler {
 			//resources contiene le risorse del giocatore che ha deciso di scambiare le sue risorse
 			for(Resource resOut: resourcesOut) {
 				resOut.negativeAmount();
-				resources.addResource(resOut);
+				resources.updateResource(resOut);
 			}	
 		} else {
 			Resource resOut = choiceOutResource(indexOut);
 			resOut.negativeAmount();
-			resources.addResource(resOut);
+			resources.updateResource(resOut);
 		}
 		
 		if(!chooseIn) {
 			for (Resource resIn: resourcesIn) 
-				resources.addResource(resIn);	
+				resources.updateResource(resIn);	
 		} else 
-			resources.addResource(choiceInResource(indexIn));
+			resources.updateResource(choiceInResource(indexIn));
 		
 	}
 	
