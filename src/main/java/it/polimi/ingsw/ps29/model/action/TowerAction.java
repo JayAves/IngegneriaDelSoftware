@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps29.model.action;
 
+import java.util.ArrayList;
+
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -30,7 +32,8 @@ public class TowerAction implements Action {
 		return !space.familiarHere(move.getFamiliar().getPlayerColor()) 
 				&& space.isEnoughPowerful(move.getFamiliar().getTowerPower()) 
 				&& canAffordMalus() 
-				&& canAffordCard();
+				&& canAffordCard()
+				&& enoughSlotSpace();
 		
 	}
 
@@ -39,6 +42,8 @@ public class TowerAction implements Action {
 		// TODO Auto-generated method stub
 		
 		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
+		
+		if (!space.isEmpty()) move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monetef
 		
 		GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal oiano, se non ne ha aggiungo null
 		
@@ -59,7 +64,10 @@ public class TowerAction implements Action {
 		
 		space.getPlacementFloor().setCard(null); //il piano si svota della carta
 		
+		//move.getFamiliar().setBusy();
+		
 		//aggiungo l'effetto permanente della carta appena pescata dal giocatore alla classe BonusAndMalusPlayer - da implementare
+		
 	}
 	
 	private boolean canAffordMalus() {
@@ -68,12 +76,37 @@ public class TowerAction implements Action {
 	
 	private boolean canAffordCard() {
 		
-		for(Resource res: space.takeCard().getCost()) {
+		ArrayList<Resource> discountedCost=space.takeCard().getCost();
+		
+		highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
+		
+		for(Resource res: discountedCost) {
 			
 			if (res.getAmount()> move.getPlayer().getPersonalBoard().getResources().getResource(res.getType()).getAmount()) return false; 
 			
 			}
+		
 		return true;
 		
 	}
+	
+	private void highFloorDiscount(ArrayList<Resource> cost) {
+		
+		for (Resource res: cost) {
+			
+			for(Resource source: space.takeResource()) {
+				
+				if (res.getType()==source.getType()) res.modifyAmount(res.getAmount()-source.getAmount());
+			}
+		}
+	}
+	
+	private boolean enoughSlotSpace(){
+		
+		if (move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6) return true;
+		else return false;
+		
+	}
+
+
 }
