@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public abstract class ResourcesArray extends Effect{
 public abstract class EffectAboutResources extends Effect{
 
 	protected ArrayList<Resource> resources;
 	
-	public ResourcesArray(ArrayList<Resource> resources) {
 	public EffectAboutResources(ArrayList<Resource> resources) {
 		this.resources = resources;
 	}

@@ -1,8 +1,6 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
-
-import it.polimi.ingsw.ps29.model.cards.effects.ResourcesArray;
 import it.polimi.ingsw.ps29.model.cards.effects.EffectAboutResources;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
