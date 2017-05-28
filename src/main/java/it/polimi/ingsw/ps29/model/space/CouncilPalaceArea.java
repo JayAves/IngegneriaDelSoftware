@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.model.space;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Color;
-import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
 public class CouncilPalaceArea implements ActionSpace {

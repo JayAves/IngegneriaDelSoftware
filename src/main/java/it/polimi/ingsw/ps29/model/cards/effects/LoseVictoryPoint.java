@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class LoseVictoryPoint extends EffectAboutResources {
 	

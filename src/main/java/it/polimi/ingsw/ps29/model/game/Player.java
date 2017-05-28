@@ -1,15 +1,15 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberDecorator;
 
 public class Player {
 	private String name;
 	private Color color;
 	private PersonalBoard board;
 	private FamilyMember[] family; //familymember del package (nuovo) familymember
-	public FamilyMemberDecorator fakeFamiliar; //test per l'effetto empowerment, sarà da cancellare
+	private FakeFamilyMemberInterface fakeFamiliar; //test per l'effetto empowerment, sarà da cancellare
 	private ExcommunicationCard [] excommunication;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
@@ -41,6 +41,14 @@ public class Player {
 	
 	public PersonalBoard getPersonalBoard() {
 		return board;
+	}
+
+	public FakeFamilyMemberInterface getFakeFamiliar() {
+		return fakeFamiliar;
+	}
+
+	public void setFakeFamiliar(FakeFamilyMemberInterface fakeFamiliar) {
+		this.fakeFamiliar = fakeFamiliar;
 	}
 	
 	/*

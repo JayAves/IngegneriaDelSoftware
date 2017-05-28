@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
-import it.polimi.ingsw.ps29.model.space.ActionSpace;
 
 public class Move {
 	
