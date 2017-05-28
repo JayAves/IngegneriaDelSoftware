@@ -8,9 +8,10 @@ public class Container {
 	
 	public Container () {
 		resources = new HashMap <String, Resource> ();
+		resources.put("coin", new Resource("coin",0));
 	}
 	
-	public void addResource (Resource res) {
+	public void updateResource (Resource res) {
 		if(resources.containsKey(res.getType())) 
 			resources.get(res.getType()).modifyAmount(res.getAmount());
 		else 

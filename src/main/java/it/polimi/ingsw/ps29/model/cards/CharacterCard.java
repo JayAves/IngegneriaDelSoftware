@@ -1,16 +1,22 @@
 package it.polimi.ingsw.ps29.model.cards;
 
 
+import java.util.ArrayList;
+
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.Period;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class CharacterCard extends Card {
-	
-	private Coin coinCost;
-	
-	public CharacterCard(String name, Period period, String type, Coin cost) {
-		super(name, period, type);
+
+	public CharacterCard(String name, Period period, String type, ArrayList<Effect> immediate,
+			ArrayList<Effect> permanent, ArrayList<Resource> cost) {
+		super(name, period, type, immediate, permanent, cost);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+
 
 }

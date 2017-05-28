@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
 public class TowerAction implements Action {
@@ -26,8 +27,11 @@ public class TowerAction implements Action {
 	@Override
 	public boolean isPlaceable() {
 		// TODO Auto-generated method stub
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getTowerPower());
-
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) 
+				&& space.isEnoughPowerful(move.getFamiliar().getTowerPower()) 
+				&& canAffordMalus() 
+				&& canAffordCard();
+		
 	}
 
 	@Override
@@ -42,6 +46,12 @@ public class TowerAction implements Action {
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
 		
+		for(Resource res: space.takeCard().getCost()) { //pago costi
+			
+			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
+		
+		}
+		
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) {
 			
 			immediateEffect.performEffect(move.getPlayer());
@@ -49,8 +59,21 @@ public class TowerAction implements Action {
 		
 		space.getPlacementFloor().setCard(null); //il piano si svota della carta
 		
-		//ha senso che aggiunga l'effetto permanente della carta appena pescata dal giocatore all'attributo della classe BonusAndMalusPlayer?
+		//aggiungo l'effetto permanente della carta appena pescata dal giocatore alla classe BonusAndMalusPlayer - da implementare
 	}
 	
-
+	private boolean canAffordMalus() {
+		return (move.getPlayer().getPersonalBoard().getResources().getResource((String)"coin").getAmount()>3);
+	}
+	
+	private boolean canAffordCard() {
+		
+		for(Resource res: space.takeCard().getCost()) {
+			
+			if (res.getAmount()> move.getPlayer().getPersonalBoard().getResources().getResource(res.getType()).getAmount()) return false; 
+			
+			}
+		return true;
+		
+	}
 }
