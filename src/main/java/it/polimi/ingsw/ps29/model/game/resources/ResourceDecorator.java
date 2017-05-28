@@ -18,5 +18,20 @@ public class ResourceDecorator implements ResourceInterface {
 			decoratedResource.modifyAmount(amount + modifier);
 		
 	}
+
+	@Override
+	public int getAmount() {
+		return decoratedResource.getAmount();
+	}
+
+	@Override
+	public String getType() {
+		return decoratedResource.getType();
+	}
+
+	@Override
+	public void negativeAmount(){
+		decoratedResource.negativeAmount();
+	}
 		
 }

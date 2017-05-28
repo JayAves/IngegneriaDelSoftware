@@ -1,10 +1,11 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
-public class FamilyMemberHarvestDecorator extends FamilyMemberDecorator {
+
+public class FakeFamilyMemberHarvestDecorator extends FakeFamilyMemberDecorator{
 	
 	private int harvestModifier;
 
-	public FamilyMemberHarvestDecorator(FamilyMemberInterface decoratedFamilyMember, int n) {
-		super(decoratedFamilyMember);
+	public FakeFamilyMemberHarvestDecorator(FakeFamilyMemberInterface decoratedFake, int n) {
+		super(decoratedFake);
 		harvestModifier = n;
 	}
 
@@ -12,5 +13,5 @@ public class FamilyMemberHarvestDecorator extends FamilyMemberDecorator {
 	public int getHarvestPower() {
 		return super.getHarvestPower() + harvestModifier;
 	}
-		
+
 }

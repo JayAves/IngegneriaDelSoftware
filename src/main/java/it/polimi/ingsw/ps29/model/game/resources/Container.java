@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Container {
 	
-	private HashMap <String, Resource> resources;
+	private HashMap <String, ResourceInterface> resources;
 	
 	public Container () {
-		resources = new HashMap <String, Resource> ();
+		resources = new HashMap <String, ResourceInterface> ();
 		resources.put("coin", new Resource("coin",0));
 	}
 	
@@ -20,11 +20,11 @@ public class Container {
 	}
 	
 	
-	public HashMap <String, Resource> getResources () {
+	public HashMap <String, ResourceInterface> getResources () {
 		return resources;
 	}
 	
-	public Resource getResource(String resource){
+	public ResourceInterface getResource(String resource){
 		return resources.get(resource);
 	}
 
