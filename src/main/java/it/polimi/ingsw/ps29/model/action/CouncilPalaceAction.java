@@ -3,23 +3,22 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Coins;
 import it.polimi.ingsw.ps29.model.game.resources.Privilege;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
-public class CouncilPalaceAction implements Action{
+public class CouncilPalaceAction extends Action{
 
-	private Move move; 
 	private CouncilPalaceArea space;
 	
-	
-	public CouncilPalaceAction(Move move) {
-		
-		this.move = move;
-		this.space=(CouncilPalaceArea) move.getSpace();
-		
+
+	public CouncilPalaceAction(Match model, Move move) {
+		super(model, move);
+		this.space = (CouncilPalaceArea) model.getBoard().getSpace(move.getSpace());
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -37,7 +36,7 @@ public class CouncilPalaceAction implements Action{
 	@Override
 	public void performAction() {
 		
-		((CouncilPalaceArea) move.getSpace()).getQueue().addMember(move.getFamiliar());
+		space.getQueue().addMember(move.getFamiliar());
 		ArrayList<Resource> councilBonus = new ArrayList<Resource> ();
 		councilBonus.add(new Coins(1));
 		councilBonus.add(new Privilege());

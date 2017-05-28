@@ -14,7 +14,7 @@ public abstract class Effect {
 		- BonusAction (manca interazione con l'utente)
 			- BonusActivity
 			- BonusPlacement
-		- EmpowermentAction
+		- EmpowermentAction (sistemare prima FamilyMember)
 			- EmpowermentActivity
 			- EmpowermentPlacement
 			

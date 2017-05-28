@@ -25,10 +25,16 @@ public class ExchangeResourcesEffect extends Effect {
 
 	@Override
 	public void performEffect(Player player) {
-		//richiesta dello scambio
+		//mostra all'utente tutte le alternative presenti in choices e chiedi se vuole effettuare uno scambio
+		//in caso ci sia una scelta da fare all'interno di un possibile scambio chiede anche quella
+		
 		
 	}
 
-	//serve capire come contatta controller per chiedere dello scambio
-
+	//indexExchange indica il tipo di scambio che si vuole effettuare tra quelli proposti
+	//indexResource indica la risorsa da scambiare scelta all'interno di quelle proposte
+	//vale -1 se non occorre scegliere tra queste risorse
+	public void exchangeResources (Player player, int indexExchange, int indexOut, int indexIn) {
+		choices.get(indexExchange).performExchange(player.getPersonalBoard().getResources(), indexOut, indexIn);
+	}
 }

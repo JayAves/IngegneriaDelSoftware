@@ -7,11 +7,11 @@ public class Move {
 	
 	private int match;
 	private Player player;
-	private ActionSpace space;
+	private String space;
 	private int servants;
 	private FamilyMember familiar;		
 	
-	public Move (int match, Player player, ActionSpace space, int servants, FamilyMember familiar) {
+	public Move (int match, Player player, String space, int servants, FamilyMember familiar) {
 		super();
 		this.match = match;
 		this.player = player;
@@ -32,7 +32,7 @@ public class Move {
 		return servants;
 	}
 	
-	public ActionSpace getSpace () {
+	public String getSpace () {
 		return space;
 	}
 

@@ -2,19 +2,18 @@ package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
-public class TowerAction implements Action {
+public class TowerAction extends Action {
 
-	private Move move; 
 	private TowerArea space;
 	
-	public TowerAction(Move move, TowerArea space) {
-		
-		this.move = move;
-		this.space = space;
-		
+	public TowerAction(Match model, Move move) {
+		super(model, move);
+		this.space = (TowerArea) model.getBoard().getSpace(move.getSpace());
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

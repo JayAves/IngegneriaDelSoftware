@@ -1,19 +1,18 @@
 package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 
-public class MarketAction implements Action{
+public class MarketAction extends Action{
 
-	private Move move; 
 	private MarketArea space;
-	
-	
-	public MarketAction(Move move) {
-		super();
-		this.move = move;
-		this.space = (MarketArea) move.getSpace();
+
+	public MarketAction(Match model, Move move) {
+		super(model, move);
+		this.space = (MarketArea) model.getBoard().getSpace(move.getSpace());
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

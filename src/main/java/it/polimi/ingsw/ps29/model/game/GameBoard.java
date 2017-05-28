@@ -2,9 +2,6 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import it.polimi.ingsw.ps29.model.action.Action;
-import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.provvisorio.packageAlternativoRisorse.Coin;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;

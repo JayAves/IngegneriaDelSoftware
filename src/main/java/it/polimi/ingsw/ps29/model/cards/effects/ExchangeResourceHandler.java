@@ -13,28 +13,20 @@ public class ExchangeResourceHandler {
 	private boolean chooseOut;
 	private boolean chooseIn;
 	//i booleani se sono veri indicano che la risorsa è a scelta tra quelle dell'ArrayList. 
-	//Quando è a scelta l'ArrayList prevede esattamente due risorse
 	
-	public ExchangeResourceHandler () {
-		resourcesOut = new ArrayList<Resource>();
-		resourcesIn = new ArrayList<Resource>();
+	public ExchangeResourceHandler (ArrayList<Resource> resOut, ArrayList<Resource> resIn) {
+		resourcesOut = resOut;
+		resourcesIn = resIn;
 		chooseOut = false;
 		chooseIn = false;
 	}
 	
-	//agiunge una risorsa nell'Array giusto, in base al boolean 
-	void addResources (Resource res, boolean in) {
-		if(in)
-			resourcesIn.add(res);
-		else
-			resourcesOut.add(res);
-	}
 	
-	void setChooseOut (boolean value) {
+	public void setChooseOut (boolean value) {
 		chooseOut = value;
 	}
 	
-	void setChooseIn (boolean value) {
+	public void setChooseIn (boolean value) {
 		chooseIn = value;
 	}
 	
@@ -53,39 +45,26 @@ public class ExchangeResourceHandler {
 		return resourcesIn.get(index);
 	}
 	
-	//resources sono le risorse del player
-	public void performExchange (Container resources){
-		if(!isResourceToChoose()) 
-			performExchangeNoChoice(resources);
-		else {}
-			//metodo per chiedere la scelta all'utente
-	}
-	
-	// il metodo è chiamato se l'utente deve scegliere un'alternativa tra le resOut o le resIn
-	//la scelta è già stata effettuata ed è indicata dal parametro i
-	void performExchangeWithChoice (Container resources, int i) {
-		if(chooseOut) {
-			Resource resOut = choiceOutResource(i);
-			resOut.negativeAmount();
-			resources.addResource(resOut);
-		}
-		
-		else if (chooseIn) 
-			resources.addResource(choiceInResource(i));
-				
-	}
-	
 	//metodo chiamato se nello scambio non è richiesta una scelta tra risorse
-	void performExchangeNoChoice (Container resources) {
-		if(!isResourceToChoose()) {
+	void performExchange (Container resources, int indexOut, int indexIn) {
+		if(!chooseOut) {
 			//resources contiene le risorse del giocatore che ha deciso di scambiare le sue risorse
 			for(Resource resOut: resourcesOut) {
 				resOut.negativeAmount();
 				resources.addResource(resOut);
-			}			
+			}	
+		} else {
+			Resource resOut = choiceOutResource(indexOut);
+			resOut.negativeAmount();
+			resources.addResource(resOut);
+		}
+		
+		if(!chooseIn) {
 			for (Resource resIn: resourcesIn) 
 				resources.addResource(resIn);	
-		}
+		} else 
+			resources.addResource(choiceInResource(indexIn));
+		
 	}
 	
 

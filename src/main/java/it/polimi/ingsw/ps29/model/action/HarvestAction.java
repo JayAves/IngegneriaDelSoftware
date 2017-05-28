@@ -5,20 +5,22 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.cards.effects.ResourcesArray;
+import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.space.ActivityArea;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.space.HarvestArea;
 
-public class HarvestAction implements Action {
+public class HarvestAction extends Action {
 	
-	private Move move; 
-	private ActivityArea space;
+	private HarvestArea space;
 	
-	public HarvestAction (Move move) {
-		this.move = move;
-		space = (ActivityArea) move.getSpace();
+	public HarvestAction(Match model, Move move) {
+		super(model, move);
+		this.space = (HarvestArea) model.getBoard().getSpace(move.getSpace());
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public boolean isForbidden() { //da verificare carte scomunica in arrayList di bonusAndMalusPlyer
 		
@@ -36,13 +38,14 @@ public class HarvestAction implements Action {
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
 		else space.queuePlacement(move.getFamiliar());
 		
-		ArrayList<ResourcesArray> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
-		//ciclo lettura bonus della bonus tile
-		for(ResourcesArray effect: bonusFromTile) {
-			effect.performEffect(move.getPlayer());
-		}
+		//gestione bonus della tile
+		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
+		GainResourcesEffect bonusHarvestTile = new GainResourcesEffect(bonusFromTile);
+		bonusHarvestTile.performEffect(move.getPlayer());
+		
 		
 		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Territory");
+		//ciclo lettura effetti da personalBoard
 		for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
 				if (move.getFamiliar().getHarvestPower()> ((TerritoryCard)card).getHarvestForce()) {
@@ -50,6 +53,8 @@ public class HarvestAction implements Action {
 				}
 			}
 		}
+		
+		//settare lo stato della board a PERFORMED
 		
 	}
 	

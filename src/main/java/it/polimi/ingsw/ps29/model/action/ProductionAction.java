@@ -5,20 +5,22 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.cards.effects.ResourcesArray;
+import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.space.ActivityArea;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.space.ProductionArea;
 
-public class ProductionAction implements Action {
+public class ProductionAction extends Action {
 	
-	private Move move; 
-	private ActivityArea space;
+	private ProductionArea space;
 	
-	public ProductionAction (Move move) {
-		this.move = move;
-		space = (ActivityArea) move.getSpace();
+	public ProductionAction(Match model, Move move) {
+		super(model, move);
+		this.space = (ProductionArea) model.getBoard().getSpace(move.getSpace());
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public boolean isForbidden() { //da verificare carte scomunica in arrayList di bonusAndMalusPlyer
 		
@@ -37,21 +39,22 @@ public class ProductionAction implements Action {
 		else space.queuePlacement(move.getFamiliar());
 		
 				
-		ArrayList<ResourcesArray> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
-		//ciclo lettura bonus della bonus tile
-		for(ResourcesArray effect: bonusFromTile) {
-			effect.performEffect(move.getPlayer());
-		}
+		//gestione bonus della tile
+		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
+		GainResourcesEffect bonusProductionTile = new GainResourcesEffect(bonusFromTile);
+		bonusProductionTile.performEffect(move.getPlayer());
 		
 		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Building");
-		//ciclo lettura effetti da personalboard
+		//ciclo lettura effetti da personalBoard
 		for(Card card: importedSlot) {
-					for(Effect effect: card.getPermanentEffects()) {
-						if (move.getFamiliar().getProductionPower()> ((BuildingCard)card).getProductionForce()) {
-							effect.performEffect(move.getPlayer());
-						}
-					}
+			for(Effect effect: card.getPermanentEffects()) {
+				if (move.getFamiliar().getProductionPower()> ((BuildingCard)card).getProductionForce()) {
+					effect.performEffect(move.getPlayer());
 				}
+			}
+		}
+		
+		//settare lo stato della board a PERFORMED
 		
 	}
 	
