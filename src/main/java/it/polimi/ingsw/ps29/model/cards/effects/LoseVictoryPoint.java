@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class LoseVictoryPoint extends ResourcesArray {
+public class LoseVictoryPoint extends EffectAboutResources {
 	
 	private int interval;
 	private CardType typeCard;

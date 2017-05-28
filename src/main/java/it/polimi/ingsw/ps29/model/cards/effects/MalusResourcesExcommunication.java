@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceDecorator;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
-public class MalusResourcesExcommunication extends ResourcesArray {
+public class MalusResourcesExcommunication extends EffectAboutResources {
 
 	public MalusResourcesExcommunication(ArrayList<Resource> resources) {
 		super(resources);

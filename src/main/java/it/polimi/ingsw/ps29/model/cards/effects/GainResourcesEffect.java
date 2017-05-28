@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class GainResourcesEffect extends ResourcesArray {
+public class GainResourcesEffect extends EffectAboutResources {
 	
 	public GainResourcesEffect(ArrayList<Resource> resources) {
 		super(resources);
