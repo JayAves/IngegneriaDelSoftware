@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
-public class GameBoard implements Cloneable {
+public class GameBoard{
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
 	private StateOfActionIdentifier stateOfAction; //utilizzato per permettere lo scambio di informazioni tra model e view
