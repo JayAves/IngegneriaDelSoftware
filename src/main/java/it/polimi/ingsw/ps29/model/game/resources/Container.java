@@ -28,6 +28,11 @@ public class Container {
 		return resources.get(resource);
 	}
 
+	
+	public void substituteResource (ResourceDecorator res) {
+		resources.remove(res.getType());
+		resources.put(res.getType(), res);
+	}
 }
 	
 	

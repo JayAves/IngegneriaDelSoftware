@@ -1,12 +1,13 @@
 package it.polimi.ingsw.ps29.model.cards;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class TerritoryCard extends Card {
+public class TerritoryCard extends Card implements Serializable {
 
 	private final int harvestForce;
 	

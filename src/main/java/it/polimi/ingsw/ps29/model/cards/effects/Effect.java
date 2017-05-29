@@ -14,14 +14,14 @@ public abstract class Effect {
 		- BonusAction (manca interazione con l'utente)
 			- BonusActivity
 			- BonusPlacement
-		- EmpowermentAction (sistemare prima FamilyMember)
+		- EmpowermentAction (manca discount resources)
 			- EmpowermentActivity
 			- EmpowermentPlacement
 			
 	EXCOMMUNCATIONS:
 		- MalusResources (ext EffectAboutResources)
 		- DisempowermentAction ---> utilizzo EmpowermentAction
-		(attenzione a implementare anche la scomunica che abbassa di uno il valore dei familiari colorati)
+		(implementare anche la scomunica che abbassa di uno il valore dei familiari colorati)
 		- GeneralExcommunications
 		(1.piazzamento proibito nel mercato
 		 2.perdita del primo turno
