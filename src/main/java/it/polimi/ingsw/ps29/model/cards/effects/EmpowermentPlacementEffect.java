@@ -47,6 +47,8 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 			player.setFakeFamiliar(new FakeFamilyMemberCharacterTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			player.setFakeFamiliar(new FakeFamilyMemberVenturesTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
+		default:
+		    break;
 		}
 		//deve notificare lo sconto di risorse quando si prende lo specifico tipo di carta
 		
