@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.provvisorio.gsonTests;
+package it.polimi.ingsw.ps29.model.provvisorio.gsontest;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
