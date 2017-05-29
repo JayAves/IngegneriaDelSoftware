@@ -101,6 +101,7 @@ public class TowerAction extends Action {
 			
 			for(Resource source: space.takeResource()) {
 				
+				if (res.getType()==source.getType()) res.modifyAmount(-source.getAmount());
 			}
 		}
 	}
