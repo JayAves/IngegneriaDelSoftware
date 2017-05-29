@@ -57,5 +57,10 @@ public class FamilyMember implements FamilyMemberInterface{
 	public void setPower (int power) {
 		this.power = power;
 	}
+
+	public void setBusy() {
+		// TODO Auto-generated method stub
+		this.busy=true;
+	}
 	
 }

@@ -30,7 +30,7 @@ public class ProductionAction extends Action {
 
 	@Override
 	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getProductionPower());
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getProductionPower()+move.getServants());
 	}
 
 	@Override

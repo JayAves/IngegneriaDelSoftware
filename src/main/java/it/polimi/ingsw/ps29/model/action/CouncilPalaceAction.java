@@ -30,7 +30,7 @@ public class CouncilPalaceAction extends Action{
 	@Override
 	public boolean isPlaceable() {
 		// TODO Auto-generated method stub
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getCouncilPower());
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getCouncilPower()+move.getServants());
 	}
 
 	@Override

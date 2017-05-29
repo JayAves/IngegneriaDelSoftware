@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -29,10 +30,11 @@ public class TowerAction extends Action {
 	public boolean isPlaceable() {
 		// TODO Auto-generated method stub
 		return !space.familiarHere(move.getFamiliar().getPlayerColor()) 
-				&& space.isEnoughPowerful(move.getFamiliar().getTowerPower()) 
+				&& space.isEnoughPowerful(move.getFamiliar().getTowerPower()+move.getServants()) 
 				&& canAffordMalus() 
 				&& canAffordCard()
-				&& enoughSlotSpace();
+				&& enoughSlotSpace()
+				&& enoughVictoryPoints();
 		
 	}
 
@@ -50,7 +52,11 @@ public class TowerAction extends Action {
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
 		
-		for(Resource res: space.takeCard().getCost()) { //pago costi
+		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
+		
+		applyDiscounts(discountedCosts);
+		
+		for(Resource res: discountedCosts) { //pago costi
 			
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
 		
@@ -67,13 +73,13 @@ public class TowerAction extends Action {
 			immediateEffect.performEffect(move.getPlayer());
 		}
 		
-		space.getPlacementFloor().setCard(null); //il piano si svota della carta
+		space.getPlacementFloor().setCard(null); 
 		
-		//move.getFamiliar().setBusy();
+		move.getFamiliar().setBusy();
+	
+	}
 		
 		//aggiungo l'effetto permanente della carta appena pescata dal giocatore alla classe BonusAndMalusPlayer - da implementare
-		
-	}
 	
 	private boolean canAffordMalus() {
 		return (move.getPlayer().getPersonalBoard().getResources().getResource((String)"coin").getAmount()>=3);
@@ -84,6 +90,8 @@ public class TowerAction extends Action {
 		ArrayList<Resource> discountedCost=space.takeCard().getCost();
 		
 		highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
+		
+		applyDiscounts(discountedCost);
 		
 		for(Resource res: discountedCost) {
 			
@@ -109,6 +117,53 @@ public class TowerAction extends Action {
 	private boolean enoughSlotSpace(){
 		
 		return move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6;
+	}
+
+	private boolean enoughVictoryPoints() {
+		if(space.takeCard().getType().equals("Territory")) {
+			
+			int size= move.getPlayer().getPersonalBoard().getCards("territory").size();
+			
+			switch (size) {
+			
+			case 2:
+				return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=1);
+			
+			case 3:
+				return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=4);
+			
+			case 4:
+				return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=10);
+				
+			case 5:
+					return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=20);	
+
+			default:
+				return true;
+				
+			}
+			
+		}
+		
+		else return true;
+	}
+	
+	private void applyDiscounts( ArrayList<Resource> costs) {
+		
+		for (Effect eff: move.getPlayer().specialPermanentEffects) {
+			
+			if (eff.toString().equals("DiscountForCardType")) {
+				
+				for(Resource res: ((DiscountForCardTypeEffect)eff).getDiscount()) {
+					
+					for (Resource source: costs) {
+						
+						if (res.getType()==source.getType()) source.modifyAmount(-res.getAmount());
+					
+					}
+				}
+			}
+		}
 	}
 
 

@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps29.model.game;
 
+import java.util.ArrayList;
+
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
@@ -11,6 +14,7 @@ public class Player {
 	private FamilyMember[] family; //familymember del package (nuovo) familymember
 	private FakeFamilyMemberInterface fakeFamiliar; //test per l'effetto empowerment, sarà da cancellare
 	private ExcommunicationCard [] excommunication;
+	public ArrayList<Effect> specialPermanentEffects;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -22,6 +26,7 @@ public class Player {
 		family[2] = new FamilyMember(DiceColor.WHITE, color);
 		family[3] = new FamilyMember(DiceColor.NEUTRAL, color);
 		excommunication = new ExcommunicationCard [3];
+		specialPermanentEffects= new ArrayList<Effect>();
 	}
 	
 	public String getName() {
