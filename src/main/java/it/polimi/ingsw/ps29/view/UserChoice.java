@@ -1,0 +1,34 @@
+package it.polimi.ingsw.ps29.view;
+
+public class UserChoice {
+
+	private String name;
+	private int[] choices;
+	//int [0] spazio
+	//int [1] piano (ev. vale 0)
+	//int [2] num servitori
+	//int [3] familiare
+	
+	public UserChoice (String name, int[] choices) {
+		this.setName(name);
+		this.setChoices(choices);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int[] getChoices() {
+		return choices;
+	}
+
+	public void setChoices(int[] choices) {
+		this.choices = choices;
+	}
+	
+	
+}

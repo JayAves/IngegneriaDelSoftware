@@ -18,12 +18,15 @@ public class View extends Observable implements Observer {
 		System.out.println("Mi hanno creato: Sono la view del Player " + namePlayer);
 	}
 	
-	public Move askNextAction () {
-		Move move = new Move();
-		int[] choose = inputOutput.askTypeOfAction();
-		int servants = inputOutput.askNumberOfServants();
-		int familyMember = inputOutput.askFamiliarColor();
-		return move;
+	public int[] askNextAction () {
+		int [] choice = new int [4];
+		UserChoice move = new UserChoice(namePlayer, choice);
+		int[] temp = inputOutput.askTypeOfAction();
+		choice[0] = temp[0];
+		choice[1] = temp[1];
+		choice[2] = inputOutput.askNumberOfServants();
+		choice[3] = inputOutput.askFamiliarColor();
+		return choice;
 	}
 
 	@Override
