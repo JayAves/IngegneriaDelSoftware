@@ -14,12 +14,11 @@ import it.polimi.ingsw.ps29.view.View;
  *
  */
 public class App 
-{
-	static Scanner scanner; 
+{ 
 	
     public static void main( String[] args )
     {
-    	scanner = new Scanner (System.in);
+    	Scanner scanner = new Scanner (System.in);
     	String inputChoice;
     	int playerNumber = 2;
     	ArrayList<String> playersName = new ArrayList<String> ();
@@ -39,7 +38,6 @@ public class App
     	for(int i=0; i<playerNumber; i++) {
     		System.out.println("\nPlayer name: ");
     		playersName.add( scanner.next());
-    		//View view = new View (inputChoice, name);
     	}
     	
     	model = new Match (createPlayers (playersName));
@@ -48,6 +46,7 @@ public class App
     	for (String name: playersName) {
     		controller.addView(new View (inputChoice,  name), name);
     	}
+    	
     	
     	
     	/*Client client = new Client ("CLI", "Socket");

@@ -17,9 +17,9 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public int askTypeOfAction() {
+	public int[] askTypeOfAction() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public interface InputOutput {
 	
 	abstract void showMessage (String message);
 	
-	abstract int askTypeOfAction ();
+	abstract int[] askTypeOfAction ();
 	
 	abstract int askNumberOfServants ();
 	

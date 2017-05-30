@@ -22,6 +22,10 @@ public class Controller implements Observer{
 			views.put(playerName, view);
 	}
 	
+	public void callCorrectView () {
+		views.get(model.getBoard().getPlayers().get(0).getName()).askNextAction();
+	}
+	
 	//quando richiama l'action dovrà passare il model e l'oggetto move 
 
 	@Override

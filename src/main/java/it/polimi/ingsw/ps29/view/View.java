@@ -1,26 +1,29 @@
 package it.polimi.ingsw.ps29.view;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import it.polimi.ingsw.ps29.model.game.GameBoard;
-import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.StateOfActionIdentifier;
 
 public class View extends Observable implements Observer {
 	
 	private InputOutput inputOutput;
 	private InputoutputFactory inputOutputFactory = new InputoutputFactory ();
-	private String name;
+	private String namePlayer;
 	
 	public View (String inputType, String n) {
 		
 		inputOutput = inputOutputFactory.getInput(inputType);
-		name = n;
-		System.out.println("Sono la view del Player " + name);
+		namePlayer = n;
+		System.out.println("Mi hanno creato: Sono la view del Player " + namePlayer);
+	}
+	
+	public Move askNextAction () {
+		Move move = new Move();
+		int[] choose = inputOutput.askTypeOfAction();
+		int servants = inputOutput.askNumberOfServants();
+		int familyMember = inputOutput.askFamiliarColor();
+		return move;
 	}
 
 	@Override

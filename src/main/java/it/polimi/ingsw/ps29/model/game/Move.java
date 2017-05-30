@@ -4,16 +4,14 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
 public class Move {
 	
-	private int match;
-	private Player player;
+	private String player;
 	private String space;
 	private int servants;
 	private FamilyMember familiar;
 	private int floor;
 	
-	public Move (int match, Player player, String space, int servants, FamilyMember familiar, int floor) {
+	public Move (String player, String space, int servants, FamilyMember familiar, int floor) {
 		super();
-		this.match = match;
 		this.player = player;
 		this.space = space;
 		this.servants = servants;
@@ -21,9 +19,6 @@ public class Move {
 		this.floor=floor;
 	}
 
-	public int getMatch () {
-		return match;
-	}
 
 	public FamilyMember getFamiliar() {
 		return familiar;
@@ -37,7 +32,7 @@ public class Move {
 		return space;
 	}
 
-	public Player getPlayer() {
+	public String getPlayer() {
 		return player;
 	}
 

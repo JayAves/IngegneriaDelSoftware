@@ -24,9 +24,9 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 	
-	public int askTypeOfAction () {
-		int choice;
-		int floor = 0;
+	public int[] askTypeOfAction () {
+		int[] choice = new int [2];
+		choice[1]=0;
 		System.out.println("\nInsert the number of the action you want to perform.");
 		do {
 			System.out.println(
@@ -43,14 +43,14 @@ public class InputOutputCLI implements InputOutput {
 				"\n11.Consil palace" +
 				"\n12.No placement" +
 				"\nChoice: ");
-			choice = scanner.nextInt();
-		} while (choice<1 || choice>12);
+			choice[0] = scanner.nextInt();
+		} while (choice[0]<1 || choice[0]>12);
 		
-		if(choice>=3 && choice<=6) {
+		if(choice[0]>=3 && choice[0]<=6) {
 			do{
 				System.out.println("\nInsert floor: ");
-				floor = scanner.nextInt();
-			} while (floor<1 || floor>4);
+				choice[1] = scanner.nextInt();
+			} while (choice[1]<1 || choice[1]>4);
 		}
 		return choice;
 			
