@@ -40,7 +40,7 @@ public class InputOutputCLI implements InputOutput {
 				"\n8.Market space 2" +
 				"\n9.Market space 3" +
 				"\n10.Market space 4" +
-				"\n11.Consil palace" +
+				"\n11.Council palace" +
 				"\n12.No placement" +
 				"\nChoice: ");
 			choice[0] = scanner.nextInt();

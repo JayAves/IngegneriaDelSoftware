@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.StateOfActionIdentifier;
 
-abstract class Action {
+public abstract class Action {
 	
 	protected Match model;
 	protected Move move;
@@ -12,7 +12,7 @@ abstract class Action {
 	public Action (Match model, Move move) {
 		this.model = model;
 		this.move = move;
-		actionHandler();
+		
 	}
 	
 	//questo metodo controlla se la mossa è impedita da una scomunica
@@ -25,7 +25,7 @@ abstract class Action {
 	//chiamato se i precedenti controlli vanno a buon fine, implementato in maniera diversa per ogni spazio azione
 	abstract void performAction ();
 		
-	protected void actionHandler () {
+	public void actionHandler () {
 		if (isForbidden() || !isPlaceable())
 			model.getBoard().setStateOfAction(StateOfActionIdentifier.REJECTED);
 		

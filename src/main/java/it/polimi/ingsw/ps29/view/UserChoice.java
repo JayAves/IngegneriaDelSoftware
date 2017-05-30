@@ -22,8 +22,8 @@ public class UserChoice {
 		this.name = name;
 	}
 
-	public int[] getChoices() {
-		return choices;
+	public int getChoices(int i) {
+		return choices[i];
 	}
 
 	public void setChoices(int[] choices) {

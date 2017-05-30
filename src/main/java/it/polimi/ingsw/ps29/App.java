@@ -47,7 +47,7 @@ public class App
     		controller.addView(new View (inputChoice,  name), name);
     	}
     	
-    	
+    	controller.callCorrectView();
     	
     	/*Client client = new Client ("CLI", "Socket");
 		GameEngine gameEngine = new GameEngine ();
