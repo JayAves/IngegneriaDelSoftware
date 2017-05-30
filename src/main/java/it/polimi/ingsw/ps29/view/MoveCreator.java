@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.view;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
-import it.polimi.ingsw.ps29.model.space.ActionSpace;
 
 public class MoveCreator {
 	
@@ -25,4 +24,7 @@ public class MoveCreator {
 		}
 		return board.getPlayers().get(0).getFamiliarByColor(color);
 	}
+	
+	
+	
 }

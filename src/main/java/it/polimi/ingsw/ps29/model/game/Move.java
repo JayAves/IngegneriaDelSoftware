@@ -8,15 +8,17 @@ public class Move {
 	private Player player;
 	private String space;
 	private int servants;
-	private FamilyMember familiar;		
+	private FamilyMember familiar;
+	private int floor;
 	
-	public Move (int match, Player player, String space, int servants, FamilyMember familiar) {
+	public Move (int match, Player player, String space, int servants, FamilyMember familiar, int floor) {
 		super();
 		this.match = match;
 		this.player = player;
 		this.space = space;
 		this.servants = servants;
 		this.familiar = familiar;
+		this.floor=floor;
 	}
 
 	public int getMatch () {
@@ -39,5 +41,7 @@ public class Move {
 		return player;
 	}
 
-
+	public int getFloor() {
+		return floor;
+	}
 }

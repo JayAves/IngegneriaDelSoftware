@@ -1,4 +1,4 @@
-/*package it.polimi.ingsw.ps29.model.provvisorio.gsontest;
+package it.polimi.ingsw.ps29.model.provvisorio.gsontest;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class GsonProva {
 		String serializedObject = gson.toJson(test);
 		String name ="prova.json";
 		System.out.println(serializedObject);
-		
+		/*
 		
 		
 		System.out.println(gson.fromJson(serializedObject, TerritoryCard.class).getType());
@@ -60,6 +60,6 @@ public class GsonProva {
 		
 		
 	}
-
+	*/}
 }
-*/
+	

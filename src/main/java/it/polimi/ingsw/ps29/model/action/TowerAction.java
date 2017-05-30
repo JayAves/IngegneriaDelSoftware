@@ -17,6 +17,7 @@ public class TowerAction extends Action {
 	public TowerAction(Match model, Move move) {
 		super(model, move);
 		this.space = (TowerArea) model.getBoard().getSpace(move.getSpace());
+		space.setPlacementFloor(move.getFloor());
 		// TODO Auto-generated constructor stub
 	}
 
