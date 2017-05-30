@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 
 public class TowerArea implements ActionSpace {
 	
-	private Floor floors[];
+	private Floor[] floors;
 	private final int NUMBER_OF_FLOORS = 4;
 	private int placementFloor;
 	//questo attributo serve per poter implementare correttamente il metodo ereditato isEnoughPowerful(). contiene indice del piano dove si vuole piazzare
@@ -18,6 +18,7 @@ public class TowerArea implements ActionSpace {
 	
 	public TowerArea (Card [] cards, ArrayList <Resource>[] bonus, int[] power) {
 		for (int i=0; i<NUMBER_OF_FLOORS; i++) {
+			floors = new Floor [NUMBER_OF_FLOORS];
 			if(i<2)
 				floors[i] = new Floor (cards[i], new SingleSlotActionSpace (power[i]));
 			else

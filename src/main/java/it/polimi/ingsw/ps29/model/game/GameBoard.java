@@ -17,6 +17,7 @@ public class GameBoard{
 	private ArrayList<Player> playersOrder;
 	
 	public GameBoard (ArrayList<Player> players) {
+		dices = new ArrayList<Dice> ();
 		dices.add(new Dice(DiceColor.BLACK));
 		dices.add(new Dice(DiceColor.WHITE));
 		dices.add(new Dice(DiceColor.ORANGE));
@@ -26,12 +27,13 @@ public class GameBoard{
 	
 	private void initSpaces () {
 		
+		spaces = new HashMap <String, ActionSpace> ();
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
-		spaces.put("TerritoryTower", new TowerArea (null, null, null));
+		/*spaces.put("TerritoryTower", new TowerArea (null, null, null));
 		spaces.put("BuildingTower", new TowerArea (null, null, null));
 		spaces.put("CharcaterTower", new TowerArea (null, null, null));
-		spaces.put("VentureTower", new TowerArea (null, null, null));
+		spaces.put("VentureTower", new TowerArea (null, null, null));*/
 		spaces.put("FirstMarket", new MarketArea(1, null));
 		//mancano altri spazi mercato
 		

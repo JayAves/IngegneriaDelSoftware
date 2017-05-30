@@ -14,14 +14,22 @@ public class View extends Observable implements Observer {
 	
 	private InputOutput inputOutput;
 	private InputoutputFactory inputOutputFactory = new InputoutputFactory ();
-	private ArrayList <Player> playerOrder;
+	private String name;
 	
-	public View (String inputType) {
+	public View (String inputType, String n) {
+		
 		inputOutput = inputOutputFactory.getInput(inputType);
-		playerOrder = null;
+		name = n;
+		System.out.println("Sono la view del Player " + name);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	
+	/*
 	public String getPlayerActive () {
 		return playerOrder.get(0).getName();
 	}
@@ -33,20 +41,20 @@ public class View extends Observable implements Observer {
 	
 	private int[] askNextAction(GameBoard board) { 
 		int[] move = new int[4];
-		/*
-		move[0]= board.getIdPartita();
+		
+		//move[0]= board.getIdPartita();
 		move[1]=inputOutput.askTypeOfAction();
 		move[2]=inputOutput.askNumberOfServants();
 		move[3]=inputOutput.askFamiliarColor();
-		*/
+		
 		return move;
 	}
 	
-	/*public Move askNextAction (GameBoard board) {
+	public Move askNextAction (GameBoard board) {
 		ActionSpace space = MoveCreator.getActionSpace(board, inputOutput.askTypeOfAction());
 		FamilyMember member = MoveCreator.getFamilyMember(board, inputOutput.askFamiliarColor());
 		return new Move (board.getIdPartita(), board.getPlayers().get(0), space, inputOutput.askNumberOfServants(), member);
-	}*/
+	}
 	
 	private void manageStateOfAction (GameBoard board, StateOfActionIdentifier stateOfAction) {
 		if(stateOfAction == StateOfActionIdentifier.PERFORMED) {
@@ -85,5 +93,5 @@ public class View extends Observable implements Observer {
 		setChanged();
 		notifyObservers(move);
 	}
-
+*/
 }

@@ -26,6 +26,7 @@ public class InputOutputCLI implements InputOutput {
 	
 	public int askTypeOfAction () {
 		int choice;
+		int floor = 0;
 		System.out.println("\nInsert the number of the action you want to perform.");
 		do {
 			System.out.println(
@@ -44,6 +45,13 @@ public class InputOutputCLI implements InputOutput {
 				"\nChoice: ");
 			choice = scanner.nextInt();
 		} while (choice<1 || choice>12);
+		
+		if(choice>=3 && choice<=6) {
+			do{
+				System.out.println("\nInsert floor: ");
+				floor = scanner.nextInt();
+			} while (floor<1 || floor>4);
+		}
 		return choice;
 			
 	}
