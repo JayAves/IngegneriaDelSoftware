@@ -33,6 +33,10 @@ public abstract class Card {
 		this.cost= cost;
 	}
 
+	public Period getPeriod() {
+		return this.period;
+	}
+	
 	public ArrayList<Effect> getImmediateEffects() {
 		return immediateEffects;
 	}
@@ -56,4 +60,12 @@ public abstract class Card {
 	public ArrayList<Resource> getCost() {
 		return this.cost;
 	}
+
+	@Override
+	public String toString() {
+		return "Card [name=" + name + ", period=" + period + ", type=" + type + ", immediateEffects=" + immediateEffects.get(0)+immediateEffects.get(1)
+				+ ", permanentEffects=" + permanentEffects + ", cost=" + cost + "]";
+	}
+
+
 }

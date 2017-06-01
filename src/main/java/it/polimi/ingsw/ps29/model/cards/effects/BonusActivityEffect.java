@@ -10,7 +10,9 @@ public class BonusActivityEffect extends BonusActionEffect {
 		this.type = type;
 		//type può essere "Harvest" o "Production"
 	}
-
+	public String getType() {
+		return this.type;
+	}
 	@Override
 	public void performEffect(Player player) {
 		//interazione con l'utente che passa il tipo di azione da cui si ricava lo spazio 

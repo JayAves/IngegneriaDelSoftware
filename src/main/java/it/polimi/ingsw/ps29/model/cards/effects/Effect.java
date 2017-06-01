@@ -5,6 +5,11 @@ import it.polimi.ingsw.ps29.model.game.Player;
 public abstract class Effect {
 	
 	public abstract void performEffect (Player player);
+
+	@Override
+	public String toString() {
+		return "Effect []";
+	}
 	
 	/*
 	EFFECTS:
