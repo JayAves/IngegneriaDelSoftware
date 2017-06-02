@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.provvisorio.gsontest;
+package it.polimi.ingsw.ps29.model.cards.customadapters;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

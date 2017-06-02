@@ -9,13 +9,16 @@ public class Deck {
 	private CardType type;
 	private ArrayList <Card> cards;
 	
-	public Deck(Period period, CardType type, ArrayList<Card> cards) {
+	public Deck(Period period, CardType type) {
 		super();
 		this.period = period;
 		this.type = type;
-		this.cards=cards;
+		
 		
 	}
 	
+	public void addCard(Card c) {
+		this.cards.add(c);
+	}
 	
 }

@@ -7,8 +7,12 @@ public class Container {
 	private HashMap <String, ResourceInterface> resources;
 	
 	public Container () {
+		
 		resources = new HashMap <String, ResourceInterface> ();
-		resources.put("coin", new Resource("coin",0));
+		
+		resources.put("wood", new Resource("wood",2));
+		resources.put("servant", new Resource("servant",3));
+		resources.put("stone", new Resource("stone",2));
 	}
 	
 	public void updateResource (Resource res) {

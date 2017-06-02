@@ -38,7 +38,7 @@ public class Controller implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		Action action= null;
+		Action action;
 		
 		if(!(o instanceof View) || !(arg instanceof UserChoice)) {
 			throw new IllegalArgumentException();
@@ -77,11 +77,16 @@ public class Controller implements Observer{
 			break;
 		
 		default:
-			//caso in cui non posso fare nulla
+			action=null;
 			break;
 		}
 		
-		action.actionHandler();
+		
+			if (action!=null) {
+				action.actionHandler();
+			}
+
+		
 		
 		
 	}

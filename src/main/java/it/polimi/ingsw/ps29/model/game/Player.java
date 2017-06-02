@@ -32,9 +32,7 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	
 	public FamilyMember getFamiliarByColor (DiceColor color) {
 		for (FamilyMember member: family) {

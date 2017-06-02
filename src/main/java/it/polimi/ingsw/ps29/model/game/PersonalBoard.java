@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 
@@ -39,5 +38,5 @@ public class PersonalBoard {
 	public Container getResources() {
 		return resources;
 	}
-
+	 
 }

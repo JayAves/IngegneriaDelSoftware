@@ -16,7 +16,10 @@ public class TowerArea implements ActionSpace {
 	//questo attributo serve per poter implementare correttamente il metodo ereditato isEnoughPowerful(). contiene indice del piano dove si vuole piazzare
 	//Ha valore compreso tra 1 e 4 
 	
-	public TowerArea (Card [] cards, ArrayList <Resource>[] bonus, int[] power) {
+	public TowerArea (Card [] cards, ArrayList <Resource>[] bonus ) {
+		
+		int[] power= new int[] {1,3,5,7};
+		
 		for (int i=0; i<NUMBER_OF_FLOORS; i++) {
 			floors = new Floor [NUMBER_OF_FLOORS];
 			if(i<2)

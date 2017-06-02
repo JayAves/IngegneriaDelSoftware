@@ -1,0 +1,49 @@
+[
+    {
+        "productionBonus": [
+            {
+                "resourceType": "Coins",
+                "resourceData":{
+                "amount":2,
+                "type": "coin"
+            }
+                
+            },
+            {
+                "resourceType": "MilitaryPoints",
+                "resourceData":{
+                "amount":1,
+                "type": "military"
+            }
+                
+            },
+        ],
+        "harvestBonus": [
+             {
+                "resourceType": "Woods",
+                "resourceData":{
+                "amount":1,
+                "type": "wood"
+            }
+                
+            },
+            {
+                "resourceType": "Servants",
+                "resourceData":{
+                "amount":1,
+                "type": "servant"
+            }
+                
+            },
+            {
+                "resourceType": "Stones",
+                "resourceData":{
+                "amount":1,
+                "type": "stone"
+            }
+                
+            },
+        ],
+        
+    },
+]
