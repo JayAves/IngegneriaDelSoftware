@@ -33,6 +33,12 @@ public class Container {
 		resources.remove(res.getType());
 		resources.put(res.getType(), res);
 	}
+	
+	public void swipeResource(Resource toSwipe, Resource swipeFor){
+		updateResource(toSwipe);
+		updateResource(swipeFor);
+	}
+	
 }
 	
 	
