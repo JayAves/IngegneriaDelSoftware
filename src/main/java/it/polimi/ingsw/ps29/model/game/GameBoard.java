@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
+import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
 public class GameBoard{
 	
