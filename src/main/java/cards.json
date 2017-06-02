@@ -1,4 +1,5 @@
-[{
+[
+ {
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Casa di Marmo",
@@ -7,32 +8,173 @@
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
-		{ "resources": {
+		{ "resources": [{
 			"resourceType":"VictoryPoints",
 			"resourceData":{
 				"amount":3,
 				"type":"victory" }
-	}}}],
+	}]}}],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
 		"effectData":
-		{ "resources": {
+		{ "resources": [{
 			"resourceType":"VictoryPoints",
 			"resourceData":{
 				"amount":1,
 				"type":"victory" }
-			}}},
+			}]}},
 			    {	
 		"effectType": "GainResourcesEffect",
 		"effectData":
-			{ "resources": {
+			{ "resources": [{
 			 	"resourceType":"Stones",
 			 	"resourceData":{
 					"amount":2,
 					"type":"stone" }
-	}}}],
+	}]}}],
 	"cost":[],
 	"harvestPower":2}
- }
+ },
 	
+ {
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Città",
+	"period": "FIRST",
+	"type": "TERRITORY",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestPower":6}
+ },
+
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Foresta",
+	"period": "FIRST",
+	"type": "TERRITORY",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestPower":5}
+ },
+
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Cava di Pietra",
+	"period": "FIRST",
+	"type": "TERRITORY",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestPower":3}
+ },
+
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Fortezza",
+	"period": "FIRST",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionPower":6}
+ },
+
 ]
