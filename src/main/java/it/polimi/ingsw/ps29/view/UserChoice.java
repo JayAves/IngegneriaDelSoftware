@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
-public class UserChoice {
+public class UserChoice implements UserMessage {
 
 	private String name;
 	private int[] choices;

@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.view;
 import java.util.Observable;
 import java.util.Observer;
 
-import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 
 public class View extends Observable implements Observer {
 	
@@ -33,8 +33,8 @@ public class View extends Observable implements Observer {
 		notifyObservers(inputOutput.askNumberOfServants());
 	}
 	
-	public void askAboutExchange (Card card) {
-		//metodo che chiede se scambiare l'effetto della carta
+	public void askAboutExchange (ExchangeResourcesEffect effect) {
+		notifyObservers(inputOutput.askExchange(effect));
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class ExchangeResourceHandler {
+public class ExchangeResourceHandler implements Cloneable {
 	
 	private ArrayList<Resource> resourcesOut;
 	private ArrayList<Resource> resourcesIn;
@@ -14,11 +14,27 @@ public class ExchangeResourceHandler {
 	private boolean chooseIn;
 	//i booleani se sono veri indicano che la risorsa è a scelta tra quelle dell'ArrayList. 
 	
-	public ExchangeResourceHandler (ArrayList<Resource> resOut, ArrayList<Resource> resIn) {
+	public ExchangeResourceHandler (ArrayList<Resource> resOut, ArrayList<Resource> resIn, boolean cOut, boolean cIn) {
 		resourcesOut = resOut;
 		resourcesIn = resIn;
-		chooseOut = false;
-		chooseIn = false;
+		chooseOut = cOut;
+		chooseIn = cIn;
+	}
+	
+	public ArrayList<Resource> getResOut () {
+		return resourcesOut;
+	}
+	
+	public ArrayList<Resource> getResIn () {
+		return resourcesIn;
+	}
+	
+	public boolean getBooleanOut () {
+		return chooseOut;
+	}
+	
+	public boolean getBooleanIn () {
+		return chooseIn;
 	}
 	
 	
@@ -67,5 +83,14 @@ public class ExchangeResourceHandler {
 		
 	}
 	
+	public ExchangeResourceHandler clone () {
+		ArrayList<Resource> resOut = new ArrayList<Resource> ();
+		ArrayList<Resource> resIn = new ArrayList<Resource> ();
+		for(Resource res: resourcesOut)
+			resOut.add(res.clone());
+		for(Resource res: resourcesIn)
+			resIn.add(res.clone());
+		return new ExchangeResourceHandler (resOut, resIn, this.chooseOut, this.chooseIn);
+	}
 
 }

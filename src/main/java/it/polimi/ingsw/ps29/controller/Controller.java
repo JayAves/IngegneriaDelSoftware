@@ -16,6 +16,7 @@ import it.polimi.ingsw.ps29.model.action.state.ActionState;
 import it.polimi.ingsw.ps29.model.action.state.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.action.state.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.UserChoice;
@@ -49,9 +50,7 @@ public class Controller implements Observer{
 			view.askBonusAction();
 		else if (state.getState().equals("ask exchange")) {
 			int index = ((AskAboutExchangeState)state).getIndexProduction();
-			ArrayList<Card> cards = model.getBoard().getPlayers().get(0).getPersonalBoard().getCards("building");
-			//creare una clone della carta da passare alla view
-			view.askAboutExchange(cards.get(index));
+			view.askAboutExchange((ExchangeResourcesEffect) ((AskAboutExchangeState)state).getCards().get(index).getPermanentEffects().get(0));
 		}
 	}
 	
@@ -102,13 +101,12 @@ public class Controller implements Observer{
 			break;
 		}
 		
-		action.actionHandler();
-		state = action.getState();
-		//recupero lo stato dopo che ho eseguito le istruzioni
 		
-			if (action!=null) {
-				action.actionHandler();
-			}
+		if (action!=null) {
+			action.actionHandler();
+			state = action.getState();
+			//recupero lo stato dopo che ho eseguito le istruzioni
+		}
 
 		
 		

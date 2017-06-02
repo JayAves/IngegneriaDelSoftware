@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
-public class ExchangeResourcesEffect extends Effect {
+public class ExchangeResourcesEffect extends Effect implements Cloneable {
 
 	private ArrayList<ExchangeResourceHandler> choices;
 	
@@ -18,7 +18,7 @@ public class ExchangeResourcesEffect extends Effect {
 		choices.add(erh);
 	}*/
 	
-	ArrayList<ExchangeResourceHandler> getChoices () {
+	public ArrayList<ExchangeResourceHandler> getChoices () {
 		return choices;
 	}
 	
@@ -36,5 +36,12 @@ public class ExchangeResourcesEffect extends Effect {
 	//vale -1 se non occorre scegliere tra queste risorse
 	public void exchangeResources (Player player, int indexExchange, int indexOut, int indexIn) {
 		choices.get(indexExchange).performExchange(player.getPersonalBoard().getResources(), indexOut, indexIn);
+	}
+	
+	public ExchangeResourcesEffect clone () {
+		ArrayList <ExchangeResourceHandler> array = new ArrayList<ExchangeResourceHandler> ();
+		for(ExchangeResourceHandler handler: this.getChoices())
+			array.add(handler.clone());
+		return new ExchangeResourcesEffect(array);
 	}
 }

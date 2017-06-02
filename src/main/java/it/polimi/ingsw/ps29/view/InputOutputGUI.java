@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 
 public class InputOutputGUI implements InputOutput {
@@ -32,6 +33,12 @@ public class InputOutputGUI implements InputOutput {
 	public int askFamiliarColor() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public UserExchange askExchange(ExchangeResourcesEffect effect) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

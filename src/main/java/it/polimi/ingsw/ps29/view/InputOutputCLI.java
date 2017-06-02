@@ -2,7 +2,10 @@ package it.polimi.ingsw.ps29.view;
 
 import java.util.Scanner;
 
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class InputOutputCLI implements InputOutput {
 	
@@ -78,5 +81,61 @@ public class InputOutputCLI implements InputOutput {
 		return choice;
 		
 	}
+	
+	public UserExchange askExchange (ExchangeResourcesEffect er) {
+		int i;
+		UserExchange choice = new UserExchange();
+		do {
+			i=0;
+			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte
+				System.out.println("\n"+i+")");
+				showExchangeOption(er.getChoices().get(i));
+			}
+			System.out.println("\n"+(i+1)+") No exchange");
+			System.out.println("\nInsert choice: ");
+			choice.setChoice(0, scanner.nextInt());
+		} while (choice.getChoice(0)<0||choice.getChoice(0)>(i+1));
+		
+		if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
+			do {
+				i=0;			
+				for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResOut().size(); i++) {
+					System.out.println("\n"+i+")");
+					System.out.println((er.getChoices().get(choice.getChoice(0)).getResOut().get(i)));
+				}
+				System.out.println("\nInsert choice OUT: ");
+				choice.setChoice(1, scanner.nextInt());
+			} while(choice.getChoice(1)<0 || choice.getChoice(1)>i);
+		}
+			
+		if(er.getChoices().get(choice.getChoice(0)).getBooleanIn()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
+			do {
+				i=0;			
+				for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResIn().size(); i++) {
+					System.out.println("\n"+i+")");
+					System.out.println((er.getChoices().get(choice.getChoice(0)).getResIn().get(i)));
+				}
+				System.out.println("\nInsert choice IN: ");
+				choice.setChoice(2, scanner.nextInt());
+			} while(choice.getChoice(2)<0 || choice.getChoice(2)>i);	
+		}
+		
+		return choice;
+		
+	}
+	
+	public void showExchangeOption (ExchangeResourceHandler option) {
+		System.out.println("OUT: \n");
+		for(Resource res: option.getResOut())
+			System.out.println(res);
+		if(option.getBooleanOut())
+			System.out.println("[optional]\n");
+		System.out.println("IN: \n");
+		for(Resource res: option.getResIn())
+			System.out.println(res);
+		if(option.getBooleanIn())
+			System.out.println("[optional]\n");
+	}
+	
 
 }

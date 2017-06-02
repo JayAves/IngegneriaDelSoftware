@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-public class Resource implements ResourceInterface {
+public class Resource implements ResourceInterface, Cloneable {
 	
 	protected int amount;
 	protected final ResourceType type;
@@ -24,5 +24,13 @@ public class Resource implements ResourceInterface {
 	
 	public void negativeAmount () {
 		this.amount *=-1;
+	}
+	
+	public Resource clone () {
+		return new Resource(this.getType(), this.getAmount());
+	}
+	
+	public String toString (Resource res) {
+		return "Resource - type: "+res.getType()+", amount: "+res.getAmount()+"\n";
 	}
 }

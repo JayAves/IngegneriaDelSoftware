@@ -47,8 +47,9 @@ public class ProductionAction extends Action {
 		bonusProductionTile.performEffect(move.getPlayer());
 		
 		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Building");
-		//ciclo lettura effetti da personalBoard
-		for(Card card: importedSlot) {
+		//ciclo lettura effetti da personalBoard (gestita però nel controller)
+		state = new AskAboutExchangeState(0, importedSlot, move.getFamiliar().getProductionPower());
+		/*for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
 				if (move.getFamiliar().getProductionPower()> ((BuildingCard)card).getProductionForce()) {
 					if(!(state instanceof AskAboutExchangeState))
@@ -58,7 +59,7 @@ public class ProductionAction extends Action {
 					effect.performEffect(move.getPlayer());
 				}
 			}
-		}
+		}*/
 		
 	}
 	

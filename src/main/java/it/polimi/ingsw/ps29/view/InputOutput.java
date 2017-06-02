@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 
 public interface InputOutput {
@@ -13,5 +14,7 @@ public interface InputOutput {
 	abstract int askNumberOfServants ();
 	
 	abstract int askFamiliarColor ();
+
+	abstract UserExchange askExchange(ExchangeResourcesEffect effect);
 
 }
