@@ -1,0 +1,38 @@
+[{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Casa di Marmo",
+	"period": "FIRST",
+	"type": "TERRITORY",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+	}}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+			}}},
+			    {	
+		"effectType": "GainResourcesEffect",
+		"effectData":
+			{ "resources": {
+			 	"resourceType":"Stones",
+			 	"resourceData":{
+					"amount":2,
+					"type":"stone" }
+	}}}],
+	"cost":[],
+	"harvestPower":2}
+ }
+	
+]
