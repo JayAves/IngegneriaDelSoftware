@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps29.model.cards;
 
 
 public enum CardType {
-	TERRITORY ("Territory"), BUILDING ("Building"), CHARACTER ("Character"), VENTURE ("Venture"), 
-	EXCOMMUNICATION ("Excommunication"), ALL ("All");
+	TERRITORY ("territory"), BUILDING ("building"), CHARACTER ("character"), VENTURE ("venture"), 
+	EXCOMMUNICATION ("excommunication"), ALL ("all");
 	//All è previsto per gli effetti che valgono per ogni tipo di carta
 
 	private final String type;

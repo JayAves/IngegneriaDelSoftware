@@ -67,7 +67,7 @@ public class TowerAction extends Action {
 			
 			/*
 			if (immediateEffect instanceof BonusActionEffect)
-				model.getBoard().getStateOfAction(StateOfActionIdentifier.INCOMPLETE);
+				state = new BonuActionState (immediateEffect);
 			else
 				*/
 			

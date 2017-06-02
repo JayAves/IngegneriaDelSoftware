@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -11,6 +12,10 @@ import it.polimi.ingsw.ps29.model.action.HarvestAction;
 import it.polimi.ingsw.ps29.model.action.MarketAction;
 import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
+import it.polimi.ingsw.ps29.model.action.state.ActionState;
+import it.polimi.ingsw.ps29.model.action.state.AskAboutExchangeState;
+import it.polimi.ingsw.ps29.model.action.state.ToEstabilishState;
+import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.UserChoice;
@@ -20,9 +25,13 @@ public class Controller implements Observer{
 	
 	private Match model;
 	private Map<String, View> views = new HashMap <String, View> ();
+	private ActionState state; 
+	//è lo stato dell'azione, inizialmente da stabilire, viene recuperato dopo che ho svolto l'azione
+	//lo utilizzo per la corretta interazione con la view
 	
 	public Controller (Match model) {
 		this.model = model;
+		state = new ToEstabilishState();
 	}
 	
 	public void addView (View view, String playerName) {
@@ -31,7 +40,19 @@ public class Controller implements Observer{
 	}
 	
 	public void callCorrectView () {
-		views.get(model.getBoard().getPlayers().get(0).getName()).askNextAction();
+		View view = views.get(model.getBoard().getPlayers().get(0).getName());
+		state.beforeAction();
+		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
+		if(state.getState().equals("to estabilish"))
+			view.askNextAction();
+		else if (state.getState().equals("bonus action"))
+			view.askBonusAction();
+		else if (state.getState().equals("ask exchange")) {
+			int index = ((AskAboutExchangeState)state).getIndexProduction();
+			ArrayList<Card> cards = model.getBoard().getPlayers().get(0).getPersonalBoard().getCards("building");
+			//creare una clone della carta da passare alla view
+			view.askAboutExchange(cards.get(index));
+		}
 	}
 	
 
@@ -81,6 +102,9 @@ public class Controller implements Observer{
 			break;
 		}
 		
+		action.actionHandler();
+		state = action.getState();
+		//recupero lo stato dopo che ho eseguito le istruzioni
 		
 			if (action!=null) {
 				action.actionHandler();

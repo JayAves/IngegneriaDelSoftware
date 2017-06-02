@@ -2,13 +2,14 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.action.state.AskAboutExchangeState;
+import it.polimi.ingsw.ps29.model.action.state.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.game.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ProductionArea;
 
@@ -50,7 +51,10 @@ public class ProductionAction extends Action {
 		for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
 				if (move.getFamiliar().getProductionPower()> ((BuildingCard)card).getProductionForce()) {
-					model.getBoard().setStateOfAction(StateOfActionIdentifier.INCOMPLETE);
+					if(!(state instanceof AskAboutExchangeState))
+						state = new AskAboutExchangeState(0);
+					else 
+						((AskAboutExchangeState)state).next();
 					effect.performEffect(move.getPlayer());
 				}
 			}

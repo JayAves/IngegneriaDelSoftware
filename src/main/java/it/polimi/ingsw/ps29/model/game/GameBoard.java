@@ -10,13 +10,14 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
-import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
 public class GameBoard{
 	
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
-	private StateOfActionIdentifier stateOfAction; //utilizzato per permettere lo scambio di informazioni tra model e view
+	//private StateOfActionIdentifier stateOfAction; 
+	//utilizzato per permettere lo scambio di informazioni tra model e view
+	//serve per sapere se terminare il turno oppure richiedere informazioni aggiuntive al giocatore
 	private ArrayList<Player> playersOrder;
 	public ArrayList<Deck> decks;
 	
@@ -46,7 +47,7 @@ public class GameBoard{
 		spaces.put("FourthMarket", new MarketArea(1, null));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
-		stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
+		//stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
 	}
 
 	public void initContainers() {
@@ -81,12 +82,19 @@ public class GameBoard{
 	}
 	*/
 	
-	public StateOfActionIdentifier getStateOfAction () {
+	/*public StateOfActionIdentifier getStateOfAction () {
 		return stateOfAction;
 	}
 	
 	public void setStateOfAction (StateOfActionIdentifier newState) {
 		stateOfAction = newState; 
+	}*/
+	
+	public void changePlayerOrder () {
+		Player temp = playersOrder.get(0);
+		playersOrder.remove(0);
+		playersOrder.add(temp);
+		
 	}
 
 

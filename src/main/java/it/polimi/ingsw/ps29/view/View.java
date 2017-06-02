@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.view;
 import java.util.Observable;
 import java.util.Observer;
 
-import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.cards.Card;
 
 public class View extends Observable implements Observer {
 	
@@ -18,15 +18,23 @@ public class View extends Observable implements Observer {
 		System.out.println("Mi hanno creato: Sono la view del Player " + namePlayer);
 	}
 	
-	public int[] askNextAction () {
+	public void askNextAction () {
 		int [] choice = new int [4];
-		UserChoice move = new UserChoice(namePlayer, choice);
 		int[] temp = inputOutput.askTypeOfAction();
 		choice[0] = temp[0];
 		choice[1] = temp[1];
 		choice[2] = inputOutput.askNumberOfServants();
 		choice[3] = inputOutput.askFamiliarColor();
-		return choice;
+		UserChoice move = new UserChoice(namePlayer, choice);
+		notifyObservers(move);
+	}
+	
+	public void askBonusAction () {
+		notifyObservers(inputOutput.askNumberOfServants());
+	}
+	
+	public void askAboutExchange (Card card) {
+		//metodo che chiede se scambiare l'effetto della carta
 	}
 
 	@Override

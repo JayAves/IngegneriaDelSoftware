@@ -1,0 +1,20 @@
+package it.polimi.ingsw.ps29.model.action.state;
+
+public enum StateOfActionIdentifier {
+	PERFORMED ("performed"),
+	REJECTED ("rejected"),
+	BONUS_ACTION ("bonus action"),
+	ASK_EXCHANGE("ask exchange"),
+	TO_ESTABILISH ("to estabilish");
+	
+	private final String name;
+	
+	StateOfActionIdentifier (String name) {
+		this.name= name;
+	}
+	
+	public String toString () {
+		return this.name(); 
+	}
+
+}
