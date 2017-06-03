@@ -1,9 +1,11 @@
-package it.polimi.ingsw.ps29.model.game.round;
+package it.polimi.ingsw.ps29.model.game.roundstates;
+
+import it.polimi.ingsw.ps29.model.game.GameBoard;
 
 public class EndOfTheRoundState implements RoundState {
 
 	@Override
-	public RoundState doAction(int roundNumber) {
+	public RoundState doAction(int roundNumber, GameBoard board) {
 		//modifica ordine di turno
 		//imposta tutti i busy su familiare a false
 		if(roundNumber == 6) {

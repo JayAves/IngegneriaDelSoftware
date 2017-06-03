@@ -51,9 +51,7 @@ public class GameBoard{
 		//stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
 	}
 
-	public void initContainers() {
-		//devo dare monete a seconda dell'ordine di gioco
-	}
+	
 	
 	
 	public ArrayList <Player> getPlayers () {

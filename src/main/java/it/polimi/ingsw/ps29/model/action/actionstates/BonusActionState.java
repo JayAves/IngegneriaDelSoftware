@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.action.state;
+package it.polimi.ingsw.ps29.model.action.actionstates;
 
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.Match;

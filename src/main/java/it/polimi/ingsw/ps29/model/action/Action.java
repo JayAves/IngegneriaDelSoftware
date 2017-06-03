@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps29.model.action;
 
-import it.polimi.ingsw.ps29.model.action.state.ActionState;
-import it.polimi.ingsw.ps29.model.action.state.PerformedState;
-import it.polimi.ingsw.ps29.model.action.state.RejectedState;
-import it.polimi.ingsw.ps29.model.action.state.ToEstabilishState;
+import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
+import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
+import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
+import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 

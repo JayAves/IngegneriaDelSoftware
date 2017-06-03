@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.action.state;
+package it.polimi.ingsw.ps29.model.action.actionstates;
 
 public enum StateOfActionIdentifier {
 	PERFORMED ("performed"),

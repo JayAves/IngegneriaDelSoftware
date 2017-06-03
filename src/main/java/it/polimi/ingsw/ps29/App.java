@@ -63,8 +63,10 @@ public class App
     	}
     	
     	model.addObserver(controller);
+    	
+    	model.gameEngine();
     	//while state!= fine partita
-    	controller.callCorrectView();
+    	//controller.callCorrectView();
     	
     	/*Client client = new Client ("CLI", "Socket");
 		GameEngine gameEngine = new GameEngine ();

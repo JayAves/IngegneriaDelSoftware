@@ -16,6 +16,8 @@ import it.polimi.ingsw.ps29.model.cards.customadapters.EffectAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
+import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 
 public class Match extends Observable{
 	
@@ -23,10 +25,14 @@ public class Match extends Observable{
 	private GameBoard board;
 	private Period period;
 	private int round;
+	private boolean endOfMatch= false;
+	private RoundState state;
+	
 	
 	public Match (ArrayList<Player> players) throws FileNotFoundException {
 		id++;
 		board = new GameBoard(players);
+		state= new RoundSetupState();
 		setPeriod(Period.FIRST);
 		setRound(1);
 		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
@@ -57,7 +63,21 @@ public class Match extends Observable{
 	    }
 	    
 	}
-
+	
+	public void gameEngine() {
+		
+		
+		while(!endOfMatch) {
+			
+			state= state.doAction(round, null);
+			
+			
+		}
+		
+		//ciclo di calcolo punti vittoria
+		//stampa punteggi finali
+	}
+	
 	public GameBoard getBoard() {
 		return board;
 	}
