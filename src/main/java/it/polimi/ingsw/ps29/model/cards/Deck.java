@@ -21,4 +21,24 @@ public class Deck {
 		this.cards.add(c);
 	}
 	
+	public void removeCard(int index) {
+		cards.remove(index);
+	}
+	
+	public CardType getType() {
+		return this.type;
+	}
+	
+	public int getSize() {
+		return cards.size();
+	}
+	
+	public Card getCard(int index) {
+		return cards.get(index);
+	}
+	
+	public Period getPeriod() {
+		return this.period;
+	}
+	
 }

@@ -9,5 +9,7 @@ public interface ActionSpace {
 	abstract boolean familiarHere (Color playerColor);
 	
 	abstract boolean isEnoughPowerful (int valuePlacement);
-
+	
+	abstract void cleanSpace();
+	
 }

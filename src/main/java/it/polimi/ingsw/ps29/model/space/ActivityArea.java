@@ -34,6 +34,12 @@ public class ActivityArea implements ActionSpace {
 	public void queuePlacement (FamilyMember member) {
 		queue.addMember(member);
 	}
+
+	@Override
+	public void cleanSpace() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
