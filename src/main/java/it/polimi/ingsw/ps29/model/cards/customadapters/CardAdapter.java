@@ -2,11 +2,8 @@ package it.polimi.ingsw.ps29.model.cards.customadapters;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
-import java.util.Collection;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -17,11 +14,10 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.google.gson.reflect.TypeToken;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card> {
@@ -65,9 +61,10 @@ public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card>
 	    gcards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    gcards.registerTypeAdapter(Resource.class, new ResourceAdapter());
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
-	    cardz[1].getType().toString();
-	    System.out.println(cardz[1].getType().toString());
-	    
+	    if (cardz[1].getType().equalsIgnoreCase("territory")){
+	    	
+	    	System.out.println(((TerritoryCard)cardz[1]).getHarvestForce());
+	   }
 	    
 	}
 }

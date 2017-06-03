@@ -16,9 +16,10 @@
                 "type": "military"
             }
                 
-            },
+            }
         ],
-        "harvestBonus": [
+        
+	"harvestBonus": [
              {
                 "resourceType": "Woods",
                 "resourceData":{
@@ -42,8 +43,8 @@
                 "type": "stone"
             }
                 
-            },
-        ],
+            }
+        ]
         
-    },
+    }
 ]

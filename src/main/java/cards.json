@@ -33,10 +33,9 @@
 					"type":"stone" }
 	}]}}],
 	"cost":[],
-	"harvestPower":2}
+	"harvestForce":2}
  },
-	
- {
+{
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Città",
@@ -62,9 +61,8 @@
 			}]}}
 			    ],
 	"cost":[],
-	"harvestPower":6}
+	"harvestForce":6}
  },
-
 {
 	"cardType": "TerritoryCard",
 	
@@ -91,9 +89,8 @@
 			}]}}
 			    ],
 	"cost":[],
-	"harvestPower":5}
+	"harvestForce":5}
  },
-
 {
 	"cardType": "TerritoryCard",
 	
@@ -120,9 +117,8 @@
 			}]}}
 			    ],
 	"cost":[],
-	"harvestPower":3}
+	"harvestForce":3}
  },
-
 {
 	"cardType": "BuildingCard",
 	
@@ -174,7 +170,382 @@
 				"type":"stone" }
 			},
     ],
-	"productionPower":6}
+	"productionForce":6}
  },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Banca",
+	"period": "FIRST",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":2}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Zecca",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "coin",
+            "amount":1,
+            "cardType": "building"
+        }}],
+	"cost":[{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":5}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Esattoria",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "coin",
+            "amount":1,
+            "cardType": "territory"
+        }}],
+	"cost":[{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":5}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Artigiano",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "EmpowermentActivityEffect",
+		"effectData":
+		{ "diceEmpowerment": 2,
+          "activityName": "Production"
+            
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Predicatore",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Badessa",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}},
+     { "effectType": "BonusPlacementEffect",
+       "effectData":{
+           "valueAction": 4,
+            "cardType": "all",
+            "discount":[]
+       }}],
+	"permanentEffects":[],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Costruttore",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "immediateEffects": [],
+	"permanentEffects":[{ "effectType": "BonusPlacementEffect",
+       "effectData":{
+           "valueAction": 4,
+            "cardType": "all",
+            "discount":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]}}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":4,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Sostegno al vescovo",
+	"period": "FIRST",
+	"type": "VENTURE",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+            {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+            {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Combattere le eresie",
+	"period": "FIRST",
+	"type": "VENTURE",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Riparare la Chiesa",
+	"period": "FIRST",
+	"type": "VENTURE",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			},
+            {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+            {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			},]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Campagna Militare",
+	"period": "FIRST",
+	"type": "VENTURE",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			}]}
+ }
 
 ]
