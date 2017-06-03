@@ -6,13 +6,13 @@ public class Full implements PlayerState{
 	
 
 	@Override
-    public void checkPlayerFamiliarsInThisSpace(FamilyMember member){
-          //lancia una FullException
+    public boolean checkPlayerFamiliarsInThisSpace(FamilyMember member){
+          return false;
      }
   
 
     @Override
-    public PlayerState setNewState(){
+    public PlayerState setNewState(FamilyMember member){
          return new Full();
         }
 

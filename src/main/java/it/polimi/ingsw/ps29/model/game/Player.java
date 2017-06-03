@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.playerstate.Free;
+import it.polimi.ingsw.ps29.model.game.playerstate.PlayerState;
 
 public class Player {
 	private String name;
@@ -27,6 +29,7 @@ public class Player {
 		family[3] = new FamilyMember(DiceColor.NEUTRAL, color);
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
+		//initializeStates();
 	}
 	
 	public String getName() {
@@ -59,14 +62,28 @@ public class Player {
      FamilyMember orangeFamilyMember;
      FamilyMember blackFamilyMember;
      FamilyMember whiteFamilyMember;
+     */
 
-     private playerState HarvestState;
-     private playerState ProductionState;
-     private playerState CTowerState;
-     private playerState HTowerState;
-     private playerState PTowerState;
-     private playerState VTowerState;
-
+     /*private PlayerState HarvestState;
+     private PlayerState ProductionState;
+     private PlayerState CTowerState;
+     private PlayerState HTowerState;
+     private PlayerState PTowerState;
+     private PlayerState VTowerState;
+     
+     public void initializeStates() {
+    	 HarvestState = new Free();
+    	 ProductionState = new Free();
+    	 CTowerState = new Free();
+    	 HTowerState = new Free();
+    	 PTowerState = new Free();
+    	 VTowerState = new Free();
+     }
+     
+     
+     
+     
+     /*
      public void checkPlayersFamiliarsInThisSpace(){
 
      public FamilyMember getSelectedFamilyMember(String member) {

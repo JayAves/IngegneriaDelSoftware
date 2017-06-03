@@ -6,14 +6,17 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 public class Neutral implements PlayerState{
 	
 	@Override
-    public void checkPlayerFamiliarsInThisSpace(FamilyMember member){
+    public boolean checkPlayerFamiliarsInThisSpace(FamilyMember member){
          if (member.getFamiliarColor() == DiceColor.NEUTRAL) {
-        	 
+        	 return false;
+         }
+         else {
+        	 return true;
          }
      }
 
     @Override
-    public PlayerState setNewState(){
+    public PlayerState setNewState(FamilyMember member){
          return new Full();
         }
 
