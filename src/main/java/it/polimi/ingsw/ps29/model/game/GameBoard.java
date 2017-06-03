@@ -48,7 +48,8 @@ public class GameBoard{
 		
 		
 		ArrayList<Resource> temporaryBonus1= new ArrayList<Resource>();
-		temporaryBonus1.add(new Resource("coin",2));
+		Resource r=new Resource("coin",2);
+		temporaryBonus1.add(r);
 		ArrayList<Resource> temporaryBonus2= new ArrayList<Resource>();
 		temporaryBonus2.add(new Resource("wood",2));
 		ArrayList<Resource> temporaryBonus3= new ArrayList<Resource>();

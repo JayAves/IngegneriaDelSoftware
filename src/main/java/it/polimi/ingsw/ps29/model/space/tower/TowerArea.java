@@ -75,7 +75,7 @@ public class TowerArea implements ActionSpace {
 	public ArrayList <Resource> takeResource () {
 		if (placementFloor>2)
 			return floors.get(placementFloor-1).getResource();
-		return null;
+		return new ArrayList<Resource>();
 	}
 	
 	public void fill(ArrayList<Card> cards) {
