@@ -27,7 +27,7 @@ public class Match extends Observable{
 	private GameBoard board;
 	private Period period;
 	private int round;
-	private boolean endOfMatch= false;
+	public boolean endOfMatch= false;
 	private RoundState state;
 	
 	
@@ -69,7 +69,7 @@ public class Match extends Observable{
 	public void gameEngine() {
 		
 		//sistemare state == null (sarebbe da assegnare correttamente endOfMatch)
-		while(!endOfMatch || state == null) {
+		while(!endOfMatch ) {
 			if(state instanceof ActionsState){
 				String firstPlayer = board.getPlayers().get(0).getName();
 				board.setPlayersOrderMoved(false);
@@ -79,7 +79,13 @@ public class Match extends Observable{
 						notifyObservers();
 					}
 			}
-			state= state.doAction(round, board);
+			
+			if (state!= null)
+				state= state.doAction(round, board);
+				
+			
+			if (state==null)
+				endOfMatch=true;
 			
 		}
 		

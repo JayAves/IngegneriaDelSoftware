@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
@@ -45,18 +46,35 @@ public class GameBoard{
 	
 	public void initSpaces () {
 		
+		
+		ArrayList<Resource> temporaryBonus1= new ArrayList<Resource>();
+		temporaryBonus1.add(new Resource("coin",2));
+		ArrayList<Resource> temporaryBonus2= new ArrayList<Resource>();
+		temporaryBonus2.add(new Resource("wood",2));
+		ArrayList<Resource> temporaryBonus3= new ArrayList<Resource>();
+		temporaryBonus3.add(new Resource("stone",2));
+		ArrayList<Resource> temporaryBonus4= new ArrayList<Resource>();
+		temporaryBonus4.add(new Resource("servant",2));
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("territoryTower", new TowerArea ());
+		((TowerArea)spaces.get("territoryTower")).setBonus( temporaryBonus1,3);
+		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus2,4);
 		spaces.put("buildingTower", new TowerArea ());
+		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus3,3);
+		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus4,4);
 		spaces.put("characterTower", new TowerArea ());
+		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus1,3);
+		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus3,4);
 		spaces.put("ventureTower", new TowerArea ());
-		spaces.put("FirstMarket", new MarketArea(1, null));
-		spaces.put("SecondMarket", new MarketArea(1, null));
-		spaces.put("ThirdMarket", new MarketArea(1, null));
-		spaces.put("FourthMarket", new MarketArea(1, null));
+		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus2,3);
+		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus4,4);
+		spaces.put("FirstMarket", new MarketArea(1, temporaryBonus1));
+		spaces.put("SecondMarket", new MarketArea(1, temporaryBonus2));
+		spaces.put("ThirdMarket", new MarketArea(1,temporaryBonus3));
+		spaces.put("FourthMarket", new MarketArea(1, temporaryBonus4));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
 	}

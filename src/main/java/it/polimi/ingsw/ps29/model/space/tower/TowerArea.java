@@ -84,5 +84,9 @@ public class TowerArea implements ActionSpace {
 		}
 		
 	}
-
+	public void setBonus(ArrayList<Resource> bonus, int floor){
+		if (floor>2){
+			((BonusActionSpace)floors.get(floor-1).getSpace()).setBonus(bonus);
+		}
+	}
 }

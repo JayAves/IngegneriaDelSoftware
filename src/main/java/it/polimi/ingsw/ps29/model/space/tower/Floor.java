@@ -57,5 +57,7 @@ public class Floor {
 			//else lancia eccezione
 		return returnedCard;
 	}*/
-
+	public SingleSlotActionSpace getSpace(){
+		return this.space;
+	}
 }
