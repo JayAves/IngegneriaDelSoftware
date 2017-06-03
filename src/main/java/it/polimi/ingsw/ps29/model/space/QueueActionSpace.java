@@ -12,7 +12,7 @@ public class QueueActionSpace {
 	final int powerRequired;
 	
 	public QueueActionSpace (int power) {
-		queue = null;
+		queue = new ArrayList<FamilyMember>();
 		powerRequired = power;
 	}
 	

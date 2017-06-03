@@ -11,15 +11,16 @@ import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.ProductionArea;
 
 public class ProductionAction extends Action {
 	
-	private ProductionArea space;
+	private ActivityArea space;
 	
 	public ProductionAction(Match model, Move move) {
 		super(model, move);
-		this.space = (ProductionArea) model.getBoard().getSpace(move.getSpace());
+		this.space = (ActivityArea) model.getBoard().getSpace(move.getSpace());
 		// TODO Auto-generated constructor stub
 	}
 

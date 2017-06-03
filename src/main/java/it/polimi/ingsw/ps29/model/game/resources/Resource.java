@@ -3,11 +3,11 @@ package it.polimi.ingsw.ps29.model.game.resources;
 public class Resource implements ResourceInterface, Cloneable {
 	
 	protected int amount;
-	protected final ResourceType type;
+	protected String type;
 	
 	public Resource (String type, int amount) {
 		this.amount = amount;
-		this.type = ResourceType.parseInput(type);
+		this.type = type;
 	}
 
 	public int getAmount() {
@@ -19,7 +19,7 @@ public class Resource implements ResourceInterface, Cloneable {
 	}
 
 	public String getType () {
-		return type.getType();
+		return type;
 	}
 	
 	public void negativeAmount () {
