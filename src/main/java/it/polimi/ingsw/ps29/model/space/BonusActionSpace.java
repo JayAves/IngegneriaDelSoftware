@@ -8,14 +8,17 @@ public class BonusActionSpace extends SingleSlotActionSpace {
 
 	private ArrayList <Resource> bonus;
 	
-	public BonusActionSpace(int power, ArrayList <Resource> bonus) {
+	public BonusActionSpace(int power) {
 		super(power);
-		this.bonus = bonus;
+		
 	}
 
 	public ArrayList<Resource> getBonus() {
 		return bonus;
 	}
 	
+	public void setBonus(ArrayList<Resource> bonus) {
+		this.bonus=bonus;
+	}
 
 }

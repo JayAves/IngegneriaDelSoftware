@@ -52,7 +52,6 @@ public class Match extends Observable{
 	    	for (CardType type: CardType.values()) {
 	    		
 	    		Deck deck = new Deck(period, type);
-	    		board.decks.add(deck);
 	    		
 	    		for (int i=0; i< cardz.length;i++) {
 	    		
@@ -61,6 +60,7 @@ public class Match extends Observable{
 	    			}
 	    		}
 	    		
+	    		board.getDecks().add(deck);
 	    	}
 	    }
 	    

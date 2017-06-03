@@ -19,6 +19,7 @@ public class GameBoard{
 	private HashMap <String, ActionSpace> spaces;
 	private ArrayList<Player> playersOrder;
 	private boolean playersOrderMoved;
+	private ArrayList<Deck> decks;
 	
 	public boolean isPlayersOrderMoved() {
 		return playersOrderMoved;
@@ -29,7 +30,7 @@ public class GameBoard{
 		this.playersOrderMoved = playersOrderMoved;
 	}
 
-	public ArrayList<Deck> decks;
+	
 	
 	public GameBoard (ArrayList<Player> players) {
 		dices = new ArrayList<Dice> ();
@@ -37,6 +38,7 @@ public class GameBoard{
 		dices.add(new Dice(DiceColor.WHITE));
 		dices.add(new Dice(DiceColor.ORANGE));
 		playersOrder = players;
+		decks= new ArrayList<Deck>();
 		initSpaces();
 	}
 	
@@ -47,10 +49,10 @@ public class GameBoard{
 		spaces = new HashMap <String, ActionSpace> ();
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
-		spaces.put("TerritoryTower", new TowerArea (null, null));
-		spaces.put("BuildingTower", new TowerArea (null, null));
-		spaces.put("CharcaterTower", new TowerArea (null, null));
-		spaces.put("VentureTower", new TowerArea (null, null));
+		spaces.put("TerritoryTower", new TowerArea ());
+		spaces.put("BuildingTower", new TowerArea ());
+		spaces.put("CharcaterTower", new TowerArea ());
+		spaces.put("VentureTower", new TowerArea ());
 		spaces.put("FirstMarket", new MarketArea(1, null));
 		spaces.put("SecondMarket", new MarketArea(1, null));
 		spaces.put("ThirdMarket", new MarketArea(1, null));
@@ -112,5 +114,7 @@ public class GameBoard{
 		return this.dices;
 	}
 	
-
+	public ArrayList<Deck> getDecks(){
+		return decks;
+	}
 }

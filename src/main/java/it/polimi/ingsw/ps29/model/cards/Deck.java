@@ -13,6 +13,7 @@ public class Deck {
 		super();
 		this.period = period;
 		this.type = type;
+		cards= new ArrayList<Card>();
 		
 		
 	}

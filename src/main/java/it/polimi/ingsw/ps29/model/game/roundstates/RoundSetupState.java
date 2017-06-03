@@ -20,6 +20,7 @@ public class RoundSetupState implements RoundState {
 		Period currentPeriod= getPeriod(roundNumber);
 		
 		CardType[] types= CardType.values();
+		System.out.println(types[0]);
 		
 		for (int i=0;i<types.length;i++) { //per ogni tipo di carta
 		
@@ -37,8 +38,8 @@ public class RoundSetupState implements RoundState {
 			newCards.add(deck.getCard(rnd));
 			deck.removeCard(rnd);
 			}
-		
-		((TowerArea) board.getSpace(types[i].name()+"Tower")).fill(newCards);
+		System.out.println(i);
+		((TowerArea) board.getSpace("TerritoryTower")).fill(newCards);
 		
 			}
 		}

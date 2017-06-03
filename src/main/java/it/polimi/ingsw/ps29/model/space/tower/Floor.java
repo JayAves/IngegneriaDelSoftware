@@ -13,8 +13,8 @@ public class Floor {
 	private Card card;
 	private SingleSlotActionSpace space;
 	
-	public Floor (Card card, SingleSlotActionSpace space) {
-		this.setCard(card);
+	public Floor (SingleSlotActionSpace space) {
+		
 		this.space = space;
 	}
 	
