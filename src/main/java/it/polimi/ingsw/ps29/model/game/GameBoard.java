@@ -16,9 +16,6 @@ public class GameBoard{
 	
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
-	//private StateOfActionIdentifier stateOfAction; 
-	//utilizzato per permettere lo scambio di informazioni tra model e view
-	//serve per sapere se terminare il turno oppure richiedere informazioni aggiuntive al giocatore
 	private ArrayList<Player> playersOrder;
 	private boolean playersOrderMoved;
 	
@@ -59,7 +56,6 @@ public class GameBoard{
 		spaces.put("FourthMarket", new MarketArea(1, null));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
-		//stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
 	}
 
 	

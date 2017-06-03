@@ -46,7 +46,7 @@ public class ProductionAction extends Action {
 		GainResourcesEffect bonusProductionTile = new GainResourcesEffect(bonusFromTile);
 		bonusProductionTile.performEffect(move.getPlayer());
 		
-		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Building");
+		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("building");
 		//ciclo lettura effetti da personalBoard (gestita però nel controller)
 		state = new AskAboutExchangeState(0, importedSlot, move.getFamiliar().getProductionPower());
 		/*for(Card card: importedSlot) {
