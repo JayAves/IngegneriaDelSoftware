@@ -43,7 +43,7 @@ public abstract class Action {
 			
 		}
 		
-		state.afterAction(model);
+		state = state.afterAction(model);
 		
 		/* 
 		se lo stato è REJECTED chiedo una nuova Move

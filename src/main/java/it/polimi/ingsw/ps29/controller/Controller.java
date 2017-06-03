@@ -42,7 +42,7 @@ public class Controller implements Observer{
 	
 	public void callCorrectView () {
 		View view = views.get(model.getBoard().getPlayers().get(0).getName());
-		state.beforeAction();
+		state = state.beforeAction();
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 		if(state.getState().equals("to estabilish"))
 			view.askNextAction();
