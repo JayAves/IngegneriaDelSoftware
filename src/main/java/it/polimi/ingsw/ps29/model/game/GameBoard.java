@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.game;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
@@ -16,9 +17,6 @@ public class GameBoard{
 	
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
-	//private StateOfActionIdentifier stateOfAction; 
-	//utilizzato per permettere lo scambio di informazioni tra model e view
-	//serve per sapere se terminare il turno oppure richiedere informazioni aggiuntive al giocatore
 	private ArrayList<Player> playersOrder;
 	private boolean playersOrderMoved;
 	
@@ -59,7 +57,6 @@ public class GameBoard{
 		spaces.put("FourthMarket", new MarketArea(1, null));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
-		//stateOfAction = StateOfActionIdentifier.TO_ESTABILISH;
 	}
 
 	
@@ -80,17 +77,7 @@ public class GameBoard{
 		return spaces.get(space);
 	}
 	
-	/*
-	@Override 
-	public GameBoard clone () {
-		GameBoard copy = new GameBoard (this.id_partita);
-		copy.playersOrder = this.playersOrder;
-		copy.dices = this.dices;
-		copy.spaces = this.spaces;
-		copy.stateOfAction = this.stateOfAction;
-		return copy;
-	}
-	*/
+	
 	
 	/*public StateOfActionIdentifier getStateOfAction () {
 		return stateOfAction;
@@ -107,9 +94,19 @@ public class GameBoard{
 		
 	}
 
-
-
+	public Deck getSpecificDeck(CardType type, Period period) {
+		for (Deck deck: decks) {
+			if ((deck.getType()==type)&&(deck.getPeriod().equals(period))) {
+				return deck;
+			}
 	
+		}
+		return null;
+	}
+
+	public ArrayList<Dice> getDices(){
+		return this.dices;
+	}
 	
 
 }

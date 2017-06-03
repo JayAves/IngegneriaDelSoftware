@@ -44,7 +44,7 @@ public class HarvestAction extends Action {
 		bonusHarvestTile.performEffect(move.getPlayer());
 		
 		
-		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("Territory");
+		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("territory");
 		//ciclo lettura effetti da personalBoard
 		for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {

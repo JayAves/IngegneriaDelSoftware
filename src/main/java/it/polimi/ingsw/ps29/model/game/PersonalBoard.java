@@ -13,10 +13,10 @@ public class PersonalBoard {
 	
 	public PersonalBoard (PersonalBonusTile personalTile) {
 		cards = new HashMap <String, ArrayList<Card>> ();
-		cards.put("Territory", new ArrayList<Card> ());
-		cards.put("Building", new ArrayList<Card> ());
-		cards.put("Character", new ArrayList<Card> ());
-		cards.put("Venture", new ArrayList<Card> ());
+		cards.put("territory", new ArrayList<Card> ());
+		cards.put("building", new ArrayList<Card> ());
+		cards.put("character", new ArrayList<Card> ());
+		cards.put("venture", new ArrayList<Card> ());
 		this.personalTile = personalTile;
 		resources = new Container ();
 	}

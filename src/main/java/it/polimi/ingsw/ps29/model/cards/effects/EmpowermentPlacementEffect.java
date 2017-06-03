@@ -29,19 +29,19 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 	public void performEffect(Player player) {
 		
 		switch(towerType){
-		case "Harvest" :
+		case "territory" :
 			player.setFakeFamiliar(new FakeFamilyMemberHarvestTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
-		case "Production" :
+		case "building" :
 			player.setFakeFamiliar(new FakeFamilyMemberProductionTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
-		case "Character":
+		case "character":
 			player.setFakeFamiliar(new FakeFamilyMemberCharacterTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
-		case "Ventures":
+		case "ventures":
 			player.setFakeFamiliar(new FakeFamilyMemberVenturesTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
-		case "All" :
+		case "all" :
 			player.setFakeFamiliar(new FakeFamilyMemberHarvestTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			player.setFakeFamiliar(new FakeFamilyMemberProductionTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			player.setFakeFamiliar(new FakeFamilyMemberCharacterTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));

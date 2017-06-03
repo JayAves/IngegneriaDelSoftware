@@ -31,6 +31,12 @@ public class MarketArea implements ActionSpace {
 	public boolean isEnoughPowerful(int valuePlacement) {
 		return slot.isEnoughPowerful(valuePlacement);
 	}
+
+	@Override
+	public void cleanSpace() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	/*
 	 * public ArrayList <Gift> getGifts(){

@@ -121,7 +121,7 @@ public class TowerAction extends Action {
 	}
 
 	private boolean enoughVictoryPoints() {
-		if(space.takeCard().getType().equals("Territory")) {
+		if(space.takeCard().getType().equals("territory")) {
 			
 			int size= move.getPlayer().getPersonalBoard().getCards("territory").size();
 			
