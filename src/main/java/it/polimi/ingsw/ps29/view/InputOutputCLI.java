@@ -51,8 +51,7 @@ public class InputOutputCLI implements InputOutput {
 		
 		if(choice[0]>=3 && choice[0]<=6) {
 			do{
-				System.out.println("\nInsert floor: ");
-				choice[1] = scanner.nextInt();
+				choice[1] = askFloor();
 			} while (choice[1]<1 || choice[1]>4);
 		}
 		return choice;
@@ -61,7 +60,14 @@ public class InputOutputCLI implements InputOutput {
 	
 	public int askNumberOfServants () {
 		int number;
-		System.out.println("Insert the number of servant you want to use: ");
+		System.out.println("\nInsert the number of servant you want to use: ");
+		number = scanner.nextInt();
+		return number;
+	}
+	
+	public int askFloor () {
+		int number;
+		System.out.println("\nInsert the number of floor where you want to place: ");
 		number = scanner.nextInt();
 		return number;
 	}

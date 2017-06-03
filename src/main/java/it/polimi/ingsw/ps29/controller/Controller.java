@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps29.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -14,12 +13,13 @@ import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.state.ActionState;
 import it.polimi.ingsw.ps29.model.action.state.AskAboutExchangeState;
+import it.polimi.ingsw.ps29.model.action.state.BonusActionState;
 import it.polimi.ingsw.ps29.model.action.state.ToEstabilishState;
-import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.UserChoice;
+import it.polimi.ingsw.ps29.view.UserExchange;
 import it.polimi.ingsw.ps29.view.View;
 
 public class Controller implements Observer{
@@ -47,9 +47,10 @@ public class Controller implements Observer{
 		if(state.getState().equals("to estabilish"))
 			view.askNextAction();
 		else if (state.getState().equals("bonus action"))
-			view.askBonusAction();
+			view.askBonusAction(((BonusActionState)state).getEffect());
 		else if (state.getState().equals("ask exchange")) {
 			int index = ((AskAboutExchangeState)state).getIndexProduction();
+			//sistemare get(0) nell'istruzione seguente
 			view.askAboutExchange((ExchangeResourcesEffect) ((AskAboutExchangeState)state).getCards().get(index).getPermanentEffects().get(0));
 		}
 	}
@@ -57,18 +58,30 @@ public class Controller implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		Action action;
-		
-		if(!(o instanceof View) || !(arg instanceof UserChoice)) {
-			throw new IllegalArgumentException();
+		//la notifica può arrivare da fonti diverse: view e model
+		//se arriva dalla view può riguardare azione standard, azione bonus, scelta exchange, scelta scomunica
+		//se arriva dal model è una richiesta di proseguire con la richiesta dell'azione
+		if(o instanceof Match)
+			callCorrectView();
+		else if (o instanceof View) {
+			if(arg instanceof UserChoice)
+				handleInputAction ((UserChoice)arg); //azione standard, azione bonus
+			else if (arg instanceof UserExchange) {}
+				//exchangeAction (); //metodo da implementare
+			//else if per la scomunica
 		}
-		
+		else 
+			throw new IllegalArgumentException();
+	}
+	
+	
+	public void handleInputAction (UserChoice arg) {
+	
+		Action action;
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
-		Move move= adapter.createMove((UserChoice)arg);
+		Move move= adapter.createMove(arg);
 		
-		
-		switch (((UserChoice)arg).getChoices(0))	{
+		switch (arg.getChoices(0))	{
 		
 		case 1:
 			action= new HarvestAction(model, move);
@@ -107,11 +120,6 @@ public class Controller implements Observer{
 			state = action.getState();
 			//recupero lo stato dopo che ho eseguito le istruzioni
 		}
-
-		
-		
-		
 	}
-	
 	
 }

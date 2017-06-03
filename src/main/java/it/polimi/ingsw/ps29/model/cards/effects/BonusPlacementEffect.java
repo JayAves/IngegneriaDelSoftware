@@ -9,15 +9,12 @@ public class BonusPlacementEffect extends BonusActionEffect {
 	private String cardType;
 	private ArrayList <Resource> discount;
 	
-	public BonusPlacementEffect(int valueAction, String cardType) {
+	public BonusPlacementEffect(int valueAction, String cardType, ArrayList<Resource> discount) {
 		this.cardType = cardType;
 		this.valueAction = valueAction;
-		discount = new ArrayList <Resource> ();
+		this.discount = discount;
 	}
 	
-	void addResource (Resource res) {
-		discount.add(res);
-	}
 
 	@Override
 	public void performEffect(Player player) {
@@ -26,6 +23,23 @@ public class BonusPlacementEffect extends BonusActionEffect {
 		//Non essendo un effetto permanente non memorizzo lo sconto ma lo considero solamente per la mossa attuale.
 		
 	}
+
+	public String getType() {
+		return cardType;
+	}
+
+	public ArrayList<Resource> getDiscount () {
+		return discount;
+	}
+
+	@Override
+	public BonusPlacementEffect clone() {
+		ArrayList<Resource> discount = new ArrayList<Resource> ();
+		for(Resource res: this.getDiscount())
+			discount.add(res.clone());
+		return new BonusPlacementEffect(this.getValue(), this.getType(), discount);
+	}
+	
 	
 	
 

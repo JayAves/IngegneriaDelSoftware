@@ -55,7 +55,7 @@ public class ChoiceToMove {
 				color = DiceColor.NEUTRAL;
 				break;
 			default:
-				break;
+				return null;
 		}
 		return getPlayer(player).getFamiliarByColor(color);
 	}

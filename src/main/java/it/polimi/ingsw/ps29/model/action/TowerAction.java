@@ -67,7 +67,7 @@ public class TowerAction extends Action {
 			
 			/*
 			if (immediateEffect instanceof BonusActionEffect)
-				state = new BonuActionState (immediateEffect);
+				state = new BonuActionState (((BonusActionEffect)immediateEffect).clone());
 			else
 				*/
 			

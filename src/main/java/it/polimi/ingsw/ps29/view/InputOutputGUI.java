@@ -41,4 +41,10 @@ public class InputOutputGUI implements InputOutput {
 		return null;
 	}
 
+	@Override
+	public int askFloor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

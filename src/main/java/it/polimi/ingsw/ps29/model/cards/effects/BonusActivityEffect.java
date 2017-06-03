@@ -19,6 +19,10 @@ public class BonusActivityEffect extends BonusActionEffect {
 		//all'utente è richiesto il numero di servitori
 		
 	}
+	@Override
+	public BonusActivityEffect clone() {
+		return new BonusActivityEffect(this.getValue(), this.getType());
+	}
 	
 	
 

@@ -29,8 +29,8 @@ public class BonusActionState implements ActionState {
 		return "bonus action";
 	}
 	
-	public void setEffect (BonusActionEffect effect) {
-		this.effect = effect;
+	public BonusActionEffect getEffect () {
+		return effect;
 	}
 
 }

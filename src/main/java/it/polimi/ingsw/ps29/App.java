@@ -57,11 +57,13 @@ public class App
     	controller = new Controller (model);
     	
     	for (String name: playersName) {
-    		controller.addView(new View (inputChoice,  name), name);
+    		View view = new View (inputChoice,  name);
+    		view.addObserver(controller);
+    		controller.addView(view, name);   		
     	}
     	
+    	model.addObserver(controller);
     	//while state!= fine partita
-    	
     	controller.callCorrectView();
     	
     	/*Client client = new Client ("CLI", "Socket");
