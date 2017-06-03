@@ -48,6 +48,12 @@ public class CouncilPalaceArea implements ActionSpace {
 		return order;
 	}
 
+	@Override
+	public void cleanSpace() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 	

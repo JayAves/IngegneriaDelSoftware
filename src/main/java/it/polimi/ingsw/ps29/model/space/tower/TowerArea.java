@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.space.tower;
 
 import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
@@ -60,6 +61,14 @@ public class TowerArea implements ActionSpace {
 		return floors[placementFloor-1].isEnoughPowerful(valuePlacement);
 	}
 	
+	
+
+	@Override
+	public void cleanSpace() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public Card takeCard () {
 		return floors[placementFloor-1].getCard();
 	}
@@ -68,6 +77,15 @@ public class TowerArea implements ActionSpace {
 		if (placementFloor>2)
 			return floors[placementFloor-1].getResource();
 		return null;
+	}
+	
+	public void fill(ArrayList<Card> cards) {
+		
+		for (int i=0; i<NUMBER_OF_FLOORS; i++) {
+			
+			floors[i].setCard(cards.get(i));
+		}
+		
 	}
 
 }

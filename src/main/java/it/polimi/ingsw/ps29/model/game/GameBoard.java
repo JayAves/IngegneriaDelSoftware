@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.game;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
@@ -76,17 +77,7 @@ public class GameBoard{
 		return spaces.get(space);
 	}
 	
-	/*
-	@Override 
-	public GameBoard clone () {
-		GameBoard copy = new GameBoard (this.id_partita);
-		copy.playersOrder = this.playersOrder;
-		copy.dices = this.dices;
-		copy.spaces = this.spaces;
-		copy.stateOfAction = this.stateOfAction;
-		return copy;
-	}
-	*/
+	
 	
 	/*public StateOfActionIdentifier getStateOfAction () {
 		return stateOfAction;
@@ -103,9 +94,19 @@ public class GameBoard{
 		
 	}
 
-
-
+	public Deck getSpecificDeck(CardType type, Period period) {
+		for (Deck deck: decks) {
+			if ((deck.getType()==type)&&(deck.getPeriod().equals(period))) {
+				return deck;
+			}
 	
+		}
+		return null;
+	}
+
+	public ArrayList<Dice> getDices(){
+		return this.dices;
+	}
 	
 
 }

@@ -68,6 +68,9 @@ public class App
     	//while state!= fine partita
     	//controller.callCorrectView();
     	
+    	
+    	
+    	
     	/*Client client = new Client ("CLI", "Socket");
 		GameEngine gameEngine = new GameEngine ();
 		Controller controller = new Controller (gameEngine);
