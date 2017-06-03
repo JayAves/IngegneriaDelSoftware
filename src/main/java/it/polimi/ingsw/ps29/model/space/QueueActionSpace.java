@@ -34,5 +34,9 @@ public class QueueActionSpace {
 	public ArrayList <FamilyMember> getQueue () {
 		return queue;
 	}
+	
+	public void cleanSpace () {
+		queue = new ArrayList<FamilyMember>();
+	}
 
 }

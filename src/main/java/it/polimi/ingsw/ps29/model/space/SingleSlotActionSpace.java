@@ -39,4 +39,9 @@ public class SingleSlotActionSpace {
 	public boolean isEnoughPowerful (int valuePlacement) {
 		return valuePlacement >= powerRequired;
 	}
+	
+	public void cleanSpace () {
+		member = null;
+		state = new Free();
+	}
 }

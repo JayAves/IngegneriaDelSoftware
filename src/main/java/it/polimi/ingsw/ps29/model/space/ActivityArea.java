@@ -37,7 +37,8 @@ public class ActivityArea implements ActionSpace {
 
 	@Override
 	public void cleanSpace() {
-		// TODO Auto-generated method stub
+		head.cleanSpace();
+		queue.cleanSpace();
 		
 	}
 	

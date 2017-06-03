@@ -34,7 +34,7 @@ public class MarketArea implements ActionSpace {
 
 	@Override
 	public void cleanSpace() {
-		// TODO Auto-generated method stub
+		slot.cleanSpace();
 		
 	}
 	

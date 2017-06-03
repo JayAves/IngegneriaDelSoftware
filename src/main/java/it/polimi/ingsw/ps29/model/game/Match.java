@@ -68,8 +68,8 @@ public class Match extends Observable{
 	
 	public void gameEngine() {
 		
-		
-		while(!endOfMatch) {
+		//sistemare state == null (sarebbe da assegnare correttamente endOfMatch)
+		while(!endOfMatch || state == null) {
 			if(state instanceof ActionState){
 				String firstPlayer = board.getPlayers().get(0).getName();
 				board.setPlayersOrderMoved(false);
@@ -78,8 +78,7 @@ public class Match extends Observable{
 						notify();
 					}
 			}
-			state= state.doAction(round, null);
-			
+			state= state.doAction(round, board);
 			
 		}
 		

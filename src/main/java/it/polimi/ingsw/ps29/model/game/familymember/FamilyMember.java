@@ -58,9 +58,13 @@ public class FamilyMember implements FamilyMemberInterface{
 		this.power = power;
 	}
 
-	public void setBusy() {
+	public void setBusy(boolean busy) {
 		// TODO Auto-generated method stub
-		this.busy=true;
+		this.busy=busy;
+	}
+	
+	public boolean getBusy () {
+		return busy;
 	}
 	
 }

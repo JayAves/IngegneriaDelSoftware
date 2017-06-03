@@ -77,6 +77,10 @@ public class GameBoard{
 		return spaces.get(space);
 	}
 	
+	public HashMap <String, ActionSpace> getSpaces () {
+		return spaces;
+	}
+	
 	
 	
 	/*public StateOfActionIdentifier getStateOfAction () {

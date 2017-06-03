@@ -6,8 +6,6 @@ import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
-import it.polimi.ingsw.ps29.model.game.playerstate.Free;
-import it.polimi.ingsw.ps29.model.game.playerstate.PlayerState;
 
 public class Player {
 	private String name;
@@ -56,7 +54,15 @@ public class Player {
 	public void setFakeFamiliar(FakeFamilyMemberInterface fakeFamiliar) {
 		this.fakeFamiliar = fakeFamiliar;
 	}
+
+	public Color getColor() {
+		return color;
+	}
 	
+	public FamilyMember [] getFamily () {
+		return family;
+	}
+
 	/*
 	 FamilyMember neutralFamilyMember;
      FamilyMember orangeFamilyMember;

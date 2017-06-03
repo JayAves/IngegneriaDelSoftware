@@ -76,7 +76,7 @@ public class TowerAction extends Action {
 		
 		space.getPlacementFloor().setCard(null); 
 		
-		move.getFamiliar().setBusy();
+		move.getFamiliar().setBusy(true);
 	
 	}
 		

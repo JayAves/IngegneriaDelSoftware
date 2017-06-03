@@ -50,7 +50,7 @@ public class CouncilPalaceArea implements ActionSpace {
 
 	@Override
 	public void cleanSpace() {
-		// TODO Auto-generated method stub
+		queue.cleanSpace();
 		
 	}
 
