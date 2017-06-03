@@ -20,12 +20,6 @@ public class GainResourcesEffect extends EffectAboutResources {
 			playerResources.updateResource(res);
 	}
 
-	@Override
-	public String toString() {
-		return "GainResourcesEffect []";
-	}
-
-	
 
 
 }

@@ -18,10 +18,10 @@ public class View extends Observable implements Observer {
 		
 		inputOutput = inputOutputFactory.getInput(inputType);
 		namePlayer = n;
-		System.out.println("Mi hanno creato: Sono la view del Player " + namePlayer);
 	}
 	
 	public void askNextAction () {
+		System.out.println("\n--> sono la view del player: "+namePlayer+"\n");
 		int [] choice = new int [4];
 		int[] temp = inputOutput.askTypeOfAction();
 		choice[0] = temp[0];

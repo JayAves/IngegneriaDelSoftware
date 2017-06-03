@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
-import it.polimi.ingsw.ps29.model.space.HarvestArea;
 
 public class HarvestAction extends Action {
 	
