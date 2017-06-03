@@ -15,6 +15,7 @@ public class PerformedState implements ActionState {
 	public ActionState afterAction(Match model) {
 		// metodo per aggiornare la view
 		model.getBoard().changePlayerOrder();
+		model.getBoard().setPlayersOrderMoved(true);
 		return this;
 	}
 

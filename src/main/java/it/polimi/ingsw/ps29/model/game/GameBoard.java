@@ -20,6 +20,17 @@ public class GameBoard{
 	//utilizzato per permettere lo scambio di informazioni tra model e view
 	//serve per sapere se terminare il turno oppure richiedere informazioni aggiuntive al giocatore
 	private ArrayList<Player> playersOrder;
+	private boolean playersOrderMoved;
+	
+	public boolean isPlayersOrderMoved() {
+		return playersOrderMoved;
+	}
+
+
+	public void setPlayersOrderMoved(boolean playersOrderMoved) {
+		this.playersOrderMoved = playersOrderMoved;
+	}
+
 	public ArrayList<Deck> decks;
 	
 	public GameBoard (ArrayList<Player> players) {

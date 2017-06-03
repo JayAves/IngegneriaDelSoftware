@@ -8,6 +8,7 @@ import java.util.Observable;
 
 import com.google.gson.GsonBuilder;
 
+import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
@@ -21,6 +22,7 @@ import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 
 public class Match extends Observable{
 	
+	private static final int NUMBER_OF_FAMILIARS = 4;
 	private static int id = 1;
 	private GameBoard board;
 	private Period period;
@@ -68,7 +70,14 @@ public class Match extends Observable{
 		
 		
 		while(!endOfMatch) {
-			
+			if(state instanceof ActionState){
+				String firstPlayer = board.getPlayers().get(0).getName();
+				board.setPlayersOrderMoved(false);
+				for (int i=0; i<NUMBER_OF_FAMILIARS; i++)
+					while(!board.getPlayers().get(0).getName().equals(firstPlayer)|| !board.isPlayersOrderMoved()){
+						notify();
+					}
+			}
 			state= state.doAction(round, null);
 			
 			
