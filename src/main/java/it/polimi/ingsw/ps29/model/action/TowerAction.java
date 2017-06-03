@@ -23,7 +23,6 @@ public class TowerAction extends Action {
 
 	@Override
 	public boolean isForbidden() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

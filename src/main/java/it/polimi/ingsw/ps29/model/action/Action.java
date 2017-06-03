@@ -30,9 +30,10 @@ public abstract class Action {
 	abstract void performAction ();
 		
 	public void actionHandler () {
-		
-		if (isForbidden() || !isPlaceable())
+		if (isForbidden() || !isPlaceable()) {
 			state = new RejectedState();
+		}
+		
 		
 		else {
 			performAction();

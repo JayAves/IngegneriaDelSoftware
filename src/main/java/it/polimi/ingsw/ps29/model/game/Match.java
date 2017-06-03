@@ -8,7 +8,6 @@ import java.util.Observable;
 
 import com.google.gson.GsonBuilder;
 
-import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
@@ -17,6 +16,7 @@ import it.polimi.ingsw.ps29.model.cards.customadapters.EffectAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.game.roundstates.ActionsState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 
@@ -70,12 +70,13 @@ public class Match extends Observable{
 		
 		//sistemare state == null (sarebbe da assegnare correttamente endOfMatch)
 		while(!endOfMatch || state == null) {
-			if(state instanceof ActionState){
+			if(state instanceof ActionsState){
 				String firstPlayer = board.getPlayers().get(0).getName();
 				board.setPlayersOrderMoved(false);
 				for (int i=0; i<NUMBER_OF_FAMILIARS; i++)
 					while(!board.getPlayers().get(0).getName().equals(firstPlayer)|| !board.isPlayersOrderMoved()){
-						notify();
+						setChanged();
+						notifyObservers();
 					}
 			}
 			state= state.doAction(round, board);

@@ -73,16 +73,16 @@ public class ChoiceToMove {
 			space= "Production";
 			break;
 		case 3:
-			space= "TerritoryTower";
+			space= "territoryTower";
 			break;
 		case 4:
-			space= "BuildingTower";
+			space= "buildingTower";
 			break;
 		case 5:
-			space= "CharacterTower";
+			space= "characterTower";
 			break;
 		case 6:
-			space= "VentureTower";
+			space= "ventureTower";
 			break;
 		case 7:
 			space= "FirstMarket";

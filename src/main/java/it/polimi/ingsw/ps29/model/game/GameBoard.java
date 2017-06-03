@@ -49,10 +49,10 @@ public class GameBoard{
 		spaces = new HashMap <String, ActionSpace> ();
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
-		spaces.put("TerritoryTower", new TowerArea ());
-		spaces.put("BuildingTower", new TowerArea ());
-		spaces.put("CharcaterTower", new TowerArea ());
-		spaces.put("VentureTower", new TowerArea ());
+		spaces.put("territoryTower", new TowerArea ());
+		spaces.put("buildingTower", new TowerArea ());
+		spaces.put("characterTower", new TowerArea ());
+		spaces.put("ventureTower", new TowerArea ());
 		spaces.put("FirstMarket", new MarketArea(1, null));
 		spaces.put("SecondMarket", new MarketArea(1, null));
 		spaces.put("ThirdMarket", new MarketArea(1, null));

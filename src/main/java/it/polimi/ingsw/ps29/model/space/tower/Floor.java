@@ -14,7 +14,6 @@ public class Floor {
 	private SingleSlotActionSpace space;
 	
 	public Floor (SingleSlotActionSpace space) {
-		
 		this.space = space;
 	}
 	

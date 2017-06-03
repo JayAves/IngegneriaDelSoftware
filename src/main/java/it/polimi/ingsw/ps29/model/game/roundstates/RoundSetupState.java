@@ -20,32 +20,31 @@ public class RoundSetupState implements RoundState {
 		Period currentPeriod= getPeriod(roundNumber);
 		
 		CardType[] types= CardType.values();
-		System.out.println(types[0]);
 		
 		for (int i=0;i<types.length;i++) { //per ogni tipo di carta
 		
-		if ((!types[i].getType().equalsIgnoreCase(CardType.ALL.getType()))
-				&& (!types[i].getType().equalsIgnoreCase(CardType.EXCOMMUNICATION.getType()))){
-		
-		Deck deck= board.getSpecificDeck(types[i], currentPeriod);
-		
-		ArrayList<Card> newCards= new ArrayList<>();
-		
-		for (int j=0;j<4;j++) {	//scelgo 4 carte a caso dal deck
+			if ((!types[i].getType().equalsIgnoreCase(CardType.ALL.getType()))
+					&& (!types[i].getType().equalsIgnoreCase(CardType.EXCOMMUNICATION.getType()))){
 			
-			int rnd= new Random().nextInt(deck.getSize());
-			
-			newCards.add(deck.getCard(rnd));
-			deck.removeCard(rnd);
-			}
-		System.out.println(i);
-		((TowerArea) board.getSpace("TerritoryTower")).fill(newCards);
-		
-			}
+				Deck deck= board.getSpecificDeck(types[i], currentPeriod);
+				
+				ArrayList<Card> newCards= new ArrayList<Card>();
+				
+				for (int j=0;j<4;j++) {	//scelgo 4 carte a caso dal deck
+					
+					int rnd= new Random().nextInt(deck.getSize());
+					
+					newCards.add(deck.getCard(rnd));
+					deck.removeCard(rnd);
+				}
+				((TowerArea) board.getSpace(types[i].getType()+"Tower")).fill(newCards);
+				
+				}
 		}
 		
 		for(Dice dice: board.getDices()) {
 			dice.rollDice();
+			System.out.println(dice.getColor()+" - "+dice.getValue());
 		}
 	
 		
