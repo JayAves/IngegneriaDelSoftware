@@ -51,9 +51,6 @@ public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card>
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		CardAdapter adapter= new CardAdapter();
-		//adapter.serialize(card, null, null);
-		
 		
 		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
 	    GsonBuilder gcards = new GsonBuilder();

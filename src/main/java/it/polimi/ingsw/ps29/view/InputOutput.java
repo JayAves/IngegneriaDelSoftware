@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps29.view;
 
-import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 

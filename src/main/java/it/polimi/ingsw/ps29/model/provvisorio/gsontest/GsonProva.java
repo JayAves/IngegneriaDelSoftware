@@ -1,8 +1,5 @@
 package it.polimi.ingsw.ps29.model.provvisorio.gsontest;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
