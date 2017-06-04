@@ -26,8 +26,10 @@ public class View extends Observable implements Observer {
 		int[] temp = inputOutput.askTypeOfAction();
 		choice[0] = temp[0];
 		choice[1] = temp[1];
-		choice[2] = inputOutput.askNumberOfServants();
-		choice[3] = inputOutput.askFamiliarColor();
+		if (temp[0]!=12){
+			choice[2] = inputOutput.askNumberOfServants();
+			choice[3] = inputOutput.askFamiliarColor();
+		}
 		UserChoice move = new UserChoice(namePlayer, choice);
 		setChanged();
 		notifyObservers(move);
@@ -71,6 +73,7 @@ public class View extends Observable implements Observer {
 				System.out.println(res);
 			userChoice[1] = inputOutput.askFloor();
 		}
+		
 		userChoice [2] = inputOutput.askNumberOfServants();
 		userChoice[3] = -1;
 		move = new UserChoice(namePlayer, userChoice);

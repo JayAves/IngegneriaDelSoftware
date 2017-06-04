@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps29.model.action.Action;
 import it.polimi.ingsw.ps29.model.action.CouncilPalaceAction;
 import it.polimi.ingsw.ps29.model.action.HarvestAction;
 import it.polimi.ingsw.ps29.model.action.MarketAction;
+import it.polimi.ingsw.ps29.model.action.NoAction;
 import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
@@ -110,7 +111,7 @@ public class Controller implements Observer{
 			break;
 		
 		default:
-			action=null;
+			action= new NoAction(model,move);
 			break;
 		}
 		
