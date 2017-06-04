@@ -904,6 +904,377 @@
 {
 	"cardType": "BuildingCard",
 	
+	"cardData":{"name": "StrongholdClone1",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "StrongholdClone2",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "StrongholdClone3",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "StrongholdClone4",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "StrongholdClone5",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "StrongholdClone6",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "StrongholdClone7",
+	"period": "SECOND",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
 	"cardData":{"name": "Bank",
 	"period": "FIRST",
 	"type": "BUILDING",	
@@ -950,7 +1321,99 @@
 {
 	"cardType": "BuildingCard",
 	
-	"cardData":{"name": "MInt",
+	"cardData":{"name": "Bankclone1",
+	"period": "FIRST",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":2}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Bankclone2",
+	"period": "FIRST",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":2}
+},
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Mint",
 	"period": "FIRST",
 	"type": "BUILDING",
     "immediateEffects": [{
@@ -1136,6 +1599,236 @@
 	"cardType": "BuildingCard",
 	
 	"cardData":{"name": "Garden",
+	"period": "THIRD",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":2,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "GardenClone1",
+	"period": "THIRD",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":2,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "GardenClone2",
+	"period": "THIRD",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":2,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "GardenClone3",
+	"period": "THIRD",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":2,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "GardenClone4",
+	"period": "THIRD",
+	"type": "BUILDING",	
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":2,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "GardenClone5",
 	"period": "THIRD",
 	"type": "BUILDING",	
 	"immediateEffects": [{
@@ -1384,9 +2077,8 @@
   "effectType": "EmpowermentPlacementEffect",
   "effectData":
   { "diceEmpowerment": 2,
-          "towerType": "venture"
-            
-        }}],
+    "towerType": "venture",
+  "discount":[]}}],
  "cost":[{
    "resourceType":"Coins",
    "resourceData":{
@@ -1895,7 +2587,7 @@
 	"cardType": "CharacterCard",
 	
 	"cardData":{"name": "Ambassador",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "CHARACTER",
     "immediateEffects": [{ "effectType": "BonusPlacementEffect",
        "effectData":{
