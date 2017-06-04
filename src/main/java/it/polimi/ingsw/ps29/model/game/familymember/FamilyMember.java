@@ -7,6 +7,11 @@ public class FamilyMember implements FamilyMemberInterface{
 	
 	//enum Color?
 	
+	@Override
+	public String toString() {
+		return " Familiare di potere " + power + " e colore " + familiarColor + " ";
+	}
+
 	private int power;
 	private boolean busy;
 	private DiceColor familiarColor;

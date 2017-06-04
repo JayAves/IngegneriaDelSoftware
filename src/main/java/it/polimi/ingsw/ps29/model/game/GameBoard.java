@@ -51,17 +51,21 @@ public class GameBoard{
 		Resource r=new Resource("coin",2);
 		temporaryBonus1.add(r);
 		ArrayList<Resource> temporaryBonus2= new ArrayList<Resource>();
-		temporaryBonus2.add(new Resource("wood",2));
+		Resource s=new Resource("wood",2);
+		temporaryBonus2.add(s);
 		ArrayList<Resource> temporaryBonus3= new ArrayList<Resource>();
-		temporaryBonus3.add(new Resource("stone",2));
+		Resource t=new Resource("stone",2);
+		temporaryBonus3.add(t);
 		ArrayList<Resource> temporaryBonus4= new ArrayList<Resource>();
-		temporaryBonus4.add(new Resource("servant",2));
+		Resource u=new Resource("servant",2);
+		temporaryBonus4.add(u);
+		
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
 		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("territoryTower", new TowerArea ());
-		((TowerArea)spaces.get("territoryTower")).setBonus( temporaryBonus1,3);
+		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus1,3);
 		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus2,4);
 		spaces.put("buildingTower", new TowerArea ());
 		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus3,3);

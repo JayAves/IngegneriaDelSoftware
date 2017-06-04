@@ -40,7 +40,7 @@ public abstract class Action {
 		
 			if(!state.getState().equals("bonus action") && !state.getState().equals("ask exchange"))
 				state = new PerformedState();
-			
+			System.out.println("Il giocatore "+ move.getPlayer().getName()+" ha eseguito correttamente l'azione su "+ move.getSpace()+ ",piazzando il familiare"+move.getFamiliar().toString()+" e spendendo "+move.getServants()+" servitori");
 		}
 		
 		state = state.afterAction(model);

@@ -45,6 +45,7 @@ public class RoundSetupState implements RoundState {
 		
 		for(Dice dice: board.getDices()) {
 			dice.rollDice();
+			System.out.println("Ho tirato i dadi:\n");
 			for (Player player: board.getPlayers()) {
 				player.getFamiliarByColor(dice.getColor()).setPower(dice.getValue());
 			}

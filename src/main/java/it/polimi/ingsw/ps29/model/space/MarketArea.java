@@ -11,6 +11,7 @@ public class MarketArea implements ActionSpace {
 	
 	public MarketArea (int power, ArrayList <Resource> bonus) {
 		slot = new BonusActionSpace (power);
+		slot.setBonus(bonus);
 	}
 	
 	public BonusActionSpace getSlot () {

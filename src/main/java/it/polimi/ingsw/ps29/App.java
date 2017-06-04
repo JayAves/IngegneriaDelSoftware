@@ -63,7 +63,6 @@ public class App
     	}
     	
     	model.addObserver(controller);
-    	
     	model.gameEngine();
     	//while state!= fine partita
     	//controller.callCorrectView();
