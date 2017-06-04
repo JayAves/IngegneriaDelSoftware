@@ -43,6 +43,16 @@ public class Container {
 		updateResource(swipeFor);
 	}
 	
+	@Override
+	public String toString(){
+		return "ci sono in totale :" + getResource("coin").toString() +
+				"\n "+ getResource("wood").toString() +
+				"\n "+ getResource("stone").toString() +
+				"\n "+ getResource("servant").toString() +
+				"\n "+ getResource("military").toString() +
+				"\n "+ getResource("victory").toString() +
+				"\n "+ getResource("faith").toString() ;
+	}
 }
 	
 	

@@ -30,7 +30,7 @@ public class Resource implements ResourceInterface, Cloneable {
 		return new Resource(this.getType(), this.getAmount());
 	}
 	
-	public String toString (Resource res) {
-		return "Resource - type: "+res.getType()+", amount: "+res.getAmount()+"\n";
+	public String toString () {
+		return "Resource - type: "+type+", amount: "+ amount+"\n";
 	}
 }
