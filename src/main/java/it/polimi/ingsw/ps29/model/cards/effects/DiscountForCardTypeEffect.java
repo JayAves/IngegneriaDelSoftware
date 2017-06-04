@@ -34,4 +34,11 @@ public class DiscountForCardTypeEffect extends Effect{
 		player.specialPermanentEffects.add(this);
 	}
 
+	@Override
+	public String toString () {
+		String msg = super.toString()+"cardType: "+cardType+"\n";
+		for(Resource res: discount)
+			msg+="discount: "+res.toString()+"\n";
+		return msg;
+	}
 }

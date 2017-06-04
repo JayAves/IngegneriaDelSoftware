@@ -21,5 +21,4 @@ public class GainResourcesEffect extends EffectAboutResources {
 	}
 
 
-
 }

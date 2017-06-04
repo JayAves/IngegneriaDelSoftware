@@ -25,6 +25,9 @@ public class MultipliedResourcesEffect extends Effect {
 		resources.updateResource(new Resource(resourceType, multiplier*amount));
 	}
 
-	
+	@Override
+	public String toString () {
+		return super.toString()+" resource type: "+resourceType+" = amount: "+amount+", X crad type: "+cardType+"\n";
+	}
 	
 }

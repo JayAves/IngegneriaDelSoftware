@@ -24,6 +24,10 @@ public class BonusActivityEffect extends BonusActionEffect {
 		return new BonusActivityEffect(this.getValue(), this.getType());
 	}
 	
+	@Override 
+	public String toString () {
+		return super.toString()+"value action: "+valueAction+", type: "+type+"\n";
+	}
 	
 
 }

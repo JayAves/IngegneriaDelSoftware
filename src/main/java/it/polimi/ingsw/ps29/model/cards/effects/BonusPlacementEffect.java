@@ -40,7 +40,13 @@ public class BonusPlacementEffect extends BonusActionEffect {
 		return new BonusPlacementEffect(this.getValue(), this.getType(), discount);
 	}
 	
-	
+	@Override
+	public String toString () {
+		String msg = super.toString()+"value action: "+valueAction+", cardtype: "+cardType+"\n";
+		for(Resource res: discount) 
+			msg+="discount: "+res.toString()+"\n";
+		return msg;
+	}
 	
 
 }

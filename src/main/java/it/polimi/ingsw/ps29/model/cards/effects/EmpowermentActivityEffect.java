@@ -42,6 +42,10 @@ public class EmpowermentActivityEffect extends EmpowermentActionEffect {
 	}
 		
 
+	@Override
+	public String toString () {
+		return super.toString()+"dice empowerment: "+diceEmpowerment+", activity name: "+activityName+"\n";
+	}
 
 }
 	

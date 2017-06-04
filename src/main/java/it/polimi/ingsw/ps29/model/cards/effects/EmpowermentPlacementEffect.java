@@ -58,5 +58,13 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 		//non è un modificatore che vale sempre per la risorsa MA solo quando si paga in una certa torre
 		
 	}
+	
+	@Override 
+	public String toString () {
+		String msg = super.toString()+"dice empowerment: "+diceEmpowerment+", tower type: "+towerType+"\n";
+		for (Resource res: discount)
+			msg+="discount: "+res.toString()+"\n";
+		return msg;
+	}
 
 }

@@ -93,4 +93,17 @@ public class ExchangeResourceHandler implements Cloneable {
 		return new ExchangeResourceHandler (resOut, resIn, this.chooseOut, this.chooseIn);
 	}
 
+	@Override
+	public String toString () {
+		String msg="Res out:\n";
+		for(Resource res: resourcesOut)
+			msg+=res.toString();
+		if(chooseOut)
+			msg+="[Optional]\n";
+		for(Resource res: resourcesIn)
+			msg+=res.toString();
+		if(chooseIn)
+			msg+="[Optional]\n";
+		return msg;
+	}
 }

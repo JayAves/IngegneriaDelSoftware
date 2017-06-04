@@ -44,4 +44,12 @@ public class ExchangeResourcesEffect extends Effect implements Cloneable {
 			array.add(handler.clone());
 		return new ExchangeResourcesEffect(array);
 	}
+	
+	@Override
+	public String toString () {
+		String msg = super.toString()+"\n";
+		for(ExchangeResourceHandler erh: choices)
+			msg+=erh.toString()+"\n";
+		return msg;
+	}
 }
