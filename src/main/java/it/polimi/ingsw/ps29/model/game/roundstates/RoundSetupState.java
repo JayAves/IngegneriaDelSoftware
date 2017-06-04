@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Period;
+import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
 
 public class RoundSetupState implements RoundState {
@@ -44,6 +45,9 @@ public class RoundSetupState implements RoundState {
 		
 		for(Dice dice: board.getDices()) {
 			dice.rollDice();
+			for (Player player: board.getPlayers()) {
+				player.getFamiliarByColor(dice.getColor()).setPower(dice.getValue());
+			}
 			System.out.println(dice.getColor()+" - "+dice.getValue());
 		}
 	
