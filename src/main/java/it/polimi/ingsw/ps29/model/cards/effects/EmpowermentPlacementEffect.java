@@ -2,13 +2,14 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import java.util.ArrayList;
 
-import javax.annotation.Resource;
+
 
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberCharacterTowerDecorator;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberHarvestTowerDecorator;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionTowerDecorator;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberVenturesTowerDecorator;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 

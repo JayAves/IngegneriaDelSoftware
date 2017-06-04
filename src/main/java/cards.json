@@ -14,7 +14,7 @@
 			"resourceData":{
 				"amount":1,
 				"type":"coin" }
-			}]}}]
+			}]}}],
 	"cost":[],
 	"harvestForce":1}
  },
@@ -41,11 +41,11 @@
 			"resourceData":{
 				"amount":1,
 				"type":"wood" }
-			}]}}]
+			}]}}],
 	"cost":[],
 	"harvestForce":2}
  },
-    {
+{
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Village",
@@ -69,7 +69,7 @@
 			"resourceData":{
 				"amount":1,
 				"type":"servant" }
-			}]}}]
+			}]}}],
 	"cost":[],
 	"harvestForce":3}
  },
@@ -105,7 +105,7 @@
 			"resourceData":{
 				"amount":1,
 				"type":"servant" }
-			}]}}]
+			}]}}],
 	"cost":[],
 	"harvestForce":4}
  },
@@ -234,51 +234,15 @@
 			"resourceData":{
 				"amount":3,
 				"type":"privilege" }
-			}]}}]
+			}]}}],
 	"cost":[],
 	"harvestForce":6}
- },
- {
-	"cardType": "TerritoryCard",
-	
-	"cardData":{"name": "Casa di Marmo",
-	"period": "FIRST",
-	"type": "TERRITORY",	
-	"immediateEffects": [{
-		"effectType": "GainResourcesEffect",
-		"effectData":
-		{ "resources": [{
-			"resourceType":"VictoryPoints",
-			"resourceData":{
-				"amount":3,
-				"type":"victory" }
-	}]}}],
-	"permanentEffects":[{
-		"effectType": "GainResourcesEffect",
-		"effectData":
-		{ "resources": [{
-			"resourceType":"VictoryPoints",
-			"resourceData":{
-				"amount":1,
-				"type":"victory" }
-			}]}},
-			    {	
-		"effectType": "GainResourcesEffect",
-		"effectData":
-			{ "resources": [{
-			 	"resourceType":"Stones",
-			 	"resourceData":{
-					"amount":2,
-					"type":"stone" }
-	}]}}],
-	"cost":[],
-	"harvestForce":2}
  },
 {
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Gold Mine",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -306,7 +270,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Mountain Town",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -339,11 +303,11 @@
 	"cost":[],
 	"harvestForce":3}
 },
- {
+{
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Mining Town",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -389,7 +353,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Rock Pit",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -399,7 +363,7 @@
 			"resourceData":{
 				"amount":1,
 				"type":"wood" }
-	}]}}}],
+	}]}}],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -412,11 +376,11 @@
 	"cost":[],
 	"harvestForce":3}
 },
-    {
+{
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Estate",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -462,7 +426,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Hermitage",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -489,7 +453,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Manor House",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [],
 	"permanentEffects":[{
@@ -518,7 +482,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Dukedom",
-	"period": "FIRST",
+	"period": "SECOND",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -564,7 +528,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Trading Town",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -600,7 +564,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Farm",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -645,7 +609,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Colony",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -681,7 +645,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Marble Pit",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -717,7 +681,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Province",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -762,7 +726,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Sanctuary",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -798,7 +762,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Castle",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -843,7 +807,7 @@
 	"cardType": "TerritoryCard",
 	
 	"cardData":{"name": "Fortified Town",
-	"period": "FIRST",
+	"period": "THIRD",
 	"type": "TERRITORY",	
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
@@ -1957,30 +1921,6 @@
 			}]}
  },
 {
-	"cardType": "CharacterCard",
-	
-	"cardData":{"name": "Costruttore",
-	"period": "FIRST",
-	"type": "CHARACTER",
-    "immediateEffects": [],
-	"permanentEffects":[{ "effectType": "BonusPlacementEffect",
-       "effectData":{
-           "valueAction": 4,
-            "cardType": "all",
-            "discount":[{
-			"resourceType":"Coins",
-			"resourceData":{
-				"amount":1,
-				"type":"coin" }
-			}]}}],
-	"cost":[{
-			"resourceType":"Coins",
-			"resourceData":{
-				"amount":4,
-				"type":"coin" }
-			}]}
- },
-{
 	"cardType": "VentureCard",
 	
 	"cardData":{"name": "Hiring Recruits",
@@ -2298,7 +2238,7 @@
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
-			"resourceType":"MIlitaryPoints",
+			"resourceType":"MilitaryPoints",
 			"resourceData":{
 				"amount":6,
 				"type":"military" }
@@ -2540,7 +2480,7 @@
 				"type":"victory" }
 			}]}}],
 	"cost":[{
-			"resourceType": "MIlitaryPoints",
+			"resourceType": "MilitaryPoints",
 			"resourceData":{
 				"amount":3,
 				"type":"military" }
@@ -2571,7 +2511,7 @@
 				"type":"victory" }
 			}]}}],
 	"cost":[{
-			"resourceType": "MIlitaryPoints",
+			"resourceType": "MilitaryPoints",
 			"resourceData":{
 				"amount":4,
 				"type":"military" }
@@ -2755,7 +2695,7 @@
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
-			"resourceType":"Wood",
+			"resourceType":"Woods",
 			"resourceData":{
 				"amount":3,
 				"type":"wood" }
@@ -2788,7 +2728,7 @@
 				"type":"victory" }
 			}]}}],
 	"cost":[{
-			"resourceType": "MIlitaryPoints",
+			"resourceType": "MilitaryPoints",
 			"resourceData":{
 				"amount":6,
 				"type":"military" }
@@ -2870,7 +2810,7 @@
 		{ "resources": [{
 			"resourceType":"FaithPoints",
 			"resourceData":{
-				"amount"2,
+				"amount":2,
 				"type":"faith" }
 			}]}}],
 	"permanentEffects":[{
@@ -2907,14 +2847,4 @@
 				"type":"coin" }
 			}]}
  }
-
-
-
-
-
-
-
-
-
-
 ]
