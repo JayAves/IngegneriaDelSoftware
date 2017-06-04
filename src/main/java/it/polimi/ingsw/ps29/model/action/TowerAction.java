@@ -52,11 +52,14 @@ public class TowerAction extends Action {
 		
 		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
 		
-		if (!space.isEmpty()) move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monetef
+		if (!space.isEmpty())
+			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monetef
 		
-		GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal piano, se non ne ha aggiungo null
+		if(move.getFloor()>2) {
+			GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal piano, se non ne ha aggiungo null
 		
-		effect.performEffect(move.getPlayer()); //aggiungo le risorse al player, dobbiamo gestire il caso in cui non ci siano risorse
+			effect.performEffect(move.getPlayer()); //aggiungo le risorse al player, dobbiamo gestire il caso in cui non ci siano risorse
+		}
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
 		
