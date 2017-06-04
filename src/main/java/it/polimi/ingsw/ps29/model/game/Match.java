@@ -77,12 +77,14 @@ public class Match extends Observable{
 		while(!endOfMatch ) {
 			if(state instanceof ActionsState){
 				String firstPlayer = board.getPlayers().get(0).getName();
-				board.setPlayersOrderMoved(false);
-				for (int i=0; i<NUMBER_OF_FAMILIARS; i++)
+				
+				for (int i=0; i<NUMBER_OF_FAMILIARS; i++){
+					board.setPlayersOrderMoved(false);
 					while(!board.getPlayers().get(0).getName().equals(firstPlayer)|| !board.isPlayersOrderMoved()){
 						setChanged();
 						notifyObservers();
 					}
+				}
 			}
 			
 			if (state!= null)
