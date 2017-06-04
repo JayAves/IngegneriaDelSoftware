@@ -23,5 +23,10 @@ public class BuildingCard extends Card{
 		
 		return productionForce;
 	}
+	
+	@Override
+	public String toString () {
+		return super.toString()+"\nforce: "+productionForce;
+	}
 
 }

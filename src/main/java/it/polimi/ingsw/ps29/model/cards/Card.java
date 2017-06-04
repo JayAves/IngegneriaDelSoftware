@@ -60,11 +60,23 @@ public abstract class Card {
 	public ArrayList<Resource> getCost() {
 		return this.cost;
 	}
+	
+	public String getName() {
+		return name;
+	}
 
 	@Override
 	public String toString() {
-		return "Card [name=" + name + ", period=" + period + ", type=" + type + ", immediateEffects=" + immediateEffects.get(0)+immediateEffects.get(1)
-				+ ", permanentEffects=" + permanentEffects + ", cost=" + cost + "]";
+		String msg = "Card name =" + name + ", period =" + period + ", type =" + type +"\nimmediate: ";
+		for(Effect eff: immediateEffects)
+			msg+=eff.toString()+"\n";
+		msg+="permanent:";
+		for(Effect eff: permanentEffects)
+			msg+=eff.toString()+"\n";
+		msg+="cost: ";
+		for(Resource res: cost)
+			msg+=res.toString()+"\n";
+		return msg;
 	}
 
 

@@ -22,7 +22,7 @@ public abstract class EffectAboutResources extends Effect{
 	
 	@Override
 	public String toString () {
-		String msg="resources:\n";
+		String msg=super.toString()+"resources:\n";
 		for(Resource res: resources)
 			msg+=res.toString()+"\n";
 		return msg;

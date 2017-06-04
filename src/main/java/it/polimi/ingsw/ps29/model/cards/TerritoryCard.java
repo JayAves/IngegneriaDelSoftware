@@ -24,5 +24,9 @@ public class TerritoryCard extends Card  {
 		return harvestForce;
 	}
 
+	@Override
+	public String toString () {
+		return super.toString()+"\nforce: "+harvestForce;
+	}
 
 }

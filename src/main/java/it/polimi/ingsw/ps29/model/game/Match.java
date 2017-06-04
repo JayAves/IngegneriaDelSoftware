@@ -46,21 +46,26 @@ public class Match extends Observable{
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
 	    
 	    Period[] periods= Period.values();
+	    CardType [] types = CardType.values();
 	    
 	    for (Period period : periods) {		//creo deck separati per periodo
 	    	
-	    	for (CardType type: CardType.values()) {
-	    		
-	    		Deck deck = new Deck(period, type);
+	    	for (int index=0; index<4; index++) {
+	    		Deck deck = new Deck(period, types[index]);
+	    		System.out.println("\n--- Nuovo deck --- P:"+period+", T: "+types[index]+"\n");
 	    		
 	    		for (int i=0; i< cardz.length;i++) {
 	    		
-	    			if ((cardz[i].getPeriod().equals(period)) && (cardz[i].getType().equals(type.getType()))) {
+	    			if ((cardz[i].getPeriod().equals(period)) && (cardz[i].getType().equals(types[index].getType()))) {
 	    				deck.addCard(cardz[i]);
+	    				System.out.println(cardz[i].getName()+"\n"+cardz[i].getCost().toString());
 	    			}
 	    		}
 	    		
+	    		System.out.println("\nDECK SIZE: "+deck.getSize());
 	    		board.getDecks().add(deck);
+	    		
+	    		
 	    	}
 	    }
 	    
