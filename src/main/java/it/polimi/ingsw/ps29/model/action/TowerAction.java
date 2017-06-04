@@ -29,6 +29,14 @@ public class TowerAction extends Action {
 	@Override
 	public boolean isPlaceable() {
 		// TODO Auto-generated method stub
+		/*System.out.println(move.getFamiliar().getTowerPower());
+		System.out.println(space.familiarHere(move.getFamiliar().getPlayerColor()));
+		System.out.println(space.isEnoughPowerful(move.getFamiliar().getTowerPower()+move.getServants()));
+		System.out.println(canAffordMalus());
+		System.out.println(canAffordCard());
+		System.out.println(enoughSlotSpace());
+		System.out.println(enoughVictoryPoints());*/
+		
 		return !space.familiarHere(move.getFamiliar().getPlayerColor()) 
 				&& space.isEnoughPowerful(move.getFamiliar().getTowerPower()+move.getServants()) 
 				&& canAffordMalus() 
