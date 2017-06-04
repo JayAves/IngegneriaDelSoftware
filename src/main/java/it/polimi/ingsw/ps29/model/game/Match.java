@@ -58,7 +58,7 @@ public class Match extends Observable{
 	    		
 	    			if ((cardz[i].getPeriod().equals(period)) && (cardz[i].getType().equals(types[index].getType()))) {
 	    				deck.addCard(cardz[i]);
-	    				System.out.println(cardz[i].getName()+"\n"+cardz[i].getCost().toString());
+	    				System.out.println(cardz[i].getName()+"\n"+cardz[i].getImmediateEffects().toString());
 	    			}
 	    		}
 	    		
