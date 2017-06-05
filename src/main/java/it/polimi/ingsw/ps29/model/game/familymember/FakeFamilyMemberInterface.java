@@ -10,9 +10,9 @@ public interface FakeFamilyMemberInterface {
 	
 	public int getCharacterTowerPower();
 	
-	public int getHarvestTowerPower();
+	public int getTerritoryTowerPower();
 	
-	public int getProductionTowerPower();
+	public int getBuildingTowerPower();
 	
 	public int getVenturesTowerPower();
 

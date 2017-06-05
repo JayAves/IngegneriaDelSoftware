@@ -11,8 +11,8 @@ public class Player {
 	private String name;
 	private Color color;
 	private PersonalBoard board;
-	private FamilyMember[] family; //familymember del package (nuovo) familymember
-	private FakeFamilyMemberInterface fakeFamiliar; //test per l'effetto empowerment, sarà da cancellare
+	private FamilyMember[] family; 
+	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
 	public ArrayList<Effect> specialPermanentEffects;
 	

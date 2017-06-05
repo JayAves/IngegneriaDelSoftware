@@ -18,7 +18,7 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
-import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
+import it.polimi.ingsw.ps29.model.space.TowerArea;
 import junit.framework.TestCase;
 
 public class ProvaTest extends TestCase {

@@ -20,11 +20,11 @@ public class FakeFamilyMember implements FakeFamilyMemberInterface{
 		return fakepower;
 	}
 	
-	public int getHarvestTowerPower(){
+	public int getTerritoryTowerPower(){
 		return fakepower;
 	}
 	
-	public int getProductionTowerPower(){
+	public int getBuildingTowerPower(){
 		return fakepower;
 	}
 	

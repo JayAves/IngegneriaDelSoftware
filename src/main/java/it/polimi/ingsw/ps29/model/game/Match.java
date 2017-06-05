@@ -39,6 +39,10 @@ public class Match extends Observable{
 		state= new RoundSetupState();
 		setPeriod(Period.FIRST);
 		setRound(1);
+		initDecks();	    
+	}
+	
+	private void initDecks () throws FileNotFoundException {
 		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
 	    GsonBuilder gcards = new GsonBuilder();
 	    gcards.registerTypeAdapter(Card.class, new CardAdapter());
@@ -50,28 +54,26 @@ public class Match extends Observable{
 	    Period[] periods= Period.values();
 	    CardType [] types = CardType.values();
 	    
+	    
 	    for (Period period : periods) {		//creo deck separati per periodo
 	    	
 	    	for (int index=0; index<4; index++) {
-	    		Deck deck = new Deck(period, types[index]);
-	    		System.out.println("\n--- Nuovo deck --- P:"+period+", T: "+types[index]+"\n");
 	    		
+	    		Deck deck = new Deck(period, types[index]);
 	    		for (int i=0; i< cardz.length;i++) {
 	    		
 	    			if ((cardz[i].getPeriod().equals(period)) && (cardz[i].getType().equals(types[index].getType()))) {
 	    				deck.addCard(cardz[i]);
-	    				System.out.println(cardz[i].getName()+"\n"+cardz[i].getImmediateEffects().toString());
 	    			}
 	    		}
 	    		
-	    		System.out.println("\nDECK SIZE: "+deck.getSize());
 	    		board.getDecks().add(deck);
 	    		
 	    		
 	    	}
 	    }
-	    
 	}
+	
 	
 	private ArrayList<Player> initPlayers (ArrayList<Player> players) throws FileNotFoundException {
 
@@ -102,27 +104,27 @@ public class Match extends Observable{
 	
 	public void gameEngine() {
 		
-		//sistemare state == null (sarebbe da assegnare correttamente endOfMatch)
 		while(!endOfMatch ) {
+			//viene gestita qui sotto la fase di azione, per comodità con il pattern observer observable
+			//con il match che per richiedere una nuova azione notifica il controller
 			if(state instanceof ActionsState){
-				String firstPlayer = board.getPlayers().get(0).getName();
+				String firstPlayer = board.getCurrentPlayer().getName();
 				
+				//in questo for avviene la fase Actions del gioco
 				for (int i=0; i<NUMBER_OF_FAMILIARS; i++){
 					board.setPlayersOrderMoved(false);
-					while(!board.getPlayers().get(0).getName().equals(firstPlayer)|| !board.isPlayersOrderMoved()){
+					//conclude il while quando tutti i giocatori hanno portato a termine una mossa
+					while(!board.getCurrentPlayer().getName().equals(firstPlayer)|| !board.isPlayersOrderMoved()) {
 						setChanged();
 						notifyObservers();
 					}
 				}
 			}
 			
-			if (state!= null)
-				state= state.doAction(round, board);
-				
-			
-			if (state==null)
+			//aggiorna lo stato del turno, permette di gestire tutte le altre fasi di turno
+			state= state.doAction(round, board);
+			if (state==null) //è stato completato l'ultimo round
 				endOfMatch=true;
-			
 		}
 		
 		//ciclo di calcolo punti vittoria
@@ -163,8 +165,5 @@ public class Match extends Observable{
 		return id;
 	}
 
-	
 
-	
-	
 }

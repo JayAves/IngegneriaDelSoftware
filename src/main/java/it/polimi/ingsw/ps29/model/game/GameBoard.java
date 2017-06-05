@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
-import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
+import it.polimi.ingsw.ps29.model.space.TowerArea;
 
 public class GameBoard{
 	
@@ -20,6 +20,7 @@ public class GameBoard{
 	private HashMap <String, ActionSpace> spaces;
 	private ArrayList<Player> playersOrder;
 	private boolean playersOrderMoved;
+	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
 	
 	public boolean isPlayersOrderMoved() {
@@ -39,13 +40,13 @@ public class GameBoard{
 		dices.add(new Dice(DiceColor.WHITE));
 		dices.add(new Dice(DiceColor.ORANGE));
 		playersOrder = players;
+		playersOrderMoved = false;
 		decks= new ArrayList<Deck>();
 		initSpaces();
 	}
 	
 	
 	public void initSpaces () {
-		
 		
 		ArrayList<Resource> temporaryBonus1= new ArrayList<Resource>();
 		Resource r=new Resource("coin",2);
@@ -106,16 +107,6 @@ public class GameBoard{
 		return spaces;
 	}
 	
-	
-	
-	/*public StateOfActionIdentifier getStateOfAction () {
-		return stateOfAction;
-	}
-	
-	public void setStateOfAction (StateOfActionIdentifier newState) {
-		stateOfAction = newState; 
-	}*/
-	
 	public void changePlayerOrder () {
 		Player temp = playersOrder.get(0);
 		playersOrder.remove(0);
@@ -139,5 +130,9 @@ public class GameBoard{
 	
 	public ArrayList<Deck> getDecks(){
 		return decks;
+	}
+	
+	public Player getCurrentPlayer (){
+		return playersOrder.get(0);
 	}
 }

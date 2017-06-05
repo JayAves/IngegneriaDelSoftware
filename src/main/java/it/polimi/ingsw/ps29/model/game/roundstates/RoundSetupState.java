@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
+import it.polimi.ingsw.ps29.model.space.TowerArea;
 
 public class RoundSetupState implements RoundState {
 

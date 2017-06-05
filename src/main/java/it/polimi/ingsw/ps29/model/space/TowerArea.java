@@ -1,12 +1,9 @@
-package it.polimi.ingsw.ps29.model.space.tower;
+package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.space.ActionSpace;
-import it.polimi.ingsw.ps29.model.space.BonusActionSpace;
-import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 
 public class TowerArea implements ActionSpace {
 	

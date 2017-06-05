@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.space.tower.TowerArea;
+import it.polimi.ingsw.ps29.model.space.TowerArea;
 
 public class TowerAction extends Action {
 
@@ -45,10 +45,10 @@ public class TowerAction extends Action {
 			int power;
 			switch (move.getSpace()) {
 				case "territoryTower":
-					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestTowerPower() + move.getServants();
+					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getTerritoryTowerPower() + move.getServants();
 					break;
 				case "buildingTower":
-					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionTowerPower() + move.getServants();
+					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getBuildingTowerPower() + move.getServants();
 					break;
 				case "characterTower":
 					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getCharacterTowerPower() + move.getServants();

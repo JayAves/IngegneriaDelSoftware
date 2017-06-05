@@ -29,13 +29,13 @@ public class FakeFamilyMemberDecorator implements FakeFamilyMemberInterface {
 	}
 
 	@Override
-	public int getHarvestTowerPower() {
-		return decoratedFakeFamilyMember.getHarvestTowerPower();
+	public int getTerritoryTowerPower() {
+		return decoratedFakeFamilyMember.getTerritoryTowerPower();
 	}
 
 	@Override
-	public int getProductionTowerPower() {
-		return decoratedFakeFamilyMember.getProductionTowerPower();
+	public int getBuildingTowerPower() {
+		return decoratedFakeFamilyMember.getBuildingTowerPower();
 	}
 
 	@Override

@@ -10,8 +10,8 @@ public class FakeFamilyMemberHarvestTowerDecorator extends FakeFamilyMemberDecor
 	}
 
 	@Override
-	public int getHarvestTowerPower() {
-		return super.getHarvestTowerPower() + hTowerModifier;
+	public int getTerritoryTowerPower() {
+		return super.getTerritoryTowerPower() + hTowerModifier;
 	}
 
 

@@ -10,8 +10,8 @@ public class FakeFamilyMemberProductionTowerDecorator extends FakeFamilyMemberDe
 	}
 
 	@Override
-	public int getProductionTowerPower() {
-		return super.getProductionTowerPower() + pTowerModifier;
+	public int getBuildingTowerPower() {
+		return super.getBuildingTowerPower() + pTowerModifier;
 	}
 
 
