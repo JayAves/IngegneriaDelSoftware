@@ -93,7 +93,7 @@ public class TowerAction extends Action {
 		//aggiungo l'effetto permanente della carta appena pescata dal giocatore alla classe BonusAndMalusPlayer - da implementare
 	
 	private boolean canAffordMalus() {
-		return (move.getPlayer().getPersonalBoard().getResources().getResource((String)"coin").getAmount()>=3);
+		return (move.getPlayer().getPersonalBoard().getResources().getResource("coin").getAmount()>=3);
 	}
 	
 	private boolean canAffordCard() {

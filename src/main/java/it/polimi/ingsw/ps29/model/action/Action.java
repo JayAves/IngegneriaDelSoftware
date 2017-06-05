@@ -42,7 +42,7 @@ public abstract class Action {
 				state = new PerformedState();
 			System.out.println("Il giocatore "+ move.getPlayer().getName()+" ha eseguito correttamente l'azione su "+ move.getSpace()+ ",piazzando il familiare"+move.getFamiliar().toString()+" e spendendo "+move.getServants()+" servitori");
 		}
-		
+		System.out.println(move.getPlayer().getPersonalBoard().getResources().getResource("coin"));
 		state = state.afterAction(model);
 		
 		/* 

@@ -53,7 +53,6 @@ public class App
     	
     	model = new Match (createPlayers (playersName));
     	
-    	
     	controller = new Controller (model);
     	
     	for (String name: playersName) {
@@ -79,28 +78,15 @@ public class App
     }
     
     private static ArrayList<Player> createPlayers (ArrayList<String> names) throws FileNotFoundException {
-    	ArrayList<Player> players = new ArrayList<Player> ();
     	
+    	ArrayList<Player> players = new ArrayList<Player> ();
     	Color[] colors = Color.values();
     	
-    	BufferedReader tiles = new BufferedReader(new FileReader("src/main/java/personalbonustile.json"));
-	    GsonBuilder gtiles = new GsonBuilder();
-	    
-	    gtiles.registerTypeAdapter(Resource.class, new ResourceAdapter());
-	    PersonalBonusTile[] tilez = gtiles.create().fromJson(tiles, PersonalBonusTile[].class);
+    	for(int i=0; i<names.size(); i++) 
+    		players.add(new Player(names.get(i), colors[i], new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ()))); // assegno una bonusTile casuale
     	
-	    
-    	for(int i=0; i<names.size(); i++) {
-    		int rnd= new Random().nextInt(tilez.length);
-    		players.add(new Player(names.get(i), colors[i], tilez[rnd])); // assegno una bonusTile casuale
-    	}
     	
-    	int startingCoins=5; //distribuisco le monete iniziali
-    	
-    	for (int i=0; i<players.size(); i++) {
-    		players.get(i).getPersonalBoard().getResources().updateResource(new Resource("coin",startingCoins));
-    		startingCoins++;
-    	}
     	return players;
+    	
     }
 }

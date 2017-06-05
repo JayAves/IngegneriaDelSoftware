@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 
 import com.google.gson.GsonBuilder;
 
@@ -33,6 +34,7 @@ public class Match extends Observable{
 	
 	public Match (ArrayList<Player> players) throws FileNotFoundException {
 		id++;
+		players = initPlayers(players);
 		board = new GameBoard(players);
 		state= new RoundSetupState();
 		setPeriod(Period.FIRST);
@@ -70,6 +72,33 @@ public class Match extends Observable{
 	    }
 	    
 	}
+	
+	private ArrayList<Player> initPlayers (ArrayList<Player> players) throws FileNotFoundException {
+
+    	
+    	BufferedReader tiles = new BufferedReader(new FileReader("src/main/java/personalbonustile.json"));
+	    GsonBuilder gtiles = new GsonBuilder();
+	    
+	    gtiles.registerTypeAdapter(Resource.class, new ResourceAdapter());
+	    PersonalBonusTile[] tilez = gtiles.create().fromJson(tiles, PersonalBonusTile[].class);
+ 
+	    
+    	for(int i=0; i<players.size(); i++) {
+    		int rnd= new Random().nextInt(tilez.length);
+    		players.get(i).setPersonalBonusTile(tilez[rnd]); // assegno una bonusTile casuale
+    	}
+    	
+    	int startingCoins=5; //distribuisco le monete iniziali
+    	
+    	for (int i=0; i<players.size(); i++) {
+    		players.get(i).getPersonalBoard().getResources().updateResource(new Resource("coin",startingCoins));
+    		startingCoins++;
+    	}
+    	
+    	return players;
+
+	}
+	
 	
 	public void gameEngine() {
 		

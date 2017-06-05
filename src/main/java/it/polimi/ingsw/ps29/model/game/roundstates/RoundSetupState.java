@@ -17,7 +17,6 @@ public class RoundSetupState implements RoundState {
 	@Override
 	public RoundState doAction(int roundNumber, GameBoard board) {
 		
-		
 		Period currentPeriod= getPeriod(roundNumber);
 		
 		CardType[] types= CardType.values();
@@ -39,6 +38,7 @@ public class RoundSetupState implements RoundState {
 					deck.removeCard(rnd);
 				}
 				((TowerArea) board.getSpace(types[i].getType()+"Tower")).fill(newCards);
+				
 				
 				}
 		}

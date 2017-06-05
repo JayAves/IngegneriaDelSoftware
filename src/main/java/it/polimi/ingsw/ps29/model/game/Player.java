@@ -62,6 +62,10 @@ public class Player {
 	public FamilyMember [] getFamily () {
 		return family;
 	}
+	
+	public void setPersonalBonusTile (PersonalBonusTile pbt) {
+		board.setTile(pbt);
+	}
 
 	/*
 	 FamilyMember neutralFamilyMember;

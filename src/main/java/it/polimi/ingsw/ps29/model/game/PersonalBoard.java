@@ -34,6 +34,10 @@ public class PersonalBoard {
 		// TODO Auto-generated method stub
 		return personalTile;
 	}
+	
+	public void setTile (PersonalBonusTile pbt) {
+		personalTile = pbt;
+	}
 
 	public Container getResources() {
 		return resources;
