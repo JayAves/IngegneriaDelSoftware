@@ -39,7 +39,7 @@ public class CouncilPalaceAction extends Action{
 		space.getQueue().addMember(move.getFamiliar());
 		ArrayList<Resource> councilBonus = new ArrayList<Resource> ();
 		councilBonus.add(new Coins(1));
-		councilBonus.add(new Privilege());
+		councilBonus.add(new Privilege(1));
 		//l'array andrebbe creato da un'altra parte, con le risorse caricate da file
 		GainResourcesEffect effect= new GainResourcesEffect(councilBonus);
 		effect.performEffect(move.getPlayer());
