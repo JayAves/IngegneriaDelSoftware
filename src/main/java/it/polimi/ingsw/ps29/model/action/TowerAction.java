@@ -37,12 +37,31 @@ public class TowerAction extends Action {
 		System.out.println(enoughSlotSpace());
 		System.out.println(enoughVictoryPoints());*/
 		
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) 
-				&& space.isEnoughPowerful(move.getFamiliar().getTowerPower()+move.getServants()) 
+		if (!space.familiarHere(move.getFamiliar().getPlayerColor()) 
 				&& canAffordMalus() 
 				&& canAffordCard()
 				&& enoughSlotSpace()
-				&& enoughVictoryPoints();
+				&& enoughVictoryPoints()) {
+			int power;
+			switch (move.getSpace()) {
+				case "territoryTower":
+					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestTowerPower() + move.getServants();
+					break;
+				case "buildingTower":
+					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionTowerPower() + move.getServants();
+					break;
+				case "characterTower":
+					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getCharacterTowerPower() + move.getServants();
+					break;
+				case "ventureTower":
+					power = move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getVenturesTowerPower() + move.getServants();
+					break;
+				default:
+					power = move.getFamiliar().getPower() + move.getServants();
+			}
+			return space.isEnoughPowerful(power);
+		}
+		return false;
 		
 	}
 

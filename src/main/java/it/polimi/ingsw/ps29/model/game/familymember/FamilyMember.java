@@ -23,9 +23,6 @@ public class FamilyMember implements FamilyMemberInterface{
 		this.playerColor = playerColor;
 	}
 	
-	//public int setPower()
-	// qui definiamo come associare il power in base al dado
-	
 	
 	public int getHarvestPower(){
 		 return getPower();

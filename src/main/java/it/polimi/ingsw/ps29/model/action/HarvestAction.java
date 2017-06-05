@@ -29,7 +29,8 @@ public class HarvestAction extends Action {
 
 	@Override
 	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(move.getFamiliar().getHarvestPower()+move.getServants());
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
+				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants());
 	}
 
 	@Override

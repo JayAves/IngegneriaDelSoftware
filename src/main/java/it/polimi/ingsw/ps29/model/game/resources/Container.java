@@ -15,7 +15,7 @@ public class Container {
 		resources.put("stone", new Resource("stone",2));
 	}
 	
-	public void updateResource (Resource res) {
+	public void updateResource (ResourceInterface res) {
 		if(resources.containsKey(res.getType())) 
 			resources.get(res.getType()).modifyAmount(res.getAmount());
 		else 
@@ -38,7 +38,7 @@ public class Container {
 		resources.put(res.getType(), res);
 	}
 	
-	public void swipeResource(Resource toSwipe, Resource swipeFor){
+	public void swipeResource(ResourceInterface toSwipe, ResourceInterface swipeFor){
 		updateResource(toSwipe);
 		updateResource(swipeFor);
 	}
