@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view;
+package it.polimi.ingsw.ps29.view.usermessages;
 
 public class UserExchange implements UserMessage {
 	int [] choice;

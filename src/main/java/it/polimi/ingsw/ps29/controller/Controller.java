@@ -19,9 +19,9 @@ import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.view.UserChoice;
-import it.polimi.ingsw.ps29.view.UserExchange;
 import it.polimi.ingsw.ps29.view.View;
+import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
+import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
 
 public class Controller implements Observer{
 	
@@ -42,7 +42,7 @@ public class Controller implements Observer{
 	}
 	
 	public void callCorrectView () {
-		View view = views.get(model.getBoard().getPlayers().get(0).getName());
+		View view = views.get(model.getBoard().getCurrentPlayer().getName());
 		state = state.beforeAction();
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 		if(state.getState().equals("to estabilish"))

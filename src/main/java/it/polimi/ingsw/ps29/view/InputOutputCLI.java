@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
 
 public class InputOutputCLI implements InputOutput {
 	

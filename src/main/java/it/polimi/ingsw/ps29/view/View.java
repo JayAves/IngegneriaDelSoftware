@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
 
 public class View extends Observable implements Observer {
 	

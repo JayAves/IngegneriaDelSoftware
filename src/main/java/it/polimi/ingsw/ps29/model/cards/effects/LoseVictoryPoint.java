@@ -33,7 +33,7 @@ public class LoseVictoryPoint extends EffectAboutResources {
 		int amount = 0;
 		if(typeCard == null) 
 			for(Resource res: resources) 
-				amount += player.getPersonalBoard().getResources().getResource(res.getType()).getAmount();
+				amount += player.getPersonalBoard().getSpecificResource(res.getType()).getAmount();
 			
 		else {
 			ArrayList<Card> cards = player.getPersonalBoard().getCards(typeCard.getType());
