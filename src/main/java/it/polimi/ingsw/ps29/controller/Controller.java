@@ -22,6 +22,7 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
 import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
+import it.polimi.ingsw.ps29.view.usermessages.UserMessage;
 
 public class Controller implements Observer{
 	
@@ -62,14 +63,11 @@ public class Controller implements Observer{
 		//la notifica può arrivare da fonti diverse: view e model
 		//se arriva dalla view può riguardare azione standard, azione bonus, scelta exchange, scelta scomunica
 		//se arriva dal model è una richiesta di proseguire con la richiesta dell'azione
+		VisitorMessages visitor = new VisitorMessages();
 		if(o instanceof Match)
 			callCorrectView();
 		else if (o instanceof View) {
-			if(arg instanceof UserChoice)
-				handleInputAction ((UserChoice)arg); //azione standard, azione bonus
-			else if (arg instanceof UserExchange) {}
-				//exchangeAction (); //metodo da implementare
-			//else if per la scomunica
+			((UserMessage)arg).accept(visitor);
 		}
 		else 
 			throw new IllegalArgumentException();
@@ -121,6 +119,18 @@ public class Controller implements Observer{
 			state = action.getState();
 			//recupero lo stato dopo che ho eseguito le istruzioni
 		}
+	}
+	
+	public class VisitorMessages {
+		
+		public void visit (UserChoice msg) {
+			handleInputAction(msg);
+		}
+		
+		public void visit (UserExchange msg) {
+			//creare metodo per lo scambio risorse
+		}
+
 	}
 	
 }

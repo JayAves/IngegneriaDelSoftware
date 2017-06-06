@@ -29,6 +29,11 @@ public class UserChoice implements UserMessage {
 	public void setChoices(int[] choices) {
 		this.choices = choices;
 	}
+
+	@Override
+	public void accept(it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) {
+		visitor.visit(this);
+	}
 	
 	
 }

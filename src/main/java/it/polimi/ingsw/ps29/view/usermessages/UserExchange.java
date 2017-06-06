@@ -17,6 +17,13 @@ public class UserExchange implements UserMessage {
 	public int getChoice (int index) {
 		return choice[index];
 	}
+
+	@Override
+	public void accept(it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) {
+		visitor.visit(this);
+		
+	}
+
 	
 	
 }
