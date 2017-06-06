@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps29.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
@@ -10,6 +12,7 @@ import java.util.Vector;
 public class SocketConnectionInServer implements Observer {
 
 	 private Socket socket;
+	 private RoomCreator roomCreator;
 
 	    
 	    private Vector<ClientThread> clients; // salvo i clients
@@ -78,6 +81,9 @@ public class SocketConnectionInServer implements Observer {
 	            try {
 	            	
 	            	SocketConnectionInServer.this.ssocket = new ServerSocket(SocketConnectionInServer.this.port);
+	            	Calendar now = Calendar.getInstance();
+	    		    SimpleDateFormat formatter = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+	    		    System.out.println("SocketHandler is up now : " + formatter.format(now.getTime()));
 	            	
 	            	while (this.listen) { //devo aggiungere controllo sui 4 giocatori
 	            		
@@ -88,6 +94,7 @@ public class SocketConnectionInServer implements Observer {
 	                        Thread t = new Thread(SocketConnectionInServer.this.clientThread);
 	                        SocketConnectionInServer.this.clientThread.addObserver(SocketConnectionInServer.this);
 	                        SocketConnectionInServer.this.clients.addElement(SocketConnectionInServer.this.clientThread);
+	                        //passo riferimento del thread a roomCreator
 	                        t.start();
 	                    } catch (IOException ioe) {
 	                        //errore in ClientThread
@@ -111,4 +118,9 @@ public class SocketConnectionInServer implements Observer {
 	            this.listen = false;
 	        }
 	    }
-	}
+	  		/*codice extra
+	  		 * System.out.println("in attesa su " + this.port);
+			Socket socket = serverSocket.accept();
+			System.out.println("ricevuta connessione: "+ socket.getInetAddress() + ":" +socket.getPort());
+			(new SocketClientHandler(socket)).start(); */
+}
