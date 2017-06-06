@@ -12,23 +12,24 @@ import java.util.Vector;
 public class SocketGathererInServer extends Observable implements Observer {
 
 	 private Socket socket;
-	 
-
+	 private Vector<ClientThread> clients; // salvo i clients
+	 private ServerSocket ssocket;  //Server Socket
+	 private StartServerThread sst; //inner class
+	 private ClientThread clientThread;
+	 private int port;
+	 private boolean listening; 
 	    
-	    private Vector<ClientThread> clients; // salvo i clients
-	    private ServerSocket ssocket;  //Server Socket
-	    private StartServerThread sst; //inner class
-	    private ClientThread clientThread;
-	    private int port;
-	    private boolean listening; 
 
-	    public SocketGathererInServer() {
-	        this.clients = new Vector<ClientThread>();
+	 public SocketGathererInServer() {
+	       
+		 	this.clients = new Vector<ClientThread>();
 	        this.port = 5555; //default port
 	        this.listening = false;
+	      
+	        
 	    }
 
-	    public void startServer() {
+	 public void startServer() {
 	        if (!listening) {
 	            this.sst = new StartServerThread();
 	            this.sst.start();
@@ -94,7 +95,8 @@ public class SocketGathererInServer extends Observable implements Observer {
 	                        Thread t = new Thread(SocketGathererInServer.this.clientThread);
 	                        SocketGathererInServer.this.clientThread.addObserver(SocketGathererInServer.this);
 	                        SocketGathererInServer.this.clients.addElement(SocketGathererInServer.this.clientThread);
-	                        //passo riferimento del thread a roomCreator
+	                        setChanged();
+	                        notifyObservers(SocketGathererInServer.this.clientThread);
 	                        t.start();
 	                    } catch (IOException ioe) {
 	                        //errore in ClientThread

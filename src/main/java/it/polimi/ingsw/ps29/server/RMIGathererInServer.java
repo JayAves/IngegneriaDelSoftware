@@ -2,17 +2,13 @@ package it.polimi.ingsw.ps29.server;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Observable;
 
-public class RMIGathererInServer extends UnicastRemoteObject implements ServerRMI {
+public class RMIGathererInServer extends Observable  {
 
-	protected RMIGathererInServer() throws RemoteException {
+	protected RMIGathererInServer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	// quando aggiungo player faccio notify() al roomCreator
 }
