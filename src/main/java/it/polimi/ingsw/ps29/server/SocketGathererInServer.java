@@ -9,10 +9,10 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
 
-public class SocketConnectionInServer implements Observer {
+public class SocketGathererInServer extends Observable implements Observer {
 
 	 private Socket socket;
-	 private RoomCreator roomCreator;
+	 
 
 	    
 	    private Vector<ClientThread> clients; // salvo i clients
@@ -22,7 +22,7 @@ public class SocketConnectionInServer implements Observer {
 	    private int port;
 	    private boolean listening; 
 
-	    public SocketConnectionInServer() {
+	    public SocketGathererInServer() {
 	        this.clients = new Vector<ClientThread>();
 	        this.port = 5555; //default port
 	        this.listening = false;
@@ -80,20 +80,20 @@ public class SocketConnectionInServer implements Observer {
 	            this.listen = true;
 	            try {
 	            	
-	            	SocketConnectionInServer.this.ssocket = new ServerSocket(SocketConnectionInServer.this.port);
+	            	SocketGathererInServer.this.ssocket = new ServerSocket(SocketGathererInServer.this.port);
 	            	Calendar now = Calendar.getInstance();
 	    		    SimpleDateFormat formatter = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 	    		    System.out.println("SocketHandler is up now : " + formatter.format(now.getTime()));
 	            	
 	            	while (this.listen) { //devo aggiungere controllo sui 4 giocatori
 	            		
-	            		SocketConnectionInServer.this.socket = SocketConnectionInServer.this.ssocket.accept();
+	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
 	                    System.out.println("Client connected");
 	                    try {
-	                        SocketConnectionInServer.this.clientThread = new ClientThread(SocketConnectionInServer.this.socket);
-	                        Thread t = new Thread(SocketConnectionInServer.this.clientThread);
-	                        SocketConnectionInServer.this.clientThread.addObserver(SocketConnectionInServer.this);
-	                        SocketConnectionInServer.this.clients.addElement(SocketConnectionInServer.this.clientThread);
+	                        SocketGathererInServer.this.clientThread = new ClientThread(SocketGathererInServer.this.socket);
+	                        Thread t = new Thread(SocketGathererInServer.this.clientThread);
+	                        SocketGathererInServer.this.clientThread.addObserver(SocketGathererInServer.this);
+	                        SocketGathererInServer.this.clients.addElement(SocketGathererInServer.this.clientThread);
 	                        //passo riferimento del thread a roomCreator
 	                        t.start();
 	                    } catch (IOException ioe) {
@@ -109,7 +109,7 @@ public class SocketConnectionInServer implements Observer {
 	        public void stopServerThread() {
 	            try {
 	                
-	            	SocketConnectionInServer.this.ssocket.close();
+	            	SocketGathererInServer.this.ssocket.close();
 	            }
 	            catch (IOException ioe) {
 	                //unable to close ServerSocket

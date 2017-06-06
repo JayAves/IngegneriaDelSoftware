@@ -3,9 +3,9 @@ package it.polimi.ingsw.ps29.server;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class RMIConnectionInServer extends UnicastRemoteObject implements ServerRMI {
+public class RMIGathererInServer extends UnicastRemoteObject implements ServerRMI {
 
-	protected RMIConnectionInServer() throws RemoteException {
+	protected RMIGathererInServer() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

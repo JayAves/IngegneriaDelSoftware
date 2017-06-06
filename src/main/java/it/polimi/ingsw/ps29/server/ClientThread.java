@@ -60,7 +60,7 @@ public class ClientThread extends Observable implements Runnable {
 
         //notify the observers for cleanup 
         this.setChanged();             
-        this.notifyObservers(this);         
+        this.notifyObservers(this); 
         }
     /*Codice extra
      * BufferedReader bufferedReader =
