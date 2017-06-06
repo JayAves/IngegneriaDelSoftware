@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.PersonalBonusTile;
 import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.resources.Coins;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.view.View;
 

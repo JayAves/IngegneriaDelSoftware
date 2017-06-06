@@ -8,24 +8,20 @@ import java.util.Calendar;
 
 public class EchoMultiServer {
 
+	int port;
+	ServerSocket serverSocket;
+	Calendar now;
 	public EchoMultiServer(int port) {
 		
+		this.port=port;
 		try {
 		
-			ServerSocket serverSocket = new ServerSocket(port);
-			Calendar now = Calendar.getInstance();
+			serverSocket = new ServerSocket(port);
+			now = Calendar.getInstance();
 		    SimpleDateFormat formatter = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 		    System.out.println("It is now : " + formatter.format(now.getTime()));
 		
-			while (true) {
-				
-				System.out.println("in attesa su " + port);
-				Socket socket = serverSocket.accept();
-				System.out.println("ricevuta connessione: "+ socket.getInetAddress() + ":" +socket.getPort());
-				(new SocketClientHandler(socket)).start();
-		
-			}
-			} catch (IOException e) {
+		} catch (IOException e) {
 				 System.out.println("Could not create server socket. Quitting.");
 		         System.exit(-1);
 				}
@@ -39,5 +35,16 @@ public class EchoMultiServer {
 		riferimenti alle socket o agli stream
 		Oppure il thread che si occupa del client deve implementare un metodo che chiude la socket, richiamabile dal thread principale
 		 */
+	public void run() throws IOException{
+		
+		while (true) {
+			
+			System.out.println("in attesa su " + this.port);
+			Socket socket = serverSocket.accept();
+			System.out.println("ricevuta connessione: "+ socket.getInetAddress() + ":" +socket.getPort());
+			(new SocketClientHandler(socket)).start();
+	
+		}
+	}
 
 }
