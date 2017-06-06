@@ -8,10 +8,6 @@ public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 		super();
 		this.decoratedFamilyMember = decoratedFamilyMember;
 	}
-    
-  //@Override
-  //public int setPower(){
-  //    qui fa una roba del tipo decoratedFamilyMember.setPower();        
 
 	public int getPower() {
 		return decoratedFamilyMember.getPower();
@@ -41,7 +37,6 @@ public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 	public int getCouncilPower() {
 		return decoratedFamilyMember.getCouncilPower();
 	}
-	
 	
 
 }

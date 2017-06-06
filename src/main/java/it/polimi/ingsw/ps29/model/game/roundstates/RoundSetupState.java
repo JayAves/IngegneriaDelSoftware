@@ -17,31 +17,7 @@ public class RoundSetupState implements RoundState {
 	@Override
 	public RoundState doAction(int roundNumber, GameBoard board) {
 		
-		Period currentPeriod= getPeriod(roundNumber);
-		
-		CardType[] types= CardType.values();
-		
-		for (int i=0;i<types.length;i++) { //per ogni tipo di carta
-		
-			if ((!types[i].getType().equalsIgnoreCase(CardType.ALL.getType()))
-					&& (!types[i].getType().equalsIgnoreCase(CardType.EXCOMMUNICATION.getType()))){
-			
-				Deck deck= board.getSpecificDeck(types[i], currentPeriod);
-				
-				ArrayList<Card> newCards= new ArrayList<Card>();
-				
-				for (int j=0;j<4;j++) {	//scelgo 4 carte a caso dal deck
-					
-					int rnd= new Random().nextInt(deck.getSize());
-					
-					newCards.add(deck.getCard(rnd));
-					deck.removeCard(rnd);
-				}
-				((TowerArea) board.getSpace(types[i].getType()+"Tower")).fill(newCards);
-				
-				
-				}
-		}
+		initDecks (roundNumber, board);
 		
 		for(Dice dice: board.getDices()) {
 			dice.rollDice();
@@ -54,6 +30,34 @@ public class RoundSetupState implements RoundState {
 	
 		
 		return new ActionsState ();
+		
+	}
+	
+	private void initDecks (int roundNumber, GameBoard board) {
+		Period currentPeriod= getPeriod(roundNumber);
+		CardType[] types= CardType.values();
+		
+		for (int i=0;i<types.length;i++) { //per ogni tipo di carta
+		
+			if ((!types[i].getType().equalsIgnoreCase(CardType.ALL.getType()))
+					&& (!types[i].getType().equalsIgnoreCase(CardType.EXCOMMUNICATION.getType()))){
+			
+				Deck deck= board.getSpecificDeck(types[i], currentPeriod);
+				ArrayList<Card> newCards= new ArrayList<Card>();
+				
+				for (int j=0;j<4;j++) {	//scelgo 4 carte a caso dal deck
+					
+					int rnd= new Random().nextInt(deck.getSize());
+					newCards.add(deck.getCard(rnd));
+					deck.removeCard(rnd);
+				}
+				
+				// fill della torre con il deck creato
+				((TowerArea) board.getSpace(types[i].getType()+"Tower")).fill(newCards);
+				
+				
+			}
+		}
 		
 	}
 	

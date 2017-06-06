@@ -3,11 +3,13 @@ package it.polimi.ingsw.ps29.model.DTO;
 import java.util.HashMap;
 
 public class PersonalBoardDTO {
-	private HashMap <String, CardDTO> cards;
-	private HashMap <String, ResourceDTO> resources;
-	private PersonalBonusTileDTO tile;
+	String name;
+	HashMap <String, CardDTO> cards;
+	HashMap <String, ResourceDTO> resources;
+	PersonalBonusTileDTO tile;
 	
-	public PersonalBoardDTO(PersonalBonusTileDTO tileDTO) {
+	public PersonalBoardDTO(String name, PersonalBonusTileDTO tileDTO) {
+		this.name = name;
 		cards = new HashMap <String, CardDTO> ();
 		resources = new HashMap <String, ResourceDTO> ();
 		tile = tileDTO;
@@ -19,16 +21,19 @@ public class PersonalBoardDTO {
 	
 	public void insertResource (ResourceDTO res) {
 		if(resources.containsKey(res.getType())) {
-			int quan = resources.remove(res.getType().toString()).getAmount()+res.getAmount();
-			resources.put(res.getType().toString(), new ResourceDTO(res.getType(), quan));
+			int quan = resources.remove(res.getType()).getAmount()+res.getAmount();
+			resources.put(res.getType(), new ResourceDTO(res.getType(), quan));
 		} else
-			resources.put(res.getType().toString(), res);
+			resources.put(res.getType(), res);
 	}
 
 	@Override
 	public String toString() {
-		return "PersonalBoardDTO [cards=" + cards + ", resources=" + resources + ", tile=" + tile + "]";
+		return "PersonalBoardDTO [name=" + name + ", cards=" + cards + ", resources=" + resources + ", tile=" + tile
+				+ "]";
 	}
+
+	
 	
 	
 	

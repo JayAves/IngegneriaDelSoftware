@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.action.actionstates.BonusActionState;
+import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -118,6 +119,9 @@ public class Controller implements Observer{
 			action.actionHandler();
 			state = action.getState();
 			//recupero lo stato dopo che ho eseguito le istruzioni
+			
+			if(state.equals(StateOfActionIdentifier.PERFORMED))
+				model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
 		}
 	}
 	

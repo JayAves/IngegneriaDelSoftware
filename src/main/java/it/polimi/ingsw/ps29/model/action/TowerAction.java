@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
@@ -38,10 +39,8 @@ public class TowerAction extends Action {
 		System.out.println(enoughVictoryPoints());*/
 		
 		if (!space.familiarHere(move.getFamiliar().getPlayerColor()) 
-				&& canAffordMalus() 
-				&& canAffordCard()
-				&& enoughSlotSpace()
-				&& enoughVictoryPoints()) {
+		&& canAffordMalus() && canAffordCard()&& enoughSlotSpace()
+		&& enoughVictoryPoints() && !move.getFamiliar().getBusy()) {
 			int power;
 			switch (move.getSpace()) {
 				case "territoryTower":
@@ -67,17 +66,18 @@ public class TowerAction extends Action {
 
 	@Override
 	public void performAction() {
-		// TODO Auto-generated method stub
-		
 		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
 		
-		if (!space.isEmpty())
-			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monetef
+		if (!space.isEmpty()) {
+			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monete
+			model.infoForView.getBoard(move.getPlayer().getName()).insertResource(new ResourceDTO ("coin", -3));
+		}
+			
 		
 		if(move.getFloor()>2) {
 			GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal piano, se non ne ha aggiungo null
 		
-			effect.performEffect(move.getPlayer()); //aggiungo le risorse al player, dobbiamo gestire il caso in cui non ci siano risorse
+			effect.performEffect(move.getPlayer()); //aggiungo le risorse al player
 		}
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
@@ -89,6 +89,7 @@ public class TowerAction extends Action {
 		for(Resource res: discountedCosts) { //pago costi
 			
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
+			model.infoForView.getBoard(move.getPlayer().getName()).insertResource(new ResourceDTO (res.getType(), res.getAmount()));
 		
 		}
 		
@@ -119,13 +120,15 @@ public class TowerAction extends Action {
 		
 		ArrayList<Resource> discountedCost=space.takeCard().getCost();
 		
-		highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
+		if(move.getFloor()>2)
+			highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
 		
 		applyDiscounts(discountedCost);
 		
 		for(Resource res: discountedCost) {
 			
-			if (res.getAmount()> move.getPlayer().getPersonalBoard().getResources().getResource(res.getType()).getAmount()) return false; 
+			if (res.getAmount()> move.getPlayer().getPersonalBoard().getSpecificResource(res.getType()).getAmount()) 
+				return false; 
 			
 			}
 		
@@ -157,16 +160,16 @@ public class TowerAction extends Action {
 			switch (size) {
 			
 			case 2:
-				return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=1);
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=1);
 			
 			case 3:
-				return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=4);
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=4);
 			
 			case 4:
-				return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=10);
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=10);
 				
 			case 5:
-					return(move.getPlayer().getPersonalBoard().getResources().getResource("territory").getAmount()>=20);	
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=20);	
 
 			default:
 				return true;
@@ -175,7 +178,8 @@ public class TowerAction extends Action {
 			
 		}
 		
-		else return true;
+		else 
+			return true;
 	}
 	
 	private void applyDiscounts( ArrayList<Resource> costs) {
@@ -188,7 +192,9 @@ public class TowerAction extends Action {
 					
 					for (Resource source: costs) {
 						
-						if (res.getType()==source.getType()) source.modifyAmount(-res.getAmount());
+						if (res.getType()==source.getType()) 
+							
+							source.modifyAmount(-res.getAmount());
 					
 					}
 				}

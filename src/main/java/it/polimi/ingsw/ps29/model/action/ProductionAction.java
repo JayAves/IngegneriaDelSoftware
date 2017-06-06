@@ -28,7 +28,7 @@ public class ProductionAction extends Action {
 
 	@Override
 	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && !move.getFamiliar().getBusy() && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
 	}
 
@@ -49,7 +49,8 @@ public class ProductionAction extends Action {
 		state = new AskAboutExchangeState(0, importedSlot, move.getFamiliar().getProductionPower());
 		/*for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
-				if (move.getFamiliar().getProductionPower()> ((BuildingCard)card).getProductionForce()) {
+				if (move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
+				 ((BuildingCard)card).getProductionForce()) {
 					if(!(state instanceof AskAboutExchangeState))
 						state = new AskAboutExchangeState(0);
 					else 
@@ -58,6 +59,7 @@ public class ProductionAction extends Action {
 				}
 			}
 		}*/
+		move.getFamiliar().setBusy(true);
 		
 	}
 	

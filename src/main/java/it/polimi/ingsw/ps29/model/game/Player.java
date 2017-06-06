@@ -21,15 +21,19 @@ public class Player {
 		this.name = name;
 		this.color = color;
 		this.board = new PersonalBoard(pbt);
+		initFamily();
+		excommunication = new ExcommunicationCard [3];
+		specialPermanentEffects= new ArrayList<Effect>();
+	}
+	
+	public void initFamily () {
 		family = new FamilyMember [4];
 		family[0] = new FamilyMember (DiceColor.BLACK, color); 
 		family[1] = new FamilyMember(DiceColor.ORANGE, color);
 		family[2] = new FamilyMember(DiceColor.WHITE, color);
 		family[3] = new FamilyMember(DiceColor.NEUTRAL, color);
 		fakeFamiliar = new FakeFamilyMember();
-		excommunication = new ExcommunicationCard [3];
-		specialPermanentEffects= new ArrayList<Effect>();
-		//initializeStates();
+		
 	}
 	
 	public String getName() {
@@ -38,10 +42,10 @@ public class Player {
 	
 	
 	public FamilyMember getFamiliarByColor (DiceColor color) {
-		for (FamilyMember member: family) {
+		for (FamilyMember member: family) 
 			if(member.getFamiliarColor()==color)
 				return member;
-		}
+		
 		return null;
 	}
 	
@@ -69,60 +73,5 @@ public class Player {
 		board.setTile(pbt);
 	}
 
-	/*
-	 FamilyMember neutralFamilyMember;
-     FamilyMember orangeFamilyMember;
-     FamilyMember blackFamilyMember;
-     FamilyMember whiteFamilyMember;
-     */
-
-     /*private PlayerState HarvestState;
-     private PlayerState ProductionState;
-     private PlayerState CTowerState;
-     private PlayerState HTowerState;
-     private PlayerState PTowerState;
-     private PlayerState VTowerState;
-     
-     public void initializeStates() {
-    	 HarvestState = new Free();
-    	 ProductionState = new Free();
-    	 CTowerState = new Free();
-    	 HTowerState = new Free();
-    	 PTowerState = new Free();
-    	 VTowerState = new Free();
-     }
-     
-     
-     
-     
-     /*
-     public void checkPlayersFamiliarsInThisSpace(){
-
-     public FamilyMember getSelectedFamilyMember(String member) {
-            
-            switch (member){
-                case "neutral" return neutralFamilyMember;
-                               break;
-                case "orange"  return orangeFamilyMember; 
-                               break;
-                case "black"   return balckFamilyMember;
-                               break;
-                case "white"   return whiteFamilyMember;
-                               break;
-                               
-    }
-
-
-    public void resetStates() {
-    
-        HarvestState = new Free();
-        ProductionState = new Free();
-        CTowerState = new Free();
-        HTowerState = newFree();
-        
-        }
-        
-	 */
-	
 
 }

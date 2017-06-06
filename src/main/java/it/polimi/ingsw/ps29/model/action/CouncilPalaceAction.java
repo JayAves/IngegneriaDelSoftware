@@ -30,8 +30,7 @@ public class CouncilPalaceAction extends Action{
 	@Override
 	public boolean isPlaceable() {
 		// TODO Auto-generated method stub
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
-				move.getFamiliar().getPower() + move.getServants());
+		return space.isEnoughPowerful(move.getFamiliar().getPower() + move.getServants()) && !move.getFamiliar().getBusy();
 	}
 
 	@Override
@@ -42,9 +41,10 @@ public class CouncilPalaceAction extends Action{
 		councilBonus.add(new Coins(1));
 		councilBonus.add(new Privilege(1));
 		//l'array andrebbe creato da un'altra parte, con le risorse caricate da file
+		
 		GainResourcesEffect effect= new GainResourcesEffect(councilBonus);
 		effect.performEffect(move.getPlayer());
-		
+		move.getFamiliar().setBusy(true);
 		
 	}
 	

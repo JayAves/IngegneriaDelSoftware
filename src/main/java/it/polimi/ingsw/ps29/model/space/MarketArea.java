@@ -39,10 +39,4 @@ public class MarketArea implements ActionSpace {
 		
 	}
 	
-	/*
-	 * public ArrayList <Gift> getGifts(){
-	 *     return  slot.getGift();
-	 * }
-	 */
-
 }

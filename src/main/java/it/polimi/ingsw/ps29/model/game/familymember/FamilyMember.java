@@ -4,13 +4,6 @@ import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 public class FamilyMember implements FamilyMemberInterface{
-	
-	//enum Color?
-	
-	@Override
-	public String toString() {
-		return " Familiare di potere " + power + " e colore " + familiarColor + " ";
-	}
 
 	private int power;
 	private boolean busy;
@@ -69,4 +62,9 @@ public class FamilyMember implements FamilyMemberInterface{
 		return busy;
 	}
 	
+	@Override
+	public String toString() {
+		return "FamilyMember [power=" + power + ", busy=" + busy + ", familiarColor=" + familiarColor + ", playerColor="
+				+ playerColor + "]";
+	}
 }

@@ -9,6 +9,10 @@ import java.util.Random;
 
 import com.google.gson.GsonBuilder;
 
+import it.polimi.ingsw.ps29.model.DTO.GameBoardDTO;
+import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
+import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.model.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
@@ -30,6 +34,7 @@ public class Match extends Observable{
 	private int round;
 	public boolean endOfMatch= false;
 	private RoundState state;
+	public InfoDTO infoForView;
 	
 	
 	public Match (ArrayList<Player> players) throws FileNotFoundException {
@@ -37,9 +42,19 @@ public class Match extends Observable{
 		players = initPlayers(players);
 		board = new GameBoard(players);
 		state= new RoundSetupState();
-		setPeriod(Period.FIRST);
-		setRound(1);
-		initDecks();	    
+		period = Period.FIRST;
+		round = 1;
+		initDecks();
+		createDTO (players);
+	}
+	
+	private void createDTO (ArrayList<Player> players) {
+		ArrayList <PersonalBoardDTO> playerBoardDTO = new ArrayList<PersonalBoardDTO> ();
+		for (Player player: players){
+			PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO (player.getPersonalBoard().getPersonalBonusTile().toString());
+			playerBoardDTO.add(new PersonalBoardDTO (player.getName(), tileDTO));
+		}
+		infoForView = new InfoDTO (new GameBoardDTO (),playerBoardDTO);
 	}
 	
 	private void initDecks () throws FileNotFoundException {
@@ -134,31 +149,13 @@ public class Match extends Observable{
 	public GameBoard getBoard() {
 		return board;
 	}
-	
-	/*
-	public GameBoard getBoardForView () {
-		return board.clone ();
-	}
-	*/
-	public void informView () {
-		setChanged();
-		notifyObservers(/*getBoardForView()*/);
-	}
 
 	public Period getPeriod() {
 		return period;
 	}
 
-	public void setPeriod(Period period) {
-		this.period = period;
-	}
-
 	public int getRound() {
 		return round;
-	}
-
-	public void setRound(int round) {
-		this.round = round;
 	}
 
 	public static int getId() {

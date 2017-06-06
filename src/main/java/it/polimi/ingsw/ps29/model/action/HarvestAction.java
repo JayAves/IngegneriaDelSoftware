@@ -29,7 +29,7 @@ public class HarvestAction extends Action {
 
 	@Override
 	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && !move.getFamiliar().getBusy() && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants());
 	}
 
@@ -49,62 +49,14 @@ public class HarvestAction extends Action {
 		//ciclo lettura effetti da personalBoard
 		for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
-				if (move.getFamiliar().getHarvestPower()> ((TerritoryCard)card).getHarvestForce()) {
+				if (move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
+				 ((TerritoryCard)card).getHarvestForce()) {
 					effect.performEffect(move.getPlayer());
 				}
 			}
 		}
+		move.getFamiliar().setBusy(true);
 		
 	}
-	
-	/*private Player player;
-	private HarvestSpace space;
-	private GameBoard board;
-	
-	public HarvestAction (String player, GameBoard gameBoard, Move move) {
-		super(move);
-		ArrayList <Player> tempPlayers = gameBoard.getPlayers();
-		for (Player play: tempPlayers) {
-			if (play.getName().equals(player)) {
-				this.player = play;
-				break;
-			}
-		}
-		this.board = gameBoard;
-		space = gameBoard.getHarvestSpace();
-	}
-
-	@Override
-	boolean isEnoughPowerful() {
-		int valueFamiliar = move.getFamiliar().getHarvestPower()+move.getServants();
-		int valueSpace = space.getValue();
-		
-		return false;
-	}*/
-
-	
-	
-	/*
-	 * 
-	private Model model;
-    private Move move;
-    private FamilyMember member;
-
-    public HarvestAction(Model model, Move move) {
-        this.model = model;
-        this.move = move;
-    }
-
-    member = model.currentPlayer.getSelectedFamilyMember(move.member);
-
-    model.currentPlayer.HarvestState.checkPlayerFamiliarsInThisSpace(member);
-
-    ////tutta la sbatta
-
-
-    model.currentPlayer.HarvestState.setNewState();
-
-
-	 */
 
 }

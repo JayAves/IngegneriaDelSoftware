@@ -44,17 +44,6 @@ public class Floor {
 		return null;
 	}
 	
-	/*public Card isFamilyMemberPlaceable(FamilyMember dude){
-		Card returnedCard = null;
-		space.returnStatus();
-		if (dude.getTowerPower() < space.getPowerRequired()){
-			space.setFamilyMember(dude);
-		    returnedCard = card;			
-		    setEmptyCard();
-		}
-			//else lancia eccezione
-		return returnedCard;
-	}*/
 	public SingleSlotActionSpace getSpace(){
 		return this.space;
 	}

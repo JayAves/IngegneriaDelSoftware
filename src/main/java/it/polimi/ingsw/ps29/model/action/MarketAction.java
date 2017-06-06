@@ -23,21 +23,15 @@ public class MarketAction extends Action{
 
 	@Override
 	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && !move.getFamiliar().getBusy() && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getMarketPower() + move.getServants());
 	}
 
 	@Override
-	public void performAction(/*Player currentPlayer, MarketArea area*/) {
-		/*
-		 * ArrayList <Gift> giftsCopy = area.getGifts();
-		 * ciclo for in cui per ogni gift di tipo Gift nell'ArrayList viene eseguito
-		 * currentPlayer.Resources.getResources(gift.getResource();, gift.getAmount();)
-		 */
-		
+	public void performAction(/*Player currentPlayer, MarketArea area*/) {		
 		GainResourcesEffect effect = new GainResourcesEffect(space.getSlot().getBonus());
 		effect.performEffect(move.getPlayer());
-		
+		move.getFamiliar().setBusy(true);
 	}
 	
 

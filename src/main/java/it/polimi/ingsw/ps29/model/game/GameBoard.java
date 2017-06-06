@@ -7,9 +7,10 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
-import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
+import it.polimi.ingsw.ps29.model.space.HarvestArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
+import it.polimi.ingsw.ps29.model.space.ProductionArea;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
@@ -23,15 +24,6 @@ public class GameBoard{
 	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
 	
-	public boolean isPlayersOrderMoved() {
-		return playersOrderMoved;
-	}
-
-
-	public void setPlayersOrderMoved(boolean playersOrderMoved) {
-		this.playersOrderMoved = playersOrderMoved;
-	}
-
 	public Color getColorByName (String name) {
 		for(Player player: playersOrder)
 			if (player.getName().equals(name))
@@ -68,8 +60,8 @@ public class GameBoard{
 		
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
-		spaces.put("Harvest", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
-		spaces.put("Production", new ActivityArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
+		spaces.put("Harvest", new HarvestArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
+		spaces.put("Production", new ProductionArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("territoryTower", new TowerArea ());
 		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus1,3);
 		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus2,4);
@@ -89,20 +81,14 @@ public class GameBoard{
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
 	}
-
-	
-	
 	
 	public ArrayList <Player> getPlayers () {
 		return playersOrder;
 	}
 
 	public void setPlayers (ArrayList<Player> playersOrder) {
-		
-		this.playersOrder = playersOrder;
-		
+		this.playersOrder = playersOrder;	
 	}
-
 
 	public ActionSpace getSpace (String space) {
 		return spaces.get(space);
@@ -113,8 +99,7 @@ public class GameBoard{
 	}
 	
 	public void changePlayerOrder () {
-		Player temp = playersOrder.get(0);
-		playersOrder.remove(0);
+		Player temp = playersOrder.remove(0);
 		playersOrder.add(temp);
 		
 	}
@@ -139,5 +124,14 @@ public class GameBoard{
 	
 	public Player getCurrentPlayer (){
 		return playersOrder.get(0);
+	}
+	
+	public boolean isPlayersOrderMoved() {
+		return playersOrderMoved;
+	}
+
+
+	public void setPlayersOrderMoved(boolean playersOrderMoved) {
+		this.playersOrderMoved = playersOrderMoved;
 	}
 }

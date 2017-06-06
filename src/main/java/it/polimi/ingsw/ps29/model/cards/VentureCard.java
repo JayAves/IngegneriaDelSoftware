@@ -7,6 +7,8 @@ import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class VentureCard extends Card {
+	
+	private int neededPoints;
 
 	public VentureCard(String name, Period period, String type, ArrayList<Effect> immediate,
 			ArrayList<Effect> permanent, ArrayList<Resource> cost) {
@@ -14,7 +16,10 @@ public class VentureCard extends Card {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	@Override
+	public String toString () {
+		return super.toString()+"\nneededPoints: "+neededPoints;
+	}
 	
 
 }

@@ -12,6 +12,7 @@ public class EndOfTheRoundState implements RoundState {
 
 	@Override
 	public RoundState doAction(int roundNumber, GameBoard board) {
+		
 		//modifica ordine di turno
 		ArrayList<Color> colorOrder = ((CouncilPalaceArea)board.getSpace("CouncilPalace")).playersOrder();
 		ArrayList<Player> playerOrder = convertOrder (colorOrder, board);
@@ -27,23 +28,18 @@ public class EndOfTheRoundState implements RoundState {
 		for (ActionSpace space: board.getSpaces().values()) 
 			space.cleanSpace();
 		
-		if(roundNumber == 6) {
-			//var di fine partita in match = true
-			return null;
-		} else
-			return new RoundSetupState();
+		return roundNumber==6 ? null : new RoundSetupState();
 	}
+	
+	
 	
 	private ArrayList<Player> convertOrder (ArrayList<Color> colorOrder, GameBoard board) {
 		ArrayList<Player> playerOrderFinal = new ArrayList<Player> ();
-		ArrayList<Player> playerOrderInitial = board.getPlayers();
-		for(Color color: colorOrder) {
-			for(Player player: playerOrderInitial)
-				if(player.getColor() == color) {
+		for(Color color: colorOrder) 
+			for(Player player: board.getPlayers())
+				if(player.getColor() == color) 
 					playerOrderFinal.add(player);
-					break;
-				}
-		}
+				
 		return playerOrderFinal;
 	}
 	

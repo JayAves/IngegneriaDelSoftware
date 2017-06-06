@@ -3,10 +3,10 @@ package it.polimi.ingsw.ps29.model.DTO;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class ResourceDTO {
-	private ResourceType type;
-	private int amount;
+	String type;
+	int amount;
 	
-	public ResourceDTO(ResourceType type, int amount) {
+	public ResourceDTO(String type, int amount) {
 		this.type = type;
 		this.amount = amount;
 	}
@@ -16,7 +16,7 @@ public class ResourceDTO {
 		return "Resource: "+type+" - amount: "+amount;
 	}
 	
-	public ResourceType getType () {
+	public String getType () {
 		return type;
 	}
 	

@@ -9,7 +9,6 @@ public class ExcommunicationCard {
 	public final Period period;
 
 	public ExcommunicationCard(Effect effect, Period period) {
-		super();
 		this.effect = effect;
 		this.period=period;
 	}

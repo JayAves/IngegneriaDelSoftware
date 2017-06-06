@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
 
 public class GameBoardDTO {
-	private HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
+	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
 
 	public GameBoardDTO() {
 		boardMap = new HashMap <String, HashMap <String, ArrayList<FamilyMemberDTO>>> ();

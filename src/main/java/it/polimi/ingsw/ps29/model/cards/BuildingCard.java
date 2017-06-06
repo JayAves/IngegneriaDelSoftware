@@ -11,10 +11,9 @@ public class BuildingCard extends Card{
 	private final int productionForce;
 	
 	public BuildingCard(String name, Period period, String type, ArrayList<Effect> immediate,
-			ArrayList<Effect> permanent, ArrayList<Resource> cost, int productionForce) {
+		ArrayList<Effect> permanent, ArrayList<Resource> cost, int productionForce) {
 		
 		super(name, period, type, immediate, permanent, cost);
-		
 		this.productionForce = productionForce;
 	}
 
@@ -28,5 +27,4 @@ public class BuildingCard extends Card{
 	public String toString () {
 		return super.toString()+"\nforce: "+productionForce;
 	}
-
 }

@@ -10,12 +10,9 @@ public class Deck {
 	private ArrayList <Card> cards;
 	
 	public Deck(Period period, CardType type) {
-		super();
 		this.period = period;
 		this.type = type;
 		cards= new ArrayList<Card>();
-		
-		
 	}
 	
 	public void addCard(Card c) {

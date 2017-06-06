@@ -14,7 +14,6 @@ public class TerritoryCard extends Card  {
 			ArrayList<Effect> permanent, ArrayList<Resource> cost, int harvestForce) {
 		
 		super(name, period, type, immediate, permanent, cost);
-		
 		this.harvestForce = harvestForce;
 	}
 
