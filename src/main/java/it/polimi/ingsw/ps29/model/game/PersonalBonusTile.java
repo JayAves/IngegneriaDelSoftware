@@ -1,13 +1,6 @@
 package it.polimi.ingsw.ps29.model.game;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
-
-import com.google.gson.GsonBuilder;
-
-import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class PersonalBonusTile {
@@ -33,23 +26,13 @@ public class PersonalBonusTile {
 		return harvestBonus;
 
 	}
-	
-	public static void main(String[] args ) throws FileNotFoundException{
-	
-		BufferedReader tiles = new BufferedReader(new FileReader("src/main/java/personalbonustile.json"));
-    GsonBuilder gtiles = new GsonBuilder();
-    
-    gtiles.registerTypeAdapter(Resource.class, new ResourceAdapter());
-    PersonalBonusTile[] tilez = gtiles.create().fromJson(tiles, PersonalBonusTile[].class);
-	
-    for (int i=0; i< tilez.length;i++) {
-    	
-    	for(Resource res: tilez[i].getProductionBonus()) {
-    		
-    		System.out.println(res.toString());
-    	}
-    	
-    	}
+
+
+	@Override
+	public String toString() {
+		return "PersonalBonusTile [productionBonus=" + productionBonus + ", harvestBonus=" + harvestBonus + "]";
 	}
+	
+	
 
 }

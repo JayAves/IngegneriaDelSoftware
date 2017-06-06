@@ -62,9 +62,9 @@ public class Match extends Observable{
 	    		Deck deck = new Deck(period, types[index]);
 	    		for (int i=0; i< cardz.length;i++) {
 	    		
-	    			if ((cardz[i].getPeriod().equals(period)) && (cardz[i].getType().equals(types[index].getType()))) {
+	    			if ((cardz[i].getPeriod().equals(period)) && (cardz[i].getType().equals(types[index].getType()))) 
 	    				deck.addCard(cardz[i]);
-	    			}
+	    			
 	    		}
 	    		
 	    		board.getDecks().add(deck);

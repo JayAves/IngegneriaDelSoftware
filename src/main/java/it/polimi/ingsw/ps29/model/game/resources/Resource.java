@@ -29,8 +29,16 @@ public class Resource implements ResourceInterface, Cloneable {
 	public Resource clone () {
 		return new Resource(this.getType(), this.getAmount());
 	}
-	
+	/*
+	@Override
 	public String toString () {
 		return "Resource - type: "+type+", amount: "+ amount+"\n";
+	}*/
+
+	@Override
+	public String toString() {
+		return "Resource [amount=" + amount + ", type=" + type + "]";
 	}
+	
+	
 }

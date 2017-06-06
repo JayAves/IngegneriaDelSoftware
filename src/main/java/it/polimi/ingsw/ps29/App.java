@@ -1,21 +1,14 @@
 package it.polimi.ingsw.ps29;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
-import com.google.gson.GsonBuilder;
-
 import it.polimi.ingsw.ps29.controller.Controller;
-import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.PersonalBonusTile;
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.resources.Coins;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.view.View;
 

@@ -32,7 +32,12 @@ public class GameBoard{
 		this.playersOrderMoved = playersOrderMoved;
 	}
 
-	
+	public Color getColorByName (String name) {
+		for(Player player: playersOrder)
+			if (player.getName().equals(name))
+				return player.getColor();
+		return null;
+	}
 	
 	public GameBoard (ArrayList<Player> players) {
 		dices = new ArrayList<Dice> ();

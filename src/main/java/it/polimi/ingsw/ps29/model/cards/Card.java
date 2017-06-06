@@ -8,13 +8,6 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public abstract class Card {
 	
-	
-	
-	public Card() {
-		super();
-	}
-
-	
 	private String name;
 	private Period period;
 	private CardType type;
@@ -64,20 +57,26 @@ public abstract class Card {
 	public String getName() {
 		return name;
 	}
-
+/*
 	@Override
 	public String toString() {
-		String msg = "Card name =" + name + ", period =" + period + ", type =" + type +"\nimmediate: ";
+		String msg = "Card name:" + name + ", period:" + period + ", type:" + type +"\nimmediate: ";
 		for(Effect eff: immediateEffects)
-			msg+=eff.toString()+"\n";
-		msg+="permanent:";
+			msg+=eff.toString();
+		msg+="\npermanent:";
 		for(Effect eff: permanentEffects)
-			msg+=eff.toString()+"\n";
-		msg+="cost: ";
+			msg+=eff.toString();
+		msg+="\ncost: ";
 		for(Resource res: cost)
 			msg+=res.toString()+"\n";
 		return msg;
 	}
+*/
 
+	@Override
+	public String toString() {
+		return "Card [name=" + name + ", period=" + period + ", type=" + type + ", immediateEffects=" + immediateEffects
+				+ ", permanentEffects=" + permanentEffects + ", cost=" + cost + "]";
+	}
 
 }

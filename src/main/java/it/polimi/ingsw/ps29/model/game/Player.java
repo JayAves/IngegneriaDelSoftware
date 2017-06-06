@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
+import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 
@@ -25,6 +26,7 @@ public class Player {
 		family[1] = new FamilyMember(DiceColor.ORANGE, color);
 		family[2] = new FamilyMember(DiceColor.WHITE, color);
 		family[3] = new FamilyMember(DiceColor.NEUTRAL, color);
+		fakeFamiliar = new FakeFamilyMember();
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
 		//initializeStates();
