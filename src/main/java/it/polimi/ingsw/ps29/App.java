@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ import it.polimi.ingsw.ps29.view.View;
 public class App 
 { 
 	
-    public static void main( String[] args ){
+    public static void main( String[] args ) throws FileNotFoundException{
     	
     	Scanner scanner = new Scanner (System.in);
     	String inputChoice;
