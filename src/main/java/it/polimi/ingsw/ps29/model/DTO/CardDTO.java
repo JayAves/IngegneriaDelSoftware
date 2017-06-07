@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps29.model.DTO;
 
-import it.polimi.ingsw.ps29.model.cards.CardType;
+import java.io.Serializable;
 
-public class CardDTO {
+public class CardDTO implements Serializable {
 	private int id;
 	private String type;
 	private String cardToString;

@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.model.DTO;
 
-public class PersonalBonusTileDTO {
+import java.io.Serializable;
+
+public class PersonalBonusTileDTO implements Serializable {
 	private String tileToString;
 
 	public PersonalBonusTileDTO(String tileToString) {

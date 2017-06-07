@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.view;
 import java.util.Observable;
 import java.util.Observer;
 
+import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
@@ -91,6 +92,10 @@ public class View extends Observable implements Observer {
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void showBoard(InfoDTO infoForView) {
+		inputOutput.showUpdatedSituation(namePlayer, infoForView);
 	}
 
 }

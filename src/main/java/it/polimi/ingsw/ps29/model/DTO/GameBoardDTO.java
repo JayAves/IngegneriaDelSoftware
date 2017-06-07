@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.model.DTO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,11 +8,38 @@ import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
 
-public class GameBoardDTO {
+public class GameBoardDTO implements Serializable{
 	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
 
 	public GameBoardDTO() {
 		boardMap = new HashMap <String, HashMap <String, ArrayList<FamilyMemberDTO>>> ();
+		boardMap.put("harvest", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("production", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("territoryTower", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("buildingTower", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("characterTower", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("ventureTower", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("market", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("council", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		
+		boardMap.get("harvest").put("head", new ArrayList <FamilyMemberDTO> ());
+		boardMap.get("harvest").put("queue", new ArrayList <FamilyMemberDTO> ());
+		boardMap.get("production").put("head", new ArrayList <FamilyMemberDTO> ());
+		boardMap.get("production").put("queue", new ArrayList <FamilyMemberDTO> ());
+		rapidInit("territoryTower");
+		rapidInit("buildingTower");
+		rapidInit("characterTower");
+		rapidInit("ventureTower");
+		rapidInit("market");
+		boardMap.get("council").put("single", new ArrayList <FamilyMemberDTO> ());
+		
+	}
+	
+	private void rapidInit (String key) {
+		boardMap.get(key).put("first", new ArrayList <FamilyMemberDTO> ());
+		boardMap.get(key).put("second", new ArrayList <FamilyMemberDTO> ());
+		boardMap.get(key).put("third", new ArrayList <FamilyMemberDTO> ());
+		boardMap.get(key).put("fourth", new ArrayList <FamilyMemberDTO> ());
 	}
 	
 	private String firstLevel (int i) {

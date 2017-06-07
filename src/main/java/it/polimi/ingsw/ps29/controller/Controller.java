@@ -47,11 +47,11 @@ public class Controller implements Observer{
 		View view = views.get(model.getBoard().getCurrentPlayer().getName());
 		state = state.beforeAction();
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
-		if(state.getState().equals("to estabilish"))
+		if(state.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.toString()))
 			view.askNextAction();
-		else if (state.getState().equals("bonus action"))
+		else if (state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString()))
 			view.askBonusAction(((BonusActionState)state).getEffect());
-		else if (state.getState().equals("ask exchange")) {
+		else if (state.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())) {
 			int index = ((AskAboutExchangeState)state).getIndexProduction();
 			//sistemare get(0) nell'istruzione seguente
 			view.askAboutExchange((ExchangeResourcesEffect) ((AskAboutExchangeState)state).getCards().get(index).getPermanentEffects().get(0));
@@ -122,11 +122,20 @@ public class Controller implements Observer{
 				||state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())) {
 			//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
 			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
-			model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
-			model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
+			infoForView (arg, move);
 		}
 	
 	}
+	
+	private void infoForView (UserChoice arg, Move move) {
+		model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
+		model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
+		
+		for(HashMap.Entry <String, View> view: views.entrySet())
+			view.getValue().showBoard(model.infoForView);
+		
+	}
+	
 	
 	public class VisitorMessages {
 		

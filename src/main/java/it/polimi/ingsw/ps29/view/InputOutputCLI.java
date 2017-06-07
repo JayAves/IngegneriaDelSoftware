@@ -2,9 +2,10 @@ package it.polimi.ingsw.ps29.view;
 
 import java.util.Scanner;
 
+import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
+import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
-import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
 
@@ -17,9 +18,11 @@ public class InputOutputCLI implements InputOutput {
 	}
 	
 	@Override
-	public void showUpdatedSituation(GameBoard board) {
-		// TODO Auto-generated method stub
-		
+	public void showUpdatedSituation(String playerName, InfoDTO board) {
+		System.out.println("\nPlayer: "+playerName+"\n");
+		System.out.println(board.gameBoard.toString());
+		for (PersonalBoardDTO personalBoard: board.playerBoard)
+			System.out.println(personalBoard.toString());
 	}
 
 	@Override
@@ -140,6 +143,8 @@ public class InputOutputCLI implements InputOutput {
 		if(option.getBooleanIn())
 			System.out.println("[optional]\n");
 	}
+
+	
 	
 
 }

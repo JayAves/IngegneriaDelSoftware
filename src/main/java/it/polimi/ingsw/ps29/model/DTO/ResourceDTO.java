@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps29.model.DTO;
 
-import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import java.io.Serializable;
 
-public class ResourceDTO {
+public class ResourceDTO implements Serializable {
 	String type;
 	int amount;
 	

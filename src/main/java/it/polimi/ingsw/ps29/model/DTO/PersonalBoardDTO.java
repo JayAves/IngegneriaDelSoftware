@@ -1,8 +1,9 @@
 package it.polimi.ingsw.ps29.model.DTO;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class PersonalBoardDTO {
+public class PersonalBoardDTO implements Serializable {
 	String name;
 	HashMap <String, CardDTO> cards;
 	HashMap <String, ResourceDTO> resources;

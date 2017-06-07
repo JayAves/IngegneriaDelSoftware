@@ -129,6 +129,7 @@ public class Match extends Observable{
 			//viene gestita qui sotto la fase di azione, per comodità con il pattern observer observable
 			//con il match che per richiedere una nuova azione notifica il controller
 			if(state instanceof ActionsState){
+				
 				String firstPlayer = board.getCurrentPlayer().getName();
 				
 				//in questo for avviene la fase Actions del gioco

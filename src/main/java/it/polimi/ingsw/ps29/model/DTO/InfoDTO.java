@@ -1,8 +1,9 @@
 package it.polimi.ingsw.ps29.model.DTO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class InfoDTO {
+public class InfoDTO implements Serializable{
 	public GameBoardDTO gameBoard;
 	public ArrayList<PersonalBoardDTO> playerBoard;
 	
