@@ -54,7 +54,7 @@ public class ProvaTest extends TestCase {
 		move.getPlayer().getPersonalBoard().getResources();
 		action = new TowerAction(model, move);
 		RoundSetupState rss = new RoundSetupState();
-		rss.doAction(1, model.getBoard());
+		rss.doAction(1, model);
 		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).takeCard());
 		//System.out.println(model.getBoard().getDecks().get(2).getCard(2));
 		

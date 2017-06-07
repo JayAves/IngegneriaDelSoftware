@@ -19,5 +19,9 @@ public class InfoDTO implements Serializable{
 				return board;
 		return null;
 	}
+	
+	public void cleanBoardDTO () {
+		gameBoard = new GameBoardDTO();
+	}
 
 }

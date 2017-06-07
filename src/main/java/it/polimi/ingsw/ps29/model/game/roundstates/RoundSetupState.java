@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
@@ -15,14 +16,15 @@ import it.polimi.ingsw.ps29.model.space.TowerArea;
 public class RoundSetupState implements RoundState {
 
 	@Override
-	public RoundState doAction(int roundNumber, GameBoard board) {
+	public RoundState doAction(int roundNumber, Match match) {
+		roundNumber++;
+		match.setRound(roundNumber);
+		initDecks (roundNumber, match.getBoard());
 		
-		initDecks (roundNumber, board);
-		
-		for(Dice dice: board.getDices()) {
+		for(Dice dice: match.getBoard().getDices()) {
 			dice.rollDice();
 			System.out.println("Ho tirato i dadi:\n");
-			for (Player player: board.getPlayers()) {
+			for (Player player: match.getBoard().getPlayers()) {
 				player.getFamiliarByColor(dice.getColor()).setPower(dice.getValue());
 			}
 			System.out.println(dice.getColor()+" - "+dice.getValue());

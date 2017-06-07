@@ -29,7 +29,6 @@ public class Match extends Observable{
 	private static final int NUMBER_OF_FAMILIARS = 4;
 	private static int id = 1;
 	private GameBoard board;
-	private Period period;
 	private int round;
 	public boolean endOfMatch= false;
 	private RoundState state;
@@ -42,8 +41,7 @@ public class Match extends Observable{
 		players = initPlayers(playerNames);
 		board = new GameBoard(players);
 		state= new RoundSetupState();
-		period = Period.FIRST;
-		round = 1;
+		round = 0;
 		initDecks();
 		createDTO (players);
 	}
@@ -144,9 +142,7 @@ public class Match extends Observable{
 			}
 			
 			//aggiorna lo stato del turno, permette di gestire tutte le altre fasi di turno
-			state= state.doAction(round, board);
-			if (state==null) //è stato completato l'ultimo round
-				endOfMatch=true;
+			state= state.doAction(round, this);
 		}
 		
 		//ciclo di calcolo punti vittoria
@@ -157,9 +153,6 @@ public class Match extends Observable{
 		return board;
 	}
 
-	public Period getPeriod() {
-		return period;
-	}
 
 	public int getRound() {
 		return round;
@@ -169,5 +162,12 @@ public class Match extends Observable{
 		return id;
 	}
 
+	public void setRound (int round) {
+		this.round = round;
+	}
+	
+	public void setEndOfMatch () {
+		endOfMatch = true;
+	}
 
 }

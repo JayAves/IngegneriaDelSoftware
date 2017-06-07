@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
+import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
@@ -11,24 +12,28 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 public class EndOfTheRoundState implements RoundState {
 
 	@Override
-	public RoundState doAction(int roundNumber, GameBoard board) {
+	public RoundState doAction(int roundNumber, Match match) {
 		
 		//modifica ordine di turno
-		ArrayList<Color> colorOrder = ((CouncilPalaceArea)board.getSpace("CouncilPalace")).playersOrder();
-		ArrayList<Player> playerOrder = convertOrder (colorOrder, board);
-		board.setPlayers(createOrder (playerOrder, board));
+		ArrayList<Color> colorOrder = ((CouncilPalaceArea)match.getBoard().getSpace("CouncilPalace")).playersOrder();
+		ArrayList<Player> playerOrder = convertOrder (colorOrder, match.getBoard());
+		match.getBoard().setPlayers(createOrder (playerOrder, match.getBoard()));
 		
 		//imposta tutti i busy su familiare a false
-		for(Player player: board.getPlayers()) {
+		for(Player player: match.getBoard().getPlayers()) {
 			for (int i=0; i<player.getFamily().length; i++)
 				player.getFamily()[i].setBusy(false);
 		}
 		
 		//svuotare gli spazi azione
-		for (ActionSpace space: board.getSpaces().values()) 
+		for (ActionSpace space: match.getBoard().getSpaces().values()) 
 			space.cleanSpace();
+		match.infoForView.cleanBoardDTO();
 		
-		return roundNumber==6 ? null : new RoundSetupState();
+		if(roundNumber==6)
+			match.setEndOfMatch();
+		
+		return new RoundSetupState();
 	}
 	
 	

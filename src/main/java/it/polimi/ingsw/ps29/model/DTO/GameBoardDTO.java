@@ -21,6 +21,7 @@ public class GameBoardDTO implements Serializable{
 		boardMap.put("ventureTower", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
 		boardMap.put("market", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
 		boardMap.put("council", new HashMap<String, ArrayList<FamilyMemberDTO>> ());
+		boardMap.put("noaction", new HashMap<String, ArrayList <FamilyMemberDTO>> ());
 		
 		boardMap.get("harvest").put("head", new ArrayList <FamilyMemberDTO> ());
 		boardMap.get("harvest").put("queue", new ArrayList <FamilyMemberDTO> ());
@@ -32,7 +33,7 @@ public class GameBoardDTO implements Serializable{
 		rapidInit("ventureTower");
 		rapidInit("market");
 		boardMap.get("council").put("single", new ArrayList <FamilyMemberDTO> ());
-		
+		boardMap.get("noaction").put("noaction", new ArrayList <FamilyMemberDTO> ());
 	}
 	
 	private void rapidInit (String key) {
@@ -165,4 +166,5 @@ public class GameBoardDTO implements Serializable{
 		
 		return bld.toString();
 	}
+	
 }
