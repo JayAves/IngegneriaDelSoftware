@@ -114,20 +114,18 @@ public class Controller implements Observer{
 			break;
 		}
 		
+		action.actionHandler();
+		state = action.getState();
+		//recupero lo stato dopo che ho eseguito le istruzioni
 		
-		if (action!=null) {
-			action.actionHandler();
-			state = action.getState();
-			//recupero lo stato dopo che ho eseguito le istruzioni
-			
-			if(state.equals(StateOfActionIdentifier.PERFORMED)||state.equals(StateOfActionIdentifier.ASK_EXCHANGE)
-					||state.equals(StateOfActionIdentifier.BONUS_ACTION)) {
-				//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
-				//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
-				model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
-				model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
-			}
+		if(state.getState().equals(StateOfActionIdentifier.PERFORMED.toString())||state.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())
+				||state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())) {
+			//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
+			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
+			model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
+			model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
 		}
+	
 	}
 	
 	public class VisitorMessages {

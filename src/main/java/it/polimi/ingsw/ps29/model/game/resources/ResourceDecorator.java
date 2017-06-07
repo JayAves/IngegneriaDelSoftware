@@ -33,5 +33,11 @@ public class ResourceDecorator implements ResourceInterface {
 	public void negativeAmount(){
 		decoratedResource.negativeAmount();
 	}
+
+	@Override
+	public String toString() {
+		return decoratedResource.toString() + ", modifier: " + modifier + "\n";
+	}
 		
+	
 }

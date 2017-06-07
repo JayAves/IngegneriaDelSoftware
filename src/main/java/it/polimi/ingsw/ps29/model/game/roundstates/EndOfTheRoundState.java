@@ -16,7 +16,7 @@ public class EndOfTheRoundState implements RoundState {
 		//modifica ordine di turno
 		ArrayList<Color> colorOrder = ((CouncilPalaceArea)board.getSpace("CouncilPalace")).playersOrder();
 		ArrayList<Player> playerOrder = convertOrder (colorOrder, board);
-		playerOrder = createOrder (playerOrder, board);
+		board.setPlayers(createOrder (playerOrder, board));
 		
 		//imposta tutti i busy su familiare a false
 		for(Player player: board.getPlayers()) {

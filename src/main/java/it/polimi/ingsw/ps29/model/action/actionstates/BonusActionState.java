@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 
 public class BonusActionState implements ActionState {
+	private final StateOfActionIdentifier state = StateOfActionIdentifier.BONUS_ACTION;
 	private BonusActionEffect effect;
 	//memorizzo l'effetto su cui c'è il valore del dado e il tipo di posizionamento
 	
@@ -26,7 +27,7 @@ public class BonusActionState implements ActionState {
 	@Override
 	public String getState() {
 		// TODO Auto-generated method stub
-		return "bonus action";
+		return state.toString();
 	}
 	
 	public BonusActionEffect getEffect () {

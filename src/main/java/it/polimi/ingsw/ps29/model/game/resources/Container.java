@@ -47,15 +47,15 @@ public class Container {
 	@Override
 	public String toString(){
 		String msg = "Player resources: ";
-		for (String res: resources.keySet())
-			msg+="\n"+getResource(res).toString();
+		for(HashMap.Entry<String,ResourceInterface> entry: resources.entrySet())
+			msg+="\n"+entry.getValue().toString();
 		return msg;
 	}
 	
 	public ArrayList <ResourceInterface> hashMapToArrayListResources () {
 		ArrayList <ResourceInterface> listRes = new ArrayList<ResourceInterface> ();
-		for(String nameRes: resources.keySet())
-			listRes.add(resources.get(nameRes));
+		for(HashMap.Entry<String,ResourceInterface> entry: resources.entrySet())
+			listRes.add(entry.getValue());
 		return listRes;	
 	}
 }

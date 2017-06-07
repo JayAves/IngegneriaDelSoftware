@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action.actionstates;
 import it.polimi.ingsw.ps29.model.game.Match;
 
 public class PerformedState implements ActionState {
+	private final StateOfActionIdentifier state = StateOfActionIdentifier.PERFORMED;
 
 	@Override
 	public ActionState beforeAction() {
@@ -22,7 +23,7 @@ public class PerformedState implements ActionState {
 	@Override
 	public String getState() {
 		// TODO Auto-generated method stub
-		return "performed";
+		return state.toString();
 	}
 
 }

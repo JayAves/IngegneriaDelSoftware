@@ -83,6 +83,7 @@ public class ExchangeResourceHandler implements Cloneable {
 		
 	}
 	
+	@Override
 	public ExchangeResourceHandler clone () {
 		ArrayList<Resource> resOut = new ArrayList<Resource> ();
 		ArrayList<Resource> resIn = new ArrayList<Resource> ();

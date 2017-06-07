@@ -93,7 +93,6 @@ public class InputOutputCLI implements InputOutput {
 		int i;
 		UserExchange choice = new UserExchange();
 		do {
-			i=0;
 			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte
 				System.out.println("\n"+i+")");
 				showExchangeOption(er.getChoices().get(i));
@@ -104,8 +103,7 @@ public class InputOutputCLI implements InputOutput {
 		} while (choice.getChoice(0)<0||choice.getChoice(0)>(i+1));
 		
 		if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
-			do {
-				i=0;			
+			do {		
 				for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResOut().size(); i++) {
 					System.out.println("\n"+i+")");
 					System.out.println((er.getChoices().get(choice.getChoice(0)).getResOut().get(i)));
@@ -117,7 +115,6 @@ public class InputOutputCLI implements InputOutput {
 			
 		if(er.getChoices().get(choice.getChoice(0)).getBooleanIn()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
 			do {
-				i=0;			
 				for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResIn().size(); i++) {
 					System.out.println("\n"+i+")");
 					System.out.println((er.getChoices().get(choice.getChoice(0)).getResIn().get(i)));

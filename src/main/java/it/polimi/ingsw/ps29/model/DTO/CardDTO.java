@@ -19,7 +19,7 @@ public class CardDTO {
 	}
 
 	public String getType() {
-		return type.toString();
+		return type;
 	}
 	
 }

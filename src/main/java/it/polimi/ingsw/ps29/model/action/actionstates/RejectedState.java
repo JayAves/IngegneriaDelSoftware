@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action.actionstates;
 import it.polimi.ingsw.ps29.model.game.Match;
 
 public class RejectedState implements ActionState {
+	private final StateOfActionIdentifier state = StateOfActionIdentifier.REJECTED;
 
 	@Override
 	public ActionState beforeAction() {
@@ -20,7 +21,7 @@ public class RejectedState implements ActionState {
 	@Override
 	public String getState() {
 		// TODO Auto-generated method stub
-		return "rejected";
+		return state.toString();
 	}
 
 }

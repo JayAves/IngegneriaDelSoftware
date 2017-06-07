@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class BonusPlacementEffect extends BonusActionEffect {
+public class BonusPlacementEffect extends BonusActionEffect implements Cloneable {
 	private String cardType;
 	private ArrayList <Resource> discount;
 	

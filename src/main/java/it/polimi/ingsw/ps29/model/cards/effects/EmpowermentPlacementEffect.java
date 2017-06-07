@@ -28,7 +28,7 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 
 	@Override
 	public void performEffect(Player player) {
-		towerType.toLowerCase();
+		towerType = towerType.toLowerCase();
 		switch(towerType){
 		case "territory" :
 			player.setFakeFamiliar(new FakeFamilyMemberHarvestTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));

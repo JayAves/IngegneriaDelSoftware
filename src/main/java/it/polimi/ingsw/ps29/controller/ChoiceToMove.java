@@ -29,7 +29,7 @@ public class ChoiceToMove {
 		for (Player p: board.getPlayers()) 
 			if(p.getName().equals(player))
 				return p;
-		return null;	
+		return null;
 	}
 	
 	private Servants getServants (int number) {
@@ -39,7 +39,7 @@ public class ChoiceToMove {
 	
 	
 	private FamilyMember getFamiliar (String player, int i) {
-		DiceColor color = DiceColor.NEUTRAL;
+		DiceColor color;
 		
 		switch (i) {
 			case 1:
@@ -51,11 +51,9 @@ public class ChoiceToMove {
 			case 3:
 				color = DiceColor.ORANGE;
 				break;
-			case 4:
+			default:
 				color = DiceColor.NEUTRAL;
 				break;
-			default:
-				return null;
 		}
 		return getPlayer(player).getFamiliarByColor(color);
 	}

@@ -10,5 +10,4 @@ public abstract class BonusActionEffect extends Effect implements Cloneable {
 	
 	public abstract String getType ();
 	
-	public abstract BonusActionEffect clone ();
 }

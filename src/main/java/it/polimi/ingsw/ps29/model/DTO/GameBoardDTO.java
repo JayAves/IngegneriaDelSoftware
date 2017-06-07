@@ -54,10 +54,10 @@ public class GameBoardDTO {
 		String key;
 		switch (move.getChoices(0)) {
 			case 1:
-				key = boardMap.get("harvest").get("head").size()>0 ? "queue" : "head";
+				key = boardMap.get("harvest").get("head").isEmpty() ? "head" : "queue";
 				break;
 			case 2:
-				key = boardMap.get("production").get("head").size()>0 ? "queue" : "head";
+				key = boardMap.get("production").get("head").isEmpty() ? "head" : "queue";
 				break;
 			case 3:
 			case 4:
@@ -122,18 +122,19 @@ public class GameBoardDTO {
 		boardMap.get(firstLevel(move.getChoices(0))).get(secondLevel(move)).add(fmDTO);
 	}
 
+	
 	@Override
 	public String toString () {
-		String msg = "GameBoard\n";
+		StringBuilder bld = new StringBuilder().append("GameBoard\n");
 		for (String firstKey: boardMap.keySet()) {
-			msg+=firstKey+" ";
+			bld.append(firstKey+" ");
 			for(String secondKey: boardMap.get(firstKey).keySet()) {
-				msg+=secondKey+":\n";
+				bld.append(secondKey+":\n");
 				for (FamilyMemberDTO fmDTO: boardMap.get(firstKey).get(secondKey))
-					msg+=fmDTO.toString()+"\n";
+					bld.append(fmDTO.toString()+"\n");
 			}
 		}
 		
-		return msg;
+		return bld.toString();
 	}
 }

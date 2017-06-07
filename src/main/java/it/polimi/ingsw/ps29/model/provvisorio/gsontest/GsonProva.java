@@ -33,7 +33,7 @@ public class GsonProva {
 	
 		Gson gson = new Gson();
 		String serializedObject = gson.toJson(test);
-		String name ="prova.json";
+		//String name ="prova.json";
 		System.out.println(serializedObject);
 		/*
 		

@@ -9,6 +9,7 @@ public class AskAboutExchangeState implements ActionState {
 	private int indexProduction;
 	private ArrayList<Card> cards;
 	private int valueFamiliar;
+	private final StateOfActionIdentifier state = StateOfActionIdentifier.ASK_EXCHANGE;
 	
 	//indice che memorizza fino a quale effetto ho chiesto se l'utente vuole scambiare le risorse
 	
@@ -35,7 +36,7 @@ public class AskAboutExchangeState implements ActionState {
 	@Override
 	public String getState() {
 		// TODO Auto-generated method stub
-		return "ask echnage";
+		return state.toString();
 	}
 
 	public int getIndexProduction() {

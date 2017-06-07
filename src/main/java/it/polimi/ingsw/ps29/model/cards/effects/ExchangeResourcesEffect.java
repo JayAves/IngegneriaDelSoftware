@@ -38,6 +38,7 @@ public class ExchangeResourcesEffect extends Effect implements Cloneable {
 		choices.get(indexExchange).performExchange(player.getPersonalBoard().getResources(), indexOut, indexIn);
 	}
 	
+	@Override
 	public ExchangeResourcesEffect clone () {
 		ArrayList <ExchangeResourceHandler> array = new ArrayList<ExchangeResourceHandler> ();
 		for(ExchangeResourceHandler handler: this.getChoices())

@@ -43,7 +43,7 @@ public class RoomCreator implements Observer{
 			
 			if (counter==4){
 				
-				roomHandler.add(new Room(playersInQueue));
+				//roomHandler.add(new Room(playersInQueue));
 				
 			}
 	}

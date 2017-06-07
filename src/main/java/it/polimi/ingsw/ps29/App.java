@@ -23,7 +23,7 @@ public class App
     	
     	Scanner scanner = new Scanner (System.in);
     	String inputChoice;
-    	int playerNumber = 2;
+    	int playerNumber;
     	ArrayList<String> playersName = new ArrayList<String> ();
     	Match model;
     	Controller controller;

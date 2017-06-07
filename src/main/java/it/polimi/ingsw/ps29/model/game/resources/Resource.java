@@ -26,6 +26,7 @@ public class Resource implements ResourceInterface, Cloneable {
 		this.amount *=-1;
 	}
 	
+	@Override
 	public Resource clone () {
 		return new Resource(this.getType(), this.getAmount());
 	}
