@@ -20,8 +20,10 @@ public class SocketClientThread extends ClientThread {
     private boolean running;
     private String playerName;
    
-    public SocketClientThread(Socket socket) throws IOException { //costruttore
-        this.socket = socket;
+    public SocketClientThread(Socket socket, String playerName) throws IOException { //costruttore
+        
+    	this.socket = socket;
+        this.playerName= playerName;
         running = false;
         try {
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -49,14 +51,7 @@ public class SocketClientThread extends ClientThread {
     
     public void run() {
         
-    	
-    	
-    	String msg = ""; 
-    	
-
-    	
-		
-		while (running) { //(msg = br.readLine()) != null && 
+    	while (running) {
 		    
 			//provide your server's logic here//
 
@@ -85,7 +80,7 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public String getClientName() {
 		// TODO Auto-generated method stub
-		return null;
+		return playerName;
 	}
 
 

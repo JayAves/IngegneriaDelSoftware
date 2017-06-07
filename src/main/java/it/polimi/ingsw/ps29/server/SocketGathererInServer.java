@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
@@ -19,6 +21,7 @@ public class SocketGathererInServer extends Observable implements Observer {
 	 private SocketClientThread clientThread;
 	 private int port;
 	 private boolean listening; 
+	 private String tempName;
 	    
 
 	 public SocketGathererInServer() {
@@ -91,8 +94,11 @@ public class SocketGathererInServer extends Observable implements Observer {
 	            		
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
 	                    System.out.println("Client connected with socket "+socket.toString());
+	                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	                    tempName= br.readLine();
+	                    
 	                    try {
-	                        SocketGathererInServer.this.clientThread = new SocketClientThread(SocketGathererInServer.this.socket);
+	                        SocketGathererInServer.this.clientThread = new SocketClientThread(SocketGathererInServer.this.socket, tempName);
 	                        Thread t = new Thread(SocketGathererInServer.this.clientThread);
 	                        SocketGathererInServer.this.clientThread.addObserver(SocketGathererInServer.this);
 	                        SocketGathererInServer.this.clients.add(SocketGathererInServer.this.clientThread);

@@ -7,7 +7,7 @@ public class ServerMain {
 	public static void main( String[] args ){
 		
 		RoomCreator creator= new RoomCreator();
-		creator.run();
+		creator.start();
 		SocketGathererInServer socketGatherer = new SocketGathererInServer();
 		socketGatherer.startServer();
 		RMIGathererInServer rmiGatherer= new RMIGathererInServer();
