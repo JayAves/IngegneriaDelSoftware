@@ -2,11 +2,15 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.model.DTO.PersonalBonusTileDTO;
+import it.polimi.ingsw.ps29.model.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class Player {
 	private String name;
@@ -16,6 +20,7 @@ public class Player {
 	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
 	public ArrayList<Effect> specialPermanentEffects;
+	public PersonalBoardDTO boardDTO;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -24,6 +29,13 @@ public class Player {
 		initFamily();
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
+		initDTO ();
+	}
+	
+	public void initDTO () {
+		PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO (board.getPersonalBonusTile().toString());
+		boardDTO = new PersonalBoardDTO(name, tileDTO);
+		
 	}
 	
 	public void initFamily () {
@@ -74,4 +86,9 @@ public class Player {
 	}
 
 
+	public void updateResourcesDTO () {
+		boardDTO.cleanContainer();
+		for(ResourceInterface res: board.getResources().hashMapToArrayListResources())
+			boardDTO.insertResource(new ResourceDTO(res.getType(), res.getAmount()));
+	}
 }

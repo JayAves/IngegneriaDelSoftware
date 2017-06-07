@@ -12,7 +12,6 @@ import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps29.model.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
-import it.polimi.ingsw.ps29.model.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
@@ -51,8 +50,7 @@ public class Match extends Observable{
 	private void createDTO (ArrayList<Player> players) {
 		ArrayList <PersonalBoardDTO> playerBoardDTO = new ArrayList<PersonalBoardDTO> ();
 		for (Player player: players){
-			PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO (player.getPersonalBoard().getPersonalBonusTile().toString());
-			playerBoardDTO.add(new PersonalBoardDTO (player.getName(), tileDTO));
+			playerBoardDTO.add(player.boardDTO);
 		}
 		infoForView = new InfoDTO (new GameBoardDTO (),playerBoardDTO);
 	}

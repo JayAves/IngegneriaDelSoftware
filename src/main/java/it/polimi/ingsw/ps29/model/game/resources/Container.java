@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Container {
@@ -49,6 +50,13 @@ public class Container {
 		for (String res: resources.keySet())
 			msg+="\n"+getResource(res).toString();
 		return msg;
+	}
+	
+	public ArrayList <ResourceInterface> hashMapToArrayListResources () {
+		ArrayList <ResourceInterface> listRes = new ArrayList<ResourceInterface> ();
+		for(String nameRes: resources.keySet())
+			listRes.add(resources.get(nameRes));
+		return listRes;	
 	}
 }
 	

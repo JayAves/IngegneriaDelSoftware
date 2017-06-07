@@ -12,7 +12,7 @@ public class InfoDTO {
 		this.playerBoard = playerBoard;
 	}
 	
-	public PersonalBoardDTO getBoard (String playerName) {
+	public PersonalBoardDTO getPersonalBoard (String playerName) {
 		for(PersonalBoardDTO board: playerBoard)
 			if (board.name.equals(playerName))
 				return board;

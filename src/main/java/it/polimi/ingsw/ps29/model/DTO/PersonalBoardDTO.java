@@ -19,6 +19,10 @@ public class PersonalBoardDTO {
 		cards.put(card.getType(), card);
 	}
 	
+	public void cleanContainer () {
+		resources = new HashMap <String, ResourceDTO> ();
+	}
+	
 	public void insertResource (ResourceDTO res) {
 		if(resources.containsKey(res.getType())) {
 			int quan = resources.remove(res.getType()).getAmount()+res.getAmount();

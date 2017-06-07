@@ -2,7 +2,9 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.DTO.CardDTO;
 import it.polimi.ingsw.ps29.model.DTO.ResourceDTO;
+import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
@@ -68,10 +70,8 @@ public class TowerAction extends Action {
 	public void performAction() {
 		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
 		
-		if (!space.isEmpty()) {
+		if (!space.isEmpty()) 
 			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monete
-			model.infoForView.getBoard(move.getPlayer().getName()).insertResource(new ResourceDTO ("coin", -3));
-		}
 			
 		
 		if(move.getFloor()>2) {
@@ -81,17 +81,17 @@ public class TowerAction extends Action {
 		}
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
+		model.infoForView.getPersonalBoard(move.getPlayer().getName()).insertCard(
+				new CardDTO (0, space.takeCard().getType(), space.takeCard().toString()));
 		
 		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
 		
 		applyDiscounts(discountedCosts);
 		
-		for(Resource res: discountedCosts) { //pago costi
+		for(Resource res: discountedCosts)  //pago costi
 			
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
-			model.infoForView.getBoard(move.getPlayer().getName()).insertResource(new ResourceDTO (res.getType(), res.getAmount()));
-		
-		}
+			
 		
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) {
 			

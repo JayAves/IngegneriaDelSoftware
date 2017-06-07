@@ -4,10 +4,10 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 
 public class CardDTO {
 	private int id;
-	private CardType type;
+	private String type;
 	private String cardToString;
 	
-	public CardDTO(int id, CardType type, String cardToString) {
+	public CardDTO(int id, String type, String cardToString) {
 		this.id = id;
 		this.type = type;
 		this.cardToString = cardToString;

@@ -120,8 +120,13 @@ public class Controller implements Observer{
 			state = action.getState();
 			//recupero lo stato dopo che ho eseguito le istruzioni
 			
-			if(state.equals(StateOfActionIdentifier.PERFORMED))
+			if(state.equals(StateOfActionIdentifier.PERFORMED)||state.equals(StateOfActionIdentifier.ASK_EXCHANGE)
+					||state.equals(StateOfActionIdentifier.BONUS_ACTION)) {
+				//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
+				//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
 				model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
+				model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
+			}
 		}
 	}
 	

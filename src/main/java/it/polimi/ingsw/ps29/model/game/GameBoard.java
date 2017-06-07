@@ -86,6 +86,13 @@ public class GameBoard{
 		return playersOrder;
 	}
 
+	public Player getPlayerByName (String playerName) {
+		for (Player player: playersOrder)
+			if(player.getName().equals(playerName))
+				return player;
+		return null;
+	}
+	
 	public void setPlayers (ArrayList<Player> playersOrder) {
 		this.playersOrder = playersOrder;	
 	}
