@@ -8,6 +8,7 @@ public class ServerMain {
 		
 		RoomCreator creator= new RoomCreator();
 		SocketGathererInServer socketGatherer = new SocketGathererInServer();
+		socketGatherer.startServer();
 		RMIGathererInServer rmiGatherer= new RMIGathererInServer();
 		socketGatherer.addObserver(creator);
 		rmiGatherer.addObserver(creator);
