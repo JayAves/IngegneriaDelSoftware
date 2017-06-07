@@ -1,14 +1,23 @@
 package it.polimi.ingsw.ps29.server;
 
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class RMIGathererInServer extends Observable  {
 
-	protected RMIGathererInServer() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private ArrayList<ClientThread> clients;
 	// quando aggiungo player faccio notify() al roomCreator
+
+	public ClientThread addClient(String Username){
+		
+		RMIClientThread t=new RMIClientThread(Username);
+		clients.add(t);
+		Thread th = new Thread(t);
+		th.start();
+		notifyObservers(t);
+		return t;
+	}
+
+
+
 }

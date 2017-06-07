@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
@@ -12,17 +13,17 @@ import java.util.Vector;
 public class SocketGathererInServer extends Observable implements Observer {
 
 	 private Socket socket;
-	 private Vector<ClientThread> clients; // salvo i clients
+	 private ArrayList<SocketClientThread> clients; // salvo i clients
 	 private ServerSocket ssocket;  //Server Socket
 	 private StartServerThread sst; //inner class
-	 private ClientThread clientThread;
+	 private SocketClientThread clientThread;
 	 private int port;
 	 private boolean listening; 
 	    
 
 	 public SocketGathererInServer() {
 	       
-		 	this.clients = new Vector<ClientThread>();
+		 	this.clients = new ArrayList<SocketClientThread>();
 	        this.port = 5555; //default port
 	        this.listening = false;
 	      
@@ -41,21 +42,21 @@ public class SocketGathererInServer extends Observable implements Observer {
 	       
 	    	if (this.listening) {
 	            this.sst.stopServerThread();
-	            java.util.Enumeration<ClientThread> e = this.clients.elements();
 	            
-	            while(e.hasMoreElements())
-	            {
-			    ClientThread ct = e.nextElement();
-	                ct.stopClient();
-	            }
+	            
+	            for (SocketClientThread th: clients){
+	            
+	            	th.stopClient();
+	            
 	            this.listening = false;
-	        }
+	            }
+	    	}
 	    }
 
 	    
 	    public void update(Observable observable, Object object) { // se client chiude socket, lo elimino dalle connessioni
 	       
-	        this.clients.removeElement(observable);
+	        this.clients.remove(observable);
 	    }
 
 	    public int getPort() {
@@ -86,15 +87,15 @@ public class SocketGathererInServer extends Observable implements Observer {
 	    		    SimpleDateFormat formatter = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 	    		    System.out.println("SocketHandler is up now : " + formatter.format(now.getTime()));
 	            	
-	            	while (this.listen) { //devo aggiungere controllo sui 4 giocatori
+	            	while (this.listen) {
 	            		
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
-	                    System.out.println("Client connected");
+	                    System.out.println("Client connected with socket "+socket.toString());
 	                    try {
-	                        SocketGathererInServer.this.clientThread = new ClientThread(SocketGathererInServer.this.socket);
+	                        SocketGathererInServer.this.clientThread = new SocketClientThread(SocketGathererInServer.this.socket);
 	                        Thread t = new Thread(SocketGathererInServer.this.clientThread);
 	                        SocketGathererInServer.this.clientThread.addObserver(SocketGathererInServer.this);
-	                        SocketGathererInServer.this.clients.addElement(SocketGathererInServer.this.clientThread);
+	                        SocketGathererInServer.this.clients.add(SocketGathererInServer.this.clientThread);
 	                        setChanged();
 	                        notifyObservers(SocketGathererInServer.this.clientThread);
 	                        t.start();

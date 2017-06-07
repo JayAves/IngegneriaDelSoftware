@@ -7,14 +7,13 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
 
-public class RoomCreator implements Observer{
+public class RoomCreator extends Thread implements Observer{
 	
 	
-	private ArrayList<String> playersInQueue;
-	private ArrayList<ClientThread> threads;
+	private ArrayList<ClientThread> playersInQueue;
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
-	private Timer timer;
+	private static Timer timer;
 	
 	
 	public RoomCreator(){
@@ -23,14 +22,15 @@ public class RoomCreator implements Observer{
 		
 		this.roomHandler= new ArrayList<Room>();
 		
-		this.playersInQueue= new ArrayList<String>();
+		this.playersInQueue= new ArrayList<ClientThread>();
 		
+		//start timer
 	}
 	
 	
 	
 	
-	public void addPlayer(String s) throws FileNotFoundException{
+	public void addPlayer(ClientThread s) throws FileNotFoundException{
 		
 		playersInQueue.add(s);
 		
@@ -38,14 +38,20 @@ public class RoomCreator implements Observer{
 	}
 	
 	private synchronized void increaseCounter() throws FileNotFoundException{
-			counter++;
 			
-			if (counter==4){
+		counter++;
+			
+		if (counter==4){
 				
-				roomHandler.add(new Room(playersInQueue,threads));
-				
+				roomHandler.add(new Room(playersInQueue));
+				counter=0;
+				playersInQueue.clear();
 			}
 	}
+
+
+	
+
 
 
 	@Override
@@ -53,33 +59,37 @@ public class RoomCreator implements Observer{
 		
 		// TODO Auto-generated method stub
 		
-		if (arg instanceof String){
+		if (!(o instanceof ClientThread)){
 			
-			try {
+			//da gestire
+		}
+		
+		
+			
+	}
+	
+	public void run(){
+		
+		while (true){
+			
+			//quando scatta il timer
+			
+			if (playersInQueue.size()>1){
 				
-				addPlayer((String) arg);
-			
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				try {
+					
+					roomHandler.add(new Room(playersInQueue));
+					counter=0;
+					playersInQueue.clear();
+				
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
-			
-		if (o instanceof SocketGathererInServer){
-				
-			threads.add((ClientThread) arg);
-			
-			try {
-				
-				addPlayer(arg.toString());
-			
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}	
 	}
-		
+
 }
 		
 

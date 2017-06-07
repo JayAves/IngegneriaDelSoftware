@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.server;
 
 public class SocketVirtualView implements VirtualView {
 
-	private ClientThread thread;
+	private SocketClientThread thread;
 	
 	@Override
 	public void askNextAction() {

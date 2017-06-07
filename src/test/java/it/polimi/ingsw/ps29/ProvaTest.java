@@ -39,12 +39,15 @@ public class ProvaTest extends TestCase {
 	@Before
 	public void setUp () throws FileNotFoundException {
 		pbt = new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ());
-		player = new Player("aa", Color.BLUE, pbt);
-		player2 = new Player("bb", Color.GREEN, pbt);
+		player = new Player("aa", Color.BLUE, pbt); //di questo il match prende solo il nome
+		player2 = new Player("bb", Color.GREEN, pbt);//di questo il match prende solo il nome 
 		ArrayList<Player> pl = new ArrayList<Player>();
 		pl.add(player);
 		pl.add(player2);
-		model = new Match(pl);
+		ArrayList<String> names= new ArrayList<String>();
+		names.add(player.getName());
+		names.add(player2.getName());
+		model = new Match(names);
 		fam = new FamilyMember(DiceColor.ORANGE, Color.BLUE);
 		fam.setPower(1);
 		move = new Move (player, "buildingTower", 2, 2, fam);

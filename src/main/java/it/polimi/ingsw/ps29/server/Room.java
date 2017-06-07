@@ -19,35 +19,42 @@ public class Room extends Thread{
 	//ArrayList<BufferedReader> readers;
 	//ArrayList<BufferedWriter> writers;
 	Match model;
-	Controller controller;
-	ArrayList<ClientThread> sockets;
+	NewController controller;
+	ArrayList<SocketClientThread> sockets;
 	
-	public Room (ArrayList<String> playersInQueue,ArrayList<ClientThread> threads) throws FileNotFoundException{
+	public Room (ArrayList<ClientThread> playersInQueue) throws FileNotFoundException{
 		
+		ArrayList<String> names = new ArrayList<String>();
 		
-		
-		model= new Match(playersInQueue);
-		
-		controller = new Controller (model);
-    	
-		for (int i=0;i<threads.size();i++){
-			if (playersInQueue.get(i).contains("Socket")){
-				//assegno thread a player
-				playersInQueue.remove(playersInQueue.get(i));
-			}
+		for (ClientThread th: playersInQueue){
+			
+			names.add(th.getClientName());
 		}
 		
 		
-		for (String name: playersInQueue) { //creo le mie virtual view
+		
+		model= new Match(names);
+		
+		controller = new NewController (model);
+    	
+		for (ClientThread th: playersInQueue){
+			
+			th.addObserver(controller);
+			controller.addView(th, th.getClientName());
+		}
+	
+		
+		
+		
     		
     		/*View view = new View (inputChoice,  name);
     		view.addObserver(controller);
     		controller.addView(view, name); */   		
     	}
     	
-    	model.addObserver(controller);
+    	/* model.addObserver(controller);
     	
-    	model.gameEngine();
+    	model.gameEngine(); */
 		
 		
 		
@@ -82,5 +89,5 @@ public class Room extends Thread{
 */}
 
 	
-}
+
 
