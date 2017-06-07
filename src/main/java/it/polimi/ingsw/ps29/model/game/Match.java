@@ -34,11 +34,12 @@ public class Match extends Observable{
 	public boolean endOfMatch= false;
 	private RoundState state;
 	public InfoDTO infoForView;
+	private ArrayList<Player> players; //per ora tengo i players anche i match, poi si può pensare come evitarlo [pie ha un'idea]
 	
 	
-	public Match (ArrayList<Player> players) throws FileNotFoundException {
+	public Match (ArrayList<String> playerNames) throws FileNotFoundException {
 		id++;
-		players = initPlayers(players);
+		players = initPlayers(playerNames);
 		board = new GameBoard(players);
 		state= new RoundSetupState();
 		period = Period.FIRST;
@@ -88,8 +89,15 @@ public class Match extends Observable{
 	}
 	
 	
-	private ArrayList<Player> initPlayers (ArrayList<Player> players) throws FileNotFoundException {
+	
+	
+	private ArrayList<Player> initPlayers (ArrayList<String> playersNames) throws FileNotFoundException {
 
+		ArrayList<Player> players = new ArrayList<Player> ();
+    	Color[] colors = Color.values();
+    	
+    	for(int i=0; i<playersNames.size(); i++) 
+    		players.add(new Player(playersNames.get(i), colors[i], new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ())));
     	
     	BufferedReader tiles = new BufferedReader(new FileReader("src/main/java/personalbonustile.json"));
 	    GsonBuilder gtiles = new GsonBuilder();

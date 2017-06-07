@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -11,8 +12,6 @@ public class RoomCreator implements Observer{
 	
 	private ArrayList<String> playersInQueue;
 	private ArrayList<ClientThread> threads;
-	//private ArrayList<ClientThread> SocketPlayers;
-	//private ArrayList<String> RMIPlayers;
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
 	private Timer timer;
@@ -31,19 +30,19 @@ public class RoomCreator implements Observer{
 	
 	
 	
-	public void addPlayer(String s){
+	public void addPlayer(String s) throws FileNotFoundException{
 		
 		playersInQueue.add(s);
 		
 		increaseCounter();
 	}
 	
-	private synchronized void increaseCounter(){
+	private synchronized void increaseCounter() throws FileNotFoundException{
 			counter++;
 			
 			if (counter==4){
 				
-				//roomHandler.add(new Room(playersInQueue));
+				roomHandler.add(new Room(playersInQueue,threads));
 				
 			}
 	}
@@ -56,18 +55,32 @@ public class RoomCreator implements Observer{
 		
 		if (arg instanceof String){
 			
-			addPlayer((String) arg);
+			try {
+				
+				addPlayer((String) arg);
+			
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 			
 		if (o instanceof SocketGathererInServer){
 				
 			threads.add((ClientThread) arg);
 			
-			addPlayer(arg.toString());
+			try {
+				
+				addPlayer(arg.toString());
+			
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}	
 	}
 		
-	}
+}
 		
 
 

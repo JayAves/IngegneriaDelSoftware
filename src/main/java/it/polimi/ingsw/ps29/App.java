@@ -1,15 +1,10 @@
 package it.polimi.ingsw.ps29;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.controller.Controller;
-import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.Match;
-import it.polimi.ingsw.ps29.model.game.PersonalBonusTile;
-import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.view.View;
 
 /**
@@ -19,7 +14,7 @@ import it.polimi.ingsw.ps29.view.View;
 public class App 
 { 
 	
-    public static void main( String[] args ) throws FileNotFoundException{
+    public static void main( String[] args ){
     	
     	Scanner scanner = new Scanner (System.in);
     	String inputChoice;
@@ -45,7 +40,8 @@ public class App
     		playersName.add( scanner.next());
     	}
     	
-    	model = new Match (createPlayers (playersName));
+    	model = new Match (playersName);
+    	
     	
     	controller = new Controller (model);
     	
@@ -71,16 +67,5 @@ public class App
     	scanner.close();
     }
     
-    private static ArrayList<Player> createPlayers (ArrayList<String> names) throws FileNotFoundException {
-    	
-    	ArrayList<Player> players = new ArrayList<Player> ();
-    	Color[] colors = Color.values();
-    	
-    	for(int i=0; i<names.size(); i++) 
-    		players.add(new Player(names.get(i), colors[i], new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ()))); // assegno una bonusTile casuale
-    	
-    	
-    	return players;
-    	
-    }
+    
 }
