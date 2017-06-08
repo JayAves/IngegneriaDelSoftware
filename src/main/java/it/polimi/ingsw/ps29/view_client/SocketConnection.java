@@ -15,10 +15,12 @@ public class SocketConnection implements Connection,Runnable {
     private boolean connected;
     private int port;
     private String hostName;
+    private String playerName;
 
     public SocketConnection() {
 		connected = false;
 		port=5555;
+		
     }
    
     @Override
@@ -26,8 +28,7 @@ public class SocketConnection implements Connection,Runnable {
         if(!connected)
         {
 	     this.hostName = hostName;
-         this.port = port;
-         socket = new Socket(hostName,port);
+	     socket = new Socket(hostName,port);
          br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
          pw = new PrintWriter(socket.getOutputStream(),true);
          connected = true;
@@ -43,6 +44,7 @@ public class SocketConnection implements Connection,Runnable {
             
         	 while(connected){
             	//
+        		 
             }
             
          }

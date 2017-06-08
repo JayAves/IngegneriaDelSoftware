@@ -1,28 +1,60 @@
 package it.polimi.ingsw.ps29.view_client;
 
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Client {
+import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
+import it.polimi.ingsw.ps29.model.game.Match;
+import it.polimi.ingsw.ps29.view.View;
+import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
+import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
+import it.polimi.ingsw.ps29.view.usermessages.UserMessage;
+
+public class Client implements Observer{
 	
-	private Input input;
+	
+	private View_Client view;
 	private Connection networking;
+	private String name;
 	
-	public Client (String in, String net) throws IOException {
-		AbstractFactory [] creator = new AbstractFactory [2];
+	public Client (View_Client view, String net) throws IOException {
+		
+		this.view=view;
+		this.name=view.getName();
+		
+		/*AbstractFactory creator = new AbstractFactory();
 		creator[0] = new InputFactory ();
 		creator[1] = new ConnectionFactory();
 		
 		input = creator[0].getInput(in);
-		networking = creator[1].getNetworking(net);
+		networking = creator[1].getNetworking(net); */
+		
+		ConnectionFactory factory= new ConnectionFactory();
+		networking=factory.getNetworking(net);
+		
 		networking.connect("localhost");
 	}
-
-	public Input getInput() {
-		return input;
+	
+	public void callView (){
+		
+		//a seconda del messaggio che ricevo chiamo un metodo diverso sulla view
+		
 	}
-
-	public void setInput(Input input) {
-		this.input = input;
+	
+	public void handleInputAction (UserChoice arg){
+		
+		//ricevo dalla view input e devo passarlo via networking
+	
 	}
+	
 
+	
+
+	@Override
+	public void update(Observable o, Object arg) { //riceve da view e da socket/rmi
+		
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -59,14 +59,7 @@ public class App
     	//while state!= fine partita
     	//controller.callCorrectView();
     	
-    	try {
-			
-    		Client client = new Client ("CLI", "Socket");
-		
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	
 		
     	scanner.close();
     }

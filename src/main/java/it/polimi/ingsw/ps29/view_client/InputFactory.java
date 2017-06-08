@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.view_client;
 
 public class InputFactory extends AbstractFactory {
 
-	@Override
+	/*@Override
 	Input getInput(String input) {
 		
 		if (input.equals("CLI")) {
@@ -11,7 +11,7 @@ public class InputFactory extends AbstractFactory {
 			return new GUIInput();
 		}
 		return null;
-	}
+	}*/
 
 	@Override
 	Connection getNetworking(String networking) {

@@ -2,11 +2,11 @@ package it.polimi.ingsw.ps29.view_client;
 
 public class ConnectionFactory extends AbstractFactory {
 
-	@Override
+	/*@Override
 	Input getInput(String input) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
 	Connection getNetworking(String networking) {
