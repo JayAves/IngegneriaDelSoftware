@@ -20,7 +20,7 @@ public class Room extends Thread{
 	//ArrayList<BufferedWriter> writers;
 	Match model;
 	NewController controller;
-	ArrayList<SocketClientThread> sockets;
+	ArrayList<ClientThread> sockets;
 	
 	public Room (ArrayList<ClientThread> playersInQueue) throws FileNotFoundException{
 		
@@ -41,20 +41,13 @@ public class Room extends Thread{
 			
 			th.addObserver(controller);
 			controller.addView(th, th.getClientName());
+			th.setInGame();
+		
 		}
 	
-		
-		
-		
-    		
-    		/*View view = new View (inputChoice,  name);
-    		view.addObserver(controller);
-    		controller.addView(view, name); */   		
-    	}
+		model.addObserver(controller);
     	
-    	/* model.addObserver(controller);
-    	
-    	model.gameEngine(); */
+    	model.gameEngine();
 		
 		
 		
@@ -88,6 +81,6 @@ public class Room extends Thread{
 	}
 */}
 
-	
+}	
 
 

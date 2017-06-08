@@ -19,12 +19,14 @@ public class SocketClientThread extends ClientThread {
     private Socket socket;
     private boolean running;
     private String playerName;
+    private boolean inGame;
    
     public SocketClientThread(Socket socket, String playerName) throws IOException { //costruttore
         
     	this.socket = socket;
         this.playerName= playerName;
         running = false;
+        inGame=false;
         try {
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pw = new PrintWriter(socket.getOutputStream(), true);
@@ -51,12 +53,12 @@ public class SocketClientThread extends ClientThread {
     
     public void run() {
         
-    	while (running) {
+    	while (running && inGame) {
 		    
 			//provide your server's logic here//
 
 		  
-
+    		
 		   }
 		//running = false;
         
@@ -75,7 +77,11 @@ public class SocketClientThread extends ClientThread {
 			BufferedWriter bufferedWriter =
 					new BufferedWriter(new OutputStreamWriter
 							(socket.getOutputStream())); */
-
+    
+    @Override
+    public void setInGame(){
+    	inGame=true;
+    }
 
 	@Override
 	public String getClientName() {

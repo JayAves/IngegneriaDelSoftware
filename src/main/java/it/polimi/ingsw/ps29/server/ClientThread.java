@@ -19,6 +19,6 @@ public abstract class ClientThread extends Observable implements Runnable{
 
 	public abstract void askAboutExchange(ExchangeResourcesEffect exchangeResourcesEffect);
 	
-	
+	public abstract void setInGame();
 	
 }

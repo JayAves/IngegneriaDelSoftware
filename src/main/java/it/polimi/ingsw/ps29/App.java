@@ -1,12 +1,14 @@
 package it.polimi.ingsw.ps29;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.controller.Controller;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.view.View;
+import it.polimi.ingsw.ps29.view_client.Client;
 
 /**
  * Hello world!
@@ -57,14 +59,15 @@ public class App
     	//while state!= fine partita
     	//controller.callCorrectView();
     	
-    	
-    	
-    	
-    	/*Client client = new Client ("CLI", "Socket");
-		GameEngine gameEngine = new GameEngine ();
-		Controller controller = new Controller (gameEngine);
-		client.getInput().addObserver(controller);
-		client.getInput().run();*/
+    	try {
+			
+    		Client client = new Client ("CLI", "Socket");
+		
+    	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
     	scanner.close();
     }
     

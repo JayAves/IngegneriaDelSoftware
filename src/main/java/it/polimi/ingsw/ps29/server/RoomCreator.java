@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class RoomCreator extends Thread implements Observer{
 	
@@ -14,6 +15,7 @@ public class RoomCreator extends Thread implements Observer{
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
+	private Long period;
 	
 	
 	public RoomCreator(){
@@ -24,11 +26,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		this.playersInQueue= new ArrayList<ClientThread>();
 		
-		//start timer
 	}
-	
-	
-	
 	
 	public void addPlayer(ClientThread s) throws FileNotFoundException{
 		
@@ -49,22 +47,25 @@ public class RoomCreator extends Thread implements Observer{
 			}
 	}
 
-
 	
-
-
-
 	@Override
 	public void update(Observable o, Object arg) {
 		
 		// TODO Auto-generated method stub
 		
-		if (!(o instanceof ClientThread)){
+		if (!(arg instanceof ClientThread)){
 			
 			//da gestire
 		}
 		
+		try {
+			
+			addPlayer((ClientThread) arg);
 		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 	}
 	
@@ -72,8 +73,17 @@ public class RoomCreator extends Thread implements Observer{
 		
 		while (true){
 			
-			//quando scatta il timer
-			
+			timer.scheduleAtFixedRate(new Task(), 0, period);
+		
+		}
+	}
+	
+	
+	private class Task extends TimerTask{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
 			if (playersInQueue.size()>1){
 				
 				try {
@@ -88,8 +98,8 @@ public class RoomCreator extends Thread implements Observer{
 				}
 			}
 		}
+		
 	}
-
 }
 		
 

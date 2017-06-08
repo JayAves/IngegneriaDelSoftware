@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.view_client;
 
-public class NetworkingFactory extends AbstractFactory {
+public class ConnectionFactory extends AbstractFactory {
 
 	@Override
 	Input getInput(String input) {
@@ -9,12 +9,12 @@ public class NetworkingFactory extends AbstractFactory {
 	}
 
 	@Override
-	Networking getNetworking(String networking) {
+	Connection getNetworking(String networking) {
 
 		if(networking.equals("Socket")) {
-			return new SocketNetworking();
+			return new SocketConnection();
 		} else if (networking.equals("RMI")) {
-			return new RMINetworking();
+			return new RMIConnection();
 		}
 		return null;
 	}

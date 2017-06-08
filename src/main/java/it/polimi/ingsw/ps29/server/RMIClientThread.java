@@ -16,6 +16,12 @@ public class RMIClientThread extends ClientThread{
 		inGame=false;
 	}
 
+	
+	@Override
+	public void setInGame(){
+    	inGame=true;
+    }
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -25,6 +31,7 @@ public class RMIClientThread extends ClientThread{
 	@Override
 	public void stopClient() {
 		// TODO Auto-generated method stub
+		// il server può stoppare il client? Io non credo
 		
 	}
 
