@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Vector;
 
 public class SocketGathererInServer extends Observable implements Observer {
 
@@ -94,8 +94,11 @@ public class SocketGathererInServer extends Observable implements Observer {
 	            		
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
 	                    System.out.println("Client connected with socket "+socket.toString());
+	                    PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
 	                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	                    pw.print("PlayerName?");
 	                    tempName= br.readLine();
+	                    System.out.println(tempName);
 	                    
 	                    try {
 	                        SocketGathererInServer.this.clientThread = new SocketClientThread(SocketGathererInServer.this.socket, tempName);

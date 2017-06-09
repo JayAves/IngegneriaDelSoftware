@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public class InputOutputCLI implements InputOutput {
 	
@@ -92,9 +92,9 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 	
-	public UserExchange askExchange (ExchangeResourcesEffect er) {
+	public Exchange askExchange (ExchangeResourcesEffect er) {
 		int i;
-		UserExchange choice = new UserExchange();
+		Exchange choice = new Exchange();
 		do {
 			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte
 				System.out.println("\n"+i+")");

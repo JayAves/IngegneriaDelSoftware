@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.view;
 
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
-import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public class InputOutputGUI implements InputOutput {
 
@@ -37,7 +37,7 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public UserExchange askExchange(ExchangeResourcesEffect effect) {
+	public Exchange askExchange(ExchangeResourcesEffect effect) {
 		// TODO Auto-generated method stub
 		return null;
 	}

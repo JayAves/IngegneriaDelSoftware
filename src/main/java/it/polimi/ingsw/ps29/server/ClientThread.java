@@ -13,8 +13,6 @@ public abstract class ClientThread extends Observable implements Runnable{
 
 	public abstract void askNextAction();
 	
-	public abstract void callCorrectView ();
-
 	public abstract void askBonusAction(BonusActionEffect effect);
 
 	public abstract void askAboutExchange(ExchangeResourcesEffect exchangeResourcesEffect);

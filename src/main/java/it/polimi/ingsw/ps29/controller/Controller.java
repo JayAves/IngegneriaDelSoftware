@@ -21,9 +21,12 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.View;
-import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
-import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
-import it.polimi.ingsw.ps29.view.usermessages.UserMessage;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.BonusChoice;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class Controller implements Observer{
 	
@@ -68,14 +71,14 @@ public class Controller implements Observer{
 		if(o instanceof Match)
 			callCorrectView();
 		else if (o instanceof View) {
-			((UserMessage)arg).accept(visitor);
+			((Message)arg).visit(visitor);
 		}
 		else 
 			throw new IllegalArgumentException();
 	}
 	
 	
-	public void handleInputAction (UserChoice arg) {
+	public void handleInputAction (ActionChoice arg) {
 	
 		Action action;
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
@@ -124,10 +127,10 @@ public class Controller implements Observer{
 			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
 			infoForView (arg, move);
 		}
-	
+		//else viewsnotifyRejection();
 	}
 	
-	private void infoForView (UserChoice arg, Move move) {
+	private void infoForView (ActionChoice arg, Move move) {
 		model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
 		model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
 		
@@ -139,14 +142,25 @@ public class Controller implements Observer{
 	
 	public class VisitorMessages {
 		
-		public void visit (UserChoice msg) {
+		public void visit (ActionChoice msg) {
 			handleInputAction(msg);
 		}
 		
-		public void visit (UserExchange msg) {
+		public void visit (Exchange msg) {
 			//creare metodo per lo scambio risorse
 		}
-
+		
+		public void visit(BonusChoice msg){
+			
+		}
+		
+		public void visit(VaticanChoice msg){
+			
+		}
+		
+		public void visit(PrivilegeChoice msg){
+			
+		}
 	}
 	
 }

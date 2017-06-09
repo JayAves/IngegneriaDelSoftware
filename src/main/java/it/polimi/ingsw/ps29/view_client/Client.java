@@ -4,57 +4,68 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
-import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.view.View;
-import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
-import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
-import it.polimi.ingsw.ps29.view.usermessages.UserMessage;
+import it.polimi.ingsw.ps29.view.messages.BonusChoice;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class Client implements Observer{
 	
 	
-	private View_Client view;
+	private ViewClient view;
 	private Connection networking;
 	private String name;
 	
-	public Client (View_Client view, String net) throws IOException {
+	public Client (ViewClient view, String net) throws IOException {
 		
 		this.view=view;
 		this.name=view.getName();
-		
-		/*AbstractFactory creator = new AbstractFactory();
-		creator[0] = new InputFactory ();
-		creator[1] = new ConnectionFactory();
-		
-		input = creator[0].getInput(in);
-		networking = creator[1].getNetworking(net); */
-		
 		ConnectionFactory factory= new ConnectionFactory();
 		networking=factory.getNetworking(net);
-		
+		networking.setPlayerName(name);
 		networking.connect("localhost");
 	}
 	
-	public void callView (){
-		
-		//a seconda del messaggio che ricevo chiamo un metodo diverso sulla view
-		
-	}
-	
-	public void handleInputAction (UserChoice arg){
-		
-		//ricevo dalla view input e devo passarlo via networking
-	
-	}
-	
-
-	
-
 	@Override
 	public void update(Observable o, Object arg) { //riceve da view e da socket/rmi
 		
 		// TODO Auto-generated method stub
 		
+		VisitorServerMessages svisitor= new VisitorServerMessages();
+		
+		if(o instanceof Connection)
+			((Message)arg).receive(svisitor);
+			
+		else if (o instanceof View) {
+			networking.sendMessage((Message)arg);
+		}
+		else 
+			throw new IllegalArgumentException();
 	}
+	
+	public class VisitorServerMessages{
+	    	
+	    	public void receive (ActionChoice msg) {
+				view.askNextAction();
+			}
+			
+	    	public void receive (Exchange msg) {
+				//creare metodo per lo scambio risorse
+	    		//view.askAboutExchange(null);
+	    	}
+			
+	    	public void receive (BonusChoice msg) {
+				//view.askAboutExchanges
+			}
+			public void receive(VaticanChoice msg){
+				
+			}
+			
+			public void receive(PrivilegeChoice msg){
+				
+			}
+	    }
 }

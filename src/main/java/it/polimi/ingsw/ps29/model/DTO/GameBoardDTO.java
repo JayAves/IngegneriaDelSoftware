@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
-import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 
 public class GameBoardDTO implements Serializable{
 	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
@@ -79,7 +79,7 @@ public class GameBoardDTO implements Serializable{
 		return key;
 	}
 	
-	private String secondLevel (UserChoice move) {
+	private String secondLevel (ActionChoice move) {
 		String key;
 		switch (move.getChoices(0)) {
 			case 1:
@@ -146,7 +146,7 @@ public class GameBoardDTO implements Serializable{
 		}
 	}
 	
-	public void insertFamiliar (UserChoice move, Color playerColor) {
+	public void insertFamiliar (ActionChoice move, Color playerColor) {
 		FamilyMemberDTO fmDTO = new FamilyMemberDTO(playerColor, familiarColor(move.getChoices(3)));
 		boardMap.get(firstLevel(move.getChoices(0))).get(secondLevel(move)).add(fmDTO);
 	}

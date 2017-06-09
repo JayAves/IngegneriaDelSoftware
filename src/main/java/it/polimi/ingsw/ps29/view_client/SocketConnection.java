@@ -5,8 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Observable;
 
-public class SocketConnection implements Connection,Runnable {
+import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.Message;
+
+public class SocketConnection extends Observable implements Connection,Runnable {
 	
 	  
     private Socket socket;
@@ -15,7 +19,7 @@ public class SocketConnection implements Connection,Runnable {
     private boolean connected;
     private int port;
     private String hostName;
-    private String playerName;
+    private String playerName= "PlayerName Not Initialized"; //per i test
 
     public SocketConnection() {
 		connected = false;
@@ -25,8 +29,8 @@ public class SocketConnection implements Connection,Runnable {
    
     @Override
     public void connect(String hostName) throws IOException {
-        if(!connected)
-        {
+        
+    	if(!connected){
 	     this.hostName = hostName;
 	     socket = new Socket(hostName,port);
          br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -36,20 +40,54 @@ public class SocketConnection implements Connection,Runnable {
          t.start();
         }
     }
-
+    
+    @Override
+ 	public void setPlayerName(String playerName){
+ 		
+ 		this.playerName=playerName;
+ 		
+ 	}
+     
+    @Override
+	public void sendMessage(Message arg) {
+		// TODO Auto-generated method stub
+		
+	}
+    
     public void run() {
 	   
     	String msg = ""; //holds the msg received from server
-         try {
-            
-        	 while(connected){
-            	//
+     
+	   	 do{
+			 try {
+				
+				msg= br.readLine();
+			
+			 } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+		 } while (msg.equals("PlayerName?"));
+		 
+	   	 pw.println(playerName); //passo player name al server
+        
+	   	 while(connected){
         		 
-            }
-            
-         }
-         
-         finally { connected = false; }
+        		 try {
+					
+        			 msg=br.readLine();
+				
+        		 } catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	   		 	
+        		 notifyObservers(msg);
+	   		 	
+        		
+        	 }
+          
     }
 
     public boolean isConnected() {
@@ -71,13 +109,7 @@ public class SocketConnection implements Connection,Runnable {
         }
     }
     
-    public int getPort(){
-            return port;
-        }
-
-    public void setPort(int port){
-            this.port = port;
-        }
+   
 
     public String getHostName(){
             return hostName;
@@ -88,16 +120,11 @@ public class SocketConnection implements Connection,Runnable {
         }
 
 	
-    /*public static void main(String[] argv)throws IOException {
-        SocketNetworking c = new So();
-        c.connect("localhost",5555);
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String msg = "";
-        while(!msg.equalsIgnoreCase("quit"))
-        {
-           msg = br.readLine();
-           c.sendMessage(msg);
-        }
-        c.disconnect();
-    }*/
+    
+    
+ 
+
+
+
+
 }

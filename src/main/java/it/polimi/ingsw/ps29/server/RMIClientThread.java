@@ -47,11 +47,7 @@ public class RMIClientThread extends ClientThread{
 		
 	}
 
-	@Override
-	public void callCorrectView() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void askBonusAction(BonusActionEffect effect) {

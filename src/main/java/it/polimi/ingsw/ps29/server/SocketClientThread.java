@@ -93,21 +93,27 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void askNextAction() {
 		// TODO Auto-generated method stub
+		pw.println("asknextAction");
+		try {
+			
+			br.readLine();
 		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//deserializzo UserChioce
+		setChanged();
+		notify();
 	}
 
 
-	@Override
-	public void callCorrectView() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	@Override
 	public void askBonusAction(BonusActionEffect effect) {
 		// TODO Auto-generated method stub
-		
+		//manda  a socket del client una stringa tipo askbonusAction++
 	}
 
 

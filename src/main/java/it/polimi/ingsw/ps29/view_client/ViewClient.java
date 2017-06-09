@@ -10,15 +10,15 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.view.InputOutput;
 import it.polimi.ingsw.ps29.view.InputoutputFactory;
-import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 
-public class View_Client extends Observable implements Observer {
+public class ViewClient extends Observable implements Observer {
 	
 	private InputOutput inputOutput;
 	private InputoutputFactory inputOutputFactory = new InputoutputFactory ();
 	private String namePlayer;
 	
-	public View_Client (String inputType, String n) {
+	public ViewClient (String inputType, String n) {
 		
 		inputOutput = inputOutputFactory.getInput(inputType);
 		namePlayer = n;
@@ -34,13 +34,13 @@ public class View_Client extends Observable implements Observer {
 			choice[2] = inputOutput.askNumberOfServants();
 			choice[3] = inputOutput.askFamiliarColor();
 		}
-		UserChoice move = new UserChoice(namePlayer, choice);
+		ActionChoice move = new ActionChoice(namePlayer, choice);
 		setChanged();
 		notifyObservers(move);
 	}
 	
 	public void askBonusAction (BonusActionEffect effect) {
-		UserChoice move;
+		ActionChoice move;
 		int[] userChoice = new int[4];
 		userChoice[1] = 0;
 		
@@ -80,7 +80,7 @@ public class View_Client extends Observable implements Observer {
 		
 		userChoice [2] = inputOutput.askNumberOfServants();
 		userChoice[3] = -1;
-		move = new UserChoice(namePlayer, userChoice);
+		move = new ActionChoice(namePlayer, userChoice);
 		setChanged();
 		notifyObservers(move);
 	}

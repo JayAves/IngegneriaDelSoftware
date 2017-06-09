@@ -30,7 +30,7 @@ public class OnlineApp {
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
     		
-    		View_Client view = new View_Client (inputChoice,  playerName);
+    		ViewClient view = new ViewClient (inputChoice,  playerName);
     		
     		try {
     			

@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.resources.Servants;
-import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 
 public class ChoiceToMove {
 	
@@ -19,7 +19,7 @@ public class ChoiceToMove {
 		this.board = board;
 	}
 
-	public Move createMove (UserChoice choice) {
+	public Move createMove (ActionChoice choice) {
 		
 		return new Move (getPlayer(choice.getName()), getSpace(choice.getChoices(0) ), choice.getChoices(1), 
 				choice.getChoices(2), getFamiliar(choice.getName(), choice.getChoices(3)));

@@ -1,6 +1,8 @@
-package it.polimi.ingsw.ps29.view.usermessages;
+package it.polimi.ingsw.ps29.view.messages;
 
-public class UserChoice implements UserMessage {
+import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
+
+public class ActionChoice implements Message {
 
 	private String name;
 	private int[] choices;
@@ -9,7 +11,7 @@ public class UserChoice implements UserMessage {
 	//int [2] num servitori
 	//int [3] familiare
 	
-	public UserChoice (String name, int[] choices) {
+	public ActionChoice (String name, int[] choices) {
 		this.setName(name);
 		this.setChoices(choices);
 	}
@@ -31,9 +33,16 @@ public class UserChoice implements UserMessage {
 	}
 
 	@Override
-	public void accept(it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) {
+	public void visit(it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) {
 		visitor.visit(this);
 	}
+
+	@Override
+	public void receive(VisitorServerMessages visitor) {
+		// TODO Auto-generated method stub
+		visitor.receive(this);
+	}
+
 	
 	
 }

@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.view;
 
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
-import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public interface InputOutput {
 	
@@ -16,7 +16,7 @@ public interface InputOutput {
 	
 	abstract int askFamiliarColor ();
 
-	abstract UserExchange askExchange(ExchangeResourcesEffect effect);
+	abstract Exchange askExchange(ExchangeResourcesEffect effect);
 	
 	abstract int askFloor ();
 

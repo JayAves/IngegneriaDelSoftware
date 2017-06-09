@@ -22,9 +22,9 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.View;
-import it.polimi.ingsw.ps29.view.usermessages.UserChoice;
-import it.polimi.ingsw.ps29.view.usermessages.UserExchange;
-import it.polimi.ingsw.ps29.view.usermessages.UserMessage;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.Message;
 
 public class NewController implements Observer{
 	
@@ -76,7 +76,7 @@ public class NewController implements Observer{
 	}
 	
 	
-	public void handleInputAction (UserChoice arg) {
+	public void handleInputAction (ActionChoice arg) {
 	
 		Action action;
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
@@ -131,11 +131,11 @@ public class NewController implements Observer{
 	
 	public class VisitorMessages {
 		
-		public void visit (UserChoice msg) {
+		public void visit (ActionChoice msg) {
 			handleInputAction(msg);
 		}
 		
-		public void visit (UserExchange msg) {
+		public void visit (Exchange msg) {
 			//creare metodo per lo scambio risorse
 		}
 
