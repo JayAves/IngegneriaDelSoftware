@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps29.view_client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Observable;
@@ -16,6 +18,8 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     private Socket socket;
     private BufferedReader br;
     private PrintWriter pw;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
     private boolean connected;
     private int port;
     private String hostName;
@@ -34,6 +38,8 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	     this.hostName = hostName;
 	     socket = new Socket(hostName,port);
          br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+         in = new ObjectInputStream(socket.getInputStream());
+         out= new ObjectOutputStream(socket.getOutputStream());
          pw = new PrintWriter(socket.getOutputStream(),true);
          connected = true;
          Thread t = new Thread(this);
@@ -51,24 +57,30 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     @Override
 	public void sendMessage(Message arg) {
 		// TODO Auto-generated method stub
-		
+		try {
+			out.writeObject(arg);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not serialize obj"+ arg.toString());
+		}
 	}
     
     public void run() {
 	   
-    	String msg = ""; //holds the msg received from server
+    	Message msg = null;
+    	String nameCatch= "";	
      
 	   	 do{
 			 try {
 				
-				msg= br.readLine();
+				nameCatch= br.readLine();
 			
 			 } catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println("Could not read Name from Server");
 			}
 			 
-		 } while (msg.equals("PlayerName?"));
+		 } while (nameCatch.equals("PlayerName?"));
 		 
 	   	 pw.println(playerName); //passo player name al server
         
@@ -76,14 +88,33 @@ public class SocketConnection extends Observable implements Connection,Runnable 
         		 
         		 try {
 					
-        			 msg=br.readLine();
+        			 try {
+						
+        				 msg= (Message) in.readObject();
+						 notifyObservers(msg);
+					
+        			 } catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						System.err.println("Could not deserialize class");
+					}
 				
         		 } catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					System.err.println("Could not receive from Server socket");
+        		 	
+        		 	}
+        		 
+        		 finally {
+         			
+        			 try {
+						socket.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Could not close the client socket");
+					}
+         		}
 	   		 	
-        		 notifyObservers(msg);
+        		
 	   		 	
         		
         	 }

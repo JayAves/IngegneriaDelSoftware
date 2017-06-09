@@ -64,7 +64,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Could not find json file- and then no game was initialized");
 		}
 			
 	}
@@ -94,7 +94,7 @@ public class RoomCreator extends Thread implements Observer{
 				
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Could not find json file- and then no game was initialized");
 				}
 			}
 		}

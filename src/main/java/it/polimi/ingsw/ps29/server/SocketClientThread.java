@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Observable;
 
+import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 
@@ -47,7 +48,9 @@ public class SocketClientThread extends ClientThread {
         
     	try {
 		this.socket.close();
-        }	catch(IOException ioe){ };
+        }	catch(IOException ioe){
+        	System.out.println("Could not close server-side socket connection");
+        };
     }
 
     
@@ -65,7 +68,9 @@ public class SocketClientThread extends ClientThread {
         try {
             this.socket.close(); //chiusura del socket
             System.out.println("Closing connection");
-        } catch (IOException ioe) { }
+        } catch (IOException ioe) { 
+        	System.out.println("Could not stop socketClientThread");
+        }
 
         //notify the observers for cleanup 
         this.setChanged();             
@@ -93,18 +98,10 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void askNextAction() {
 		// TODO Auto-generated method stub
-		pw.println("asknextAction");
-		try {
-			
-			br.readLine();
 		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		//deserializzo UserChioce
 		setChanged();
-		notify();
+		//notify();
 	}
 
 
@@ -119,6 +116,13 @@ public class SocketClientThread extends ClientThread {
 
 	@Override
 	public void askAboutExchange(ExchangeResourcesEffect exchangeResourcesEffect) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void showBoard(InfoDTO infoForView) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.view.messages;
 
-public interface Message {
+import java.io.Serializable;
+
+public interface Message extends Serializable {
 	
 	public void visit (it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) ;
 	

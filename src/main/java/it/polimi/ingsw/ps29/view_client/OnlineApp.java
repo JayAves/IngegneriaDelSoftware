@@ -39,7 +39,7 @@ public class OnlineApp {
     		
         	} catch (IOException e) {
     			// TODO Auto-generated catch block
-    			e.printStackTrace();
+    			System.out.println("Could not create Client!");
     		}
 	 
     		scanner.close();
