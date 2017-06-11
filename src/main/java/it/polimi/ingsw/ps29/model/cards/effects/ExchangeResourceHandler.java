@@ -47,7 +47,7 @@ public class ExchangeResourceHandler implements Cloneable {
 	}
 	
 	//avvertimento per chiedere a scelta all'utente
-	boolean isResourceToChoose () {
+	public boolean isResourceToChoose () {
 		return chooseOut || chooseIn;
 	}
 	
@@ -61,8 +61,9 @@ public class ExchangeResourceHandler implements Cloneable {
 		return resourcesIn.get(index);
 	}
 	
-	//metodo chiamato se nello scambio non è richiesta una scelta tra risorse
-	void performExchange (Container resources, int indexOut, int indexIn) {
+	public void performExchange (Container resources, int indexOut, int indexIn) {
+
+		// se nello scambio non è richiesta una scelta tra risorse
 		if(!chooseOut) {
 			//resources contiene le risorse del giocatore che ha deciso di scambiare le sue risorse
 			for(Resource resOut: resourcesOut) {
@@ -75,6 +76,7 @@ public class ExchangeResourceHandler implements Cloneable {
 			resources.updateResource(resOut);
 		}
 		
+		// se nello scambio non è richiesta una scelta tra risorse
 		if(!chooseIn) {
 			for (Resource resIn: resourcesIn) 
 				resources.updateResource(resIn);	

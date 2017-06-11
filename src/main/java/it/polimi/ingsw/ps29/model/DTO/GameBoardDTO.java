@@ -81,7 +81,7 @@ public class GameBoardDTO implements Serializable{
 	
 	private String secondLevel (ActionChoice move) {
 		String key;
-		switch (move.getChoices(0)) {
+		switch (move.getChoice(0)) {
 			case 1:
 				key = boardMap.get("harvest").get("head").isEmpty() ? "head" : "queue";
 				break;
@@ -92,7 +92,7 @@ public class GameBoardDTO implements Serializable{
 			case 4:
 			case 5:
 			case 6:
-				switch (move.getChoices(1)) {
+				switch (move.getChoice(1)) {
 					case 1:
 						key = "first";
 						break;
@@ -147,8 +147,8 @@ public class GameBoardDTO implements Serializable{
 	}
 	
 	public void insertFamiliar (ActionChoice move, Color playerColor) {
-		FamilyMemberDTO fmDTO = new FamilyMemberDTO(playerColor, familiarColor(move.getChoices(3)));
-		boardMap.get(firstLevel(move.getChoices(0))).get(secondLevel(move)).add(fmDTO);
+		FamilyMemberDTO fmDTO = new FamilyMemberDTO(playerColor, familiarColor(move.getChoice(3)));
+		boardMap.get(firstLevel(move.getChoice(0))).get(secondLevel(move)).add(fmDTO);
 	}
 
 	

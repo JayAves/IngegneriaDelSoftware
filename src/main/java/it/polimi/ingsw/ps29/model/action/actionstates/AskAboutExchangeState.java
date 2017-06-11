@@ -2,26 +2,28 @@ package it.polimi.ingsw.ps29.model.action.actionstates;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
+import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class AskAboutExchangeState implements ActionState {
-	private int indexProduction;
-	private ArrayList<Card> cards;
-	private int valueFamiliar;
+	private ArrayList <ExchangeResourcesEffect> effect;
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.ASK_EXCHANGE;
 	
 	//indice che memorizza fino a quale effetto ho chiesto se l'utente vuole scambiare le risorse
 	
-	public AskAboutExchangeState(int indexProduction, ArrayList<Card> cards, int valueFamiliar) {
-		this.indexProduction = indexProduction;
-		this.cards = cards;
-		this.valueFamiliar = valueFamiliar;
+	public AskAboutExchangeState(ArrayList<ExchangeResourcesEffect> effect) {
+		this.effect = effect;
+	}
+
+	public ActionState setEffect(ArrayList<ExchangeResourcesEffect> effect) {
+		this.effect = effect;
+		return effect.isEmpty() ? new PerformedState() : this;
 	}
 
 	@Override
 	public ActionState beforeAction() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
@@ -39,24 +41,21 @@ public class AskAboutExchangeState implements ActionState {
 		return state.toString();
 	}
 
-	public int getIndexProduction() {
-		return indexProduction;
-	}
-
-	public void setIndexProduction(int indexProduction) {
-		this.indexProduction = indexProduction;
-	}
 	
-	public void next () {
-		this.indexProduction++;
+
+	
+	public ActionState next () {
+		return effect.isEmpty() ? new PerformedState() : this;
+		
 	}
 
-	public ArrayList<Card> getCards() {
-		return cards;
+	public ExchangeResourcesEffect getEffect (int index) {
+		return effect.get(index);
 	}
 
-	public int getValueFamiliar() {
-		return valueFamiliar;
+	@Override
+	public InteractionMessage objectForView(String player) {
+		return new Exchange(player, effect.remove(0));
 	}
 
 

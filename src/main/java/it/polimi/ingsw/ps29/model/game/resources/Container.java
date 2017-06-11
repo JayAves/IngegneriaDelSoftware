@@ -24,6 +24,10 @@ public class Container {
 		
 	}
 	
+	public ResourceInterface removeResource (ResourceType type) {
+		return resources.remove(type.toString());
+	}
+	
 	
 	public HashMap <String, ResourceInterface> getResources () {
 		return resources;
@@ -57,6 +61,14 @@ public class Container {
 		for(HashMap.Entry<String,ResourceInterface> entry: resources.entrySet())
 			listRes.add(entry.getValue());
 		return listRes;	
+	}
+	
+	public boolean isPossibleToPay (ArrayList<Resource> cost) {
+		for(Resource res: cost)
+			if(resources.get(res.getType()).getAmount()<res.getAmount())
+				return false;
+		return true;
+		
 	}
 }
 	

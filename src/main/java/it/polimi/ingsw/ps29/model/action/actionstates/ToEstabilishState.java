@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.model.action.actionstates;
 
 import it.polimi.ingsw.ps29.model.game.Match;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class ToEstabilishState implements ActionState {
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.TO_ESTABILISH;
@@ -21,6 +23,11 @@ public class ToEstabilishState implements ActionState {
 	public String getState() {
 		// TODO Auto-generated method stub
 		return state.toString();
+	}
+
+	@Override
+	public InteractionMessage objectForView(String player) {
+		return new ActionChoice(player);
 	}
 
 }

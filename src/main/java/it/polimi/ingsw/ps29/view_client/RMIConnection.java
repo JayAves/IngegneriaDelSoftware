@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.view_client;
 import java.io.IOException;
 import java.util.Observable;
 
-import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class RMIConnection extends Observable implements Connection, Runnable {
 
@@ -26,7 +26,7 @@ public class RMIConnection extends Observable implements Connection, Runnable {
 	}
 
 	@Override
-	public void sendMessage(Message arg) {
+	public void sendMessage(InteractionMessage arg) {
 		// TODO Auto-generated method stub
 		
 	}

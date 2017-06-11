@@ -1,36 +1,32 @@
 package it.polimi.ingsw.ps29.view.messages;
 
-import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
 
-public class ActionChoice implements Message {
+public class ActionChoice extends InteractionMessage {
 
-	private String name;
 	private int[] choices;
 	//int [0] spazio
 	//int [1] piano (ev. vale 0)
 	//int [2] num servitori
 	//int [3] familiare
 	
-	public ActionChoice (String name, int[] choices) {
-		this.setName(name);
-		this.setChoices(choices);
+	public ActionChoice (String player) {
+		super (player);
+		choices = new int [4];
+		choices[1] = 0;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getChoices(int i) {
+	public int getChoice(int i) {
 		return choices[i];
 	}
-
-	public void setChoices(int[] choices) {
+	
+	public void setChoices (int[] choices) {
 		this.choices = choices;
 	}
+	
+	public void setChoice (int index, int value) {
+		choices[index] = value;
+	}
+
 
 	@Override
 	public void visit(it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) {
@@ -38,8 +34,7 @@ public class ActionChoice implements Message {
 	}
 
 	@Override
-	public void receive(VisitorServerMessages visitor) {
-		// TODO Auto-generated method stub
+	public void receive(it.polimi.ingsw.ps29.view.View.VisitorServerMessages visitor) {
 		visitor.receive(this);
 	}
 

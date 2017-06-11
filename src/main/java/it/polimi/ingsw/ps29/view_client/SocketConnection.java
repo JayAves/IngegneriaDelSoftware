@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class SocketConnection extends Observable implements Connection,Runnable {
 	
@@ -55,7 +55,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
  	}
      
     @Override
-	public void sendMessage(Message arg) {
+	public void sendMessage(InteractionMessage arg) {
 		// TODO Auto-generated method stub
 		try {
 			out.writeObject(arg);
@@ -67,7 +67,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     
     public void run() {
 	   
-    	Message msg = null;
+    	InteractionMessage msg = null;
     	String nameCatch= "";	
      
 	   	 do{
@@ -90,7 +90,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 					
         			 try {
 						
-        				 msg= (Message) in.readObject();
+        				 msg= (InteractionMessage) in.readObject();
 						 notifyObservers(msg);
 					
         			 } catch (ClassNotFoundException e) {

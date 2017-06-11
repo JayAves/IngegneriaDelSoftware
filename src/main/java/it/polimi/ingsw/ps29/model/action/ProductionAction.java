@@ -3,8 +3,12 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
+import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.ExchangeSupport;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
@@ -38,31 +42,52 @@ public class ProductionAction extends Action {
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
 		else space.queuePlacement(move.getFamiliar());
 		
+		//memorizzo tutti gli effetti per i quali posso chiedere all'utente se li vuole attivare
+		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();
+		
+		if(!options.isEmpty()) {
+			//salvo lo stato delle risorse e gli scambi che devo chiedere all'utente in una variabile di player
+			ExchangeSupport support = new ExchangeSupport(options, move.getPlayer().getPersonalBoard().getResources());
+			//rimuovo tutto gli cambi che non sono possibili a causa delle risorse del giocatore
+			support.checkVector();
+			
+			move.getPlayer().setSupport(support);
+			//creo lo stato con solo gli scambi che possono essere effettivemente fattibili
+			state = new AskAboutExchangeState(move.getPlayer().getSupport().getOptions());
+		}
 				
 		//gestione bonus della tile
 		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
 		GainResourcesEffect bonusProductionTile = new GainResourcesEffect(bonusFromTile);
 		bonusProductionTile.performEffect(move.getPlayer());
 		
-		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("building");
-		//ciclo lettura effetti da personalBoard (gestita però nel controller)
-		state = new AskAboutExchangeState(0, importedSlot, move.getFamiliar().getProductionPower());
-		/*for(Card card: importedSlot) {
-			for(Effect effect: card.getPermanentEffects()) {
-				if (move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
-				 ((BuildingCard)card).getProductionForce()) {
-					if(!(state instanceof AskAboutExchangeState))
-						state = new AskAboutExchangeState(0);
-					else 
-						((AskAboutExchangeState)state).next();
+		for(Card card: move.getPlayer().getPersonalBoard().getCards("building"))
+			for(Effect effect: card.getPermanentEffects())
+				if(!(effect instanceof ExchangeResourcesEffect))
 					effect.performEffect(move.getPlayer());
-				}
-			}
-		}*/
+		
+		if(!options.isEmpty()) {
+			//questa operazione aggiorna anche il vettore degli scambi, potrei non avere più scambi possibili
+			move.getPlayer().getSupport().setActualResources(move.getPlayer().getPersonalBoard().getResources());
+			//per questo motivo aggiorno lo stato
+			state = ((AskAboutExchangeState)state).setEffect(move.getPlayer().getSupport().getOptions());
+			if(state.getState().equals("performed"))
+				move.getPlayer().getPersonalBoard().setResources(move.getPlayer().getSupport().getActualResources());
+		}
 		move.getFamiliar().setBusy(true);
 		
 	}
 	
+	public ArrayList<ExchangeResourcesEffect> buildExchangeSupportVector () {
+		ArrayList<ExchangeResourcesEffect> options = new ArrayList<ExchangeResourcesEffect>();
+		for(Card card: move.getPlayer().getPersonalBoard().getCards("building"))
+			for(Effect effect: card.getPermanentEffects())
+				//se l'effetto è di tipo scambio e il valore della mossa è >= del valore della carta
+				if(effect instanceof ExchangeResourcesEffect && ((BuildingCard)card).getProductionForce()<=
+						move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants())
+					options.add((ExchangeResourcesEffect)effect);
+		return options;
+	}
 	
 
 

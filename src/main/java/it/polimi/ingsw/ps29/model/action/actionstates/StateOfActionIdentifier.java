@@ -5,7 +5,8 @@ public enum StateOfActionIdentifier {
 	REJECTED ("rejected"),
 	BONUS_ACTION ("bonus action"),
 	ASK_EXCHANGE("ask exchange"),
-	TO_ESTABILISH ("to estabilish");
+	TO_ESTABILISH ("to estabilish"),
+	PRIVILEGES ("privileges");
 	
 	private final String name;
 	

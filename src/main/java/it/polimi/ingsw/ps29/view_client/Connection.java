@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.view_client;
 
 import java.io.IOException;
 
-import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public interface Connection {
 	
@@ -10,5 +10,5 @@ public interface Connection {
 	
 	public void setPlayerName(String playerName);
 
-	public void sendMessage(Message arg);
+	public void sendMessage(InteractionMessage arg);
 }

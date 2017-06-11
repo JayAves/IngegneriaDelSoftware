@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.model.action.actionstates;
 
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
+import it.polimi.ingsw.ps29.view.messages.BonusChoice;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class BonusActionState implements ActionState {
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.BONUS_ACTION;
@@ -14,7 +16,6 @@ public class BonusActionState implements ActionState {
 
 	@Override
 	public ActionState beforeAction() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
@@ -26,12 +27,16 @@ public class BonusActionState implements ActionState {
 
 	@Override
 	public String getState() {
-		// TODO Auto-generated method stub
 		return state.toString();
 	}
 	
 	public BonusActionEffect getEffect () {
 		return effect;
+	}
+
+	@Override
+	public InteractionMessage objectForView(String player) {
+		return new BonusChoice(effect, player);
 	}
 
 }

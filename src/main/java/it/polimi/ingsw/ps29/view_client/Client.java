@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
@@ -34,18 +34,18 @@ public class Client implements Observer{
 		
 		// TODO Auto-generated method stub
 		
-		VisitorServerMessages svisitor= new VisitorServerMessages();
+/*(P)		VisitorServerMessages svisitor= new VisitorServerMessages();
 		
 		if(o instanceof Connection)
-			((Message)arg).receive(svisitor);
+			((InteractionMessage)arg).receive(svisitor);
 			
 		else if (o instanceof View) {
-			networking.sendMessage((Message)arg);
+			networking.sendMessage((InteractionMessage)arg);
 		}
 		else 
 			throw new IllegalArgumentException();
-	}
-	
+	}*/
+	/*
 	public class VisitorServerMessages{
 	    	
 	    	public void receive (ActionChoice msg) {
@@ -67,5 +67,6 @@ public class Client implements Observer{
 			public void receive(PrivilegeChoice msg){
 				
 			}
-	    }
+	    }*/
+}
 }

@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
+import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public class InputOutputCLI implements InputOutput {
@@ -92,9 +95,9 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 	
-	public Exchange askExchange (ExchangeResourcesEffect er) {
+	public Exchange askExchange (Exchange choice) {
 		int i;
-		Exchange choice = new Exchange();
+		ExchangeResourcesEffect er = choice.getExchange();
 		do {
 			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte
 				System.out.println("\n"+i+")");
@@ -142,6 +145,54 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println(res);
 		if(option.getBooleanIn())
 			System.out.println("[optional]\n");
+	}
+
+	@Override
+	public void printBonusAction(BonusActionEffect effect) {
+		System.out.println("\nBonus action value: "+effect.getValue());
+		System.out.println("\nType of action: "+effect.getType());
+		if(effect instanceof BonusPlacementEffect){
+			System.out.println("\nDicount:\n");
+			for (Resource res: ((BonusPlacementEffect) effect).getDiscount())
+				System.out.println(res);
+		}
+		
+	}
+
+	@Override
+	public ResourceType askSpecificPrivilege() {
+		int choice;
+		do{
+			System.out.println("1) 1 wood - 1 stone\n");
+			System.out.println("2) 2 servants\n");
+			System.out.println("3) 2 coins\n");
+			System.out.println("4) 2 military points\n");
+			System.out.println("5) 1 faith point\n");
+			System.out.println("Choice must be different by previous in this turn: ");
+			choice = scanner.nextInt();
+		} while (choice<1 || choice>5);
+		
+		ResourceType type = ResourceType.WOOD;
+		switch (choice) {
+			case 1:
+				type = ResourceType.WOOD;
+				break;
+			case 2:
+				type = ResourceType.SERVANT;
+				break;
+			case 3:
+				type = ResourceType.COIN;
+				break;
+			case 4:
+				type = ResourceType.MILITARY;
+				break;
+			case 5:
+				type = ResourceType.FAITH;
+				break;
+		}
+		
+		return type; 
+			
 	}
 
 	

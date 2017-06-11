@@ -48,4 +48,8 @@ public class PersonalBoard {
 	public ResourceInterface getSpecificResource (String res){
 		return resources.getResource(res);
 	}
+	
+	public void setResources (Container resource) {
+		this.resources = resource;
+	}
 }

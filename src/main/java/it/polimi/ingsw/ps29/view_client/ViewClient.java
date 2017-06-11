@@ -34,9 +34,9 @@ public class ViewClient extends Observable implements Observer {
 			choice[2] = inputOutput.askNumberOfServants();
 			choice[3] = inputOutput.askFamiliarColor();
 		}
-		ActionChoice move = new ActionChoice(namePlayer, choice);
+/*(p)		ActionChoice move = new ActionChoice(namePlayer, choice);
 		setChanged();
-		notifyObservers(move);
+		notifyObservers(move);*/
 	}
 	
 	public void askBonusAction (BonusActionEffect effect) {
@@ -80,14 +80,14 @@ public class ViewClient extends Observable implements Observer {
 		
 		userChoice [2] = inputOutput.askNumberOfServants();
 		userChoice[3] = -1;
-		move = new ActionChoice(namePlayer, userChoice);
+/*(P)		move = new ActionChoice(namePlayer, userChoice);
 		setChanged();
-		notifyObservers(move);
+		notifyObservers(move);*/
 	}
 	
 	public void askAboutExchange (ExchangeResourcesEffect effect) {
 		setChanged();
-		notifyObservers(inputOutput.askExchange(effect));
+//(P)		notifyObservers(inputOutput.askExchange(effect));
 	}
 
 	@Override

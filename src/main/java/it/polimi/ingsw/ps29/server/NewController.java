@@ -24,7 +24,7 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class NewController implements Observer{
 	
@@ -53,9 +53,9 @@ public class NewController implements Observer{
 		else if (state.getState().equals("bonus action"))
 			view.askBonusAction(((BonusActionState)state).getEffect());
 		else if (state.getState().equals("ask exchange")) {
-			int index = ((AskAboutExchangeState)state).getIndexProduction();
+//(P)			int index = ((AskAboutExchangeState)state).getIndexProduction();
 			//sistemare get(0) nell'istruzione seguente
-			view.askAboutExchange((ExchangeResourcesEffect) ((AskAboutExchangeState)state).getCards().get(index).getPermanentEffects().get(0));
+//(P)			view.askAboutExchange((ExchangeResourcesEffect) ((AskAboutExchangeState)state).getCards().get(index).getPermanentEffects().get(0));
 		}
 	}
 	
@@ -82,7 +82,7 @@ public class NewController implements Observer{
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
 		Move move= adapter.createMove(arg);
 		
-		switch (arg.getChoices(0))	{
+		switch (arg.getChoice(0))	{
 		
 		case 1:
 			action= new HarvestAction(model, move);

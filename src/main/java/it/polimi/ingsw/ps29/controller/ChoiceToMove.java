@@ -21,8 +21,8 @@ public class ChoiceToMove {
 
 	public Move createMove (ActionChoice choice) {
 		
-		return new Move (getPlayer(choice.getName()), getSpace(choice.getChoices(0) ), choice.getChoices(1), 
-				choice.getChoices(2), getFamiliar(choice.getName(), choice.getChoices(3)));
+		return new Move (getPlayer(choice.getName()), getSpace(choice.getChoice(0) ), choice.getChoice(1), 
+				choice.getChoice(2), getFamiliar(choice.getName(), choice.getChoice(3)));
 	}
 	
 	private Player getPlayer (String player) {

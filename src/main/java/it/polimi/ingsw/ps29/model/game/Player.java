@@ -7,9 +7,11 @@ import it.polimi.ingsw.ps29.model.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.model.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
+import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class Player {
@@ -19,6 +21,7 @@ public class Player {
 	private FamilyMember[] family; 
 	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
+	private ExchangeSupport support;
 	public ArrayList<Effect> specialPermanentEffects;
 	public PersonalBoardDTO boardDTO;
 	
@@ -27,6 +30,7 @@ public class Player {
 		this.color = color;
 		this.board = new PersonalBoard(pbt);
 		initFamily();
+		support = new ExchangeSupport(new ArrayList<ExchangeResourcesEffect>(), new Container());
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
 		initDTO ();
@@ -90,5 +94,13 @@ public class Player {
 		boardDTO.cleanContainer();
 		for(ResourceInterface res: board.getResources().hashMapToArrayListResources())
 			boardDTO.insertResource(new ResourceDTO(res.getType(), res.getAmount()));
+	}
+
+	public ExchangeSupport getSupport() {
+		return support;
+	}
+
+	public void setSupport(ExchangeSupport support) {
+		this.support = support;
 	}
 }

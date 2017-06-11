@@ -2,10 +2,12 @@ package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
+import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
 import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public abstract class Action {
 	
@@ -38,11 +40,15 @@ public abstract class Action {
 		else {
 			performAction();
 		
-			if(!state.getState().equals("bonus action") && !state.getState().equals("ask exchange"))
+			if(!state.getState().equals("bonus action") && !state.getState().equals("ask exchange")
+					&& !state.getState().equals("privileges"))
 				state = new PerformedState();
 		}
-		
-		state = state.afterAction(model);
+		ResourceInterface privileges = model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().getResource("privilege");
+		if(privileges!=null)
+			state = new PrivilegesState(state, privileges.getAmount());
+		else
+			state = state.afterAction(model);
 		
 		/* 
 		se lo stato è REJECTED chiedo una nuova Move

@@ -6,25 +6,24 @@ import java.util.Observable;
 import java.util.Observer;
 
 import it.polimi.ingsw.ps29.model.action.Action;
+import it.polimi.ingsw.ps29.model.action.AddPrivileges;
 import it.polimi.ingsw.ps29.model.action.CouncilPalaceAction;
+import it.polimi.ingsw.ps29.model.action.ExchangeResources;
 import it.polimi.ingsw.ps29.model.action.HarvestAction;
 import it.polimi.ingsw.ps29.model.action.MarketAction;
 import it.polimi.ingsw.ps29.model.action.NoAction;
 import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
-import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
-import it.polimi.ingsw.ps29.model.action.actionstates.BonusActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
-import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.Message;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
@@ -47,18 +46,15 @@ public class Controller implements Observer{
 	}
 	
 	public void callCorrectView () {
-		View view = views.get(model.getBoard().getCurrentPlayer().getName());
-		state = state.beforeAction();
+		String playerName = model.getBoard().getCurrentPlayer().getName();
+		View view = views.get(playerName);
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
-		if(state.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.toString()))
-			view.askNextAction();
-		else if (state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString()))
-			view.askBonusAction(((BonusActionState)state).getEffect());
-		else if (state.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())) {
-			int index = ((AskAboutExchangeState)state).getIndexProduction();
-			//sistemare get(0) nell'istruzione seguente
-			view.askAboutExchange((ExchangeResourcesEffect) ((AskAboutExchangeState)state).getCards().get(index).getPermanentEffects().get(0));
-		}
+		state = state.beforeAction();
+		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
+		InteractionMessage object = state.objectForView(playerName);
+		
+		view.startInteraction (object);
+		
 	}
 	
 
@@ -71,7 +67,9 @@ public class Controller implements Observer{
 		if(o instanceof Match)
 			callCorrectView();
 		else if (o instanceof View) {
-			((Message)arg).visit(visitor);
+			((InteractionMessage)arg).visit(visitor);
+			for(HashMap.Entry <String, View> view: views.entrySet())
+				view.getValue().showBoard(model.infoForView);
 		}
 		else 
 			throw new IllegalArgumentException();
@@ -79,12 +77,12 @@ public class Controller implements Observer{
 	
 	
 	public void handleInputAction (ActionChoice arg) {
-	
+		
 		Action action;
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
 		Move move= adapter.createMove(arg);
 		
-		switch (arg.getChoices(0))	{
+		switch (arg.getChoice(0))	{
 		
 		case 1:
 			action= new HarvestAction(model, move);
@@ -122,7 +120,7 @@ public class Controller implements Observer{
 		//recupero lo stato dopo che ho eseguito le istruzioni
 		
 		if(state.getState().equals(StateOfActionIdentifier.PERFORMED.toString())||state.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())
-				||state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())) {
+				||state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())||state.getState().equals(StateOfActionIdentifier.PRIVILEGES)) {
 			//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
 			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
 			infoForView (arg, move);
@@ -130,12 +128,57 @@ public class Controller implements Observer{
 		//else viewsnotifyRejection();
 	}
 	
+	private ActionChoice handleBonusAction (BonusChoice msg) {
+		ActionChoice choice = new ActionChoice (msg.getName());
+		switch(msg.getBonus().getType()) {
+			case "harvest":
+				choice.setChoice(0, 1);
+				break;
+			case "production":
+				choice.setChoice(0, 2);
+				break;
+			case "territory":
+				choice.setChoice(0, 3);
+				break;
+			case "building":
+				choice.setChoice(0, 4);
+				break;
+			case "character":
+				choice.setChoice(0, 5);
+				break;
+			case "venture":
+				choice.setChoice(0, 6);
+				break;
+			default:
+				choice.setChoice(0, 12);
+				break;
+		}
+		
+		//nel caso si tratta di un piazzamento sulla torre setto il piano scelto
+		if(msg.getFloor()>0)
+			choice.setChoice(1, msg.getFloor());
+		
+		choice.setChoice(2, msg.getServants());
+		choice.setChoice(3,  -1);
+		
+		return choice;
+	}
+	
+	private void handleExchangeAction (Exchange msg) {
+		ExchangeResources res = new ExchangeResources(model, state);
+		state = res.exchangeHandler(msg);
+	}
+	
+	private void handlePrivilegesChoice (PrivilegeChoice msg) {
+		AddPrivileges addPrivileges = new AddPrivileges();
+		addPrivileges.handlePrivileges(model.getBoard().getCurrentPlayer(), msg.getChoices());
+		state = state.afterAction(model); //ottengo lo stato precedente
+		state = state.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
+	}
+	
 	private void infoForView (ActionChoice arg, Move move) {
 		model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
 		model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
-		
-		for(HashMap.Entry <String, View> view: views.entrySet())
-			view.getValue().showBoard(model.infoForView);
 		
 	}
 	
@@ -147,19 +190,19 @@ public class Controller implements Observer{
 		}
 		
 		public void visit (Exchange msg) {
-			//creare metodo per lo scambio risorse
+			handleExchangeAction(msg);
 		}
 		
 		public void visit(BonusChoice msg){
-			
+			handleInputAction(handleBonusAction (msg));
 		}
 		
 		public void visit(VaticanChoice msg){
-			
+			//handleExcommunication(msg);
 		}
 		
 		public void visit(PrivilegeChoice msg){
-			
+			handlePrivilegesChoice(msg);
 		}
 	}
 	

@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps29.view;
 
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
+import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public class InputOutputGUI implements InputOutput {
@@ -37,7 +39,7 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public Exchange askExchange(ExchangeResourcesEffect effect) {
+	public Exchange askExchange(Exchange msg) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -46,6 +48,18 @@ public class InputOutputGUI implements InputOutput {
 	public int askFloor() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void printBonusAction(BonusActionEffect effect) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ResourceType askSpecificPrivilege() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
