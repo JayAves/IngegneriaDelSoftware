@@ -147,6 +147,25 @@ public class Match extends Observable{
 		
 		//ciclo di calcolo punti vittoria
 		//stampa punteggi finali
+
+		
+		for (Player player : players){
+			player.passPersonalBoard();
+			player.getFinalPoints();
+			if (player.getVentureCardPenalty() == false){
+				ArrayList<Card> ventures = player.getPersonalBoard().getCards("ventures");
+				for (Card card : ventures){
+					ArrayList<Effect> finalEffects = card.getPermanentEffects();
+					for (Effect effect : finalEffects){
+						effect.performEffect(player);
+					}
+				}
+			}
+			}
+		
+			
+		
+		
 	}
 	
 	public GameBoard getBoard() {
