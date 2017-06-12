@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps29.server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,6 +24,8 @@ public class SocketGathererInServer extends Observable implements Observer {
 	 private int port;
 	 private boolean listening; 
 	 private String tempName;
+	 private ObjectOutputStream out;
+	 private ObjectInputStream in;
 	    
 
 	 public SocketGathererInServer() {
@@ -94,10 +98,12 @@ public class SocketGathererInServer extends Observable implements Observer {
 	            		
 	            		System.out.println("sono nel while");
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
+	            		out = new ObjectOutputStream(socket.getOutputStream());
+	                    in = new ObjectInputStream(socket.getInputStream());
 	                    System.out.println("Client connected with socket "+socket.toString());
 	                    PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
 	                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	                    /*pw.print("\nPlayerName?");
+	                    /*pw.print("PlayerName?");
 	                    tempName= br.readLine();
 	                    
 	                    System.out.println(tempName);*/

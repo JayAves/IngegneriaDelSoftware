@@ -37,12 +37,14 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     	if(!connected){
 	     this.hostName = hostName;
 	     socket = new Socket(hostName,port);
+
+         out = new ObjectOutputStream(socket.getOutputStream());
+         in = new ObjectInputStream(socket.getInputStream());
+         System.out.println("aa");
          br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         //in = new ObjectInputStream(socket.getInputStream());
-         //out= new ObjectOutputStream(socket.getOutputStream());
-         pw = new PrintWriter(socket.getOutputStream(),true);
+         pw = new PrintWriter(socket.getOutputStream(), true);
          connected = true;
-         Thread t = new Thread(this);
+	     Thread t = new Thread(this);
          t.start();
         }
     }
@@ -69,17 +71,9 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   
     	InteractionMessage msg = null;
     	String nameCatch= "";	
-    	try {
-			in= new ObjectInputStream(socket.getInputStream());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	   	 /*do{
+	   	/*do{
 			 try {
-				
 				nameCatch= br.readLine();
-			
 			 } catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.err.println("Could not read Name from Server");
@@ -98,6 +92,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
         			 try {
 						
         				 msg= (InteractionMessage) in.readObject();
+        				 setChanged();
 						 notifyObservers(msg);
 					
         			 } catch (ClassNotFoundException e) {
