@@ -107,4 +107,8 @@ public class Player {
 	public boolean getVentureCardPenalty(){
 		return ventureCardsPenaltyOn;
 	}
+	
+	public FinalScoring getFinalScoring(){
+		return finalScoring;
+	}
 }

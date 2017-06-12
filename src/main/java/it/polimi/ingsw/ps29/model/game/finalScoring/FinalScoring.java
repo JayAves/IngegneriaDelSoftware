@@ -27,6 +27,22 @@ public class FinalScoring {
 		territoryCardsPenalty = new CharacterFinalPointsOff();
 	}
 	
+	public void setResourcePenalty(){
+		resourcePenalty = new ResourcePenaltyOn();
+	}
+	
+	public void setVictoryPointsPenalty(){
+		victoryPointsPenalty = new VictoryPointsPenaltyOn();
+	}
+	
+	public void setMilitaryPointsPenalty(){
+		militaryPointsPenalty = new MilitaryPointsPenaltyOn();
+	}
+	
+	public void setBuildingCostsPenalty(){
+		buildingCostsPenalty = new BuildingCostPenaltyOn();
+	}
+	
     public void calculateFinalScore (){
     	if (victoryPointsPenalty != null)
     		victoryPointsPenalty.getVictoryPoints(board);
