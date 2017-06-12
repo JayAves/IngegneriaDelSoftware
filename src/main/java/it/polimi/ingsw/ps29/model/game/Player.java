@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class Player {
@@ -21,6 +22,8 @@ public class Player {
 	private ExcommunicationCard [] excommunication;
 	public ArrayList<Effect> specialPermanentEffects;
 	public PersonalBoardDTO boardDTO;
+	private FinalScoring finalScoring;
+	private boolean ventureCardsPenaltyOn;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -30,6 +33,7 @@ public class Player {
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
 		initDTO ();
+		ventureCardsPenaltyOn = false;
 	}
 	
 	public void initDTO () {
@@ -90,5 +94,17 @@ public class Player {
 		boardDTO.cleanContainer();
 		for(ResourceInterface res: board.getResources().hashMapToArrayListResources())
 			boardDTO.insertResource(new ResourceDTO(res.getType(), res.getAmount()));
+	}
+	
+	public void passPersonalBoard(){
+		finalScoring.getPersonalBoard(board);
+	}
+	
+	public void getFinalPoints(){
+		finalScoring.calculateFinalScore();
+	}
+	
+	public boolean getVentureCardPenalty(){
+		return ventureCardsPenaltyOn;
 	}
 }
