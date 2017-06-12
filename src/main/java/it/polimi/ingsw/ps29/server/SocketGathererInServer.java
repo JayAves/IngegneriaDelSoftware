@@ -84,7 +84,7 @@ public class SocketGathererInServer extends Observable implements Observer {
 	        public void run() {
 	            this.listen = true;
 	            try {
-	            	
+	            	SocketGathererInServer.this.setPort(9001);
 	            	SocketGathererInServer.this.ssocket = new ServerSocket(SocketGathererInServer.this.port);
 	            	Calendar now = Calendar.getInstance();
 	    		    SimpleDateFormat formatter = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
@@ -92,6 +92,7 @@ public class SocketGathererInServer extends Observable implements Observer {
 	            	
 	            	while (this.listen) {
 	            		
+	            		System.out.println("sono nel while");
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
 	                    System.out.println("Client connected with socket "+socket.toString());
 	                    PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
@@ -114,7 +115,8 @@ public class SocketGathererInServer extends Observable implements Observer {
 	                }
 	            } catch (IOException ioe) {
 	                //I/O errore in ServerSocket
-	                this.stopServerThread();
+	                System.out.println("Could not start server socket");
+	            	//this.stopServerThread();
 	            }
 	        }
 

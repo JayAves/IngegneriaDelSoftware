@@ -27,7 +27,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 
     public SocketConnection() {
 		connected = false;
-		port=5555;
+		port=9001;
 		
     }
    
