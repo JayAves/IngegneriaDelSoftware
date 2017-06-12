@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public interface Connection {
 	
-	public void connect(String hostname) throws IOException;
+	public void connect(String hostname, String playerName) throws IOException;
 	
 	public void setPlayerName(String playerName);
 

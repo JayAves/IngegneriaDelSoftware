@@ -25,6 +25,7 @@ import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
@@ -204,6 +205,9 @@ public class Controller implements Observer{
 		
 		public void visit(PrivilegeChoice msg){
 			handlePrivilegesChoice(msg);
+		}
+		public void visit(PlayerInfoMessage msg){
+			
 		}
 	}
 	

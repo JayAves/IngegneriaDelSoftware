@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps29.view_client;
 
+import java.io.IOException;
+
 public class ConnectionFactory extends AbstractFactory {
 
 	/*@Override
@@ -12,7 +14,12 @@ public class ConnectionFactory extends AbstractFactory {
 	Connection getNetworking(String networking) {
 
 		if(networking.equals("Socket")) {
-			return new SocketConnection();
+			try {
+				return new SocketConnection();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (networking.equals("RMI")) {
 			return new RMIConnection();
 		}

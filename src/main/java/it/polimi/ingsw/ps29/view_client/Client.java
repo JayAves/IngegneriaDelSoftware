@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
@@ -27,7 +28,7 @@ public class Client implements Observer{
 		ConnectionFactory factory= new ConnectionFactory();
 		networking=factory.getNetworking(net);
 		networking.setPlayerName(name);
-		networking.connect("localhost");
+		networking.connect("localhost", view.getName());
 	}
 	
 	@Override
@@ -69,6 +70,8 @@ public class Client implements Observer{
 			public void receive(PrivilegeChoice msg){
 				view.askAboutPrivileges(msg);
 			}
-	
+			public void receive(PlayerInfoMessage msg){
+				
+			}
 }
 }

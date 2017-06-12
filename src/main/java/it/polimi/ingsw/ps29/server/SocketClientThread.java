@@ -38,13 +38,11 @@ public class SocketClientThread extends ClientThread {
            
         	br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pw = new PrintWriter(socket.getOutputStream(), true);
-            //in = new ObjectInputStream(socket.getInputStream());
-            //out= new ObjectOutputStream(socket.getOutputStream());
-            System.out.println("sono qui");
+            //
+            //
             running = true;
+            System.out.println(playerName);
             
-            /*pw.println("Inserisci Nome giocatore:");
-            playerName=br.readLine(); */
             
             
         }
@@ -66,7 +64,7 @@ public class SocketClientThread extends ClientThread {
     
     public void run() {
         
-    	System.out.println("Sono il thread appena creato");
+    	System.out.println("I'm a SocketClient of the player "+ playerName);
     	
     	while (running ) { //&& inGame
 		    
@@ -113,8 +111,15 @@ public class SocketClientThread extends ClientThread {
 	public void startInteraction(InteractionMessage msg) {
 		// TODO Auto-generated method stub
 		try {
+			out= new ObjectOutputStream(socket.getOutputStream());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not create stream");
+		}
+		try {
 			out.writeObject(msg);
 			//while timer>0
+			in = new ObjectInputStream(socket.getInputStream());
 			InteractionMessage textback=(InteractionMessage)in.readObject();
 			setChanged();
 			notifyObservers(textback);

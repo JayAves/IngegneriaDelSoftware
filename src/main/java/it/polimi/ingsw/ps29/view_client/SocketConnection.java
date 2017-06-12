@@ -25,27 +25,24 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     private String hostName;
     private String playerName= "PlayerName Not Initialized"; //per i test
 
-    public SocketConnection() {
+    public SocketConnection() throws IOException {
 		connected = false;
 		port=9001;
 		
     }
    
     @Override
-    public void connect(String hostName) throws IOException {
+    public void connect(String hostName, String playerName) throws IOException {
         
     	if(!connected){
-	     this.hostName = hostName;
-	     socket = new Socket(hostName,port);
-
-         out = new ObjectOutputStream(socket.getOutputStream());
-         in = new ObjectInputStream(socket.getInputStream());
-         System.out.println("aa");
-         br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         pw = new PrintWriter(socket.getOutputStream(), true);
-         connected = true;
-	     Thread t = new Thread(this);
-         t.start();
+    		this.hostName = hostName;
+    		this.playerName=playerName;
+    		socket = new Socket(hostName,port);
+    		br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    		pw = new PrintWriter(socket.getOutputStream(), true);
+    		connected = true;
+    		Thread t = new Thread(this);
+    		t.start();
         }
     }
     
@@ -71,27 +68,41 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   
     	InteractionMessage msg = null;
     	String nameCatch= "";	
-	   	/*do{
-			 try {
-				nameCatch= br.readLine();
-			 } catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.err.println("Could not read Name from Server");
-			}
-			 
-		 } while (nameCatch.equals("PlayerName?"));
-	   	 
-	   	 System.out.println("Ho passato il playerName");
+	   	
+    	try {
+			out = new ObjectOutputStream(socket.getOutputStream());
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+        try {
+			in = new ObjectInputStream(socket.getInputStream());
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+	   	try {
+			out.writeObject(playerName);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not send playerName");
+		}
+	   	
+    	System.out.println("PlayerName successfully sent");
 		 
-	   	 pw.println(playerName); //passo player name al server
-        */
+	   	 boolean notNow= false;
+        
 	   	 while(connected){
         		 
-        		 try {
+        		 while(notNow){
+        			 
+        			 try {
+        		 
 					
         			 try {
 						
-        				 msg= (InteractionMessage) in.readObject();
+        				
+        				  msg= (InteractionMessage) in.readObject();
         				 setChanged();
 						 notifyObservers(msg);
 					
@@ -118,7 +129,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   		 	
         		
 	   		 	
-        		
+	   	 }
         	 }
           
     }

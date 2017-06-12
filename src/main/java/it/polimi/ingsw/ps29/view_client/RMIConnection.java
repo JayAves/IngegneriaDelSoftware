@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 public class RMIConnection extends Observable implements Connection, Runnable {
 
 	@Override
-	public void connect(String hostname) throws IOException {
+	public void connect(String hostname, String playerName) throws IOException {
 		// TODO Auto-generated method stub
 		
 	}

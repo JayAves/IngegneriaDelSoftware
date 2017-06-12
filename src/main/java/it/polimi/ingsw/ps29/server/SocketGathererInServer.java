@@ -14,6 +14,9 @@ import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
 
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+
 public class SocketGathererInServer extends Observable implements Observer {
 
 	 private Socket socket;
@@ -92,22 +95,26 @@ public class SocketGathererInServer extends Observable implements Observer {
 	            	SocketGathererInServer.this.ssocket = new ServerSocket(SocketGathererInServer.this.port);
 	            	Calendar now = Calendar.getInstance();
 	    		    SimpleDateFormat formatter = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-	    		    System.out.println("SocketHandler is up now : " + formatter.format(now.getTime()));
+	    		    System.out.println("Server [ Socket-side ] is up now : " + formatter.format(now.getTime()));
 	            	
 	            	while (this.listen) {
 	            		
-	            		System.out.println("sono nel while");
+	            		System.out.println("I'm listening");
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();
 	            		out = new ObjectOutputStream(socket.getOutputStream());
 	                    in = new ObjectInputStream(socket.getInputStream());
-	                    System.out.println("Client connected with socket "+socket.toString());
+	                    System.out.println("Client hooked up with socket "+socket.toString());
 	                    PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
 	                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	                    /*pw.print("PlayerName?");
-	                    tempName= br.readLine();
-	                    
-	                    System.out.println(tempName);*/
-	                    tempName= "player";
+	                   
+	                    try {
+							tempName= (String)in.readObject();
+						
+	                    } catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							System.out.println("Could not get name from Client");
+						}
+	                    //tempName= "player";
 	                    
 	                    try {
 	                        clientThread = new SocketClientThread(SocketGathererInServer.this.socket, tempName);
@@ -117,10 +124,10 @@ public class SocketGathererInServer extends Observable implements Observer {
 	                        SocketGathererInServer.this.clients.add(SocketGathererInServer.this.clientThread);
 	                        setChanged();
 	                        notifyObservers(SocketGathererInServer.this.clientThread);
-	                        System.out.println("Ho creato il socketThread");
+	                        System.out.println("SocketThread successfully created");
 	                        t.start();
 	                    } catch (IOException ioe) {
-	                        System.out.println("Non ho creato il socketThread");
+	                        System.out.println("Could not create SocketThread");
 	                    	}
 	                }
 	            } catch (IOException ioe) {
