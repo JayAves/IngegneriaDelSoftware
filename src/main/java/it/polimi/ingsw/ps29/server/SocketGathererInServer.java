@@ -27,7 +27,7 @@ public class SocketGathererInServer extends Observable implements Observer {
 	 public SocketGathererInServer() {
 	       
 		 	this.clients = new ArrayList<SocketClientThread>();
-	        this.port = 5555; //default port
+	        this.port = 9001; //default port
 	        this.listening = false;
 	      
 	        
@@ -97,20 +97,24 @@ public class SocketGathererInServer extends Observable implements Observer {
 	                    System.out.println("Client connected with socket "+socket.toString());
 	                    PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
 	                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	                    pw.print("PlayerName?");
+	                    /*pw.print("\nPlayerName?");
 	                    tempName= br.readLine();
-	                    System.out.println(tempName);
+	                    
+	                    System.out.println(tempName);*/
+	                    tempName= "player";
 	                    
 	                    try {
-	                        SocketGathererInServer.this.clientThread = new SocketClientThread(SocketGathererInServer.this.socket, tempName);
+	                        clientThread = new SocketClientThread(SocketGathererInServer.this.socket, tempName);
+	                        System.out.println("hello");
 	                        Thread t = new Thread(SocketGathererInServer.this.clientThread);
 	                        SocketGathererInServer.this.clientThread.addObserver(SocketGathererInServer.this);
 	                        SocketGathererInServer.this.clients.add(SocketGathererInServer.this.clientThread);
 	                        setChanged();
 	                        notifyObservers(SocketGathererInServer.this.clientThread);
+	                        System.out.println("Ho creato il socketThread");
 	                        t.start();
 	                    } catch (IOException ioe) {
-	                        //errore in ClientThread
+	                        System.out.println("Non ho creato il socketThread");
 	                    	}
 	                }
 	            } catch (IOException ioe) {

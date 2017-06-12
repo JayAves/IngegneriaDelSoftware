@@ -41,7 +41,7 @@ public class OnlineApp {
     		
         	} catch (IOException e) {
     			// TODO Auto-generated catch block
-    			System.out.println("Could not create Client!");
+    			System.out.println("Could not create connection!");
     		}
 	 
     		scanner.close();

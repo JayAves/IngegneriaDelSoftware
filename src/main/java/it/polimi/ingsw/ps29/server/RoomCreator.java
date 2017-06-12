@@ -33,6 +33,7 @@ public class RoomCreator extends Thread implements Observer{
 	public void addPlayer(ClientThread s) throws FileNotFoundException{
 		
 		playersInQueue.add(s);
+		System.out.println("Player aggiunto alla coda");
 		
 		increaseCounter();
 	}

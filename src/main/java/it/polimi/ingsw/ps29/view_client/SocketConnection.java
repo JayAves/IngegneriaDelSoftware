@@ -38,8 +38,8 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	     this.hostName = hostName;
 	     socket = new Socket(hostName,port);
          br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         in = new ObjectInputStream(socket.getInputStream());
-         out= new ObjectOutputStream(socket.getOutputStream());
+         //in = new ObjectInputStream(socket.getInputStream());
+         //out= new ObjectOutputStream(socket.getOutputStream());
          pw = new PrintWriter(socket.getOutputStream(),true);
          connected = true;
          Thread t = new Thread(this);
@@ -69,8 +69,13 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   
     	InteractionMessage msg = null;
     	String nameCatch= "";	
-     
-	   	 do{
+    	try {
+			in= new ObjectInputStream(socket.getInputStream());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	   	 /*do{
 			 try {
 				
 				nameCatch= br.readLine();
@@ -81,9 +86,11 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 			}
 			 
 		 } while (nameCatch.equals("PlayerName?"));
+	   	 
+	   	 System.out.println("Ho passato il playerName");
 		 
 	   	 pw.println(playerName); //passo player name al server
-        
+        */
 	   	 while(connected){
         		 
         		 try {

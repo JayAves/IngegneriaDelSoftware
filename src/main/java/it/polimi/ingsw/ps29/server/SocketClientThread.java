@@ -35,10 +35,12 @@ public class SocketClientThread extends ClientThread {
         running = false;
         inGame=false;
         try {
-            br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+           
+        	br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pw = new PrintWriter(socket.getOutputStream(), true);
-            in = new ObjectInputStream(socket.getInputStream());
-            out= new ObjectOutputStream(socket.getOutputStream());
+            //in = new ObjectInputStream(socket.getInputStream());
+            //out= new ObjectOutputStream(socket.getOutputStream());
+            System.out.println("sono qui");
             running = true;
             
             /*pw.println("Inserisci Nome giocatore:");
@@ -64,10 +66,12 @@ public class SocketClientThread extends ClientThread {
     
     public void run() {
         
-    	while (running && inGame) {
+    	System.out.println("Sono il thread appena creato");
+    	
+    	while (running ) { //&& inGame
 		    
 			//provide your server's logic here//
-
+    		
 		  
     		
 		   }
