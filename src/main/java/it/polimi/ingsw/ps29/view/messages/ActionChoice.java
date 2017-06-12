@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view.messages;
 
+import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
 
 public class ActionChoice extends InteractionMessage {
 
@@ -33,8 +34,11 @@ public class ActionChoice extends InteractionMessage {
 		visitor.visit(this);
 	}
 
+	
+
 	@Override
-	public void receive(it.polimi.ingsw.ps29.view.View.VisitorServerMessages visitor) {
+	public void receive(VisitorServerMessages visitor) {
+		// TODO Auto-generated method stub
 		visitor.receive(this);
 	}
 

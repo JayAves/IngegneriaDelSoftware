@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.view.messages;
 
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
-import it.polimi.ingsw.ps29.view.View.VisitorServerMessages;
 
 public class VaticanChoice extends InteractionMessage {
 	private boolean sustain;
@@ -35,9 +34,13 @@ public class VaticanChoice extends InteractionMessage {
 
 
 	@Override
-	public void receive(VisitorServerMessages visitor) {
+	public void receive(it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages visitor) {
+		// TODO Auto-generated method stub
 		visitor.receive(this);
-		
 	}
+
+
+
+	
 
 }

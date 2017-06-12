@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.server.ClientThread;
 import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
@@ -30,7 +31,7 @@ import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 public class Controller implements Observer{
 	
 	private Match model;
-	private Map<String, View> views = new HashMap <String, View> ();
+	private Map<String, ClientThread> views = new HashMap <String, ClientThread> ();
 	private ActionState state; 
 	//è lo stato dell'azione, inizialmente da stabilire, viene recuperato dopo che ho svolto l'azione
 	//lo utilizzo per la corretta interazione con la view
@@ -40,14 +41,14 @@ public class Controller implements Observer{
 		state = new ToEstabilishState();
 	}
 	
-	public void addView (View view, String playerName) {
+	public void addView (ClientThread view, String playerName) {
 		if(!views.containsKey(playerName))
 			views.put(playerName, view);
 	}
 	
 	public void callCorrectView () {
 		String playerName = model.getBoard().getCurrentPlayer().getName();
-		View view = views.get(playerName);
+		ClientThread view = views.get(playerName);
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 		state = state.beforeAction();
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
@@ -66,9 +67,9 @@ public class Controller implements Observer{
 		VisitorMessages visitor = new VisitorMessages();
 		if(o instanceof Match)
 			callCorrectView();
-		else if (o instanceof View) {
+		else if (o instanceof ClientThread) {
 			((InteractionMessage)arg).visit(visitor);
-			for(HashMap.Entry <String, View> view: views.entrySet())
+			for(HashMap.Entry <String, ClientThread> view: views.entrySet())
 				view.getValue().showBoard(model.infoForView);
 		}
 		else 

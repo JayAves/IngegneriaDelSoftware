@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
-import it.polimi.ingsw.ps29.view.View.VisitorServerMessages;
 
 public class PrivilegeChoice extends InteractionMessage {
 	private int prvilieges;
@@ -47,10 +46,12 @@ public class PrivilegeChoice extends InteractionMessage {
 	}
 
 	
+	
+
 	@Override
-	public void receive(VisitorServerMessages visitor) {
+	public void receive(it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages visitor) {
+		// TODO Auto-generated method stub
 		visitor.receive(this);
-		
 	}
 
 }

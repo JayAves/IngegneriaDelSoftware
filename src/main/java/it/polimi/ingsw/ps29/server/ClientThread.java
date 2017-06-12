@@ -5,6 +5,7 @@ import java.util.Observable;
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public abstract class ClientThread extends Observable implements Runnable{
 	
@@ -12,13 +13,9 @@ public abstract class ClientThread extends Observable implements Runnable{
 	
 	public abstract String getClientName();
 
-	public abstract void askNextAction();
-	
-	public abstract void askBonusAction(BonusActionEffect effect);
-
-	public abstract void askAboutExchange(ExchangeResourcesEffect exchangeResourcesEffect);
-	
 	public abstract void setInGame();
 	
 	public abstract void showBoard(InfoDTO infoForView);
+	
+	public abstract void startInteraction(InteractionMessage msg);
 }

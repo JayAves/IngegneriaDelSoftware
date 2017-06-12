@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps29.view.messages;
 
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
-import it.polimi.ingsw.ps29.view.View.VisitorServerMessages;
+import it.polimi.ingsw.ps29.view_client.Client;
+import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
 
 public class Exchange extends InteractionMessage {
+	
+	private static final long serialVersionUID = 1L;
 	private ExchangeResourcesEffect exchange;
 	private int [] choice;
 	
@@ -34,10 +37,12 @@ public class Exchange extends InteractionMessage {
 	}
 
 	@Override
-	public void receive(VisitorServerMessages visitor) {
+	public void receive(Client.VisitorServerMessages visitor) {
+		// TODO Auto-generated method stub
 		visitor.receive(this);
-		
 	}
+
+	
 
 	
 	

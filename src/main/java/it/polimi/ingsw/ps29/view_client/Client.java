@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import it.polimi.ingsw.ps29.view.View;
+
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
+import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
@@ -15,11 +16,11 @@ import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 public class Client implements Observer{
 	
 	
-	private ViewClient view;
+	private View view;
 	private Connection networking;
 	private String name;
 	
-	public Client (ViewClient view, String net) throws IOException {
+	public Client (View view, String net) throws IOException {
 		
 		this.view=view;
 		this.name=view.getName();
@@ -34,7 +35,7 @@ public class Client implements Observer{
 		
 		// TODO Auto-generated method stub
 		
-/*(P)		VisitorServerMessages svisitor= new VisitorServerMessages();
+	VisitorServerMessages svisitor= new VisitorServerMessages();
 		
 		if(o instanceof Connection)
 			((InteractionMessage)arg).receive(svisitor);
@@ -44,29 +45,30 @@ public class Client implements Observer{
 		}
 		else 
 			throw new IllegalArgumentException();
-	}*/
-	/*
+	}
+
 	public class VisitorServerMessages{
 	    	
 	    	public void receive (ActionChoice msg) {
-				view.askNextAction();
+				view.askNextAction(msg);
 			}
 			
 	    	public void receive (Exchange msg) {
-				//creare metodo per lo scambio risorse
-	    		//view.askAboutExchange(null);
+				
+	    		view.askAboutExchange(msg);
 	    	}
 			
 	    	public void receive (BonusChoice msg) {
-				//view.askAboutExchanges
+				view.askBonusAction(msg);
 			}
-			public void receive(VaticanChoice msg){
+			
+	    	public void receive(VaticanChoice msg){
 				
 			}
 			
 			public void receive(PrivilegeChoice msg){
-				
+				view.askAboutPrivileges(msg);
 			}
-	    }*/
+	
 }
 }

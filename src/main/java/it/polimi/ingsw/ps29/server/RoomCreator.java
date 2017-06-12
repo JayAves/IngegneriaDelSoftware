@@ -26,6 +26,8 @@ public class RoomCreator extends Thread implements Observer{
 		
 		this.playersInQueue= new ArrayList<ClientThread>();
 		
+		this.timer= new Timer();
+		
 	}
 	
 	public void addPlayer(ClientThread s) throws FileNotFoundException{

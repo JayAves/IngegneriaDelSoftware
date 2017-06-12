@@ -8,7 +8,6 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps29.controller.Controller;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.view.View;
-import it.polimi.ingsw.ps29.view_client.Client;
 
 /**
  * Hello world!
@@ -51,7 +50,7 @@ public class App
     	for (String name: playersName) {
     		View view = new View (inputChoice,  name);
     		view.addObserver(controller);
-    		controller.addView(view, name);   		
+    		//controller.addView(view, name);   		
     	}
     	
     	model.addObserver(controller);

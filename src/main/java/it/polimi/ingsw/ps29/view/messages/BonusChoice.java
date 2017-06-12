@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps29.view.messages;
 
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
-import it.polimi.ingsw.ps29.view.View.VisitorServerMessages;
 
 public class BonusChoice extends InteractionMessage {
 	
@@ -49,8 +48,10 @@ public class BonusChoice extends InteractionMessage {
 		visitor.visit(this);
 	}
 
+
+
 	@Override
-	public void receive(VisitorServerMessages visitor) {
+	public void receive(it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages visitor) {
 		visitor.receive(this);
 		
 	}

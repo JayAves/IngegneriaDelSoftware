@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
 
 public class View extends Observable implements Observer {
 	
@@ -31,7 +32,9 @@ public class View extends Observable implements Observer {
 		
 	}
 	
-	
+	public String getName(){
+		return namePlayer;
+	}
 	
 	public void askNextAction (ActionChoice msg) {
 		System.out.println("\n--> sono la view del player: "+namePlayer+"\n");
@@ -93,32 +96,8 @@ public class View extends Observable implements Observer {
 	}
 	
 	
-	public void startInteraction (InteractionMessage controllerMessage) {
-		VisitorServerMessages visitor = new VisitorServerMessages();
-		controllerMessage.receive(visitor);
-	}
+	
 
 	
-	public class VisitorServerMessages{
-    	
-    	public void receive (ActionChoice msg) {
-			askNextAction(msg);
-		}
-		
-    	public void receive (Exchange msg) {
-			askAboutExchange(msg);
-    	}
-		
-    	public void receive (BonusChoice msg) {
-			askBonusAction(msg);
-		}
-    	
-		public void receive(VaticanChoice msg){
-			askAboutExcommunication (msg);
-		}
-		
-		public void receive(PrivilegeChoice msg){
-			askAboutPrivileges (msg);
-		}
-    }
+	
 }

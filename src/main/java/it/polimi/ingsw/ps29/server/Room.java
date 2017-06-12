@@ -4,14 +4,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
+
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.controller.Controller;
 import it.polimi.ingsw.ps29.model.game.Match;
-import it.polimi.ingsw.ps29.view.View;
+
 
 public class Room extends Thread{
 	
@@ -19,7 +17,7 @@ public class Room extends Thread{
 	//ArrayList<BufferedReader> readers;
 	//ArrayList<BufferedWriter> writers;
 	Match model;
-	NewController controller;
+	Controller controller;
 	ArrayList<ClientThread> sockets;
 	
 	public Room (ArrayList<ClientThread> playersInQueue) throws FileNotFoundException{
@@ -35,7 +33,7 @@ public class Room extends Thread{
 		
 		model= new Match(names);
 		
-		controller = new NewController (model);
+		controller = new Controller (model);
     	
 		for (ClientThread th: playersInQueue){
 			

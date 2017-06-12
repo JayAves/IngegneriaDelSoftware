@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -12,6 +14,7 @@ import java.util.Observable;
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class SocketClientThread extends ClientThread {
 	
@@ -21,6 +24,9 @@ public class SocketClientThread extends ClientThread {
     private boolean running;
     private String playerName;
     private boolean inGame;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
+    
    
     public SocketClientThread(Socket socket, String playerName) throws IOException { //costruttore
         
@@ -31,6 +37,8 @@ public class SocketClientThread extends ClientThread {
         try {
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pw = new PrintWriter(socket.getOutputStream(), true);
+            in = new ObjectInputStream(socket.getInputStream());
+            out= new ObjectOutputStream(socket.getOutputStream());
             running = true;
             
             /*pw.println("Inserisci Nome giocatore:");
@@ -76,12 +84,7 @@ public class SocketClientThread extends ClientThread {
         this.setChanged();             
         this.notifyObservers(this); 
         }
-    /*Codice extra
-     * BufferedReader bufferedReader =
-					new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			BufferedWriter bufferedWriter =
-					new BufferedWriter(new OutputStreamWriter
-							(socket.getOutputStream())); */
+    
     
     @Override
     public void setInGame(){
@@ -96,35 +99,29 @@ public class SocketClientThread extends ClientThread {
 
 
 	@Override
-	public void askNextAction() {
-		// TODO Auto-generated method stub
-		
-		//deserializzo UserChioce
-		setChanged();
-		//notify();
-	}
-
-
-
-
-	@Override
-	public void askBonusAction(BonusActionEffect effect) {
-		// TODO Auto-generated method stub
-		//manda  a socket del client una stringa tipo askbonusAction++
-	}
-
-
-	@Override
-	public void askAboutExchange(ExchangeResourcesEffect exchangeResourcesEffect) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
 	public void showBoard(InfoDTO infoForView) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void startInteraction(InteractionMessage msg) {
+		// TODO Auto-generated method stub
+		try {
+			out.writeObject(msg);
+			//while timer>0
+			InteractionMessage textback=(InteractionMessage)in.readObject();
+			setChanged();
+			notifyObservers(textback);
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not serialize msg "+ msg.toString());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not deserialize msg" + msg.toString());
+		}
 	}
 }
 

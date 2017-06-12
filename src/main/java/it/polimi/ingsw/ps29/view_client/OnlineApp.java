@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import it.polimi.ingsw.ps29.view.View;
+
 
 
 public class OnlineApp {
@@ -30,7 +32,7 @@ public class OnlineApp {
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
     		
-    		ViewClient view = new ViewClient (inputChoice,  playerName);
+    		View view = new View (inputChoice,  playerName);
     		
     		try {
     			
