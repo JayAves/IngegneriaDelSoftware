@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
+import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 import junit.framework.TestCase;
 
@@ -39,29 +40,42 @@ public class ProvaTest extends TestCase {
 	@Before
 	public void setUp () throws FileNotFoundException {
 		pbt = new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ());
-		player = new Player("aa", Color.BLUE, pbt); //di questo il match prende solo il nome
-		player2 = new Player("bb", Color.GREEN, pbt);//di questo il match prende solo il nome 
-		ArrayList<Player> pl = new ArrayList<Player>();
-		pl.add(player);
-		pl.add(player2);
+		String player1 = "aa";
+		String player2 = "bb";
 		ArrayList<String> names= new ArrayList<String>();
-		names.add(player.getName());
-		names.add(player2.getName());
+		names.add(player1);
+		names.add(player2);
+		
 		model = new Match(names);
-		fam = new FamilyMember(DiceColor.ORANGE, Color.BLUE);
-		fam.setPower(1);
-		move = new Move (player, "buildingTower", 2, 2, fam);
-		move.getPlayer().getPersonalBoard().getResources();
-		action = new TowerAction(model, move);
-		RoundSetupState rss = new RoundSetupState();
-		rss.doAction(1, model);
+		FamilyMember member = model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.ORANGE);
+		member.setPower(5);
+		System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources());
+		
+		RoundState rss = new RoundSetupState();
+		rss = rss.doAction(1, model);
+
+		move = new Move (model.getBoard().getCurrentPlayer(), "buildingTower", 2, 2, member);
+		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).printCards());
+		System.out.println("\n\nCarta presa: \n\n");
+		((TowerArea)model.getBoard().getSpace(move.getSpace())).setPlacementFloor(2);
 		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).takeCard());
+		
+		action = new TowerAction(model, move);
+		action.actionHandler();
+		
+		
+		
+		System.out.println(move.getPlayer().getPersonalBoard().getResources());
+		//System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources());
 		//System.out.println(model.getBoard().getDecks().get(2).getCard(2));
 		
 	}
 
 	@Test
 	public void test() {
+		//costi da diminuire anzichè aumentare
+		
+		
 		//assertEquals(true, ((TowerAction)action).isPlaceable());
 		//assertEquals(true, move.getPlayer().getPersonalBoard().getResources());
 	}

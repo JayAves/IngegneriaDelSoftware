@@ -27,14 +27,17 @@ public class ResourcesTest extends TestCase {
 		container.updateResource(new Resource("coin", 3));
 		container.updateResource(new Resource ("servant", 1));
 		
-		//container.swipeResource(new Resource("coin", 2),  new Resource ("servant", -1));
+		//decoratore da controllare per sweeps
+		/*container.swipeResource(new Resource("coin", 2),  new Resource ("servant", -1));
+		System.out.println(container.getResource("coin").getAmount());
+		System.out.println(container.getResource("servant").getAmount());*/
 	}
 	
 	
 	@Test
 	public void test() {
-		//assertEquals(7, container.getResource("coin").getAmount());
-		//assertEquals(4, container.getResource("servant").getAmount());
+		assertEquals(7, container.getResource("coin").getAmount());
+		assertEquals(4, container.getResource("servant").getAmount());
 		
 	}
 

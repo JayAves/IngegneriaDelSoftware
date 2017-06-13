@@ -35,6 +35,12 @@ public class TowerArea implements ActionSpace {
 		return floors.get(placementFloor-1);
 	}
 	
+	public String printCards () {
+		String msg = "";
+		for(Floor floor: floors)
+			msg+=floor.getCard().toString()+"\n";
+		return msg;
+	}
 	
 	@Override
 	public boolean isEmpty() {

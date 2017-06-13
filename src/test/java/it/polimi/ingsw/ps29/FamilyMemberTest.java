@@ -30,8 +30,8 @@ public class FamilyMemberTest extends TestCase {
 	
 	@Test
 	public void test() {
-		//assertEquals("RED", member.getPlayerColor().toString());
-		//assertEquals(5, member.getPower()+fakedec.getProductionPower());
+		assertEquals("RED", member.getPlayerColor().toString());
+		assertEquals(5, member.getPower()+fakedec.getProductionPower());
 	}
 
 }
