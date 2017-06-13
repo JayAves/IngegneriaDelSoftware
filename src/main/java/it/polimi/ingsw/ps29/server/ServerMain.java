@@ -15,8 +15,5 @@ public class ServerMain {
 		rmiGatherer.addObserver(creator);
 		
 		
-		
-	
-		
 	}
 }

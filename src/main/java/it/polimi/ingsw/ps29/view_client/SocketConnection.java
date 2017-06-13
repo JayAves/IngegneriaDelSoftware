@@ -92,10 +92,20 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   			
 	   			try {
 					gameStart= br.readLine();
+					if(gameStart == null)
+						gameStart = "";
+						
 				
 	   			} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Waiting the game to start failed");
+				}
+	   			
+	   			try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 	   		}
 	   		

@@ -98,6 +98,12 @@ public class SocketGathererInServer extends Observable implements Observer {
 	    		    System.out.println("Server [ Socket-side ] is up now : " + formatter.format(now.getTime()));
 	            	
 	            	while (this.listen) {
+	            		try {
+	        				sleep(1000);
+	        			} catch (InterruptedException e) {
+	        				// TODO Auto-generated catch block
+	        				System.out.println("Could not sleep");
+	        			}
 	            		
 	            		System.out.println("I'm listening");
 	            		SocketGathererInServer.this.socket = SocketGathererInServer.this.ssocket.accept();

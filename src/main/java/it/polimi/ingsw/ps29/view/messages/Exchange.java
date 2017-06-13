@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
 
 public class Exchange extends InteractionMessage {
 	
-	private static final long serialVersionUID = 1L;
 	private ExchangeResourcesEffect exchange;
 	private int [] choice;
 	

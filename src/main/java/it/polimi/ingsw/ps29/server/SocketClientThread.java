@@ -68,7 +68,12 @@ public class SocketClientThread extends ClientThread {
 		    
 			//provide your server's logic here//
     		
-		  
+    	try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     		
 		   }
 		//running = false;
