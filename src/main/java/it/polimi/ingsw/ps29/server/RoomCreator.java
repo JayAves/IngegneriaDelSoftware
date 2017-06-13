@@ -95,16 +95,9 @@ public class RoomCreator extends Thread implements Observer{
 			// TODO Auto-generated method stub
 			if (playersInQueue.size()>1){
 				
-				try {
-					
-					roomHandler.add(new Room(playersInQueue));
-					counter=0;
-					playersInQueue.clear();
-				
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					System.out.println("Could not find json file- and then no game was initialized");
-				}
+				roomHandler.add(new Room(playersInQueue));
+				counter=0;
+				playersInQueue.clear();
 			}
 		}
 		

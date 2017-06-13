@@ -130,5 +130,10 @@ public class SocketClientThread extends ClientThread {
 			System.out.println("Could not deserialize msg" + msg.toString());
 		}
 	}
+	
+	public void gameIsStarted() throws IOException {
+		String game= "start";
+		pw.write(game);
+	}
 }
 
