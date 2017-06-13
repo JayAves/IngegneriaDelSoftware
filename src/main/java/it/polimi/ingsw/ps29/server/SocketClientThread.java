@@ -38,8 +38,6 @@ public class SocketClientThread extends ClientThread {
            
         	br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pw = new PrintWriter(socket.getOutputStream(), true);
-            //
-            //
             running = true;
             System.out.println(playerName);
             
@@ -64,7 +62,7 @@ public class SocketClientThread extends ClientThread {
     
     public void run() {
         
-    	System.out.println("I'm a SocketClient of the player "+ playerName);
+    	System.out.println("I'm a SocketClient of the player "+ playerName.toUpperCase());
     	
     	while (running ) { //&& inGame
 		    

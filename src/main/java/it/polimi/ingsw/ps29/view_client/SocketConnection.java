@@ -90,26 +90,31 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   	
     	System.out.println("PlayerName successfully sent");
 		 
-	   	 boolean notNow= false;
+
         
 	   	 while(connected){
         		 
-        		 while(notNow){
-        			 
-        			 try {
+	   		/*try {
+				
+	   			wait(100000);
+	   			
+	   		} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	   		
+	   		
+        	try {
         		 
-					
-        			 try {
+        		try {
+						msg= (InteractionMessage) in.readObject();
+        				setChanged();
+						notifyObservers(msg);
 						
-        				
-        				  msg= (InteractionMessage) in.readObject();
-        				 setChanged();
-						 notifyObservers(msg);
-					
         			 } catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						System.err.println("Could not deserialize class");
-					}
+        			 }
 				
         		 } catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -126,10 +131,10 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 						System.out.println("Could not close the client socket");
 					}
          		}
-	   		 	
+	   		 	*/
         		
 	   		 	
-	   	 }
+	   	 
         	 }
           
     }

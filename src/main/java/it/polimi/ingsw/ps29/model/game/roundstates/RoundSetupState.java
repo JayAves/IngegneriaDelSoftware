@@ -21,6 +21,7 @@ public class RoundSetupState implements RoundState {
 		match.setRound(roundNumber);
 		initDecks (roundNumber, match.getBoard());
 		
+		
 		for(Dice dice: match.getBoard().getDices()) {
 			dice.rollDice();
 			System.out.println("Ho tirato i dadi:\n");

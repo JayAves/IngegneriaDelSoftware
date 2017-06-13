@@ -12,13 +12,7 @@ public class PlayerInfoMessage extends InteractionMessage {
 		super(player);
 		// TODO Auto-generated constructor stub
 	}
-
 	
-	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override

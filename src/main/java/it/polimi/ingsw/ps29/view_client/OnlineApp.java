@@ -43,7 +43,7 @@ public class OnlineApp {
     			// TODO Auto-generated catch block
     			System.out.println("Could not create connection!");
     		}
-    		System.out.println("Waiting for a match");
+    		System.out.println("\nWaiting for a match");
     		scanner.close();
 	 
 	 }
