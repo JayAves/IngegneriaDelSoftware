@@ -71,11 +71,6 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   	
     	try {
 			out = new ObjectOutputStream(socket.getOutputStream());
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-        try {
 			in = new ObjectInputStream(socket.getInputStream());
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block

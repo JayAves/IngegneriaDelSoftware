@@ -74,7 +74,6 @@ public class RoomCreator extends Thread implements Observer{
 	
 	public void run(){
 		
-		int i=0;
 		while (true){
 			
 			//timer.scheduleAtFixedRate(new Task(), 0, period);
