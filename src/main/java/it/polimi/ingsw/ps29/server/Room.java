@@ -45,6 +45,7 @@ public class Room extends Thread{
 				
 				try {
 					((SocketClientThread) th).gameIsStarted();
+				
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

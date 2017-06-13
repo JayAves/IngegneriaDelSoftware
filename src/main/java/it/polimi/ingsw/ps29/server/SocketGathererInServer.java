@@ -154,9 +154,5 @@ public class SocketGathererInServer extends Observable implements Observer {
 	            this.listen = false;
 	        }
 	    }
-	  		/*codice extra
-	  		 * System.out.println("in attesa su " + this.port);
-			Socket socket = serverSocket.accept();
-			System.out.println("ricevuta connessione: "+ socket.getInetAddress() + ":" +socket.getPort());
-			(new SocketClientHandler(socket)).start(); */
+	  		
 }

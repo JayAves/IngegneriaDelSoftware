@@ -28,6 +28,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 		connected = false;
 		port=9001;
 		
+		
     }
    
     @Override
@@ -37,6 +38,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     		this.hostName = hostName;
     		this.playerName=playerName;
     		socket = new Socket(hostName,port);
+    		
     		br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
     		pw = new PrintWriter(socket.getOutputStream(), true);
     		connected = true;
@@ -57,9 +59,10 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 		// TODO Auto-generated method stub
 		try {
 			out.writeObject(arg);
+			out.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Could not serialize obj"+ arg.toString());
+			System.out.println("Client side- Could not serialize obj"+ arg.toString());
 		}
 	}
     
@@ -69,14 +72,10 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     	String gameStart= "";	
 	   	
     	try {
-			out = new ObjectOutputStream(socket.getOutputStream());
-			in = new ObjectInputStream(socket.getInputStream());
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-	   	try {
-			out.writeObject(playerName);
+    		out = new ObjectOutputStream(socket.getOutputStream());
+    		in = new ObjectInputStream(socket.getInputStream());
+    		out.writeObject(playerName);
+			out.flush();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("Could not send playerName");
@@ -84,33 +83,24 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 	   	
     	System.out.println("PlayerName successfully sent");
 		 
-
+    	while (!gameStart.equals("start")) {
+   			
+   			try {
+				gameStart= br.readLine();
+				
+				if (gameStart == null) {
+					gameStart="";
+				}
+			
+   			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Waiting the game to start failed");
+			}
+   		}
         
 	   	 while(connected){
         		 
-	   		while (!gameStart.equals("start")) {
-	   			
-	   			try {
-					gameStart= br.readLine();
-					if(gameStart == null)
-						gameStart = "";
-						
-				
-	   			} catch (IOException e) {
-					// TODO Auto-generated catch block
-					System.out.println("Waiting the game to start failed");
-				}
-	   			
-	   			try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	   		}
-	   		
-	   		
-        	try {
+	   		 try {
         		 
         		try {
 						msg= (InteractionMessage) in.readObject();
