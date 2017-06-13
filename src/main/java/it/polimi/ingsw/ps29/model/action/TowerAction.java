@@ -3,8 +3,6 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.DTO.CardDTO;
-import it.polimi.ingsw.ps29.model.DTO.ResourceDTO;
-import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
