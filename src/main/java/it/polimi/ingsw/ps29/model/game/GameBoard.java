@@ -5,9 +5,13 @@ import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
+import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
+import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
+import it.polimi.ingsw.ps29.model.space.FaithSpace;
 import it.polimi.ingsw.ps29.model.space.HarvestArea;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 import it.polimi.ingsw.ps29.model.space.ProductionArea;
@@ -23,6 +27,9 @@ public class GameBoard{
 	private boolean playersOrderMoved;
 	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
+	private ArrayList<ExcommunicationDeck> excommunicationDeck;
+	private HashMap<Integer, ExcommunicationCard> excommunications;
+	private HashMap<Integer, FaithSpace> faithTrack;
 	
 	public Color getColorByName (String name) {
 		for(Player player: playersOrder)
@@ -79,7 +86,9 @@ public class GameBoard{
 		spaces.put("ThirdMarket", new MarketArea(1,temporaryBonus3));
 		spaces.put("FourthMarket", new MarketArea(1, temporaryBonus4));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
-		
+		for (int i = 0 ; i < 16; i++){
+			faithTrack.put(i, new FaithSpace(u));
+		}
 	}
 	
 	public ArrayList <Player> getPlayers () {
@@ -141,4 +150,36 @@ public class GameBoard{
 	public void setPlayersOrderMoved(boolean playersOrderMoved) {
 		this.playersOrderMoved = playersOrderMoved;
 	}
+	
+	public ExcommunicationCard getExcommunication(int round){
+		return excommunications.get(round);
+	}
+
+	public int getExcommunicationTreshold( int round ){
+		int tresHold = 0;
+		switch (round) {
+		case 2: tresHold = 3;
+		       break;
+		case 4 : tresHold = 4;
+		       break;
+		case 6 : tresHold = 5;
+		       break;
+		}
+		return tresHold;
+	}
+	
+	public Resource getVaticanBonus( int round){
+		Resource bonus = null;
+		switch (round) {
+		case 2: bonus = faithTrack.get(3).getBonus();
+		       break;
+		case 4 : bonus = faithTrack.get(4).getBonus();
+		       break;
+		case 6 : bonus = faithTrack.get(5).getBonus();
+		       break;
+		}
+		return bonus ;
+	}
+	
 }
+

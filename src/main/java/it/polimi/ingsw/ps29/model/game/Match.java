@@ -149,7 +149,7 @@ public class Match extends Observable{
 		//stampa punteggi finali
 
 		
-		for (Player player : players){
+		for (Player player : board.getPlayers()){
 			player.passPersonalBoard();
 			player.getFinalPoints();
 			if (player.getVentureCardPenalty() == false){
