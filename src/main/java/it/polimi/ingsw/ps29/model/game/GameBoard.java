@@ -86,6 +86,8 @@ public class GameBoard{
 		spaces.put("ThirdMarket", new MarketArea(1,temporaryBonus3));
 		spaces.put("FourthMarket", new MarketArea(1, temporaryBonus4));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
+		
+		faithTrack = new HashMap<Integer, FaithSpace>();
 		for (int i = 0 ; i < 16; i++){
 			faithTrack.put(i, new FaithSpace(new Resource("coins", i)));
 		}
