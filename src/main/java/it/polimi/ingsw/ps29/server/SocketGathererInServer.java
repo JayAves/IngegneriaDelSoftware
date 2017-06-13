@@ -118,7 +118,6 @@ public class SocketGathererInServer extends Observable implements Observer {
 	                    
 	                    try {
 	                        clientThread = new SocketClientThread(SocketGathererInServer.this.socket, tempName);
-	                        System.out.println("hello");
 	                        Thread t = new Thread(SocketGathererInServer.this.clientThread);
 	                        SocketGathererInServer.this.clientThread.addObserver(SocketGathererInServer.this);
 	                        SocketGathererInServer.this.clients.add(SocketGathererInServer.this.clientThread);

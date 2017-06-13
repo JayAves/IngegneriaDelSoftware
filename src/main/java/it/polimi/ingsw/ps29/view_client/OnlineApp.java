@@ -47,6 +47,7 @@ public class OnlineApp {
     			System.out.println("Could not create connection!");
     		}
     		System.out.println("\nWaiting for a match");
+    		
     		scanner.close();
 	 
 	 }

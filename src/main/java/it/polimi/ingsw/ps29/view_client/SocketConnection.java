@@ -9,21 +9,20 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Observable;
 
-import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class SocketConnection extends Observable implements Connection,Runnable {
 	
 	  
     private Socket socket;
-    private BufferedReader br;
-    private PrintWriter pw;
     private ObjectInputStream in;
     private ObjectOutputStream out;
     private boolean connected;
     private int port;
     private String hostName;
     private String playerName= "PlayerName Not Initialized"; //per i test
+	private BufferedReader br;
+	private PrintWriter pw;
 
     public SocketConnection() throws IOException {
 		connected = false;
@@ -38,7 +37,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     		this.hostName = hostName;
     		this.playerName=playerName;
     		socket = new Socket(hostName,port);
-    		br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    		br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
     		pw = new PrintWriter(socket.getOutputStream(), true);
     		connected = true;
     		Thread t = new Thread(this);
@@ -67,7 +66,7 @@ public class SocketConnection extends Observable implements Connection,Runnable 
     public void run() {
 	   
     	InteractionMessage msg = null;
-    	String nameCatch= "";	
+    	String gameStart= "";	
 	   	
     	try {
 			out = new ObjectOutputStream(socket.getOutputStream());
@@ -89,14 +88,16 @@ public class SocketConnection extends Observable implements Connection,Runnable 
         
 	   	 while(connected){
         		 
-	   		/*try {
-				
-	   			wait(100000);
+	   		while (!gameStart.equals("start")) {
 	   			
-	   		} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+	   			try {
+					gameStart= br.readLine();
+				
+	   			} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Waiting the game to start failed");
+				}
+	   		}
 	   		
 	   		
         	try {
@@ -126,13 +127,8 @@ public class SocketConnection extends Observable implements Connection,Runnable 
 						System.out.println("Could not close the client socket");
 					}
          		}
-	   		 	*/
-        		
-	   		 	
-	   	 
-        	 }
-          
-    }
+	   		}
+        }
 
     public boolean isConnected() {
 		return connected;
