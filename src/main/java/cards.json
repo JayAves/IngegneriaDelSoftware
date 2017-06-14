@@ -4,7 +4,8 @@
 	
 	"cardData":{"name": "Commercial Hub",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 1,
 	"immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
@@ -23,7 +24,8 @@
 	
 	"cardData":{"name": "Woods",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 2,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -50,7 +52,8 @@
 	
 	"cardData":{"name": "Village",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 3,            
 	"immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
@@ -78,7 +81,8 @@
 	
 	"cardData":{"name": "Gravel Pit",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 4,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -114,7 +118,8 @@
 	
 	"cardData":{"name": "Forest",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 5,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -142,7 +147,8 @@
 	
 	"cardData":{"name": "Monastery",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 6,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -187,7 +193,8 @@
 	
 	"cardData":{"name": "Citadel",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 7            
 	"immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
@@ -216,7 +223,8 @@
 	
 	"cardData":{"name": "City",
 	"period": "FIRST",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 8,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -243,7 +251,8 @@
 	
 	"cardData":{"name": "Gold Mine",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 9,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -271,7 +280,8 @@
 	
 	"cardData":{"name": "Mountain Town",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 10,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -308,7 +318,8 @@
 	
 	"cardData":{"name": "Mining Town",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 11,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -354,7 +365,8 @@
 	
 	"cardData":{"name": "Rock Pit",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 12,           
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -381,7 +393,8 @@
 	
 	"cardData":{"name": "Estate",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 13,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -427,7 +440,8 @@
 	
 	"cardData":{"name": "Hermitage",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 14,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -454,7 +468,8 @@
 	
 	"cardData":{"name": "Manor House",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 15,            
 	"immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
@@ -483,7 +498,8 @@
 	
 	"cardData":{"name": "Dukedom",
 	"period": "SECOND",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 16, 
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -529,7 +545,8 @@
 	
 	"cardData":{"name": "Trading Town",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 17,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -565,7 +582,8 @@
 	
 	"cardData":{"name": "Farm",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 18,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -610,7 +628,8 @@
 	
 	"cardData":{"name": "Colony",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 19,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -646,7 +665,8 @@
 	
 	"cardData":{"name": "Marble Pit",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 20,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -682,7 +702,8 @@
 	
 	"cardData":{"name": "Province",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 21,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -727,7 +748,8 @@
 	
 	"cardData":{"name": "Sanctuary",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 22,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -763,7 +785,8 @@
 	
 	"cardData":{"name": "Castle",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 23,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -808,7 +831,8 @@
 	
 	"cardData":{"name": "Fortified Town",
 	"period": "THIRD",
-	"type": "TERRITORY",	
+	"type": "TERRITORY",
+    "id" : 24,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -854,6 +878,7 @@
 	"cardData":{"name": "Stronghold",
 	"period": "SECOND",
 	"type": "BUILDING",	
+    "id" : 40,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -907,6 +932,7 @@
 	"cardData":{"name": "Stonemasons' Guild",
 	"period": "SECOND",
 	"type": "BUILDING",	
+    "id" : 37,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -965,7 +991,8 @@
 	
 	"cardData":{"name": "Baptistery",
 	"period": "SECOND",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 38,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1021,7 +1048,8 @@
 	
 	"cardData":{"name": "Residence",
 	"period": "FIRST",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 32,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1064,7 +1092,8 @@
 	
 	"cardData":{"name": "Marketplace",
 	"period": "SECOND",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 33,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1120,6 +1149,7 @@
 	"cardData":{"name": "Treasury",
 	"period": "SECOND",
 	"type": "BUILDING",	
+    "id" : 34,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1176,7 +1206,8 @@
 	
 	"cardData":{"name": "Painters' Guild",
 	"period": "SECOND",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 35,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1234,7 +1265,8 @@
 	
 	"cardData":{"name": "Sculptor's Guild",
 	"period": "SECOND",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 36,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1293,6 +1325,7 @@
 	"cardData":{"name": "Bank",
 	"period": "THIRD",
 	"type": "BUILDING",	
+    "id" : 41,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1338,7 +1371,8 @@
 	
 	"cardData":{"name": "Stonemason's shop",
 	"period": "FIRST",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 30,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1400,7 +1434,8 @@
 	
 	"cardData":{"name": "Chapel",
 	"period": "FIRST",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 31,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1444,6 +1479,7 @@
 	"cardData":{"name": "Mint",
 	"period": "FIRST",
 	"type": "BUILDING",
+    "id" : 25,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1481,6 +1517,7 @@
 	"cardData":{"name": "Tax Office",
 	"period": "FIRST",
 	"type": "BUILDING",
+    "id" : 26,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1518,6 +1555,7 @@
 	"cardData":{"name": "Triumphal Arc",
 	"period": "FIRST",
 	"type": "BUILDING",
+    "id" : 27,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1555,6 +1593,7 @@
 	"cardData":{"name": "Theater",
 	"period": "FIRST",
 	"type": "BUILDING",
+    "id" : 28,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1592,6 +1631,7 @@
 	"cardData":{"name": "Carpenter's Shop",
 	"period": "FIRST",
 	"type": "BUILDING",
+    "id" : 29,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1652,7 +1692,8 @@
 	
 	"cardData":{"name": "Garden",
 	"period": "THIRD",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 43,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1698,7 +1739,8 @@
 	
 	"cardData":{"name": "Barracks",
 	"period": "SECOND",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 39,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1746,6 +1788,7 @@
 	"cardData":{"name": "Fair",
 	"period": "THIRD",
 	"type": "BUILDING",	
+    "id" : 42,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1800,6 +1843,7 @@
 	"cardData":{"name": "Palace",
 	"period": "THIRD",
 	"type": "BUILDING",	
+    "id" : 45,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1860,6 +1904,7 @@
 	"cardData":{"name": "Church",
 	"period": "THIRD",
 	"type": "BUILDING",	
+    "id" : 46,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1922,6 +1967,7 @@
 	"cardData":{"name": "Military Academy",
 	"period": "THIRD",
 	"type": "BUILDING",	
+    "id" : 47,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -1982,6 +2028,7 @@
 	"cardData":{"name": "Fortress",
 	"period": "THIRD",
 	"type": "BUILDING",	
+    "id" :  44,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2036,7 +2083,8 @@
 	
 	"cardData":{"name": "Cathedral",
 	"period": "THIRD",
-	"type": "BUILDING",	
+	"type": "BUILDING",
+    "id" : 48,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2086,6 +2134,7 @@
 	"cardData":{"name": "Warlord",
 	"period": "FIRST",
 	"type": "CHARACTER",
+    "id" : 49,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2117,6 +2166,7 @@
 	"cardData":{"name": "Stonemason",
 	"period": "FIRST",
 	"type": "CHARACTER",
+    "id" : 50,            
     "immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "EmpowermentPlacementEffect",
@@ -2140,6 +2190,7 @@
 	"cardData":{"name": "Dame",
 	"period": "FIRST",
 	"type": "CHARACTER",
+    "id" : 51,            
     "immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "EmpowermentPlacementEffect",
@@ -2168,6 +2219,7 @@
  "cardData":{"name": "Knight",
  "period": "FIRST",
  "type": "CHARACTER",
+ "id" : 52,             
     "immediateEffects": [{
         "effectType":"GainResourcesEffect",
         "effectData":
@@ -2198,6 +2250,7 @@
  "cardData":{"name": "Farmer",
  "period": "FIRST",
  "type": "CHARACTER",
+ "id" : 53,             
     "immediateEffects": [],
  "permanentEffects":[{
   "effectType": "EmpowermentActivityEffect",
@@ -2220,6 +2273,7 @@
 	"cardData":{"name": "Artisan",
 	"period": "FIRST",
 	"type": "CHARACTER",
+    "id" : 54,            
     "immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "EmpowermentActivityEffect",
@@ -2242,6 +2296,7 @@
 	"cardData":{"name": "Preacher",
 	"period": "FIRST",
 	"type": "CHARACTER",
+    "id" :  55,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2266,6 +2321,7 @@
 	"cardData":{"name": "Abbess",
 	"period": "FIRST",
 	"type": "CHARACTER",
+    "id" : 56,            
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2295,6 +2351,7 @@
  "cardData":{"name": "Captain",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 57,              
     "immediateEffects": [{
         "effectType":"BonusPlacementEffect",
         "effectData":
@@ -2327,6 +2384,7 @@
  "cardData":{"name": "Architect",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 58,             
     "immediateEffects": [{
         "effectType":"BonusPlacementEffect",
         "effectData":
@@ -2368,6 +2426,7 @@
  "cardData":{"name": "Patron",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 59,              
     "immediateEffects": [{
         "effectType":"BonusPlacementEffect",
         "effectData":
@@ -2394,6 +2453,7 @@
  "cardData":{"name": "Hero",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 60,              
     "immediateEffects": [{
         "effectType":"BonusPlacementEffect",
         "effectData":
@@ -2426,6 +2486,7 @@
  "cardData":{"name": "Paesant",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 61,             
     "immediateEffects": [],
  "permanentEffects":[{
      "effectType" : "EmpowermentActivityEffect",
@@ -2446,6 +2507,7 @@
  "cardData":{"name": "Scholar",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 62,             
     "immediateEffects": [],
  "permanentEffects":[{
      "effectType" : "EmpowermentActivityEffect",
@@ -2466,6 +2528,7 @@
  "cardData":{"name": "Papal Messenger",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 63,             
     "immediateEffects": [{
         "effectType":"GainResourcesEffect",
         "effectData":
@@ -2490,6 +2553,7 @@
  "cardData":{"name": "Royal Messenger",
  "period": "SECOND",
  "type": "CHARACTER",
+ "id" : 64,             
     "immediateEffects": [{
         "effectType":"GainResourcesEffect",
         "effectData":
@@ -2534,6 +2598,7 @@
  "cardData":{"name": "Noble",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 65,              
     "immediateEffects": [{
         "effectType": "MultipliedResourcesEffect",
 		"effectData":
@@ -2555,6 +2620,7 @@
  "cardData":{"name": "Governor",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 66,             
     "immediateEffects": [{
         "effectType": "MultipliedResourcesEffect",
 		"effectData":
@@ -2576,6 +2642,7 @@
  "cardData":{"name": "Paramour",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 67,             
     "immediateEffects": [{
         "effectType": "MultipliedResourcesEffect",
 		"effectData":
@@ -2597,6 +2664,7 @@
  "cardData":{"name": "Herald",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 68,             
     "immediateEffects": [{
         "effectType": "MultipliedResourcesEffect",
 		"effectData":
@@ -2618,6 +2686,7 @@
  "cardData":{"name": "Cardinal",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 69,              
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2646,6 +2715,7 @@
  "cardData":{"name": "Bishop",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 70,             
     "immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2674,6 +2744,7 @@
  "cardData":{"name": "General",
  "period": "THIRD",
  "type": "CHARACTER",
+ "id" : 71,             
     "immediateEffects": [{
 		"effectType": "MultipliedResourcesForResourceEffect",
 		"effectData":
@@ -2694,6 +2765,7 @@
 	"cardData":{"name": "Ambassador",
 	"period": "THIRD",
 	"type": "CHARACTER",
+    "id" : 72,            
     "immediateEffects": [{ "effectType": "BonusPlacementEffect",
        "effectData":{
            "valueAction": 7,
@@ -2722,7 +2794,8 @@
 	
 	"cardData":{"name": "Hiring Recruits",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 73,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2754,7 +2827,8 @@
 	
 	"cardData":{"name": "Repairing the Church",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 74,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2798,7 +2872,8 @@
 	
 	"cardData":{"name": "Building the Walls",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 75,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2839,7 +2914,8 @@
 	
 	"cardData":{"name": "Raising a Statue",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 76,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2886,7 +2962,8 @@
 	
 	"cardData":{"name": "Military Campaign",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 77,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2918,7 +2995,8 @@
 	
 	"cardData":{"name": "Hosting Panhandlers",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 78,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2950,7 +3028,8 @@
 	
 	"cardData":{"name": "Fighting Heresies",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 79,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -2982,7 +3061,8 @@
 	
 	"cardData":{"name": "Support the Bishop",
 	"period": "FIRST",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 80,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3030,7 +3110,8 @@
 	
 	"cardData":{"name": "Hiring Soldiers",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 81,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3061,7 +3142,8 @@
 	
 	"cardData":{"name": "Repairing the Abbey",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 82,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3104,7 +3186,8 @@
 	
 	"cardData":{"name": "Building the Bastions",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 83,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3144,7 +3227,8 @@
 	
 	"cardData":{"name": "Support the King",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 84,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3184,7 +3268,8 @@
 	
 	"cardData":{"name": "Improving the canals",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 85,            
 	"immediateEffects": [{
         "effectType": "BonusActivityEffect",
         "effectData" :
@@ -3217,7 +3302,8 @@
 	
 	"cardData":{"name": "Hosting Foreigners",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 86,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3248,7 +3334,8 @@
 	
 	"cardData":{"name": "Crusade",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 87,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3288,7 +3375,8 @@
 	
 	"cardData":{"name": "Support the cardinal",
 	"period": "SECOND",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 88,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3337,7 +3425,8 @@
 	
 	"cardData":{"name": "Hiring mercenaries",
 	"period": "THIRD",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 89,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3368,7 +3457,8 @@
 	
 	"cardData":{"name": "Repairing the Cathedral",
 	"period": "THIRD",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 90,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3416,7 +3506,8 @@
 	
 	"cardData":{"name": "Building Towers",
 	"period": "THIRD",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 91,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3456,7 +3547,8 @@
 	
 	"cardData":{"name": "Promoting Sacred Art",
 	"period": "THIRD",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 92,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3487,7 +3579,8 @@
 	
 	"cardData":{"name": "MIlitary Conquest",
 	"period": "THIRD",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 93,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3537,6 +3630,7 @@
 	"cardData":{"name": "Improving the Roads",
 	"period": "THIRD",
 	"type": "VENTURE",	
+    "id" : 94,            
 	"immediateEffects": [{
         "effectType": "BonusActivityEffect",
         "effectData" :
@@ -3570,6 +3664,7 @@
 	"cardData":{"name": "Sacred War",
 	"period": "THIRD",
 	"type": "VENTURE",	
+    "id" : 95,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -3600,7 +3695,8 @@
 	
 	"cardData":{"name": "Support the Pope",
 	"period": "THIRD",
-	"type": "VENTURE",	
+	"type": "VENTURE",
+    "id" : 96,            
 	"immediateEffects": [{
 		"effectType": "GainResourcesEffect",
 		"effectData":
