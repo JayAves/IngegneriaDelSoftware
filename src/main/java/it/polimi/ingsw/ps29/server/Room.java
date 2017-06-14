@@ -41,7 +41,7 @@ public class Room extends Thread{
 			th.addObserver(controller);
 			controller.addView(th.getClientName(), th);
 			th.setInGame();
-			
+			new Thread(th).start();
 			
 			
 		}

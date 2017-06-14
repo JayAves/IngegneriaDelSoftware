@@ -12,7 +12,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
-public class SocketConnection extends Connection implements Runnable {
+public class SocketConnection extends Connection {
 	
 	  
 	private final int PORT = 9001;

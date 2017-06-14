@@ -1,13 +1,11 @@
 package it.polimi.ingsw.ps29.view_client;
 
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-
-import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
@@ -20,6 +18,7 @@ public class Client implements Observer{
 	private View view;
 	private Connection networking;
 	private String name;
+	private boolean end;
 	
 	public Client (View view, String net){
 		
@@ -28,6 +27,7 @@ public class Client implements Observer{
 		ConnectionFactory factory= new ConnectionFactory();
 		networking=factory.getNetworking(net, name);
 		networking.addObserver(this);
+		new Thread(networking).start();
 		
 	}
 	
