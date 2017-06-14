@@ -11,16 +11,14 @@ public class ConnectionFactory extends AbstractFactory {
 	}*/
 
 	@Override
-	Connection getNetworking(String networking) {
+	Connection getNetworking(String networking, String playerName) {
 
 		if(networking.equals("Socket")) {
-			try {
-				return new SocketConnection();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else if (networking.equals("RMI")) {
+			return new SocketConnection(playerName);
+		} 
+		
+		else if (networking.equals("RMI")) {
+		
 			return new RMIConnection();
 		}
 		return null;

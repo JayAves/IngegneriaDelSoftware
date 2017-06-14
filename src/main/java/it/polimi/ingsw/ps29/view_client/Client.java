@@ -21,14 +21,14 @@ public class Client implements Observer{
 	private Connection networking;
 	private String name;
 	
-	public Client (View view, String net) throws IOException {
+	public Client (View view, String net){
 		
 		this.view=view;
 		this.name=view.getName();
 		ConnectionFactory factory= new ConnectionFactory();
-		networking=factory.getNetworking(net);
-		networking.setPlayerName(name);
-		networking.connect("localhost", view.getName());
+		networking=factory.getNetworking(net, null);
+		networking.addObserver(this);
+		
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class Client implements Observer{
 			((InteractionMessage)arg).receive(svisitor);
 			
 		else if (o instanceof View) {
-			networking.sendMessage((InteractionMessage)arg);
+			networking.sendMessage((InteractionMessage) arg);
 		}
 		else 
 			throw new IllegalArgumentException();

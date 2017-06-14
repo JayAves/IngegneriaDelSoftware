@@ -1,62 +1,39 @@
 package it.polimi.ingsw.ps29.server;
 
-import java.rmi.AlreadyBoundException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class RMIGathererInServer extends Observable implements RmInterface, Runnable{
+public class RMIGathererInServer extends Observable implements Runnable{
 
 	private ArrayList<RMIClientThread> clients;
 	// quando aggiungo player faccio notify() al roomCreator
 
 	
 
-	@Override
-	public RMIClientThread getMyThread(String playerName) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-		RMIClientThread temp= new RMIClientThread(playerName);
-		if (clients.contains(temp)) {
-			
-			for (RMIClientThread t: clients) {
-				if (t.getClientName()==playerName) {
-					return t;
-				}
-			}
-		}
-		
-		return addClient(playerName);
-			
-		
-	}
+	
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		 try {
-			RmInterface stub = (RmInterface) UnicastRemoteObject.exportObject(this, 0);
-			  // Bind the remote object's stub in the registry
-            Registry registry = LocateRegistry.getRegistry();
-            registry.bind("RmInterface", stub);
-		
-		 } catch (RemoteException | AlreadyBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		try {
+			LocateRegistry.createRegistry(1099);//Creo un registy sulla porta 1099 (quella di default).
+		} catch (RemoteException e) {
+			System.out.println("Registry già presente!");			
+		}
+		try {
+			RmiServerImplementation serverImplementation = new RmiServerImplementation();//Creo l'oggetto da esportare normalmente (in quanto la classe ServerImplementation estende UnicastRemoteObject)			
+			Naming.rebind("Server", serverImplementation);//Aggiungo al registry l'associazione dell'oggetto serverImplementation con "//localhost/Server".																	  
+		} catch (MalformedURLException e) {
+			System.err.println("Impossibile registrare l'oggetto indicato!");
+		} catch (RemoteException e) {
+			System.err.println("Errore di connessione: " + e.getMessage() + "!");
 		}
 	}
 
-public RMIClientThread addClient(String Username){
-		
-		RMIClientThread t=new RMIClientThread(Username);
-		clients.add(t);
-		Thread th = new Thread(t);
-		th.start();
-		notifyObservers(t);
-		return t;
-	}
+
 
 }

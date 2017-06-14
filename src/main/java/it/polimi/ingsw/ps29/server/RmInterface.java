@@ -6,4 +6,6 @@ import java.rmi.RemoteException;
 public interface RmInterface extends Remote{
 	
 	public RMIClientThread getMyThread(String playerName) throws RemoteException;
+	
+	//qua tutti i metodi remoti
 }

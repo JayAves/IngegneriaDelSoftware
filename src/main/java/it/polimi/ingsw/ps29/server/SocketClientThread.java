@@ -1,94 +1,58 @@
 package it.polimi.ingsw.ps29.server;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Observable;
 
 import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
-import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
-import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class SocketClientThread extends ClientThread {
 	
-    private BufferedReader br;
-    private PrintWriter pw;
-    private Socket socket;
-    private boolean running;
-    private String playerName;
-    private boolean inGame;
-    private ObjectInputStream in;
-    private ObjectOutputStream out;
-    
-   
-    public SocketClientThread(Socket socket, String playerName) throws IOException { //costruttore
-        
-    	this.socket = socket;
-        this.playerName= playerName;
-        running = false;
-        inGame=false;
-        try {
-           
-        	br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            pw = new PrintWriter(socket.getOutputStream(), true);
-            running = true;
-            System.out.println(playerName);
-            
-            
-            
-        }
-        catch (IOException ioe) {
-            throw ioe;
-        }
-    }
+	private Socket socket;
+	private String playerName;
+	private ObjectOutputStream oos;
+	private ObjectInputStream ois;
+	private ServerSerializator serializator;
 	
-   
-    public void stopClient(){
-        
-    	try {
-		this.socket.close();
-        }	catch(IOException ioe){
-        	System.out.println("Could not close server-side socket connection");
-        };
-    }
+	public SocketClientThread(Socket socket, String playerName, ObjectOutputStream oos, ObjectInputStream ois) {
+		this.socket = socket;
+		System.out.println("SocketVirtualView: "+socket);
+		this.playerName = playerName;
+		this.oos = oos;
+		this.ois = ois;
+		
+		serializator = new ServerSerializator(socket, this.oos);
+	}
+	
 
-    
-    public void run() {
-        
-    	System.out.println("I'm a SocketClient of the player "+ playerName.toUpperCase());
-    	
-    	while (running ) { //&& inGame
-		    
-			//provide your server's logic here//
-    		
-    	try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public void run() {
+		InteractionMessage obj;
+		while(true) {
+
+			try{
+				//notifico Controller
+				obj = (InteractionMessage) ois.readObject();
+				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
+				setChanged();
+				notifyObservers(obj);
+				
+			} catch (IOException e) {
+				System.err.println("Unable to receive message from client!");
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				System.err.println("Unable to cast the object");
+				e.printStackTrace();
+			}
 		}
-    		
-		   }
-		//running = false;
-        
-        try {
-            this.socket.close(); //chiusura del socket
-            System.out.println("Closing connection");
-        } catch (IOException ioe) { 
-        	System.out.println("Could not stop socketClientThread");
-        }
-
-        //notify the observers for cleanup 
-        this.setChanged();             
-        this.notifyObservers(this); 
-        }
+		
+	}
+	
+	public String getName () {
+		return playerName;
+	}
     
     
     @Override
@@ -113,32 +77,23 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void startInteraction(InteractionMessage msg) {
 		// TODO Auto-generated method stub
-		try {
-			out= new ObjectOutputStream(socket.getOutputStream());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Could not create stream");
-		}
-		try {
-			out.writeObject(msg);
-			//while timer>0
-			in = new ObjectInputStream(socket.getInputStream());
-			InteractionMessage textback=(InteractionMessage)in.readObject();
-			setChanged();
-			notifyObservers(textback);
+		serializator.serializeObject(msg);
 		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Could not serialize msg "+ msg.toString());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Could not deserialize msg" + msg.toString());
-		}
 	}
 	
-	public void gameIsStarted() throws IOException {
-		String game= "start";
-		pw.write(game);
+	
+
+
+	@Override
+	public void stopClient() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void gameIsStarted() {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

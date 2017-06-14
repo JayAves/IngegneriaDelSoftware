@@ -5,19 +5,11 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
-public class RMIConnection extends Observable implements Connection, Runnable {
+public class RMIConnection extends Connection implements Runnable {
 
-	@Override
-	public void connect(String hostname, String playerName) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
-	@Override
-	public void setPlayerName(String playerName) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void run() {
@@ -26,9 +18,10 @@ public class RMIConnection extends Observable implements Connection, Runnable {
 	}
 
 	@Override
-	public void sendMessage(InteractionMessage arg) {
+	public void sendMessage(InteractionMessage msg) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	
 }

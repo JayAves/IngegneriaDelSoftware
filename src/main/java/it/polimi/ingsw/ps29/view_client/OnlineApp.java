@@ -37,15 +37,9 @@ public class OnlineApp {
     		
     		View view = new View (inputChoice,  playerName);
     		
-    		try {
-    			
-        		Client client = new Client (view, inputConnection);
-        		view.addObserver(client);
+    		Client client = new Client (view, inputConnection);
+			view.addObserver(client);
     		
-        	} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			System.out.println("Could not create connection!");
-    		}
     		System.out.println("\nWaiting for a match");
     		
     		scanner.close();

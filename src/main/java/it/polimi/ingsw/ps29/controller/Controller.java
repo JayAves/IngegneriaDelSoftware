@@ -41,7 +41,7 @@ public class Controller implements Observer{
 		state = new ToEstabilishState();
 	}
 	
-	public void addView (ClientThread view, String playerName) {
+	public void addView (String playerName, ClientThread view) {
 		if(!views.containsKey(playerName))
 			views.put(playerName, view);
 	}

@@ -7,157 +7,84 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
-public class SocketConnection extends Observable implements Connection,Runnable {
+public class SocketConnection extends Connection implements Runnable {
 	
 	  
-    private Socket socket;
-    private ObjectInputStream in;
-    private ObjectOutputStream out;
-    private boolean connected;
-    private int port;
-    private String hostName;
-    private String playerName= "PlayerName Not Initialized"; //per i test
-	private BufferedReader br;
-	private PrintWriter pw;
-
-    public SocketConnection() throws IOException {
-		connected = false;
-		port=9001;
-		
-		
-    }
-   
-    @Override
-    public void connect(String hostName, String playerName) throws IOException {
-        
-    	if(!connected){
-    		this.hostName = hostName;
-    		this.playerName=playerName;
-    		socket = new Socket(hostName,port);
-    		
-    		br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-    		pw = new PrintWriter(socket.getOutputStream(), true);
-    		connected = true;
-    		Thread t = new Thread(this);
-    		t.start();
-        }
-    }
-    
-    @Override
- 	public void setPlayerName(String playerName){
- 		
- 		this.playerName=playerName;
- 		
- 	}
-     
-    @Override
-	public void sendMessage(InteractionMessage arg) {
-		// TODO Auto-generated method stub
+	private final int PORT = 9001;
+	private final String ADDRESS = "localhost";
+	private String playerName;
+	private Socket socket;
+	private ObjectOutputStream oos;
+	private ObjectInputStream ois;
+	private ClientSerializator serializator;
+	
+	public SocketConnection(String playerName) {
+		this.playerName = playerName;
 		try {
-			out.writeObject(arg);
-			out.flush();
+			socket = new Socket (ADDRESS, PORT);
+			System.out.println("SocketConnection: "+socket);
+			
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			oos.flush();
+			ois = new ObjectInputStream(socket.getInputStream());
+			
+			//utilizzo questo oggetto per l'invio di oggetti in rete
+			serializator = new ClientSerializator(socket, oos);
+			
+			//invio al server il nome del client
+			oos.writeObject(playerName);
+			oos.flush();
+			System.out.println("Client succesfully created!");
+			
+		} catch (UnknownHostException e) {
+			System.err.println("Unknown address!");
+			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Client side- Could not serialize obj"+ arg.toString());
+			System.err.println("Unable to connect from client!");
+			e.printStackTrace();
 		}
+		
+	}
+
+
+	@Override
+	public void run() {
+		while(true) {	
+			System.out.println("I'm in Socket Connection for player "+playerName);
+			InteractionMessage obj;
+			try {
+				//notifico Client
+				do {
+				obj = (InteractionMessage) ois.readObject();
+				} while (obj==null);
+				
+				setChanged();
+				notifyObservers(obj);
+				
+			} catch (IOException e) {
+				System.err.println("Unable to receive message from server!");
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				System.err.println("Unable to cast the object!");
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void sendMessage(InteractionMessage msg) {
+		// TODO Auto-generated method stub
+		serializator.serializeObject(msg);
 	}
     
-    public void run() {
-	   
-    	InteractionMessage msg = null;
-    	String gameStart= "";	
-	   	
-    	try {
-    		out = new ObjectOutputStream(socket.getOutputStream());
-    		in = new ObjectInputStream(socket.getInputStream());
-    		out.writeObject(playerName);
-			out.flush();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("Could not send playerName");
-		}
-	   	
-    	System.out.println("PlayerName successfully sent");
-		 
-    	while (!gameStart.equals("start")) {
-   			
-   			try {
-				gameStart= br.readLine();
-				
-				if (gameStart == null) {
-					gameStart="";
-				}
-			
-   			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("Waiting the game to start failed");
-			}
-   		}
-        
-	   	 while(connected){
-        		 
-	   		 try {
-        		 
-        		try {
-						msg= (InteractionMessage) in.readObject();
-        				setChanged();
-						notifyObservers(msg);
-						
-        			 } catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						System.err.println("Could not deserialize class");
-        			 }
-				
-        		 } catch (IOException e) {
-					// TODO Auto-generated catch block
-					System.err.println("Could not receive from Server socket");
-        		 	
-        		 	}
-        		 
-        		 finally {
-         			
-        			 try {
-						socket.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						System.out.println("Could not close the client socket");
-					}
-         		}
-	   		}
-        }
-
-    public boolean isConnected() {
-		return connected;
-    }
-
-    public void disconnect() {
-		
-    	if(socket != null && connected)
-        {
-          try {
-			socket.close();
-          }catch(IOException ioe) {
-			//unable to close, nothing to do...
-          }
-          finally {
-			this.connected = false;
-          }
-        }
-    }
-    
    
-
-    public String getHostName(){
-            return hostName;
-        }
-
-    public void setHostName(String hostName){
-            this.hostName = hostName;
-        }
 
 	
     

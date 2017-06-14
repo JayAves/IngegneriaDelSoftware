@@ -26,7 +26,9 @@ public class Room extends Thread{
 		
 		
 		try {
+			
 			model= new Match(names);
+		
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			System.out.println();
@@ -37,20 +39,11 @@ public class Room extends Thread{
 		for (ClientThread th: playersInQueue){
 			
 			th.addObserver(controller);
-			controller.addView(th, th.getClientName());
+			controller.addView(th.getClientName(), th);
 			th.setInGame();
-			//devo notificare il client che è in una partita
 			
-			if (th instanceof SocketClientThread) {
-				
-				try {
-					((SocketClientThread) th).gameIsStarted();
-				
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			
+			
 		}
 	
 		model.addObserver(controller);

@@ -14,7 +14,7 @@ public class InputFactory extends AbstractFactory {
 	}*/
 
 	@Override
-	Connection getNetworking(String networking) {
+	Connection getNetworking(String networking, String playerName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

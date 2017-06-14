@@ -1,14 +1,13 @@
 package it.polimi.ingsw.ps29.view_client;
 
 import java.io.IOException;
+import java.util.Observable;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
-public interface Connection {
+public abstract class Connection extends Observable{
 	
-	public void connect(String hostname, String playerName) throws IOException;
+	public abstract void sendMessage( InteractionMessage msg);
 	
-	public void setPlayerName(String playerName);
-
-	public void sendMessage(InteractionMessage arg);
+	
 }

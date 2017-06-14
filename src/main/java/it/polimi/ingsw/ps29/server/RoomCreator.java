@@ -42,7 +42,7 @@ public class RoomCreator extends Thread implements Observer{
 			
 		counter++;
 			
-		if (counter==4){
+		if (counter==2){
 				
 				roomHandler.add(new Room(playersInQueue));
 				counter=0;
@@ -56,7 +56,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		// TODO Auto-generated method stub
 		
-		if (!(arg instanceof ClientThread)){
+		if (!(arg instanceof SocketGathererInServer)){
 			
 			//da gestire
 		}
