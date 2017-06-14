@@ -194,7 +194,7 @@
 	"cardData":{"name": "Citadel",
 	"period": "FIRST",
 	"type": "TERRITORY",
-    "id" : 7            
+    "id" : 7,            
 	"immediateEffects": [],
 	"permanentEffects":[{
 		"effectType": "GainResourcesEffect",
