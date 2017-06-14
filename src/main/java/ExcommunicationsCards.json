@@ -1,0 +1,199 @@
+[
+{
+"period" : "FIRST",
+    "effect" : "MalusResourcesExcommunication",
+    "effectData" :{
+               "resources" : [
+                           { "resourceType" : "MilitaryPoints",
+                              "resourceData" : {
+                                              "amount" : 1,
+                                              "type" : "military"
+}}
+    ]
+}
+},
+
+{
+"period" : "FIRST",
+"effect" :{
+       "effectType" : "MalusResourcesExcommunication",
+       "effectData":{
+                 "resources" : [
+                                {"resourceType" : "Coins",
+			                    "resourceData" : {
+				                            "amount": 1,
+				                            "type" : "coin"} }    
+                 ]
+       }
+}
+},
+
+{
+"period" : "FIRST",
+"effect" :{
+       "effectType" : "MalusResourcesExcommunication",
+       "effectData":{
+                 "resources" : [{
+                                "resourceType":"Servants",
+			                    "resourceData":{
+				                            "amount":1,
+				                             "type":"servant"}}     
+                 ]
+       }
+}
+},
+    
+{
+"period" : "FIRST",
+"effect" :{
+       "effectType" : "MalusResourcesExcommunication",
+       "effectData":{
+                 "resources" : [{
+                                "resourceType":"Stones",
+			                    "resourceData":{
+				                            "amount":1,
+				                             "type":"stone"} ,
+                                "resourceType":"Woods",
+			                    "resourceData":{
+				                            "amount":1,
+				                             "type":"wood"}
+                     }]
+       }
+}
+},
+
+{
+"period" : "FIRST",
+"effect" :{
+  "effectType": "EmpowermentActivityEffect",
+  "effectData":
+  { "diceEmpowerment": -3,
+          "activityName": "Harvest"
+            
+        }}
+     
+
+}, 
+
+{
+"period" : "FIRST",
+"effect" :{
+  "effectType": "EmpowermentActivityEffect",
+  "effectData":
+  { "diceEmpowerment": -3,
+          "activityName": "Production"
+            
+        }}
+     
+
+},
+
+{
+"period" : "SECOND",
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Character",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Territory",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Building",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Venture",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "TerritoryCardPenaltyEffect",
+        "effectData":{}
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "CharacterCardPenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "TerritoryCardPenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "BuildingCardCostsPenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "ResourcePenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "VictoryPointsPenaltyEffect",
+        "effectData":{}
+    }
+},
+
+{
+"period" : "THIRD",
+    "effect": {
+        "effectType" : "MIlitaryPointsPenaltyEffect",
+        "effectData":{}
+    }
+}
+    
+]

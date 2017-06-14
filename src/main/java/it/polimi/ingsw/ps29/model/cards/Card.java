@@ -11,6 +11,7 @@ public abstract class Card {
 	private String name;
 	private Period period;
 	private CardType type;
+	private int id;
 	private ArrayList<Effect> immediateEffects;
 	private ArrayList<Effect> permanentEffects;
 	private ArrayList<Resource> cost;
