@@ -34,7 +34,7 @@ public class SocketConnection extends Connection implements Runnable {
 			ois = new ObjectInputStream(socket.getInputStream());
 			
 			//utilizzo questo oggetto per l'invio di oggetti in rete
-			serializator = new ClientSerializator(socket, oos);
+			serializator = new ClientSerializator(socket, oos, ois);
 			
 			//invio al server il nome del client
 			oos.writeObject(playerName);

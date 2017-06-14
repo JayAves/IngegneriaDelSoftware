@@ -42,7 +42,6 @@ public class OnlineApp {
     		
     		System.out.println("\nWaiting for a match");
     		
-    		scanner.close();
 	 
 	 }
 }

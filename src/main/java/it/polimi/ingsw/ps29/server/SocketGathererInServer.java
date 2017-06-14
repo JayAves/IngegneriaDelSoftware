@@ -38,18 +38,19 @@ public class SocketGathererInServer extends Observable {
 				ois = new ObjectInputStream(socket.getInputStream());
 				
 				System.out.println("Connection estabilished with: "+socket);
-				
 				try {
-					playerName = ois.readObject().toString();
+					playerName = (String) ois.readObject();
 					virtualView = new SocketClientThread(socket, playerName, oos, ois);
 					
 					//notifica RoomCreator
 					setChanged();
 					notifyObservers(virtualView);
 					
+					socket = null;
+					/*
 					Thread t = new Thread (virtualView);
 					t.start();
-					
+					*/
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
 					e.printStackTrace();

@@ -11,11 +11,13 @@ public class ServerSerializator {
 	
 	private Socket socket;
 	private ObjectOutputStream oos;
+	private ObjectInputStream ois;
 	
-	public ServerSerializator (Socket socket, ObjectOutputStream oos) {
+	public ServerSerializator (Socket socket, ObjectOutputStream oos, ObjectInputStream ooi) {
 		this.socket = socket;
 		System.out.println("ServerSerializator: "+socket);
 		this.oos = oos;
+		this.ois = ois;
 	}
 	
 	public void serializeObject (InteractionMessage o) {

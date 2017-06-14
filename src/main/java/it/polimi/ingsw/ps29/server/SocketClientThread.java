@@ -23,19 +23,27 @@ public class SocketClientThread extends ClientThread {
 		this.oos = oos;
 		this.ois = ois;
 		
-		serializator = new ServerSerializator(socket, this.oos);
+		serializator = new ServerSerializator(socket, this.oos, this.ois);
 	}
 	
 
 	@Override
 	public void run() {
 		InteractionMessage obj;
-		while(true) {
+		try {
+			System.out.println((InteractionMessage) ois.readObject());
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int i=0;
+		while(i==2) {
 
 			try{
-				//notifico Controller
 				obj = (InteractionMessage) ois.readObject();
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
+				
+				//notifico Controller
 				setChanged();
 				notifyObservers(obj);
 				

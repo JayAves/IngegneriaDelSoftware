@@ -11,13 +11,14 @@ public class ClientSerializator {
 	
 	private Socket socket;
 	private ObjectOutputStream oos;
+	private ObjectInputStream ois;
 	
 	
-	
-	public ClientSerializator (Socket socket, ObjectOutputStream oos) {
+	public ClientSerializator (Socket socket, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
 		System.out.println("ClientSerializator: "+socket);
 		this.oos = oos;
+		this.ois = ois;
 		
 	}
 	
