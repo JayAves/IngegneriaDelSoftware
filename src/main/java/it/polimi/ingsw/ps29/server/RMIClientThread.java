@@ -7,8 +7,10 @@ import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class RMIClientThread extends ClientThread{
 
-	public String Username;
-	public boolean inGame;
+	protected String Username;
+	protected boolean myTurn;
+	protected boolean recentlyPoked;
+	
 	
 	
 	
@@ -16,6 +18,7 @@ public class RMIClientThread extends ClientThread{
 		
 		Username = username;
 		inGame=false;
+		recentlyPoked=true;
 	}
 
 	
@@ -27,13 +30,16 @@ public class RMIClientThread extends ClientThread{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+		//logica applicativa: se non ricevo richieste per un po' di tempo notifico server
+		while(recentlyPoked) {
+			//timer che se scade chiude il thread
+		}
 	}
 
 	@Override
 	public void stopClient() {
 		// TODO Auto-generated method stub
-		// il server può stoppare il client? Io non credo
+		inGame=false;
 		
 	}
 
@@ -55,7 +61,7 @@ public class RMIClientThread extends ClientThread{
 	@Override
 	public void startInteraction(InteractionMessage msg) {
 		// TODO Auto-generated method stub
-		
+		//devo mettere il messaggio a disposizione del client
 	}
 	
 
