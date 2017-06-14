@@ -36,8 +36,7 @@ public class SocketClientThread extends ClientThread {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		int i=0;
-		while(i==2) {
+		
 
 			try{
 				obj = (InteractionMessage) ois.readObject();
@@ -54,7 +53,6 @@ public class SocketClientThread extends ClientThread {
 				System.err.println("Unable to cast the object");
 				e.printStackTrace();
 			}
-		}
 		
 	}
 	
