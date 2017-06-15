@@ -51,10 +51,9 @@ public class Controller implements Observer{
 		String playerName = model.getBoard().getCurrentPlayer().getName();
 		ClientThread view = views.get(playerName);
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
-		//state = state.beforeAction();
+		state = state.beforeAction();
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
-		//InteractionMessage object = state.objectForView(playerName);
-		InteractionMessage object = new ActionChoice(playerName);
+		InteractionMessage object = state.objectForView(playerName);
 		System.out.println("\nInizio interazione con: "+playerName+"\n");
 		view.startInteraction (object);
 		
