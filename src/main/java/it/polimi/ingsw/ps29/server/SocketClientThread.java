@@ -30,15 +30,9 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void run() {
 		InteractionMessage obj;
-		try {
-			System.out.println((InteractionMessage) ois.readObject());
-		} catch (ClassNotFoundException | IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-
+		while(true) {
 			try{
+				System.out.println("I'm here to listen messages sent from..."+playerName);
 				obj = (InteractionMessage) ois.readObject();
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				
@@ -53,6 +47,7 @@ public class SocketClientThread extends ClientThread {
 				System.err.println("Unable to cast the object");
 				e.printStackTrace();
 			}
+		}
 		
 	}
 	

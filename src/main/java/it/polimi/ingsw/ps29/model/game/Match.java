@@ -122,8 +122,15 @@ public class Match extends Observable{
 	
 	
 	public void gameEngine() {
+		board.changePlayerOrder();
+		System.out.println("Server: turno del giocatore "+board.getCurrentPlayer().getName());
 		
-		while(!endOfMatch ) {
+		setChanged();
+		notifyObservers(board.getCurrentPlayer().getName());
+
+		
+		
+		/*while(!endOfMatch ) {
 			//viene gestita qui sotto la fase di azione, per comodità con il pattern observer observable
 			//con il match che per richiedere una nuova azione notifica il controller
 			if(state instanceof ActionsState){
@@ -164,7 +171,7 @@ public class Match extends Observable{
 			}
 		
 			
-		
+		*/
 		
 	}
 	

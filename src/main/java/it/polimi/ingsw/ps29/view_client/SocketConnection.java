@@ -60,7 +60,7 @@ public class SocketConnection extends Connection {
 			try {
 				//notifico Client
 				do {
-				obj = (InteractionMessage) ois.readObject();
+					obj = (InteractionMessage) ois.readObject();
 				} while (obj==null);
 				
 				setChanged();
@@ -80,7 +80,6 @@ public class SocketConnection extends Connection {
 
 	@Override
 	public void sendMessage(InteractionMessage msg) {
-		// TODO Auto-generated method stub
 		serializator.serializeObject(msg);
 	}
     

@@ -33,17 +33,15 @@ public class Client implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) { //riceve da view e da socket/rmi
-		
-		// TODO Auto-generated method stub
-		
-	VisitorServerMessages svisitor= new VisitorServerMessages();
+		VisitorServerMessages svisitor= new VisitorServerMessages();
 		
 		if(o instanceof Connection)
 			((InteractionMessage)arg).receive(svisitor);
 			
-		else if (o instanceof View) {
+		else if (o instanceof View) 
 			networking.sendMessage((InteractionMessage) arg);
-		}
+			
+		
 		else 
 			throw new IllegalArgumentException();
 	}

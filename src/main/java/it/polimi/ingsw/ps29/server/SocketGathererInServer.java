@@ -46,11 +46,10 @@ public class SocketGathererInServer extends Observable {
 					setChanged();
 					notifyObservers(virtualView);
 					
-					socket = null;
-					/*
+					
 					Thread t = new Thread (virtualView);
 					t.start();
-					*/
+					
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
 					e.printStackTrace();

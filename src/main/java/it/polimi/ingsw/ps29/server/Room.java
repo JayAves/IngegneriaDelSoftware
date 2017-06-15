@@ -17,12 +17,8 @@ public class Room extends Thread{
 	public Room (ArrayList<ClientThread> playersInQueue){
 		
 		ArrayList<String> names = new ArrayList<String>();
-		
-		for (ClientThread th: playersInQueue){
-			
-			names.add(th.getClientName());
-		}
-		
+		for (ClientThread th: playersInQueue)
+			names.add(th.getClientName());	
 		
 		
 		try {
@@ -41,9 +37,6 @@ public class Room extends Thread{
 			th.addObserver(controller);
 			controller.addView(th.getClientName(), th);
 			th.setInGame();
-			new Thread(th).start();
-			
-			
 		}
 	
 		model.addObserver(controller);

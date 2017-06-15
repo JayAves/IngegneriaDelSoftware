@@ -31,13 +31,14 @@ import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 public class Controller implements Observer{
 	
 	private Match model;
-	private Map<String, ClientThread> views = new HashMap <String, ClientThread> ();
+	private Map<String, ClientThread> views;
 	private ActionState state; 
 	//è lo stato dell'azione, inizialmente da stabilire, viene recuperato dopo che ho svolto l'azione
 	//lo utilizzo per la corretta interazione con la view
 	
 	public Controller (Match model) {
 		this.model = model;
+		views =  new HashMap <String, ClientThread> ();
 		state = new ToEstabilishState();
 	}
 	
@@ -50,10 +51,11 @@ public class Controller implements Observer{
 		String playerName = model.getBoard().getCurrentPlayer().getName();
 		ClientThread view = views.get(playerName);
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
-		state = state.beforeAction();
+		//state = state.beforeAction();
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
-		InteractionMessage object = state.objectForView(playerName);
-		
+		//InteractionMessage object = state.objectForView(playerName);
+		InteractionMessage object = new ActionChoice(playerName);
+		System.out.println("\nInizio interazione con: "+playerName+"\n");
 		view.startInteraction (object);
 		
 	}
@@ -68,9 +70,10 @@ public class Controller implements Observer{
 		if(o instanceof Match)
 			callCorrectView();
 		else if (o instanceof ClientThread) {
-			((InteractionMessage)arg).visit(visitor);
-			for(HashMap.Entry <String, ClientThread> view: views.entrySet())
-				view.getValue().showBoard(model.infoForView);
+			//((InteractionMessage)arg).visit(visitor);
+			//for(HashMap.Entry <String, ClientThread> view: views.entrySet())
+			//	view.getValue().showBoard(model.infoForView);
+			model.gameEngine();
 		}
 		else 
 			throw new IllegalArgumentException();
