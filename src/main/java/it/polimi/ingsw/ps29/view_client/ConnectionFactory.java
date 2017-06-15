@@ -19,7 +19,7 @@ public class ConnectionFactory extends AbstractFactory {
 		
 		else if (networking.equals("RMI")) {
 		
-			return new RMIConnection();
+			return new RmiConnection(playerName);
 		}
 		return null;
 	}

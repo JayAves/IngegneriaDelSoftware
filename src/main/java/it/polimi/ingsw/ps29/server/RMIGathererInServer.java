@@ -9,13 +9,8 @@ import java.util.Observable;
 
 public class RMIGathererInServer extends Observable implements Runnable{
 
-	private ArrayList<RMIClientThread> clients;
-	// quando aggiungo player faccio notify() al roomCreator
-
+	protected ArrayList<RMIClientThread> clients;
 	
-
-	
-
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
