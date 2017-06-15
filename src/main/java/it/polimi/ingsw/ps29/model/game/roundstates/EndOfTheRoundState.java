@@ -11,8 +11,14 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
 public class EndOfTheRoundState implements RoundState {
 
+	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ACTIONS;
+
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
+		
+		//pulisco il flag che indica che la richiesta di supporto alla Chiesa è stata performata
+		for (Player player: match.getBoard().getPlayers())
+			player.setVaticanReportPerformed(false);
 		
 		//modifica ordine di turno
 		ArrayList<Color> colorOrder = ((CouncilPalaceArea)match.getBoard().getSpace("CouncilPalace")).playersOrder();
@@ -30,10 +36,15 @@ public class EndOfTheRoundState implements RoundState {
 			space.cleanSpace();
 		match.infoForView.cleanBoardDTO();
 		
-		if(roundNumber==6)
-			match.setEndOfMatch();
+		RoundSetupState state = new RoundSetupState();
 		
-		return new RoundSetupState();
+		if(roundNumber==6) 
+			match.setEndOfMatch();
+			//nel gameEngine chiamata a funzione per calcolo del punteggio
+		else 
+			state.doAction(roundNumber, match);
+		
+		return state;
 	}
 	
 	
@@ -57,4 +68,14 @@ public class EndOfTheRoundState implements RoundState {
 		return playerOrder;
 	}
 
+
+	@Override
+	public StateOfRoundIdentifier getState() {
+		return state;
+	}
+
+	@Override
+	public int getStateNuber() {
+		return state.getStateNumber();
+	}
 }

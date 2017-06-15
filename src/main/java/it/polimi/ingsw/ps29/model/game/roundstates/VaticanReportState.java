@@ -7,6 +7,8 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class VaticanReportState implements RoundState {
 
+	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ACTIONS;
+
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
 		//gestione del rapporto in vaticano
@@ -30,6 +32,16 @@ public class VaticanReportState implements RoundState {
 		
 		
 		return new EndOfTheRoundState();
+	}
+
+	@Override
+	public StateOfRoundIdentifier getState() {
+		return state;
+	}
+	
+	@Override
+	public int getStateNuber() {
+		return state.getStateNumber();
 	}
 
 }

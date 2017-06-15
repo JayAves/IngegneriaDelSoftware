@@ -24,7 +24,6 @@ public class GameBoard{
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
 	private ArrayList<Player> playersOrder;
-	private boolean playersOrderMoved;
 	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
 	private ArrayList<ExcommunicationDeck> excommunicationDeck;
@@ -44,7 +43,6 @@ public class GameBoard{
 		dices.add(new Dice(DiceColor.WHITE));
 		dices.add(new Dice(DiceColor.ORANGE));
 		playersOrder = players;
-		playersOrderMoved = false;
 		decks= new ArrayList<Deck>();
 		initSpaces();
 	}
@@ -142,15 +140,6 @@ public class GameBoard{
 	
 	public Player getCurrentPlayer (){
 		return playersOrder.get(0);
-	}
-	
-	public boolean isPlayersOrderMoved() {
-		return playersOrderMoved;
-	}
-
-
-	public void setPlayersOrderMoved(boolean playersOrderMoved) {
-		this.playersOrderMoved = playersOrderMoved;
 	}
 	
 	public ExcommunicationCard getExcommunication(int round){

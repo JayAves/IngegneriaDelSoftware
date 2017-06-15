@@ -125,11 +125,13 @@ public class Match extends Observable{
 		
 		System.out.println("Server: turno del giocatore "+board.getCurrentPlayer().getName());
 		
-		/*setChanged();
+		/*
+		-----TEST NETWORKING------ 
+		setChanged();
 		notifyObservers(board.getCurrentPlayer().getName());
 		
 		*/
-		
+		/*
 		while(!endOfMatch ) {
 			//viene gestita qui sotto la fase di azione, per comodità con il pattern observer observable
 			//con il match che per richiedere una nuova azione notifica il controller
@@ -151,7 +153,7 @@ public class Match extends Observable{
 			//aggiorna lo stato del turno, permette di gestire tutte le altre fasi di turno
 			state= state.doAction(round, this);
 		}
-		
+		*/
 		//ciclo di calcolo punti vittoria
 		//stampa punteggi finali
 

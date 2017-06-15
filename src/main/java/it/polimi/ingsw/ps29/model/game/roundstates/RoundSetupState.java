@@ -15,6 +15,8 @@ import it.polimi.ingsw.ps29.model.space.TowerArea;
 
 public class RoundSetupState implements RoundState {
 
+	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ACTIONS;
+
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
 		roundNumber++;
@@ -79,5 +81,15 @@ public class RoundSetupState implements RoundState {
 		default:
 			throw new IllegalArgumentException();
 		}
+	}
+
+	@Override
+	public StateOfRoundIdentifier getState() {
+		return state;
+	}
+	
+	@Override
+	public int getStateNuber() {
+		return state.getStateNumber();
 	}
 }

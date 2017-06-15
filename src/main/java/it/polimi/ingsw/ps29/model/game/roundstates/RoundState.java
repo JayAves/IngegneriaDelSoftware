@@ -4,4 +4,8 @@ import it.polimi.ingsw.ps29.model.game.Match;
 
 public interface RoundState {
 	public RoundState doAction (int roundNumber, Match match);
+
+	public StateOfRoundIdentifier getState();
+	
+	public int getStateNuber ();
 }

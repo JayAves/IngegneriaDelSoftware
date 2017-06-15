@@ -19,6 +19,12 @@ import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
+import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
+import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
+import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
 import it.polimi.ingsw.ps29.server.ClientThread;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
@@ -32,14 +38,16 @@ public class Controller implements Observer{
 	
 	private Match model;
 	private Map<String, ClientThread> views;
-	private ActionState state; 
+	private RoundState roundState;
+	private ActionState stateOfAction; 
 	//è lo stato dell'azione, inizialmente da stabilire, viene recuperato dopo che ho svolto l'azione
 	//lo utilizzo per la corretta interazione con la view
 	
 	public Controller (Match model) {
 		this.model = model;
 		views =  new HashMap <String, ClientThread> ();
-		state = new ToEstabilishState();
+		roundState = new RoundSetupState();
+		stateOfAction = new ToEstabilishState();
 	}
 	
 	public void addView (String playerName, ClientThread view) {
@@ -47,13 +55,14 @@ public class Controller implements Observer{
 			views.put(playerName, view);
 	}
 	
+	
 	public void callCorrectView () {
 		String playerName = model.getBoard().getCurrentPlayer().getName();
 		ClientThread view = views.get(playerName);
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
-		state = state.beforeAction();
+		stateOfAction = stateOfAction.beforeAction();
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
-		InteractionMessage object = state.objectForView(playerName);
+		InteractionMessage object = stateOfAction.objectForView(playerName);
 		System.out.println("\nInizio interazione con: "+playerName+"\n");
 		view.startInteraction (object);
 		
@@ -62,17 +71,18 @@ public class Controller implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		//la notifica può arrivare da fonti diverse: view e model
 		//se arriva dalla view può riguardare azione standard, azione bonus, scelta exchange, scelta scomunica
-		//se arriva dal model è una richiesta di proseguire con la richiesta dell'azione
 		VisitorMessages visitor = new VisitorMessages();
-		if(o instanceof Match)
-			callCorrectView();
+		if(o instanceof Match){
+			//da capire se serve dopo il cambiamento nel flusso del gioco
+		}
 		else if (o instanceof ClientThread) {
-			/*((InteractionMessage)arg).visit(visitor);
-			for(HashMap.Entry <String, ClientThread> view: views.entrySet())
+			//eseguo l'azione scelta dall'utente
+			((InteractionMessage)arg).visit(visitor);
+			/*for(HashMap.Entry <String, ClientThread> view: views.entrySet())
 				view.getValue().showBoard(model.infoForView);
 			*/
+			gameEngine();
 		}
 		else 
 			throw new IllegalArgumentException();
@@ -119,11 +129,11 @@ public class Controller implements Observer{
 		}
 		
 		action.actionHandler();
-		state = action.getState();
+		stateOfAction = action.getState();
 		//recupero lo stato dopo che ho eseguito le istruzioni
 		
-		if(state.getState().equals(StateOfActionIdentifier.PERFORMED.toString())||state.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())
-				||state.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())||state.getState().equals(StateOfActionIdentifier.PRIVILEGES)) {
+		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.toString())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())
+				||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES)) {
 			//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
 			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
 			infoForView (arg, move);
@@ -168,15 +178,15 @@ public class Controller implements Observer{
 	}
 	
 	private void handleExchangeAction (Exchange msg) {
-		ExchangeResources res = new ExchangeResources(model, state);
-		state = res.exchangeHandler(msg);
+		ExchangeResources res = new ExchangeResources(model, stateOfAction);
+		stateOfAction = res.exchangeHandler(msg);
 	}
 	
 	private void handlePrivilegesChoice (PrivilegeChoice msg) {
 		AddPrivileges addPrivileges = new AddPrivileges();
 		addPrivileges.handlePrivileges(model.getBoard().getCurrentPlayer(), msg.getChoices());
-		state = state.afterAction(model); //ottengo lo stato precedente
-		state = state.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
+		stateOfAction = stateOfAction.afterAction(model); //ottengo lo stato precedente
+		stateOfAction = stateOfAction.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
 	}
 	
 	private void infoForView (ActionChoice arg, Move move) {
@@ -212,4 +222,92 @@ public class Controller implements Observer{
 		}
 	}
 	
+	public void gameEngine () {
+		
+		if (roundState.getStateNuber()==1 || roundState.getStateNuber()==4) { 
+			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
+			callCorrectView(); //svolgo action
+		}
+		
+		else {
+			if (roundState.getStateNuber()==2 && isStateTwoTerminated()) {
+				//ho concluso il turno di gioco: inizio la fase di VaticanReport
+				roundState = new VaticanReportState();
+				askForExcommunication();
+			}
+			
+			else if (roundState.getStateNuber()==3 && isStateThreeTerminated()) 
+				//ho concluso la fase di VaticanReport
+				endVaticanState();
+			
+			else if (roundState.getStateNuber()==2)
+				//sono ancora nella fase 2: chiedo un'azione
+				callCorrectView();
+			else
+				//sono nell'azione 3: chiedo per il supporto alla Chiesa
+				askForExcommunication();
+		}
+			
+	}
+
+	private boolean isStateTwoTerminated() {
+		for(Player player: model.getBoard().getPlayers())
+			for(FamilyMember member: player.getFamily())
+				if (!member.getBusy())
+					return false;
+		
+		//ha controllato che tutti i familiari sono occupati, se anche un eventuale azione
+		//che richiede interazione è terminata torna true
+		return (stateOfAction.getState().equals("performed"));
+	}
+
+	private boolean isStateThreeTerminated() {
+		for (Player player: model.getBoard().getPlayers())
+			if (!player.isVaticanReportPerformed())
+				return false;
+		return true;
+	}
+	
+	private void conclusion () {
+		//funzione per la terminazione del gioco: gestione punteggi, connessioni, notifiche alle view...
+	}
+	
+	private void askForExcommunication () {
+		String player;
+		
+		if(model.getRound()%2==0) { //funzioni da svolgere solo nei turni pari
+			
+			while(!model.getBoard().getCurrentPlayer().canSubstainVatican(0) && !isStateThreeTerminated()) {
+				//se non ho abbastanza punti per sostenere la Chiesa e non ho ancora controllato tutti
+				model.getBoard().getCurrentPlayer().setVaticanReportPerformed(true);
+				model.getBoard().changePlayerOrder();
+			}
+		
+			if(!isStateThreeTerminated()) {
+				//devo chiedere la scelta a un giocatore
+				player = model.getBoard().getCurrentPlayer().getName();
+				VaticanChoice msg = new VaticanChoice (player);
+				views.get(player).startInteraction(msg);
+			}
+		
+			else {
+				//devo terminare il turno
+				endVaticanState ();
+			}	
+		}
+		
+		else
+			endVaticanState();
+	}
+	
+	public void endVaticanState () {
+		//chiamo questa funzione quando non devo fare il Vatican Report
+		//oppure mi accorgo di averlo concluso senza aver svolto un'azione per la gameEngine 
+		roundState = new EndOfTheRoundState();
+		roundState.doAction(model.getRound(), model); //dop aver cambiato lo stato, svolgo azione
+		if(model.endOfMatch) //se la partita termina esco, altrimenti devo richiamare una funzione per proseguire
+			conclusion();
+		else
+			callCorrectView(); //inizia una nuova fase per le azioni
+	}
 }

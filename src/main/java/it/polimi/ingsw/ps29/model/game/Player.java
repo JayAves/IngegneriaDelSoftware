@@ -11,8 +11,8 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
-import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
+import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class Player {
@@ -27,6 +27,7 @@ public class Player {
 	public PersonalBoardDTO boardDTO;
 	private FinalScoring finalScoring;
 	private boolean ventureCardsPenaltyOn;
+	private boolean vaticanReportPerformed;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -38,6 +39,7 @@ public class Player {
 		specialPermanentEffects= new ArrayList<Effect>();
 		initDTO ();
 		ventureCardsPenaltyOn = false;
+		setVaticanReportPerformed(false);
 	}
 	
 	public void initDTO () {
@@ -122,5 +124,17 @@ public class Player {
 	
 	public FinalScoring getFinalScoring(){
 		return finalScoring;
+	}
+
+	public boolean isVaticanReportPerformed() {
+		return vaticanReportPerformed;
+	}
+
+	public void setVaticanReportPerformed(boolean vaticanReportPerformed) {
+		this.vaticanReportPerformed = vaticanReportPerformed;
+	}
+	
+	public boolean canSubstainVatican (int faithNeeded) {
+		return this.getPersonalBoard().getSpecificResource("faith").getAmount() >= faithNeeded;
 	}
 }

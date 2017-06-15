@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.server;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.controller.Controller;
@@ -41,7 +40,7 @@ public class Room extends Thread{
 	
 		model.addObserver(controller);
     	
-    	model.gameEngine();
+    	controller.gameEngine();
 		
 		
 		}
