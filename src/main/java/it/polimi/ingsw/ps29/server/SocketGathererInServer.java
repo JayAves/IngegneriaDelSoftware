@@ -24,7 +24,7 @@ public class SocketGathererInServer extends Observable {
 		}
 	}
 	
-	void startServer () {
+	public void startServer () {
 		Socket socket;
 		SocketClientThread virtualView;
 		String playerName;

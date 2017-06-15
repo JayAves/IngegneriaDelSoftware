@@ -102,6 +102,13 @@ public class RoomCreator extends Thread implements Observer{
 		}
 		
 	}
+
+
+	public ArrayList<ClientThread> getPlayersInQueue() {
+		return playersInQueue;
+	}
+	
+	
 }
 		
 

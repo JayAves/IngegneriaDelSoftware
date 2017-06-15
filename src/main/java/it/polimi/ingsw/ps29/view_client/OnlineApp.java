@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29.view_client;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.view.View;
@@ -10,7 +8,7 @@ import it.polimi.ingsw.ps29.view.View;
 
 public class OnlineApp {
 	 
-	public static void main( String[] args ) throws FileNotFoundException{
+	public static void main( String[] args ) {
 	    	
 	    	Scanner scanner = new Scanner (System.in);
 	    	String inputChoice;

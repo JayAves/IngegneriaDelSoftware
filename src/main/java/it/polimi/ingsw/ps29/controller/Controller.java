@@ -70,10 +70,10 @@ public class Controller implements Observer{
 		if(o instanceof Match)
 			callCorrectView();
 		else if (o instanceof ClientThread) {
-			//((InteractionMessage)arg).visit(visitor);
-			//for(HashMap.Entry <String, ClientThread> view: views.entrySet())
-			//	view.getValue().showBoard(model.infoForView);
-			model.gameEngine();
+			/*((InteractionMessage)arg).visit(visitor);
+			for(HashMap.Entry <String, ClientThread> view: views.entrySet())
+				view.getValue().showBoard(model.infoForView);
+			*/
 		}
 		else 
 			throw new IllegalArgumentException();
