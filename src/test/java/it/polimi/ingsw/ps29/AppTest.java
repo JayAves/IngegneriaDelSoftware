@@ -23,8 +23,9 @@ public class AppTest extends TestCase{
      */
     public static Test suite()
     {
-        return new TestSuite( 	AppTest.class, 
-        						ProvaTest.class);
+        return new TestSuite( 	AppTest.class 
+        						/*,ProvaTest.class,
+        						NetworkingTest.class*/);
     }
 
     /**
