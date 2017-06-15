@@ -37,4 +37,14 @@ public class PrivilegesState implements ActionState {
 		return new PrivilegeChoice(player, privileges);
 	}
 
+	public ActionState getPreviousState() {
+		return previousState;
+	}
+
+	public void setPreviousState(ActionState previousState) {
+		this.previousState = previousState;
+	}
+	
+	
+
 }

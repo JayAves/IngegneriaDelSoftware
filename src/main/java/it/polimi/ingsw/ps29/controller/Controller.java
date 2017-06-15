@@ -189,6 +189,10 @@ public class Controller implements Observer{
 		stateOfAction = stateOfAction.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
 	}
 	
+	private  void handleExcommunication (VaticanChoice msg) {
+		//function to define
+	}
+	
 	private void infoForView (ActionChoice arg, Move move) {
 		model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
 		model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
@@ -211,7 +215,7 @@ public class Controller implements Observer{
 		}
 		
 		public void visit(VaticanChoice msg){
-			//handleExcommunication(msg);
+			handleExcommunication(msg);
 		}
 		
 		public void visit(PrivilegeChoice msg){

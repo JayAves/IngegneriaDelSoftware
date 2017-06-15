@@ -15,7 +15,7 @@ public enum StateOfActionIdentifier {
 	}
 	
 	public String toString () {
-		return name(); 
+		return name; 
 	}
 
 }

@@ -62,7 +62,7 @@ public class Client implements Observer{
 			}
 			
 	    	public void receive(VaticanChoice msg){
-				
+				view.askAboutExcommunication(msg);
 			}
 			
 			public void receive(PrivilegeChoice msg){

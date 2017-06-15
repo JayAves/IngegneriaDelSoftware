@@ -25,7 +25,7 @@ public class Container {
 	}
 	
 	public ResourceInterface removeResource (ResourceType type) {
-		return resources.remove(type.toString());
+		return resources.remove(type.toString().toLowerCase());
 	}
 	
 	

@@ -19,7 +19,7 @@ public class Resource implements ResourceInterface, Cloneable {
 	}
 
 	public String getType () {
-		return type;
+		return type.toLowerCase();
 	}
 	
 	public void negativeAmount () {
