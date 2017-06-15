@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class SocketGathererInServer extends Observable {
@@ -12,6 +13,7 @@ public class SocketGathererInServer extends Observable {
 	private ServerSocket serverSocket;
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
+	private ArrayList<Thread> clients;
 	
 	public SocketGathererInServer (int port) {
 		try {
@@ -22,6 +24,8 @@ public class SocketGathererInServer extends Observable {
 			System.err.println("Unable to start the server!");
 			e.printStackTrace();
 		}
+		
+		clients= new ArrayList<Thread>();
 	}
 	
 	public void startServer () {
@@ -49,6 +53,7 @@ public class SocketGathererInServer extends Observable {
 					
 					Thread t = new Thread (virtualView);
 					t.start();
+					clients.add(t);
 					
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
@@ -64,4 +69,7 @@ public class SocketGathererInServer extends Observable {
 		}
 	}
 	
+	public ArrayList<Thread> getClients(){
+		return clients;
+	}
 }

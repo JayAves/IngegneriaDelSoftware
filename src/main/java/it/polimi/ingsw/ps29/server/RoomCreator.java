@@ -108,7 +108,9 @@ public class RoomCreator extends Thread implements Observer{
 		return playersInQueue;
 	}
 	
-	
+	public ArrayList<Room> getRooms(){
+		return roomHandler;
+	}
 }
 		
 
