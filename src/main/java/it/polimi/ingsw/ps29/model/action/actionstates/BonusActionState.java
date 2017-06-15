@@ -36,7 +36,7 @@ public class BonusActionState implements ActionState {
 
 	@Override
 	public InteractionMessage objectForView(String player) {
-		return new BonusChoice(effect, player);
+		return new BonusChoice(((BonusActionEffect)effect).clone(), player);
 	}
 
 }

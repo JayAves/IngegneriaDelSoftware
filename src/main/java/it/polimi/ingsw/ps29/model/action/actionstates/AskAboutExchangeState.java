@@ -55,7 +55,7 @@ public class AskAboutExchangeState implements ActionState {
 
 	@Override
 	public InteractionMessage objectForView(String player) {
-		return new Exchange(player, effect.remove(0));
+		return new Exchange(player, effect.remove(0).clone());
 	}
 
 

@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
-public class BonusActivityEffect extends BonusActionEffect implements Cloneable {
+public class BonusActivityEffect extends BonusActionEffect {
 	private String type;
 
 	public BonusActivityEffect(int valueAction, String type) {
