@@ -7,5 +7,5 @@ public interface RoundState {
 
 	public StateOfRoundIdentifier getState();
 	
-	public int getStateNuber ();
+	public int getStateNumber ();
 }

@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 public class VaticanReportState implements RoundState {
 
-	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ACTIONS;
+	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.VATICAN_REPORT;
 
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
@@ -40,7 +40,7 @@ public class VaticanReportState implements RoundState {
 	}
 	
 	@Override
-	public int getStateNuber() {
+	public int getStateNumber() {
 		return state.getStateNumber();
 	}
 

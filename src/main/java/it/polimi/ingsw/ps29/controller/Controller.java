@@ -224,23 +224,23 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-		if (roundState.getStateNuber()==1 || roundState.getStateNuber()==4) { 
+		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
 			callCorrectView(); //svolgo action
 		}
 		
 		else {
-			if (roundState.getStateNuber()==2 && isStateTwoTerminated()) {
+			if (roundState.getStateNumber()==2 && isStateTwoTerminated()) {
 				//ho concluso il turno di gioco: inizio la fase di VaticanReport
 				roundState = new VaticanReportState();
 				askForExcommunication();
 			}
 			
-			else if (roundState.getStateNuber()==3 && isStateThreeTerminated()) 
+			else if (roundState.getStateNumber()==3 && isStateThreeTerminated()) 
 				//ho concluso la fase di VaticanReport
 				endVaticanState();
 			
-			else if (roundState.getStateNuber()==2)
+			else if (roundState.getStateNumber()==2)
 				//sono ancora nella fase 2: chiedo un'azione
 				callCorrectView();
 			else

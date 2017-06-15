@@ -20,7 +20,7 @@ public class ActionsState implements RoundState {
 	}
 
 	@Override
-	public int getStateNuber() {
+	public int getStateNumber() {
 		return state.getStateNumber();
 	}
 

@@ -11,7 +11,7 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
 public class EndOfTheRoundState implements RoundState {
 
-	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ACTIONS;
+	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.END_OF_THE_ROUND;
 
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
@@ -75,7 +75,7 @@ public class EndOfTheRoundState implements RoundState {
 	}
 
 	@Override
-	public int getStateNuber() {
+	public int getStateNumber() {
 		return state.getStateNumber();
 	}
 }
