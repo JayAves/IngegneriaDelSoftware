@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.DTO;
+package it.polimi.ingsw.ps29.viewclient.DTO;
 
 import java.io.Serializable;
 

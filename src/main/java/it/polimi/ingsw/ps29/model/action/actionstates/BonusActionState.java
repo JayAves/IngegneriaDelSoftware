@@ -27,7 +27,7 @@ public class BonusActionState implements ActionState {
 
 	@Override
 	public String getState() {
-		return state.toString();
+		return state.toString().toLowerCase();
 	}
 	
 	public BonusActionEffect getEffect () {

@@ -1,34 +1,37 @@
 package it.polimi.ingsw.ps29.view;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
-import it.polimi.ingsw.ps29.model.DTO.GameBoardDTO;
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
-import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
-import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
+import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBonusTileDTO;
 
 public class View extends Observable implements Observer {
 	
 	private InputOutput inputOutput;
 	private InputoutputFactory inputOutputFactory = new InputoutputFactory ();
 	private String namePlayer;
-	public InfoDTO infoForView;
+	private GameBoardDTO gameBoardDTO;
+	private HashMap <String, PersonalBoardDTO> personalBoardsDTO;
+	PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO(""); //da cambiare poi
 	
-	public View (String inputType, String n) {
+	public View (String inputType, String name) {
 		
 		inputOutput = inputOutputFactory.getInput(inputType);
-		namePlayer = n;
-		infoForView = new InfoDTO(new GameBoardDTO(),new ArrayList<PersonalBoardDTO>());
+		namePlayer = name;
+		gameBoardDTO = new GameBoardDTO();
+		personalBoardsDTO = new HashMap <String, PersonalBoardDTO> ();
+		personalBoardsDTO.put(name, new PersonalBoardDTO(name, tileDTO));
 		
 	}
 	
@@ -74,10 +77,6 @@ public class View extends Observable implements Observer {
 		
 	}
 
-	public void showBoard(InfoDTO infoForView) {
-		this.infoForView = infoForView;
-		inputOutput.showUpdatedSituation(namePlayer, infoForView);
-	}
 	
 	public void askAboutExcommunication (VaticanChoice msg) {
 		int choice = inputOutput.askAboutExcommunication();
@@ -98,7 +97,17 @@ public class View extends Observable implements Observer {
 	}
 	
 	
-	
+	public void handleInfo (InfoForView msg) {
+		InfoForView info = (InfoForView)msg;
+		if(info.familiar>0 && info.familiar<5)
+			gameBoardDTO.insertFamiliar(msg);
+		
+		if(personalBoardsDTO.get(info.getName())==null)
+			personalBoardsDTO.put(info.getName(), new PersonalBoardDTO(info.getName(), tileDTO));
+		
+		personalBoardsDTO.get(info.getName()).setResources(info.resources);
+		inputOutput.showInfo(gameBoardDTO, personalBoardsDTO);
+	}
 
 	
 	

@@ -29,7 +29,7 @@ public class PrivilegesState implements ActionState {
 
 	@Override
 	public String getState() {
-		return state.toString();
+		return state.toString().toLowerCase();
 	}
 
 	@Override

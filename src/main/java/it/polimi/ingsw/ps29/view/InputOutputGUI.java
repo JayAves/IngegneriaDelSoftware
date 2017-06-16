@@ -1,18 +1,16 @@
 package it.polimi.ingsw.ps29.view;
 
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
+import java.util.HashMap;
+
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
 
 public class InputOutputGUI implements InputOutput {
 
-	@Override
-	public void showUpdatedSituation(String playerName, InfoDTO board) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void showMessage(String message) {
@@ -66,6 +64,12 @@ public class InputOutputGUI implements InputOutput {
 	public int askAboutExcommunication() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void showInfo(GameBoardDTO gameBoardDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

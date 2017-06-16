@@ -20,9 +20,9 @@ public class ServerSerializator {
 		this.ois = ois;
 	}
 	
-	public void serializeObject (InteractionMessage o) {
+	public void serializeObject (Object o) {
 		try {
-			oos.writeObject((InteractionMessage) o);
+			oos.writeObject(o);
 			oos.flush();
 			
 		} catch (IOException e) {

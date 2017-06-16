@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view_client;
+package it.polimi.ingsw.ps29.viewclient;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
@@ -18,7 +19,6 @@ public class Client implements Observer{
 	private View view;
 	private Connection networking;
 	private String name;
-	private boolean end;
 	
 	public Client (View view, String net){
 		
@@ -33,10 +33,12 @@ public class Client implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) { //riceve da view e da socket/rmi
-		VisitorServerMessages svisitor= new VisitorServerMessages();
+		VisitorServerMessages visitor= new VisitorServerMessages();
 		
-		if(o instanceof Connection)
-			((InteractionMessage)arg).receive(svisitor);
+		if(o instanceof Connection) {
+			((InteractionMessage)arg).receive(visitor);
+		}
+			
 			
 		else if (o instanceof View) 
 			networking.sendMessage((InteractionMessage) arg);
@@ -68,8 +70,13 @@ public class Client implements Observer{
 			public void receive(PrivilegeChoice msg){
 				view.askAboutPrivileges(msg);
 			}
+			
 			public void receive(PlayerInfoMessage msg){
 				
+			}
+			
+			public void receive (InfoForView msg) {
+				view.handleInfo (msg);
 			}
 }
 }

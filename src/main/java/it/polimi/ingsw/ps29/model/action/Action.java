@@ -31,7 +31,7 @@ public abstract class Action {
 	//chiamato se i precedenti controlli vanno a buon fine, implementato in maniera diversa per ogni spazio azione
 	abstract void performAction ();
 		
-	public void actionHandler () {
+	public ActionState actionHandler () {
 		if (isForbidden() || !isPlaceable()) {
 			state = new RejectedState();
 		}
@@ -50,6 +50,8 @@ public abstract class Action {
 		else
 			state = state.afterAction(model);
 		
+		return state;
+		
 		/* 
 		se lo stato è REJECTED chiedo una nuova Move
 		se lo stato è INCOMPLETE (posso dettagliarlo) aggiorno la view e: 
@@ -62,8 +64,6 @@ public abstract class Action {
 		*/
 	}
 	
-	public ActionState getState () {
-		return state;
-	}
+	
 
 }

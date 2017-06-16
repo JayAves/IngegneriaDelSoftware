@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.view.messages;
 
-import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
+import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class ActionChoice extends InteractionMessage {
 

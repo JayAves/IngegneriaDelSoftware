@@ -29,6 +29,7 @@ import it.polimi.ingsw.ps29.server.ClientThread;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
@@ -40,6 +41,8 @@ public class Controller implements Observer{
 	private Map<String, ClientThread> views;
 	private RoundState roundState;
 	private ActionState stateOfAction; 
+	private InfoForView info;
+	private boolean sendInfo;
 	//è lo stato dell'azione, inizialmente da stabilire, viene recuperato dopo che ho svolto l'azione
 	//lo utilizzo per la corretta interazione con la view
 	
@@ -77,10 +80,16 @@ public class Controller implements Observer{
 		}
 		else if (o instanceof ClientThread) {
 			//eseguo l'azione scelta dall'utente
+			sendInfo = false;
+			info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
+			info.playerColor = model.getBoard().getCurrentPlayer().getColor();
 			((InteractionMessage)arg).visit(visitor);
-			/*for(HashMap.Entry <String, ClientThread> view: views.entrySet())
-				view.getValue().showBoard(model.infoForView);
-			*/
+			if(sendInfo) {
+				info.resources = model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().toString();
+				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+					view.getValue().startInteraction(info);
+			}
+				
 			gameEngine();
 		}
 		else 
@@ -127,15 +136,17 @@ public class Controller implements Observer{
 			break;
 		}
 		
-		action.actionHandler();
-		stateOfAction = action.getState();
+		stateOfAction = action.actionHandler();
 		//recupero lo stato dopo che ho eseguito le istruzioni
 		
-		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.toString())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.toString())
-				||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.toString())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES)) {
+		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())
+				||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
 			//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
-			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)				
-			infoForView (arg, move);
+			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)
+			info.space = arg.getChoice(0);
+			info.floor = arg.getChoice(1);
+			info.familiar = arg.getChoice(3);
+			sendInfo = true;
 		}
 		//else viewsnotifyRejection();
 	}
@@ -179,6 +190,9 @@ public class Controller implements Observer{
 	private void handleExchangeAction (Exchange msg) {
 		ExchangeResources res = new ExchangeResources(model, stateOfAction);
 		stateOfAction = res.exchangeHandler(msg);
+		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())) 
+			sendInfo = true;
+		
 	}
 	
 	private void handlePrivilegesChoice (PrivilegeChoice msg) {
@@ -186,6 +200,7 @@ public class Controller implements Observer{
 		addPrivileges.handlePrivileges(model.getBoard().getCurrentPlayer(), msg.getChoices());
 		stateOfAction = stateOfAction.afterAction(model); //ottengo lo stato precedente
 		stateOfAction = stateOfAction.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
+		sendInfo = true;
 	}
 	
 	private  void handleExcommunication (VaticanChoice msg) {
@@ -194,11 +209,6 @@ public class Controller implements Observer{
 		System.out.println("...funzione vaticano...");
 	}
 	
-	private void infoForView (ActionChoice arg, Move move) {
-		model.infoForView.gameBoard.insertFamiliar(arg, move.getPlayer().getColor());
-		model.getBoard().getPlayerByName(arg.getName()).updateResourcesDTO();
-		
-	}
 	
 	
 	public class VisitorMessages {
@@ -222,6 +232,7 @@ public class Controller implements Observer{
 		public void visit(PrivilegeChoice msg){
 			handlePrivilegesChoice(msg);
 		}
+		
 		public void visit(PlayerInfoMessage msg){
 			
 		}

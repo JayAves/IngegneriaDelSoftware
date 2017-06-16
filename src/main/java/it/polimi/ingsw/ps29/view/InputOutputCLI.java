@@ -1,9 +1,10 @@
 package it.polimi.ingsw.ps29.view;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
-import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
@@ -11,7 +12,8 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
 
 public class InputOutputCLI implements InputOutput {
 	
@@ -19,14 +21,6 @@ public class InputOutputCLI implements InputOutput {
 	
 	public InputOutputCLI () {
 		scanner = new Scanner(System.in);
-	}
-	
-	@Override
-	public void showUpdatedSituation(String playerName, InfoDTO board) {
-		System.out.println("\nPlayer: "+playerName+"\n");
-		System.out.println(board.gameBoard.toString());
-		for (PersonalBoardDTO personalBoard: board.playerBoard)
-			System.out.println(personalBoard.toString());
 	}
 
 	@Override
@@ -208,6 +202,15 @@ public class InputOutputCLI implements InputOutput {
 		
 		return choice;
 		
+		
+	}
+
+	@Override
+	public void showInfo(GameBoardDTO gameBoardDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+		System.out.println("Updated situation of the game: ");
+		System.out.println(gameBoardDTO.toString());
+		for (Entry<String, PersonalBoardDTO> personalBoardDTO: personalBoardsDTO.entrySet())
+			System.out.println(personalBoardDTO.toString());
 		
 	}
 

@@ -1,14 +1,10 @@
-package it.polimi.ingsw.ps29.view_client;
+package it.polimi.ingsw.ps29.viewclient;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Observable;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
@@ -55,12 +51,11 @@ public class SocketConnection extends Connection {
 	@Override
 	public void run() {
 		while(true) {	
-			System.out.println("I'm in Socket Connection for player "+playerName);
-			InteractionMessage obj;
+			Object obj;
 			try {
 				//notifico Client
 				do {
-					obj = (InteractionMessage) ois.readObject();
+					obj = ois.readObject();
 				} while (obj==null);
 				
 				setChanged();

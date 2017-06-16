@@ -35,7 +35,6 @@ public class EndOfTheRoundState implements RoundState {
 		//svuotare gli spazi azione
 		for (ActionSpace space: match.getBoard().getSpaces().values()) 
 			space.cleanSpace();
-		match.infoForView.cleanBoardDTO();
 		
 		RoundState state = new RoundSetupState();
 		

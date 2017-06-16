@@ -38,7 +38,7 @@ public class AskAboutExchangeState implements ActionState {
 	@Override
 	public String getState() {
 		// TODO Auto-generated method stub
-		return state.toString();
+		return state.toString().toLowerCase();
 	}
 
 	

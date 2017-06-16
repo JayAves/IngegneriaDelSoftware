@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.DTO.CardDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
@@ -10,6 +9,7 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
+import it.polimi.ingsw.ps29.viewclient.DTO.CardDTO;
 
 public class TowerAction extends Action {
 
@@ -79,8 +79,6 @@ public class TowerAction extends Action {
 		}
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
-		model.infoForView.getPersonalBoard(move.getPlayer().getName()).insertCard(
-				new CardDTO (0, space.takeCard().getType(), space.takeCard().toString()));
 		
 		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
 		

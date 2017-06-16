@@ -1,4 +1,5 @@
-package it.polimi.ingsw.ps29.model.DTO;
+package it.polimi.ingsw.ps29.viewclient.DTO;
+/*package it.polimi.ingsw.ps29.model.DTO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,4 +25,4 @@ public class InfoDTO implements Serializable{
 		gameBoard = new GameBoardDTO();
 	}
 
-}
+}*/

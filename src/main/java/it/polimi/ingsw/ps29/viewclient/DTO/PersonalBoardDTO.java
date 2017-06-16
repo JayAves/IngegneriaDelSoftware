@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.DTO;
+package it.polimi.ingsw.ps29.viewclient.DTO;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -6,13 +6,12 @@ import java.util.HashMap;
 public class PersonalBoardDTO implements Serializable {
 	String name;
 	HashMap <String, CardDTO> cards;
-	HashMap <String, ResourceDTO> resources;
+	String resources;
 	PersonalBonusTileDTO tile;
 	
 	public PersonalBoardDTO(String name, PersonalBonusTileDTO tileDTO) {
 		this.name = name;
 		cards = new HashMap <String, CardDTO> ();
-		resources = new HashMap <String, ResourceDTO> ();
 		tile = tileDTO;
 	}
 	
@@ -21,15 +20,7 @@ public class PersonalBoardDTO implements Serializable {
 	}
 	
 	public void cleanContainer () {
-		resources = new HashMap <String, ResourceDTO> ();
-	}
-	
-	public void insertResource (ResourceDTO res) {
-		if(resources.containsKey(res.getType())) {
-			int quan = resources.remove(res.getType()).getAmount()+res.getAmount();
-			resources.put(res.getType(), new ResourceDTO(res.getType(), quan));
-		} else
-			resources.put(res.getType(), res);
+		resources = "";
 	}
 
 	@Override
@@ -38,6 +29,9 @@ public class PersonalBoardDTO implements Serializable {
 				+ "]";
 	}
 
+	public void setResources (String res) {
+		resources = res;
+	}
 	
 	
 	

@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class SocketClientThread extends ClientThread {
@@ -29,10 +28,10 @@ public class SocketClientThread extends ClientThread {
 
 	@Override
 	public void run() {
-		InteractionMessage obj;
+		Object obj;
 		while(true) {
 			try{
-				obj = (InteractionMessage) ois.readObject();
+				obj = ois.readObject();
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				
 				//notifico Controller
@@ -68,17 +67,8 @@ public class SocketClientThread extends ClientThread {
 
 
 	@Override
-	public void showBoard(InfoDTO infoForView) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
 	public void startInteraction(InteractionMessage msg) {
-		// TODO Auto-generated method stub
 		serializator.serializeObject(msg);
-		
 	}
 	
 	

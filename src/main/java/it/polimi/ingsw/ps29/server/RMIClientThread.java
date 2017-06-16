@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps29.server;
 
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
@@ -50,12 +49,6 @@ public class RMIClientThread extends ClientThread{
 	}
 
 
-
-	@Override
-	public void showBoard(InfoDTO infoForView) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	@Override

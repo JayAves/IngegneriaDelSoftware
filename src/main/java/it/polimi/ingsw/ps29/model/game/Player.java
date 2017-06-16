@@ -2,9 +2,6 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
-import it.polimi.ingsw.ps29.model.DTO.PersonalBonusTileDTO;
-import it.polimi.ingsw.ps29.model.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
@@ -13,7 +10,6 @@ import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
-import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class Player {
 	private String name;
@@ -24,7 +20,6 @@ public class Player {
 	private ExcommunicationCard [] excommunication;
 	private ExchangeSupport support;
 	public ArrayList<Effect> specialPermanentEffects;
-	public PersonalBoardDTO boardDTO;
 	private FinalScoring finalScoring;
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
@@ -37,16 +32,10 @@ public class Player {
 		support = new ExchangeSupport(new ArrayList<ExchangeResourcesEffect>(), new Container());
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
-		initDTO ();
 		ventureCardsPenaltyOn = false;
 		setVaticanReportPerformed(false);
 	}
 	
-	public void initDTO () {
-		PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO (board.getPersonalBonusTile().toString());
-		boardDTO = new PersonalBoardDTO(name, tileDTO);
-		
-	}
 	
 	public void initFamily () {
 		family = new FamilyMember [4];
@@ -93,13 +82,6 @@ public class Player {
 	
 	public void setPersonalBonusTile (PersonalBonusTile pbt) {
 		board.setTile(pbt);
-	}
-
-
-	public void updateResourcesDTO () {
-		boardDTO.cleanContainer();
-		for(ResourceInterface res: board.getResources().hashMapToArrayListResources())
-			boardDTO.insertResource(new ResourceDTO(res.getType(), res.getAmount()));
 	}
 
 	public ExchangeSupport getSupport() {

@@ -9,9 +9,6 @@ import java.util.Random;
 
 import com.google.gson.GsonBuilder;
 
-import it.polimi.ingsw.ps29.model.DTO.GameBoardDTO;
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
-import it.polimi.ingsw.ps29.model.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
@@ -20,7 +17,6 @@ import it.polimi.ingsw.ps29.model.cards.customadapters.EffectAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.game.roundstates.ActionsState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 
@@ -32,7 +28,6 @@ public class Match extends Observable{
 	private int round;
 	public boolean endOfMatch= false;
 	private RoundState state;
-	public InfoDTO infoForView;
 	private ArrayList<Player> players; //per ora tengo i players anche i match, poi si può pensare come evitarlo [pie ha un'idea]
 	
 	
@@ -43,16 +38,8 @@ public class Match extends Observable{
 		state= new RoundSetupState();
 		round = 0;
 		initDecks();
-		createDTO (players);
 	}
 	
-	private void createDTO (ArrayList<Player> players) {
-		ArrayList <PersonalBoardDTO> playerBoardDTO = new ArrayList<PersonalBoardDTO> ();
-		for (Player player: players){
-			playerBoardDTO.add(player.boardDTO);
-		}
-		infoForView = new InfoDTO (new GameBoardDTO (),playerBoardDTO);
-	}
 	
 	private void initDecks () throws FileNotFoundException {
 		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
@@ -125,12 +112,6 @@ public class Match extends Observable{
 		
 		System.out.println("Server: turno del giocatore "+board.getCurrentPlayer().getName());
 		
-		/*
-		-----TEST NETWORKING------ 
-		setChanged();
-		notifyObservers(board.getCurrentPlayer().getName());
-		
-		*/
 		/*
 		while(!endOfMatch ) {
 			//viene gestita qui sotto la fase di azione, per comodità con il pattern observer observable

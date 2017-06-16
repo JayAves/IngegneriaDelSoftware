@@ -14,9 +14,13 @@ public abstract class InteractionMessage implements Serializable {
 		return player;
 	}
 	
+	public void setName (String name) {
+		player = name;
+	}
+	
 	abstract public void visit (it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) ;
 	
-	abstract public void receive (it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages visitor);
+	abstract public void receive (it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages visitor);
 
 	
 

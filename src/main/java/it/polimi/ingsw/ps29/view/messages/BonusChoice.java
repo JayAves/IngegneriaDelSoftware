@@ -51,7 +51,7 @@ public class BonusChoice extends InteractionMessage {
 
 
 	@Override
-	public void receive(it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages visitor) {
+	public void receive(it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages visitor) {
 		visitor.receive(this);
 		
 	}

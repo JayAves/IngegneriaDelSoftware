@@ -1,12 +1,11 @@
-package it.polimi.ingsw.ps29.model.DTO;
+package it.polimi.ingsw.ps29.viewclient.DTO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
-import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.InfoForView;
 
 public class GameBoardDTO implements Serializable{
 	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
@@ -79,9 +78,9 @@ public class GameBoardDTO implements Serializable{
 		return key;
 	}
 	
-	private String secondLevel (ActionChoice move) {
+	private String secondLevel (int space, int floor) {
 		String key;
-		switch (move.getChoice(0)) {
+		switch (space) {
 			case 1:
 				key = boardMap.get("harvest").get("head").isEmpty() ? "head" : "queue";
 				break;
@@ -92,7 +91,7 @@ public class GameBoardDTO implements Serializable{
 			case 4:
 			case 5:
 			case 6:
-				switch (move.getChoice(1)) {
+				switch (floor) {
 					case 1:
 						key = "first";
 						break;
@@ -146,9 +145,27 @@ public class GameBoardDTO implements Serializable{
 		}
 	}
 	
-	public void insertFamiliar (ActionChoice move, Color playerColor) {
-		FamilyMemberDTO fmDTO = new FamilyMemberDTO(playerColor, familiarColor(move.getChoice(3)));
-		boardMap.get(firstLevel(move.getChoice(0))).get(secondLevel(move)).add(fmDTO);
+	public void insertFamiliar (InfoForView info) {
+		FamilyMemberDTO fmDTO = new FamilyMemberDTO(info.playerColor, familiarColor(info.familiar));
+		if(isFamiliarPresent(fmDTO))
+			cleanSpace();
+		boardMap.get(firstLevel(info.space)).get(secondLevel(info.space, info.floor)).add(fmDTO);
+	}
+	
+	public boolean isFamiliarPresent (FamilyMemberDTO familiar) {
+		for (String firstKey: boardMap.keySet()) 
+			for(String secondKey: boardMap.get(firstKey).keySet()) 
+				for (FamilyMemberDTO fmDTO: boardMap.get(firstKey).get(secondKey))
+					if(fmDTO.toString().equals(familiar.toString()))
+						return true;
+		return false;			
+	}
+	
+	public void cleanSpace () {
+		for (String firstKey: boardMap.keySet()) 
+			for(String secondKey: boardMap.get(firstKey).keySet()) 
+				boardMap.get(firstKey).put(secondKey, new ArrayList<FamilyMemberDTO>());
+								
 	}
 
 	

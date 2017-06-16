@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 
 import javax.management.remote.rmi.RMIConnection;
 
-import it.polimi.ingsw.ps29.view_client.RmiClientInterface;
+import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public interface RmiServerInterface extends Remote{
 	

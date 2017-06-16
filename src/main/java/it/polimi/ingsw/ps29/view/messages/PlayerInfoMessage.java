@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps29.view.messages;
 
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
-import it.polimi.ingsw.ps29.view_client.Client.VisitorServerMessages;
+import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class PlayerInfoMessage extends InteractionMessage {
 
