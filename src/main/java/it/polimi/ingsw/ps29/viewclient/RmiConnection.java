@@ -1,12 +1,10 @@
 package it.polimi.ingsw.ps29.viewclient;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Observable;
 
 import it.polimi.ingsw.ps29.server.RmiServerInterface;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;

@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class ActionChoice extends InteractionMessage {
 
+	
+	private static final long serialVersionUID = -2158602926454517213L;
 	private int[] choices;
 	//int [0] spazio
 	//int [1] piano (ev. vale 0)

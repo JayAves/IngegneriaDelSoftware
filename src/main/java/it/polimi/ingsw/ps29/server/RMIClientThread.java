@@ -2,11 +2,8 @@ package it.polimi.ingsw.ps29.server;
 
 import java.rmi.RemoteException;
 
-import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
-import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
-import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view_client.RmiClientInterface;
+import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread{
 
@@ -14,7 +11,7 @@ public class RMIClientThread extends ClientThread{
 	protected boolean myTurn;
 	protected boolean recentlyPoked;
 	private RmiClientInterface clientInterface;
-	private InteractionMessage buffer;
+	
 	
 	
 	

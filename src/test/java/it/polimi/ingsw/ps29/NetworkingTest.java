@@ -13,7 +13,7 @@ import junit.framework.TestCase;
 public class NetworkingTest extends TestCase {
 
 	
-	Client client1;
+	it.polimi.ingsw.ps29.viewclient.Client client1;
 	SocketGatherer server;
 	RoomCreator queue;
 	String inputChoice = "CLI";
@@ -33,12 +33,12 @@ public class NetworkingTest extends TestCase {
 
 		String playerName1 = "primo";
 		View view1 = new View (inputChoice,  playerName1);
-		client1 = new Client (view1, inputConnection);
+		client1 = new it.polimi.ingsw.ps29.viewclient.Client (view1, inputConnection);
 		view1.addObserver(client1);
 		
 		String playerName2 = "secondo";
 		View view2 = new View (inputChoice,  playerName2);
-		Client client2 = new Client (view2, inputConnection);
+		it.polimi.ingsw.ps29.viewclient.Client client2 = new Client (view2, inputConnection);
 		view2.addObserver(client2);
 		
 		

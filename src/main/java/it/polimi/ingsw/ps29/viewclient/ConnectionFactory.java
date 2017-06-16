@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29.viewclient;
 
-import java.io.IOException;
-
 public class ConnectionFactory extends AbstractFactory {
 
 	/*@Override
