@@ -4,10 +4,15 @@ package it.polimi.ingsw.ps29;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import it.polimi.ingsw.ps29.server.Room;
+import it.polimi.ingsw.ps29.server.RoomCreator;
+import it.polimi.ingsw.ps29.server.SocketGathererInServer;
+import it.polimi.ingsw.ps29.view.View;
+import it.polimi.ingsw.ps29.view_client.Client;
 import junit.framework.TestCase;
 
 public class NetworkingTest extends TestCase {
-	/*
+
 	
 	Client client1;
 	SocketGathererInServer server;
@@ -22,10 +27,10 @@ public class NetworkingTest extends TestCase {
 	@BeforeClass
 	public void setUp () {
 
-		queue = new RoomCreator();
+		/*queue = new RoomCreator();
 		server= new SocketGathererInServer(9001);
 		server.addObserver(queue);
-		server.startServer();
+		server.startServer();*/
 
 		String playerName1 = "primo";
 		View view1 = new View (inputChoice,  playerName1);
@@ -45,7 +50,7 @@ public class NetworkingTest extends TestCase {
 	}
 	
 	@Test
-	/*public void test() {
+	public void test() {
 		
 		
 		assertTrue(client1 != null);
@@ -82,8 +87,8 @@ public class NetworkingTest extends TestCase {
 		assertTrue((server.getClients().size()==4)||(server.getClients().size()==0));
 		assertTrue(!queue.getRooms().isEmpty());
 		
-		Room room= queue.getRooms().get(0);
+		Room room= queue.getRooms().get(0);*/
 	}
 	
-*/
+
 }
