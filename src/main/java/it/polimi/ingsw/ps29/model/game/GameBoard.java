@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps29.model.space.ProductionArea;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
+import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class GameBoard{
 	
@@ -29,13 +30,9 @@ public class GameBoard{
 	private ArrayList<ExcommunicationDeck> excommunicationDeck;
 	private HashMap<Integer, ExcommunicationCard> excommunications;
 	private HashMap<Integer, FaithSpace> faithTrack;
+	private TowersDTO towersDTO;
 	
-	public Color getColorByName (String name) {
-		for(Player player: playersOrder)
-			if (player.getName().equals(name))
-				return player.getColor();
-		return null;
-	}
+	
 	
 	public GameBoard (ArrayList<Player> players) {
 		dices = new ArrayList<Dice> ();
@@ -44,7 +41,16 @@ public class GameBoard{
 		dices.add(new Dice(DiceColor.ORANGE));
 		playersOrder = players;
 		decks= new ArrayList<Deck>();
+		towersDTO = new TowersDTO();
 		initSpaces();
+		
+	}
+	
+	public Color getColorByName (String name) {
+		for(Player player: playersOrder)
+			if (player.getName().equals(name))
+				return player.getColor();
+		return null;
 	}
 	
 	

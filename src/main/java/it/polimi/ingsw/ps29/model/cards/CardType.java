@@ -13,7 +13,7 @@ public enum CardType {
 	}
 
 	public String getType() {
-		return type;
+		return type.toLowerCase();
 	}
 	
 	public static CardType parseInput (String input) {

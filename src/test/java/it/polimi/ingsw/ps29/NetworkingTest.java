@@ -4,11 +4,10 @@ package it.polimi.ingsw.ps29;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.polimi.ingsw.ps29.server.Room;
 import it.polimi.ingsw.ps29.server.RoomCreator;
 import it.polimi.ingsw.ps29.server.SocketGatherer;
 import it.polimi.ingsw.ps29.view.View;
-import it.polimi.ingsw.ps29.view_client.Client;
+import it.polimi.ingsw.ps29.viewclient.Client;
 import junit.framework.TestCase;
 
 public class NetworkingTest extends TestCase {
