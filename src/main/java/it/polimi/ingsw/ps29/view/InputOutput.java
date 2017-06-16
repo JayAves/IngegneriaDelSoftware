@@ -25,5 +25,7 @@ public interface InputOutput {
 	abstract void printBonusAction (BonusActionEffect effect);
 
 	abstract ResourceType askSpecificPrivilege();
+	
+	abstract int askAboutExcommunication ();
 
 }

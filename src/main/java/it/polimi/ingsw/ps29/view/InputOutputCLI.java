@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class InputOutputCLI implements InputOutput {
 	
@@ -193,6 +194,21 @@ public class InputOutputCLI implements InputOutput {
 		
 		return type; 
 			
+	}
+	
+	@Override
+	public int askAboutExcommunication () {
+		int choice;
+		do {
+			System.out.println("\nDo you want to support Vatican?");
+			System.out.println("1) Yes");
+			System.out.println("2) No");
+			choice = scanner.nextInt();
+		} while(choice<1 || choice>2);
+		
+		return choice;
+		
+		
 	}
 
 	

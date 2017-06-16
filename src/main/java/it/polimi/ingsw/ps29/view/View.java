@@ -80,6 +80,8 @@ public class View extends Observable implements Observer {
 	}
 	
 	public void askAboutExcommunication (VaticanChoice msg) {
+		int choice = inputOutput.askAboutExcommunication();
+		msg.setSustain(choice==1);
 		setChanged();
 		notifyObservers(msg);
 	}

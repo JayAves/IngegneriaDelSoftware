@@ -19,12 +19,12 @@ public class NoAction extends Action{
 	@Override
 	boolean isPlaceable() {
 		// TODO Auto-generated method stub
-		return true;
+		return !move.getFamiliar().getBusy();
 	}
 
 	@Override
 	void performAction() {
-		// TODO Auto-generated method stub
+		move.getFamiliar().setBusy(true);
 		
 	}
 

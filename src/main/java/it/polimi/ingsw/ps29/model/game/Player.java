@@ -134,7 +134,8 @@ public class Player {
 		this.vaticanReportPerformed = vaticanReportPerformed;
 	}
 	
-	public boolean canSubstainVatican (int faithNeeded) {
-		return this.getPersonalBoard().getSpecificResource("faith").getAmount() >= faithNeeded;
+	public boolean canAskSubstain (int faithNeeded) {
+		return this.getPersonalBoard().getSpecificResource("faith").getAmount() >= faithNeeded &&
+				!vaticanReportPerformed ;
 	}
 }

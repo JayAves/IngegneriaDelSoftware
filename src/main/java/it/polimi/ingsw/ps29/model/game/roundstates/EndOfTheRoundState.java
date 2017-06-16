@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.game.roundstates;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -36,15 +37,15 @@ public class EndOfTheRoundState implements RoundState {
 			space.cleanSpace();
 		match.infoForView.cleanBoardDTO();
 		
-		RoundSetupState state = new RoundSetupState();
+		RoundState state = new RoundSetupState();
 		
-		if(roundNumber==6) 
+		if(roundNumber==2) 
 			match.setEndOfMatch();
 			//nel gameEngine chiamata a funzione per calcolo del punteggio
 		else 
-			state.doAction(roundNumber, match);
+			state = state.doAction(roundNumber, match);
 		
-		return state;
+		return state; //se non è finito il gioco ha già svolto RoundSetup e tornerà ActionsState
 	}
 	
 	

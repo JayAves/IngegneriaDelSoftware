@@ -63,7 +63,6 @@ public class Controller implements Observer{
 		stateOfAction = stateOfAction.beforeAction();
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
 		InteractionMessage object = stateOfAction.objectForView(playerName);
-		System.out.println("\nInizio interazione con: "+playerName+"\n");
 		view.startInteraction (object);
 		
 	}
@@ -190,7 +189,9 @@ public class Controller implements Observer{
 	}
 	
 	private  void handleExcommunication (VaticanChoice msg) {
+		model.getBoard().getPlayerByName(msg.getName()).setVaticanReportPerformed(true);
 		//function to define
+		System.out.println("...funzione vaticano...");
 	}
 	
 	private void infoForView (ActionChoice arg, Move move) {
@@ -230,19 +231,24 @@ public class Controller implements Observer{
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
+			System.out.println("++"+roundState);
 			callCorrectView(); //svolgo action
 		}
 		
 		else {
 			if (roundState.getStateNumber()==2 && isStateTwoTerminated()) {
+				System.out.println("terminato stato 2");
 				//ho concluso il turno di gioco: inizio la fase di VaticanReport
 				roundState = new VaticanReportState();
+				System.out.println("++"+roundState);
 				askForExcommunication();
 			}
 			
-			else if (roundState.getStateNumber()==3 && isStateThreeTerminated()) 
+			else if (roundState.getStateNumber()==3 && isStateThreeTerminated()) {
+				System.out.println("terminato stato 3");
 				//ho concluso la fase di VaticanReport
 				endVaticanState();
+			}
 			
 			else if (roundState.getStateNumber()==2)
 				//sono ancora nella fase 2: chiedo un'azione
@@ -274,6 +280,7 @@ public class Controller implements Observer{
 	
 	private void conclusion () {
 		//funzione per la terminazione del gioco: gestione punteggi, connessioni, notifiche alle view...
+		System.out.println("...end of match..");
 	}
 	
 	private void askForExcommunication () {
@@ -281,7 +288,7 @@ public class Controller implements Observer{
 		
 		if(model.getRound()%2==0) { //funzioni da svolgere solo nei turni pari
 			
-			while(!model.getBoard().getCurrentPlayer().canSubstainVatican(0) && !isStateThreeTerminated()) {
+			while(!model.getBoard().getCurrentPlayer().canAskSubstain(0) && !isStateThreeTerminated()) {
 				//se non ho abbastanza punti per sostenere la Chiesa e non ho ancora controllato tutti
 				model.getBoard().getCurrentPlayer().setVaticanReportPerformed(true);
 				model.getBoard().changePlayerOrder();
@@ -308,7 +315,9 @@ public class Controller implements Observer{
 		//chiamo questa funzione quando non devo fare il Vatican Report
 		//oppure mi accorgo di averlo concluso senza aver svolto un'azione per la gameEngine 
 		roundState = new EndOfTheRoundState();
-		roundState.doAction(model.getRound(), model); //dop aver cambiato lo stato, svolgo azione
+		System.out.println("++"+roundState);
+		roundState = roundState.doAction(model.getRound(), model); //dopo aver cambiato lo stato, svolgo azione
+		System.out.println("++"+roundState);
 		if(model.endOfMatch) //se la partita termina esco, altrimenti devo richiamare una funzione per proseguire
 			conclusion();
 		else

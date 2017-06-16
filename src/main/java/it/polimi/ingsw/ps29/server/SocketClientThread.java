@@ -32,7 +32,6 @@ public class SocketClientThread extends ClientThread {
 		InteractionMessage obj;
 		while(true) {
 			try{
-				System.out.println("I'm here to listen messages sent from..."+playerName);
 				obj = (InteractionMessage) ois.readObject();
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				

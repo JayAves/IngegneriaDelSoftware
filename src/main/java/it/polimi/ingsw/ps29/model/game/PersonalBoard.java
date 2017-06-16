@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class PersonalBoard {
@@ -45,8 +46,8 @@ public class PersonalBoard {
 		return resources;
 	}
 	 
-	public ResourceInterface getSpecificResource (String res){
-		return resources.getResource(res);
+	public ResourceInterface getSpecificResource (String res) {
+		return resources.getResource(res)==null ? new Resource ("res", 0) : resources.getResource(res);
 	}
 	
 	public void setResources (Container resource) {

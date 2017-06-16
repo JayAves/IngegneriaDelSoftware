@@ -21,7 +21,6 @@ public class ServerSerializator {
 	}
 	
 	public void serializeObject (InteractionMessage o) {
-		System.out.println("I'm server serializator of this connection: "+socket);
 		try {
 			oos.writeObject((InteractionMessage) o);
 			oos.flush();
