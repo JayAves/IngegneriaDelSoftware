@@ -5,17 +5,16 @@ import java.rmi.RemoteException;
 
 import javax.management.remote.rmi.RMIConnection;
 
-import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view_client.RmiClientInterface;
 
 public interface RmiServerInterface extends Remote{
 	
-	public RMIClientThread getMyThread(String playerName) throws RemoteException;
+	public void messageforMyThread(String playerName, InteractionMessage msg) throws RemoteException;
 	
-	public boolean isMyTurn() throws RemoteException;
+	public void addClient(RmiClientInterface clientInterface, String playerName) throws RemoteException;
 	
-	public void addClient(RmiClientInterface clientInterface) throws RemoteException;
-	
-	public boolean amIinGame() throws RemoteException;
+	public boolean inGame(String playerName) throws RemoteException;
 
 
 

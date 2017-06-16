@@ -63,10 +63,10 @@ public class SocketConnection extends Connection {
 				
 			} catch (IOException e) {
 				System.err.println("Unable to receive message from server!");
-				e.printStackTrace();
+				
 			} catch (ClassNotFoundException e) {
 				System.err.println("Unable to cast the object!");
-				e.printStackTrace();
+				
 			}
 		}
 		

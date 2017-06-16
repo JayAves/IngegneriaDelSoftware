@@ -21,14 +21,14 @@ public class OnlineApp {
 	    	do { inputChoice = scanner.nextLine();
 	    	} while(!inputChoice.equals("CLI") && !inputChoice.equals("GUI"));
 	    	
-	    	System.out.println("\nSocket o RMI?");
+	    	*/System.out.println("\nSocket o RMI?");
 	    	
 	    	do { inputConnection = scanner.nextLine();
 	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI"));
 	    	
-	    	*/
+	    
 	    	inputChoice = "CLI";
-	    	inputConnection = "Socket";
+	    	//inputConnection = "Socket";
 	    	
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();

@@ -56,7 +56,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		// TODO Auto-generated method stub
 		
-		if (!(arg instanceof SocketGathererInServer)){
+		if (!(arg instanceof SocketGatherer)){
 			
 			//da gestire
 		}

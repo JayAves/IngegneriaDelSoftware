@@ -8,14 +8,14 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class SocketGathererInServer extends Observable {
+public class SocketGatherer extends Observable {
 
 	private ServerSocket serverSocket;
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private ArrayList<Thread> clients;
 	
-	public SocketGathererInServer (int port) {
+	public SocketGatherer (int port) {
 		try {
 			serverSocket = new ServerSocket(port);
 			System.out.println("Server online on port "+port);

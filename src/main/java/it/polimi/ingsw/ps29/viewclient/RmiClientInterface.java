@@ -3,8 +3,12 @@ package it.polimi.ingsw.ps29.viewclient;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+
 public interface RmiClientInterface extends Remote {
 	
-	public void notify(String object) throws RemoteException;
+	public void notify(InteractionMessage object) throws RemoteException;
+	
+	public void print(String line) throws RemoteException;
 	
 }

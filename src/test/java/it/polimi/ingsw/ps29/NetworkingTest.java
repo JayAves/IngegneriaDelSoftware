@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps29.server.Room;
 import it.polimi.ingsw.ps29.server.RoomCreator;
-import it.polimi.ingsw.ps29.server.SocketGathererInServer;
+import it.polimi.ingsw.ps29.server.SocketGatherer;
 import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view_client.Client;
 import junit.framework.TestCase;
@@ -15,7 +15,7 @@ public class NetworkingTest extends TestCase {
 
 	
 	Client client1;
-	SocketGathererInServer server;
+	SocketGatherer server;
 	RoomCreator queue;
 	String inputChoice = "CLI";
 	String inputConnection = "Socket";

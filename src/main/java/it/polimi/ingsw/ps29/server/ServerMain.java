@@ -8,13 +8,15 @@ public class ServerMain {
 		
 		RoomCreator creator= new RoomCreator();
 		creator.start();
-		SocketGathererInServer socketGatherer = new SocketGathererInServer(9001);
+		SocketGatherer socketGatherer = new SocketGatherer(9001);
 		socketGatherer.addObserver(creator);
 		
-		//RMIGathererInServer rmiGatherer= new RMIGathererInServer();
-		//rmiGatherer.addObserver(creator);
+		RMIGatherer rmiGatherer= new RMIGatherer();
+		rmiGatherer.addObserver(creator);
 		
+		rmiGatherer.startServer();
 		socketGatherer.startServer();
+		
 		
 	}
 }

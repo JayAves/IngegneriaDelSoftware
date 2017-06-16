@@ -1,25 +1,38 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.rmi.RemoteException;
+
+import it.polimi.ingsw.ps29.model.DTO.InfoDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view_client.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread{
 
-	protected String Username;
+	protected String username;
 	protected boolean myTurn;
 	protected boolean recentlyPoked;
+	private RmiClientInterface clientInterface;
+	private InteractionMessage buffer;
 	
 	
 	
 	
-	public RMIClientThread(String username) {
+	public RMIClientThread(String username, RmiClientInterface clientInterface) {
 		
-		Username = username;
+		this.username = username;
+		this.clientInterface=clientInterface;
 		inGame=false;
 		recentlyPoked=true;
+		
 	}
 
+	public void notifyController(InteractionMessage msg) {
+		setChanged();
+		notifyObservers(msg);
+	}
+	
 	
 	@Override
 	public void setInGame(){
@@ -28,8 +41,9 @@ public class RMIClientThread extends ClientThread{
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
 		//logica applicativa: se non ricevo richieste per un po' di tempo notifico server
+		
 		while(recentlyPoked) {
 			//timer che se scade chiude il thread
 		}
@@ -45,7 +59,7 @@ public class RMIClientThread extends ClientThread{
 	@Override
 	public String getClientName() {
 		// TODO Auto-generated method stub
-		return Username;
+		return username;
 	}
 
 
@@ -54,7 +68,14 @@ public class RMIClientThread extends ClientThread{
 	@Override
 	public void startInteraction(InteractionMessage msg) {
 		// TODO Auto-generated method stub
-		//devo mettere il messaggio a disposizione del client
+		try {
+			
+			clientInterface.notify(msg);
+		
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Could not send message to client");
+		}
 	}
 	
 

@@ -3,47 +3,47 @@ package it.polimi.ingsw.ps29.server;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import javax.management.remote.rmi.RMIConnection;
-
-import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
+import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view_client.RmiClientInterface;
 
 public class RmiServerImplementation extends UnicastRemoteObject implements RmiServerInterface {
 
+	RMIGatherer myGatherer;
+	
 	protected RmiServerImplementation() throws RemoteException {
 		super(0);
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public RMIClientThread getMyThread(String playerName) throws RemoteException {
+	public void messageforMyThread(String playerName, InteractionMessage msg ) throws RemoteException {
 		// TODO Auto-generated method stub
-		
-		return null;
+		myGatherer.getThread(playerName).notifyController(msg);
 	}
 
 	@Override
-	public boolean isMyTurn() throws RemoteException {
+	public void addClient(RmiClientInterface clientInterface, String player) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		RMIClientThread thread=new RMIClientThread(player, clientInterface);
+		myGatherer.clients.add(thread);
+		Thread t= new Thread (thread);
+		t.start();
+		myGatherer.notifyObservers(thread);
+		clientInterface.print("I added you as a client");
+		
 	}
 
 	@Override
-	public void addClient(RmiClientInterface clientInterface) throws RemoteException {
+	public boolean inGame(String player) throws RemoteException {
 		// TODO Auto-generated method stub
+		return myGatherer.getThread(player).inGame;
 		
-		
-		// quando aggiungo player faccio notify() al roomCreator
-	}
-
-	@Override
-	public boolean amIinGame() throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
+	public void setGatherer(RMIGatherer server) {
+		myGatherer= server;
+	}
 }
