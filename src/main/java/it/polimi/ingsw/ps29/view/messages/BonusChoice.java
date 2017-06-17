@@ -5,6 +5,10 @@ import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 
 public class BonusChoice extends InteractionMessage {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2828181730174467118L;
 	private BonusActionEffect bonus;
 	private String player;
 	private int floor;

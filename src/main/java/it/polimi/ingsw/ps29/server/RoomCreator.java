@@ -70,12 +70,16 @@ public class RoomCreator extends Thread implements Observer{
 			
 			//timer.scheduleAtFixedRate(new Task(), 0, period);
 			
-			try {
-				sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				System.out.println("Could not sleep");
-			}
+			
+				try {
+					
+					sleep(1000);
+				
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 	}
 	

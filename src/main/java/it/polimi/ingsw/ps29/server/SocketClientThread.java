@@ -29,7 +29,8 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void run() {
 		Object obj;
-		while(true) {
+		boolean endOfConnection= false;
+		while(!endOfConnection) {
 			try{
 				obj = ois.readObject();
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");

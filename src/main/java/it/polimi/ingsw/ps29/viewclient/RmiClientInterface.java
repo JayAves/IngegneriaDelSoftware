@@ -1,11 +1,12 @@
 package it.polimi.ingsw.ps29.viewclient;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
-public interface RmiClientInterface extends Remote {
+public interface RmiClientInterface extends Remote,Serializable {
 	
 	public void notify(InteractionMessage object) throws RemoteException;
 	

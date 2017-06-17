@@ -1,12 +1,17 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
-public class RMIClientThread extends ClientThread{
+public class RMIClientThread extends ClientThread implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2656528845360500313L;
 	protected String username;
 	protected boolean myTurn;
 	protected boolean recentlyPoked;

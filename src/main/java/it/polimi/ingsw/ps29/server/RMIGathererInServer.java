@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -7,8 +8,12 @@ import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class RMIGathererInServer extends Observable implements Runnable{
+public class RMIGathererInServer extends Observable implements Runnable,Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8122919811474599185L;
 	protected ArrayList<RMIClientThread> clients;
 	
 	@Override
