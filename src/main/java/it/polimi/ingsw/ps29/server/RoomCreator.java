@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.server;
 
 import java.io.FileNotFoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -33,7 +32,7 @@ public class RoomCreator extends Thread implements Observer{
 	public void addPlayer(ClientThread s) throws FileNotFoundException{
 		
 		playersInQueue.add(s);
-		System.out.println("Player aggiunto alla coda");
+		System.out.println("Player queued");
 		
 		increaseCounter();
 	}
@@ -53,13 +52,6 @@ public class RoomCreator extends Thread implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		
-		// TODO Auto-generated method stub
-		
-		if (!(arg instanceof SocketGatherer)){
-			
-			//da gestire
-		}
 		
 		try {
 			

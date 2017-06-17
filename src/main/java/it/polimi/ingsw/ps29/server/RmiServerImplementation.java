@@ -12,11 +12,11 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	
 	protected RmiServerImplementation() throws RemoteException {
 		super(0);
-		// TODO Auto-generated constructor stub
+		myGatherer= new RMIGatherer();
 	}
 
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7098548671967083832L;
 
 	@Override
 	public void messageforMyThread(String playerName, InteractionMessage msg ) throws RemoteException {
@@ -31,7 +31,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 		myGatherer.clients.add(thread);
 		Thread t= new Thread (thread);
 		t.start();
-		myGatherer.notifyObservers(thread);
+		myGatherer.notifyRoomCreator(thread);
 		clientInterface.print("I added you as a client");
 		
 	}

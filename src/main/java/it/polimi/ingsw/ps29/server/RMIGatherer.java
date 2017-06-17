@@ -12,6 +12,8 @@ public class RMIGatherer extends Observable {
 	protected ArrayList<RMIClientThread> clients;
 	
 	
+	
+	
 	public void startServer() {
 		// TODO Auto-generated method stub
 		try {
@@ -21,8 +23,9 @@ public class RMIGatherer extends Observable {
 		}
 		
 		try {
-			
+			clients= new ArrayList<RMIClientThread>();
 			RmiServerImplementation serverImplementation = new RmiServerImplementation();
+			serverImplementation.setGatherer(this);
 			Naming.rebind("Server", serverImplementation);																	  
 		
 		} catch (MalformedURLException e) {
@@ -40,11 +43,14 @@ public class RMIGatherer extends Observable {
 	public RMIClientThread getThread(String client) {
 		
 		for (RMIClientThread th: clients) {
-			if (th.username==client)
+			if (th.username.equals(client))
 				return th;
 		}
 		
 		return null;
 	}
-
+	public void notifyRoomCreator(RMIClientThread thread) {
+		setChanged();
+		notifyObservers(thread);
+	}
 }

@@ -13,6 +13,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 
 	String playerName;
 	RmiServerInterface server;
+	RmiClientInterface remoteRef;
 	
 	public RmiConnection(String playerName) {
 	
@@ -21,8 +22,8 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		
 		try {
 			server = (RmiServerInterface)Naming.lookup("//localhost/Server"); //Ottengo il riferimento remoto associato alla stringa passata (contiene l'host target e l'identificativo dell'oggetto sull'host).
-			RmiClientInterface remoteRef = (RmiClientInterface) UnicastRemoteObject.exportObject(this, 0 ); 
-			server.addClient(remoteRef,playerName);
+			remoteRef = (RmiClientInterface) UnicastRemoteObject.exportObject(this, 0 ); 
+			
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
@@ -41,22 +42,17 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	public void run() {
 
 		boolean end=true;
+		try {
+			
+			server.addClient(remoteRef,playerName);
+		
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Failed to add Client");
+		}
+		
 		while(end) {
 			
-			try {
-				
-				System.out.println("I'm waiting for a game");
-				
-				do {
-					
-					//timer di 5 secondi
-				
-				} while (server.inGame(playerName));
-			
-			} catch (RemoteException e) {
-			
-				System.err.println("Could not get if I'm in game or not");
-			}
 		}
 	}
 
@@ -81,6 +77,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	@Override
 	public void notify(InteractionMessage object) throws RemoteException {
 		// TODO Auto-generated method stub
+		setChanged();
 		notifyObservers(object);
 		
 	}
