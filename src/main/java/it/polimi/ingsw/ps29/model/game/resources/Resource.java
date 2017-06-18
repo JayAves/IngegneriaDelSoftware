@@ -33,7 +33,7 @@ public class Resource implements ResourceInterface, Cloneable {
 	
 	@Override
 	public String toString() {
-		return "Resource [amount=" + amount + ", type=" + type + "]";
+		return " "+type.toUpperCase() + ":" + amount + ",";
 	}
 	
 	

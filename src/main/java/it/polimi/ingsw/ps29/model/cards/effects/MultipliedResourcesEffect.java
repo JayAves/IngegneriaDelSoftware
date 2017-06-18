@@ -27,7 +27,7 @@ public class MultipliedResourcesEffect extends Effect {
 
 	@Override
 	public String toString () {
-		return super.toString()+" resource type: "+resourceType+" = amount: "+amount+", X crad type: "+cardType+"\n";
+		return super.toString()+"Gain "+amount+" "+resourceType.toUpperCase()+", for each "+cardType+" ";
 	}
 	
 }

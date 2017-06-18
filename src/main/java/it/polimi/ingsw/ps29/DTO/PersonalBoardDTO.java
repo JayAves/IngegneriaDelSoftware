@@ -32,8 +32,7 @@ public class PersonalBoardDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PersonalBoardDTO [name=" + name + ", cards=" + cards + ", resources=" + resources + ", tile=" + tile
-				+ "]";
+		return "Player:" + name + " has cards:" + cards + ", has resources:" + resources + ", has Bonustile=" + tile;
 	}
 
 	public void setResources (ArrayList<ResourceDTO> res) {

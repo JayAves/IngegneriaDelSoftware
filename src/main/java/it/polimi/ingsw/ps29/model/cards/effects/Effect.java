@@ -8,7 +8,7 @@ public abstract class Effect {
 
 	@Override
 	public String toString() {
-		return "Effect: ";
+		return " ";
 	}
 	
 	/*

@@ -16,7 +16,7 @@ public class ClientSerializator {
 	
 	public ClientSerializator (Socket socket, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
-		System.out.println("ClientSerializator: "+socket);
+		//System.out.println("ClientSerializator: "+socket);
 		this.oos = oos;
 		this.ois = ois;
 		

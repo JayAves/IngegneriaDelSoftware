@@ -47,7 +47,7 @@ public class View extends Observable implements Observer {
 	}
 	
 	public void askNextAction (ActionChoice msg) {
-		System.out.println("\n--> sono la view del player: "+namePlayer+"\n");
+		System.out.println("\n"+namePlayer.toUpperCase()+", It's your turn!\n");
 		int[] temp = inputOutput.askTypeOfAction();
 		msg.setChoice(0, temp[0]);
 		msg.setChoice(1, temp[1]);

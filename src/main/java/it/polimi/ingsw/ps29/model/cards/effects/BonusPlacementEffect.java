@@ -42,10 +42,10 @@ public class BonusPlacementEffect extends BonusActionEffect {
 	
 	@Override
 	public String toString () {
-		String msg = super.toString()+"value action: "+valueAction+", cardtype: "+cardType+"\n";
+		String msg = super.toString()+"BonusPlacement of value: "+valueAction+" for  "+cardType.toUpperCase()+" with discount:";
 		for(Resource res: discount) 
-			msg+="discount: "+res.toString()+"\n";
-		return msg;
+			msg+=res.toString()+",";
+		return msg+" ";
 	}
 	
 

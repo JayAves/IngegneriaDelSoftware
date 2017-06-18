@@ -27,7 +27,7 @@ public class BonusActivityEffect extends BonusActionEffect {
 	
 	@Override 
 	public String toString () {
-		return super.toString()+"value action: "+valueAction+", type: "+type+"\n";
+		return super.toString()+"Bonus "+type+" for a value of "+valueAction+" ";
 	}
 	
 

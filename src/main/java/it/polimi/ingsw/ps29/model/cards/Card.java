@@ -77,8 +77,8 @@ public abstract class Card {
 
 	@Override
 	public String toString() {
-		return "Card [name=" + name + ", period=" + period + ", type=" + type + ", immediateEffects=" + immediateEffects
-				+ ", permanentEffects=" + permanentEffects + ", cost=" + cost + "]";
+		return  name.toUpperCase() + " (" + period +" PERIOD)"+ ", immediateEffects:" + immediateEffects
+				+ ", permanentEffects:" + permanentEffects + ", cost:" + cost;
 	}
 
 	public int getId() {

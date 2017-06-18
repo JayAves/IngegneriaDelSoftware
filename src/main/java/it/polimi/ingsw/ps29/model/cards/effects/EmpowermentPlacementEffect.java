@@ -61,9 +61,9 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 	
 	@Override 
 	public String toString () {
-		String msg = super.toString()+"dice empowerment: "+diceEmpowerment+", tower type: "+towerType+"\n";
+		String msg = super.toString()+"Dice empowerment of "+diceEmpowerment+"for "+towerType.toUpperCase()+" with discount: ";
 		for (Resource res: discount)
-			msg+="discount: "+res.toString()+"\n";
+			msg+= res.toString()+", ";
 		return msg;
 	}
 

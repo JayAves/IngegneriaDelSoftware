@@ -36,9 +36,9 @@ public class DiscountForCardTypeEffect extends Effect{
 
 	@Override
 	public String toString () {
-		String msg = super.toString()+"cardType: "+cardType+"\n";
+		String msg = super.toString()+"discounts for "+cardType.toUpperCase()+": ";
 		for(Resource res: discount)
-			msg+="discount: "+res.toString()+"\n";
-		return msg;
+			msg+=res.toString()+", ";
+		return msg+ " ";
 	}
 }

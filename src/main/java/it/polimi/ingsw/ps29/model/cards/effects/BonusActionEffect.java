@@ -17,4 +17,12 @@ public abstract class BonusActionEffect extends Effect implements Cloneable, Ser
 	
 	@Override
 	public abstract BonusActionEffect clone ();
+
+	@Override
+	public String toString() {
+		return " BonusActionEffect for a value of" + valueAction + " ";
+	}
+	
+	
+
 }
