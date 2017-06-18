@@ -46,5 +46,152 @@
             }
         ]
         
-    }
+    },
+    
+    {
+        "productionBonus": [
+            {
+                "resourceType": "Servants",
+                "resourceData":{
+                "amount":2,
+                "type": "servant"
+            }
+                
+            },
+            {
+                "resourceType": "Coins",
+                "resourceData":{
+                "amount":1,
+                "type": "coin"
+            }
+                
+            }
+        ],
+        
+	"harvestBonus": [
+             {
+                "resourceType": "Woods",
+                "resourceData":{
+                "amount":1,
+                "type": "wood"
+            }
+                
+            },
+            {
+                "resourceType": "Military",
+                "resourceData":{
+                "amount":1,
+                "type": "military"
+            }
+                
+            },
+            {
+                "resourceType": "Stones",
+                "resourceData":{
+                "amount":1,
+                "type": "stone"
+            }
+                
+            }
+        ]
+        
+    },
+    
+    {
+        "productionBonus": [
+            {
+                "resourceType": "Servants",
+                "resourceData":{
+                "amount":1,
+                "type": "servant"
+            }
+                
+            },
+            {
+                "resourceType": "MilitaryPoints",
+                "resourceData":{
+                "amount":2,
+                "type": "military"
+            }
+                
+            }
+        ],
+        
+	"harvestBonus": [
+             {
+                "resourceType": "Woods",
+                "resourceData":{
+                "amount":1,
+                "type": "wood"
+            }
+                
+            },
+            {
+                "resourceType": "Coins",
+                "resourceData":{
+                "amount":1,
+                "type": "coin"
+            }
+                
+            },
+            {
+                "resourceType": "Stones",
+                "resourceData":{
+                "amount":1,
+                "type": "stone"
+            }
+                
+            }
+        ]
+        
+    },
+    
+    {
+        "productionBonus": [
+            {
+                "resourceType": "Coins",
+                "resourceData":{
+                "amount":2,
+                "type": "coin"
+            }
+                
+            },
+            {
+                "resourceType": "Servants",
+                "resourceData":{
+                "amount":1,
+                "type": "servant"
+            }
+                
+            }
+        ],
+        
+	"harvestBonus": [
+             {
+                "resourceType": "Woods",
+                "resourceData":{
+                "amount":1,
+                "type": "wood"
+            }
+                
+            },
+            {
+                "resourceType": "Military",
+                "resourceData":{
+                "amount":1,
+                "type": "military"
+            }
+                
+            },
+            {
+                "resourceType": "Stones",
+                "resourceData":{
+                "amount":1,
+                "type": "stone"
+            }
+                
+            }
+        ]
+        
+    },
 ]
