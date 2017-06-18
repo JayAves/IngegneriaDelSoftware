@@ -23,6 +23,8 @@ public class Player {
 	private FinalScoring finalScoring;
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
+	private boolean ludovicoAriosto;
+	private boolean filippoBrunelleschi;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -34,6 +36,8 @@ public class Player {
 		specialPermanentEffects= new ArrayList<Effect>();
 		ventureCardsPenaltyOn = false;
 		setVaticanReportPerformed(false);
+		ludovicoAriosto = false;
+		filippoBrunelleschi = false;
 	}
 	
 	
@@ -119,5 +123,13 @@ public class Player {
 	public boolean canAskSubstain (int faithNeeded) {
 		return this.getPersonalBoard().getSpecificResource("faith").getAmount() >= faithNeeded &&
 				!vaticanReportPerformed ;
+	}
+	
+	public void setLudovicoAriosto(){
+		ludovicoAriosto = true;
+	}
+	
+	public void setFilippoBrunelleschi(){
+		filippoBrunelleschi = true;
 	}
 }
