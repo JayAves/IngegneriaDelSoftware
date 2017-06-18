@@ -17,11 +17,13 @@ import it.polimi.ingsw.ps29.model.space.ActivityArea;
 public class ProductionAction extends Action {
 	
 	private ActivityArea space;
+	private int penalty;
 	
 	public ProductionAction(Match model, Move move) {
 		super(model, move);
 		this.space = (ActivityArea) model.getBoard().getSpace(move.getSpace());
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated co
+		penalty = 0;
 	}
 
 	@Override
@@ -40,7 +42,10 @@ public class ProductionAction extends Action {
 	public void performAction() {
 		//placement
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
-		else space.queuePlacement(move.getFamiliar());
+		else {
+			space.queuePlacement(move.getFamiliar());
+			penalty = -3;
+		}
 		
 		//memorizzo tutti gli effetti di scambio per i quali posso chiedere all'utente se li vuole attivare
 		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();
@@ -76,7 +81,7 @@ public class ProductionAction extends Action {
 			for(Effect effect: card.getPermanentEffects()) 
 				//se l'effetto è di tipo scambio e il valore della mossa è >= del valore della carta
 				if(effect instanceof ExchangeResourcesEffect && ((BuildingCard)card).getProductionForce()<=
-						move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants())
+						move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants())
 					options.add((ExchangeResourcesEffect)effect);
 		return options;
 	}
