@@ -12,7 +12,7 @@ public enum ResourceType {
 	}
 
 	String getType() {
-		return type;
+		return type.toLowerCase();
 	}
 	
 	public static ResourceType parseInput (String input) {

@@ -26,7 +26,7 @@ public class ResourceDecorator implements ResourceInterface {
 
 	@Override
 	public String getType() {
-		return decoratedResource.getType();
+		return decoratedResource.getType().toLowerCase();
 	}
 
 	@Override
