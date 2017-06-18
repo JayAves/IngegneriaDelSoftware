@@ -18,6 +18,5 @@ public interface FamilyMemberInterface {
 	
 	public int getCouncilPower();
 	
-	public DiceColor getFamiliarColor();
 
 }

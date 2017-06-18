@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
@@ -31,6 +32,7 @@ public class GameBoard{
 	private HashMap<Integer, ExcommunicationCard> excommunications;
 	private HashMap<Integer, FaithSpace> faithTrack;
 	private TowersDTO towersDTO;
+	private ArrayList<Effect> LeaderEffectsActivated;
 	
 	
 	

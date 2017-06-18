@@ -4,7 +4,7 @@ public class FamilyMemberPowerDecorator extends FamilyMemberDecorator {
 	
 	private int diceModifier;
 
-	public FamilyMemberPowerDecorator(FamilyMemberInterface decoratedFamilyMember, int n) {
+	public FamilyMemberPowerDecorator(FamilyMember decoratedFamilyMember, int n) {
 		super(decoratedFamilyMember);
 		diceModifier = n;
 	}
