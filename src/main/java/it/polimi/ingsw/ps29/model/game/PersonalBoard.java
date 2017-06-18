@@ -50,7 +50,7 @@ public class PersonalBoard {
 	}
 	 
 	public ResourceInterface getSpecificResource (String res) {
-		return resources.getResource(res)==null ? new Resource ("res", 0) : resources.getResource(res);
+		return resources.getResource(res)==null ? new Resource (res.toLowerCase(), 0) : resources.getResource(res);
 	}
 	
 	public void setResources (Container resource) {

@@ -50,7 +50,8 @@ public class PrivilegesTest extends TestCase {
 	@Test
 	public void test() {
 		
-		//assertEquals(new Resource("res",0), model.getBoard().getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege"));
+		assertEquals(new Resource("privilege",0).toString(), 
+				model.getBoard().getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").toString());
 		assertTrue(state.getState().equals("performed"));
 		
 	}
