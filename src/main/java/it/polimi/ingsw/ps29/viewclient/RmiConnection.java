@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.viewclient;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -8,16 +9,25 @@ import java.rmi.server.UnicastRemoteObject;
 
 import it.polimi.ingsw.ps29.server.RmiServerInterface;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
 public class RmiConnection extends Connection implements RmiClientInterface {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9143857205348640115L;
 	String playerName;
 	RmiServerInterface server;
 	RmiClientInterface remoteRef;
+	private PlayerInfoMessage loginMessage;
 	
-	public RmiConnection(String playerName) {
+	public RmiConnection(String playerName) throws IOException {
 	
-		this.playerName= playerName;
+		
+		loginMessage= new PlayerInfoMessage(playerName);
+		
+		setLoginToken();
 		
 		
 		try {
@@ -45,6 +55,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		try {
 			
 			server.addClient(remoteRef,playerName);
+			//server.addClient(remoteRef, loginMessage)
 		
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -88,5 +99,8 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		System.out.println("Server says: "+line);
 	}
 
+	
+
+	
 	
 }

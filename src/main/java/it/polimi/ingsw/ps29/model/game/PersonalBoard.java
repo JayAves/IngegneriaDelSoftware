@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
@@ -11,6 +12,8 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 public class PersonalBoard {
 	
 	private HashMap <String, ArrayList <Card>> cards;
+	private ArrayList<LeaderCard> leaderCards;
+	private ArrayList<LeaderCard> flippedLeaderCards;
 	private PersonalBonusTile personalTile;
 	private Container resources;
 	

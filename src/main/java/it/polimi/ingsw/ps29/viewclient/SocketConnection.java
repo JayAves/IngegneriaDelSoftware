@@ -1,26 +1,37 @@
 package it.polimi.ingsw.ps29.viewclient;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Random;
+
+import com.google.gson.GsonBuilder;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
 public class SocketConnection extends Connection {
 	
 	  
 	private final int PORT = 9001;
 	private final String ADDRESS = "localhost";
-	private String playerName;
 	private Socket socket;
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private ClientSerializator serializator;
+	private PlayerInfoMessage loginMessage;
+	
 	
 	public SocketConnection(String playerName) {
-		this.playerName = playerName;
+		
+		loginMessage= new PlayerInfoMessage(playerName);
 		try {
 			socket = new Socket (ADDRESS, PORT);
 			System.out.println("SocketConnection: "+socket);
@@ -32,10 +43,18 @@ public class SocketConnection extends Connection {
 			//utilizzo questo oggetto per l'invio di oggetti in rete
 			serializator = new ClientSerializator(socket, oos, ois);
 			
+			
+			
+			setLoginToken();
+			
 			//invio al server il nome del client
 			oos.writeObject(playerName);
 			oos.flush();
+			//oos.writeObject(loginMessage);
+			//oos.flush();
+			
 			System.out.println("Client succesfully created!");
+			
 			
 		} catch (UnknownHostException e) {
 			System.err.println("Unknown address!");
@@ -78,8 +97,12 @@ public class SocketConnection extends Connection {
 		serializator.serializeObject(msg);
 	}
     
-   
+    
+		
+	
 
+
+}
 	
     
     
@@ -88,4 +111,4 @@ public class SocketConnection extends Connection {
 
 
 
-}
+

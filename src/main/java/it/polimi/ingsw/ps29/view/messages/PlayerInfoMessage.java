@@ -6,11 +6,12 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 public class PlayerInfoMessage extends InteractionMessage {
 
 	private String loginToken;
+	public String playerName;
 	private boolean inGame;
 	
 	public PlayerInfoMessage(String player) {
 		super(player);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	private static final long serialVersionUID = 1L;
@@ -27,6 +28,11 @@ public class PlayerInfoMessage extends InteractionMessage {
 		visitor.receive(this);
 	}
 	
+	public void setToken(String token) {
+		loginToken= token;
+	}
 	
-	
+	public String getPlayerName() {
+		return playerName;
+	}
 }
