@@ -84,10 +84,12 @@ public class TowerAction extends Action {
 		
 		applyDiscounts(discountedCosts);
 		
-		for(Resource res: discountedCosts)  //pago costi
+		for(Resource res: discountedCosts){  //pago costi
 			
+			res.negativeAmount();
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
 			
+		}
 		
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) {
 			
