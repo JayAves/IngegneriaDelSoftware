@@ -2,10 +2,10 @@ package it.polimi.ingsw.ps29.view.messages;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
-import it.polimi.ingsw.ps29.viewclient.DTO.ResourceDTO;
 
 public class InfoForView extends InteractionMessage {
 

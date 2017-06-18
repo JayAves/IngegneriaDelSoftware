@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.action.Action;
 import it.polimi.ingsw.ps29.model.action.AddPrivileges;
 import it.polimi.ingsw.ps29.model.action.CouncilPalaceAction;
@@ -39,9 +42,6 @@ import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.TowersForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
-import it.polimi.ingsw.ps29.viewclient.DTO.CardDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.ResourceDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class Controller implements Observer{
 	

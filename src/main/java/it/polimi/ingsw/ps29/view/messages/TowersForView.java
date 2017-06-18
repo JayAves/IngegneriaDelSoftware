@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps29.view.messages;
 
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
-import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class TowersForView extends InteractionMessage {
 

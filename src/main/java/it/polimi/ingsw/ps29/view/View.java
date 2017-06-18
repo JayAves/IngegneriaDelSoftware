@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
+import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
+import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
@@ -13,11 +18,6 @@ import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.TowersForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
-import it.polimi.ingsw.ps29.viewclient.DTO.CardDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBonusTileDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class View extends Observable implements Observer {
 	

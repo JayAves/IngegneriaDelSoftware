@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.viewclient.DTO;
+package it.polimi.ingsw.ps29.DTO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
