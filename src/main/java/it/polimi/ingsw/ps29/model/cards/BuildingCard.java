@@ -10,10 +10,10 @@ public class BuildingCard extends Card{
 	
 	private final int productionForce;
 	
-	public BuildingCard(String name, Period period, String type, ArrayList<Effect> immediate,
+	public BuildingCard(String name, Period period, String type, int id, ArrayList<Effect> immediate,
 		ArrayList<Effect> permanent, ArrayList<Resource> cost, int productionForce) {
 		
-		super(name, period, type, immediate, permanent, cost);
+		super(name, period, type, id, immediate, permanent, cost);
 		this.productionForce = productionForce;
 	}
 

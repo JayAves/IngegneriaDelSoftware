@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.viewclient.DTO;
+package it.polimi.ingsw.ps29.DTO;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ public class CardDTO implements Serializable {
 	
 	public CardDTO(int id, String type, String cardToString) {
 		this.id = id;
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.cardToString = cardToString;
 	}
 	

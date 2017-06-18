@@ -2,12 +2,14 @@ package it.polimi.ingsw.ps29.view;
 
 import java.util.HashMap;
 
+import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
+import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
-import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.view.messages.TowersForView;
 
 public class InputOutputGUI implements InputOutput {
 
@@ -67,9 +69,18 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public void showInfo(GameBoardDTO gameBoardDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+	public void showInfo(GameBoardDTO gameBoardDTO, TowersDTO towerdDTO,
+			HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void showTower(TowersDTO msg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

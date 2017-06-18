@@ -92,4 +92,10 @@ public class TowerArea implements ActionSpace {
 			((BonusActionSpace)floors.get(floor-1).getSpace()).setBonus(bonus);
 		}
 	}
+
+	public ArrayList<Floor> getFloors() {
+		return floors;
+	}
+
+	
 }

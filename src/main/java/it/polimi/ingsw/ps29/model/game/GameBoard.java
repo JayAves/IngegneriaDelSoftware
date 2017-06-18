@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.game;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
@@ -18,7 +19,6 @@ import it.polimi.ingsw.ps29.model.space.ProductionArea;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
-import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class GameBoard{
 	

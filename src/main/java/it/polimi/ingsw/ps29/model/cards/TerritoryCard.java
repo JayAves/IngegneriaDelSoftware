@@ -10,10 +10,10 @@ public class TerritoryCard extends Card  {
 
 	private final int harvestForce;
 	
-	public TerritoryCard(String name, Period period, String type, ArrayList<Effect> immediate,
+	public TerritoryCard(String name, Period period, String type, int id, ArrayList<Effect> immediate,
 			ArrayList<Effect> permanent, ArrayList<Resource> cost, int harvestForce) {
 		
-		super(name, period, type, immediate, permanent, cost);
+		super(name, period, type, id, immediate, permanent, cost);
 		this.harvestForce = harvestForce;
 	}
 

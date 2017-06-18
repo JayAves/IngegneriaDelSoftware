@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.viewclient.DTO;
+package it.polimi.ingsw.ps29.DTO;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ public class ResourceDTO implements Serializable {
 	int amount;
 	
 	public ResourceDTO(String type, int amount) {
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.amount = amount;
 	}
 	

@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps29.view.messages;
 
+import java.util.ArrayList;
+
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
@@ -12,7 +15,7 @@ public class InfoForView extends InteractionMessage {
 	public int familiar;
 	public int IDcard;
 	public int IDexcommunicationCard;
-	public String resources;
+	public ArrayList<ResourceDTO> resources;
 	
 	public InfoForView(String player) {
 		super(player);
@@ -21,7 +24,7 @@ public class InfoForView extends InteractionMessage {
 		familiar = 0;
 		IDcard = 0;
 		IDexcommunicationCard = 0;
-		resources = null;
+		resources = new ArrayList <ResourceDTO> ();
 	}
 
 	@Override
