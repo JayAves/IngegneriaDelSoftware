@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 
@@ -15,7 +16,7 @@ public class Player {
 	private String name;
 	private Color color;
 	private PersonalBoard board;
-	private FamilyMember[] family; 
+	private FamilyMemberInterface[] family; 
 	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
 	private ExchangeSupport supportForExchange;
@@ -56,8 +57,8 @@ public class Player {
 	}
 	
 	
-	public FamilyMember getFamiliarByColor (DiceColor color) {
-		for (FamilyMember member: family) 
+	public FamilyMemberInterface getFamiliarByColor (DiceColor color) {
+		for (FamilyMemberInterface member: family) 
 			if(member.getFamiliarColor()==color)
 				return member;
 		
@@ -80,7 +81,7 @@ public class Player {
 		return color;
 	}
 	
-	public FamilyMember [] getFamily () {
+	public FamilyMemberInterface [] getFamily () {
 		return family;
 	}
 	

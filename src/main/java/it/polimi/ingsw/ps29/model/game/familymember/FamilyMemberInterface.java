@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
+import it.polimi.ingsw.ps29.model.game.DiceColor;
+
 public interface FamilyMemberInterface {
 	
 	// public int setPower();
@@ -15,5 +17,7 @@ public interface FamilyMemberInterface {
 	public int getMarketPower();
 	
 	public int getCouncilPower();
+	
+	public DiceColor getFamiliarColor();
 
 }
