@@ -5,43 +5,31 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public class ExchangeSupport {
 	private ArrayList<ExchangeResourcesEffect> options;
-	private Container initialResources;
-	private Container actualResources;
-	//initial resources impostato nel costruttore: le risorse ottenute negli effetti di produzione non possono essere riutilizzate negli scambi
-	//actual resources: aggiornato ogni volta, controlla se è possibile uno scambio con lo stato attuale delle risorse
+	private Container outResourcesUpdate;
+	//outUpdatedResources: aggiorno solo le risorse in uscita per controllare se uno scambio è possibile
 	
 	public ExchangeSupport(ArrayList<ExchangeResourcesEffect> options, Container resources) {
 		this.options = options;
-		this.setInitialResources(resources);
-		this.setActualResources(resources);
+		this.setOutResourcesUpdate(resources);
 	}
 	
 	public ArrayList<ExchangeResourcesEffect> getOptions() {
 		return options;
 	}
 
+	public Container getOutResourcesUpdate () {
+		return outResourcesUpdate;
+	}
+	
 	public void setOptions(ArrayList<ExchangeResourcesEffect> options) {
 		this.options = options;
 	}
 
-	public Container getInitialResources() {
-		return initialResources;
-	}
-
-	public void setInitialResources(Container initialResources) {
-		this.initialResources = initialResources;
-	}
-
-	public Container getActualResources() {
-		return actualResources;
-	}
-
-	public void setActualResources(Container actualResources) {
-		this.actualResources = actualResources;
+	public void setOutResourcesUpdate (Container outResourcesUpdated) {
+		this.outResourcesUpdate = outResourcesUpdated;
 		checkVector();
 	}
 
@@ -50,10 +38,10 @@ public class ExchangeSupport {
 		for (ExchangeResourcesEffect effect: options){
 			ArrayList<ExchangeResourceHandler> temp = new ArrayList<ExchangeResourceHandler>();
 			for(ExchangeResourceHandler erh: effect.getChoices())
-				if(actualResources.isPossibleToPay(erh.getResOut()))
+				if(outResourcesUpdate.isPossibleToPay(erh.getResOut()))
 					temp.add(erh);
 			update.add(new ExchangeResourcesEffect(temp));
-			}
+		}
 		options = update;
 	}
 

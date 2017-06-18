@@ -85,6 +85,15 @@ public class ExchangeResourceHandler implements Cloneable {
 		
 	}
 	
+	public ArrayList<Resource> resOut (int indexOut) {
+		if(!chooseOut)
+			return resourcesOut;
+		ArrayList<Resource> temp = new ArrayList<Resource> ();
+		//utilizzo nel caso le resOut richiedano una scelta da parte dell'utente
+		temp.add(choiceOutResource(indexOut));
+		return temp;
+	}
+	
 	@Override
 	public ExchangeResourceHandler clone () {
 		ArrayList<Resource> resOut = new ArrayList<Resource> ();
@@ -103,6 +112,7 @@ public class ExchangeResourceHandler implements Cloneable {
 			msg+=res.toString();
 		if(chooseOut)
 			msg+="[Optional]\n";
+		msg+="\nRes in:\n";
 		for(Resource res: resourcesIn)
 			msg+=res.toString();
 		if(chooseIn)
