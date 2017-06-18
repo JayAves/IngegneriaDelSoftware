@@ -221,7 +221,7 @@ public class InputOutputCLI implements InputOutput {
 	@Override
 	public void showTower(TowersDTO msg) {
 		for(HashMap.Entry <String, ArrayList<CardDTO>> tower: msg.getTowers().entrySet()) {
-			System.out.println(tower.getKey());
+			System.out.println("\n"+tower.getKey().toUpperCase()+"\n");
 			for(CardDTO card: tower.getValue())
 				System.out.println(card.toString());
 		}

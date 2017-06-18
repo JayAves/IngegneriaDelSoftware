@@ -75,6 +75,7 @@ public class Controller implements Observer{
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
 		InteractionMessage object = stateOfAction.objectForView(playerName);
 		view.startInteraction (object);
+		//
 		
 	}
 	
@@ -241,10 +242,13 @@ public class Controller implements Observer{
 		public void visit(PrivilegeChoice msg){
 			handlePrivilegesChoice(msg);
 		}
-		
-		public void visit(PlayerInfoMessage msg){
-			
+
+		public void visit(PlayerInfoMessage playerInfoMessage) {
+			// TODO Auto-generated method stub
+			//se è scattato un timeout, notifico players che uno di questi è disconnesso
 		}
+		
+		
 	}
 	
 	public void gameEngine () {

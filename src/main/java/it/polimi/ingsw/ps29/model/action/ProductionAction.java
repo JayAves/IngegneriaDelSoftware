@@ -42,13 +42,13 @@ public class ProductionAction extends Action {
 		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
 		else space.queuePlacement(move.getFamiliar());
 		
-		//memorizzo tutti gli effetti per i quali posso chiedere all'utente se li vuole attivare
+		//memorizzo tutti gli effetti di scambio per i quali posso chiedere all'utente se li vuole attivare
 		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();
 		
 		if(!options.isEmpty()) {
 			//salvo lo stato delle risorse e gli scambi che devo chiedere all'utente in una variabile di player
 			ExchangeSupport support = new ExchangeSupport(options, move.getPlayer().getPersonalBoard().getResources());
-			//rimuovo tutto gli cambi che non sono possibili a causa delle risorse del giocatore
+			//rimuovo tutti gli scambi che non sono possibili a causa delle risorse del giocatore
 			support.checkVector();
 			
 			move.getPlayer().setSupport(support);
@@ -66,14 +66,6 @@ public class ProductionAction extends Action {
 				if(!(effect instanceof ExchangeResourcesEffect))
 					effect.performEffect(move.getPlayer());
 		
-		if(!options.isEmpty()) {
-			//questa operazione aggiorna anche il vettore degli scambi, potrei non avere più scambi possibili
-			move.getPlayer().getSupport().setActualResources(move.getPlayer().getPersonalBoard().getResources());
-			//per questo motivo aggiorno lo stato
-			state = ((AskAboutExchangeState)state).setEffect(move.getPlayer().getSupport().getOptions());
-			if(state.getState().equals("performed"))
-				move.getPlayer().getPersonalBoard().setResources(move.getPlayer().getSupport().getActualResources());
-		}
 		move.getFamiliar().setBusy(true);
 		
 	}

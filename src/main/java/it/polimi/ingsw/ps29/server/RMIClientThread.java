@@ -73,6 +73,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		try {
 			
 			clientInterface.notify(msg);
+			//dopo x secondi verifico se ho ricevuto risposta
 		
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

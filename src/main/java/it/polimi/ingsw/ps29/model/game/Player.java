@@ -18,7 +18,7 @@ public class Player {
 	private FamilyMember[] family; 
 	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
-	private ExchangeSupport support;
+	private ExchangeSupport supportForExchange;
 	public ArrayList<Effect> specialPermanentEffects;
 	private FinalScoring finalScoring;
 	private boolean ventureCardsPenaltyOn;
@@ -31,7 +31,7 @@ public class Player {
 		this.color = color;
 		this.board = new PersonalBoard(pbt);
 		initFamily();
-		support = new ExchangeSupport(new ArrayList<ExchangeResourcesEffect>(), new Container());
+		supportForExchange = new ExchangeSupport(new ArrayList<ExchangeResourcesEffect>(), new Container());
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
 		ventureCardsPenaltyOn = false;
@@ -89,11 +89,11 @@ public class Player {
 	}
 
 	public ExchangeSupport getSupport() {
-		return support;
+		return supportForExchange;
 	}
 
 	public void setSupport(ExchangeSupport support) {
-		this.support = support;
+		this.supportForExchange = support;
 	}
 	
 	public void passPersonalBoard(){

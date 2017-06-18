@@ -70,6 +70,7 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void startInteraction(InteractionMessage msg) {
 		serializator.serializeObject(msg);
+		//dopo x secondi verifico se ho ricevuto risposta
 	}
 	
 	
