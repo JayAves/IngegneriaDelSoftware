@@ -24,7 +24,7 @@ public class ActivityArea implements ActionSpace {
 	
 	public boolean isEnoughPowerful (int valuePlacement) {
 		if (isEmpty()) return head.isEnoughPowerful(valuePlacement);
-		else return queue.isEnoughPowerful(valuePlacement);
+		else return queue.isEnoughPowerful(valuePlacement-3);
 	}
 	
 	public void headPlacement(FamilyMember member) {
