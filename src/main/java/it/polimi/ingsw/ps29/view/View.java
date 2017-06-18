@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -8,6 +9,7 @@ import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
@@ -123,7 +125,11 @@ public class View extends Observable implements Observer {
 		}
 		
 		//aggiorno le risorse e stampo
-		personalBoardsDTO.get(info.getName()).setResources(info.resources);
+		personalBoardsDTO.clear();
+		for (HashMap.Entry <String, ArrayList<ResourceDTO>> resSituation: info.resSituation.entrySet()){
+			personalBoardsDTO.put(resSituation.getKey(), new PersonalBoardDTO(resSituation.getKey(), tileDTO));
+			personalBoardsDTO.get(resSituation.getKey()).setResources(resSituation.getValue());
+		}
 		inputOutput.showInfo(gameBoardDTO, towersDTO, personalBoardsDTO);
 	}
 

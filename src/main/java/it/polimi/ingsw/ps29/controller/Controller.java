@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -94,8 +95,13 @@ public class Controller implements Observer{
 			info.playerColor = model.getBoard().getCurrentPlayer().getColor();
 			((InteractionMessage)arg).visit(visitor);
 			if(sendInfo) {
-				for(ResourceInterface res: model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().hashMapToArrayListResources())
-					info.resources.add(new ResourceDTO(res.getType(), res.getAmount()));
+				info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
+				for(Player player: model.getBoard().getPlayers()) {
+					ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
+					for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
+						resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
+					info.resSituation.put(player.getName(), resCon);
+				}
 				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 					view.getValue().startInteraction(info);
 			}

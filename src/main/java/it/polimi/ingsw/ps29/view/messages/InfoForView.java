@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.view.messages;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
@@ -15,7 +16,7 @@ public class InfoForView extends InteractionMessage {
 	public int familiar;
 	public int IDcard;
 	public int IDexcommunicationCard;
-	public ArrayList<ResourceDTO> resources;
+	public HashMap <String, ArrayList<ResourceDTO>> resSituation;
 	
 	public InfoForView(String player) {
 		super(player);
@@ -24,7 +25,7 @@ public class InfoForView extends InteractionMessage {
 		familiar = 0;
 		IDcard = 0;
 		IDexcommunicationCard = 0;
-		resources = new ArrayList <ResourceDTO> ();
+		resSituation = new HashMap <String, ArrayList<ResourceDTO>> ();
 	}
 
 	@Override

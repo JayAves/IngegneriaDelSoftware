@@ -212,7 +212,7 @@ public class InputOutputCLI implements InputOutput {
 	public void showInfo(GameBoardDTO gameBoardDTO, TowersDTO towersDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		System.out.println("Updated situation of the game: ");
 		System.out.println(gameBoardDTO.toString());
-		showTower(towersDTO);
+		//showTower(towersDTO);
 		for (Entry<String, PersonalBoardDTO> personalBoardDTO: personalBoardsDTO.entrySet())
 			System.out.println(personalBoardDTO.toString());
 		
