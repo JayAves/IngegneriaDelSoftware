@@ -1,9 +1,10 @@
 package it.polimi.ingsw.ps29.viewclient.DTO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TowersDTO {
+public class TowersDTO implements Serializable {
 	private HashMap <String, ArrayList<CardDTO>> towers;
 	
 	public TowersDTO () {
@@ -20,21 +21,15 @@ public class TowersDTO {
 		towers.get(card.getType().toLowerCase()).add(card);
 	}
 	
-	public void takeCard (int space, int floor) {
-		//tower da 3 a 6, floor da 1 a 4
-		switch (space) {
-			case 3:
-				towers.get("territory").set(floor, new CardDTO(0, "", ""));
-				break;
-			case 4:
-				towers.get("building").set(floor, new CardDTO(0, "", ""));
-				break;
-			case 5:
-				towers.get("character").set(floor, new CardDTO(0, "", ""));
-				break;
-			case 6:
-				towers.get("venture").set(floor, new CardDTO(0, "", ""));
-				break;
-		}
+	public CardDTO takeCard (int space, int floor) {
+		CardDTO takenCard;
+		String [] towersName = {"territory", "building", "character", "venture"};
+		takenCard = towers.get(towersName[space-3]).get(floor-1);
+		towers.get(towersName[space-3]).set(floor-1, new CardDTO(0, "", ""));
+		return takenCard;
+	}
+	
+	public HashMap <String, ArrayList<CardDTO>> getTowers () {
+		return towers;
 	}
 }

@@ -17,14 +17,18 @@ import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
+import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
+import it.polimi.ingsw.ps29.model.space.Floor;
+import it.polimi.ingsw.ps29.model.space.TowerArea;
 import it.polimi.ingsw.ps29.server.ClientThread;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
@@ -33,7 +37,11 @@ import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.view.messages.TowersForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.viewclient.DTO.CardDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.ResourceDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class Controller implements Observer{
 	
@@ -43,8 +51,8 @@ public class Controller implements Observer{
 	private ActionState stateOfAction; 
 	private InfoForView info;
 	private boolean sendInfo;
-	//è lo stato dell'azione, inizialmente da stabilire, viene recuperato dopo che ho svolto l'azione
-	//lo utilizzo per la corretta interazione con la view
+	//il booleano è settato a false all'inizio di ogni gestione dell'input utente
+	//se ci sarà qualcosa da notificare viene settato a true
 	
 	public Controller (Match model) {
 		this.model = model;
@@ -85,7 +93,8 @@ public class Controller implements Observer{
 			info.playerColor = model.getBoard().getCurrentPlayer().getColor();
 			((InteractionMessage)arg).visit(visitor);
 			if(sendInfo) {
-				info.resources = model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().toString();
+				for(ResourceInterface res: model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().hashMapToArrayListResources())
+					info.resources.add(new ResourceDTO(res.getType(), res.getAmount()));
 				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 					view.getValue().startInteraction(info);
 			}
@@ -239,10 +248,17 @@ public class Controller implements Observer{
 	}
 	
 	public void gameEngine () {
+		//utilizzo questo oggetto all'inizio di ogni round per mostrare le torri alla view
+		TowersDTO towersForView;
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
-			System.out.println("++"+roundState);
+			
+			//mostro le torri alle view
+			towersForView = createTowersDTO();
+			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+				view.getValue().startInteraction(new TowersForView(view.getValue().getClientName(), towersForView));
+			
 			callCorrectView(); //svolgo action
 		}
 		
@@ -323,15 +339,31 @@ public class Controller implements Observer{
 	}
 	
 	public void endVaticanState () {
+		TowersDTO towersForView;
 		//chiamo questa funzione quando non devo fare il Vatican Report
 		//oppure mi accorgo di averlo concluso senza aver svolto un'azione per la gameEngine 
 		roundState = new EndOfTheRoundState();
-		System.out.println("++"+roundState);
 		roundState = roundState.doAction(model.getRound(), model); //dopo aver cambiato lo stato, svolgo azione
-		System.out.println("++"+roundState);
+		
+		//mostro le torri alle view
+		towersForView = createTowersDTO();
+		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+			view.getValue().startInteraction(new TowersForView(view.getValue().getClientName(), towersForView));
+		
 		if(model.endOfMatch) //se la partita termina esco, altrimenti devo richiamare una funzione per proseguire
 			conclusion();
 		else
 			callCorrectView(); //inizia una nuova fase per le azioni
+	}
+	
+	public TowersDTO createTowersDTO () {
+		TowersDTO msg = new TowersDTO();
+		String [] towersName = {"territoryTower", "buildingTower", "characterTower", "ventureTower"};
+		for (String towerName: towersName)
+			for (Floor floor: ((TowerArea)model.getBoard().getSpace(towerName)).getFloors()) {
+				Card cardOnTower = floor.getCard();
+				msg.addCard(new CardDTO (cardOnTower.getId(), cardOnTower.getType(), cardOnTower.toString()));
+			}
+		return msg;
 	}
 }

@@ -9,7 +9,7 @@ public class CardDTO implements Serializable {
 	
 	public CardDTO(int id, String type, String cardToString) {
 		this.id = id;
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.cardToString = cardToString;
 	}
 	

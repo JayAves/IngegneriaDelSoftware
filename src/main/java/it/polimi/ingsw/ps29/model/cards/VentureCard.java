@@ -10,9 +10,9 @@ public class VentureCard extends Card {
 	
 	private int neededPoints;
 
-	public VentureCard(String name, Period period, String type, ArrayList<Effect> immediate,
+	public VentureCard(String name, Period period, String type, int id, ArrayList<Effect> immediate,
 			ArrayList<Effect> permanent, ArrayList<Resource> cost) {
-		super(name, period, type, immediate, permanent, cost);
+		super(name, period, type, id, immediate, permanent, cost);
 		// TODO Auto-generated constructor stub
 	}
 	

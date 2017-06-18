@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Scanner;
@@ -11,8 +12,11 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.TowersForView;
+import it.polimi.ingsw.ps29.viewclient.DTO.CardDTO;
 import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class InputOutputCLI implements InputOutput {
 	
@@ -205,11 +209,22 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public void showInfo(GameBoardDTO gameBoardDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+	public void showInfo(GameBoardDTO gameBoardDTO, TowersDTO towersDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		System.out.println("Updated situation of the game: ");
 		System.out.println(gameBoardDTO.toString());
+		showTower(towersDTO);
 		for (Entry<String, PersonalBoardDTO> personalBoardDTO: personalBoardsDTO.entrySet())
 			System.out.println(personalBoardDTO.toString());
+		
+	}
+
+	@Override
+	public void showTower(TowersDTO msg) {
+		for(HashMap.Entry <String, ArrayList<CardDTO>> tower: msg.getTowers().entrySet()) {
+			System.out.println(tower.getKey());
+			for(CardDTO card: tower.getValue())
+				System.out.println(card.toString());
+		}
 		
 	}
 

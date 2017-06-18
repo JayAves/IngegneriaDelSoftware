@@ -11,16 +11,17 @@ public abstract class Card {
 	private String name;
 	private Period period;
 	private CardType type;
-	private int id;
+	private final int id;
 	private ArrayList<Effect> immediateEffects;
 	private ArrayList<Effect> permanentEffects;
 	private ArrayList<Resource> cost;
 	
-	public Card(String name, Period period, String type, ArrayList<Effect> immediate, ArrayList<Effect> permanent, ArrayList<Resource> cost) {
+	public Card(String name, Period period, String type, int id, ArrayList<Effect> immediate, ArrayList<Effect> permanent, ArrayList<Resource> cost) {
 		
 		super();
 		this.name = name;
 		this.period = period;
+		this.id = id;
 		this.type = CardType.parseInput(type);
 		this.immediateEffects = immediate;
 		this.permanentEffects = permanent;
@@ -78,6 +79,10 @@ public abstract class Card {
 	public String toString() {
 		return "Card [name=" + name + ", period=" + period + ", type=" + type + ", immediateEffects=" + immediateEffects
 				+ ", permanentEffects=" + permanentEffects + ", cost=" + cost + "]";
+	}
+
+	public int getId() {
+		return id;
 	}
 
 }

@@ -7,7 +7,7 @@ public class ResourceDTO implements Serializable {
 	int amount;
 	
 	public ResourceDTO(String type, int amount) {
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.amount = amount;
 	}
 	

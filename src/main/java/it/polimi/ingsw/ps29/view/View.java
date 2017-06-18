@@ -11,10 +11,13 @@ import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.view.messages.TowersForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.viewclient.DTO.CardDTO;
 import it.polimi.ingsw.ps29.viewclient.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.viewclient.DTO.PersonalBonusTileDTO;
+import it.polimi.ingsw.ps29.viewclient.DTO.TowersDTO;
 
 public class View extends Observable implements Observer {
 	
@@ -22,6 +25,7 @@ public class View extends Observable implements Observer {
 	private InputoutputFactory inputOutputFactory = new InputoutputFactory ();
 	private String namePlayer;
 	private GameBoardDTO gameBoardDTO;
+	private TowersDTO towersDTO;
 	private HashMap <String, PersonalBoardDTO> personalBoardsDTO;
 	PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO(""); //da cambiare poi
 	
@@ -30,6 +34,7 @@ public class View extends Observable implements Observer {
 		inputOutput = inputOutputFactory.getInput(inputType);
 		namePlayer = name;
 		gameBoardDTO = new GameBoardDTO();
+		towersDTO = new TowersDTO();
 		personalBoardsDTO = new HashMap <String, PersonalBoardDTO> ();
 		personalBoardsDTO.put(name, new PersonalBoardDTO(name, tileDTO));
 		
@@ -98,17 +103,34 @@ public class View extends Observable implements Observer {
 	
 	
 	public void handleInfo (InfoForView msg) {
+		//DA RIVEDERE QUANDO SI INTRODUCE LA GUI
+		
 		InfoForView info = (InfoForView)msg;
+		CardDTO takenCard;
+		
+		//se ho piazzato un familiare lo aggiungo alla board
 		if(info.familiar>0 && info.familiar<5)
 			gameBoardDTO.insertFamiliar(msg);
 		
+		//all'inizio: se non ho ancora memorizzato una personal board la creo
 		if(personalBoardsDTO.get(info.getName())==null)
 			personalBoardsDTO.put(info.getName(), new PersonalBoardDTO(info.getName(), tileDTO));
 		
+		//se ho preso una carta la tolgo dalla torre e la metto nella personal board
+		if(info.space>2 && info.space<7) {
+			takenCard = towersDTO.takeCard(info.space, info.floor);
+			personalBoardsDTO.get(info.getName()).insertCard(takenCard);
+		}
+		
+		//aggiorno le risorse e stampo
 		personalBoardsDTO.get(info.getName()).setResources(info.resources);
-		inputOutput.showInfo(gameBoardDTO, personalBoardsDTO);
+		inputOutput.showInfo(gameBoardDTO, towersDTO, personalBoardsDTO);
 	}
 
+	public void showTowers (TowersForView msg) {
+		towersDTO = msg.getTowers();
+		inputOutput.showTower (msg.getTowers());
+	}
 	
 	
 }
