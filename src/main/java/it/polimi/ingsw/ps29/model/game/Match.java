@@ -92,8 +92,10 @@ public class Match extends Observable{
  
 	    
     	for(int i=0; i<players.size(); i++) {
-    		int rnd= new Random().nextInt(tilez.length);
+    		/*int rnd= new Random().nextInt(tilez.length);
     		players.get(i).setPersonalBonusTile(tilez[rnd]); // assegno una bonusTile casuale
+    		*/
+    		players.get(i).setPersonalBonusTile(tilez[0]);
     	}
     	
     	int startingCoins=5; //distribuisco le monete iniziali
@@ -111,33 +113,6 @@ public class Match extends Observable{
 	public void gameEngine() {
 		
 		System.out.println("Server: turno del giocatore "+board.getCurrentPlayer().getName());
-		
-		/*
-		while(!endOfMatch ) {
-			//viene gestita qui sotto la fase di azione, per comodità con il pattern observer observable
-			//con il match che per richiedere una nuova azione notifica il controller
-			if(state instanceof ActionsState){
-				
-				String firstPlayer = board.getCurrentPlayer().getName();
-				
-				//in questo for avviene la fase Actions del gioco
-				for (int i=0; i<NUMBER_OF_FAMILIARS; i++){
-					board.setPlayersOrderMoved(false);
-					//conclude il while quando tutti i giocatori hanno portato a termine una mossa
-					while(!board.getCurrentPlayer().getName().equals(firstPlayer)|| !board.isPlayersOrderMoved()) {
-						setChanged();
-						notifyObservers();
-					}
-				}
-			}
-			
-			//aggiorna lo stato del turno, permette di gestire tutte le altre fasi di turno
-			state= state.doAction(round, this);
-		}
-		*/
-		//ciclo di calcolo punti vittoria
-		//stampa punteggi finali
-
 		
 		for (Player player : board.getPlayers()){
 			player.passPersonalBoard();
