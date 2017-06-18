@@ -73,7 +73,7 @@ public class ProductionAction extends Action {
 	public ArrayList<ExchangeResourcesEffect> buildExchangeSupportVector () {
 		ArrayList<ExchangeResourcesEffect> options = new ArrayList<ExchangeResourcesEffect>();
 		for(Card card: move.getPlayer().getPersonalBoard().getCards("building"))
-			for(Effect effect: card.getPermanentEffects())
+			for(Effect effect: card.getPermanentEffects()) 
 				//se l'effetto è di tipo scambio e il valore della mossa è >= del valore della carta
 				if(effect instanceof ExchangeResourcesEffect && ((BuildingCard)card).getProductionForce()<=
 						move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants())

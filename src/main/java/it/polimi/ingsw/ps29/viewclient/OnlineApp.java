@@ -19,16 +19,16 @@ public class OnlineApp {
 	    	/*System.out.println("[CLI-GUI]");
 	    	
 	    	do { inputChoice = scanner.nextLine();
-	    	} while(!inputChoice.equals("CLI") && !inputChoice.equals("GUI"));*/
+	    	} while(!inputChoice.equals("CLI") && !inputChoice.equals("GUI"));
 	    	
 	    	System.out.println("\nSocket o RMI?");
 	    	
 	    	do { inputConnection = scanner.nextLine();
-	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI"));
+	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI"));*/
 	    	
 	    
 	    	inputChoice = "CLI";
-	    	
+	    	inputConnection = "Socket";
 	    	
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
