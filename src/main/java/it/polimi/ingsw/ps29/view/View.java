@@ -115,8 +115,9 @@ public class View extends Observable implements Observer {
 			gameBoardDTO.insertFamiliar(msg);
 		
 		//all'inizio: se non ho ancora memorizzato una personal board la creo
-		if(personalBoardsDTO.get(info.getName())==null)
-			personalBoardsDTO.put(info.getName(), new PersonalBoardDTO(info.getName(), tileDTO));
+		for(String name: info.resSituation.keySet())
+			if(personalBoardsDTO.get(name)==null)
+				personalBoardsDTO.put(name, new PersonalBoardDTO(name, tileDTO));
 		
 		//se ho preso una carta la tolgo dalla torre e la metto nella personal board
 		if(info.space>2 && info.space<7) {
@@ -125,11 +126,9 @@ public class View extends Observable implements Observer {
 		}
 		
 		//aggiorno le risorse e stampo
-		personalBoardsDTO.clear();
-		for (HashMap.Entry <String, ArrayList<ResourceDTO>> resSituation: info.resSituation.entrySet()){
-			personalBoardsDTO.put(resSituation.getKey(), new PersonalBoardDTO(resSituation.getKey(), tileDTO));
+		for (HashMap.Entry <String, ArrayList<ResourceDTO>> resSituation: info.resSituation.entrySet())
 			personalBoardsDTO.get(resSituation.getKey()).setResources(resSituation.getValue());
-		}
+		
 		inputOutput.showInfo(gameBoardDTO, towersDTO, personalBoardsDTO);
 	}
 
