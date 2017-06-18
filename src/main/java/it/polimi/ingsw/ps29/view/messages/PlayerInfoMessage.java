@@ -11,6 +11,7 @@ public class PlayerInfoMessage extends InteractionMessage {
 	
 	public PlayerInfoMessage(String player) {
 		super(player);
+		playerName=player;
 		
 	}
 	

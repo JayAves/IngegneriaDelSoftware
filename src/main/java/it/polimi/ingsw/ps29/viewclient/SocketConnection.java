@@ -32,6 +32,7 @@ public class SocketConnection extends Connection {
 	public SocketConnection(String playerName) {
 		
 		loginMessage= new PlayerInfoMessage(playerName);
+		
 		try {
 			socket = new Socket (ADDRESS, PORT);
 			System.out.println("SocketConnection: "+socket);
@@ -45,11 +46,12 @@ public class SocketConnection extends Connection {
 			
 			
 			
-			setLoginToken();
+			//setLoginToken();
 			
 			//invio al server il nome del client
-			oos.writeObject(playerName);
+			oos.writeObject(loginMessage.playerName);
 			oos.flush();
+			
 			//oos.writeObject(loginMessage);
 			//oos.flush();
 			

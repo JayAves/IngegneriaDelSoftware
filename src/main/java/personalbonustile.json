@@ -78,7 +78,7 @@
                 
             },
             {
-                "resourceType": "Military",
+                "resourceType": "MilitaryPoints",
                 "resourceData":{
                 "amount":1,
                 "type": "military"
@@ -176,7 +176,7 @@
                 
             },
             {
-                "resourceType": "Military",
+                "resourceType": "MilitaryPoints",
                 "resourceData":{
                 "amount":1,
                 "type": "military"

@@ -26,9 +26,10 @@ public class ChoiceToMove {
 	}
 	
 	private Player getPlayer (String player) {
-		for (Player p: board.getPlayers()) 
+		for (Player p: board.getPlayers()) {
 			if(p.getName().equals(player))
 				return p;
+		}
 		return null;
 	}
 	

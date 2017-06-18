@@ -20,6 +20,7 @@ public class SocketClientThread extends ClientThread {
 		System.out.println("SocketVirtualView: "+socket);
 		this.playerName = playerName;
 		this.oos = oos;
+		System.out.println(playerName);
 		this.ois = ois;
 		
 		serializator = new ServerSerializator(socket, this.oos, this.ois);

@@ -27,7 +27,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		
 		loginMessage= new PlayerInfoMessage(playerName);
 		
-		setLoginToken();
+		//setLoginToken();
 		
 		
 		try {
@@ -54,7 +54,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		boolean end=true;
 		try {
 			
-			server.addClient(remoteRef,playerName);
+			server.addClient(remoteRef,loginMessage.playerName);
 			//server.addClient(remoteRef, loginMessage)
 		
 		} catch (RemoteException e) {
@@ -73,7 +73,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	public void sendMessage(InteractionMessage msg) {
 		// TODO Auto-generated method stub
 		try {
-			server.messageforMyThread(playerName, msg);
+			server.messageforMyThread(loginMessage.playerName, msg);
 		
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

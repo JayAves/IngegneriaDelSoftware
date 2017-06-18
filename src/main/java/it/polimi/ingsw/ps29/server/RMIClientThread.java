@@ -27,6 +27,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		this.clientInterface=clientInterface;
 		inGame=false;
 		recentlyPoked=true;
+		System.out.println(this.username);
 		
 	}
 
