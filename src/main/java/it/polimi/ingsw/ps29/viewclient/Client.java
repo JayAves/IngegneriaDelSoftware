@@ -72,9 +72,6 @@ public class Client implements Observer{
 				view.askAboutPrivileges(msg);
 			}
 			
-			public void receive(PlayerInfoMessage msg){
-				
-			}
 			
 			public void receive (InfoForView msg) {
 				view.handleInfo (msg);
@@ -83,5 +80,12 @@ public class Client implements Observer{
 			public void receive (TowersForView msg) {
 				view.showTowers (msg);
 			}
+
+			public void receive(PlayerInfoMessage playerInfoMessage) {
+				// TODO Auto-generated method stub
+				
+			}
 	}
+
+			
 }

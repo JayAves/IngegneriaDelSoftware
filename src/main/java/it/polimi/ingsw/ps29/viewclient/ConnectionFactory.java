@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps29.viewclient;
 
+import java.io.IOException;
+
 public class ConnectionFactory extends AbstractFactory {
 
 	/*@Override
@@ -17,7 +19,13 @@ public class ConnectionFactory extends AbstractFactory {
 		
 		else if (networking.equals("RMI")) {
 		
-			return new RmiConnection(playerName);
+			try {
+				return new RmiConnection(playerName);
+			
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}
