@@ -6,12 +6,12 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 public class PlayerInfoMessage extends InteractionMessage {
 
 	private String loginToken;
-	public String playerName;
+	;
 	private boolean inGame;
 	
 	public PlayerInfoMessage(String player) {
 		super(player);
-		playerName=player;
+		
 		
 	}
 	
@@ -33,7 +33,7 @@ public class PlayerInfoMessage extends InteractionMessage {
 		loginToken= token;
 	}
 	
-	public String getPlayerName() {
-		return playerName;
+	public String getToken() {
+		return loginToken;
 	}
 }

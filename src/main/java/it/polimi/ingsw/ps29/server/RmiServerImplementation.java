@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RmiServerImplementation extends UnicastRemoteObject implements RmiServerInterface {
@@ -25,7 +26,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	}
 
 	@Override
-	public void addClient(RmiClientInterface clientInterface, String player) throws RemoteException {
+	public void addClient(RmiClientInterface clientInterface, PlayerInfoMessage player) throws RemoteException {
 		// TODO Auto-generated method stub
 		RMIClientThread thread=new RMIClientThread(player, clientInterface);
 		myGatherer.clients.add(thread);

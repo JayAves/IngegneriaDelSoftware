@@ -9,12 +9,15 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+
 public class SocketGatherer extends Observable {
 
 	private ServerSocket serverSocket;
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private ArrayList<Thread> clients;
+	boolean endOfConnection=false;
 	
 	public SocketGatherer (int port) {
 		try {
@@ -32,8 +35,8 @@ public class SocketGatherer extends Observable {
 	public void startServer () {
 		Socket socket;
 		SocketClientThread virtualView;
-		String playerName;
-		boolean endOfConnection=false;
+		
+		
 		
 		while(!endOfConnection) {
 			
@@ -43,10 +46,12 @@ public class SocketGatherer extends Observable {
 				oos.flush();
 				ois = new ObjectInputStream(socket.getInputStream());
 				
+				//
 				System.out.println("Connection estabilished with: "+socket);
 				try {
-					playerName = (String) ois.readObject();
-					virtualView = new SocketClientThread(socket, playerName, oos, ois);
+					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
+					tempLogin = (PlayerInfoMessage) ois.readObject();
+					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
 					
 					//notifica RoomCreator
 					setChanged();

@@ -46,10 +46,10 @@ public class SocketConnection extends Connection {
 			
 			
 			
-			//setLoginToken();
+			setLoginToken(loginMessage);
 			
 			//invio al server il nome del client
-			oos.writeObject(loginMessage.playerName);
+			oos.writeObject(loginMessage);
 			oos.flush();
 			
 			//oos.writeObject(loginMessage);

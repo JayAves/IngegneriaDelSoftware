@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread implements Serializable{
@@ -21,13 +22,14 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	
 	
 	
-	public RMIClientThread(String username, RmiClientInterface clientInterface) {
+	public RMIClientThread(PlayerInfoMessage login, RmiClientInterface clientInterface) {
 		
-		this.username = username;
+		this.username = login.getName();
 		this.clientInterface=clientInterface;
 		inGame=false;
 		recentlyPoked=true;
 		System.out.println(this.username);
+		IDcode=login.getToken();
 		
 	}
 

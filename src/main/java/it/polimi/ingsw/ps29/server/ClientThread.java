@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public abstract class ClientThread extends Observable implements Runnable{
 	
-	String IDcode;
+	protected String IDcode;
 	
 	protected boolean inGame;
 	

@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
 public class SocketClientThread extends ClientThread {
 	
@@ -15,13 +16,15 @@ public class SocketClientThread extends ClientThread {
 	private ObjectInputStream ois;
 	private ServerSerializator serializator;
 	
-	public SocketClientThread(Socket socket, String playerName, ObjectOutputStream oos, ObjectInputStream ois) {
+	public SocketClientThread(Socket socket, PlayerInfoMessage playerLogin, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
-		System.out.println("SocketVirtualView: "+socket);
-		this.playerName = playerName;
+		//System.out.println("SocketVirtualView: "+socket);
+		this.playerName = playerLogin.getName();
 		this.oos = oos;
 		System.out.println(playerName);
 		this.ois = ois;
+		IDcode= playerLogin.getToken();
+		inGame=false;
 		
 		serializator = new ServerSerializator(socket, this.oos, this.ois);
 	}

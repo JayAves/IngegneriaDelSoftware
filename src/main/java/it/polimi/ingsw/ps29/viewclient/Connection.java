@@ -16,11 +16,11 @@ import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
 public abstract class Connection extends Observable implements Runnable{
 	
-	private PlayerInfoMessage loginMessage;
+	
 	
 	public abstract void sendMessage( InteractionMessage msg);
 	
-	public void setLoginToken() throws IOException{
+	public void setLoginToken(PlayerInfoMessage loginMessage) throws IOException{
 		
 		BufferedReader login = new BufferedReader(new FileReader("src/main/java/Login.json"));
 	    GsonBuilder gcode = new GsonBuilder();
@@ -38,7 +38,7 @@ public abstract class Connection extends Observable implements Runnable{
 		Random random2 = new Random();
 		int head = random1.nextInt(1000000);
 		int tail= random2.nextInt(1000000);
-		String code= head+ loginMessage.playerName+tail;
+		String code= head+ loginMessage.getName()+tail;
 		loginMessage.setToken(code);
 		File myfile= new File ("src/main/java/Login.json");
 		FileOutputStream fOut = new FileOutputStream(myfile);

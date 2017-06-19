@@ -28,7 +28,7 @@ public class OnlineApp {
 	    	
 	    
 	    	inputChoice = "CLI";
-	    	inputConnection = "Socket";
+	    	inputConnection = "RMI";
 	    	
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
