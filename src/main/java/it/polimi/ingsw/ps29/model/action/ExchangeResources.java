@@ -23,9 +23,9 @@ public class ExchangeResources {
 
 
 	public ActionState exchangeHandler (Exchange msg) {
+		
 		Player current = model.getBoard().getPlayerByName(msg.getName());
 		ExchangeResourcesEffect effect = msg.getExchange();
-		
 		//se la condizione è true ho deciso di scambiare una risorsa
 		if(msg.getChoice(0)<effect.getChoices().size()) {
 			ExchangeResourceHandler erh = effect.getChoices().get(msg.getChoice(0));
@@ -34,9 +34,15 @@ public class ExchangeResources {
 					msg.getChoice(1), msg.getChoice(2));
 			
 			//devo aggiornare anche le outResourcesUpdated
-			for(Resource res: erh.resOut(msg.getChoice(1)))
-				current.getSupport().getOutResourcesUpdate().updateResource(res);
+			if(msg.getChoice(1)==erh.getResOut().size()) {
+				current.getSupport().getOutResourcesUpdate().updateResource(erh.getResOut().get(msg.getChoice(1)));
 				current.getSupport().checkVector();
+			}
+			else 
+				for(Resource res: erh.resOut(msg.getChoice(1))) {
+					current.getSupport().getOutResourcesUpdate().updateResource(res);
+					current.getSupport().checkVector();
+				}
 		}
 		state = ((AskAboutExchangeState)state).setEffect(current.getSupport().getOptions());
 		
