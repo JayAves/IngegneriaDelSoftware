@@ -16,7 +16,8 @@ public class SocketGatherer extends Observable {
 	private ServerSocket serverSocket;
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
-	private ArrayList<Thread> clients;
+	private ArrayList<Thread> ths;
+	private ArrayList<SocketClientThread> clients;
 	boolean endOfConnection=false;
 	
 	public SocketGatherer (int port) {
@@ -29,7 +30,7 @@ public class SocketGatherer extends Observable {
 			e.printStackTrace();
 		}
 		
-		clients= new ArrayList<Thread>();
+		ths= new ArrayList<Thread>();
 	}
 	
 	public void startServer () {
@@ -46,37 +47,52 @@ public class SocketGatherer extends Observable {
 				oos.flush();
 				ois = new ObjectInputStream(socket.getInputStream());
 				
-				//
-				System.out.println("Connection estabilished with: "+socket);
+				
+				//System.out.println("Connection estabilished with: "+socket);
+				
 				try {
 					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
 					tempLogin = (PlayerInfoMessage) ois.readObject();
 					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
 					
-					//notifica RoomCreator
+				for( SocketClientThread th: clients) {
+					
+					if (th.IDcode.equals(virtualView.IDcode)) //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
+						//virtualView.setInGame();
+						clients.remove(th);
+				}
+					//notifica RoomCreator//
 					setChanged();
 					notifyObservers(virtualView);
 					
 					
-					Thread t = new Thread (virtualView);
-					t.start();
-					clients.add(t);
-					
+				clients.add(virtualView);
+				Thread t = new Thread (virtualView);
+				t.start();
+				ths.add(t); //dovrò eliminare thread della vecchia virtual view
+						
+				
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
 					e.printStackTrace();
 				}
 				
-				System.out.println("Virtual view created for: "+socket);
+				//System.out.println("Virtual view created for: "+socket);
 				
 			} catch (IOException e) {
 				System.err.println("Unable to connect a user!");
 				e.printStackTrace();
+				//disconnessione del server
 			}
 		}
 	}
 	
-	public ArrayList<Thread> getClients(){
+	public ArrayList<Thread> getThreads(){
+		return ths;
+	}
+	
+	public ArrayList<SocketClientThread> getClients(){
+		
 		return clients;
 	}
 }

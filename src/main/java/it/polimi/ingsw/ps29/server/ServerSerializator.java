@@ -5,8 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-
 public class ServerSerializator {
 	
 	private Socket socket;

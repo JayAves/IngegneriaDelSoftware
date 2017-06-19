@@ -53,17 +53,56 @@ public class RoomCreator extends Thread implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		try {
+		if (!(inQueue((ClientThread) arg))) {
 			
-			addPlayer((ClientThread) arg);
+			try {
+			
+				addPlayer((ClientThread) arg);
 		
-		} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Could not find json file- and then no game was initialized");
-		}
-			
+				}
+			}
+		
+			else {
+				
+				updateView((ClientThread) arg);
+				
+			}
 	}
 	
+	private synchronized boolean inQueue(ClientThread arg) {
+		
+		for (ClientThread th: playersInQueue) {
+			
+			if (th.IDcode==arg.IDcode) {
+				
+				playersInQueue.remove(th);
+				playersInQueue.add(arg);
+				return true;
+			}
+				
+		}
+		return false;
+	}
+
+	private void updateView(ClientThread thread) {
+		
+		for (Room room: roomHandler) {
+			
+			for (ClientThread client: room.getViews()) {
+				
+				if (thread.IDcode==client.IDcode) {
+					
+					room.getController().removeView(client.getClientName(), client);
+					room.getController().addView(thread.getClientName(),  thread );
+				}
+			}
+		}
+		
+	}
+
 	public void run(){
 		
 		while (true){
@@ -83,6 +122,14 @@ public class RoomCreator extends Thread implements Observer{
 		}
 	}
 	
+	public ArrayList<ClientThread> getPlayersInQueue() {
+		return playersInQueue;
+	}
+	
+	public ArrayList<Room> getRooms(){
+		return roomHandler;
+	}
+	
 	
 	private class Task extends TimerTask{
 
@@ -100,13 +147,7 @@ public class RoomCreator extends Thread implements Observer{
 	}
 
 
-	public ArrayList<ClientThread> getPlayersInQueue() {
-		return playersInQueue;
-	}
 	
-	public ArrayList<Room> getRooms(){
-		return roomHandler;
-	}
 }
 		
 

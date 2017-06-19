@@ -9,9 +9,9 @@ import it.polimi.ingsw.ps29.model.game.Match;
 
 public class Room extends Thread{
 	
-	Match model;
-	Controller controller;
-	ArrayList<ClientThread> sockets;
+	private Match model;
+	private Controller controller;
+	private ArrayList<ClientThread> views;
 	
 	public Room (ArrayList<ClientThread> playersInQueue){
 		
@@ -45,6 +45,19 @@ public class Room extends Thread{
 		
 		}
 
+	public Controller getController() {
+		return controller;
+	}
+
+	
+
+	public ArrayList<ClientThread> getViews() {
+		return views;
+	}
+
+	
+		
+	
 }	
 
 

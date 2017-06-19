@@ -16,7 +16,7 @@ import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
 public abstract class Connection extends Observable implements Runnable{
 	
-	
+	public static int counter=1;
 	
 	public abstract void sendMessage( InteractionMessage msg);
 	
@@ -27,20 +27,28 @@ public abstract class Connection extends Observable implements Runnable{
 	    String jcode = gcode.create().fromJson(login, String.class );
 	    
 	    
-	    if (jcode!=null) {
+	    if ((jcode!=null)&&(jcode.contains(loginMessage.getName()))) {
 	    	
 	    	loginMessage.setToken(jcode);
 	    }
 		
 	    else {
 		
-		Random random1 = new Random();
-		Random random2 = new Random();
-		int head = random1.nextInt(1000000);
-		int tail= random2.nextInt(1000000);
-		String code= head+ loginMessage.getName()+tail;
+	    	
+	    Random random1 = new Random();
+	    Random random2 = new Random();
+	    int head = random1.nextInt(1000000);
+	    int tail= random2.nextInt(1000000);
+	    String code= head+ loginMessage.getName()+tail;
 		loginMessage.setToken(code);
-		File myfile= new File ("src/main/java/Login.json");
+		File myfile;
+		if(jcode!=null) {
+			myfile= new File ("src/main/java/Login"+counter+".json");
+			counter++;
+    	}
+		else{
+			myfile= new File ("src/main/java/Login.json");
+			}
 		FileOutputStream fOut = new FileOutputStream(myfile);
         OutputStreamWriter myOutWriter =new OutputStreamWriter(fOut);
         myOutWriter.append(code);

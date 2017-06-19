@@ -67,6 +67,11 @@ public class Controller implements Observer{
 			views.put(playerName, view);
 	}
 	
+	public void removeView(String playerName, ClientThread view) {
+		if(!views.containsKey(playerName))
+			views.remove(playerName, view);
+	}
+	
 	
 	public void callCorrectView () {
 		String playerName = model.getBoard().getCurrentPlayer().getName();

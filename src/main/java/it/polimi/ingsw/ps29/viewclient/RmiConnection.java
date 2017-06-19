@@ -27,7 +27,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		
 		loginMessage= new PlayerInfoMessage(playerName);
 		
-		//setLoginToken();
+		setLoginToken(loginMessage);
 		
 		
 		try {
