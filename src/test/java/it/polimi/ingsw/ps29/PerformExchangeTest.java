@@ -21,7 +21,7 @@ import junit.framework.TestCase;
 
 public class PerformExchangeTest extends TestCase {
 	
-	Player player;
+	Match model;
 	
 	public PerformExchangeTest (String testName) {
 		super (testName);
@@ -32,8 +32,7 @@ public class PerformExchangeTest extends TestCase {
 		ArrayList<String> playerNames = new ArrayList<String> ();
 		playerNames.add("aa");
 		playerNames.add("bb");
-		Match model = new Match(playerNames);
-		player = new Player("aa", Color.BLUE, null);
+		model = new Match(playerNames);
 		
 		ArrayList<Resource> r3 = new ArrayList<Resource>();
 		r3.add(new Resource("servant", 1));
@@ -58,19 +57,19 @@ public class PerformExchangeTest extends TestCase {
 		array.add(eff2);
 		
 		Exchange msg = new Exchange("aa", eff2);
+		//scelgo il secondo scambio
 		msg.setChoice(0, 1);
 		
 		Container container = new Container();
-		player.setSupport(new ExchangeSupport(array, container));
+		//player.setSupport(new ExchangeSupport(array, container));
 		
-		ExchangeResources eR = new ExchangeResources(null, new AskAboutExchangeState(array));
+		ExchangeResources eR = new ExchangeResources(model, new AskAboutExchangeState(array));
 		eR.exchangeHandler(msg);
-		
 	}
 	
 	@Test
 	public void test() {
-		assertEquals(0, player.getPersonalBoard().getSpecificResource("wood").getAmount());
+		assertEquals(0, model.getBoard().getPlayerByName("aa").getPersonalBoard().getSpecificResource("wood").getAmount());
 		
 	}
 	
