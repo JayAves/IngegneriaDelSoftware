@@ -23,7 +23,7 @@ public class ExchangeResources {
 
 
 	public ActionState exchangeHandler (Exchange msg) {
-		Player current = model.getBoard().getCurrentPlayer();
+		Player current = model.getBoard().getPlayerByName(msg.getName());
 		ExchangeResourcesEffect effect = msg.getExchange();
 		
 		//se la condizione è true ho deciso di scambiare una risorsa

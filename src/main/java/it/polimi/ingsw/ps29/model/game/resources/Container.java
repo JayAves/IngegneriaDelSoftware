@@ -65,7 +65,7 @@ public class Container {
 	
 	public boolean isPossibleToPay (ArrayList<Resource> cost) {
 		for(Resource res: cost)
-			if(resources.get(res.getType()).getAmount()<res.getAmount())
+			if(resources.get(res.getType())==null || resources.get(res.getType()).getAmount()<res.getAmount())
 				return false;
 		return true;
 		

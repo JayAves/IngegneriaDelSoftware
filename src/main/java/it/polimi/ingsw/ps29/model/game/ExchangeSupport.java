@@ -40,7 +40,8 @@ public class ExchangeSupport {
 			for(ExchangeResourceHandler erh: effect.getChoices())
 				if(outResourcesUpdate.isPossibleToPay(erh.getResOut()))
 					temp.add(erh);
-			update.add(new ExchangeResourcesEffect(temp));
+			if(!temp.isEmpty())
+				update.add(new ExchangeResourcesEffect(temp));
 		}
 		options = update;
 	}
