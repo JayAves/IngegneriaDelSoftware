@@ -13,7 +13,7 @@ public class ResourceDTO implements Serializable {
 	
 	@Override
 	public String toString () {
-		return "Resource: "+type+" - amount: "+amount;
+		return type.toUpperCase()+": "+amount;
 	}
 	
 	public String getType () {

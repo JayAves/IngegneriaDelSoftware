@@ -30,7 +30,7 @@ public class PersonalBonusTile {
 
 	@Override
 	public String toString() {
-		return "PersonalBonusTile [productionBonus=" + productionBonus + ", harvestBonus=" + harvestBonus + "]";
+		return " ProductionBonus=" + productionBonus + ", harvestBonus:" + harvestBonus ;
 	}
 	
 	

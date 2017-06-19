@@ -7,6 +7,10 @@ import it.polimi.ingsw.ps29.model.game.Player;
 
 public class ExchangeResourcesEffect extends Effect implements Cloneable, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7432793364767288256L;
 	private ArrayList<ExchangeResourceHandler> choices;
 	
 	public ExchangeResourcesEffect(ArrayList <ExchangeResourceHandler> erh) {
@@ -49,9 +53,9 @@ public class ExchangeResourcesEffect extends Effect implements Cloneable, Serial
 	
 	@Override
 	public String toString () {
-		String msg = super.toString()+"\n";
+		String msg = super.toString()+"Exchange:  ";
 		for(ExchangeResourceHandler erh: choices)
-			msg+=erh.toString()+"\n";
+			msg+=erh.toString()+"; ";
 		return msg;
 	}
 }

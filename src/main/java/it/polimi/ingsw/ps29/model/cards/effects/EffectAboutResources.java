@@ -20,12 +20,6 @@ public abstract class EffectAboutResources extends Effect{
 		return resources;
 	}
 	
-	@Override
-	public String toString () {
-		String msg=super.toString()+"resources:\n";
-		for(Resource res: resources)
-			msg+=res.toString()+"\n";
-		return msg;
-	}
+	
 	
 }

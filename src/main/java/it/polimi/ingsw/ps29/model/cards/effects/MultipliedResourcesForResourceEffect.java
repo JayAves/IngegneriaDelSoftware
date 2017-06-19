@@ -30,7 +30,7 @@ public class MultipliedResourcesForResourceEffect extends Effect{
 	
 	@Override
 	public String toString () {
-		return super.toString()+"resource gained: "+gained+" = resource amount: "+amount+" X multiplied: "+multiplied;
+		return super.toString()+"Gain: "+amount+" "+gained+" X multiplied: "+multiplied;
 	}
 
 }

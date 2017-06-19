@@ -35,7 +35,7 @@ public class SocketConnection extends Connection {
 		
 		try {
 			socket = new Socket (ADDRESS, PORT);
-			System.out.println("SocketConnection: "+socket);
+			//System.out.println("SocketConnection: "+socket);
 			
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			oos.flush();
@@ -55,7 +55,7 @@ public class SocketConnection extends Connection {
 			//oos.writeObject(loginMessage);
 			//oos.flush();
 			
-			System.out.println("Client succesfully created!");
+			//System.out.println("Client succesfully created!");
 			
 			
 		} catch (UnknownHostException e) {
