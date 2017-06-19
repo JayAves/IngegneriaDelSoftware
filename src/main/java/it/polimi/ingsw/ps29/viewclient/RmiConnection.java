@@ -21,6 +21,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	RmiServerInterface server;
 	RmiClientInterface remoteRef;
 	private PlayerInfoMessage loginMessage;
+	boolean end=false;
 	
 	public RmiConnection(String playerName) throws IOException {
 	
@@ -51,7 +52,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	@Override
 	public void run() {
 
-		boolean end=true;
+		
 		try {
 			
 			server.addClient(remoteRef,loginMessage);
@@ -60,6 +61,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Failed to add Client");
+			end=true;
 		}
 		
 		while(end) {
@@ -78,6 +80,8 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.err.println("Could not message to server");
+			end=true;
+			System.out.println("\nGame Over");
 		
 		}
 	}

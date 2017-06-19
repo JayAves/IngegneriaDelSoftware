@@ -81,6 +81,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.err.println("Could not send message to client");
+			//notifico controller che si è sconnesso 
 		}
 	}
 	

@@ -52,6 +52,7 @@ public class Controller implements Observer{
 	private ActionState stateOfAction; 
 	private InfoForView info;
 	private boolean sendInfo;
+	private boolean sendUpdate;
 	//il booleano è settato a false all'inizio di ogni gestione dell'input utente
 	//se ci sarà qualcosa da notificare viene settato a true
 	
@@ -70,6 +71,7 @@ public class Controller implements Observer{
 	public void removeView(String playerName, ClientThread view) {
 		if(!views.containsKey(playerName))
 			views.remove(playerName, view);
+		System.out.println("Player "+playerName+ "is back in Game");
 	}
 	
 	
@@ -96,6 +98,7 @@ public class Controller implements Observer{
 		else if (o instanceof ClientThread) {
 			//eseguo l'azione scelta dall'utente
 			sendInfo = false;
+			sendUpdate=false;
 			info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
 			info.playerColor = model.getBoard().getCurrentPlayer().getColor();
 			((InteractionMessage)arg).visit(visitor);
@@ -110,6 +113,11 @@ public class Controller implements Observer{
 				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 					view.getValue().startInteraction(info);
 			}
+			
+			if(sendUpdate) {
+				//devo sospendere la view e mandare solo noAction
+			}
+			
 				
 			gameEngine();
 		}

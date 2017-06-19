@@ -76,7 +76,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		for (ClientThread th: playersInQueue) {
 			
-			if (th.IDcode==arg.IDcode) {
+			if (th.IDcode.contentEquals(arg.IDcode)) {
 				
 				playersInQueue.remove(th);
 				playersInQueue.add(arg);
@@ -93,7 +93,7 @@ public class RoomCreator extends Thread implements Observer{
 			
 			for (ClientThread client: room.getViews()) {
 				
-				if (thread.IDcode==client.IDcode) {
+				if (thread.IDcode.contentEquals(client.IDcode)) {
 					
 					room.getController().removeView(client.getClientName(), client);
 					room.getController().addView(thread.getClientName(),  thread );

@@ -26,7 +26,7 @@ public class SocketClientThread extends ClientThread {
 		IDcode= playerLogin.getToken();
 		inGame=false;
 		
-		serializator = new ServerSerializator(socket, this.oos, this.ois);
+		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
 	}
 	
 
@@ -45,7 +45,7 @@ public class SocketClientThread extends ClientThread {
 				
 			} catch (IOException e) {
 				System.err.println("Unable to receive message from client!");
-				e.printStackTrace();
+				//avviso controller che non ho ricevuto messaggio [no action]
 			} catch (ClassNotFoundException e) {
 				System.err.println("Unable to cast the object");
 				e.printStackTrace();

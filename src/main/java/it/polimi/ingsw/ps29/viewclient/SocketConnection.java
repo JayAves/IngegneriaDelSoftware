@@ -71,7 +71,8 @@ public class SocketConnection extends Connection {
 
 	@Override
 	public void run() {
-		while(true) {	
+		boolean connection=true;
+		while(connection) {	
 			Object obj;
 			try {
 				//notifico Client
@@ -84,6 +85,8 @@ public class SocketConnection extends Connection {
 				
 			} catch (IOException e) {
 				System.err.println("Unable to receive message from server!");
+				connection=false;
+				System.out.println("\nGame Over");
 				
 			} catch (ClassNotFoundException e) {
 				System.err.println("Unable to cast the object!");

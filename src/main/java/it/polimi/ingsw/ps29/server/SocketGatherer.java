@@ -31,13 +31,13 @@ public class SocketGatherer extends Observable {
 		}
 		
 		ths= new ArrayList<Thread>();
+		clients= new ArrayList<SocketClientThread>();
 	}
 	
 	public void startServer () {
+		
 		Socket socket;
 		SocketClientThread virtualView;
-		
-		
 		
 		while(!endOfConnection) {
 			
@@ -54,19 +54,23 @@ public class SocketGatherer extends Observable {
 					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
 					tempLogin = (PlayerInfoMessage) ois.readObject();
 					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
+					SocketClientThread toDelete= null;
 					
 				for( SocketClientThread th: clients) {
 					
-					if (th.IDcode.equals(virtualView.IDcode)) //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
+					if (th.IDcode.contentEquals(virtualView.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
 						//virtualView.setInGame();
-						clients.remove(th);
+						toDelete=th;
+						System.out.println("Player found in database");
+						}
 				}
 					//notifica RoomCreator//
 					setChanged();
 					notifyObservers(virtualView);
 					
-					
+				clients.remove(toDelete);	
 				clients.add(virtualView);
+				System.out.println(clients);
 				Thread t = new Thread (virtualView);
 				t.start();
 				ths.add(t); //dovrò eliminare thread della vecchia virtual view
@@ -80,7 +84,7 @@ public class SocketGatherer extends Observable {
 				//System.out.println("Virtual view created for: "+socket);
 				
 			} catch (IOException e) {
-				System.err.println("Unable to connect a user!");
+				System.err.println("Unable to add a user!");
 				e.printStackTrace();
 				//disconnessione del server
 			}
