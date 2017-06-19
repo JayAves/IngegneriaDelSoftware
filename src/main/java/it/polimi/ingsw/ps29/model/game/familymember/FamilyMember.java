@@ -9,11 +9,12 @@ public class FamilyMember implements FamilyMemberInterface{
 	private boolean busy;
 	private DiceColor familiarColor;
 	private Color playerColor;
-
+    private boolean fixedPower;
 	public FamilyMember (DiceColor familiarColor, Color playerColor) {
 		this.busy = false;
 		this.familiarColor = familiarColor;
 		this.playerColor = playerColor;
+		fixedPower = false;
 	}
 	
 	
@@ -60,6 +61,14 @@ public class FamilyMember implements FamilyMemberInterface{
 	
 	public boolean getBusy () {
 		return busy;
+	}
+	
+	public boolean getIfFixed(){
+		return fixedPower;
+	}
+	
+	public void setFixedPower(){
+		fixedPower = true;
 	}
 	
 	@Override

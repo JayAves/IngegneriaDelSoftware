@@ -22,6 +22,7 @@ public class VaticanReportState implements RoundState {
 				boolean vaticanChoice = false;
 				if (vaticanChoice){
 					player.getPersonalBoard().getResources().updateResource(match.getBoard().getVaticanBonus(roundNumber));
+					player.getSistoIVBonus();
 					player.getPersonalBoard().getResources().removeResource(ResourceType.FAITH);
 				}
 				excommunication.effect.performEffect(player);

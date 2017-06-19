@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
+import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
 
 public class Player {
 	private String name;
@@ -26,6 +27,7 @@ public class Player {
 	private boolean vaticanReportPerformed;
 	private boolean ludovicoAriosto;
 	private boolean filippoBrunelleschi;
+	private boolean sistoIV;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -39,6 +41,7 @@ public class Player {
 		setVaticanReportPerformed(false);
 		ludovicoAriosto = false;
 		filippoBrunelleschi = false;
+		sistoIV = false;
 	}
 	
 	
@@ -132,5 +135,15 @@ public class Player {
 	
 	public void setFilippoBrunelleschi(){
 		filippoBrunelleschi = true;
+	}
+	
+	public void setSistoIV(){
+		sistoIV = true;
+	}
+	
+	public void getSistoIVBonus(){
+		if (sistoIV == true){
+			this.getPersonalBoard().getResources().updateResource(new VictoryPoints(5));
+		}
 	}
 }
