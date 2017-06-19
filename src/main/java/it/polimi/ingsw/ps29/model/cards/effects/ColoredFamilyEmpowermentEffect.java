@@ -11,9 +11,9 @@ public class ColoredFamilyEmpowermentEffect extends EmpowermentActionEffect{
 	public void performEffect(Player player) {
 		
 		//for (int i = 0; i < 3; i++){
-	//		player.getFamily()[i] = new FamilyMemberPowerDecorator(player.getFamily()[i], diceEmpowerment);
-		//}
-	//}
+		//player.getFamily()[i] = new FamilyMemberPowerDecorator(player.getFamily()[i], diceEmpowerment);
+        //}
+	}
 
 	
-	}}
+	}
