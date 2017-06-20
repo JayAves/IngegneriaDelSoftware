@@ -7,11 +7,17 @@ public class ExcommunicationCard {
 	
 	public final Effect effect;
 	public final Period period;
+	private final int id;
 
-	public ExcommunicationCard(Effect effect, Period period) {
+	public ExcommunicationCard(int id, Effect effect, Period period) {
+		this.id = id;
 		this.effect = effect;
 		this.period=period;
 	}
 	
+	@Override
+	public String toString(){
+		return "Excommunication for period : " + period + " effect : " + effect;
+	}
 	
 }
