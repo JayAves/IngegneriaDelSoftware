@@ -93,6 +93,6 @@ public class PersonalBoard {
 		    LeaderChoice.add(cardVector);
 		}
 		
-		return null;
+		return LeaderChoice;
 	}
 }
