@@ -28,6 +28,7 @@ public class Player {
 	private boolean ludovicoAriosto;
 	private boolean filippoBrunelleschi;
 	private boolean sistoIV;
+	private boolean picoDellaMirandola;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -42,6 +43,7 @@ public class Player {
 		ludovicoAriosto = false;
 		filippoBrunelleschi = false;
 		sistoIV = false;
+		picoDellaMirandola = false;
 	}
 	
 	
@@ -145,5 +147,9 @@ public class Player {
 		if (sistoIV == true){
 			this.getPersonalBoard().getResources().updateResource(new VictoryPoints(5));
 		}
+	}
+	
+	public void setPicoDellaMirandola(){
+		picoDellaMirandola = true;
 	}
 }

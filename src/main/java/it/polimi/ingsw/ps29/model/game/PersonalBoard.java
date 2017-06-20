@@ -13,7 +13,7 @@ public class PersonalBoard {
 	
 	private HashMap <String, ArrayList <Card>> cards;
 	private ArrayList<LeaderCard> leaderCards;
-	private ArrayList<LeaderCard> flippedLeaderCards;
+	private ArrayList<LeaderCard> palyedLeaderCards;
 	private PersonalBonusTile personalTile;
 	private Container resources;
 	

@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
@@ -26,6 +27,7 @@ public class GameBoard{
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
 	private ArrayList<Player> playersOrder;
+	private ArrayList<LeaderCard> playedLeaderCards;
 	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
 	private ArrayList<ExcommunicationDeck> excommunicationDeck;
@@ -45,6 +47,7 @@ public class GameBoard{
 		decks= new ArrayList<Deck>();
 		towersDTO = new TowersDTO();
 		initSpaces();
+		playedLeaderCards = new ArrayList<LeaderCard>();
 		
 	}
 	
