@@ -95,10 +95,12 @@ public class RoomCreator extends Thread implements Observer{
 				if (client.IDcode.contentEquals(thread.IDcode)) {
 					
 					room.getController().removeView(client.getClientName(), client);
+					System.out.println("\nOld view:"+client.toString());
 					client.stopClient();
 					room.getController().addView(thread.getClientName(),  thread );
-					System.out.println("\nHo scambiato le views");
+					
 					thread.setInGame(true);
+					System.out.println("\nNew View:"+thread.toString());
 					return true;
 				}
 			}

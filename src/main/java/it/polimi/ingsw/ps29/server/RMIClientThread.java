@@ -58,6 +58,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	public void stopClient() {
 		// TODO Auto-generated method stub
 		inGame=false;
+		recentlyPoked=false;
 		
 	}
 
@@ -73,19 +74,20 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	@Override
 	public void startInteraction(InteractionMessage msg) {
 		// TODO Auto-generated method stub
-		try {
-			
-			clientInterface.notify(msg);
-			//dopo x secondi verifico se ho ricevuto risposta
+		if (inGame){
+			try {
+				clientInterface.notify(msg);
+				//dopo x secondi verifico se ho ricevuto risposta
 		
-		} catch (RemoteException e) {
+			} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.err.println("Could not send message to client");
 			inGame=false;
 			PlayerInfoMessage error= new PlayerInfoMessage(username);
+			setChanged();
 			notifyObservers(error);
+			}
 		}
 	}
-	
 
 }

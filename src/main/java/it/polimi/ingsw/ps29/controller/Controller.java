@@ -70,9 +70,9 @@ public class Controller implements Observer{
 	}
 	
 	public void removeView(String playerName, ClientThread view) {
-		if(!views.containsKey(playerName))
+		if(views.containsKey(playerName))
 			views.remove(playerName);
-		System.out.println("Player "+playerName+ "is back in Game");
+		System.out.println("\nPlayer "+playerName+ " is back in Game");
 	}
 	
 	

@@ -29,6 +29,15 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	public void addClient(RmiClientInterface clientInterface, PlayerInfoMessage player) throws RemoteException {
 		// TODO Auto-generated method stub
 		RMIClientThread thread=new RMIClientThread(player, clientInterface);
+		RMIClientThread toDelete= null;
+		for(RMIClientThread th: myGatherer.clients) {
+			if (th.IDcode.contentEquals(thread.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
+				thread.setInGame(true);
+				toDelete=th;
+				//System.out.println(virtualView.toString());
+				}
+		}
+		myGatherer.clients.remove(toDelete);
 		myGatherer.clients.add(thread);
 		Thread t= new Thread (thread);
 		t.start();
