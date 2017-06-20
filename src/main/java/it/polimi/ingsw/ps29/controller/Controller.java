@@ -76,12 +76,18 @@ public class Controller implements Observer{
 	
 	
 	public void callCorrectView () {
+		ArrayList<ArrayList<Object>> leaderSituation;
 		String playerName = model.getBoard().getCurrentPlayer().getName();
 		ClientThread view = views.get(playerName);
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 		stateOfAction = stateOfAction.beforeAction();
 		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
 		InteractionMessage object = stateOfAction.objectForView(playerName);
+		if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
+			leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
+			//l'oggetto generato è di tipo ActionChoice se entro in questo if
+			((ActionChoice)object).setLeaderSituation(leaderSituation);
+		}
 		view.startInteraction (object);
 		//
 		
@@ -287,15 +293,12 @@ public class Controller implements Observer{
 		
 		else {
 			if (roundState.getStateNumber()==2 && isStateTwoTerminated()) {
-				System.out.println("terminato stato 2");
 				//ho concluso il turno di gioco: inizio la fase di VaticanReport
 				roundState = new VaticanReportState();
-				System.out.println("++"+roundState);
 				askForExcommunication();
 			}
 			
 			else if (roundState.getStateNumber()==3 && isStateThreeTerminated()) {
-				System.out.println("terminato stato 3");
 				//ho concluso la fase di VaticanReport
 				endVaticanState();
 			}
