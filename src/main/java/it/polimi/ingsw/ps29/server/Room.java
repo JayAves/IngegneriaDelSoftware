@@ -15,7 +15,11 @@ public class Room extends Thread{
 	
 	public Room (ArrayList<ClientThread> playersInQueue){
 		
-		views=playersInQueue;
+		views= new ArrayList<ClientThread>();
+		for (ClientThread th: playersInQueue) {
+			views.add(th);
+		}
+				
 		ArrayList<String> names = new ArrayList<String>();
 		for (ClientThread th: playersInQueue)
 			names.add(th.getClientName());	

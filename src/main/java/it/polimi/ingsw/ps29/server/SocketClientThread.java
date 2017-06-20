@@ -16,6 +16,7 @@ public class SocketClientThread extends ClientThread {
 	private ObjectInputStream ois;
 	private ServerSerializator serializator;
 	private boolean endOfConnection= false;
+	private boolean newConnection=false;
 	
 	public SocketClientThread(Socket socket, PlayerInfoMessage playerLogin, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
@@ -57,6 +58,10 @@ public class SocketClientThread extends ClientThread {
 				}
 		}
 		
+		while (!newConnection) {
+			
+		}
+		
 	}
 	
 	public String getName () {
@@ -89,7 +94,8 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	protected void stopClient() {
 		// TODO Auto-generated method stub
-		endOfThis();
+		endOfConnection=true;
+		newConnection=true;
 	}
 	
 	public void endOfThis() {

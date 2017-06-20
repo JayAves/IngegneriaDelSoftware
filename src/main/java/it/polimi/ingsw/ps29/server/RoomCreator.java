@@ -43,7 +43,8 @@ public class RoomCreator extends Thread implements Observer{
 			
 		if (counter==2){
 				
-				roomHandler.add(new Room(playersInQueue));
+				Room tempRoom=new Room(playersInQueue);
+				roomHandler.add(tempRoom);
 				counter=0;
 				playersInQueue.clear();
 			}
@@ -53,18 +54,19 @@ public class RoomCreator extends Thread implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		Boolean updated= (inQueueCheck((ClientThread) arg)||(updateView((ClientThread) arg)));
+		boolean updated= updateView((ClientThread) arg);
+		boolean queued=	inQueueCheck((ClientThread) arg);
 		
-			if (!updated) {
-				try {
+		if ((!updated)&& (!queued)) {
+			try {
+				
+				addPlayer((ClientThread) arg);
+		
+			} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not find json file- and then no game was initialized");
 					
-					addPlayer((ClientThread) arg);
-			
-				} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				System.out.println("Could not find json file- and then no game was initialized");
-					
-					}
+				}
 			}	
 	}
 	
@@ -90,7 +92,7 @@ public class RoomCreator extends Thread implements Observer{
 			
 			for (ClientThread client: room.getViews()) {
 				
-				if (thread.IDcode.contentEquals(client.IDcode)) {
+				if (client.IDcode.contentEquals(thread.IDcode)) {
 					
 					room.getController().removeView(client.getClientName(), client);
 					client.stopClient();

@@ -61,7 +61,7 @@ public class SocketGatherer extends Observable {
 					if (th.IDcode.contentEquals(virtualView.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
 						virtualView.setInGame(true);
 						toDelete=th;
-						System.out.println("Player recently logged");
+						System.out.println(virtualView.toString());
 						}
 				}
 					//notifica RoomCreator//
