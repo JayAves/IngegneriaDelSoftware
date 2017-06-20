@@ -33,7 +33,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 		Thread t= new Thread (thread);
 		t.start();
 		myGatherer.notifyRoomCreator(thread);
-		clientInterface.print("I added you as a client");
+		//clientInterface.print("I added you as a client");
 		
 	}
 

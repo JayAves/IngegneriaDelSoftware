@@ -50,6 +50,8 @@ public class Match extends Observable{
 	    
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
 	    
+	    
+	    
 	    Period[] periods= Period.values();
 	    CardType [] types = CardType.values();
 	    
@@ -71,6 +73,8 @@ public class Match extends Observable{
 	    		
 	    	}
 	    }
+	    
+	    
 	}
 	
 	

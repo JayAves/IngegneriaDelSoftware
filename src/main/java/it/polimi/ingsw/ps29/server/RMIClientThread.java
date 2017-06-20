@@ -40,8 +40,8 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	
 	
 	@Override
-	public void setInGame(){
-    	inGame=true;
+	public void setInGame(boolean change){
+    	inGame=change;
     }
 	
 	@Override
@@ -81,7 +81,9 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.err.println("Could not send message to client");
-			//notifico controller che si è sconnesso 
+			inGame=false;
+			PlayerInfoMessage error= new PlayerInfoMessage(username);
+			notifyObservers(error);
 		}
 	}
 	

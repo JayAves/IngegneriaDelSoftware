@@ -59,21 +59,21 @@ public class SocketGatherer extends Observable {
 				for( SocketClientThread th: clients) {
 					
 					if (th.IDcode.contentEquals(virtualView.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
-						//virtualView.setInGame();
+						virtualView.setInGame(true);
 						toDelete=th;
-						System.out.println("Player found in database");
+						System.out.println("Player recently logged");
 						}
 				}
 					//notifica RoomCreator//
 					setChanged();
 					notifyObservers(virtualView);
-					
-				clients.remove(toDelete);	
-				clients.add(virtualView);
-				System.out.println(clients);
-				Thread t = new Thread (virtualView);
-				t.start();
-				ths.add(t); //dovrò eliminare thread della vecchia virtual view
+					System.out.println(toDelete);	
+					clients.remove(toDelete);	
+					clients.add(virtualView);
+					System.out.println(clients);
+					Thread t = new Thread (virtualView);
+					t.start();
+					ths.add(t); //dovrò eliminare thread della vecchia virtual view
 						
 				
 				} catch (ClassNotFoundException e) {
@@ -98,5 +98,8 @@ public class SocketGatherer extends Observable {
 	public ArrayList<SocketClientThread> getClients(){
 		
 		return clients;
+	}
+	public void endOfConnection() {
+		endOfConnection=true;
 	}
 }
