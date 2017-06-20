@@ -58,15 +58,6 @@ public class PersonalBoard {
 		this.resources = resource;
 	}
 	
-	public int whereIsTheCard(LeaderCard card){
-		
-		if (leaderCards.contains(card))
-			return 0;
-		else if (playedLeaderCards.contains(card))
-			return 1;
-		else
-			return 2;
-	}
 	
 	public boolean satisfyRequirements(LeaderCard card){
 		
@@ -88,8 +79,17 @@ public class PersonalBoard {
 		    ArrayList<Object> cardVector = new ArrayList<Object>();
 		    cardVector.add(0, card.getID());
 		    cardVector.add(1, card.toString());
-		    cardVector.add(2, whereIsTheCard(card));
+		    cardVector.add(2, 0);
 		    cardVector.add(3, satisfyRequirements(card));
+		    LeaderChoice.add(cardVector);
+		}
+		
+		for (LeaderCard card : playedLeaderCards){
+		    ArrayList<Object> cardVector = new ArrayList<Object>();
+		    cardVector.add(0, card.getID());
+		    cardVector.add(1, card.toString());
+		    cardVector.add(2, 1);
+		    cardVector.add(3, true);
 		    LeaderChoice.add(cardVector);
 		}
 		
