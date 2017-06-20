@@ -101,6 +101,7 @@ public class SocketClientThread extends ClientThread {
 	public void endOfThis() {
 		inGame=false;
 		PlayerInfoMessage msg= new PlayerInfoMessage(playerName);
+		setChanged();
 		notifyObservers(msg);
 		endOfConnection=true;
 	}
