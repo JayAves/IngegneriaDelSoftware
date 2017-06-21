@@ -12,6 +12,8 @@ import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
+import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
 import it.polimi.ingsw.ps29.model.cards.customadapters.CardAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.EffectAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
@@ -48,7 +50,13 @@ public class Match extends Observable{
 	    gcards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    gcards.registerTypeAdapter(Resource.class, new ResourceAdapter());
 	    
+	    BufferedReader eCards = new BufferedReader(new FileReader ("src/main/java/ExcommunicationsCards.json"));
+	    GsonBuilder geCards = new GsonBuilder();
+	    geCards.registerTypeAdapter(Effect.class, new EffectAdapter());
+	    geCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
+	    
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
+	    ExcommunicationCard[] eCardz = geCards.create().fromJson(eCards, ExcommunicationCard[].class);
 	    
 	    Period[] periods= Period.values();
 	    CardType [] types = CardType.values();
@@ -70,6 +78,15 @@ public class Match extends Observable{
 	    		
 	    		
 	    	}
+	    	ArrayList<ExcommunicationCard> tempDeck = new ArrayList<ExcommunicationCard>();
+	    	for (int i = 0; i < eCardz.length; i++){
+	    		if (eCardz[i].getPeriod().equals(period))
+	    			tempDeck.add(eCardz[i]);
+	    	}
+	    	
+	        ExcommunicationDeck eDeck = new ExcommunicationDeck(tempDeck);
+	    	
+	        board.getExDecks().add(eDeck);
 	    }
 	}
 	

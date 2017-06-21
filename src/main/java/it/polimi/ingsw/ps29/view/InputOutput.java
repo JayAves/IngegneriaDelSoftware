@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
@@ -33,5 +34,8 @@ public interface InputOutput {
 	abstract void showInfo (GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
 
 	abstract void showTower(TowersDTO msg);
+
+	abstract void askLeader(ArrayList<ArrayList<Object>> leaderSituation);
+
 
 }

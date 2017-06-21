@@ -50,9 +50,10 @@ public class InputOutputCLI implements InputOutput {
 				"\n10.Market space 4" +
 				"\n11.Council palace" +
 				"\n12.No placement" +
+				"\n13.LeaderAction"+
 				"\nChoice: ");
 			choice[0] = scanner.nextInt();
-		} while (choice[0]<1 || choice[0]>12);
+		} while (choice[0]<1 || choice[0]>13);
 		
 		if(choice[0]>=3 && choice[0]<=6) {
 			do{
@@ -228,7 +229,17 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 
-	
-	
+	@Override
+	public void askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
+		// TODO Auto-generated method stub
+		int choice;
+		do{
+		for ( int i = 0 ; i < leaderSituation.size();){
+			System.out.println( " " + i + " " + leaderSituation.get(i).get(1) + leaderSituation.get(i).get(4) );
+		}
+		System.out.println((" 5 No azione Leader"));
+		choice = scanner.nextInt();
+		}while( choice < 1 || choice > 5);
+	}
 
 }

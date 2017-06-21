@@ -149,6 +149,10 @@ public class GameBoard{
 		return decks;
 	}
 	
+	public ArrayList<ExcommunicationDeck> getExDecks(){
+		return excommunicationDeck;
+	}
+	
 	public Player getCurrentPlayer (){
 		return playersOrder.get(0);
 	}
