@@ -191,7 +191,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "MIlitaryPointsPenaltyEffect",
+        "effectType" : "MilitaryPointsPenaltyEffect",
         "effectData":{}
     }
 }
