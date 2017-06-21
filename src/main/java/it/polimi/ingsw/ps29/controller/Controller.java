@@ -277,9 +277,12 @@ public class Controller implements Observer{
 			
 			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 				view.getValue().startInteraction(playerInfoMessage);
-	
-			stateOfAction= new PerformedState();
-			stateOfAction.afterAction(model);
+			
+			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
+				stateOfAction= new PerformedState();
+				stateOfAction.afterAction(model);
+			}
+			
 		}
 		
 	}

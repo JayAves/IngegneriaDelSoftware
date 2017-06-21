@@ -61,6 +61,7 @@ public class View extends Observable implements Observer {
 		notifyObservers(msg);
 	}
 	
+	
 	public void askBonusAction (BonusChoice msg) {
 		BonusActionEffect effect = msg.getBonus();
 		
