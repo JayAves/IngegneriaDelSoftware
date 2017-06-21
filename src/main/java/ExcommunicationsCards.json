@@ -167,7 +167,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "BuildingCardCostsPenaltyEffect",
+        "effectType" : "BuildingCostsPenaltyEffect",
         "effectData" :{}
     }
 },
