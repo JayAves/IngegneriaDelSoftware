@@ -32,6 +32,12 @@ public class SocketConnection extends Connection {
 	public SocketConnection(String playerName) {
 		
 		loginMessage= new PlayerInfoMessage(playerName);
+		try {
+			setLoginToken(loginMessage);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			socket = new Socket (ADDRESS, PORT);
@@ -46,9 +52,9 @@ public class SocketConnection extends Connection {
 			
 			
 			
-			setLoginToken(loginMessage);
 			
-			//invio al server il nome del client
+			
+			//invio al server nome e token del client//
 			oos.writeObject(loginMessage);
 			oos.flush();
 			
@@ -62,7 +68,7 @@ public class SocketConnection extends Connection {
 			System.err.println("Unknown address!");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.err.println("Unable to connect from client!");
+			System.err.println("Unable to connect to server!");
 			e.printStackTrace();
 		}
 		
@@ -90,6 +96,8 @@ public class SocketConnection extends Connection {
 				
 			} catch (ClassNotFoundException e) {
 				System.err.println("Unable to cast the object!");
+				connection=false;
+				System.out.println("\nGame Over");
 				
 			}
 		}

@@ -1,0 +1,125 @@
+[
+
+{
+"name" : "Francesco Sforza",
+"effect" : {
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Harvest",
+          "valueAction":1} },
+"requirements" : [],
+"cardRequirements" : [ 0, 0, 0, 5],
+},
+
+{
+"name" : "Ludovico Ariosto",
+"effect" : {
+        "effectType": "LudovicoAriostoEffect",
+        "effectData" :{ },},
+"requirements" : [],
+"cardRequirements" : [ 0, 0, 5, 0],
+},
+
+{
+"name" : "Filippo Brunelleschi",
+"effect" : {
+        "effectType": "FilippoBrunelleschiEffect",
+        "effectData" :{ },},
+"requirements" : [],
+"cardRequirements" : [ 0, 5, 0, 0],
+},
+
+{
+"name" : "Sigismondo Malatesta",
+"effect" : {
+        "effectType": "NeutralFamilyMemberEmpowermentEffect",
+        "effectData" :{ },},
+"requirements" : [{
+   "resourceType":"MIlitaryPoints",
+   "resourceData":{
+    "amount":7,
+    "type":"military" } },
+                      
+   {
+   "resourceType":"FaithPoints",
+   "resourceData":{
+    "amount":3,
+    "type":"military" } }                         
+   ],
+"cardRequirements" : [ 0, 0, 0, 0],
+},
+
+{
+"name" : "Girolamo Savonarola",
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}},
+"requirements" : [{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":18,
+    "type":"coins" } }],
+"cardRequirements" : [ 0, 0, 0, 0],
+},
+
+{
+"name" : "Michelangelo Buonarroti",
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coins" }
+	}]}},
+"requirements" : [{
+   "resourceType":"Stones",
+   "resourceData":{
+    "amount":10,
+    "type":"stones" } }],
+"cardRequirements" : [ 0, 0, 0, 0],
+},
+
+{
+"name" : "Giovanni Dalle Bande Nere",
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":{ 
+            "resources": [
+     {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coins" }
+	},
+    
+     {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	},
+                       
+    {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stones" }
+	}               
+    ]}},
+"requirements" : [{
+   "resourceType":"MilitaryPoints",
+   "resourceData":{
+    "amount":12,
+    "type":"military" } }],
+"cardRequirements" : [ 0, 0, 0, 0],
+}
+    
+]

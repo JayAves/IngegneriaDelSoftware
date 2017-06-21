@@ -58,6 +58,25 @@ public class PersonalBoard {
 		this.resources = resource;
 	}
 	
+	private int whereIsTheCard(LeaderCard card){ 
+		
+			if (leaderCards.contains(card)) 
+					return 0; 
+		 		else if (playedLeaderCards.contains(card)) 
+		 			return 1; 
+				else 
+					return 2; 
+			}
+	
+	public String printCorrectOptions(LeaderCard card){
+		String toShow="";
+		if (whereIsTheCard(card) == 0)
+			toShow = " SCARTA , GIOCA, ATTIVA";
+			else if (whereIsTheCard(card) == 1)
+				toShow = " ATTIVA";
+		return toShow;
+		}
+
 	
 	public boolean satisfyRequirements(LeaderCard card){
 		
@@ -81,6 +100,7 @@ public class PersonalBoard {
 		    cardVector.add(1, card.toString());
 		    cardVector.add(2, 0);
 		    cardVector.add(3, satisfyRequirements(card));
+		    cardVector.add(4, printCorrectOptions(card));
 		    LeaderChoice.add(cardVector);
 		}
 		
@@ -90,6 +110,7 @@ public class PersonalBoard {
 		    cardVector.add(1, card.toString());
 		    cardVector.add(2, 1);
 		    cardVector.add(3, true);
+		    cardVector.add(4, printCorrectOptions(card));
 		    LeaderChoice.add(cardVector);
 		}
 		

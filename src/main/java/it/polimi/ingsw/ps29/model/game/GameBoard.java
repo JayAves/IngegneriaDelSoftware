@@ -48,6 +48,7 @@ public class GameBoard{
 		towersDTO = new TowersDTO();
 		initSpaces();
 		playedLeaderCards = new ArrayList<LeaderCard>();
+		excommunicationDeck= new ArrayList<ExcommunicationDeck>();
 		
 	}
 	
@@ -147,6 +148,10 @@ public class GameBoard{
 	
 	public ArrayList<Deck> getDecks(){
 		return decks;
+	}
+	
+	public ArrayList<ExcommunicationDeck> getExDecks(){
+		return excommunicationDeck;
 	}
 	
 	public Player getCurrentPlayer (){

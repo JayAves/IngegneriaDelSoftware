@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
@@ -77,6 +78,12 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void showTower(TowersDTO msg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
 		// TODO Auto-generated method stub
 		
 	}

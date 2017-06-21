@@ -1,7 +1,7 @@
 [
 {
 "period" : "FIRST",
-    "effect" : "MalusResourcesExcommunication",
+    "effect" : {"effectType" :"MalusResourcesExcommunication",
     "effectData" :{
                "resources" : [
                            { "resourceType" : "MilitaryPoints",
@@ -11,7 +11,7 @@
 }}
     ]
 }
-},
+}},
 
 {
 "period" : "FIRST",
@@ -107,7 +107,7 @@
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
 		{ "diceEmpowerment": -4,
-          "towerType": "Territory",
+          "towerType": "Harvest",
           "discount" :[]
             
         }
@@ -120,7 +120,7 @@
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
 		{ "diceEmpowerment": -4,
-          "towerType": "Building",
+          "towerType": "Production",
           "discount" :[]
             
         }
@@ -143,7 +143,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "TerritoryCardPenaltyEffect",
+        "effectType" : "TerritoryCardsPenaltyEffect",
         "effectData":{}
     }
 },
@@ -151,7 +151,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "CharacterCardPenaltyEffect",
+        "effectType" : "CharacterCardsPenaltyEffect",
         "effectData" :{}
     }
 },
@@ -159,7 +159,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "TerritoryCardPenaltyEffect",
+        "effectType" : "TerritoryCardsPenaltyEffect",
         "effectData" :{}
     }
 },
@@ -167,7 +167,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "BuildingCardCostsPenaltyEffect",
+        "effectType" : "BuildingCostsPenaltyEffect",
         "effectData" :{}
     }
 },
@@ -191,7 +191,7 @@
 {
 "period" : "THIRD",
     "effect": {
-        "effectType" : "MIlitaryPointsPenaltyEffect",
+        "effectType" : "MilitaryPointsPenaltyEffect",
         "effectData":{}
     }
 }

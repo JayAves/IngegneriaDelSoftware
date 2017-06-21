@@ -8,6 +8,10 @@ public class ExcommunicationCard {
 	public final Effect effect;
 	public final Period period;
 	private final int id;
+	
+	public Period getPeriod() {
+		return this.period;
+	}
 
 	public ExcommunicationCard(int id, Effect effect, Period period) {
 		this.id = id;

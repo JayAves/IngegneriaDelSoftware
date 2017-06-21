@@ -51,13 +51,16 @@ public class View extends Observable implements Observer {
 		int[] temp = inputOutput.askTypeOfAction();
 		msg.setChoice(0, temp[0]);
 		msg.setChoice(1, temp[1]);
-		if (temp[0]!=12)
+		if (temp[0] < 12)
 			msg.setChoice(2, inputOutput.askNumberOfServants());
-		msg.setChoice(3, inputOutput.askFamiliarColor());
-		
+		if (temp[0] < 13)
+			msg.setChoice(3, inputOutput.askFamiliarColor());
+		if (temp[0] == 13)
+			inputOutput.askLeader(msg.getLeaderSituation());
 		setChanged();
 		notifyObservers(msg);
 	}
+	
 	
 	public void askBonusAction (BonusChoice msg) {
 		BonusActionEffect effect = msg.getBonus();
@@ -137,5 +140,8 @@ public class View extends Observable implements Observer {
 		inputOutput.showTower (msg.getTowers());
 	}
 	
+	public void showMessage(String message) {
+			inputOutput.showMessage(message);
+	}
 	
 }

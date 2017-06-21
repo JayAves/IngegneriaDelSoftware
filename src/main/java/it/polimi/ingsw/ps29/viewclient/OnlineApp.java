@@ -38,7 +38,7 @@ public class OnlineApp {
     		Client client = new Client (view, inputConnection);
 			view.addObserver(client);
     		
-    		System.out.println("\nWaiting for a match");
+    		//System.out.println("\nWaiting for a match");
     		
     		
 	 

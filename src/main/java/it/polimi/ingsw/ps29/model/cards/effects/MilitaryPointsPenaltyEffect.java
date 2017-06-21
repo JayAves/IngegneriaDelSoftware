@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
-public class MIlitaryPointsPenaltyEffect extends Effect{
+public class MilitaryPointsPenaltyEffect extends Effect{
 
 	@Override
 	public void performEffect(Player player) {
