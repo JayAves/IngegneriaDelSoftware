@@ -32,6 +32,12 @@ public class SocketConnection extends Connection {
 	public SocketConnection(String playerName) {
 		
 		loginMessage= new PlayerInfoMessage(playerName);
+		try {
+			setLoginToken(loginMessage);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			socket = new Socket (ADDRESS, PORT);
@@ -46,7 +52,7 @@ public class SocketConnection extends Connection {
 			
 			
 			
-			setLoginToken(loginMessage);
+			
 			
 			//invio al server nome e token del client//
 			oos.writeObject(loginMessage);
