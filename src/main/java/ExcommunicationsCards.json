@@ -107,7 +107,7 @@
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
 		{ "diceEmpowerment": -4,
-          "towerType": "Territory",
+          "towerType": "Harvest",
           "discount" :[]
             
         }
@@ -120,7 +120,7 @@
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
 		{ "diceEmpowerment": -4,
-          "towerType": "Building",
+          "towerType": "Production",
           "discount" :[]
             
         }
