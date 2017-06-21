@@ -1,7 +1,7 @@
 [
 {
 "period" : "FIRST",
-    "effect" : {"effectType " :"MalusResourcesExcommunication",
+    "effect" : {"effectType" :"MalusResourcesExcommunication",
     "effectData" :{
                "resources" : [
                            { "resourceType" : "MilitaryPoints",

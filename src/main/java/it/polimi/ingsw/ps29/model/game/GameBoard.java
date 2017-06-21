@@ -48,6 +48,7 @@ public class GameBoard{
 		towersDTO = new TowersDTO();
 		initSpaces();
 		playedLeaderCards = new ArrayList<LeaderCard>();
+		excommunicationDeck= new ArrayList<ExcommunicationDeck>();
 		
 	}
 	

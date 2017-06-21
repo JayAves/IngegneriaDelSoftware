@@ -80,7 +80,9 @@ public class Match extends Observable{
 	    		
 	    		
 	    	}
+	    	
 	    	ArrayList<ExcommunicationCard> tempDeck = new ArrayList<ExcommunicationCard>();
+	    	
 	    	for (int i = 0; i < eCardz.length; i++){
 	    		if (eCardz[i].getPeriod().equals(period))
 	    			tempDeck.add(eCardz[i]);
