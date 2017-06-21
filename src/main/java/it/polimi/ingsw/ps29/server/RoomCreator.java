@@ -43,7 +43,8 @@ public class RoomCreator extends Thread implements Observer{
 			
 		if (counter==2){
 				
-				roomHandler.add(new Room(playersInQueue));
+				Room tempRoom=new Room(playersInQueue);
+				roomHandler.add(tempRoom);
 				counter=0;
 				playersInQueue.clear();
 			}
@@ -53,26 +54,23 @@ public class RoomCreator extends Thread implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		if (!(inQueue((ClientThread) arg))) {
-			
+		boolean updated= updateView((ClientThread) arg);
+		boolean queued=	inQueueCheck((ClientThread) arg);
+		
+		if ((!updated)&& (!queued)) {
 			try {
-			
+				
 				addPlayer((ClientThread) arg);
 		
 			} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Could not find json file- and then no game was initialized");
+					
 				}
-			}
-		
-			else {
-				
-				updateView((ClientThread) arg);
-				
-			}
+			}	
 	}
 	
-	private synchronized boolean inQueue(ClientThread arg) {
+	private synchronized boolean inQueueCheck(ClientThread arg) {
 		
 		for (ClientThread th: playersInQueue) {
 			
@@ -85,21 +83,31 @@ public class RoomCreator extends Thread implements Observer{
 				
 		}
 		return false;
+		
 	}
 
-	private void updateView(ClientThread thread) {
+	private synchronized boolean updateView(ClientThread thread) {
 		
 		for (Room room: roomHandler) {
 			
 			for (ClientThread client: room.getViews()) {
 				
-				if (thread.IDcode.contentEquals(client.IDcode)) {
+				if (client.IDcode.contentEquals(thread.IDcode)) {
 					
 					room.getController().removeView(client.getClientName(), client);
+					System.out.println("\nOld view:"+client.toString());
+					client.stopClient();
 					room.getController().addView(thread.getClientName(),  thread );
+					
+					thread.setInGame(true);
+					System.out.println("\nNew View:"+thread.toString());
+					return true;
 				}
 			}
 		}
+		return false;
+		
+		
 		
 	}
 
@@ -138,7 +146,8 @@ public class RoomCreator extends Thread implements Observer{
 			// TODO Auto-generated method stub
 			if (playersInQueue.size()>1){
 				
-				roomHandler.add(new Room(playersInQueue));
+				Room newRoom=new Room(playersInQueue);
+				roomHandler.add(newRoom);
 				counter=0;
 				playersInQueue.clear();
 			}

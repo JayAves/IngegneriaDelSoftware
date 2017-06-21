@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+
 public class ServerSerializator {
 	
 	private Socket socket;
@@ -27,7 +29,9 @@ public class ServerSerializator {
 			
 		} catch (IOException e) {
 			System.err.println("Unable to send object");
-			//thread.
+			thread.setInGame(false);
+			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getClientName());
+			thread.notifyObservers(msg);
 		}
 		
 	}

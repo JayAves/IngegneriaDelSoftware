@@ -30,6 +30,7 @@ public abstract class Connection extends Observable implements Runnable{
 	    if ((jcode!=null)&&(jcode.contains(loginMessage.getName()))) {
 	    	
 	    	loginMessage.setToken(jcode);
+	    	System.out.println("Ho trovato una partita in corso!");
 	    }
 		
 	    else {
@@ -45,6 +46,7 @@ public abstract class Connection extends Observable implements Runnable{
 		if(jcode!=null) {
 			myfile= new File ("src/main/java/Login"+counter+".json");
 			counter++;
+			System.out.println("new login");
     	}
 		else{
 			myfile= new File ("src/main/java/Login.json");

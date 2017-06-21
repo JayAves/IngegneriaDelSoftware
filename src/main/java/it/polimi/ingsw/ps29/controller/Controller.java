@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps29.model.action.NoAction;
 import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
+import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
@@ -52,7 +53,7 @@ public class Controller implements Observer{
 	private ActionState stateOfAction; 
 	private InfoForView info;
 	private boolean sendInfo;
-	private boolean sendUpdate;
+	
 	//il booleano è settato a false all'inizio di ogni gestione dell'input utente
 	//se ci sarà qualcosa da notificare viene settato a true
 	
@@ -69,9 +70,9 @@ public class Controller implements Observer{
 	}
 	
 	public void removeView(String playerName, ClientThread view) {
-		if(!views.containsKey(playerName))
-			views.remove(playerName, view);
-		System.out.println("Player "+playerName+ "is back in Game");
+		if(views.containsKey(playerName))
+			views.remove(playerName);
+		System.out.println("\nPlayer "+playerName+ " is back in Game");
 	}
 	
 	
@@ -79,18 +80,24 @@ public class Controller implements Observer{
 		ArrayList<ArrayList<Object>> leaderSituation;
 		String playerName = model.getBoard().getCurrentPlayer().getName();
 		ClientThread view = views.get(playerName);
+		
+		
 		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 		stateOfAction = stateOfAction.beforeAction();
-		//costruisco l'oggetto da utilizzare nell'interazione con l'utente
-		InteractionMessage object = stateOfAction.objectForView(playerName);
-		if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
-			leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
-			//l'oggetto generato è di tipo ActionChoice se entro in questo if
-			((ActionChoice)object).setLeaderSituation(leaderSituation);
+		if  (view.getInGame()) {
+			//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
+			InteractionMessage object = stateOfAction.objectForView(playerName);
+			if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
+				leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
+				//l'oggetto generato è di tipo ActionChoice se entro in questo if//
+				((ActionChoice)object).setLeaderSituation(leaderSituation);
+			}
+			view.startInteraction (object);
 		}
-		view.startInteraction (object);
-		//
-		
+		else {
+			model.getBoard().changePlayerOrder();
+			gameEngine();
+		}
 	}
 	
 
@@ -104,7 +111,6 @@ public class Controller implements Observer{
 		else if (o instanceof ClientThread) {
 			//eseguo l'azione scelta dall'utente
 			sendInfo = false;
-			sendUpdate=false;
 			info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
 			info.playerColor = model.getBoard().getCurrentPlayer().getColor();
 			((InteractionMessage)arg).visit(visitor);
@@ -120,9 +126,7 @@ public class Controller implements Observer{
 					view.getValue().startInteraction(info);
 			}
 			
-			if(sendUpdate) {
-				//devo sospendere la view e mandare solo noAction
-			}
+			
 			
 				
 			gameEngine();
@@ -270,9 +274,13 @@ public class Controller implements Observer{
 
 		public void visit(PlayerInfoMessage playerInfoMessage) {
 			// TODO Auto-generated method stub
-			//se è scattato un timeout, notifico players che uno di questi è disconnesso
+			
+			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+				view.getValue().startInteraction(playerInfoMessage);
+	
+			stateOfAction= new PerformedState();
+			stateOfAction.afterAction(model);
 		}
-		
 		
 	}
 	

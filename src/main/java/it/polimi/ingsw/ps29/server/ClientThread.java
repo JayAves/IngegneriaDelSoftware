@@ -7,14 +7,18 @@ import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 public abstract class ClientThread extends Observable implements Runnable{
 	
 	protected String IDcode;
-	
 	protected boolean inGame;
 	
-	public abstract void stopClient();
+	protected abstract void stopClient();
 	
 	public abstract String getClientName();
 
-	public abstract void setInGame();
+	protected abstract void setInGame(boolean change);
 	
 	public abstract void startInteraction(InteractionMessage msg);
+	
+	public boolean getInGame() {
+		return inGame;
+	}
+	
 }

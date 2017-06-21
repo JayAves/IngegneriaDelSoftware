@@ -58,6 +58,8 @@ public class Match extends Observable{
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
 	    ExcommunicationCard[] eCardz = geCards.create().fromJson(eCards, ExcommunicationCard[].class);
 	    
+	    
+	    
 	    Period[] periods= Period.values();
 	    CardType [] types = CardType.values();
 	    
@@ -88,6 +90,8 @@ public class Match extends Observable{
 	    	
 	        board.getExDecks().add(eDeck);
 	    }
+	    
+	    
 	}
 	
 	

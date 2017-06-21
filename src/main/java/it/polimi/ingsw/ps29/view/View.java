@@ -139,5 +139,8 @@ public class View extends Observable implements Observer {
 		inputOutput.showTower (msg.getTowers());
 	}
 	
+	public void showMessage(String message) {
+			inputOutput.showMessage(message);
+	}
 	
 }

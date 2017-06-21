@@ -83,7 +83,8 @@ public class Client implements Observer{
 
 			public void receive(PlayerInfoMessage playerInfoMessage) {
 				// TODO Auto-generated method stub
-				
+				String message= "\nIl player "+ playerInfoMessage.getName().toUpperCase()+" si è disconnesso dalla partita!";
+				view.showMessage(message);
 			}
 	}
 

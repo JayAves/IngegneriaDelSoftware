@@ -15,6 +15,8 @@ public class SocketClientThread extends ClientThread {
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private ServerSerializator serializator;
+	private boolean endOfConnection= false;
+	private boolean newConnection=false;
 	
 	public SocketClientThread(Socket socket, PlayerInfoMessage playerLogin, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
@@ -33,7 +35,7 @@ public class SocketClientThread extends ClientThread {
 	@Override
 	public void run() {
 		Object obj;
-		boolean endOfConnection= false;
+		
 		while(!endOfConnection) {
 			try{
 				obj = ois.readObject();
@@ -44,12 +46,20 @@ public class SocketClientThread extends ClientThread {
 				notifyObservers(obj);
 				
 			} catch (IOException e) {
+				
 				System.err.println("Unable to receive message from client!");
-				//avviso controller che non ho ricevuto messaggio [no action]
+				endOfThis();
+				
+				
+			
 			} catch (ClassNotFoundException e) {
 				System.err.println("Unable to cast the object");
-				e.printStackTrace();
-			}
+				endOfThis();
+				}
+		}
+		
+		while (!newConnection) {
+			
 		}
 		
 	}
@@ -60,8 +70,8 @@ public class SocketClientThread extends ClientThread {
     
     
     @Override
-    public void setInGame(){
-    	inGame=true;
+    public void setInGame(boolean change){
+    	inGame=change;
     }
 
 	@Override
@@ -73,23 +83,33 @@ public class SocketClientThread extends ClientThread {
 
 	@Override
 	public void startInteraction(InteractionMessage msg) {
-		serializator.serializeObject(msg);
+		if (inGame) {
+			serializator.serializeObject(msg);
 		//dopo x secondi verifico se ho ricevuto risposta
+		//se no chiudo tutto e mando messaggio playerInfo
+		}
 	}
-	
-	
 
 
 	@Override
-	public void stopClient() {
+	protected void stopClient() {
 		// TODO Auto-generated method stub
-		
+		endOfConnection=true;
+		newConnection=true;
+	}
+	
+	public void endOfThis() {
+		inGame=false;
+		PlayerInfoMessage msg= new PlayerInfoMessage(playerName);
+		setChanged();
+		notifyObservers(msg);
+		endOfConnection=true;
 	}
 
 
-	public void gameIsStarted() {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
+
+	
 }
 
