@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class PersonalBonusTile {
-	private final int id;
+	private int id;
 	private final ArrayList<Resource> productionBonus;
 	private final ArrayList<Resource> harvestBonus;
 	
@@ -13,6 +13,7 @@ public class PersonalBonusTile {
 		this.id = id;
 		this.productionBonus = productionBonus;
 		this.harvestBonus = harvestBonus;
+		this.id=id;
 	}
 
 
