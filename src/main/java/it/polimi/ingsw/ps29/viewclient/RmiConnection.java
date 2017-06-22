@@ -42,18 +42,17 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 			
 		}		
 		
-		
+				
 		
 	}
 
 	@Override
 	public void run() {
 
-		
 		try {
 			
 			server.addClient(remoteRef,loginMessage);
-			//server.addClient(remoteRef, loginMessage)
+			
 		
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -72,7 +71,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	public void sendMessage(InteractionMessage msg) {
 		// TODO Auto-generated method stub
 		try {
-			server.messageforMyThread(loginMessage.getName(), msg);
+			server.messageforMyThread(loginMessage.getToken(), msg);
 		
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

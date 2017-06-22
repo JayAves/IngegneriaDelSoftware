@@ -14,13 +14,8 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	 */
 	private static final long serialVersionUID = 2656528845360500313L;
 	protected String username;
-	protected boolean myTurn;
 	protected boolean recentlyPoked;
 	private RmiClientInterface clientInterface;
-	
-	
-	
-	
 	
 	public RMIClientThread(PlayerInfoMessage login, RmiClientInterface clientInterface) {
 		
@@ -47,10 +42,8 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	@Override
 	public void run() {
 		
-		//logica applicativa: se non ricevo richieste per un po' di tempo notifico server
-		
 		while(recentlyPoked) {
-			//timer che se scade chiude il thread
+			
 		}
 	}
 

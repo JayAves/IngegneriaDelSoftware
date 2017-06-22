@@ -345,6 +345,7 @@ public class Controller implements Observer{
 	private void conclusion () {
 		//funzione per la terminazione del gioco: gestione punteggi, connessioni, notifiche alle view...
 		System.out.println("...end of match..");
+		
 	}
 	
 	private void askForExcommunication () {
