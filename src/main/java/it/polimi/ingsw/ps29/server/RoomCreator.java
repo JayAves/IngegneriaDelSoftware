@@ -14,7 +14,8 @@ public class RoomCreator extends Thread implements Observer{
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
-	private Long period;
+	private int period = 10000;
+	private boolean startTimer;
 	
 	
 	public RoomCreator(){
@@ -26,6 +27,8 @@ public class RoomCreator extends Thread implements Observer{
 		this.playersInQueue= new ArrayList<ClientThread>();
 		
 		this.timer= new Timer();
+		
+		startTimer= false;
 		
 	}
 	
@@ -40,14 +43,18 @@ public class RoomCreator extends Thread implements Observer{
 	private synchronized void increaseCounter() throws FileNotFoundException{
 			
 		counter++;
+		
+		if (counter==1) //countdown to game start is set
+			startTimer=true;
 			
-		if (counter==2){
-				
-				Room tempRoom=new Room(playersInQueue);
-				roomHandler.add(tempRoom);
-				counter=0;
-				playersInQueue.clear();
-			}
+		if (counter==4){ //enough players for a new Room
+			counter=0;
+			System.out.println("New Room");
+			roomHandler.add(new Room(playersInQueue));
+			System.out.println(roomHandler.size());
+			playersInQueue.clear();
+			
+		}
 	}
 
 	
@@ -90,6 +97,8 @@ public class RoomCreator extends Thread implements Observer{
 		
 		for (Room room: roomHandler) {
 			
+			System.out.println(room.getViews());
+			
 			for (ClientThread client: room.getViews()) {
 				
 				if (client.IDcode.contentEquals(thread.IDcode)) {
@@ -115,17 +124,14 @@ public class RoomCreator extends Thread implements Observer{
 		
 		while (true){
 			
-			//timer.scheduleAtFixedRate(new Task(), 0, period);
-			
-			
-				try {
-					
-					sleep(1000);
+			while (!startTimer) { //wait until 1 player is in queue
 				
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			}
+			
+			timer.schedule(new Task(), period);
+		
+			
+				
 			
 		}
 	}
@@ -148,6 +154,7 @@ public class RoomCreator extends Thread implements Observer{
 				
 				Room newRoom=new Room(playersInQueue);
 				roomHandler.add(newRoom);
+				System.out.println("Room: "+ newRoom);
 				counter=0;
 				playersInQueue.clear();
 			}

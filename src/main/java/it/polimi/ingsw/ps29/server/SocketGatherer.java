@@ -69,7 +69,6 @@ public class SocketGatherer extends Observable {
 					//System.out.println(toDelete);	
 					clients.remove(toDelete);	
 					clients.add(virtualView);
-					System.out.println(clients);
 					Thread t = new Thread (virtualView);
 					t.start();
 					

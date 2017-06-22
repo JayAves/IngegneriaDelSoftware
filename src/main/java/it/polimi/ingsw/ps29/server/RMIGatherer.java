@@ -43,10 +43,10 @@ public class RMIGatherer extends Observable implements Serializable{
 		System.out.println("RMI is up on registry 1099");
 	}
 
-	public RMIClientThread getThread(String client) {
+	public RMIClientThread getThread(String loginToken) {
 		
 		for (RMIClientThread th: clients) {
-			if (th.username.equals(client))
+			if (th.IDcode.contentEquals(loginToken))
 				return th;
 		}
 		

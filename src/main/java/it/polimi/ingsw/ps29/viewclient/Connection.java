@@ -64,7 +64,7 @@ public abstract class Connection extends Observable implements Runnable{
 		    else {
 		    	
 		    	loginMessage.setToken(token);
-		    	System.out.println("Found an on-game! Reconnecting...");
+		    	
 		    }
 	   }
 	    else {
