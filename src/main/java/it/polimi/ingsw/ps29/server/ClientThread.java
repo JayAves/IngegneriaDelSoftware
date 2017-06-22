@@ -8,6 +8,9 @@ public abstract class ClientThread extends Observable implements Runnable{
 	
 	protected String IDcode;
 	protected boolean inGame;
+	protected static int turnTimer;
+	protected boolean msgBack;
+	
 	
 	protected abstract void stopClient();
 	

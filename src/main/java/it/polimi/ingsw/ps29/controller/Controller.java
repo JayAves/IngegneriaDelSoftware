@@ -280,8 +280,8 @@ public class Controller implements Observer{
 		public void visit(PlayerInfoMessage playerInfoMessage) {
 			// TODO Auto-generated method stub
 			
-			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-				view.getValue().startInteraction(playerInfoMessage);
+				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+					view.getValue().startInteraction(playerInfoMessage);
 			
 			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
 				stateOfAction= new PerformedState();

@@ -2,6 +2,9 @@ package it.polimi.ingsw.ps29.server;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
@@ -23,8 +26,9 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		this.clientInterface=clientInterface;
 		inGame=false;
 		recentlyPoked=true;
-		System.out.println(this.username);
+		//System.out.println(this.username);
 		IDcode=login.getToken();
+		turnTimer= TimerJson.turnTimer;
 		
 	}
 
@@ -70,7 +74,8 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		if (inGame){
 			try {
 				clientInterface.notify(msg);
-				//dopo x secondi verifico se ho ricevuto risposta
+				//Timer timer= new Timer();
+				//timer.schedule(new Task(), turnTimer);
 		
 			} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -81,6 +86,21 @@ public class RMIClientThread extends ClientThread implements Serializable{
 			notifyObservers(error);
 			}
 		}
+	}
+	
+	private class Task extends TimerTask{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			if (!msgBack) {
+				PlayerInfoMessage msg= new PlayerInfoMessage(username);
+				msg.setTimeExpired();
+				setChanged();
+				notifyObservers(msg);
+			}
+		}
+		
 	}
 
 }
