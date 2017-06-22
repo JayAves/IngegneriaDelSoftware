@@ -11,5 +11,13 @@ public class ExcommunicationDeck {
 		this.deck = deck;
 	} 
 	
+	public ArrayList<ExcommunicationCard> getDeck () {
+		return deck;
+	}
+	
+	public ExcommunicationCard getCard (int index) {
+		return deck.get(index);
+	}
+	
 	
 }

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.CardType;
@@ -10,7 +11,6 @@ import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
@@ -186,6 +186,13 @@ public class GameBoard{
 		       break;
 		}
 		return bonus ;
+	}
+	
+	public void randomExcommunication () {
+		for(int i=0; i<excommunicationDeck.size(); i++) {
+			int rnd= new Random().nextInt(excommunicationDeck.get(i).getDeck().size());
+			excommunications.put(i+1, excommunicationDeck.get(i).getCard(rnd));
+		}
 	}
 	
 }
