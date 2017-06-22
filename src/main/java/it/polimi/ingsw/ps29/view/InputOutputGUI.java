@@ -7,10 +7,8 @@ import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
-import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.TowersForView;
 
 public class InputOutputGUI implements InputOutput {
 
@@ -83,9 +81,9 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public void askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
+	public ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 

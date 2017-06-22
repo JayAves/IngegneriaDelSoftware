@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
@@ -230,16 +231,44 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public void askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
+	public ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
 		// TODO Auto-generated method stub
-		int choice;
-		do{
-		for ( int i = 0 ; i < leaderSituation.size();){
-			System.out.println( " " + i + " " + leaderSituation.get(i).get(1) + leaderSituation.get(i).get(4) );
+		int choice = 0;
+		int secondChoice = 0;
+		
+		while (choice != 5){
+			do{
+			for ( int i = 0 ; i < leaderSituation.size(); i++)
+				System.out.println( " " + (i + 1) + " " + leaderSituation.get(i).get(1));
+			
+			System.out.println((" 5 No azione Leader"));
+			choice = scanner.nextInt();
+			}while( choice < 1 || choice > 5);
+			
+			//l'utente ha scelto il leader
+			do {
+				for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size(); i++)
+					System.out.println(" " + (i + 1) + " " + printCorrectOptions(leaderSituation.get(choice -1)).get(i));
+				secondChoice = scanner.nextInt();
+			} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
+			
+			// l'utente ha scelto cosa fare con la carta
+			
+			leaderSituation.get(choice -1).add(4, printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
 		}
-		System.out.println((" 5 No azione Leader"));
-		choice = scanner.nextInt();
-		}while( choice < 1 || choice > 5);
+		return leaderSituation;
 	}
+	
+	private ArrayList<String> printCorrectOptions(ArrayList<Object> card){
+		ArrayList<String> toShow = new ArrayList<String>();
+		if ((int)card.get(2) == 0){
+			toShow.add(" DISCARD");
+			if ((boolean) card.get(3))
+				toShow.add("PLAY");
+		}
+		if ((boolean) card.get(3))
+				toShow.add(" ACTIVATE");
+		return toShow;
+		}
 
 }

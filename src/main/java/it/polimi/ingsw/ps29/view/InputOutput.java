@@ -35,7 +35,7 @@ public interface InputOutput {
 
 	abstract void showTower(TowersDTO msg);
 
-	abstract void askLeader(ArrayList<ArrayList<Object>> leaderSituation);
+	abstract ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation);
 
 
 }

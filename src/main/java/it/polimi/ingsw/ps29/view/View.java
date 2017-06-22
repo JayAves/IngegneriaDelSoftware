@@ -56,7 +56,7 @@ public class View extends Observable implements Observer {
 		if (temp[0] < 13)
 			msg.setChoice(3, inputOutput.askFamiliarColor());
 		if (temp[0] == 13)
-			inputOutput.askLeader(msg.getLeaderSituation());
+			msg.setLeaderSituation(inputOutput.askLeader(msg.getLeaderSituation()));
 		setChanged();
 		notifyObservers(msg);
 	}

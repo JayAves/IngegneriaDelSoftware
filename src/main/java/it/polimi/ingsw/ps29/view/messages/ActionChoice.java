@@ -14,6 +14,11 @@ public class ActionChoice extends InteractionMessage {
 	//int [2] num servitori
 	//int [3] familiare
 	ArrayList<ArrayList<Object>> leaderSituation;
+	//0 :id
+	//1 :toString
+	//2 : mazzo di appartenenza (0 in mano, 1 giocata)
+	//3 :attivabile
+	//4 :scelta utente DISCARD PLAY ACTIVATE
 	
 	public ActionChoice (String player) {
 		super (player);
