@@ -49,6 +49,7 @@ public class GameBoard{
 		initSpaces();
 		playedLeaderCards = new ArrayList<LeaderCard>();
 		excommunicationDeck= new ArrayList<ExcommunicationDeck>();
+		excommunications = new HashMap<Integer, ExcommunicationCard>();
 		
 	}
 	
