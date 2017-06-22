@@ -17,7 +17,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.TowersForView;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public class InputOutputCLI implements InputOutput {
 	
@@ -221,8 +221,11 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public void showTower(TowersDTO msg) {
-		for(HashMap.Entry <String, ArrayList<CardDTO>> tower: msg.getTowers().entrySet()) {
+	public void showTowerAndDices(TowersAndDicesForView msg) {
+		String[] color = {"Black", "White", "Orange"};
+		for(int i=0; i<color.length; i++)
+			System.out.println("Value of "+color[i]+" dice: "+msg.getDices()[i]);
+		for(HashMap.Entry <String, ArrayList<CardDTO>> tower: msg.getTowers().getTowers().entrySet()) {
 			System.out.println("\n"+tower.getKey().toUpperCase()+"\n");
 			for(CardDTO card: tower.getValue())
 				System.out.println(card.toString());
@@ -245,16 +248,18 @@ public class InputOutputCLI implements InputOutput {
 			choice = scanner.nextInt();
 			}while( choice < 1 || choice > 5);
 			
-			//l'utente ha scelto il leader
-			do {
-				for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size(); i++)
-					System.out.println(" " + (i + 1) + " " + printCorrectOptions(leaderSituation.get(choice -1)).get(i));
-				secondChoice = scanner.nextInt();
-			} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
-			
-			// l'utente ha scelto cosa fare con la carta
-			
-			leaderSituation.get(choice -1).add(4, printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
+			if(choice!=5) {
+				//l'utente ha scelto il leader
+				do {
+					for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size(); i++)
+						System.out.println(" " + (i + 1) + " " + printCorrectOptions(leaderSituation.get(choice -1)).get(i));
+					secondChoice = scanner.nextInt();
+				} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
+				
+				// l'utente ha scelto cosa fare con la carta
+				
+				leaderSituation.get(choice -1).add(4, printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
+			}
 		}
 		return leaderSituation;
 	}

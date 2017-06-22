@@ -18,7 +18,7 @@ import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
-import it.polimi.ingsw.ps29.view.messages.TowersForView;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class View extends Observable implements Observer {
@@ -135,9 +135,9 @@ public class View extends Observable implements Observer {
 		inputOutput.showInfo(gameBoardDTO, towersDTO, personalBoardsDTO);
 	}
 
-	public void showTowers (TowersForView msg) {
+	public void showTowersAndDices (TowersAndDicesForView msg) {
 		towersDTO = msg.getTowers();
-		inputOutput.showTower (msg.getTowers());
+		inputOutput.showTowerAndDices (msg);
 	}
 	
 	public void showMessage(String message) {

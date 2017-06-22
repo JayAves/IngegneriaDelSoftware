@@ -4,13 +4,19 @@ import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
-public class TowersForView extends InteractionMessage {
+public class TowersAndDicesForView extends InteractionMessage {
 
 	private TowersDTO towers;
+	private int[] dices = new int[3];
 	
-	public TowersForView(String player, TowersDTO towers) {
+	/*0 black
+	 *1 white
+	 *2 orange*/
+	
+	public TowersAndDicesForView(String player, TowersDTO towers, int[] dices) {
 		super(player);
 		this.towers = towers;
+		this.dices = dices;
 	}
 
 	@Override
@@ -27,6 +33,10 @@ public class TowersForView extends InteractionMessage {
 
 	public TowersDTO getTowers() {
 		return towers;
+	}
+	
+	public int[] getDices () {
+		return dices;
 	}
 
 }

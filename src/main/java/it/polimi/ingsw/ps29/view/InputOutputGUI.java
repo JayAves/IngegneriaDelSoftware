@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public class InputOutputGUI implements InputOutput {
 
@@ -75,7 +76,7 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public void showTower(TowersDTO msg) {
+	public void showTowerAndDices(TowersAndDicesForView msg) {
 		// TODO Auto-generated method stub
 		
 	}

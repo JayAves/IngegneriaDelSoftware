@@ -11,7 +11,7 @@ import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
-import it.polimi.ingsw.ps29.view.messages.TowersForView;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class Client implements Observer{
@@ -77,8 +77,8 @@ public class Client implements Observer{
 				view.handleInfo (msg);
 			}
 			
-			public void receive (TowersForView msg) {
-				view.showTowers (msg);
+			public void receive (TowersAndDicesForView msg) {
+				view.showTowersAndDices(msg);
 			}
 
 			public void receive(PlayerInfoMessage playerInfoMessage) {

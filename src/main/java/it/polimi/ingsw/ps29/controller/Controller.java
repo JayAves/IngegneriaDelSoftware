@@ -23,6 +23,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
@@ -42,7 +43,7 @@ import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
-import it.polimi.ingsw.ps29.view.messages.TowersForView;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class Controller implements Observer{
@@ -294,10 +295,7 @@ public class Controller implements Observer{
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
 			
-			//mostro le torri alle view
-			towersForView = createTowersDTO();
-			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-				view.getValue().startInteraction(new TowersForView(view.getValue().getClientName(), towersForView));
+			initRoundMessagesForView();
 			
 			callCorrectView(); //svolgo action
 		}
@@ -377,16 +375,12 @@ public class Controller implements Observer{
 	}
 	
 	public void endVaticanState () {
-		TowersDTO towersForView;
 		//chiamo questa funzione quando non devo fare il Vatican Report
 		//oppure mi accorgo di averlo concluso senza aver svolto un'azione per la gameEngine 
 		roundState = new EndOfTheRoundState();
 		roundState = roundState.doAction(model.getRound(), model); //dopo aver cambiato lo stato, svolgo azione
 		
-		//mostro le torri alle view
-		towersForView = createTowersDTO();
-		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-			view.getValue().startInteraction(new TowersForView(view.getValue().getClientName(), towersForView));
+		initRoundMessagesForView();
 		
 		if(model.endOfMatch) //se la partita termina esco, altrimenti devo richiamare una funzione per proseguire
 			conclusion();
@@ -403,5 +397,16 @@ public class Controller implements Observer{
 				msg.addCard(new CardDTO (cardOnTower.getId(), cardOnTower.getType(), cardOnTower.toString()));
 			}
 		return msg;
+	}
+	
+	public void initRoundMessagesForView () {
+		//mostro le torri alle view
+		TowersDTO towersForView = createTowersDTO();
+		int[] dices = new int[3];
+		for (int i=0; i<model.getBoard().getDices().size(); i++)
+			dices[i] = model.getBoard().getDices().get(i).getValue();
+		
+		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+			view.getValue().startInteraction(new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices));
 	}
 }
