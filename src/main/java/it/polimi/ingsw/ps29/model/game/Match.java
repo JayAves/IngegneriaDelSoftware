@@ -105,7 +105,7 @@ public class Match extends Observable{
     	Color[] colors = Color.values();
     	
     	for(int i=0; i<playersNames.size(); i++) 
-    		players.add(new Player(playersNames.get(i), colors[i], new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ())));
+    		players.add(new Player(playersNames.get(i), colors[i], null));
     	
     	BufferedReader tiles = new BufferedReader(new FileReader("src/main/java/personalbonustile.json"));
 	    GsonBuilder gtiles = new GsonBuilder();
