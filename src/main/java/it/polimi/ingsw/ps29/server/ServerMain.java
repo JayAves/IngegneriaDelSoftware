@@ -1,10 +1,6 @@
 package it.polimi.ingsw.ps29.server;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-
-import com.google.gson.GsonBuilder;
 
 public class ServerMain {
 

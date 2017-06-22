@@ -130,9 +130,6 @@ public class Controller implements Observer{
 				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 					view.getValue().startInteraction(info);
 			}
-			
-			
-			
 				
 			gameEngine();
 		}
@@ -297,8 +294,8 @@ public class Controller implements Observer{
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
 			
-			initGameMessagesForView(); //entra in questo ramo della funzione solo la prima volta
-			initRoundMessagesForView();
+			initGameMessagesForView();
+			//initRoundMessagesForView(); //entra in questo ramo della funzione solo la prima volta
 			
 			callCorrectView(); //svolgo action
 		}
@@ -404,12 +401,17 @@ public class Controller implements Observer{
 		return msg;
 	}
 	
-	public void initRoundMessagesForView () {
-		//mostro le torri alle view
-		TowersDTO towersForView = createTowersDTO();
+	public int[] createDicesDTO () {
 		int[] dices = new int[3];
 		for (int i=0; i<model.getBoard().getDices().size(); i++)
 			dices[i] = model.getBoard().getDices().get(i).getValue();
+		return dices;
+	}
+	
+	public void initRoundMessagesForView () {
+		//mostro le torri alle view
+		TowersDTO towersForView = createTowersDTO();
+		int[] dices = createDicesDTO();
 		
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 			view.getValue().startInteraction(new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices));
@@ -430,8 +432,14 @@ public class Controller implements Observer{
 			exCards.add(new ExcommunicationCardDTO(exCard.getId(), exCard.getPeriod(), exCard.toString()));
 		}
 		
+		TowersDTO towersForView = createTowersDTO();
+		int[] dices = createDicesDTO();
+		
 		//invio il messaggio alle view
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards));
+			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards,
+					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices)));
+		
 	}
+	
 }

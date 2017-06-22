@@ -157,6 +157,7 @@ public class View extends Observable implements Observer {
 				personalBoardsDTO.put(tile.getKey(), new PersonalBoardDTO(tile.getKey(), tile.getValue()));
 		exCards = msg.getExCards();
 		inputOutput.showFirstInfo (msg);
+		showTowersAndDices(msg.getTowers());
 	}
 	
 }

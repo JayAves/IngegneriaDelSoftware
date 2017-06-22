@@ -12,11 +12,14 @@ public class FirstBoardInfo extends InteractionMessage {
 	
 	private HashMap<String, PersonalBonusTileDTO> tile;
 	private ArrayList<ExcommunicationCardDTO> exCards;
+	private TowersAndDicesForView towers;
 
-	public FirstBoardInfo(String player, HashMap<String, PersonalBonusTileDTO> tile, ArrayList<ExcommunicationCardDTO> exCards) {
+	public FirstBoardInfo(String player, HashMap<String, PersonalBonusTileDTO> tile, ArrayList<ExcommunicationCardDTO> exCards, 
+			TowersAndDicesForView towers) {
 		super(player);
 		this.tile = tile;
 		this.exCards = exCards;
+		this.towers = towers;
 	}
 
 	@Override
@@ -37,6 +40,10 @@ public class FirstBoardInfo extends InteractionMessage {
 	
 	public ArrayList<ExcommunicationCardDTO> getExCards () {
 		return exCards;
+	}
+	
+	public TowersAndDicesForView getTowers () {
+		return towers;
 	}
 
 }

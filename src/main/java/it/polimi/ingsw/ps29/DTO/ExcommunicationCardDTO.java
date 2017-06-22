@@ -1,8 +1,10 @@
 package it.polimi.ingsw.ps29.DTO;
 
+import java.io.Serializable;
+
 import it.polimi.ingsw.ps29.model.game.Period;
 
-public class ExcommunicationCardDTO {
+public class ExcommunicationCardDTO implements Serializable {
 	int id;
 	Period period;
 	String effectToString;
