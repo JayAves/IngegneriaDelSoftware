@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps29.server;
 
 import java.io.IOException;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
@@ -26,12 +29,28 @@ public class ServerSerializator {
 		try {
 			oos.writeObject(o);
 			oos.flush();
+			//Timer timer= new Timer();
+			//timer.schedule(new Task(), thread.turnTimer);
 			
 		} catch (IOException e) {
 			System.err.println("Unable to send object");
 			thread.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getClientName());
 			thread.notifyObservers(msg);
+		}
+		
+	}
+	
+	private class Task extends TimerTask{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			if (!thread.msgBack) {
+				PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
+				msg.setTimeExpired();
+				thread.notifyObservers(msg);
+			}
 		}
 		
 	}

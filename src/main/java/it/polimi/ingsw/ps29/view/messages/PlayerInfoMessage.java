@@ -6,13 +6,13 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 public class PlayerInfoMessage extends InteractionMessage {
 
 	private String loginToken;
-	//private boolean connected=false;
+	private boolean timeExpired;
 	
 	
 	
 	public PlayerInfoMessage(String player) {
 		super(player);
-		
+		timeExpired= false;
 		
 		
 	}
@@ -39,4 +39,10 @@ public class PlayerInfoMessage extends InteractionMessage {
 		return loginToken;
 	}
 	
+	public void setTimeExpired() {
+		timeExpired=true;
+	}
+	public boolean getTimeExpired() {
+		return timeExpired;
+	}
 }

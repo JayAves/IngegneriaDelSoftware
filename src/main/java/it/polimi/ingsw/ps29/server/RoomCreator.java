@@ -14,7 +14,7 @@ public class RoomCreator extends Thread implements Observer{
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
-	private int period = 10000;
+	private int period =10000;
 	private boolean startTimer;
 	
 	
@@ -45,7 +45,7 @@ public class RoomCreator extends Thread implements Observer{
 		counter++;
 		
 		if (counter==1) //countdown to game start is set
-			startTimer=true;
+			timer.schedule(new Task(), period);
 			
 		if (counter==4){ //enough players for a new Room
 			counter=0;
@@ -124,13 +124,12 @@ public class RoomCreator extends Thread implements Observer{
 		
 		while (true){
 			
-			while (!startTimer) { //wait until 1 player is in queue
-				
+			try {
+				sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			
-			timer.schedule(new Task(), period);
-		
-			
 				
 			
 		}
@@ -150,14 +149,15 @@ public class RoomCreator extends Thread implements Observer{
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			if (playersInQueue.size()>1){
-				
+		
+				if (playersInQueue.size()>1) {
 				Room newRoom=new Room(playersInQueue);
 				roomHandler.add(newRoom);
 				System.out.println("Room: "+ newRoom);
 				counter=0;
 				playersInQueue.clear();
-			}
+				}
+			
 		}
 		
 	}

@@ -18,6 +18,7 @@ public class SocketClientThread extends ClientThread {
 	private boolean endOfConnection= false;
 	private boolean newConnection=false;
 	
+	
 	public SocketClientThread(Socket socket, PlayerInfoMessage playerLogin, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
 		//System.out.println("SocketVirtualView: "+socket);
@@ -27,6 +28,7 @@ public class SocketClientThread extends ClientThread {
 		this.ois = ois;
 		IDcode= playerLogin.getToken();
 		inGame=false;
+		msgBack= false;
 		
 		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
 	}
@@ -40,6 +42,7 @@ public class SocketClientThread extends ClientThread {
 			try{
 				obj = ois.readObject();
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
+				msgBack=true;
 				
 				//notifico Controller
 				setChanged();
@@ -106,7 +109,7 @@ public class SocketClientThread extends ClientThread {
 		endOfConnection=true;
 	}
 
-
+	
 	
 
 
