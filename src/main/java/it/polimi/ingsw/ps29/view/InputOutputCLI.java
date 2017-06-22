@@ -6,8 +6,10 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
@@ -17,6 +19,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public class InputOutputCLI implements InputOutput {
@@ -275,5 +278,14 @@ public class InputOutputCLI implements InputOutput {
 				toShow.add(" ACTIVATE");
 		return toShow;
 		}
+
+	@Override
+	public void showFirstInfo(FirstBoardInfo msg) {
+		for(HashMap.Entry<String, PersonalBonusTileDTO> tile: msg.getTiles().entrySet())
+			System.out.println(tile.getValue().toString());
+		for(ExcommunicationCardDTO exCard: msg.getExCards())
+			System.out.println(exCard.toString());
+		
+	}
 
 }

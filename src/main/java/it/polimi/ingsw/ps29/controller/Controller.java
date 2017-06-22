@@ -7,6 +7,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
+import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.action.Action;
@@ -23,6 +25,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -39,6 +42,7 @@ import it.polimi.ingsw.ps29.server.ClientThread;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
@@ -289,12 +293,11 @@ public class Controller implements Observer{
 	}
 	
 	public void gameEngine () {
-		//utilizzo questo oggetto all'inizio di ogni round per mostrare le torri alla view
-		TowersDTO towersForView;
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
 			
+			initGameMessagesForView(); //entra in questo ramo della funzione solo la prima volta
 			initRoundMessagesForView();
 			
 			callCorrectView(); //svolgo action
@@ -380,12 +383,14 @@ public class Controller implements Observer{
 		roundState = new EndOfTheRoundState();
 		roundState = roundState.doAction(model.getRound(), model); //dopo aver cambiato lo stato, svolgo azione
 		
-		initRoundMessagesForView();
-		
 		if(model.endOfMatch) //se la partita termina esco, altrimenti devo richiamare una funzione per proseguire
 			conclusion();
-		else
+		
+		else {
+			initRoundMessagesForView();
 			callCorrectView(); //inizia una nuova fase per le azioni
+		}
+		
 	}
 	
 	public TowersDTO createTowersDTO () {
@@ -408,5 +413,25 @@ public class Controller implements Observer{
 		
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 			view.getValue().startInteraction(new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices));
+	}
+	
+	public void initGameMessagesForView () {
+		//costruisco l'oggetto per le tile
+		HashMap <String, PersonalBonusTileDTO> tiles = new HashMap <String, PersonalBonusTileDTO> ();
+		for (Player player: model.getBoard().getPlayers())
+			tiles.put(player.getName(), new PersonalBonusTileDTO(
+					player.getPersonalBoard().getPersonalBonusTile().getId(), 
+					player.getPersonalBoard().getPersonalBonusTile().toString()));
+		
+		//costruisco l'oggetto per le scomuniche
+		ArrayList<ExcommunicationCardDTO> exCards = new ArrayList<ExcommunicationCardDTO>();
+		for (int i=0; i<3; i++) {
+			ExcommunicationCard exCard = model.getBoard().getExcommunication(i+1);
+			exCards.add(new ExcommunicationCardDTO(exCard.getId(), exCard.getPeriod(), exCard.toString()));
+		}
+		
+		//invio il messaggio alle view
+		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards));
 	}
 }

@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public interface InputOutput {
@@ -37,5 +38,5 @@ public interface InputOutput {
 
 	abstract ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation);
 
-
+	abstract void showFirstInfo (FirstBoardInfo msg);
 }

@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
@@ -16,6 +17,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
@@ -29,7 +31,8 @@ public class View extends Observable implements Observer {
 	private GameBoardDTO gameBoardDTO;
 	private TowersDTO towersDTO;
 	private HashMap <String, PersonalBoardDTO> personalBoardsDTO;
-	PersonalBonusTileDTO tileDTO = new PersonalBonusTileDTO(""); //da cambiare poi
+	private ArrayList<ExcommunicationCardDTO> exCards;
+	private int[] dices;
 	
 	public View (String inputType, String name) {
 		
@@ -38,7 +41,9 @@ public class View extends Observable implements Observer {
 		gameBoardDTO = new GameBoardDTO();
 		towersDTO = new TowersDTO();
 		personalBoardsDTO = new HashMap <String, PersonalBoardDTO> ();
-		personalBoardsDTO.put(name, new PersonalBoardDTO(name, tileDTO));
+		personalBoardsDTO.put(name, new PersonalBoardDTO(name, null));
+		exCards = new ArrayList<ExcommunicationCardDTO>();
+		dices = new int[3];
 		
 	}
 	
@@ -120,7 +125,7 @@ public class View extends Observable implements Observer {
 		//all'inizio: se non ho ancora memorizzato una personal board la creo
 		for(String name: info.resSituation.keySet())
 			if(personalBoardsDTO.get(name)==null)
-				personalBoardsDTO.put(name, new PersonalBoardDTO(name, tileDTO));
+				personalBoardsDTO.put(name, new PersonalBoardDTO(name, null));
 		
 		//se ho preso una carta la tolgo dalla torre e la metto nella personal board
 		if(info.space>2 && info.space<7) {
@@ -137,11 +142,21 @@ public class View extends Observable implements Observer {
 
 	public void showTowersAndDices (TowersAndDicesForView msg) {
 		towersDTO = msg.getTowers();
+		dices = msg.getDices();
 		inputOutput.showTowerAndDices (msg);
 	}
 	
 	public void showMessage(String message) {
 			inputOutput.showMessage(message);
+	}
+	
+	public void showInitialInfo (FirstBoardInfo msg) {
+		//setto le tile su ogni board
+		for(HashMap.Entry<String, PersonalBonusTileDTO> tile: msg.getTiles().entrySet())
+			if(personalBoardsDTO.get(tile.getKey())==null)
+				personalBoardsDTO.put(tile.getKey(), new PersonalBoardDTO(tile.getKey(), tile.getValue()));
+		exCards = msg.getExCards();
+		inputOutput.showFirstInfo (msg);
 	}
 	
 }

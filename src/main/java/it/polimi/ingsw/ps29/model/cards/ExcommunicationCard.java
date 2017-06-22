@@ -24,4 +24,8 @@ public class ExcommunicationCard {
 		return "Excommunication for period : " + period + " effect : " + effect;
 	}
 	
+	public int getId () {
+		return id;
+	}
+	
 }

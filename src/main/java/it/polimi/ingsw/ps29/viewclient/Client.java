@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps29.view.View;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.InfoForView;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
@@ -85,6 +86,10 @@ public class Client implements Observer{
 				// TODO Auto-generated method stub
 				String message= "\nIl player "+ playerInfoMessage.getName().toUpperCase()+" si è disconnesso dalla partita!";
 				view.showMessage(message);
+			}
+			
+			public void receive (FirstBoardInfo msg) {
+				view.showInitialInfo(msg);
 			}
 	}
 

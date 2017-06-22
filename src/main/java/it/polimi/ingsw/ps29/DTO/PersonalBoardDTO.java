@@ -39,6 +39,10 @@ public class PersonalBoardDTO implements Serializable {
 		resources = res;
 	}
 	
+	public void setTile (PersonalBonusTileDTO tile) {
+		this.tile = tile;
+	}
+	
 	
 	
 	
