@@ -8,12 +8,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class ImageToStamp extends JPanel {
+public class PrintTower extends JPanel {
 	
-		private BufferedImage image;
+		private BufferedImage tower;
+		private BufferedImage card;
 		
-		public ImageToStamp(String path) {
-			image = loadImage(path);
+		public PrintTower() {
+			tower = loadImage("gameboard.png");
+			card = loadImage("devcards_f_en_c_1.png");
+			addMouseListener(new MyMouseListener());
 		}
 		
 		
@@ -32,7 +35,8 @@ public class ImageToStamp extends JPanel {
 		
 		@Override
 		public void paint(Graphics g) {
-			g.drawImage(image, 0, 0, getSize().width, getSize().height, null);
+			g.drawImage(tower, 0, 0, getSize().width, getSize().height, null);
+			g.drawImage(card, 16, 20, 56, 86, null);
 			
 		}
 		

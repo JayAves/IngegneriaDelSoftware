@@ -12,8 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 public class GUICore {
 	
@@ -41,7 +43,7 @@ public class GUICore {
 		//statusBar.setPreferredSize(new Dimension (0, 24));
 		
 		//2.game board
-		ImageToStamp board = new ImageToStamp("gameboard.png");
+		PrintTower board = new PrintTower();
 		board.setPreferredSize(new Dimension(460, 0));
 		
 		//3.panel of the game
@@ -75,11 +77,11 @@ public class GUICore {
 		panel.setLayout(new BorderLayout());
 		
 		//1.bonus tile
-		ImageToStamp tile = new ImageToStamp("bonustile.png");
+		ImageToPrint tile = new ImageToPrint("bonustile.png");
 		//tile.setPreferredSize(new Dimension(50, 0));
 		
 		//2.personal board
-		ImageToStamp personal = new ImageToStamp("personalboard.jpg");
+		ImageToPrint personal = new ImageToPrint("personalboard.jpg");
 		
 		//3.buttons
 		JPanel buttonsPanel = new JPanel ();
@@ -178,9 +180,13 @@ public class GUICore {
 		JPanel buttonsPanel = new JPanel ();
 		buttonsPanel.setLayout(new GridLayout(2, 1));
 		
-		JTextField servants = new JTextField();
+		/*JTextField servants = new JTextField();
 		servants.setText("Insert number of servants you want to use..");
-		buttonsPanel.add(servants);
+		buttonsPanel.add(servants);*/
+		
+		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
+		JSpinner spinner = new JSpinner(model);
+		buttonsPanel.add(spinner);
 		
 		JButton confirm = new JButton("Do Action!");
 		buttonsPanel.add(confirm);
@@ -191,31 +197,42 @@ public class GUICore {
 		
 	}
 	
-	//panel for leader, excommunications and console
+	//panel for preview, leader, excommunications and console
 	public void createSouthPanel (JPanel panel) {
-		panel.setLayout(new GridLayout(1, 5));
+		panel.setLayout(new GridLayout(1, 6));
 		
-		//1.leader button
-		ImageToStamp leader = new ImageToStamp("leader.jpg");
+		//1.preview
+		ImageToPrint card = new ImageToPrint("devcards_f_en_c_1.png");
+		panel.add(card);
+
+		//2.leader button
+		ImageToPrint leader = new ImageToPrint("leader.jpg");
 		panel.add(leader);
 		
-		//2.excommunication cards
-		ImageToStamp excommunication1 = new ImageToStamp("excomm_back_1.png");
+		//3.excommunication cards
+		ImageToPrint excommunication1 = new ImageToPrint("excomm_back_1.png");
 		panel.add(excommunication1);
 		
-		ImageToStamp excommunication2 = new ImageToStamp("excomm_back_2.png");
+		ImageToPrint excommunication2 = new ImageToPrint("excomm_back_2.png");
 		panel.add(excommunication2);
 		
-		ImageToStamp excommunication3 = new ImageToStamp("excomm_back_3.png");
+		ImageToPrint excommunication3 = new ImageToPrint("excomm_back_3.png");
 		panel.add(excommunication3);
 		
-		//3.console
+		//4.console
 		JTextArea console = new JTextArea();
 		console.setText("console..");
 		console.setEditable(false);
 		panel.add(console);
 		
 	}
+	
+	/*public void setCards (JFrame frame) {
+		ImageToStamp cartaProva = new ImageToStamp("devcards_f_en_c_1.png");
+		cartaProva.setSize(10, 10);
+		System.out.println(cartaProva.getWidth());
+		frame.add(cartaProva);
+	}*/
 
 	
 	public static void main(String[] args) {
