@@ -14,7 +14,7 @@ public class RoomCreator extends Thread implements Observer{
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
-	private int period =10000;
+	private int period;
 	private boolean startTimer;
 	
 	
@@ -29,6 +29,8 @@ public class RoomCreator extends Thread implements Observer{
 		this.timer= new Timer();
 		
 		startTimer= false;
+		
+		period= TimerJson.roomTimer;
 		
 	}
 	

@@ -29,6 +29,7 @@ public class SocketClientThread extends ClientThread {
 		IDcode= playerLogin.getToken();
 		inGame=false;
 		msgBack= false;
+		turnTimer= TimerJson.turnTimer;
 		
 		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
 	}
@@ -88,8 +89,7 @@ public class SocketClientThread extends ClientThread {
 	public void startInteraction(InteractionMessage msg) {
 		if (inGame) {
 			serializator.serializeObject(msg);
-		//dopo x secondi verifico se ho ricevuto risposta
-		//se no chiudo tutto e mando messaggio playerInfo
+	
 		}
 	}
 

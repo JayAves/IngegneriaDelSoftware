@@ -1,10 +1,20 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import com.google.gson.GsonBuilder;
+
 public class ServerMain {
 
 	
 	
-	public static void main( String[] args ){
+	public static void main( String[] args ) throws FileNotFoundException{
+		
+		BufferedReader btimer = new BufferedReader(new FileReader("src/main/java/timer.json"));
+	    GsonBuilder gtimer = new GsonBuilder();
+	    TimerJson timer = gtimer.create().fromJson(btimer, TimerJson.class);
 		
 		RoomCreator creator= new RoomCreator();
 		creator.start();
