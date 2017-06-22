@@ -91,7 +91,10 @@ public class Match extends Observable{
 	        ExcommunicationDeck eDeck = new ExcommunicationDeck(tempDeck);
 	    	
 	        board.getExDecks().add(eDeck);
+	        
 	    }
+	    
+	    board.randomExcommunication();
 	    
 	    
 	}
