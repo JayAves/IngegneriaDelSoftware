@@ -14,9 +14,10 @@ public class LeaderCard {
 	private Effect leaderEffect; 
 	boolean permantenteffect;
 	private Container requirements;
-	private HashMap <String, Integer> cardRequirements;
+	private ArrayList<String> cardTypeRequirements;
+	private ArrayList<Integer> cardRequirements;
 	
-    public LeaderCard ( String name, int id, Effect effect, ArrayList<Resource> requirements, ArrayList<Integer> cardRequirements){
+    public LeaderCard ( String name, int id, Effect effect, ArrayList<Resource> requirements, ArrayList<String> cardTypeRequirements, ArrayList<Integer> cardRequirements){
     	this.name = name;
     	this.id = id;
     	this.leaderEffect = effect;
@@ -24,15 +25,10 @@ public class LeaderCard {
     	for (Resource res : requirements){
     		this.requirements.updateResource(res);
     	}
-    	this.cardRequirements = new HashMap<String, Integer>();
-    	if (cardRequirements.get(0) > 0)
-    		this.cardRequirements.put("territory", cardRequirements.get(0));
-    	if (cardRequirements.get(1) > 0)
-    		this.cardRequirements.put("Building", cardRequirements.get(0));
-    	if (cardRequirements.get(2) > 0)
-    		this.cardRequirements.put("character", cardRequirements.get(0));
-    	if (cardRequirements.get(3) > 0)
-    		this.cardRequirements.put("venture", cardRequirements.get(0));
+    	this.cardRequirements = new ArrayList<Integer>();
+    	this.cardTypeRequirements = new ArrayList<String>();
+    	this.cardRequirements = cardRequirements;
+    	this.cardTypeRequirements = cardTypeRequirements;
     }
 
     @Override
@@ -46,6 +42,11 @@ public class LeaderCard {
     }
     
     public HashMap<String, Integer> getCardRequirements(){
-    	return cardRequirements;
+    	
+    	HashMap<String, Integer> cardRequirementsHash = new HashMap<String, Integer>();
+    	for (int i = 0; i < cardRequirements.size(); i++)
+    		cardRequirementsHash.put(cardTypeRequirements.get(i), cardRequirements.get(i));
+		return cardRequirementsHash;
+    	
     }
 }

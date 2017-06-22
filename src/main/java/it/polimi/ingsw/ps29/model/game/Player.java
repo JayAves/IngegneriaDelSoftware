@@ -29,6 +29,7 @@ public class Player {
 	private boolean filippoBrunelleschi;
 	private boolean sistoIV;
 	private boolean picoDellaMirandola;
+	private boolean noMarket;
 	
 	public Player (String name, Color color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -152,4 +153,14 @@ public class Player {
 	public void setPicoDellaMirandola(){
 		picoDellaMirandola = true;
 	}
+	
+	public void setNoMarket(){
+		noMarket = true;
+	}
+	
+    public boolean getNoMarket(){
+        return noMarket;
+	}
+
+
 }

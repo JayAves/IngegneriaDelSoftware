@@ -1,20 +1,21 @@
 [
 {
 "period" : "FIRST",
+"id" : 1,
     "effect" : {"effectType" :"MalusResourcesExcommunication",
     "effectData" :{
                "resources" : [
                            { "resourceType" : "MilitaryPoints",
                               "resourceData" : {
                                               "amount" : 1,
-                                              "type" : "military"
-}}
+                                              "type" : "military"}}
     ]
 }
 }},
 
 {
 "period" : "FIRST",
+"id" : 2,
 "effect" :{
        "effectType" : "MalusResourcesExcommunication",
        "effectData":{
@@ -30,6 +31,7 @@
 
 {
 "period" : "FIRST",
+"id" : 3,    
 "effect" :{
        "effectType" : "MalusResourcesExcommunication",
        "effectData":{
@@ -45,6 +47,7 @@
     
 {
 "period" : "FIRST",
+"id" : 4,
 "effect" :{
        "effectType" : "MalusResourcesExcommunication",
        "effectData":{
@@ -64,6 +67,7 @@
 
 {
 "period" : "FIRST",
+"id" : 5,
 "effect" :{
   "effectType": "EmpowermentActivityEffect",
   "effectData":
@@ -77,6 +81,7 @@
 
 {
 "period" : "FIRST",
+"id" : 6,
 "effect" :{
   "effectType": "EmpowermentActivityEffect",
   "effectData":
@@ -90,19 +95,7 @@
 
 {
 "period" : "SECOND",
-    "effect" : {
-		"effectType": "EmpowermentPlacementEffect",
-		"effectData":
-		{ "diceEmpowerment": -4,
-          "towerType": "Character",
-          "discount" :[]
-            
-        }
-    }
-},
-
-{
-"period" : "SECOND",
+"id" : 1,
     "effect" : {
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
@@ -116,6 +109,7 @@
 
 {
 "period" : "SECOND",
+"id" : 2,
     "effect" : {
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
@@ -129,6 +123,21 @@
 
 {
 "period" : "SECOND",
+"id" : 3,
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Character",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+"id" : 4,
     "effect" : {
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
@@ -139,9 +148,19 @@
         }
     }
 },
+    
+{
+"period" : "SECOND",
+"id" : 5,
+    "effect" : {
+		"effectType": "NoMarketEffect",
+		"effectData":{ }
+    }
+}, 
 
 {
 "period" : "THIRD",
+"id" : 1,
     "effect": {
         "effectType" : "TerritoryCardsPenaltyEffect",
         "effectData":{}
@@ -150,6 +169,7 @@
 
 {
 "period" : "THIRD",
+"id" : 2,
     "effect": {
         "effectType" : "CharacterCardsPenaltyEffect",
         "effectData" :{}
@@ -158,6 +178,7 @@
 
 {
 "period" : "THIRD",
+"id" : 3,
     "effect": {
         "effectType" : "TerritoryCardsPenaltyEffect",
         "effectData" :{}
@@ -166,6 +187,7 @@
 
 {
 "period" : "THIRD",
+"id" : 4,
     "effect": {
         "effectType" : "BuildingCostsPenaltyEffect",
         "effectData" :{}
@@ -174,6 +196,7 @@
 
 {
 "period" : "THIRD",
+"id" : 5,
     "effect": {
         "effectType" : "ResourcePenaltyEffect",
         "effectData" :{}
@@ -182,6 +205,7 @@
 
 {
 "period" : "THIRD",
+"id" : 6,
     "effect": {
         "effectType" : "VictoryPointsPenaltyEffect",
         "effectData":{}
@@ -190,6 +214,7 @@
 
 {
 "period" : "THIRD",
+"id" : 7,
     "effect": {
         "effectType" : "MilitaryPointsPenaltyEffect",
         "effectData":{}
