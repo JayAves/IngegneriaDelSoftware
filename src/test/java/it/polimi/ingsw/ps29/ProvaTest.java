@@ -39,7 +39,7 @@ public class ProvaTest extends TestCase {
 	
 	@Before
 	public void setUp () throws FileNotFoundException {
-		pbt = new PersonalBonusTile(new ArrayList<Resource> (), new ArrayList <Resource> ());
+		pbt = new PersonalBonusTile(1, new ArrayList<Resource> (), new ArrayList <Resource> ());
 		String player1 = "aa";
 		String player2 = "bb";
 		ArrayList<String> names= new ArrayList<String>();
