@@ -5,19 +5,20 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class QueueActionSpace {
 	
-	private ArrayList<FamilyMember> queue;
+	private ArrayList<FamilyMemberInterface> queue;
 	final int powerRequired;
 	
 	public QueueActionSpace (int power) {
-		queue = new ArrayList<FamilyMember>();
+		queue = new ArrayList<FamilyMemberInterface>();
 		powerRequired = power;
 	}
 	
 	public boolean familiarHere (Color playerColor) {
-		for (FamilyMember member: queue) 
+		for (FamilyMemberInterface member: queue) 
 			if (member.getPlayerColor() == playerColor && member.getFamiliarColor()!=DiceColor.NEUTRAL) 
 				return true;
 		return false;
@@ -27,16 +28,16 @@ public class QueueActionSpace {
 		return valuePlacement >= powerRequired;
 	}
 	
-	public void addMember (FamilyMember member) {
+	public void addMember (FamilyMemberInterface member) {
 		queue.add(member);
 	}
 	
-	public ArrayList <FamilyMember> getQueue () {
+	public ArrayList <FamilyMemberInterface> getQueue () {
 		return queue;
 	}
 	
 	public void cleanSpace () {
-		queue = new ArrayList<FamilyMember>();
+		queue = new ArrayList<FamilyMemberInterface>();
 	}
 
 }

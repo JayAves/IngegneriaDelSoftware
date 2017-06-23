@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class Move {
 	
@@ -8,10 +9,10 @@ public class Move {
 	private String space;
 	private int floor;
 	private int servants;
-	private FamilyMember familiar;
+	private FamilyMemberInterface familiar;
 	
 	
-	public Move (Player player, String space, int floor, int servants, FamilyMember familiar) {
+	public Move (Player player, String space, int floor, int servants, FamilyMemberInterface familiar) {
 		super();
 		this.setPlayer(player);
 		this.setSpace(space);
@@ -45,11 +46,11 @@ public class Move {
 		this.servants = servants;
 	}
 
-	public FamilyMember getFamiliar() {
+	public FamilyMemberInterface getFamiliar() {
 		return familiar;
 	}
 
-	public void setFamiliar(FamilyMember familiar) {
+	public void setFamiliar(FamilyMemberInterface familiar) {
 		this.familiar = familiar;
 	}
 

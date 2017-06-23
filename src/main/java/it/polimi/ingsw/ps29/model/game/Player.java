@@ -17,7 +17,7 @@ public class Player {
 	private String name;
 	private Color color;
 	private PersonalBoard board;
-	private FamilyMember[] family; 
+	private FamilyMemberInterface[] family; 
 	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
 	private ExchangeSupport supportForExchange;
@@ -49,7 +49,7 @@ public class Player {
 	
 	
 	public void initFamily () {
-		family = new FamilyMember [4];
+		family = new FamilyMemberInterface [4];
 		family[0] = new FamilyMember (DiceColor.BLACK, color); 
 		family[1] = new FamilyMember(DiceColor.ORANGE, color);
 		family[2] = new FamilyMember(DiceColor.WHITE, color);
@@ -63,8 +63,8 @@ public class Player {
 	}
 	
 	
-	public FamilyMember getFamiliarByColor (DiceColor color) {
-		for (FamilyMember member: family) 
+	public FamilyMemberInterface getFamiliarByColor (DiceColor color) {
+		for (FamilyMemberInterface member: family) 
 			if(member.getFamiliarColor()==color)
 				return member;
 		
@@ -87,7 +87,7 @@ public class Player {
 		return color;
 	}
 	
-	public FamilyMember[] getFamily () {
+	public FamilyMemberInterface[] getFamily () {
 		return family;
 	}
 	

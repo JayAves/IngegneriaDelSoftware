@@ -42,6 +42,7 @@ public class FamilyMember implements FamilyMemberInterface{
 		return this.power;
 	}
 
+	@Override
 	public DiceColor getFamiliarColor() {
 		return familiarColor;
 	}
@@ -76,4 +77,5 @@ public class FamilyMember implements FamilyMemberInterface{
 		return "FamilyMember [power=" + power + ", busy=" + busy + ", familiarColor=" + familiarColor + ", playerColor="
 				+ playerColor + "]";
 	}
+
 }

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.space;
 
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class ActivityArea implements ActionSpace {
 	
@@ -27,11 +28,11 @@ public class ActivityArea implements ActionSpace {
 		else return queue.isEnoughPowerful(valuePlacement-3);
 	}
 	
-	public void headPlacement(FamilyMember member) {
+	public void headPlacement(FamilyMemberInterface member) {
 		head.setFamilyMember(member);
 	}
 	
-	public void queuePlacement (FamilyMember member) {
+	public void queuePlacement (FamilyMemberInterface member) {
 		queue.addMember(member);
 	}
 

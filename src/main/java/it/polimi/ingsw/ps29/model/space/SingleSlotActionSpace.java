@@ -3,10 +3,11 @@ package it.polimi.ingsw.ps29.model.space;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class SingleSlotActionSpace {
 	
-	FamilyMember member;
+	FamilyMemberInterface member;
 	int powerRequired;
 	State state;
 	
@@ -15,7 +16,7 @@ public class SingleSlotActionSpace {
 		powerRequired = power;
 	}
 	
-	public void setFamilyMember(FamilyMember dude){
+	public void setFamilyMember(FamilyMemberInterface dude){
 		member = dude;
 		state = new Occupied();
 	}
