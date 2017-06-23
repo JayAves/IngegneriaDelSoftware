@@ -10,10 +10,11 @@ import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 public class RmiServerImplementation extends UnicastRemoteObject implements RmiServerInterface {
 
 	RMIGatherer myGatherer;
+	int turnTimer;
 	
 	protected RmiServerImplementation() throws RemoteException {
 		super(0);
-		myGatherer= new RMIGatherer();
+		myGatherer= new RMIGatherer(0);
 	}
 
 	
@@ -29,6 +30,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	public void addClient(RmiClientInterface clientInterface, PlayerInfoMessage player) throws RemoteException {
 		// TODO Auto-generated method stub
 		RMIClientThread thread=new RMIClientThread(player, clientInterface);
+		thread.setTurnTimer(myGatherer.turnTimer);
 		System.out.println("RMI connected with ID: "+player.getToken());
 		RMIClientThread toDelete= null;
 		for(RMIClientThread th: myGatherer.clients) {
@@ -58,7 +60,8 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 		
 	}
 	
-	public void setGatherer(RMIGatherer server) {
+	public void setup(RMIGatherer server) {
 		myGatherer= server;
+		
 	}
 }

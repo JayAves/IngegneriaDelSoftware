@@ -28,7 +28,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		recentlyPoked=true;
 		//System.out.println(this.username);
 		IDcode=login.getToken();
-		turnTimer= TimerJson.turnTimer;
+		//turnTimer= TimerJson.turnTimer;
 		
 	}
 

@@ -29,7 +29,7 @@ public class SocketClientThread extends ClientThread {
 		IDcode= playerLogin.getToken();
 		inGame=false;
 		msgBack= false;
-		turnTimer= TimerJson.turnTimer;
+		//turnTimer= TimerJson.turnTimer;
 		
 		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
 	}

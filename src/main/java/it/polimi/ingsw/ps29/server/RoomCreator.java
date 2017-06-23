@@ -30,7 +30,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		startTimer= false;
 		
-		period= TimerJson.roomTimer;
+		
 		
 	}
 	
@@ -117,9 +117,10 @@ public class RoomCreator extends Thread implements Observer{
 			}
 		}
 		return false;
-		
-		
-		
+	}
+	
+	public void setPeriod(int period) {
+		this.period=period;
 	}
 
 	public void run(){
@@ -169,7 +170,7 @@ public class RoomCreator extends Thread implements Observer{
 					}
 				}
 				
-				System.out.println("RoomTimer accessed");
+				//System.out.println("RoomTimer accessed");
 				
 			
 		}
