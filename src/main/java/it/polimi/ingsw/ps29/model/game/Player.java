@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.game;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
@@ -23,6 +24,7 @@ public class Player {
 	private ExchangeSupport supportForExchange;
 	public ArrayList<Effect> specialPermanentEffects;
 	private FinalScoring finalScoring;
+	private ArrayList<LeaderCard> leaderCardsInHand;
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
 	private boolean ludovicoAriosto;
@@ -162,5 +164,8 @@ public class Player {
         return noMarket;
 	}
 
-
+    public void addLeaderCards(ArrayList<LeaderCard> card){
+    	leaderCardsInHand = card;;
+    }
+    
 }

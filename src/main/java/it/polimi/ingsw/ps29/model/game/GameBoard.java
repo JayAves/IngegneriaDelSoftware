@@ -27,6 +27,7 @@ public class GameBoard{
 	private ArrayList <Dice> dices;
 	private HashMap <String, ActionSpace> spaces;
 	private ArrayList<Player> playersOrder;
+	private ArrayList<LeaderCard> leaderCards;
 	private ArrayList<LeaderCard> playedLeaderCards;
 	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
@@ -47,6 +48,7 @@ public class GameBoard{
 		decks= new ArrayList<Deck>();
 		towersDTO = new TowersDTO();
 		initSpaces();
+		leaderCards = new ArrayList<LeaderCard>();
 		playedLeaderCards = new ArrayList<LeaderCard>();
 		excommunicationDeck= new ArrayList<ExcommunicationDeck>();
 		excommunications = new HashMap<Integer, ExcommunicationCard>();
@@ -155,6 +157,10 @@ public class GameBoard{
 		return excommunicationDeck;
 	}
 	
+	public ArrayList<LeaderCard> getLeaaderDeck(){
+		return leaderCards;
+	}
+	
 	public Player getCurrentPlayer (){
 		return playersOrder.get(0);
 	}
@@ -193,6 +199,18 @@ public class GameBoard{
 		for(int i=0; i<excommunicationDeck.size(); i++) {
 			int rnd= new Random().nextInt(excommunicationDeck.get(i).getDeck().size());
 			excommunications.put(i+1, excommunicationDeck.get(i).getCard(rnd));
+		}
+	}
+	
+	public void randomLeaderCards (){
+		ArrayList<LeaderCard> draft = leaderCards;
+		for (int i = 0 ; i < playersOrder.size(); i++){
+			ArrayList<LeaderCard> drafted = new ArrayList<LeaderCard>();
+			for(int j = 0; j < 4 ; j++){
+				int rnd = new Random().nextInt(draft.size());
+				drafted.add(draft.get(rnd));
+			}
+			playersOrder.get(i).addLeaderCards(drafted);
 		}
 	}
 	

@@ -14,6 +14,7 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.customadapters.CardAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.EffectAdapter;
 import it.polimi.ingsw.ps29.model.cards.customadapters.ResourceAdapter;
@@ -55,9 +56,14 @@ public class Match extends Observable{
 	    geCards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    geCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
 	    
+	    BufferedReader lCards = new BufferedReader(new FileReader("src/main/java/leaderCards.json"));
+	    GsonBuilder glCards = new GsonBuilder();
+	    glCards.registerTypeAdapter(Effect.class, new EffectAdapter());
+	    glCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
+	    
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
 	    ExcommunicationCard[] eCardz = geCards.create().fromJson(eCards, ExcommunicationCard[].class);
-	    
+	    LeaderCard[] lCardz = glCards.create().fromJson(lCards, LeaderCard[].class); 
 	    
 	    
 	    Period[] periods= Period.values();
@@ -94,8 +100,10 @@ public class Match extends Observable{
 	        
 	    }
 	    
-	    board.randomExcommunication();
+	    for (LeaderCard card : lCardz)
+	    	board.getLeaaderDeck().add(card);
 	    
+	    board.randomExcommunication();
 	    
 	}
 	
