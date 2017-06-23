@@ -111,7 +111,10 @@ public class SocketClientThread extends ClientThread {
 		endOfConnection=true;
 	}
 
-	
+	public void notifyController(InteractionMessage msg) {
+		setChanged();
+		notifyObservers(msg);
+	}
 	
 
 

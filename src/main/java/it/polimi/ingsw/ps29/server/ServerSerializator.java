@@ -8,7 +8,9 @@ import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public class ServerSerializator {
 	
@@ -16,6 +18,7 @@ public class ServerSerializator {
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private SocketClientThread thread;
+	private Timer timer;
 	
 	public ServerSerializator (SocketClientThread thread,Socket socket, ObjectOutputStream oos, ObjectInputStream ooi) {
 		this.socket = socket;
@@ -23,14 +26,17 @@ public class ServerSerializator {
 		this.thread= thread;
 		this.oos = oos;
 		this.ois = ois;
+		timer= new Timer();
 	}
 	
 	public void serializeObject (Object o) {
 		try {
+			thread.msgBack=false;
 			oos.writeObject(o);
 			oos.flush();
-			//Timer timer= new Timer();
-			//timer.schedule(new Task(), thread.turnTimer);
+		
+			if (!((o instanceof FirstBoardInfo)||(o instanceof TowersAndDicesForView))) //timer does not start for any msg containing info to display
+				timer.schedule(new Task(), thread.turnTimer);
 			
 		} catch (IOException e) {
 			System.err.println("Unable to send object");
@@ -49,7 +55,7 @@ public class ServerSerializator {
 			if (!thread.msgBack) {
 				PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
 				msg.setTimeExpired();
-				thread.notifyObservers(msg);
+				thread.notifyController(msg);
 			}
 		}
 		
