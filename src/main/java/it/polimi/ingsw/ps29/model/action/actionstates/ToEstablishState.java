@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
-public class ToEstabilishState implements ActionState {
+public class ToEstablishState implements ActionState {
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.TO_ESTABILISH;
 
 	@Override

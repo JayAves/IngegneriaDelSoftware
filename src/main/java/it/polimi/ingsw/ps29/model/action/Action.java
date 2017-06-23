@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
 import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
-import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
+import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
@@ -18,7 +18,7 @@ public abstract class Action {
 	public Action (Match model, Move move) {
 		this.model = model;
 		this.move = move;
-		state = new ToEstabilishState();
+		state = new ToEstablishState();
 	}
 	
 	//questo metodo controlla se la mossa è impedita da una scomunica

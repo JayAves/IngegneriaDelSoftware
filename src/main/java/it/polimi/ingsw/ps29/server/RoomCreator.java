@@ -126,13 +126,16 @@ public class RoomCreator extends Thread implements Observer{
 		
 		while (true){
 			
+			
 			try {
 				sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-				
+			timer.schedule(new Task(), period);
+			
+		
 			
 		}
 	}
@@ -152,13 +155,22 @@ public class RoomCreator extends Thread implements Observer{
 		public void run() {
 			// TODO Auto-generated method stub
 		
-				if (playersInQueue.size()>1) {
-				Room newRoom=new Room(playersInQueue);
-				roomHandler.add(newRoom);
-				System.out.println("Room: "+ newRoom);
-				counter=0;
-				playersInQueue.clear();
+				if (counter>1) {
+					counter=0;
+					
+					roomHandler.add(new Room(playersInQueue));
+					System.out.println("Room from timer");
+					playersInQueue.clear();
+					try {
+						sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
+				
+				System.out.println("RoomTimer accessed");
+				
 			
 		}
 		
