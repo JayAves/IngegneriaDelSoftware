@@ -85,7 +85,7 @@ public class Client implements Observer{
 			public void receive(PlayerInfoMessage playerInfoMessage) {
 				// TODO Auto-generated method stub
 				String  message;
-				if (playerInfoMessage.getTimeExpired())
+				if (!playerInfoMessage.getTimeExpired())
 					message= "\nPlayer "+ playerInfoMessage.getName().toUpperCase()+" has left the Game!";
 				else
 					message= "\nPlayer "+ playerInfoMessage.getName().toUpperCase()+"'s time for action expired!";

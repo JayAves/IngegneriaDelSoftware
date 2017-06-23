@@ -11,7 +11,7 @@ public class PerformedState implements ActionState {
 	public ActionState beforeAction() {
 		// metodo chiamato prima di interazione con la view
 		//ho terminato l'azione: ne richiedo una da processare, imposto lo stato a to estabilish
-		return new ToEstabilishState();
+		return new ToEstablishState();
 	}
 
 	@Override

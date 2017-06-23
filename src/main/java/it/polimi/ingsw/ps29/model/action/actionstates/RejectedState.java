@@ -11,7 +11,7 @@ public class RejectedState implements ActionState {
 	public ActionState beforeAction() {
 		// metodo chiamato appena prima di interazione con la view
 		//devo richiedere una nuova azione da processare, imposto lo stato a to estabilish
-		return new ToEstabilishState();
+		return new ToEstablishState();
 	}
 
 	@Override

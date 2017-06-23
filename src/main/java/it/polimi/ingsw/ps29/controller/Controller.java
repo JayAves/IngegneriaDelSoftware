@@ -22,16 +22,19 @@ import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
+import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
-import it.polimi.ingsw.ps29.model.action.actionstates.ToEstabilishState;
+import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.game.Dice;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
+import it.polimi.ingsw.ps29.model.game.roundstates.ActionsState;
 import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
@@ -66,7 +69,7 @@ public class Controller implements Observer{
 		this.model = model;
 		views =  new HashMap <String, ClientThread> ();
 		roundState = new RoundSetupState();
-		stateOfAction = new ToEstabilishState();
+		stateOfAction = new ToEstablishState();
 	}
 	
 	public void addView (String playerName, ClientThread view) {
@@ -83,28 +86,48 @@ public class Controller implements Observer{
 	
 	public void callCorrectView () {
 		ArrayList<ArrayList<Object>> leaderSituation;
-		String playerName = model.getBoard().getCurrentPlayer().getName();
-		ClientThread view = views.get(playerName);
-		
-		
-		//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
-		stateOfAction = stateOfAction.beforeAction();
-		if  (view.getInGame()) {
-			//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
-			InteractionMessage object = stateOfAction.objectForView(playerName);
-			if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
-				leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
-				//l'oggetto generato è di tipo ActionChoice se entro in questo if//
-				((ActionChoice)object).setLeaderSituation(leaderSituation);
+		if(PlayersConnected()) {
+			
+			String playerName = model.getBoard().getCurrentPlayer().getName();
+			ClientThread view = views.get(playerName);
+			
+			
+			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
+			stateOfAction = stateOfAction.beforeAction();
+			if  (view.getInGame()) {
+					//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
+					InteractionMessage object = stateOfAction.objectForView(playerName);
+					if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
+						leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
+						//l'oggetto generato è di tipo ActionChoice se entro in questo if//
+						((ActionChoice)object).setLeaderSituation(leaderSituation);
+					}
+					view.startInteraction (object);
+				}
+				else {
+					model.getBoard().changePlayerOrder();
+					gameEngine();
+				}
 			}
-			view.startInteraction (object);
-		}
+		
 		else {
-			model.getBoard().changePlayerOrder();
-			gameEngine();
+			
+			//setto lo stato della partita a fine
+			
 		}
-	}
+		
+}
 	
+
+	private boolean PlayersConnected() {
+		
+		for(Map.Entry<String, ClientThread> entry: views.entrySet()) {
+			
+			if (entry.getValue().getInGame())
+				return true;
+		}
+		return false;
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -281,13 +304,28 @@ public class Controller implements Observer{
 					view.getValue().startInteraction(playerInfoMessage);
 			
 			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
+				placeRandomFamiliar();
 				stateOfAction= new PerformedState();
 				stateOfAction.afterAction(model);
 			}
 			
 		}
-		
-	}
+
+		private void placeRandomFamiliar() {
+			if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState)){
+				
+				
+				
+				for (FamilyMember member: model.getBoard().getCurrentPlayer().getFamily()) {
+					
+					if (!member.getBusy()) {
+						member.setBusy(true);
+							break;
+						}
+					}
+				}
+			}
+		}
 	
 	public void gameEngine () {
 		
@@ -440,6 +478,7 @@ public class Controller implements Observer{
 			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards,
 					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices)));
 		
-	}
+		}
 	
-}
+	}
+
