@@ -13,7 +13,7 @@ public class LeaderCard {
 	private final int id;
 	private Effect leaderEffect; 
 	boolean permantenteffect;
-	private Container requirements;
+	private ArrayList<Resource> requirements;
 	private ArrayList<String> cardTypeRequirements;
 	private ArrayList<Integer> cardRequirements;
 	
@@ -21,9 +21,9 @@ public class LeaderCard {
     	this.name = name;
     	this.id = id;
     	this.leaderEffect = effect;
-    	this.requirements = new Container();
+    	this.requirements = new ArrayList<Resource>();
     	for (Resource res : requirements){
-    		this.requirements.updateResource(res);
+    		this.requirements.add(res);
     	}
     	this.cardRequirements = new ArrayList<Integer>();
     	this.cardTypeRequirements = new ArrayList<String>();

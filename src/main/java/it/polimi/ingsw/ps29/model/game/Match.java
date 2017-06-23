@@ -56,15 +56,15 @@ public class Match extends Observable{
 	    geCards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    geCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
 	    
-	    /*BufferedReader lCards = new BufferedReader(new FileReader("src/main/java/leaderCards.json"));
+	    BufferedReader lCards = new BufferedReader(new FileReader("src/main/java/leaderCards.json"));
 	    GsonBuilder glCards = new GsonBuilder();
 	    glCards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    glCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
-	    */
+	    
 	    
 	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
 	    ExcommunicationCard[] eCardz = geCards.create().fromJson(eCards, ExcommunicationCard[].class);
-	    //LeaderCard[] lCardz = glCards.create().fromJson(lCards, LeaderCard[].class); 
+	    LeaderCard[] lCardz = glCards.create().fromJson(lCards, LeaderCard[].class); 
 	    
 	    
 	    Period[] periods= Period.values();
@@ -101,21 +101,22 @@ public class Match extends Observable{
 	        
 	    }
 	    
-	   // for (LeaderCard card : lCardz)
-	    //	board.getLeaaderDeck().add(card);
+	   for (LeaderCard card : lCardz)
+	    	board.getLeaaderDeck().add(card);
 	    
 	    board.randomExcommunication();
 	    
-			/*ArrayList<LeaderCard> draft = board.getLeaaderDeck();
+			ArrayList<LeaderCard> draft = board.getLeaaderDeck();
 			for (int i = 0 ; i < board.getPlayers().size(); i++){
 				ArrayList<LeaderCard> drafted = new ArrayList<LeaderCard>();
 				for(int j = 0; j < 4 ; j++){
 					int rnd = new Random().nextInt(draft.size());
 					drafted.add(draft.get(rnd));
+					draft.remove(rnd);
 				}
 				board.getPlayers().get(i).addLeaderCards(drafted);
 			}
-			*/
+			
 	    
 	}
 	
