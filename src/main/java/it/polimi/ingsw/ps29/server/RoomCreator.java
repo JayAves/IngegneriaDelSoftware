@@ -126,13 +126,16 @@ public class RoomCreator extends Thread implements Observer{
 		
 		while (true){
 			
+			
 			try {
 				sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-				
+			timer.schedule(new Task(), period);
+			
+		
 			
 		}
 	}

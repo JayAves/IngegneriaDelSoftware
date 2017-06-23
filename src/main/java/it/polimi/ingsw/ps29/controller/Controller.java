@@ -304,7 +304,8 @@ public class Controller implements Observer{
 					view.getValue().startInteraction(playerInfoMessage);
 			
 			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
-				placeRandomFamiliar();
+				if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState))
+					placeRandomFamiliar();
 				stateOfAction= new PerformedState();
 				stateOfAction.afterAction(model);
 			}
@@ -312,20 +313,20 @@ public class Controller implements Observer{
 		}
 
 		private void placeRandomFamiliar() {
-			if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState)){
+			
+			if (!model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy())
+				model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
+			else {
 				
+				Dice minimalPower= model.getBoard().getDices().get(0);
+				for (Dice dice: model.getBoard().getDices())
+					if (dice.getValue()< minimalPower.getValue())
+						minimalPower=dice;
+				model.getBoard().getCurrentPlayer().getFamiliarByColor(minimalPower.getColor()).setBusy(true);
+			}	
 				
-				
-				for (FamilyMember member: model.getBoard().getCurrentPlayer().getFamily()) {
-					
-					if (!member.getBusy()) {
-						member.setBusy(true);
-							break;
-						}
-					}
-				}
-			}
 		}
+	}
 	
 	public void gameEngine () {
 		
