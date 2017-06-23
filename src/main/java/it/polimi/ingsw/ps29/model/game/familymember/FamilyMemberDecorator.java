@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
+import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
+
 public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 	
 	protected FamilyMemberInterface decoratedFamilyMember;
@@ -38,5 +41,39 @@ public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 		return decoratedFamilyMember.getCouncilPower();
 	}
 	
+	@Override
+	public DiceColor getFamiliarColor(){
+		return decoratedFamilyMember.getFamiliarColor();
+	}
+	
+	@Override
+	public void setPower (int power){
+		decoratedFamilyMember.setPower(power);
+	}
+	
+	@Override
+	public void setBusy ( boolean busy){
+		decoratedFamilyMember.setBusy(busy);
+	}
+	
+	@Override
+	public void setFixedPower(){
+		decoratedFamilyMember.setFixedPower();
+	}
 
+	@Override
+	public boolean getIfFixed(){
+		return decoratedFamilyMember.getIfFixed();
+	}
+	
+	@Override
+	public boolean getBusy(){
+		return decoratedFamilyMember.getBusy();
+	}
+	
+	@Override
+	public Color getPlayerColor(){
+		return decoratedFamilyMember.getPlayerColor();
+	}
+	
 }

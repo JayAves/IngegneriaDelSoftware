@@ -16,6 +16,7 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.PersonalBonusTile;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
@@ -47,7 +48,7 @@ public class ProvaTest extends TestCase {
 		names.add(player2);
 		
 		model = new Match(names);
-		FamilyMember member = model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.ORANGE);
+		FamilyMemberInterface member = model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.ORANGE);
 		member.setPower(5);
 		System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources());
 		

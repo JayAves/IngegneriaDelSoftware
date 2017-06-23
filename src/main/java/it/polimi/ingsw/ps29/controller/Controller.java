@@ -33,6 +33,7 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.game.roundstates.ActionsState;
 import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
@@ -363,7 +364,7 @@ public class Controller implements Observer{
 
 	private boolean isStateTwoTerminated() {
 		for(Player player: model.getBoard().getPlayers())
-			for(FamilyMember member: player.getFamily())
+			for(FamilyMemberInterface member: player.getFamily())
 				if (!member.getBusy())
 					return false;
 		

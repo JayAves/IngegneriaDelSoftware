@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Servants;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 
@@ -39,7 +40,7 @@ public class ChoiceToMove {
 	
 	
 	
-	private FamilyMember getFamiliar (String player, int i) {
+	private FamilyMemberInterface getFamiliar (String player, int i) {
 		DiceColor color;
 		
 		switch (i) {
