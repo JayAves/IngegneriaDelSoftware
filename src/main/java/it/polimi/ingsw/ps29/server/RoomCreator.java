@@ -46,7 +46,7 @@ public class RoomCreator extends Thread implements Observer{
 			
 		counter++;
 		
-		if (counter==1) //countdown to game start is set
+		if (counter==2) //countdown to game start is set
 			timer.schedule(new Task(), period);
 			
 		if (counter==4){ //enough players for a new Room
