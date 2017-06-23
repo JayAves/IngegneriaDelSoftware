@@ -38,9 +38,13 @@ public class TowerAction extends Action {
 		System.out.println(enoughSlotSpace());
 		System.out.println(enoughVictoryPoints());*/
 		
+		//se è presente un familiare qualsiasi sulla torre e non si possono pagare tre monete
+		if(!space.isEmpty() && canAffordMalus())
+			return false;
+		
 		if (!space.familiarHere(move.getFamiliar().getPlayerColor()) 
-		&& canAffordMalus() && canAffordCard()&& enoughSlotSpace()
-		&& enoughVictoryPoints() && !move.getFamiliar().getBusy()) {
+		&& canAffordCardResourcesCost()&& enoughSlotSpace()
+		&& enoughMilitaryPoints() && !move.getFamiliar().getBusy() && space.getPlacementFloor().isEmpty())  {
 			int power;
 			switch (move.getSpace()) {
 				case "territoryTower":
@@ -115,7 +119,7 @@ public class TowerAction extends Action {
 		return (move.getPlayer().getPersonalBoard().getResources().getResource("coin").getAmount()>=3);
 	}
 	
-	private boolean canAffordCard() {
+	private boolean canAffordCardResourcesCost() {
 		
 		ArrayList<Resource> discountedCost=space.takeCard().getCost();
 		
@@ -151,7 +155,7 @@ public class TowerAction extends Action {
 		return move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6;
 	}
 
-	private boolean enoughVictoryPoints() {
+	private boolean enoughMilitaryPoints() {
 		if(space.takeCard().getType().equals("territory")) {
 			
 			int size= move.getPlayer().getPersonalBoard().getCards("territory").size();
@@ -159,16 +163,16 @@ public class TowerAction extends Action {
 			switch (size) {
 			
 			case 2:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=1);
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=3);
 			
 			case 3:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=4);
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=7);
 			
 			case 4:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=10);
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=12);
 				
 			case 5:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("territory").getAmount()>=20);	
+				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=18);	
 
 			default:
 				return true;

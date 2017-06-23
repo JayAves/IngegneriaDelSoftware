@@ -23,7 +23,7 @@ public class MarketAction extends Action{
 
 	@Override
 	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && !move.getFamiliar().getBusy() && space.isEnoughPowerful(
+		return  !move.getFamiliar().getBusy() && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getMarketPower() + move.getServants()) &&
 				space.isEmpty();
 	}
