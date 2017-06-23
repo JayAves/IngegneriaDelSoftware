@@ -22,4 +22,7 @@ public class CardDTO implements Serializable {
 		return type;
 	}
 	
+	public int getId () {
+		return id;
+	}
 }

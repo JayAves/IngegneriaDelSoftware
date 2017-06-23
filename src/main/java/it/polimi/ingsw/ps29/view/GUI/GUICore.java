@@ -2,9 +2,8 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -14,12 +13,18 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
+import javax.swing.RepaintManager;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
+
+import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
 public class GUICore {
 	
 	JFrame frame;
+	TowersDTO towers;
 	
 	JTextArea  statusBar;
 	PrintTower board;
@@ -36,6 +41,8 @@ public class GUICore {
 	ImageToPrint excommunication1;
 	ImageToPrint excommunication2;
 	ImageToPrint excommunication3;
+	
+	JTextArea console;
 	
 	public GUICore () {
 		frame = new JFrame ();
@@ -59,8 +66,10 @@ public class GUICore {
 		//statusBar.setPreferredSize(new Dimension (0, 24));
 		
 		//2.game board
-		int[] id = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
-		board = new PrintTower(id);
+		ArrayList<Integer> id = new ArrayList<Integer> ();
+		for(int i=0; i<16; i++)
+			id.add(i+1);
+		board = new PrintTower(id, this);
 		board.setPreferredSize(new Dimension(460, 0));
 		
 		//3.panel of the game
@@ -96,11 +105,11 @@ public class GUICore {
 		panel.setLayout(new BorderLayout());
 		
 		//1.bonus tile
-		tile = new ImageToPrint("bonustile.png");
+		tile = new ImageToPrint("bonustile.png", this);
 		tile.setPreferredSize(new Dimension(50, 0));
 		
 		//2.personal board
-		personal = new ImageToPrint("personalboard.jpg");
+		personal = new ImageToPrint("personalboard.jpg", this);
 		
 		//3.buttons and preview
 		JPanel rightTopPanel = new JPanel ();
@@ -110,7 +119,7 @@ public class GUICore {
 			
 		
 			//preview
-			cardPreview = new ImageToPrint("devcards_f_en_c_1.png");
+			cardPreview = new ImageToPrint("devcards_f_en_c_1.png", this);
 			rightTopPanel.add(cardPreview, BorderLayout.CENTER);
 			
 			JPanel buttonsPanel = new JPanel();
@@ -215,17 +224,17 @@ public class GUICore {
 		panel.setLayout(new GridLayout(1, 6));
 		
 		//1.leader button
-		ImageToPrint leader = new ImageToPrint("leader.jpg");
+		ImageToPrint leader = new ImageToPrint("leader.jpg", this);
 		panel.add(leader);
 		
 		//2.excommunication cards
-		excommunication1 = new ImageToPrint("excomm_back_1.png");
+		excommunication1 = new ImageToPrint("excomm_back_1.png", this);
 		panel.add(excommunication1);
 		
-		excommunication2 = new ImageToPrint("excomm_back_2.png");
+		excommunication2 = new ImageToPrint("excomm_back_2.png", this);
 		panel.add(excommunication2);
 		
-		excommunication3 = new ImageToPrint("excomm_back_3.png");
+		excommunication3 = new ImageToPrint("excomm_back_3.png", this);
 		panel.add(excommunication3);
 		
 		//3.stats
@@ -235,13 +244,24 @@ public class GUICore {
 		panel.add(stats);
 		
 		//4.console
-		JTextArea console = new JTextArea();
+		console = new JTextArea();
 		console.setText("console..");
 		console.setEditable(false);
 		panel.add(console);
 		
 	}
 
+	public TowersDTO getTowers () {
+		return towers;
+	}
+	
+	public void setTowers (TowersDTO towers) {
+		this.towers = towers;
+	}
+	
+	public void zoomImage (int idCard) {
+		cardPreview.setImage("cards/devcards_f_en_c_"+idCard+".png");
+	}
 	
 	public static void main(String[] args) {
 		new GUICore ();

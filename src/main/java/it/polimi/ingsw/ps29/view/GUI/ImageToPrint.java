@@ -12,9 +12,9 @@ public class ImageToPrint extends JPanel {
 	
 		private BufferedImage image;
 		
-		public ImageToPrint(String path) {
+		public ImageToPrint(String path, GUICore gui) {
 			image = loadImage(path);
-			addMouseListener(new MyMouseListener());
+			addMouseListener(new MyMouseListener(gui));
 		}
 		
 		public void setImage (String path) {

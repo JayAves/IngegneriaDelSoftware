@@ -32,4 +32,10 @@ public class TowersDTO implements Serializable {
 	public HashMap <String, ArrayList<CardDTO>> getTowers () {
 		return towers;
 	}
+	
+	//dato un index 0-15 torna l'id della carta cercata
+	public int getIdCard (int index) {
+		String [] types = {"territory", "building", "character", "venture"};
+		return towers.get(types[index/4]).get(index%4).getId();
+	}
 }

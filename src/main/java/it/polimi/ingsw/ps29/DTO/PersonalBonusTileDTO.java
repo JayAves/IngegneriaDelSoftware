@@ -15,5 +15,9 @@ public class PersonalBonusTileDTO implements Serializable {
 	public String toString () {
 		return tileToString;
 	}
+	
+	public int getId (){
+		return id;
+	}
 
 }

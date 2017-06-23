@@ -3,11 +3,11 @@ package it.polimi.ingsw.ps29.view.GUI;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
-import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
@@ -87,7 +87,14 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void showTowerAndDices(TowersAndDicesForView msg) {
-		// TODO Auto-generated method stub
+		screen.setTowers(msg.getTowers());
+		TowersDTO towers = msg.getTowers();
+		ArrayList<Integer> idCards = new ArrayList<Integer>();
+		String[] types = {"territory", "building", "character", "venture"};
+		for(int i=0; i<types.length; i++)
+			for(CardDTO card: towers.getTowers().get(types[i]))
+				idCards.add(card.getId());
+		screen.board.setCards(idCards);
 		
 	}
 
@@ -99,15 +106,12 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
-		int period = 0;
-		if(msg.getExCards().get(0).getPeriod() == Period.FIRST)
-			period = 1;
-		else if(msg.getExCards().get(0).getPeriod() == Period.SECOND)
-			period = 2;
-		else
-			period = 3;
-		System.out.println("Period: "+period+"id: "+msg.getExCards().get(0).getId());
-		screen.excommunication1.setImage("excomm_card/excomm_"+period+"_"+msg.getExCards().get(0).getId()+".png");
+		screen.statusBar.setText("Player: "+msg.getName());
+		int tileId = msg.getTiles().get(msg.getName()).getId();
+		screen.tile.setImage("bonus_tiles/personalbonustile_"+tileId+".png");
+		screen.excommunication1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
+		screen.excommunication2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
+		screen.excommunication3.setImage("excomm_card/excomm_3_"+msg.getExCards().get(2).getId()+".png");
 	}
 
 
@@ -123,7 +127,5 @@ public class InputOutputGUI implements InputOutput {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 }

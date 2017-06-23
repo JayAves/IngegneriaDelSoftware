@@ -14,12 +14,17 @@ public class PrintTower extends JPanel {
 		private BufferedImage tower;
 		private ArrayList<BufferedImage> cards;
 		
-		public PrintTower(int[] idCards) {
+		public PrintTower(ArrayList<Integer> idCards, GUICore gui) {
 			tower = loadImage("gameboard.png");
+			setCards (idCards);
+			addMouseListener(new MyMouseListener(gui));
+		}
+		
+		public void setCards (ArrayList<Integer> idCards) {
 			cards = new ArrayList<BufferedImage> ();
 			for(int id: idCards)
-				cards.add(loadImage("devcards_f_en_c_1.png"));
-			addMouseListener(new MyMouseListener());
+				cards.add(loadImage("cards/devcards_f_en_c_"+id+".png"));
+			repaint();
 		}
 		
 		
