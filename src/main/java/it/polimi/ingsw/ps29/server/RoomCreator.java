@@ -161,9 +161,16 @@ public class RoomCreator extends Thread implements Observer{
 					roomHandler.add(new Room(playersInQueue));
 					System.out.println("Room from timer");
 					playersInQueue.clear();
+					try {
+						sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				System.out.println("RoomTimer accessed");
+				
 			
 		}
 		
