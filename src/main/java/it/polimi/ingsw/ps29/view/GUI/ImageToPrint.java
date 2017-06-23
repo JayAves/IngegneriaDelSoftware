@@ -14,7 +14,7 @@ public class ImageToPrint extends JPanel {
 		
 		public ImageToPrint(String path, GUICore gui) {
 			image = loadImage(path);
-			addMouseListener(new TowerListener(gui));
+			//addMouseListener(new TowerListener(gui));
 		}
 		
 		public void setImage (String path) {
