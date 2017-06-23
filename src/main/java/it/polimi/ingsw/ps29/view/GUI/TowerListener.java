@@ -4,12 +4,12 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class MyMouseListener extends MouseAdapter {
+public class TowerListener extends MouseAdapter {
 	
 	private GUICore gui;
 	private CoordinateHandler coord;
 	
-	public MyMouseListener(GUICore gui) {
+	public TowerListener(GUICore gui) {
 		this.gui = gui;
 		this.coord = new CoordinateHandler();
 	}
@@ -23,9 +23,12 @@ public class MyMouseListener extends MouseAdapter {
 		
 		//indice da 0 a 15 che mi dice su quale carta ho cliccato
 		int index = coord.getIndexCard(p);
-		int idCard = gui.getTowers().getIdCard(index);
 		
-		gui.zoomImage(idCard);
+		//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
+		if(gui.getTowers() != null && index>-1 && index<16) {
+			int idCard = gui.getTowers().getIdCard(index);
+			gui.zoomImage(idCard);
+		}
 	}
 
 }

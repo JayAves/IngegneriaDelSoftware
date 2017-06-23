@@ -17,8 +17,7 @@ public class PrintTower extends JPanel {
 		public PrintTower(ArrayList<Integer> idCards, GUICore gui) {
 			tower = loadImage("gameboard.png");
 			setCards (idCards);
-			addMouseListener(new MyMouseListener(gui));
-			System.out.println(tower.getWidth()+" - "+tower.getHeight());
+			addMouseListener(new TowerListener(gui));
 		}
 		
 		public void setCards (ArrayList<Integer> idCards) {
@@ -49,10 +48,10 @@ public class PrintTower extends JPanel {
 			int xStart = 16;
 			int yBase = 20;
 			int yStart = 20;
-			int widthCard = 57;
-			int heightCard = 86;
+			int widthCard = 56;
+			int heightCard = 81;
 			int shiftWidth = 108;
-			int shiftHeight = 92;
+			int shiftHeight = 90;
 			
 			for (int i=0; i<4; i++) {
 				for (int j=0; j<4; j++) {
