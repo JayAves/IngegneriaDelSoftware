@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
@@ -34,6 +35,10 @@ public class GUICore {
 	JButton showCharacters;
 	JButton prevBoard;
 	JButton nextBoard;
+	
+	ButtonGroup familiar;
+	JSpinner servants;
+	JButton sendAction;
 	
 	ImageToPrint excommunication1;
 	ImageToPrint excommunication2;
@@ -179,11 +184,16 @@ public class GUICore {
 		familyPanel.add(new JLabel(""));
 		
 		JRadioButton black = new JRadioButton("Black");
+		black.setActionCommand("Black");
 		JRadioButton white = new JRadioButton("White");
+		white.setActionCommand("White");
 		JRadioButton orange = new JRadioButton("Orange");
+		orange.setActionCommand("Orange");
 		JRadioButton neutral = new JRadioButton("Neutral");
+		neutral.setActionCommand("Neutral");
+		black.setSelected(true);
 		
-		ButtonGroup familiar = new ButtonGroup();
+		familiar = new ButtonGroup();
 		familiar.add(black);
 		familiar.add(white);
 		familiar.add(orange);
@@ -203,11 +213,12 @@ public class GUICore {
 		buttonsPanel.add(servants);*/
 		
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
-		JSpinner spinner = new JSpinner(model);
-		buttonsPanel.add(spinner);
+		servants = new JSpinner(model);
+		buttonsPanel.add(servants);
 		
-		JButton confirm = new JButton("Do Action!");
-		buttonsPanel.add(confirm);
+		sendAction = new JButton("Do Action!");
+		sendAction.addMouseListener(new PlayerListener(this));
+		buttonsPanel.add(sendAction);
 		
 		panel.add(pointsPanel);
 		panel.add(familyPanel);
@@ -243,7 +254,8 @@ public class GUICore {
 		console = new JTextArea();
 		console.setText("console..");
 		console.setEditable(false);
-		panel.add(console);
+		JScrollPane scrollPane = new JScrollPane(console);
+		panel.add(scrollPane);
 		
 	}
 
