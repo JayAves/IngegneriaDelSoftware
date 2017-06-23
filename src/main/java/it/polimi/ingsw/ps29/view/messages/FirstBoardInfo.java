@@ -10,6 +10,10 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class FirstBoardInfo extends InteractionMessage {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5849206424080102207L;
 	private HashMap<String, PersonalBonusTileDTO> tile;
 	private ArrayList<ExcommunicationCardDTO> exCards;
 	private TowersAndDicesForView towers;

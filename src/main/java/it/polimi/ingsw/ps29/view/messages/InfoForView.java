@@ -10,6 +10,10 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class InfoForView extends InteractionMessage {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8295468107880613441L;
 	public Color playerColor;
 	public int space;
 	public int floor;

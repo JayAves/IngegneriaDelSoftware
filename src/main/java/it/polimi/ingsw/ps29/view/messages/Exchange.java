@@ -2,10 +2,13 @@ package it.polimi.ingsw.ps29.view.messages;
 
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.viewclient.Client;
-import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class Exchange extends InteractionMessage {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7723241163107728048L;
 	private ExchangeResourcesEffect exchange;
 	private int [] choice;
 	
