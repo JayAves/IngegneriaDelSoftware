@@ -17,6 +17,11 @@ public class ImageToPrint extends JPanel {
 			addMouseListener(new MyMouseListener());
 		}
 		
+		public void setImage (String path) {
+			image = loadImage(path);
+			repaint();
+		}
+		
 		
 		private BufferedImage loadImage(String path){
 			BufferedImage result = null;
@@ -32,7 +37,8 @@ public class ImageToPrint extends JPanel {
 		
 		
 		@Override
-		public void paint(Graphics g) {
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
 			g.drawImage(image, 0, 0, getSize().width, getSize().height, null);
 			
 		}

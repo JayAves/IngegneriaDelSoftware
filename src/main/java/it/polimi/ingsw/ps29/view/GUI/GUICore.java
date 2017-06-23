@@ -17,6 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
+import it.polimi.ingsw.ps29.model.game.Period;
+
 public class GUICore {
 	
 	JFrame frame;
@@ -31,9 +33,9 @@ public class GUICore {
 		setFrame (frame);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-
 		
 	}
+	
 	
 	//function where i create GUI
 	void setFrame (JFrame frame) {

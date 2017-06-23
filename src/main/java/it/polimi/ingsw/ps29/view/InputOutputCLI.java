@@ -18,6 +18,8 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
@@ -286,6 +288,36 @@ public class InputOutputCLI implements InputOutput {
 		for(ExcommunicationCardDTO exCard: msg.getExCards())
 			System.out.println(exCard.toString());
 		
+	}
+
+	@Override
+	public ActionChoice handleAskNextAction(ActionChoice msg) {
+		System.out.println("\n"+msg.getName().toUpperCase()+", It's your turn!\n");
+		int[] temp = askTypeOfAction();
+		msg.setChoice(0, temp[0]);
+		msg.setChoice(1, temp[1]);
+		if (temp[0] < 12)
+			msg.setChoice(2, askNumberOfServants());
+		if (temp[0] < 13)
+			msg.setChoice(3, askFamiliarColor());
+		if (temp[0] == 13)
+			msg.setLeaderSituation(askLeader(msg.getLeaderSituation()));
+		return msg;
+		
+	}
+
+	@Override
+	public BonusChoice handleBonusAction(BonusChoice msg) {
+		BonusActionEffect effect = msg.getBonus();
+		
+		printBonusAction (effect);
+		if(effect.getType().equals("territory")||effect.getType().equals("building")||
+				effect.getType().equals("character")||effect.getType().equals("venture"))
+			msg.setFloor(askFloor());
+		
+		msg.setServants(askNumberOfServants());
+		
+		return msg;
 	}
 
 }

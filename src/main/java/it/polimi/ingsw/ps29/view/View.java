@@ -52,31 +52,14 @@ public class View extends Observable implements Observer {
 	}
 	
 	public void askNextAction (ActionChoice msg) {
-		System.out.println("\n"+namePlayer.toUpperCase()+", It's your turn!\n");
-		int[] temp = inputOutput.askTypeOfAction();
-		msg.setChoice(0, temp[0]);
-		msg.setChoice(1, temp[1]);
-		if (temp[0] < 12)
-			msg.setChoice(2, inputOutput.askNumberOfServants());
-		if (temp[0] < 13)
-			msg.setChoice(3, inputOutput.askFamiliarColor());
-		if (temp[0] == 13)
-			msg.setLeaderSituation(inputOutput.askLeader(msg.getLeaderSituation()));
+		msg = inputOutput.handleAskNextAction (msg);
 		setChanged();
 		notifyObservers(msg);
 	}
 	
 	
 	public void askBonusAction (BonusChoice msg) {
-		BonusActionEffect effect = msg.getBonus();
-		
-		
-		inputOutput.printBonusAction (effect);
-		if(effect.getType().equals("territory")||effect.getType().equals("building")||
-				effect.getType().equals("character")||effect.getType().equals("venture"))
-			msg.setFloor(inputOutput.askFloor());
-		
-		msg.setServants(inputOutput.askNumberOfServants());
+		msg = inputOutput.handleBonusAction (msg);
 		setChanged();
 		notifyObservers(msg);
 	}
@@ -95,6 +78,8 @@ public class View extends Observable implements Observer {
 	
 	public void askAboutExcommunication (VaticanChoice msg) {
 		int choice = inputOutput.askAboutExcommunication();
+		//1 per sostenere, 0 per non sostenere
+		//la condizione choice==1 traduce la scelta in un boolean
 		msg.setSustain(choice==1);
 		setChanged();
 		notifyObservers(msg);

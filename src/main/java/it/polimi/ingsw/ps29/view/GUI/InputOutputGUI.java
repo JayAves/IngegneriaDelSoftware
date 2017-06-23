@@ -10,6 +10,8 @@ import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
+import it.polimi.ingsw.ps29.view.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.messages.BonusChoice;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
@@ -78,7 +80,7 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void showInfo(GameBoardDTO gameBoardDTO, TowersDTO towerdDTO,
-			HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+		HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -104,8 +106,22 @@ public class InputOutputGUI implements InputOutput {
 			period = 2;
 		else
 			period = 3;
-		screen.excommunication1 = new ImageToPrint("excomm_card/ecomm_"+period+"_"+msg.getExCards().get(0).getId()+".png");
-		screen.frame.repaint();
+		System.out.println("Period: "+period+"id: "+msg.getExCards().get(0).getId());
+		screen.excommunication1.setImage("excomm_card/excomm_"+period+"_"+msg.getExCards().get(0).getId()+".png");
+	}
+
+
+	@Override
+	public ActionChoice handleAskNextAction(ActionChoice msg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public BonusChoice handleBonusAction(BonusChoice msg) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -41,7 +41,9 @@ public class SocketClientThread extends ClientThread {
 		
 		while(!endOfConnection) {
 			try{
-				obj = ois.readObject();
+				do {
+					obj = ois.readObject();
+				} while (obj==null);
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				msgBack=true;
 				
