@@ -17,11 +17,22 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-import it.polimi.ingsw.ps29.model.game.Period;
-
 public class GUICore {
 	
 	JFrame frame;
+	
+	JTextArea  statusBar;
+	PrintTower board;
+	JPanel gamePanel;
+	
+	ImageToPrint tile;
+	ImageToPrint personal;
+	ImageToPrint cardPreview;
+	JButton showVentures;
+	JButton showCharacters;
+	JButton prevBoard;
+	JButton nextBoard;
+	
 	ImageToPrint excommunication1;
 	ImageToPrint excommunication2;
 	ImageToPrint excommunication3;
@@ -42,17 +53,18 @@ public class GUICore {
 		frame.setLayout(new BorderLayout());
 		
 		//1.status bar
-		JTextArea statusBar = new JTextArea();
+		statusBar = new JTextArea();
 		statusBar.setText("ID PARTITA - GIOCATORE nome");
 		statusBar.setEditable(false);
 		//statusBar.setPreferredSize(new Dimension (0, 24));
 		
 		//2.game board
-		PrintTower board = new PrintTower();
+		int[] id = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+		board = new PrintTower(id);
 		board.setPreferredSize(new Dimension(460, 0));
 		
 		//3.panel of the game
-		JPanel gamePanel = new JPanel ();
+		gamePanel = new JPanel ();
 		setGamePanel (gamePanel);
 		
 		frame.add(statusBar, BorderLayout.PAGE_START);
@@ -62,11 +74,13 @@ public class GUICore {
 	
 	//function where i create center-right side of the GUI
 	public void setGamePanel (JPanel panel) {
-		panel.setLayout(new GridLayout(3, 1));
+		panel.setLayout(new BorderLayout());
 		
 		JPanel p1 = new JPanel();
+		p1.setPreferredSize(new Dimension(0, 360));
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
+		p3.setPreferredSize(new Dimension(0, 200));
 		
 		createNorthPanel(p1);
 		createCenterPanel(p2);
@@ -82,54 +96,48 @@ public class GUICore {
 		panel.setLayout(new BorderLayout());
 		
 		//1.bonus tile
-		ImageToPrint tile = new ImageToPrint("bonustile.png");
-		//tile.setPreferredSize(new Dimension(50, 0));
+		tile = new ImageToPrint("bonustile.png");
+		tile.setPreferredSize(new Dimension(50, 0));
 		
 		//2.personal board
-		ImageToPrint personal = new ImageToPrint("personalboard.jpg");
+		personal = new ImageToPrint("personalboard.jpg");
 		
-		//3.buttons
-		JPanel buttonsPanel = new JPanel ();
-		buttonsPanel.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		//3.buttons and preview
+		JPanel rightTopPanel = new JPanel ();
+		rightTopPanel.setPreferredSize(new Dimension(200, 0));
+		rightTopPanel.setLayout(new BorderLayout());
 			
-			//venture button
-			JButton showVentures = new JButton("Show Venture Cards");
-			c.gridx = 0;
-			c.gridy = 0;
-			c.gridwidth = 2;
-			c.gridheight = 1;
-			c.fill = GridBagConstraints.HORIZONTAL;
-			buttonsPanel.add(showVentures, c);
 			
-			//character button
-			JButton showCharacters = new JButton("Show Character Cards");
-			c.gridx = 0;
-			c.gridy = 1;
-			c.gridwidth = 2;
-			c.gridheight = 1;
-			c.fill = GridBagConstraints.HORIZONTAL;
-			buttonsPanel.add(showCharacters, c);
+		
+			//preview
+			cardPreview = new ImageToPrint("devcards_f_en_c_1.png");
+			rightTopPanel.add(cardPreview, BorderLayout.CENTER);
 			
-			//prev button
-			JButton prevBoard = new JButton("Previous Personal Board");
-			c.gridx = 0;
-			c.gridy = 2;
-			c.gridwidth = 1;
-			c.gridheight = 1;
-			buttonsPanel.add(prevBoard, c);
+			JPanel buttonsPanel = new JPanel();
+			buttonsPanel.setPreferredSize(new Dimension(0, 100));
+			buttonsPanel.setLayout(new GridLayout(2, 2));
 			
-			//next button
-			JButton nextBoard = new JButton("Next Personal Board");
-			c.gridx = 1;
-			c.gridy = 2;
-			c.gridwidth = 1;
-			c.gridheight = 1;
-			buttonsPanel.add(nextBoard, c);
+				//venture button
+				showVentures = new JButton("Ventures");
+				buttonsPanel.add(showVentures);
+				
+				//character button
+				showCharacters = new JButton("Characters");
+				buttonsPanel.add(showCharacters);
+				
+				//prev button
+				prevBoard = new JButton("Prev Board");
+				buttonsPanel.add(prevBoard);
+				
+				//next button
+				nextBoard = new JButton("Next Board");
+				buttonsPanel.add(nextBoard);
+			
+			rightTopPanel.add(buttonsPanel, BorderLayout.PAGE_END);
 			
 		panel.add(tile, BorderLayout.LINE_START);
 		panel.add(personal, BorderLayout.CENTER);
-		panel.add(buttonsPanel, BorderLayout.LINE_END);
+		panel.add(rightTopPanel, BorderLayout.LINE_END);
 		
 	}
 	
@@ -202,19 +210,15 @@ public class GUICore {
 		
 	}
 	
-	//panel for preview, leader, excommunications and console
+	//panel for stats, leader, excommunications and console
 	public void createSouthPanel (JPanel panel) {
 		panel.setLayout(new GridLayout(1, 6));
 		
-		//1.preview
-		ImageToPrint card = new ImageToPrint("devcards_f_en_c_1.png");
-		panel.add(card);
-
-		//2.leader button
+		//1.leader button
 		ImageToPrint leader = new ImageToPrint("leader.jpg");
 		panel.add(leader);
 		
-		//3.excommunication cards
+		//2.excommunication cards
 		excommunication1 = new ImageToPrint("excomm_back_1.png");
 		panel.add(excommunication1);
 		
@@ -224,6 +228,12 @@ public class GUICore {
 		excommunication3 = new ImageToPrint("excomm_back_3.png");
 		panel.add(excommunication3);
 		
+		//3.stats
+		JTextArea stats = new JTextArea();
+		stats.setText("stats of the match..");
+		stats.setEditable(false);
+		panel.add(stats);
+		
 		//4.console
 		JTextArea console = new JTextArea();
 		console.setText("console..");
@@ -231,13 +241,6 @@ public class GUICore {
 		panel.add(console);
 		
 	}
-	
-	/*public void setCards (JFrame frame) {
-		ImageToStamp cartaProva = new ImageToStamp("devcards_f_en_c_1.png");
-		cartaProva.setSize(10, 10);
-		System.out.println(cartaProva.getWidth());
-		frame.add(cartaProva);
-	}*/
 
 	
 	public static void main(String[] args) {
