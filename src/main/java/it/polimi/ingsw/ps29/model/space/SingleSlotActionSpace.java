@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps29.model.space;
 
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class SingleSlotActionSpace {
@@ -30,7 +29,7 @@ public class SingleSlotActionSpace {
 	}
 	
 	public boolean isEmpty () {
-		return member == null;
+		return state instanceof Free;
 	}
 	
 	public boolean familiarHere (Color playerColor) {

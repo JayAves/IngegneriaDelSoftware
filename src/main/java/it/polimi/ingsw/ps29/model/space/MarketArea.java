@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.space;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class MarketArea implements ActionSpace {
@@ -36,6 +37,12 @@ public class MarketArea implements ActionSpace {
 	@Override
 	public void cleanSpace() {
 		slot.cleanSpace();
+		
+	}
+
+	@Override
+	public void placeFamiliar(FamilyMemberInterface familiar) {
+		slot.setFamilyMember(familiar);
 		
 	}
 	

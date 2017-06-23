@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.space;
 import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class TowerArea implements ActionSpace {
@@ -95,6 +96,11 @@ public class TowerArea implements ActionSpace {
 
 	public ArrayList<Floor> getFloors() {
 		return floors;
+	}
+
+	@Override
+	public void placeFamiliar(FamilyMemberInterface familiar) {
+		floors.get(placementFloor-1).getSpace().setFamilyMember(familiar);
 	}
 
 	

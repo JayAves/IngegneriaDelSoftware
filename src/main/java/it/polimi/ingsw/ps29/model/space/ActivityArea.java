@@ -27,19 +27,20 @@ public class ActivityArea implements ActionSpace {
 		if (isEmpty()) return head.isEnoughPowerful(valuePlacement);
 		else return queue.isEnoughPowerful(valuePlacement-3);
 	}
-	
-	public void headPlacement(FamilyMemberInterface member) {
-		head.setFamilyMember(member);
-	}
-	
-	public void queuePlacement (FamilyMemberInterface member) {
-		queue.addMember(member);
-	}
 
 	@Override
 	public void cleanSpace() {
 		head.cleanSpace();
 		queue.cleanSpace();
+		
+	}
+
+	@Override
+	public void placeFamiliar(FamilyMemberInterface familiar) {
+		if(head.isEmpty())
+			head.setFamilyMember(familiar);
+		else
+			queue.addMember(familiar);
 		
 	}
 	

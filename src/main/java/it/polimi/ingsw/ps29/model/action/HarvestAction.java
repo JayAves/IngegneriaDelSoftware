@@ -36,8 +36,7 @@ public class HarvestAction extends Action {
 	@Override
 	public void performAction() {
 		//placement
-		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
-		else space.queuePlacement(move.getFamiliar());
+		space.placeFamiliar(move.getFamiliar());
 		
 		//gestione bonus della tile
 		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	

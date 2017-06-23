@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.model.space;
 
 import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public interface ActionSpace {
 	
@@ -11,5 +12,7 @@ public interface ActionSpace {
 	abstract boolean isEnoughPowerful (int valuePlacement);
 	
 	abstract void cleanSpace();
+	
+	abstract void placeFamiliar (FamilyMemberInterface familiar);
 	
 }

@@ -103,6 +103,7 @@ public class TowerAction extends Action {
 		}
 		
 		space.getPlacementFloor().setCard(null); 
+		space.placeFamiliar(move.getFamiliar());
 		
 		move.getFamiliar().setBusy(true);
 	

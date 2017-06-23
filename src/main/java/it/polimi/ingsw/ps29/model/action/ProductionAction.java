@@ -41,11 +41,7 @@ public class ProductionAction extends Action {
 	@Override
 	public void performAction() {
 		//placement
-		if (space.isEmpty()) space.headPlacement (move.getFamiliar());
-		else {
-			space.queuePlacement(move.getFamiliar());
-			penalty = -3;
-		}
+		space.placeFamiliar(move.getFamiliar());
 		
 		//memorizzo tutti gli effetti di scambio per i quali posso chiedere all'utente se li vuole attivare
 		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();

@@ -36,7 +36,7 @@ public class CouncilPalaceAction extends Action{
 	@Override
 	public void performAction() {
 		
-		space.getQueue().addMember(move.getFamiliar());
+		space.placeFamiliar(move.getFamiliar());
 		ArrayList<Resource> councilBonus = new ArrayList<Resource> ();
 		councilBonus.add(new Coins(1));
 		councilBonus.add(new Privilege(1));

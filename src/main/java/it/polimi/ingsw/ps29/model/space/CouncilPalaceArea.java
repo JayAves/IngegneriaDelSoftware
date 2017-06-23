@@ -55,6 +55,12 @@ public class CouncilPalaceArea implements ActionSpace {
 		
 	}
 
+	@Override
+	public void placeFamiliar(FamilyMemberInterface familiar) {
+		queue.addMember(familiar);
+		
+	}
+
 
 	
 	
