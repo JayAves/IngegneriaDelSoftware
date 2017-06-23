@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -57,28 +59,50 @@ public class GUICore {
 	
 	//function where i create GUI
 	void setFrame (JFrame frame) {
-		frame.setLayout(new BorderLayout());
+		frame.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
 		//1.status bar
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.gridwidth = 3;
+		c.gridheight = 1;
+		c.fill = GridBagConstraints.BOTH;
 		statusBar = new JTextArea();
 		statusBar.setText("ID PARTITA - GIOCATORE nome");
 		statusBar.setEditable(false);
 		//statusBar.setPreferredSize(new Dimension (0, 24));
 		
+		frame.add(statusBar, c);
+		
 		//2.game board
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weightx = 1;
+		c.weighty = 1;
+		c.gridwidth = 1;
+		c.gridheight = 1;
 		ArrayList<Integer> id = new ArrayList<Integer> ();
 		for(int i=0; i<16; i++)
 			id.add(i+1);
 		board = new PrintTower(id, this);
-		board.setPreferredSize(new Dimension(460, 0));
+		//board.setPreferredSize(new Dimension(460, 0));
+		
+		frame.add(board, c);
 		
 		//3.panel of the game
+		c.gridx = 1;
+		c.gridy = 1;
+		c.weightx = 1;
+		c.weighty = 1;
+		c.gridwidth = 2;
+		c.gridheight = 1;
 		gamePanel = new JPanel ();
 		setGamePanel (gamePanel);
 		
-		frame.add(statusBar, BorderLayout.PAGE_START);
-		frame.add(board,  BorderLayout.LINE_START);
-		frame.add(gamePanel, BorderLayout.CENTER);
+		frame.add(gamePanel, c);
 	}
 	
 	//function where i create center-right side of the GUI
