@@ -27,7 +27,7 @@ public class OnlineApp {
 	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI"));*/
 	    	
 	    
-	    	inputChoice = "CLI";
+	    	inputChoice = "GUI";
 	    	inputConnection = "RMI";
 	    	
 	    	System.out.println("\nPlayer name: ");

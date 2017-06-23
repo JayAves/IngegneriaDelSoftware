@@ -21,4 +21,12 @@ public class ExcommunicationCardDTO implements Serializable {
 	public String toString () {
 		return effectToString;
 	}
+	
+	public int getId () {
+		return id;
+	}
+	
+	public Period getPeriod () {
+		return period;
+	}
 }

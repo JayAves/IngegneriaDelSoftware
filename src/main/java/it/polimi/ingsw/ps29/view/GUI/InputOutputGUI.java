@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view;
+package it.polimi.ingsw.ps29.view.GUI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,12 +7,19 @@ import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
+import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.view.InputOutput;
 import it.polimi.ingsw.ps29.view.messages.Exchange;
 import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public class InputOutputGUI implements InputOutput {
+	private GUICore screen;
+	
+	public InputOutputGUI () {
+		screen = new GUICore();
+	}
 
 
 	@Override
@@ -90,8 +97,15 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
-		// TODO Auto-generated method stub
-		
+		int period = 0;
+		if(msg.getExCards().get(0).getPeriod() == Period.FIRST)
+			period = 1;
+		else if(msg.getExCards().get(0).getPeriod() == Period.SECOND)
+			period = 2;
+		else
+			period = 3;
+		screen.excommunication1 = new ImageToPrint("excomm_card/ecomm_"+period+"_"+msg.getExCards().get(0).getId()+".png");
+		screen.frame.repaint();
 	}
 
 

@@ -19,7 +19,10 @@ import javax.swing.SpinnerNumberModel;
 
 public class GUICore {
 	
-	private JFrame frame;
+	JFrame frame;
+	ImageToPrint excommunication1;
+	ImageToPrint excommunication2;
+	ImageToPrint excommunication3;
 	
 	public GUICore () {
 		frame = new JFrame ();
@@ -210,13 +213,13 @@ public class GUICore {
 		panel.add(leader);
 		
 		//3.excommunication cards
-		ImageToPrint excommunication1 = new ImageToPrint("excomm_back_1.png");
+		excommunication1 = new ImageToPrint("excomm_back_1.png");
 		panel.add(excommunication1);
 		
-		ImageToPrint excommunication2 = new ImageToPrint("excomm_back_2.png");
+		excommunication2 = new ImageToPrint("excomm_back_2.png");
 		panel.add(excommunication2);
 		
-		ImageToPrint excommunication3 = new ImageToPrint("excomm_back_3.png");
+		excommunication3 = new ImageToPrint("excomm_back_3.png");
 		panel.add(excommunication3);
 		
 		//4.console

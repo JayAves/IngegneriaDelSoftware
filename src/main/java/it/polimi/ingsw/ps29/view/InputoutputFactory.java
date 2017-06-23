@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps29.view;
 
+import it.polimi.ingsw.ps29.view.GUI.InputOutputGUI;
+
 public class InputoutputFactory { 
 	
 	public InputOutput getInput (String inputOutputType) {
