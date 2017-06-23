@@ -8,34 +8,37 @@
         { "type": "Harvest",
           "valueAction":1} },
 "requirements" : [],
-"cardRequirements" : [ 0, 0, 0, 5],
+"cardTypeRequirements" : ["venture"],
+"cardRequirements" : [5]
 },
 
 {
 "name" : "Ludovico Ariosto",
 "effect" : {
         "effectType": "LudovicoAriostoEffect",
-        "effectData" :{ },},
+        "effectData" :{ }},
 "requirements" : [],
-"cardRequirements" : [ 0, 0, 5, 0],
+"cardTypeRequirements" : ["character"],
+"cardRequirements" : [5]
 },
 
 {
 "name" : "Filippo Brunelleschi",
 "effect" : {
         "effectType": "FilippoBrunelleschiEffect",
-        "effectData" :{ },},
+        "effectData" :{ }},
 "requirements" : [],
-"cardRequirements" : [ 0, 5, 0, 0],
+"cardTypeRequirements" : ["building"],
+"cardRequirements" : [5]
 },
 
 {
 "name" : "Sigismondo Malatesta",
 "effect" : {
         "effectType": "NeutralFamilyMemberEmpowermentEffect",
-        "effectData" :{ },},
+        "effectData" :{ }},
 "requirements" : [{
-   "resourceType":"MIlitaryPoints",
+   "resourceType":"MilitaryPoints",
    "resourceData":{
     "amount":7,
     "type":"military" } },
@@ -46,7 +49,8 @@
     "amount":3,
     "type":"military" } }                         
    ],
-"cardRequirements" : [ 0, 0, 0, 0],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
 },
 
 {
@@ -65,7 +69,8 @@
    "resourceData":{
     "amount":18,
     "type":"coins" } }],
-"cardRequirements" : [ 0, 0, 0, 0],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
 },
 
 {
@@ -84,7 +89,8 @@
    "resourceData":{
     "amount":10,
     "type":"stones" } }],
-"cardRequirements" : [ 0, 0, 0, 0],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
 },
 
 {
@@ -119,7 +125,20 @@
    "resourceData":{
     "amount":12,
     "type":"military" } }],
-"cardRequirements" : [ 0, 0, 0, 0],
-}
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Leonardo da Vinci",
+"effect" : {
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Production",
+          "valueAction":0} },
+"requirements" : [],
+"cardTypeRequirements" : ["territory" , "character"],
+"cardRequirements" : [2 , 4]
+},
     
 ]
