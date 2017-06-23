@@ -19,10 +19,10 @@ public class CoordinateHandler {
 		int xStart = 16;
 		int yBase = 20;
 		int yStart = 20;
-		int widthCard = 57;
-		int heightCard = 86;
+		int widthCard = 56;
+		int heightCard = 81;
 		int shiftWidth = 108;
-		int shiftHeight = 92;
+		int shiftHeight = 90;
 		
 		cardCoords = new ArrayList<CardCoordinates>();
 		for(int i=0; i<16; i++)
