@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps29.model.action.actionstates;
 
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
 
 public class PrivilegesState implements ActionState {
 	private ActionState previousState;

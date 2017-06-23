@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.Action;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.game.Color;
@@ -62,7 +63,12 @@ public class ProvaTest extends TestCase {
 		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).takeCard());
 		
 		action = new TowerAction(model, move);
-		action.actionHandler();
+		try {
+			action.actionHandler();
+		} catch (RejectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		

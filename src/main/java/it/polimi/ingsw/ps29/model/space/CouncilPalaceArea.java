@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
 import it.polimi.ingsw.ps29.model.game.Color;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class CouncilPalaceArea implements ActionSpace {
@@ -25,8 +25,10 @@ public class CouncilPalaceArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean isEnoughPowerful(int valuePlacement) {
-		return queue.isEnoughPowerful(valuePlacement);
+	public boolean isEnoughPowerful(int valuePlacement) throws NotEnoughPowerfulException {
+		if (queue.isEnoughPowerful(valuePlacement)) 
+			return true;
+		throw new NotEnoughPowerfulException();
 	}
 
 	public QueueActionSpace getQueue() {

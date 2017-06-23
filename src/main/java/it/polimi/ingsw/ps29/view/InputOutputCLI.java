@@ -11,6 +11,11 @@ import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
+import it.polimi.ingsw.ps29.messages.ActionChoice;
+import it.polimi.ingsw.ps29.messages.BonusChoice;
+import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
@@ -18,11 +23,6 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
-import it.polimi.ingsw.ps29.view.messages.ActionChoice;
-import it.polimi.ingsw.ps29.view.messages.BonusChoice;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
-import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 
 public class InputOutputCLI implements InputOutput {
 	

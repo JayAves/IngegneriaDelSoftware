@@ -18,8 +18,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 
 public abstract class Connection extends Observable implements Runnable{
 	

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class QueueActionSpace {

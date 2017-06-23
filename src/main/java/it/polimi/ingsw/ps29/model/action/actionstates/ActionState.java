@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps29.model.action.actionstates;
 
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.model.game.Match;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public interface ActionState {
 	

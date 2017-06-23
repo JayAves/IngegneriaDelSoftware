@@ -1,11 +1,11 @@
 package it.polimi.ingsw.ps29.controller;
 
+import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
-import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 
 public class ChoiceToMove {
 	

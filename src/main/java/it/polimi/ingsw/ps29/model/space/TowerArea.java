@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
+
+import it.polimi.ingsw.ps29.messages.exception.FamiliarHereException;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
@@ -52,10 +54,10 @@ public class TowerArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean familiarHere(Color playerColor) {
+	public boolean familiarHere(Color playerColor) throws FamiliarHereException {
 		for (Floor i: floors) 
 			if (i.familiarHere(playerColor))
-				return true;
+				throw new FamiliarHereException();
 		return false;
 	}
 

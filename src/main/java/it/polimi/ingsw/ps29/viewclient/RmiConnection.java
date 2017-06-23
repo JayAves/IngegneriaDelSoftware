@@ -7,9 +7,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.server.RmiServerInterface;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
 
 public class RmiConnection extends Connection implements RmiClientInterface {
 

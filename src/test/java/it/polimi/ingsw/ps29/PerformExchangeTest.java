@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.model.action.ExchangeResources;
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
@@ -16,7 +17,6 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
 import junit.framework.TestCase;
 
 public class PerformExchangeTest extends TestCase {

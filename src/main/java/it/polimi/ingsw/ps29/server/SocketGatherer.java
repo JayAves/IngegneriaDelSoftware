@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 
 public class SocketGatherer extends Observable {
 

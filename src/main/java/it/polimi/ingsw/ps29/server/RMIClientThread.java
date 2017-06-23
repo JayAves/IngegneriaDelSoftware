@@ -5,11 +5,10 @@ import java.rmi.RemoteException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
+import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread implements Serializable{

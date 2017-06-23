@@ -11,6 +11,18 @@ import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
+import it.polimi.ingsw.ps29.messages.ActionChoice;
+import it.polimi.ingsw.ps29.messages.BonusChoice;
+import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.messages.RejectMessage;
+import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
+import it.polimi.ingsw.ps29.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.Action;
 import it.polimi.ingsw.ps29.model.action.AddPrivileges;
 import it.polimi.ingsw.ps29.model.action.CouncilPalaceAction;
@@ -43,16 +55,6 @@ import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
 import it.polimi.ingsw.ps29.model.space.Floor;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 import it.polimi.ingsw.ps29.server.ClientThread;
-import it.polimi.ingsw.ps29.view.messages.ActionChoice;
-import it.polimi.ingsw.ps29.view.messages.BonusChoice;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
-import it.polimi.ingsw.ps29.view.messages.InfoForView;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
-import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
-import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class Controller implements Observer{
 	
@@ -201,19 +203,24 @@ public class Controller implements Observer{
 			break;
 		}
 		
-		stateOfAction = action.actionHandler();
-		//recupero lo stato dopo che ho eseguito le istruzioni
+		try{
+			stateOfAction = action.actionHandler();
+			//recupero lo stato dopo che ho eseguito le istruzioni
+			
+			if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())
+					||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
+				//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
+				//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)
+				info.space = arg.getChoice(0);
+				info.floor = arg.getChoice(1);
+				info.familiar = arg.getChoice(3);
+				sendInfo = true;
+			}
 		
-		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())
-				||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
-			//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
-			//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)
-			info.space = arg.getChoice(0);
-			info.floor = arg.getChoice(1);
-			info.familiar = arg.getChoice(3);
-			sendInfo = true;
+		} catch (RejectException exception) {
+			views.get(model.getBoard().getCurrentPlayer().getName()).startInteraction(new RejectMessage(
+					model.getBoard().getCurrentPlayer().getName(), exception));
 		}
-		//else viewsnotifyRejection();
 	}
 	
 	private ActionChoice handleBonusAction (BonusChoice msg) {

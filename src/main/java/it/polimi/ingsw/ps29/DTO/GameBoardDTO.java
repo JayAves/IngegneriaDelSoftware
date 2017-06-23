@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
-import it.polimi.ingsw.ps29.view.messages.InfoForView;
 
 public class GameBoardDTO implements Serializable{
 	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;

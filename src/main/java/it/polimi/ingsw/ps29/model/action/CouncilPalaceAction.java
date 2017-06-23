@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -28,9 +29,8 @@ public class CouncilPalaceAction extends Action{
 	}
 
 	@Override
-	public boolean isPlaceable() {
-		// TODO Auto-generated method stub
-		return space.isEnoughPowerful(move.getFamiliar().getPower() + move.getServants()) && !move.getFamiliar().getBusy();
+	public boolean isPlaceable() throws RejectException {
+		return space.isEnoughPowerful(move.getFamiliar().getPower() + move.getServants());
 	}
 
 	@Override

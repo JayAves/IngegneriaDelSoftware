@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
+import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
@@ -20,8 +22,10 @@ public class MarketArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean isEmpty() {
-		return slot.isEmpty();
+	public boolean isEmpty() throws SpaceOccupiedException {
+		if (slot.isEmpty())
+			return true;
+		throw new SpaceOccupiedException();
 	}
 
 	@Override
@@ -30,8 +34,10 @@ public class MarketArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean isEnoughPowerful(int valuePlacement) {
-		return slot.isEnoughPowerful(valuePlacement);
+	public boolean isEnoughPowerful(int valuePlacement) throws NotEnoughPowerfulException {
+		if (slot.isEnoughPowerful(valuePlacement))
+			return true;
+		throw new NotEnoughPowerfulException();
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.model.action;
 
+import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
@@ -7,7 +8,6 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
 
 public class ExchangeResources {
 	

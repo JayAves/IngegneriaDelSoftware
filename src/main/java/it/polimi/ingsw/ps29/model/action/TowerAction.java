@@ -2,7 +2,12 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.messages.exception.FullCardBoardException;
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughResourcesException;
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
+import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
+import it.polimi.ingsw.ps29.messages.exception.TerritoryCardException;
+import it.polimi.ingsw.ps29.messages.exception.TowerCoinMalusException;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
@@ -28,7 +33,7 @@ public class TowerAction extends Action {
 	}
 
 	@Override
-	public boolean isPlaceable() {
+	public boolean isPlaceable() throws RejectException {
 		// TODO Auto-generated method stub
 		/*System.out.println(move.getFamiliar().getTowerPower());
 		System.out.println(space.familiarHere(move.getFamiliar().getPlayerColor()));
@@ -39,12 +44,15 @@ public class TowerAction extends Action {
 		System.out.println(enoughVictoryPoints());*/
 		
 		//se è presente un familiare qualsiasi sulla torre e non si possono pagare tre monete
-		if(!space.isEmpty() && canAffordMalus())
-			return false;
+		if(!space.isEmpty() && !canAffordMalus())
+			throw new TowerCoinMalusException();
+		
+		if(!space.getPlacementFloor().isEmpty())
+			throw new SpaceOccupiedException();
 		
 		if (!space.familiarHere(move.getFamiliar().getPlayerColor()) 
-		&& canAffordCardResourcesCost()&& enoughSlotSpace()
-		&& enoughMilitaryPoints() && !move.getFamiliar().getBusy() && space.getPlacementFloor().isEmpty())  {
+		&& canAffordCardResourcesCost() && enoughSlotSpace()
+		&& enoughMilitaryPoints())  {
 			int power;
 			switch (move.getSpace()) {
 				case "territoryTower":
@@ -119,7 +127,7 @@ public class TowerAction extends Action {
 		return (move.getPlayer().getPersonalBoard().getResources().getResource("coin").getAmount()>=3);
 	}
 	
-	private boolean canAffordCardResourcesCost() {
+	private boolean canAffordCardResourcesCost() throws NotEnoughResourcesException {
 		
 		ArrayList<Resource> discountedCost=space.takeCard().getCost();
 		
@@ -131,7 +139,7 @@ public class TowerAction extends Action {
 		for(Resource res: discountedCost) {
 			
 			if (res.getAmount()> move.getPlayer().getPersonalBoard().getSpecificResource(res.getType()).getAmount()) 
-				return false; 
+				throw new NotEnoughResourcesException();
 			
 			}
 		
@@ -150,35 +158,38 @@ public class TowerAction extends Action {
 		}
 	}
 	
-	private boolean enoughSlotSpace(){
-		
-		return move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6;
+	private boolean enoughSlotSpace() throws FullCardBoardException{
+		if (move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6)
+			return true;
+		throw new FullCardBoardException ();
 	}
 
-	private boolean enoughMilitaryPoints() {
+	private boolean enoughMilitaryPoints() throws TerritoryCardException {
 		if(space.takeCard().getType().equals("territory")) {
 			
 			int size= move.getPlayer().getPersonalBoard().getCards("territory").size();
+			boolean canAfford = false;
 			
 			switch (size) {
-			
-			case 2:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=3);
-			
-			case 3:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=7);
-			
-			case 4:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=12);
-				
-			case 5:
-				return(move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=18);	
-
-			default:
-				return true;
+				case 2:
+					canAfford = (move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=3);
+					break;
+				case 3:
+					canAfford = (move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=7);
+					break;
+				case 4:
+					canAfford = (move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=12);
+					break;
+				case 5:
+					canAfford = (move.getPlayer().getPersonalBoard().getSpecificResource("military").getAmount()>=18);	
+					break;
+				default:
+					canAfford = true;
 				
 			}
-			
+			if (canAfford)
+				return true;
+			throw new TerritoryCardException();
 		}
 		
 		else 

@@ -1,15 +1,18 @@
 package it.polimi.ingsw.ps29.model.space;
 
+import it.polimi.ingsw.ps29.messages.exception.FamiliarHereException;
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
+import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public interface ActionSpace {
 	
-	abstract boolean isEmpty();
+	abstract boolean isEmpty() throws SpaceOccupiedException;
 	
-	abstract boolean familiarHere (Color playerColor);
+	abstract boolean familiarHere (Color playerColor) throws FamiliarHereException;
 	
-	abstract boolean isEnoughPowerful (int valuePlacement);
+	abstract boolean isEnoughPowerful (int valuePlacement) throws NotEnoughPowerfulException;
 	
 	abstract void cleanSpace();
 	

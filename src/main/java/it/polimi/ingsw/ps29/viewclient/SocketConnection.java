@@ -14,8 +14,8 @@ import java.util.Random;
 
 import com.google.gson.GsonBuilder;
 
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 
 public class SocketConnection extends Connection {
 	

@@ -2,10 +2,10 @@ package it.polimi.ingsw.ps29.model.action.actionstates;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 
 public class AskAboutExchangeState implements ActionState {
 	private ArrayList <ExchangeResourcesEffect> effect;

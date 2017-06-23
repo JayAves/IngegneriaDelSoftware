@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.model.action;
 
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -22,8 +23,8 @@ public class MarketAction extends Action{
 	}
 
 	@Override
-	public boolean isPlaceable() {
-		return  !move.getFamiliar().getBusy() && space.isEnoughPowerful(
+	public boolean isPlaceable() throws RejectException {
+		return  space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getMarketPower() + move.getServants()) &&
 				space.isEmpty();
 	}

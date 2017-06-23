@@ -8,9 +8,9 @@ import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
+import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 
 public class ServerSerializator {
 	

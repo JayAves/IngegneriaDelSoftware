@@ -3,8 +3,8 @@ package it.polimi.ingsw.ps29.server;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RmiServerImplementation extends UnicastRemoteObject implements RmiServerInterface {

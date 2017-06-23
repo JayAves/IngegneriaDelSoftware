@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view.messages;
+package it.polimi.ingsw.ps29.messages;
 
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;

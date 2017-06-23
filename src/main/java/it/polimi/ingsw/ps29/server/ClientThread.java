@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.server;
 
 import java.util.Observable;
 
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
 
 public abstract class ClientThread extends Observable implements Runnable{
 	

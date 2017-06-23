@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.Card;
@@ -33,8 +34,8 @@ public class ProductionAction extends Action {
 	}
 
 	@Override
-	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && !move.getFamiliar().getBusy() && space.isEnoughPowerful(
+	public boolean isPlaceable() throws RejectException {
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
 	}
 

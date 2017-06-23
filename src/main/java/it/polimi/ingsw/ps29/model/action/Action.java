@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps29.model.action;
 
+import it.polimi.ingsw.ps29.messages.exception.FamiliarBusyException;
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
+import it.polimi.ingsw.ps29.messages.exception.ServantsException;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
@@ -7,7 +10,6 @@ import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Servants;
 
@@ -28,18 +30,27 @@ public abstract class Action {
 	
 	//questo metodo controlla se è possibile piazzare il famigliare (posizione libera, famigliare dello stesso colore non presente, 
 	//valore dell'azione modificata con effetti e servitori maggiore o uguale al valore richiesto
-	abstract boolean isPlaceable();
+	abstract boolean isPlaceable() throws RejectException;
 	
 	//chiamato se i precedenti controlli vanno a buon fine, implementato in maniera diversa per ogni spazio azione
 	abstract void performAction ();
 		
-	public ActionState actionHandler () {
+	public ActionState actionHandler () throws RejectException {
+		
+		if(model.getBoard().getCurrentPlayer().getPersonalBoard().getSpecificResource("servant").getAmount() <
+				move.getServants())
+			throw new ServantsException();
+		
 		if (isForbidden() || !isPlaceable()) {
 			state = new RejectedState();
 		}
 		
 		
 		else {
+			
+			if(move.getFamiliar().getBusy())
+				throw new FamiliarBusyException();
+			
 			performAction();
 			//sottraggo i servitori usati nella mossa
 			model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(
@@ -49,6 +60,7 @@ public abstract class Action {
 					&& !state.getState().equals("privileges"))
 				state = new PerformedState();
 		}
+		
 		ResourceInterface privileges = model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().getResource("privilege");
 		if(privileges!=null)
 			state = new PrivilegesState(state, privileges.getAmount());

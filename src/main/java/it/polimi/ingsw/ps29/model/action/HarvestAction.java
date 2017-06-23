@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
 
+import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
@@ -28,8 +29,8 @@ public class HarvestAction extends Action {
 	}
 
 	@Override
-	public boolean isPlaceable() {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && !move.getFamiliar().getBusy() && space.isEnoughPowerful(
+	public boolean isPlaceable() throws RejectException {
+		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants());
 	}
 

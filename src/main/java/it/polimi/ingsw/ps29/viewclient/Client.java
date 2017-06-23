@@ -3,17 +3,18 @@ package it.polimi.ingsw.ps29.viewclient;
 import java.util.Observable;
 import java.util.Observer;
 
+import it.polimi.ingsw.ps29.messages.ActionChoice;
+import it.polimi.ingsw.ps29.messages.BonusChoice;
+import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.messages.RejectMessage;
+import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
+import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.view.View;
-import it.polimi.ingsw.ps29.view.messages.ActionChoice;
-import it.polimi.ingsw.ps29.view.messages.BonusChoice;
-import it.polimi.ingsw.ps29.view.messages.Exchange;
-import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
-import it.polimi.ingsw.ps29.view.messages.InfoForView;
-import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.view.messages.PrivilegeChoice;
-import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
-import it.polimi.ingsw.ps29.view.messages.VaticanChoice;
 
 public class Client implements Observer{
 	
@@ -94,6 +95,10 @@ public class Client implements Observer{
 			
 			public void receive (FirstBoardInfo msg) {
 				view.showInitialInfo(msg);
+			}
+			
+			public void receive (RejectMessage msg) {
+				view.showMessage(msg.getException().getMessage());
 			}
 	}
 
