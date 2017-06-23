@@ -202,17 +202,6 @@ public class GameBoard{
 		}
 	}
 	
-	public void randomLeaderCards (){
-		ArrayList<LeaderCard> draft = leaderCards;
-		for (int i = 0 ; i < playersOrder.size(); i++){
-			ArrayList<LeaderCard> drafted = new ArrayList<LeaderCard>();
-			for(int j = 0; j < 4 ; j++){
-				int rnd = new Random().nextInt(draft.size());
-				drafted.add(draft.get(rnd));
-			}
-			playersOrder.get(i).addLeaderCards(drafted);
-		}
-	}
 	
 }
 
