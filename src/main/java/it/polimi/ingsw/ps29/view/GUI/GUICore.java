@@ -2,8 +2,6 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -15,11 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.RepaintManager;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-
-import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
@@ -48,8 +43,8 @@ public class GUICore {
 	
 	public GUICore () {
 		frame = new JFrame ();
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		frame.setUndecorated(false);
+		frame.setSize(1280, 720);
+		frame.setResizable(false);
 		setFrame (frame);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -59,50 +54,27 @@ public class GUICore {
 	
 	//function where i create GUI
 	void setFrame (JFrame frame) {
-		frame.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		frame.setLayout(new BorderLayout());
 		
 		//1.status bar
-		c.gridx = 0;
-		c.gridy = 0;
-		c.weightx = 1;
-		c.weighty = 0;
-		c.gridwidth = 3;
-		c.gridheight = 1;
-		c.fill = GridBagConstraints.BOTH;
 		statusBar = new JTextArea();
-		statusBar.setText("ID PARTITA - GIOCATORE nome");
+		statusBar.setText("Waiting for other players...");
 		statusBar.setEditable(false);
-		//statusBar.setPreferredSize(new Dimension (0, 24));
-		
-		frame.add(statusBar, c);
+		statusBar.setPreferredSize(new Dimension (0, 20));
+		frame.add(statusBar, BorderLayout.PAGE_START);
 		
 		//2.game board
-		c.gridx = 0;
-		c.gridy = 1;
-		c.weightx = 1;
-		c.weighty = 1;
-		c.gridwidth = 1;
-		c.gridheight = 1;
 		ArrayList<Integer> id = new ArrayList<Integer> ();
 		for(int i=0; i<16; i++)
 			id.add(i+1);
 		board = new PrintTower(id, this);
-		//board.setPreferredSize(new Dimension(460, 0));
-		
-		frame.add(board, c);
+		board.setPreferredSize(new Dimension(460, 0));
+		frame.add(board, BorderLayout.LINE_START);
 		
 		//3.panel of the game
-		c.gridx = 1;
-		c.gridy = 1;
-		c.weightx = 1;
-		c.weighty = 1;
-		c.gridwidth = 2;
-		c.gridheight = 1;
 		gamePanel = new JPanel ();
 		setGamePanel (gamePanel);
-		
-		frame.add(gamePanel, c);
+		frame.add(gamePanel, BorderLayout.CENTER);
 	}
 	
 	//function where i create center-right side of the GUI

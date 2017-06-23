@@ -6,8 +6,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+import it.polimi.ingsw.ps29.view.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.view.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.view.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread implements Serializable{
@@ -19,6 +21,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	protected String username;
 	protected boolean recentlyPoked;
 	private RmiClientInterface clientInterface;
+	private Timer timer;
 	
 	public RMIClientThread(PlayerInfoMessage login, RmiClientInterface clientInterface) {
 		
@@ -28,7 +31,8 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		recentlyPoked=true;
 		//System.out.println(this.username);
 		IDcode=login.getToken();
-		//turnTimer= TimerJson.turnTimer;
+		timer= new Timer();
+		
 		
 	}
 
@@ -47,7 +51,6 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	public void run() {
 		
 		while(recentlyPoked) {
-			
 		}
 	}
 
@@ -73,9 +76,11 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		// TODO Auto-generated method stub
 		if (inGame){
 			try {
+				msgBack=false;
+				if (!((msg instanceof FirstBoardInfo)||(msg instanceof TowersAndDicesForView))) //timer does not start for any msg containing info to display
+					timer.schedule(new Task(), turnTimer);
 				clientInterface.notify(msg);
-				//Timer timer= new Timer();
-				//timer.schedule(new Task(), turnTimer);
+				
 		
 			} catch (RemoteException e) {
 			// TODO Auto-generated catch block

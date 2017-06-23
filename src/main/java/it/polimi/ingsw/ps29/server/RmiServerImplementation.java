@@ -23,6 +23,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	@Override
 	public void messageforMyThread(String loginToken, InteractionMessage msg ) throws RemoteException {
 		// TODO Auto-generated method stub
+		myGatherer.getThread(loginToken).msgBack=true;
 		myGatherer.getThread(loginToken).notifyController(msg);
 	}
 
@@ -44,8 +45,8 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 			myGatherer.clients.remove(toDelete);
 		myGatherer.clients.add(thread);
 		System.out.println(myGatherer.clients);
-		Thread t= new Thread (thread);
-		t.start();
+		//Thread t= new Thread (thread);
+		//t.start();
 		myGatherer.notifyRoomCreator(thread);
 		
 		
