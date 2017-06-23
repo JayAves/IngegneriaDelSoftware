@@ -18,6 +18,7 @@ public class PrintTower extends JPanel {
 			tower = loadImage("gameboard.png");
 			setCards (idCards);
 			addMouseListener(new MyMouseListener(gui));
+			System.out.println(tower.getWidth()+" - "+tower.getHeight());
 		}
 		
 		public void setCards (ArrayList<Integer> idCards) {
