@@ -29,7 +29,7 @@ public class SingleSlotActionSpace {
 	}
 	
 	public boolean isEmpty () {
-		return state instanceof Free;
+		return member==null;
 	}
 	
 	public boolean familiarHere (Color playerColor) {

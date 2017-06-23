@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps29.model.space.ActivityArea;
 public class HarvestAction extends Action {
 	
 	private ActivityArea space;
+	private int penalty;
 	
 	public HarvestAction(Match model, Move move) {
 		super(model, move);
@@ -36,6 +37,9 @@ public class HarvestAction extends Action {
 
 	@Override
 	public void performAction() {
+		if(!space.isEmpty())
+			penalty = -3;
+		
 		//placement
 		space.placeFamiliar(move.getFamiliar());
 		
@@ -49,7 +53,7 @@ public class HarvestAction extends Action {
 		//ciclo lettura effetti da personalBoard
 		for(Card card: importedSlot) {
 			for(Effect effect: card.getPermanentEffects()) {
-				if (move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
+				if (move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
 				 ((TerritoryCard)card).getHarvestForce()) {
 					effect.performEffect(move.getPlayer());
 				}

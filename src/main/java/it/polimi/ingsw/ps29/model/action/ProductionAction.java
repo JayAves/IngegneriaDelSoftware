@@ -41,6 +41,9 @@ public class ProductionAction extends Action {
 
 	@Override
 	public void performAction() {
+		if(!space.isEmpty())
+			penalty = -3;
+		
 		//placement
 		space.placeFamiliar(move.getFamiliar());
 		
