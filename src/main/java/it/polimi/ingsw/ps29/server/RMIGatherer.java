@@ -17,6 +17,16 @@ public class RMIGatherer extends Observable implements Serializable{
 	
 	protected ArrayList<RMIClientThread> clients;
 	
+	int turnTimer;
+	
+	
+	
+	public RMIGatherer(int turnTimer) {
+		
+		this.turnTimer = turnTimer;
+		clients= new ArrayList<RMIClientThread>();
+	}
+
 	public void startServer() {
 		// TODO Auto-generated method stub
 		try {
@@ -26,9 +36,9 @@ public class RMIGatherer extends Observable implements Serializable{
 		}
 		
 		try {
-			clients= new ArrayList<RMIClientThread>();
+			
 			RmiServerImplementation serverImplementation = new RmiServerImplementation();
-			serverImplementation.setGatherer(this);
+			serverImplementation.setup(this);
 			Naming.rebind("Server", serverImplementation);																	  
 		
 		} catch (MalformedURLException e) {
@@ -56,4 +66,5 @@ public class RMIGatherer extends Observable implements Serializable{
 		setChanged();
 		notifyObservers(thread);
 	}
+	
 }

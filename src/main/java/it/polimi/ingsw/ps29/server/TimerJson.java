@@ -2,8 +2,13 @@ package it.polimi.ingsw.ps29.server;
 
 public class TimerJson {
     	
-	protected static int turnTimer;
-	protected  static int roomTimer;
+	protected int turnTimer;
+	protected int roomTimer;
+	
+	public TimerJson(int turn, int room) {
+		turnTimer=turn;
+		roomTimer=room;
+	}
 	
 	public int getTurnTimer() {
 		return turnTimer;

@@ -18,11 +18,14 @@ public class SocketGatherer extends Observable {
 	private ObjectInputStream ois;
 	private ArrayList<SocketClientThread> clients;
 	boolean endOfConnection=false;
+	private int turnTimer;
 	
-	public SocketGatherer (int port) {
+	
+	public SocketGatherer (int port, int turnTimer) {
 		try {
 			serverSocket = new ServerSocket(port);
 			System.out.println("Server online on port "+port);
+			this.turnTimer= turnTimer;
 			
 		} catch (IOException e) {
 			System.err.println("Unable to start the server!");
@@ -53,6 +56,7 @@ public class SocketGatherer extends Observable {
 					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
 					tempLogin = (PlayerInfoMessage) ois.readObject();
 					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
+					virtualView.setTurnTimer(turnTimer);
 					SocketClientThread toDelete= null;
 					
 				for( SocketClientThread th: clients) {
