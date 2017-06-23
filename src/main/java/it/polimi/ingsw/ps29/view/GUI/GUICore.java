@@ -2,8 +2,6 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -15,11 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.RepaintManager;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-
-import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
@@ -65,7 +60,7 @@ public class GUICore {
 		statusBar = new JTextArea();
 		statusBar.setText("Waiting for other players...");
 		statusBar.setEditable(false);
-		//statusBar.setPreferredSize(new Dimension (0, 24));
+		statusBar.setPreferredSize(new Dimension (0, 20));
 		frame.add(statusBar, BorderLayout.PAGE_START);
 		
 		//2.game board
@@ -90,7 +85,7 @@ public class GUICore {
 		p1.setPreferredSize(new Dimension(0, 360));
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
-		p3.setPreferredSize(new Dimension(0, 210));
+		p3.setPreferredSize(new Dimension(0, 200));
 		
 		createNorthPanel(p1);
 		createCenterPanel(p2);
