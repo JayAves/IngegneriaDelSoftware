@@ -4,9 +4,7 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
-import it.polimi.ingsw.ps29.model.game.resources.Servants;
 import it.polimi.ingsw.ps29.view.messages.ActionChoice;
 
 public class ChoiceToMove {
@@ -32,12 +30,7 @@ public class ChoiceToMove {
 				return p;
 		}
 		return null;
-	}
-	
-	private Servants getServants (int number) {
-		return new Servants (-number);
-	}
-	
+	}	
 	
 	
 	private FamilyMemberInterface getFamiliar (String player, int i) {

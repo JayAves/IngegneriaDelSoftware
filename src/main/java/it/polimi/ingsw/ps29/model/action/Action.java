@@ -7,7 +7,9 @@ import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
+import it.polimi.ingsw.ps29.model.game.resources.Servants;
 
 public abstract class Action {
 	
@@ -39,6 +41,9 @@ public abstract class Action {
 		
 		else {
 			performAction();
+			//sottraggo i servitori usati nella mossa
+			model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(
+					new Servants(- move.getServants()));
 		
 			if(!state.getState().equals("bonus action") && !state.getState().equals("ask exchange")
 					&& !state.getState().equals("privileges"))
