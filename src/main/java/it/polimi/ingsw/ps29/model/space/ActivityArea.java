@@ -40,11 +40,11 @@ public class ActivityArea implements ActionSpace {
 	}
 
 	@Override
-	public void placeFamiliar(FamilyMemberInterface familiar) {
-		if(head.isEmpty())
-			head.setFamilyMember(familiar);
-		else
+	public void placeFamiliar(FamilyMemberInterface familiar, boolean ludovicoAriosto) {
+		if(!head.isEmpty() && !ludovicoAriosto)
 			queue.addMember(familiar);
+		else
+			head.setFamilyMember(familiar);
 		
 	}
 	
