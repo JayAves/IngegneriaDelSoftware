@@ -11,7 +11,7 @@ public class PlayerInfoMessage extends InteractionMessage {
 	
 	
 	public PlayerInfoMessage(String player) {
-		super(player);
+		super(player,false);
 		timeExpired= false;
 		
 		

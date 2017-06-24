@@ -13,7 +13,7 @@ public class Exchange extends InteractionMessage {
 	private int [] choice;
 	
 	public Exchange(String player, ExchangeResourcesEffect exchange) {
-		super (player);
+		super (player,true);
 		this.exchange = exchange;
 		choice = new int [3];
 		choice[1] = 0; //resOUT

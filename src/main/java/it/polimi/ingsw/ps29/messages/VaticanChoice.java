@@ -12,7 +12,7 @@ public class VaticanChoice extends InteractionMessage {
 	
 
 	public VaticanChoice(String player) {
-		super(player);
+		super(player,true);
 	}
 	
 	

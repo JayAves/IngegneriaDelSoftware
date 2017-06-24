@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 
@@ -19,6 +21,7 @@ public class ServerSerializator {
 	private ObjectInputStream ois;
 	private SocketClientThread thread;
 	private Timer timer;
+	private ArrayList<Task> timeOuts;
 	
 	public ServerSerializator (SocketClientThread thread,Socket socket, ObjectOutputStream oos, ObjectInputStream ooi) {
 		this.socket = socket;
@@ -27,16 +30,25 @@ public class ServerSerializator {
 		this.oos = oos;
 		this.ois = ois;
 		timer= new Timer();
+		timeOuts= new ArrayList<Task>();
+		
 	}
 	
 	public void serializeObject (Object o) {
+		
+		
 		try {
-			thread.msgBack=false;
+			
 			oos.writeObject(o);
 			oos.flush();
-		
-			if (!((o instanceof FirstBoardInfo)||(o instanceof TowersAndDicesForView))) //timer does not start for any msg containing info to display
-				timer.schedule(new Task(), thread.turnTimer);
+	
+			if (((InteractionMessage)o).getBi()) { //only for bidirectional messages
+				Task task= new Task();
+				timeOuts.add(task);
+				timer.schedule(task, thread.turnTimer);
+			}	
+			
+			
 			
 		} catch (IOException e) {
 			System.err.println("Unable to send object");
@@ -47,18 +59,21 @@ public class ServerSerializator {
 		
 	}
 	
-	private class Task extends TimerTask{
+	protected class Task extends TimerTask{
 
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			if (!thread.msgBack) {
-				PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
-				msg.setTimeExpired();
-				thread.notifyController(msg);
-			}
+			
+			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
+			msg.setTimeExpired();
+			thread.notifyController(msg);
+			
 		}
 		
 	}
-
+	
+	public ArrayList<Task> getTasks() {
+		return timeOuts;
+	}
 }

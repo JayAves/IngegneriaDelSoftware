@@ -314,6 +314,12 @@ public class Controller implements Observer{
 			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
 				if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState))
 					placeRandomFamiliar();
+				if (stateOfAction instanceof VaticanChoice) {
+					VaticanChoice msg= new VaticanChoice(playerInfoMessage.getName());
+					msg.setSustain(false);
+					handleExcommunication(msg);
+				}
+					
 				stateOfAction= new PerformedState();
 				stateOfAction.afterAction(model);
 			}

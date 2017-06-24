@@ -18,7 +18,7 @@ public class TowersAndDicesForView extends InteractionMessage {
 	 *2 orange*/
 	
 	public TowersAndDicesForView(String player, TowersDTO towers, int[] dices) {
-		super(player);
+		super(player, false);
 		this.towers = towers;
 		this.dices = dices;
 	}
