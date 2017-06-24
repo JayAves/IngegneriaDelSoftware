@@ -2792,6 +2792,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Hiring Recruits",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -2822,9 +2823,11 @@
 				"type":"coin" }
 			}]}
  },
+    
 {
 	"cardType": "VentureCard",
-	
+    
+	"neededPoints" : 0,
 	"cardData":{"name": "Repairing the Church",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -2870,6 +2873,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Building the Walls",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -2912,6 +2916,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Raising a Statue",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -2959,7 +2964,8 @@
  },
 {
 	"cardType": "VentureCard",
-	
+    
+	"neededPoints" : 3,
 	"cardData":{"name": "Military Campaign",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -2993,6 +2999,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Hosting Panhandlers",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -3026,6 +3033,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 5,
 	"cardData":{"name": "Fighting Heresies",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -3059,6 +3067,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 4,
 	"cardData":{"name": "Support the Bishop",
 	"period": "FIRST",
 	"type": "VENTURE",
@@ -3108,6 +3117,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Hiring Soldiers",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3139,7 +3149,8 @@
  },
 {
 	"cardType": "VentureCard",
-	
+    
+    "neededPoints" : 0,
 	"cardData":{"name": "Repairing the Abbey",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3184,6 +3195,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Building the Bastions",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3225,6 +3237,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 6,
 	"cardData":{"name": "Support the King",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3266,6 +3279,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Improving the canals",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3300,6 +3314,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Hosting Foreigners",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3332,6 +3347,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 8,
 	"cardData":{"name": "Crusade",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3366,13 +3382,14 @@
 	"cost":[{
 			"resourceType": "MilitaryPoints",
 			"resourceData":{
-				"amount":3,
+				"amount":4,
 				"type":"military" }
 			}]}
  },
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 7,
 	"cardData":{"name": "Support the cardinal",
 	"period": "SECOND",
 	"type": "VENTURE",
@@ -3423,6 +3440,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Hiring mercenaries",
 	"period": "THIRD",
 	"type": "VENTURE",
@@ -3455,6 +3473,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Repairing the Cathedral",
 	"period": "THIRD",
 	"type": "VENTURE",
@@ -3504,6 +3523,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Building Towers",
 	"period": "THIRD",
 	"type": "VENTURE",
@@ -3545,6 +3565,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Promoting Sacred Art",
 	"period": "THIRD",
 	"type": "VENTURE",
@@ -3577,6 +3598,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 12,
 	"cardData":{"name": "MIlitary Conquest",
 	"period": "THIRD",
 	"type": "VENTURE",
@@ -3627,6 +3649,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 0,
 	"cardData":{"name": "Improving the Roads",
 	"period": "THIRD",
 	"type": "VENTURE",	
@@ -3661,6 +3684,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 15,
 	"cardData":{"name": "Sacred War",
 	"period": "THIRD",
 	"type": "VENTURE",	
@@ -3693,6 +3717,7 @@
 {
 	"cardType": "VentureCard",
 	
+    "neededPoints" : 10,
 	"cardData":{"name": "Support the Pope",
 	"period": "THIRD",
 	"type": "VENTURE",
