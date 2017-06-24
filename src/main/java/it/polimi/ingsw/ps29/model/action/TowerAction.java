@@ -47,7 +47,7 @@ public class TowerAction extends Action {
 		if(!space.isEmpty() && !canAffordMalus())
 			throw new TowerCoinMalusException();
 		
-		if(!space.getPlacementFloor().isEmpty())
+		if(!space.getPlacementFloor().isEmpty() && !move.getPlayer().getLudovicoAriosto())
 			throw new SpaceOccupiedException();
 		
 		if (!space.familiarHere(move.getFamiliar().getPlayerColor()) 

@@ -41,7 +41,7 @@ public class ProductionAction extends Action {
 
 	@Override
 	public void performAction() {
-		if(!space.isEmpty())
+		if(!space.isEmpty() && !move.getPlayer().getLudovicoAriosto())
 			penalty = -3;
 		
 		//placement
