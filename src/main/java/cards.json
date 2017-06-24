@@ -2792,8 +2792,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Hiring Recruits",
+    "neededPoints" : 0,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 73,            
@@ -2827,8 +2827,8 @@
 {
 	"cardType": "VentureCard",
     
-	"neededPoints" : 0,
 	"cardData":{"name": "Repairing the Church",
+    "neededPoints" : 0,            
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 74,            
@@ -2873,8 +2873,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Building the Walls",
+    "neededPoints" : 0,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 75,            
@@ -2916,8 +2916,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Raising a Statue",
+    "neededPoints" : 0,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 76,            
@@ -2965,8 +2965,8 @@
 {
 	"cardType": "VentureCard",
     
-	"neededPoints" : 3,
 	"cardData":{"name": "Military Campaign",
+    "neededPoints" : 3,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 77,            
@@ -2999,8 +2999,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Hosting Panhandlers",
+    "neededPoints" : 0,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 78,            
@@ -3033,8 +3033,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 5,
 	"cardData":{"name": "Fighting Heresies",
+    "neededPoints" : 5,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 79,            
@@ -3067,8 +3067,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 4,
 	"cardData":{"name": "Support the Bishop",
+    "neededPoints" : 4,
 	"period": "FIRST",
 	"type": "VENTURE",
     "id" : 80,            
@@ -3117,8 +3117,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Hiring Soldiers",
+    "neededPoints" : 0,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 81,            
@@ -3150,8 +3150,8 @@
 {
 	"cardType": "VentureCard",
     
-    "neededPoints" : 0,
 	"cardData":{"name": "Repairing the Abbey",
+    "neededPoints" : 0,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 82,            
@@ -3195,8 +3195,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Building the Bastions",
+    "neededPoints" : 0,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 83,            
@@ -3237,8 +3237,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 6,
 	"cardData":{"name": "Support the King",
+    "neededPoints" : 6,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 84,            
@@ -3279,8 +3279,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Improving the canals",
+    "neededPoints" : 0,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 85,            
@@ -3314,8 +3314,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Hosting Foreigners",
+    "neededPoints" : 0,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 86,            
@@ -3347,8 +3347,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 8,
 	"cardData":{"name": "Crusade",
+    "neededPoints" : 8,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 87,            
@@ -3389,8 +3389,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 7,
 	"cardData":{"name": "Support the cardinal",
+    "neededPoints" : 7,
 	"period": "SECOND",
 	"type": "VENTURE",
     "id" : 88,            
@@ -3440,8 +3440,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Hiring mercenaries",
+    "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",
     "id" : 89,            
@@ -3473,8 +3473,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Repairing the Cathedral",
+    "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",
     "id" : 90,            
@@ -3523,8 +3523,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Building Towers",
+    "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",
     "id" : 91,            
@@ -3565,8 +3565,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Promoting Sacred Art",
+    "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",
     "id" : 92,            
@@ -3597,9 +3597,9 @@
  },
 {
 	"cardType": "VentureCard",
-	
-    "neededPoints" : 12,
+
 	"cardData":{"name": "MIlitary Conquest",
+    "neededPoints" : 12,
 	"period": "THIRD",
 	"type": "VENTURE",
     "id" : 93,            
@@ -3649,8 +3649,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 0,
 	"cardData":{"name": "Improving the Roads",
+    "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",	
     "id" : 94,            
@@ -3684,8 +3684,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 15,
 	"cardData":{"name": "Sacred War",
+    "neededPoints" : 15,
 	"period": "THIRD",
 	"type": "VENTURE",	
     "id" : 95,            
@@ -3717,8 +3717,8 @@
 {
 	"cardType": "VentureCard",
 	
-    "neededPoints" : 10,
 	"cardData":{"name": "Support the Pope",
+    "neededPoints" : 10,
 	"period": "THIRD",
 	"type": "VENTURE",
     "id" : 96,            
