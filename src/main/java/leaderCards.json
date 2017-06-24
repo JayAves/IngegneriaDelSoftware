@@ -141,4 +141,41 @@
 "cardRequirements" : [2 , 4]
 },
     
+{
+"name" : "Sandro Botticelli",
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	},
+    {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}                   ]}},
+"requirements" : [{
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":10,
+    "type":"wood" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Ludovico Il Moro",
+"effect" : {
+        "effectType": "FixFamilyMemberByColor",
+        "effectData" :{ "diceEmpowerment" : 5,
+                         "colors" : ["BLACK" , "WHITE", "ORANGE"]}},
+"requirements" : [],
+"cardTypeRequirements" : ["territory", "building", "character", "venture"],
+"cardRequirements" : [2, 2, 2, 2]
+}
+    
 ]

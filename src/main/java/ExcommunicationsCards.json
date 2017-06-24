@@ -153,8 +153,8 @@
 "period" : "SECOND",
 "id" : 5,
     "effect" : {
-		"effectType": "NoMarketEffect",
-		"effectData":{ }
+		"effectType": "GeneralExcommunications",
+		"effectData":{ "effectName" : "NoMarket"}
     }
 }, 
 
