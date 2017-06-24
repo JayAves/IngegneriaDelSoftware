@@ -185,8 +185,8 @@
         "effectData" :{ "diceEmpowerment" : 2,
                          "colors" : ["NEUTRAL"]}},
 "requirements" : [],
-"cardTypeRequirements" : [],
-"cardRequirements" : []
+"cardTypeRequirements" : ["any"],
+"cardRequirements" : [ 6 ]
 }
     
 ]
