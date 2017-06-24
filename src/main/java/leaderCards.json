@@ -176,6 +176,17 @@
 "requirements" : [],
 "cardTypeRequirements" : ["territory", "building", "character", "venture"],
 "cardRequirements" : [2, 2, 2, 2]
+},
+    
+{
+"name" : "Lucrezia Borgia",
+"effect" : {
+        "effectType": "FamiliarEmpowermentByColor",
+        "effectData" :{ "diceEmpowerment" : 2,
+                         "colors" : ["NEUTRAL"]}},
+"requirements" : [],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
 }
     
 ]

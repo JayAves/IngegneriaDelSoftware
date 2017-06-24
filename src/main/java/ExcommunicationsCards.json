@@ -92,6 +92,19 @@
      
 
 },
+    
+{
+"period" : "FIRST",
+"id" : 7,
+"effect" :{
+  "effectType": "FamiliarEmpowermentByColor",
+  "effectData":
+  { "diceEmpowerment": -1,
+     "colors": ["BLACK, WHITE, ORANGE"]     
+        }}
+     
+
+},
 
 {
 "period" : "SECOND",
