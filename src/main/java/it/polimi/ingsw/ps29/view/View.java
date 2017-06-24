@@ -133,10 +133,11 @@ public class View extends Observable implements Observer {
 		inputOutput.showTowerAndDices (msg);
 	}
 	
+	
 	public void showMessage(InteractionMessage message) {
 		if ((((PlayerInfoMessage) message).getTimeExpired())&&(((PlayerInfoMessage) message).getName().equals(namePlayer)))
 			if (inputOutput instanceof InputOutputCLI)
-				((InputOutputCLI)inputOutput).getScanner().reset();
+				//((InputOutputCLI)inputOutput).getScanner().close();
 		inputOutput.showMessage(message);
 				
 	}

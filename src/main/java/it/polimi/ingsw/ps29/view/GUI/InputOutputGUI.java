@@ -129,4 +129,11 @@ public class InputOutputGUI implements InputOutput {
 		return null;
 	}
 
+
+	@Override
+	public void setTimer(int timer) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

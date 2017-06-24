@@ -39,6 +39,9 @@ public class ServerSerializator {
 		
 		try {
 			
+			if (o instanceof TowersAndDicesForView) {
+				((TowersAndDicesForView)o).setTimer(thread.turnTimer);
+			}
 			oos.writeObject(o);
 			oos.flush();
 	

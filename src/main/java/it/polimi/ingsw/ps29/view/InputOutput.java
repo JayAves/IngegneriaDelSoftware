@@ -47,4 +47,6 @@ public interface InputOutput {
 	abstract ActionChoice handleAskNextAction(ActionChoice msg);
 	
 	abstract BonusChoice handleBonusAction (BonusChoice msg);
+	
+	abstract void setTimer(int timer);
 }

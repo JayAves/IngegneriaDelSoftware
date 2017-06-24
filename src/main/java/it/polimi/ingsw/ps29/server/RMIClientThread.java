@@ -33,7 +33,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		//System.out.println(this.username);
 		IDcode=login.getToken();
 		timer= new Timer();
-		timeOuts= new ArrayList<>();
+		timeOuts= new ArrayList<Task>();
 		
 		
 	}
@@ -78,9 +78,11 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		// TODO Auto-generated method stub
 		if (inGame){
 			try {
+				if (msg instanceof TowersAndDicesForView) {
+					((TowersAndDicesForView)msg).setTimer(turnTimer);
+				}
 				
-				
-				if (((InteractionMessage)msg).getBi()) { //only for bidirectional messages
+				if ((msg).getBi()) { //only for bidirectional messages
 					Task task= new Task();
 					timeOuts.add(task);
 					timer.schedule(task,turnTimer);

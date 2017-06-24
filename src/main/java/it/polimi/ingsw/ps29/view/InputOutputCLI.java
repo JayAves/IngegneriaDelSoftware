@@ -30,6 +30,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 public class InputOutputCLI implements InputOutput {
 	
 	private Scanner scanner;
+	private int turnTimer;
 	
 	public InputOutputCLI () {
 		scanner = new Scanner(System.in);
@@ -340,6 +341,11 @@ public class InputOutputCLI implements InputOutput {
 	
 	public Scanner getScanner() {
 		return scanner;
+	}
+
+	@Override
+	public void setTimer(int timer) {
+		turnTimer= timer;
 	}
 
 }

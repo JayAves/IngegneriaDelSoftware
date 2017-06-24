@@ -82,6 +82,8 @@ public class Client implements Observer{
 			
 			public void receive (TowersAndDicesForView msg) {
 				view.showTowersAndDices(msg);
+				view.getInputOutput().setTimer(msg.getTimer());
+				
 			}
 
 			public void receive(PlayerInfoMessage playerInfoMessage) {
