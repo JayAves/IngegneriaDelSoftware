@@ -20,7 +20,7 @@ public class FirstBoardInfo extends InteractionMessage {
 
 	public FirstBoardInfo(String player, HashMap<String, PersonalBonusTileDTO> tile, ArrayList<ExcommunicationCardDTO> exCards, 
 			TowersAndDicesForView towers) {
-		super(player);
+		super(player,false);
 		this.tile = tile;
 		this.exCards = exCards;
 		this.towers = towers;

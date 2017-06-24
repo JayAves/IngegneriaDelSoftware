@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -11,10 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SpringLayout.Constraints;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
@@ -35,6 +39,10 @@ public class GUICore {
 	JButton prevBoard;
 	JButton nextBoard;
 	
+	ButtonGroup familiar;
+	JSpinner servants;
+	JButton sendAction;
+	
 	ImageToPrint excommunication1;
 	ImageToPrint excommunication2;
 	ImageToPrint excommunication3;
@@ -42,19 +50,32 @@ public class GUICore {
 	JTextArea console;
 	
 	public GUICore () {
-		frame = new JFrame ();
-		frame.setSize(1280, 720);
-		frame.setResizable(false);
-		setFrame (frame);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		EventQueue.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+
+				frame = new JFrame ();
+				frame.setVisible(true);
+				//frame.setResizable(false);
+				setFrame (frame);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.pack();
+				
+				System.out.println(statusBar.getSize().getWidth()+" - "+statusBar.getSize().getHeight());
+				System.out.println(board.getSize().getWidth()+" - "+board.getSize().getHeight());
+				System.out.println(gamePanel.getSize().getWidth()+" - "+gamePanel.getSize().getHeight());
+				System.out.println(frame.getSize().getHeight());
+			}
+		});
 		
 	}
 	
 	
 	//function where i create GUI
 	void setFrame (JFrame frame) {
-		frame.setLayout(new BorderLayout());
+		//frame.setLayout(new BorderLayout());
 		
 		//1.status bar
 		statusBar = new JTextArea();
@@ -68,13 +89,15 @@ public class GUICore {
 		for(int i=0; i<16; i++)
 			id.add(i+1);
 		board = new PrintTower(id, this);
-		board.setPreferredSize(new Dimension(460, 0));
+		board.setPreferredSize(new Dimension (board.getWidthImage(), board.getHeightImage()));
 		frame.add(board, BorderLayout.LINE_START);
+		//frame.add(board);
 		
 		//3.panel of the game
 		gamePanel = new JPanel ();
 		setGamePanel (gamePanel);
 		frame.add(gamePanel, BorderLayout.CENTER);
+		//frame.add(gamePanel);
 	}
 	
 	//function where i create center-right side of the GUI
@@ -82,10 +105,8 @@ public class GUICore {
 		panel.setLayout(new BorderLayout());
 		
 		JPanel p1 = new JPanel();
-		p1.setPreferredSize(new Dimension(0, 360));
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
-		p3.setPreferredSize(new Dimension(0, 200));
 		
 		createNorthPanel(p1);
 		createCenterPanel(p2);
@@ -106,6 +127,7 @@ public class GUICore {
 		
 		//2.personal board
 		personal = new ImageToPrint("personalboard.jpg", this);
+		personal.setPreferredSize(new Dimension (personal.getWidthImage()+70, personal.getHeightImage()+40));
 		
 		//3.buttons and preview
 		JPanel rightTopPanel = new JPanel ();
@@ -179,11 +201,16 @@ public class GUICore {
 		familyPanel.add(new JLabel(""));
 		
 		JRadioButton black = new JRadioButton("Black");
+		black.setActionCommand("Black");
 		JRadioButton white = new JRadioButton("White");
+		white.setActionCommand("White");
 		JRadioButton orange = new JRadioButton("Orange");
+		orange.setActionCommand("Orange");
 		JRadioButton neutral = new JRadioButton("Neutral");
+		neutral.setActionCommand("Neutral");
+		black.setSelected(true);
 		
-		ButtonGroup familiar = new ButtonGroup();
+		familiar = new ButtonGroup();
 		familiar.add(black);
 		familiar.add(white);
 		familiar.add(orange);
@@ -203,11 +230,12 @@ public class GUICore {
 		buttonsPanel.add(servants);*/
 		
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
-		JSpinner spinner = new JSpinner(model);
-		buttonsPanel.add(spinner);
+		servants = new JSpinner(model);
+		buttonsPanel.add(servants);
 		
-		JButton confirm = new JButton("Do Action!");
-		buttonsPanel.add(confirm);
+		sendAction = new JButton("Do Action!");
+		sendAction.addMouseListener(new PlayerListener(this));
+		buttonsPanel.add(sendAction);
 		
 		panel.add(pointsPanel);
 		panel.add(familyPanel);
@@ -222,6 +250,7 @@ public class GUICore {
 		//1.leader button
 		ImageToPrint leader = new ImageToPrint("leader.jpg", this);
 		panel.add(leader);
+		panel.setPreferredSize(new Dimension(0, 180));
 		
 		//2.excommunication cards
 		excommunication1 = new ImageToPrint("excomm_back_1.png", this);
@@ -243,7 +272,8 @@ public class GUICore {
 		console = new JTextArea();
 		console.setText("console..");
 		console.setEditable(false);
-		panel.add(console);
+		JScrollPane scrollPane = new JScrollPane(console);
+		panel.add(scrollPane);
 		
 	}
 

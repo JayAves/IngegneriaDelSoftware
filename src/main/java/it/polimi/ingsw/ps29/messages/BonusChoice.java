@@ -14,7 +14,7 @@ public class BonusChoice extends InteractionMessage {
 	private int servants;
 	
 	public BonusChoice(BonusActionEffect bonus, String player) {
-		super(player);
+		super(player, true);
 		this.bonus = bonus;
 		floor = 0;
 	}

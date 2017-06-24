@@ -15,8 +15,8 @@
 {
 "name" : "Ludovico Ariosto",
 "effect" : {
-        "effectType": "LudovicoAriostoEffect",
-        "effectData" :{ }},
+        "effectType": "GeneralEscommunications",
+        "effectData" :{ "effectName" : "Ludovico Ariosto"}},
 "requirements" : [],
 "cardTypeRequirements" : ["character"],
 "cardRequirements" : [5]
@@ -25,8 +25,8 @@
 {
 "name" : "Filippo Brunelleschi",
 "effect" : {
-        "effectType": "FilippoBrunelleschiEffect",
-        "effectData" :{ }},
+        "effectType": "GeneralExcommunications",
+        "effectData" :{ "effectName" : "Filippo Brunelleschi"}},
 "requirements" : [],
 "cardTypeRequirements" : ["building"],
 "cardRequirements" : [5]
@@ -140,5 +140,53 @@
 "cardTypeRequirements" : ["territory" , "character"],
 "cardRequirements" : [2 , 4]
 },
+    
+{
+"name" : "Sandro Botticelli",
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	},
+    {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}                   ]}},
+"requirements" : [{
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":10,
+    "type":"wood" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Ludovico Il Moro",
+"effect" : {
+        "effectType": "FixFamilyMemberByColor",
+        "effectData" :{ "diceEmpowerment" : 5,
+                         "colors" : ["BLACK" , "WHITE", "ORANGE"]}},
+"requirements" : [],
+"cardTypeRequirements" : ["territory", "building", "character", "venture"],
+"cardRequirements" : [2, 2, 2, 2]
+},
+    
+{
+"name" : "Lucrezia Borgia",
+"effect" : {
+        "effectType": "FamiliarEmpowermentByColor",
+        "effectData" :{ "diceEmpowerment" : 2,
+                         "colors" : ["NEUTRAL"]}},
+"requirements" : [],
+"cardTypeRequirements" : ["any"],
+"cardRequirements" : [ 6 ]
+}
     
 ]

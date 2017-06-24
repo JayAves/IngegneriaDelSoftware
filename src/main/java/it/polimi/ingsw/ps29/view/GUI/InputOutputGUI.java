@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
@@ -25,7 +26,7 @@ public class InputOutputGUI implements InputOutput {
 
 
 	@Override
-	public void showMessage(String message) {
+	public void showMessage(InteractionMessage message) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -126,6 +127,13 @@ public class InputOutputGUI implements InputOutput {
 	public BonusChoice handleBonusAction(BonusChoice msg) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void setTimer(int timer) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

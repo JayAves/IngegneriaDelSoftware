@@ -15,6 +15,9 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
@@ -27,16 +30,32 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 public class InputOutputCLI implements InputOutput {
 	
 	private Scanner scanner;
+	private int turnTimer;
 	
 	public InputOutputCLI () {
 		scanner = new Scanner(System.in);
 	}
 
 	@Override
-	public void showMessage(String message) {
-		System.out.println(message);
+	public void showMessage(InteractionMessage message) {
 		
-	}
+		if (message instanceof RejectMessage)
+			System.out.println(((RejectMessage)message).getException().getMessage());
+		
+		if (message instanceof PlayerInfoMessage) {
+			
+				if (!((PlayerInfoMessage) message).getTimeExpired())
+					System.out.println( "\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+" has left the Game!");
+				
+			else
+				
+				System.out.println("\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+"'s time for action expired!");
+			
+			
+				}
+		
+			}
+	
 	
 	public int[] askTypeOfAction () {
 		int[] choice = new int [2];
@@ -318,6 +337,15 @@ public class InputOutputCLI implements InputOutput {
 		msg.setServants(askNumberOfServants());
 		
 		return msg;
+	}
+	
+	public Scanner getScanner() {
+		return scanner;
+	}
+
+	@Override
+	public void setTimer(int timer) {
+		turnTimer= timer;
 	}
 
 }

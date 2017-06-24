@@ -28,7 +28,7 @@ public class SocketClientThread extends ClientThread {
 		this.ois = ois;
 		IDcode= playerLogin.getToken();
 		inGame=false;
-		msgBack= false;
+		
 		//turnTimer= TimerJson.turnTimer;
 		
 		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
@@ -44,8 +44,10 @@ public class SocketClientThread extends ClientThread {
 				do {
 					obj = ois.readObject();
 				} while (obj==null);
+				
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
-				msgBack=true;
+				
+				serializator.getTasks().get(0).cancel();
 				
 				//notifico Controller
 				setChanged();

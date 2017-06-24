@@ -16,6 +16,6 @@ public interface ActionSpace {
 	
 	abstract void cleanSpace();
 	
-	abstract void placeFamiliar (FamilyMemberInterface familiar);
+	abstract void placeFamiliar (FamilyMemberInterface familiar, boolean ludovicoAriosto);
 	
 }

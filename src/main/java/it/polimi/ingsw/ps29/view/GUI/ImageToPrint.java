@@ -43,5 +43,13 @@ public class ImageToPrint extends JPanel {
 			
 		}
 		
+		public int getWidthImage () {
+			return image.getWidth();
+		}
+		
+		public int getHeightImage () {
+			return image.getHeight();
+		}
+		
 
 }

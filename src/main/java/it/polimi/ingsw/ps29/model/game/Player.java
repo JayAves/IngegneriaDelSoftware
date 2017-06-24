@@ -138,6 +138,10 @@ public class Player {
 		ludovicoAriosto = true;
 	}
 	
+	public boolean getLudovicoAriosto(){
+		return ludovicoAriosto;
+	}
+	
 	public void setFilippoBrunelleschi(){
 		filippoBrunelleschi = true;
 	}

@@ -101,7 +101,7 @@ public class TowerArea implements ActionSpace {
 	}
 
 	@Override
-	public void placeFamiliar(FamilyMemberInterface familiar) {
+	public void placeFamiliar(FamilyMemberInterface familiar, boolean ludovicoAriosto) {
 		floors.get(placementFloor-1).getSpace().setFamilyMember(familiar);
 	}
 

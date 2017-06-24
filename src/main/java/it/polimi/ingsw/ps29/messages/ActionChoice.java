@@ -21,10 +21,12 @@ public class ActionChoice extends InteractionMessage {
 	//4 :scelta utente DISCARD PLAY ACTIVATE
 	
 	public ActionChoice (String player) {
-		super (player);
+		super (player,true);
 		choices = new int [4];
 		choices[1] = 0;
 		leaderSituation = new ArrayList<ArrayList<Object>>();
+		
+		
 	}
 
 	public int getChoice(int i) {

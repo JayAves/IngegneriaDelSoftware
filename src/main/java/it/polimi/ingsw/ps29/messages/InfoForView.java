@@ -23,7 +23,7 @@ public class InfoForView extends InteractionMessage {
 	public HashMap <String, ArrayList<ResourceDTO>> resSituation;
 	
 	public InfoForView(String player) {
-		super(player);
+		super(player,false);
 		space = 0;
 		floor = 0;
 		familiar = 0;

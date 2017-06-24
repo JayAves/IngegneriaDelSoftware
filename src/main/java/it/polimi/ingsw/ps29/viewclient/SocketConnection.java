@@ -36,7 +36,7 @@ public class SocketConnection extends Connection {
 			setLoginToken(loginMessage);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("Could not set loginMessage");
 		}
 		
 		try {
@@ -57,11 +57,7 @@ public class SocketConnection extends Connection {
 			//invio al server nome e token del client//
 			oos.writeObject(loginMessage);
 			oos.flush();
-			
-			//oos.writeObject(loginMessage);
-			//oos.flush();
-			
-			//System.out.println("Client succesfully created!");
+
 			
 			
 		} catch (UnknownHostException e) {
@@ -69,7 +65,7 @@ public class SocketConnection extends Connection {
 			e.printStackTrace();
 		} catch (IOException e) {
 			System.err.println("Unable to connect to server!");
-			e.printStackTrace();
+			
 		}
 		
 	}

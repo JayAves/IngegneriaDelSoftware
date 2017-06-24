@@ -7,9 +7,12 @@ public abstract class InteractionMessage implements Serializable {
 	
 	private static final long serialVersionUID = -7844810327964082967L;
 	private String player;
+	private boolean biDirectional;
 	
-	public InteractionMessage (String player) {
+	public InteractionMessage (String player, boolean bi) {
 		this.player = player;
+		this.biDirectional= bi;
+		
 	}
 	
 	public String getName () {
@@ -18,6 +21,10 @@ public abstract class InteractionMessage implements Serializable {
 	
 	public void setName (String name) {
 		player = name;
+	}
+	
+	public boolean getBi() {
+		return biDirectional;
 	}
 	
 	abstract public void visit (it.polimi.ingsw.ps29.controller.Controller.VisitorMessages visitor) ;

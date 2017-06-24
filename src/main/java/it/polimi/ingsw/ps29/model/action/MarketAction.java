@@ -26,14 +26,14 @@ public class MarketAction extends Action{
 	public boolean isPlaceable() throws RejectException {
 		return  space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getMarketPower() + move.getServants()) &&
-				space.isEmpty();
+				(space.isEmpty() || move.getPlayer().getLudovicoAriosto());
 	}
 
 	@Override
 	public void performAction(/*Player currentPlayer, MarketArea area*/) {		
 		GainResourcesEffect effect = new GainResourcesEffect(space.getSlot().getBonus());
 		effect.performEffect(move.getPlayer());
-		space.placeFamiliar(move.getFamiliar());
+		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		move.getFamiliar().setBusy(true);
 	}
 	

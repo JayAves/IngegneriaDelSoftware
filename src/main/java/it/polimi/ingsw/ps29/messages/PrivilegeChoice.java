@@ -14,7 +14,7 @@ public class PrivilegeChoice extends InteractionMessage {
 	private ArrayList <ResourceType> choices;
 
 	public PrivilegeChoice(String player, int privileges) {
-		super(player);
+		super(player, true);
 		this.prvilieges = privileges;
 		choices = new ArrayList<ResourceType>();
 	}

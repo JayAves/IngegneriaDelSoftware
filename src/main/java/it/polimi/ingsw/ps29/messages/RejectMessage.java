@@ -9,7 +9,7 @@ public class RejectMessage extends InteractionMessage {
 	private RejectException exception;
 	
 	public RejectMessage(String player, RejectException exception) {
-		super(player);
+		super(player,false);
 		this.exception = exception;
 	}
 

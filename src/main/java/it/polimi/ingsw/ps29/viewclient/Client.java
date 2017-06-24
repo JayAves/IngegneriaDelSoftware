@@ -14,6 +14,7 @@ import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.view.InputOutputCLI;
 import it.polimi.ingsw.ps29.view.View;
 
 public class Client implements Observer{
@@ -81,16 +82,16 @@ public class Client implements Observer{
 			
 			public void receive (TowersAndDicesForView msg) {
 				view.showTowersAndDices(msg);
+				view.getInputOutput().setTimer(msg.getTimer());
+				
 			}
 
 			public void receive(PlayerInfoMessage playerInfoMessage) {
 				// TODO Auto-generated method stub
-				String  message;
-				if (!playerInfoMessage.getTimeExpired())
-					message= "\nPlayer "+ playerInfoMessage.getName().toUpperCase()+" has left the Game!";
-				else
-					message= "\nPlayer "+ playerInfoMessage.getName().toUpperCase()+"'s time for action expired!";
-				view.showMessage(message);
+				
+				
+				
+				view.showMessage(playerInfoMessage);
 			}
 			
 			public void receive (FirstBoardInfo msg) {
@@ -98,7 +99,7 @@ public class Client implements Observer{
 			}
 			
 			public void receive (RejectMessage msg) {
-				view.showMessage(msg.getException().getMessage());
+				view.showMessage(msg); 
 			}
 	}
 

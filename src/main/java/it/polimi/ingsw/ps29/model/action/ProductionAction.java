@@ -41,11 +41,11 @@ public class ProductionAction extends Action {
 
 	@Override
 	public void performAction() {
-		if(!space.isEmpty())
+		if(!space.isEmpty() && !move.getPlayer().getLudovicoAriosto())
 			penalty = -3;
 		
 		//placement
-		space.placeFamiliar(move.getFamiliar());
+		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
 		//memorizzo tutti gli effetti di scambio per i quali posso chiedere all'utente se li vuole attivare
 		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();

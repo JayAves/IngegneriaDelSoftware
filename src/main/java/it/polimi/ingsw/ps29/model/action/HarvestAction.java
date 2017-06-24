@@ -41,7 +41,7 @@ public class HarvestAction extends Action {
 			penalty = -3;
 		
 		//placement
-		space.placeFamiliar(move.getFamiliar());
+		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
 		//gestione bonus della tile
 		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	

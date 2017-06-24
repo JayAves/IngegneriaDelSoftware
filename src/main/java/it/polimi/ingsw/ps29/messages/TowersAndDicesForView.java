@@ -16,9 +16,10 @@ public class TowersAndDicesForView extends InteractionMessage {
 	/*0 black
 	 *1 white
 	 *2 orange*/
+	private int timer;
 	
 	public TowersAndDicesForView(String player, TowersDTO towers, int[] dices) {
-		super(player);
+		super(player, false);
 		this.towers = towers;
 		this.dices = dices;
 	}
@@ -42,5 +43,10 @@ public class TowersAndDicesForView extends InteractionMessage {
 	public int[] getDices () {
 		return dices;
 	}
-
+	public void setTimer(int timer) {
+		this.timer=timer;
+	}
+	public int getTimer() {
+		return timer;
+	}
 }

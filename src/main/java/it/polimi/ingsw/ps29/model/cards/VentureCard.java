@@ -10,15 +10,16 @@ public class VentureCard extends Card {
 	
 	private int neededPoints;
 
-	public VentureCard(String name, Period period, String type, int id, ArrayList<Effect> immediate,
+	public VentureCard(String name, int neeededPoints, Period period, String type, int id, ArrayList<Effect> immediate,
 			ArrayList<Effect> permanent, ArrayList<Resource> cost) {
 		super(name, period, type, id, immediate, permanent, cost);
 		// TODO Auto-generated constructor stub
+		this.neededPoints = neededPoints;
 	}
 	
 	@Override
 	public String toString () {
-		return super.toString()+"\nneededPoints: "+neededPoints;
+		return super.toString()+"\nneededPoints: "+ neededPoints;
 	}
 	
 

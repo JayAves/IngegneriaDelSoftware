@@ -33,8 +33,28 @@ public class PersonalBoard {
 		cards.get(card.getType()).add(card);
 	}
 	
+	public ArrayList<Integer> getCadsSizes(){
+		ArrayList<Integer> sizes = new ArrayList<Integer>();
+		sizes.add(cards.get("territory").size());
+		sizes.add(cards.get("building").size());
+		sizes.add(cards.get("character").size());
+		sizes.add(cards.get("venture").size());
+		
+		return sizes;
+	}
+	
 	public ArrayList<Card> getCards (String cardType) {
 		return cards.get(cardType);
+	}
+	
+	public boolean checkIfCardsEqualsSize( int size){
+		
+		ArrayList<Integer> sizes = new ArrayList<Integer>();
+		sizes = getCadsSizes();
+		if (sizes.contains(size))
+		   return true;
+		return false;
+		
 	}
 
 	public PersonalBonusTile getPersonalBonusTile() {
@@ -74,6 +94,9 @@ public class PersonalBoard {
 		HashMap<String, Integer> requirements = card.getCardRequirements();
 		boolean satisfied = true;
 		while (satisfied){
+			if (requirements.containsKey("any")){
+				return checkIfCardsEqualsSize(requirements.get("any"));
+			}
 			for (HashMap.Entry<String, Integer> entry : requirements.entrySet()){
 		        satisfied = getCards(entry.getKey()).size() >= entry.getValue();
 			}

@@ -43,7 +43,8 @@ public class PrintTower extends JPanel {
 		
 		@Override
 		public void paint(Graphics g) {
-			g.drawImage(tower, 0, 0, getSize().width, getSize().height, null);
+			System.out.println(getSize());
+			g.drawImage(tower, 0, 0, tower.getWidth(), tower.getHeight(), null);
 			
 			int xStart = 16;
 			int yBase = 20;
@@ -53,15 +54,23 @@ public class PrintTower extends JPanel {
 			int shiftWidth = 108;
 			int shiftHeight = 90;
 			
-			for (int i=0; i<4; i++) {
+			/*for (int i=0; i<4; i++) {
 				for (int j=0; j<4; j++) {
 					g.drawImage(cards.get((i+1)*4-(1+j)), xStart, yStart, widthCard, heightCard, null);
 					yStart+=shiftHeight;
 				}
 				xStart+=shiftWidth;
 				yStart = yBase;
-			}
+			}*/
 			
+		}
+		
+		public int getWidthImage () {
+			return tower.getWidth();
+		}
+		
+		public int getHeightImage () {
+			return tower.getHeight();
 		}
 		
 

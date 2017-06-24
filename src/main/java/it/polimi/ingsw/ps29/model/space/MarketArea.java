@@ -47,7 +47,7 @@ public class MarketArea implements ActionSpace {
 	}
 
 	@Override
-	public void placeFamiliar(FamilyMemberInterface familiar) {
+	public void placeFamiliar(FamilyMemberInterface familiar, boolean ludovicoAriosto) {
 		slot.setFamilyMember(familiar);
 		
 	}
