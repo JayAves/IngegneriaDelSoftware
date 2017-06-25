@@ -140,10 +140,8 @@ public class View extends Observable implements Observer {
 	
 	
 	public void showMessage(InteractionMessage message) {
-		if ((((PlayerInfoMessage) message).getTimeExpired())&&(((PlayerInfoMessage) message).getName().equals(namePlayer)))
-			if (inputOutput instanceof InputOutputCLI)
-				//((InputOutputCLI)inputOutput).getScanner().close();
-		inputOutput.showMessage(message);
+
+			inputOutput.showMessage(message);
 				
 	}
 	
