@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
@@ -19,21 +18,22 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
-import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.view.inputCLI.FakeScanner;
 
 public class InputOutputCLI implements InputOutput {
 	
-	private Scanner scanner;
+	private FakeScanner scanner;
 	private int turnTimer;
 	
 	public InputOutputCLI () {
-		scanner = new Scanner(System.in);
+		setTimer(10000);
+		
 	}
 
 	@Override
@@ -77,7 +77,12 @@ public class InputOutputCLI implements InputOutput {
 				"\n12.No placement" +
 				"\n13.LeaderAction"+
 				"\nChoice: ");
-			choice[0] = scanner.nextInt();
+			try {
+				choice[0] = scanner.nextInt();
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				choice[0] = 12;
+			}
 		} while (choice[0]<1 || choice[0]>13);
 		
 		if(choice[0]>=3 && choice[0]<=6) {
@@ -92,14 +97,25 @@ public class InputOutputCLI implements InputOutput {
 	public int askNumberOfServants () {
 		int number;
 		System.out.println("\nInsert the number of servant you want to use: ");
-		number = scanner.nextInt();
+		try {
+			number = scanner.nextInt();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println(e.getMessage());
+			number = 0;
+		}
 		return number;
 	}
 	
 	public int askFloor () {
 		int number;
 		System.out.println("\nInsert the number of floor where you want to place: ");
-		number = scanner.nextInt();
+		try {
+			number = scanner.nextInt();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			number = 1;
+		}
 		return number;
 	}
 	
@@ -113,7 +129,12 @@ public class InputOutputCLI implements InputOutput {
 				"\n3.Orange" +
 				"\n4.Neutral" +
 				"\nChoice: ");
-			choice = scanner.nextInt();
+			try {
+				choice = scanner.nextInt();
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				choice = 4;
+			}
 		} while (choice<1 || choice>4);
 		return choice;
 		
@@ -129,7 +150,12 @@ public class InputOutputCLI implements InputOutput {
 			}
 			System.out.println("\n"+(i+1)+") No exchange");
 			System.out.println("\nInsert choice: ");
-			choice.setChoice(0, scanner.nextInt());
+			try {
+				choice.setChoice(0, scanner.nextInt());
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				choice.setChoice(0, i+1);
+			}
 		} while (choice.getChoice(0)<0||choice.getChoice(0)>(i+1));
 		
 		if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
@@ -139,7 +165,12 @@ public class InputOutputCLI implements InputOutput {
 					System.out.println((er.getChoices().get(choice.getChoice(0)).getResOut().get(i)));
 				}
 				System.out.println("\nInsert choice OUT: ");
-				choice.setChoice(1, scanner.nextInt());
+				try {
+					choice.setChoice(1, scanner.nextInt());
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+					choice.setChoice(1, 1);
+				}
 			} while(choice.getChoice(1)<0 || choice.getChoice(1)>i);
 		}
 			
@@ -150,7 +181,12 @@ public class InputOutputCLI implements InputOutput {
 					System.out.println((er.getChoices().get(choice.getChoice(0)).getResIn().get(i)));
 				}
 				System.out.println("\nInsert choice IN: ");
-				choice.setChoice(2, scanner.nextInt());
+				try {
+					choice.setChoice(2, scanner.nextInt());
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+					choice.setChoice(2, 0);
+				}
 			} while(choice.getChoice(2)<0 || choice.getChoice(2)>i);	
 		}
 		
@@ -193,7 +229,12 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println("4) 2 military points\n");
 			System.out.println("5) 1 faith point\n");
 			System.out.println("Choice must be different by previous in this turn: ");
-			choice = scanner.nextInt();
+			try {
+				choice = scanner.nextInt();
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				choice = 1;
+			}
 		} while (choice<1 || choice>5);
 		
 		ResourceType type = ResourceType.WOOD;
@@ -226,7 +267,12 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println("\nDo you want to support Vatican?");
 			System.out.println("1) Yes");
 			System.out.println("2) No");
-			choice = scanner.nextInt();
+			try {
+				choice = scanner.nextInt();
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				choice = 2;
+			}
 		} while(choice<1 || choice>2);
 		
 		return choice;
@@ -269,7 +315,12 @@ public class InputOutputCLI implements InputOutput {
 				System.out.println( " " + (i + 1) + " " + leaderSituation.get(i).get(1));
 			
 			System.out.println((" 5 No azione Leader"));
-			choice = scanner.nextInt();
+			try {
+				choice = scanner.nextInt();
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				choice = 5;
+			}
 			}while( choice < 1 || choice > 5);
 			
 			if(choice!=5) {
@@ -277,7 +328,12 @@ public class InputOutputCLI implements InputOutput {
 				do {
 					for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size(); i++)
 						System.out.println(" " + (i + 1) + " " + printCorrectOptions(leaderSituation.get(choice -1)).get(i));
-					secondChoice = scanner.nextInt();
+					try {
+						secondChoice = scanner.nextInt();
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+						secondChoice = 0;
+					}
 				} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
 				
 				// l'utente ha scelto cosa fare con la carta
@@ -339,13 +395,12 @@ public class InputOutputCLI implements InputOutput {
 		return msg;
 	}
 	
-	public Scanner getScanner() {
-		return scanner;
-	}
 
 	@Override
 	public void setTimer(int timer) {
 		turnTimer= timer;
+		scanner = new FakeScanner(turnTimer);
+		System.out.println("Timer: "+turnTimer);
 	}
 
 }

@@ -1,10 +1,10 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -18,265 +18,251 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SpringLayout.Constraints;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 
 public class GUICore {
-	
-	JFrame frame;
+	JFrame frame; 
 	TowersDTO towers;
 	
-	JTextArea  statusBar;
-	PrintTower board;
-	JPanel gamePanel;
-	
+	PrintTower tower;
 	ImageToPrint tile;
 	ImageToPrint personal;
-	ImageToPrint cardPreview;
-	JButton showVentures;
-	JButton showCharacters;
-	JButton prevBoard;
-	JButton nextBoard;
-	
-	ButtonGroup familiar;
+	ButtonGroup family;
 	JSpinner servants;
-	JButton sendAction;
-	
-	ImageToPrint excommunication1;
-	ImageToPrint excommunication2;
-	ImageToPrint excommunication3;
-	
+	JButton doAction;
+	ImageToPrint preview;
+	JButton venture;
+	JButton character;
+	JButton prev;
+	JButton next;
+	JLabel military;
+	JLabel faith;
+	JLabel victory;
+	JLabel privileges;
+	ImageToPrint leader;
+	ImageToPrint excomm1;
+	ImageToPrint excomm2;
+	ImageToPrint excomm3;
 	JTextArea console;
+	
 	
 	public GUICore () {
 		EventQueue.invokeLater(new Runnable() {
-			
+		
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-
+	
 				frame = new JFrame ();
 				frame.setVisible(true);
 				//frame.setResizable(false);
 				setFrame (frame);
+				Toolkit tk = Toolkit.getDefaultToolkit();
+				int xSize = ((int) tk.getScreenSize().getWidth());
+				int ySize = ((int) tk.getScreenSize().getHeight());
+				frame.setSize(xSize,ySize);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.pack();
 				
-				System.out.println(statusBar.getSize().getWidth()+" - "+statusBar.getSize().getHeight());
-				System.out.println(board.getSize().getWidth()+" - "+board.getSize().getHeight());
-				System.out.println(gamePanel.getSize().getWidth()+" - "+gamePanel.getSize().getHeight());
-				System.out.println(frame.getSize().getHeight());
+				
 			}
 		});
-		
 	}
 	
-	
-	//function where i create GUI
-	void setFrame (JFrame frame) {
-		//frame.setLayout(new BorderLayout());
+	public void setFrame (JFrame frame) {
+		frame.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		//1.status bar
-		statusBar = new JTextArea();
-		statusBar.setText("Waiting for other players...");
-		statusBar.setEditable(false);
-		statusBar.setPreferredSize(new Dimension (0, 20));
-		frame.add(statusBar, BorderLayout.PAGE_START);
-		
-		//2.game board
+			
+		c.weighty = 1;
+		c.weightx = 4;
+		c.fill = GridBagConstraints.BOTH;
 		ArrayList<Integer> id = new ArrayList<Integer> ();
 		for(int i=0; i<16; i++)
 			id.add(i+1);
-		board = new PrintTower(id, this);
-		board.setPreferredSize(new Dimension (board.getWidthImage(), board.getHeightImage()));
-		frame.add(board, BorderLayout.LINE_START);
-		//frame.add(board);
+		tower = new PrintTower(id, this);
+		frame.add(tower, c);
 		
-		//3.panel of the game
-		gamePanel = new JPanel ();
-		setGamePanel (gamePanel);
-		frame.add(gamePanel, BorderLayout.CENTER);
-		//frame.add(gamePanel);
+		c.gridx = 1;
+		c.weightx = 1;
+		c.fill = GridBagConstraints.VERTICAL;
+		JPanel centralPanel = new JPanel();
+		setCentralPanel(centralPanel);
+		frame.add(centralPanel, c);
 	}
 	
-	//function where i create center-right side of the GUI
-	public void setGamePanel (JPanel panel) {
-		panel.setLayout(new BorderLayout());
+	public void setCentralPanel (JPanel centralPanel) {
+		centralPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		JPanel p1 = new JPanel();
-		JPanel p2 = new JPanel();
-		JPanel p3 = new JPanel();
+		JPanel panelNorth = new JPanel ();
+		JPanel panelCenter = new JPanel ();
+		JPanel panelSouth = new JPanel ();
 		
-		createNorthPanel(p1);
-		createCenterPanel(p2);
-		createSouthPanel(p3);
+		setPanelNorth(panelNorth);
+		setPanelCenter(panelCenter);
+		setPanelSouth(panelSouth);
 		
-		panel.add(p1, BorderLayout.PAGE_START);
-		panel.add(p2, BorderLayout.CENTER);
-		panel.add(p3, BorderLayout.PAGE_END);
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 1;
+		c.weighty = 6;
+		centralPanel.add(panelNorth, c);
+		
+		c.gridy = 1;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.NONE;
+		centralPanel.add(panelCenter, c);
+		
+		c.gridy = 2;
+		c.weighty = 4;
+		c.fill = GridBagConstraints.BOTH;
+		centralPanel.add(panelSouth,  c);
+				
 	}
 	
-	//panel for tile, board and buttons...
-	public void createNorthPanel (JPanel panel) {
-		panel.setLayout(new BorderLayout());
+	public void setPanelNorth (JPanel panelNorth) {
+		panelNorth.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		//1.bonus tile
-		tile = new ImageToPrint("bonustile.png", this);
-		tile.setPreferredSize(new Dimension(50, 0));
+		tile = new ImageToPrint("bonus_tiles/personalbonustile_1.png", this);
+		c.gridheight = 2;
+		c.weightx = 1;
+		c.fill = GridBagConstraints.BOTH;
+		panelNorth.add(tile, c);
 		
-		//2.personal board
+		
 		personal = new ImageToPrint("personalboard.jpg", this);
-		personal.setPreferredSize(new Dimension (personal.getWidthImage()+70, personal.getHeightImage()+40));
+		c.gridx = 1;
+		c.weightx = 6;
+		c.weighty = 2;
 		
-		//3.buttons and preview
-		JPanel rightTopPanel = new JPanel ();
-		rightTopPanel.setPreferredSize(new Dimension(200, 0));
-		rightTopPanel.setLayout(new BorderLayout());
-			
-			
+		panelNorth.add(personal, c);
 		
-			//preview
-			cardPreview = new ImageToPrint("devcards_f_en_c_1.png", this);
-			rightTopPanel.add(cardPreview, BorderLayout.CENTER);
-			
-			JPanel buttonsPanel = new JPanel();
-			buttonsPanel.setPreferredSize(new Dimension(0, 100));
-			buttonsPanel.setLayout(new GridLayout(2, 2));
-			
-				//venture button
-				showVentures = new JButton("Ventures");
-				buttonsPanel.add(showVentures);
-				
-				//character button
-				showCharacters = new JButton("Characters");
-				buttonsPanel.add(showCharacters);
-				
-				//prev button
-				prevBoard = new JButton("Prev Board");
-				buttonsPanel.add(prevBoard);
-				
-				//next button
-				nextBoard = new JButton("Next Board");
-				buttonsPanel.add(nextBoard);
-			
-			rightTopPanel.add(buttonsPanel, BorderLayout.PAGE_END);
-			
-		panel.add(tile, BorderLayout.LINE_START);
-		panel.add(personal, BorderLayout.CENTER);
-		panel.add(rightTopPanel, BorderLayout.LINE_END);
+		leader = new ImageToPrint("leader.jpg", this);
+		c.gridx = 2;
+		c.weightx = 1;
+		c.weighty = 1;
+		c.gridheight = 1;
+		panelNorth.add(leader, c);
 		
+		excomm1 = new ImageToPrint("excomm_back_1.png", this);
+		c.gridx = 3;
+		panelNorth.add(excomm1, c);
+		
+		excomm2 = new ImageToPrint("excomm_back_2.png", this);
+		c.gridx = 2;
+		c.gridy = 1;
+		panelNorth.add(excomm2, c);
+		
+		excomm3 = new ImageToPrint("excomm_back_3.png", this);
+		c.gridx = 3;
+		panelNorth.add(excomm3, c);
 	}
 	
-	//panel for points, privilege, family, servants and perform action
-	public void createCenterPanel (JPanel panel) {
-		panel.setLayout(new GridLayout(1, 3));
+	public void setPanelCenter (JPanel panelCenter) {
+		panelCenter.setLayout(new GridLayout(1, 4));
 		
-		//1.panel for points and privileges
-		JPanel pointsPanel = new JPanel ();
+		JPanel buttonsPanel = new JPanel ();
+		JPanel familiarPanel = new JPanel();
+		JPanel doActionPanel = new JPanel();
+		JPanel pointsPanel = new JPanel();
+		
+		buttonsPanel.setLayout(new GridLayout(2, 2));
+		familiarPanel.setLayout(new GridLayout(2, 2));
+		doActionPanel.setLayout(new GridLayout(2, 1));
 		pointsPanel.setLayout(new GridLayout(2, 2));
 		
-		JTextArea militar = new JTextArea ("Militar Points: ");
-		militar.setEditable(false);
-		pointsPanel.add(militar);
+		setButtonsPanel(buttonsPanel);
+		setFamiliarPanel(familiarPanel);
+		setDoActionPanel(doActionPanel);
+		setPointsPanel(pointsPanel);
 		
-		JTextArea faith = new JTextArea ("Faith Points: ");
-		faith.setEditable(false);
-		pointsPanel.add(faith);
+		panelCenter.add(buttonsPanel);
+		panelCenter.add(familiarPanel);
+		panelCenter.add(doActionPanel);
+		panelCenter.add(pointsPanel);
+	}
+	
+	public void setPanelSouth (JPanel panelSouth) {
+		panelSouth.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		JTextArea victory = new JTextArea ("Victory Points: ");
-		victory.setEditable(false);
-		pointsPanel.add(victory);
+		preview = new ImageToPrint("devcards_f_en_c_1.png", this);
+		c.weightx = 1;
+		c.fill = GridBagConstraints.BOTH;
+		panelSouth.add(preview, c);
 		
-		JTextArea privilege = new JTextArea ("Privileges: ");
-		privilege.setEditable(false);
-		pointsPanel.add(privilege);
+		c.gridx = 1;
+		c.weightx = 3;
+		c.weighty = 1;
 		
-		//2.panel for family
-		JPanel familyPanel = new JPanel ();
-		familyPanel.setLayout(new GridLayout(3, 2));
+		console = new JTextArea("console...");
+		console.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(console);
+		panelSouth.add(scrollPane, c);
 		
-		JLabel familyLabel = new JLabel("Family");
-		familyPanel.add(familyLabel);
-		familyPanel.add(new JLabel(""));
+	}
+	
+	public void setButtonsPanel (JPanel buttonsPanel) {
+		venture = new JButton("Venture");
+		buttonsPanel.add(venture);
+		character = new JButton("Character");
+		buttonsPanel.add(character);
+		prev = new JButton("Prev");
+		buttonsPanel.add(prev);
+		next = new JButton("Next");
+		buttonsPanel.add(next);
+	}
+	
+	public void setFamiliarPanel (JPanel familiarPanel) {
 		
 		JRadioButton black = new JRadioButton("Black");
 		black.setActionCommand("Black");
+		black.setSelected(true);
+		familiarPanel.add(black);
+		
 		JRadioButton white = new JRadioButton("White");
 		white.setActionCommand("White");
+		familiarPanel.add(white);
+		
 		JRadioButton orange = new JRadioButton("Orange");
 		orange.setActionCommand("Orange");
+		familiarPanel.add(orange);
+		
 		JRadioButton neutral = new JRadioButton("Neutral");
 		neutral.setActionCommand("Neutral");
-		black.setSelected(true);
+		familiarPanel.add(neutral);
 		
-		familiar = new ButtonGroup();
-		familiar.add(black);
-		familiar.add(white);
-		familiar.add(orange);
-		familiar.add(neutral);
-		
-		familyPanel.add(black);
-		familyPanel.add(white);
-		familyPanel.add(orange);
-		familyPanel.add(neutral);
-		
-		//3.servants and confirm
-		JPanel buttonsPanel = new JPanel ();
-		buttonsPanel.setLayout(new GridLayout(2, 1));
-		
-		/*JTextField servants = new JTextField();
-		servants.setText("Insert number of servants you want to use..");
-		buttonsPanel.add(servants);*/
+		family = new ButtonGroup();
+		family.add(black);
+		family.add(white);
+		family.add(orange);
+		family.add(neutral);
+	}
+	
+	public void setDoActionPanel (JPanel doActionPanel) {
 		
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
 		servants = new JSpinner(model);
-		buttonsPanel.add(servants);
+		doActionPanel.add(servants);
 		
-		sendAction = new JButton("Do Action!");
-		sendAction.addMouseListener(new PlayerListener(this));
-		buttonsPanel.add(sendAction);
-		
-		panel.add(pointsPanel);
-		panel.add(familyPanel);
-		panel.add(buttonsPanel);
-		
+		doAction = new JButton("Do Action!");
+		doAction.addMouseListener(new PlayerListener(this));
+		doActionPanel.add(doAction);
 	}
 	
-	//panel for stats, leader, excommunications and console
-	public void createSouthPanel (JPanel panel) {
-		panel.setLayout(new GridLayout(1, 6));
+	public void setPointsPanel (JPanel pointsPanel) {
 		
-		//1.leader button
-		ImageToPrint leader = new ImageToPrint("leader.jpg", this);
-		panel.add(leader);
-		panel.setPreferredSize(new Dimension(0, 180));
-		
-		//2.excommunication cards
-		excommunication1 = new ImageToPrint("excomm_back_1.png", this);
-		panel.add(excommunication1);
-		
-		excommunication2 = new ImageToPrint("excomm_back_2.png", this);
-		panel.add(excommunication2);
-		
-		excommunication3 = new ImageToPrint("excomm_back_3.png", this);
-		panel.add(excommunication3);
-		
-		//3.stats
-		JTextArea stats = new JTextArea();
-		stats.setText("stats of the match..");
-		stats.setEditable(false);
-		panel.add(stats);
-		
-		//4.console
-		console = new JTextArea();
-		console.setText("console..");
-		console.setEditable(false);
-		JScrollPane scrollPane = new JScrollPane(console);
-		panel.add(scrollPane);
-		
-	}
-
+		military = new JLabel("Military: 0");
+		pointsPanel.add(military);
+		faith = new JLabel("Faith: 0");
+		pointsPanel.add(faith);
+		victory = new JLabel("Victory: 0");
+		pointsPanel.add(victory);
+		privileges = new JLabel("Privileges: 0");
+		pointsPanel.add(privileges);
+	}	
+	
 	public TowersDTO getTowers () {
 		return towers;
 	}
@@ -286,7 +272,7 @@ public class GUICore {
 	}
 	
 	public void zoomImage (int idCard) {
-		cardPreview.setImage("cards/devcards_f_en_c_"+idCard+".png");
+		preview.setImage("cards/devcards_f_en_c_"+idCard+".png");
 	}
 	
 	public static void main(String[] args) {

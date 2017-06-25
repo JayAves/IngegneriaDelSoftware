@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view.GUI;
+/*package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -32,3 +32,4 @@ public class TowerListener extends MouseAdapter {
 	}
 
 }
+*/

@@ -489,9 +489,18 @@ public class Controller implements Observer{
 		int[] dices = createDicesDTO();
 		
 		//invio il messaggio alle view
-		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) {
 			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards,
 					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices)));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			//views.get(model.getBoard().getCurrentPlayer().getName()).startInteraction(new FirstBoardInfo(model.getBoard().getCurrentPlayer().getName(), tiles, exCards,
+				//	new TowersAndDicesForView(model.getBoard().getCurrentPlayer().getName(), towersForView, dices)));
 		
 		}
 	
