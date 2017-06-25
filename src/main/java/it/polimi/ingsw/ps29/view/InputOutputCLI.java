@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
+import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
@@ -28,11 +29,12 @@ import it.polimi.ingsw.ps29.view.inputCLI.FakeScanner;
 
 public class InputOutputCLI implements InputOutput {
 	
+	//Scanner scanner;
 	private FakeScanner scanner;
 	private int turnTimer;
 	
 	public InputOutputCLI () {
-		setTimer(10000);
+		setTimer(19000);
 		
 	}
 
@@ -57,7 +59,7 @@ public class InputOutputCLI implements InputOutput {
 			}
 	
 	
-	public int[] askTypeOfAction () {
+	public int[] askTypeOfAction () throws ExpiredTimeException {
 		int[] choice = new int [2];
 		choice[1]=0;
 		System.out.println("\nInsert the number of the action you want to perform.");
@@ -77,12 +79,9 @@ public class InputOutputCLI implements InputOutput {
 				"\n12.No placement" +
 				"\n13.LeaderAction"+
 				"\nChoice: ");
-			try {
+			
 				choice[0] = scanner.nextInt();
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				choice[0] = 12;
-			}
+		
 		} while (choice[0]<1 || choice[0]>13);
 		
 		if(choice[0]>=3 && choice[0]<=6) {
@@ -90,36 +89,27 @@ public class InputOutputCLI implements InputOutput {
 				choice[1] = askFloor();
 			} while (choice[1]<1 || choice[1]>4);
 		}
+			
 		return choice;
 			
 	}
 	
-	public int askNumberOfServants () {
+	public int askNumberOfServants () throws ExpiredTimeException {
 		int number;
 		System.out.println("\nInsert the number of servant you want to use: ");
-		try {
-			number = scanner.nextInt();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.err.println(e.getMessage());
-			number = 0;
-		}
+		number = scanner.nextInt();
+		
 		return number;
 	}
 	
-	public int askFloor () {
+	public int askFloor () throws ExpiredTimeException {
 		int number;
 		System.out.println("\nInsert the number of floor where you want to place: ");
-		try {
-			number = scanner.nextInt();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-			number = 1;
-		}
+		number = scanner.nextInt();
 		return number;
 	}
 	
-	public int askFamiliarColor () {
+	public int askFamiliarColor () throws ExpiredTimeException {
 		int choice;
 		System.out.println("\nInsert the color of the familiar member you want to use.");
 		do {
@@ -129,12 +119,9 @@ public class InputOutputCLI implements InputOutput {
 				"\n3.Orange" +
 				"\n4.Neutral" +
 				"\nChoice: ");
-			try {
-				choice = scanner.nextInt();
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				choice = 4;
-			}
+			
+			choice = scanner.nextInt();
+		
 		} while (choice<1 || choice>4);
 		return choice;
 		
@@ -311,16 +298,16 @@ public class InputOutputCLI implements InputOutput {
 		
 		while (choice != 5){
 			do{
-			for ( int i = 0 ; i < leaderSituation.size(); i++)
-				System.out.println( " " + (i + 1) + " " + leaderSituation.get(i).get(1));
-			
-			System.out.println((" 5 No azione Leader"));
-			try {
-				choice = scanner.nextInt();
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				choice = 5;
-			}
+				for ( int i = 0 ; i < leaderSituation.size(); i++)
+					System.out.println( " " + (i + 1) + " " + leaderSituation.get(i).get(1));
+				
+				System.out.println((" 5 No azione Leader"));
+				try {
+					choice = scanner.nextInt();
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+					choice = 5;
+				}
 			}while( choice < 1 || choice > 5);
 			
 			if(choice!=5) {
@@ -366,8 +353,9 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public ActionChoice handleAskNextAction(ActionChoice msg) {
+	public ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException {
 		System.out.println("\n"+msg.getName().toUpperCase()+", It's your turn!\n");
+		
 		int[] temp = askTypeOfAction();
 		msg.setChoice(0, temp[0]);
 		msg.setChoice(1, temp[1]);
@@ -377,6 +365,9 @@ public class InputOutputCLI implements InputOutput {
 			msg.setChoice(3, askFamiliarColor());
 		if (temp[0] == 13)
 			msg.setLeaderSituation(askLeader(msg.getLeaderSituation()));
+		
+		
+		
 		return msg;
 		
 	}
@@ -386,11 +377,18 @@ public class InputOutputCLI implements InputOutput {
 		BonusActionEffect effect = msg.getBonus();
 		
 		printBonusAction (effect);
-		if(effect.getType().equals("territory")||effect.getType().equals("building")||
-				effect.getType().equals("character")||effect.getType().equals("venture"))
-			msg.setFloor(askFloor());
 		
-		msg.setServants(askNumberOfServants());
+		try {
+			if(effect.getType().equals("territory")||effect.getType().equals("building")||
+					effect.getType().equals("character")||effect.getType().equals("venture"))
+				msg.setFloor(askFloor());
+		
+			msg.setServants(askNumberOfServants());
+		
+		} catch (ExpiredTimeException e) {
+			System.out.println(e.getMessage()+"\n");
+			msg.setFloor(1);
+		}
 		
 		return msg;
 	}

@@ -106,7 +106,7 @@ public class Match extends Observable{
 	    
 	    board.randomExcommunication();
 	    
-			ArrayList<LeaderCard> draft = board.getLeaaderDeck();
+			/*ArrayList<LeaderCard> draft = board.getLeaaderDeck();
 			for (int i = 0 ; i < board.getPlayers().size(); i++){
 				ArrayList<LeaderCard> drafted = new ArrayList<LeaderCard>();
 				for(int j = 0; j < 4 ; j++){
@@ -115,7 +115,7 @@ public class Match extends Observable{
 					draft.remove(rnd);
 				}
 				board.getPlayers().get(i).addLeaderCards(drafted);
-			}
+			}*/
 			
 	    
 	}

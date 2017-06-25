@@ -38,7 +38,6 @@ public class InputWithTimer implements Runnable {
 			if (in.ready()) 
 				return in.readLine();
 			
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,5 +63,9 @@ public class InputWithTimer implements Runnable {
 			if (System.currentTimeMillis() - startTime > timer)
 				endTime = true;
 		}
+	}
+	
+	public int getTimer () {
+		return timer;
 	}
 }

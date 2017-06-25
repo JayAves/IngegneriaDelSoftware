@@ -49,7 +49,7 @@ public class RoomCreator extends Thread implements Observer{
 		if (counter==2) //countdown to game start is set
 			timer.schedule(new Task(), period);
 			
-		if (counter==2){ //enough players for a new Room
+		if (counter==4){ //enough players for a new Room
 			counter=0;
 			System.out.println("New Room");
 			roomHandler.add(new Room(playersInQueue));
@@ -135,7 +135,6 @@ public class RoomCreator extends Thread implements Observer{
 				
 				System.out.println(e.getLocalizedMessage());
 			}
-			timer.schedule(new Task(), period);
 			
 		
 			

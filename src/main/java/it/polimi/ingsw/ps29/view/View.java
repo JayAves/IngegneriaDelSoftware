@@ -22,6 +22,7 @@ import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
+import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
@@ -54,9 +55,13 @@ public class View extends Observable implements Observer {
 	}
 	
 	public void askNextAction (ActionChoice msg) {
-		msg = inputOutput.handleAskNextAction (msg);
-		setChanged();
-		notifyObservers(msg);
+		try {
+			msg = inputOutput.handleAskNextAction (msg);
+			setChanged();
+			notifyObservers(msg);
+		} catch (ExpiredTimeException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
