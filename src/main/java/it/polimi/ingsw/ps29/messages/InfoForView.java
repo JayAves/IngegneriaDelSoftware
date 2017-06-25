@@ -21,6 +21,7 @@ public class InfoForView extends InteractionMessage {
 	public int IDcard;
 	public int IDexcommunicationCard;
 	public HashMap <String, ArrayList<ResourceDTO>> resSituation;
+	public int timer;
 	
 	public InfoForView(String player) {
 		super(player,false);
@@ -43,5 +44,11 @@ public class InfoForView extends InteractionMessage {
 		visitor.receive(this);
 		
 	}
-
+	public void setTimer(int timer) {
+		this.timer=timer;
+		
+	}
+	public int getTimer() {
+		return timer;
+	}
 }

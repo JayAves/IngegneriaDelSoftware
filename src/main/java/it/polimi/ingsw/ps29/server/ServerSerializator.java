@@ -10,6 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
@@ -41,8 +42,12 @@ public class ServerSerializator {
 			
 			if (o instanceof FirstBoardInfo) {
 				((FirstBoardInfo)o).setTimer(thread.turnTimer);
-				System.out.println("First timer: "+((FirstBoardInfo)o).getTimer());
 			}
+			
+			if (o instanceof InfoForView) {
+				((InfoForView)o).setTimer(thread.turnTimer);
+			}
+			
 			oos.writeObject(o);
 			oos.flush();
 	
