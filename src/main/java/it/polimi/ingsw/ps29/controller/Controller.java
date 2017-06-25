@@ -28,6 +28,7 @@ import it.polimi.ingsw.ps29.model.action.AddPrivileges;
 import it.polimi.ingsw.ps29.model.action.CouncilPalaceAction;
 import it.polimi.ingsw.ps29.model.action.ExchangeResources;
 import it.polimi.ingsw.ps29.model.action.HarvestAction;
+import it.polimi.ingsw.ps29.model.action.LeaderAction;
 import it.polimi.ingsw.ps29.model.action.MarketAction;
 import it.polimi.ingsw.ps29.model.action.NoAction;
 import it.polimi.ingsw.ps29.model.action.ProductionAction;
@@ -197,6 +198,9 @@ public class Controller implements Observer{
 		case 11:
 			action= new CouncilPalaceAction(model, move);
 			break;
+			
+		case 13 :
+			action = new LeaderAction(model, move, arg);
 		
 		default:
 			action= new NoAction(model,move);

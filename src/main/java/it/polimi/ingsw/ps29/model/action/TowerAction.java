@@ -44,7 +44,7 @@ public class TowerAction extends Action {
 		System.out.println(enoughVictoryPoints());*/
 		
 		//se è presente un familiare qualsiasi sulla torre e non si possono pagare tre monete
-		if(!space.isEmpty() && !canAffordMalus())
+		if(!space.isEmpty() && (!canAffordMalus() && !move.getPlayer().getBrunelleschi()))
 			throw new TowerCoinMalusException();
 		
 		if(!space.getPlacementFloor().isEmpty() && !move.getPlayer().getLudovicoAriosto())
@@ -80,7 +80,7 @@ public class TowerAction extends Action {
 	public void performAction() {
 		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
 		
-		if (!space.isEmpty()) 
+		if ((!space.isEmpty() && !move.getPlayer().getBrunelleschi())) 
 			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monete
 			
 		

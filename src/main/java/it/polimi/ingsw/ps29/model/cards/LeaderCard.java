@@ -41,6 +41,10 @@ public class LeaderCard {
     	return id;
     }
     
+    public Effect getEffect() {
+    	return leaderEffect;
+    }
+    
     public HashMap<String, Integer> getCardRequirements(){
     	
     	HashMap<String, Integer> cardRequirementsHash = new HashMap<String, Integer>();

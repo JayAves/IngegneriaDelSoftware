@@ -24,7 +24,6 @@ public class Player {
 	private ExchangeSupport supportForExchange;
 	public ArrayList<Effect> specialPermanentEffects;
 	private FinalScoring finalScoring;
-	private ArrayList<LeaderCard> leaderCardsInHand;
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
 	private boolean ludovicoAriosto;
@@ -146,6 +145,10 @@ public class Player {
 		filippoBrunelleschi = true;
 	}
 	
+	public boolean getBrunelleschi(){
+		return filippoBrunelleschi;
+	}
+	
 	public void setSistoIV(){
 		sistoIV = true;
 	}
@@ -168,8 +171,5 @@ public class Player {
         return noMarket;
 	}
 
-    public void addLeaderCards(ArrayList<LeaderCard> card){
-    	leaderCardsInHand = card;;
-    }
     
 }

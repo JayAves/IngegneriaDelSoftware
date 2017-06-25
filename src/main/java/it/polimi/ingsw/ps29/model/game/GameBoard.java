@@ -47,7 +47,6 @@ public class GameBoard{
 		playersOrder = players;
 		decks= new ArrayList<Deck>();
 		towersDTO = new TowersDTO();
-		initSpaces();
 		leaderCards = new ArrayList<LeaderCard>();
 		playedLeaderCards = new ArrayList<LeaderCard>();
 		excommunicationDeck= new ArrayList<ExcommunicationDeck>();
@@ -63,20 +62,34 @@ public class GameBoard{
 	}
 	
 	
-	public void initSpaces () {
+	public void initSpaces (Resource[] resources) {
 		
 		ArrayList<Resource> temporaryBonus1= new ArrayList<Resource>();
-		Resource r=new Resource("coin",2);
-		temporaryBonus1.add(r);
+		temporaryBonus1.add(resources[0]);
 		ArrayList<Resource> temporaryBonus2= new ArrayList<Resource>();
-		Resource s=new Resource("wood",2);
-		temporaryBonus2.add(s);
+		temporaryBonus2.add(resources[1]);
 		ArrayList<Resource> temporaryBonus3= new ArrayList<Resource>();
-		Resource t=new Resource("stone",2);
-		temporaryBonus3.add(t);
+		temporaryBonus3.add(resources[2]);
 		ArrayList<Resource> temporaryBonus4= new ArrayList<Resource>();
-		Resource u=new Resource("servant",2);
-		temporaryBonus4.add(u);
+		temporaryBonus4.add(resources[3]);
+		ArrayList<Resource> temporaryBonus5= new ArrayList<Resource>();
+		temporaryBonus1.add(resources[4]);
+		ArrayList<Resource> temporaryBonus6= new ArrayList<Resource>();
+		temporaryBonus2.add(resources[5]);
+		ArrayList<Resource> temporaryBonus7= new ArrayList<Resource>();
+		temporaryBonus3.add(resources[6]);
+		ArrayList<Resource> temporaryBonus8= new ArrayList<Resource>();
+		temporaryBonus4.add(resources[7]);
+		ArrayList<Resource> temporaryBonus9= new ArrayList<Resource>();
+		temporaryBonus1.add(resources[8]);
+		ArrayList<Resource> temporaryBonus10= new ArrayList<Resource>();
+		temporaryBonus2.add(resources[9]);
+		ArrayList<Resource> temporaryBonus11= new ArrayList<Resource>();
+		temporaryBonus3.add(resources[10]);
+		temporaryBonus3.add(resources[11]);
+		ArrayList<Resource> temporaryBonus12= new ArrayList<Resource>();
+		temporaryBonus4.add(resources[12]);
+		temporaryBonus4.add(resources[13]);
 		
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
@@ -89,21 +102,24 @@ public class GameBoard{
 		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus3,3);
 		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus4,4);
 		spaces.put("characterTower", new TowerArea ());
-		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus1,3);
-		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus3,4);
+		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus5,3);
+		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus6,4);
 		spaces.put("ventureTower", new TowerArea ());
-		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus2,3);
-		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus4,4);
-		spaces.put("FirstMarket", new MarketArea(1, temporaryBonus1));
-		spaces.put("SecondMarket", new MarketArea(1, temporaryBonus2));
-		spaces.put("ThirdMarket", new MarketArea(1,temporaryBonus3));
-		spaces.put("FourthMarket", new MarketArea(1, temporaryBonus4));
+		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus7,3);
+		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus8,4);
+		spaces.put("FirstMarket", new MarketArea(1, temporaryBonus9));
+		spaces.put("SecondMarket", new MarketArea(1, temporaryBonus10));
+		spaces.put("ThirdMarket", new MarketArea(1,temporaryBonus11));
+		spaces.put("FourthMarket", new MarketArea(1, temporaryBonus12));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
+	}
+	
+	public void initFaithTrack(Resource[] bonuses){
+		
 		faithTrack = new HashMap<Integer, FaithSpace>();
-		for (int i = 0 ; i < 16; i++){
-			faithTrack.put(i, new FaithSpace(new Resource("coins", i)));
-		}
+		for (int i = 0 ; i < 16; i++)
+			faithTrack.put(i, new FaithSpace(bonuses[i]));
 	}
 	
 	public ArrayList <Player> getPlayers () {

@@ -41,8 +41,27 @@ public class Match extends Observable{
 		state= new RoundSetupState();
 		round = 0;
 		initDecks();
+		board.initSpaces(getBonuses());
+		board.initFaithTrack(getFaithTrack());
 	}
 	
+	private Resource[] getBonuses() throws FileNotFoundException {
+		
+		BufferedReader bonuses = new BufferedReader(new FileReader("src/main/java/Bonus.json"));
+		GsonBuilder gBonus = new GsonBuilder();
+		gBonus.registerTypeAdapter(Resource.class, new ResourceAdapter());
+		Resource[] resources = gBonus.create().fromJson(bonuses, Resource[].class);
+		return resources;
+	}
+	
+	private Resource[] getFaithTrack() throws FileNotFoundException {
+		
+		BufferedReader fBonuses = new BufferedReader(new FileReader("src/main/java/faithTrack.json"));
+		GsonBuilder fBonus = new GsonBuilder();
+		fBonus.registerTypeAdapter(Resource.class, new ResourceAdapter());
+		Resource[] resources = fBonus.create().fromJson(fBonuses, Resource[].class);
+		return resources;
+	}
 	
 	private void initDecks () throws FileNotFoundException {
 		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
@@ -114,7 +133,7 @@ public class Match extends Observable{
 					drafted.add(draft.get(rnd));
 					draft.remove(rnd);
 				}
-				board.getPlayers().get(i).addLeaderCards(drafted);
+				board.getPlayers().get(i).getPersonalBoard().addLeaderCards(drafted);;
 			}
 			
 	    

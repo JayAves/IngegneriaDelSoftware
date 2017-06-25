@@ -2,6 +2,7 @@
 
 {
 "name" : "Francesco Sforza",
+"id" :1,
 "effect" : {
         "effectType": "BonusActivityEffect",
         "effectData" :
@@ -14,6 +15,7 @@
 
 {
 "name" : "Ludovico Ariosto",
+"id" :2,
 "effect" : {
         "effectType": "GeneralEscommunications",
         "effectData" :{ "effectName" : "Ludovico Ariosto"}},
@@ -24,6 +26,7 @@
 
 {
 "name" : "Filippo Brunelleschi",
+"id" :3,
 "effect" : {
         "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "Filippo Brunelleschi"}},
@@ -34,6 +37,7 @@
 
 {
 "name" : "Sigismondo Malatesta",
+"id" :4,
 "effect" : {
         "effectType": "NeutralFamilyMemberEmpowermentEffect",
         "effectData" :{ }},
@@ -55,6 +59,7 @@
 
 {
 "name" : "Girolamo Savonarola",
+"id" :5,
 "effect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -75,6 +80,7 @@
 
 {
 "name" : "Michelangelo Buonarroti",
+"id" :6,
 "effect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -95,6 +101,7 @@
 
 {
 "name" : "Giovanni Dalle Bande Nere",
+"id" :7,
 "effect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":{ 
@@ -131,6 +138,7 @@
     
 {
 "name" : "Leonardo da Vinci",
+"id" :8,
 "effect" : {
         "effectType": "BonusActivityEffect",
         "effectData" :
@@ -143,6 +151,7 @@
     
 {
 "name" : "Sandro Botticelli",
+"id" :9,
 "effect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -169,6 +178,7 @@
     
 {
 "name" : "Ludovico Il Moro",
+"id" :10,
 "effect" : {
         "effectType": "FixFamilyMemberByColor",
         "effectData" :{ "diceEmpowerment" : 5,
@@ -180,6 +190,7 @@
     
 {
 "name" : "Lucrezia Borgia",
+"id" :11,
 "effect" : {
         "effectType": "FamiliarEmpowermentByColor",
         "effectData" :{ "diceEmpowerment" : 2,
@@ -187,6 +198,98 @@
 "requirements" : [],
 "cardTypeRequirements" : ["any"],
 "cardRequirements" : [ 6 ]
+},
+    
+
+{
+"name" : "Sisto IV",
+"id" :14,
+"effect" : {
+        "effectType": "GeneralEscommunications",
+        "effectData" :{ "effectName" : "SistoIV"}},
+"requirements" : [{
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":6,
+    "type":"wood" } },
+                 {
+   "resourceType":"Stones",
+   "resourceData":{
+    "amount":6,
+    "type":"stone" } },
+                 {
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount" :6,
+    "type":"servant" } },
+                 {
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":6,
+    "type":"coin" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Cosimo De Medici",
+"id" :17,
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	},
+    {
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":3,
+				"type":"servant" }
+	}                   ]}},
+"requirements" : [],
+"cardTypeRequirements" : ["building" , "character"],
+"cardRequirements" : [4, 2]
+},
+    
+{
+"name" : "BartolomeoColleoni",
+"id" :18,
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+	}]}},
+"requirements" : [],
+"cardTypeRequirements" : ["territory" , "venture"],
+"cardRequirements" : [4, 2]
+},
+    
+{
+"name" : "Ludocvico III Gonzaga",
+"id" :19,
+"effect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}            ]}},
+"requirements" : [{
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount" :15,
+    "type":"servant" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
 }
     
 ]

@@ -26,6 +26,9 @@ public class PersonalBoard {
 		cards.put("venture", new ArrayList<Card> ());
 		this.personalTile = personalTile;
 		resources = new Container ();
+		leaderCards = new ArrayList<LeaderCard>();
+		playedLeaderCards = new ArrayList<LeaderCard>();
+		activatedLeaderCards = new ArrayList<LeaderCard>();
 	}
 	
 	
@@ -128,4 +131,39 @@ public class PersonalBoard {
 		
 		return LeaderChoice;
 	}
-}
+	
+	public void addLeaderCards(ArrayList<LeaderCard> card){
+    	leaderCards = card;;
+    }
+	
+	public LeaderCard getLeaderById( int id, ArrayList<LeaderCard> deck){
+		
+		for (LeaderCard card : deck){
+			if (id == card.getID())
+				return card;
+		}
+		return null;	
+    }
+	
+    public void removeLeaderById( int id, ArrayList<LeaderCard> deck){
+		
+		for (LeaderCard card : deck){
+			if (id == card.getID())
+				deck.remove(card);
+		}
+			
+    }
+
+
+	public ArrayList<LeaderCard> getLeaderCards() {
+		return leaderCards;
+	}
+
+	public ArrayList<LeaderCard> getPlayedLeaderCards() {
+		return playedLeaderCards;
+	}
+	
+	public ArrayList<LeaderCard> getActivatedLeaderCards(){
+		return activatedLeaderCards;
+	}
+	}
