@@ -78,22 +78,26 @@ public class Client implements Observer{
 			
 			public void receive (InfoForView msg) {
 				view.handleInfo (msg);
+				view.getInputOutput().setTimer(msg.getTimer()-1000);
 			}
 			
 			public void receive (TowersAndDicesForView msg) {
 				view.showTowersAndDices(msg);
+				
+				
+				
 			}
 
 			public void receive(PlayerInfoMessage playerInfoMessage) {
 				// TODO Auto-generated method stub
-				
-				
-				
 				view.showMessage(playerInfoMessage);
 			}
 			
 			public void receive (FirstBoardInfo msg) {
 				view.showInitialInfo(msg);
+				view.getInputOutput().setTimer(msg.getTimer()-1000);
+				System.out.println("\nTimer: "+ view.getInputOutput().getTimer());
+				
 			}
 			
 			public void receive (RejectMessage msg) {

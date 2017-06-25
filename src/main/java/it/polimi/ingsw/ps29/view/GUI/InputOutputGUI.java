@@ -95,7 +95,7 @@ public class InputOutputGUI implements InputOutput {
 		for(int i=0; i<types.length; i++)
 			for(CardDTO card: towers.getTowers().get(types[i]))
 				idCards.add(card.getId());
-		screen.board.setCards(idCards);
+		screen.tower.setCards(idCards);
 		
 	}
 
@@ -107,12 +107,12 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
-		screen.statusBar.setText("Player: "+msg.getName());
+		screen.frame.setTitle(msg.getName());
 		int tileId = msg.getTiles().get(msg.getName()).getId();
 		screen.tile.setImage("bonus_tiles/personalbonustile_"+tileId+".png");
-		screen.excommunication1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
-		screen.excommunication2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
-		screen.excommunication3.setImage("excomm_card/excomm_3_"+msg.getExCards().get(2).getId()+".png");
+		screen.excomm1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
+		screen.excomm2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
+		screen.excomm3.setImage("excomm_card/excomm_3_"+msg.getExCards().get(2).getId()+".png");
 	}
 
 
@@ -127,6 +127,20 @@ public class InputOutputGUI implements InputOutput {
 	public BonusChoice handleBonusAction(BonusChoice msg) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void setTimer(int timer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public int getTimer() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

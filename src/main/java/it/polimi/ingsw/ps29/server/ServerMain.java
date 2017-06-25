@@ -14,8 +14,8 @@ public class ServerMain {
 		
 		BufferedReader btimer = new BufferedReader(new FileReader("src/main/java/timer.json"));
 	    GsonBuilder gtimer = new GsonBuilder();
-	    TimerJson timer = gtimer.create().fromJson(btimer, TimerJson.class);
-	
+	    TimerJson timer = gtimer.create().fromJson(btimer, TimerJson.class);	
+	    
 		
 		RoomCreator creator= new RoomCreator();
 		creator.setPeriod(timer.roomTimer);

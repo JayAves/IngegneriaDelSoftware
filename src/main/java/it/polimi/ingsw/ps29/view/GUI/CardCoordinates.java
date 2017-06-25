@@ -21,4 +21,12 @@ public class CardCoordinates {
 		return p.getX()>=coordX && p.getX()<=coordX+width && p.getY()>=coordY && p.getY()<=coordY+height;
 	}
 
+	@Override
+	public String toString() {
+		return "CardCoordinates [coordX=" + coordX + ", coordY=" + coordY + ", width=" + width + ", height=" + height
+				+ "]";
+	}
+	
+	
+
 }

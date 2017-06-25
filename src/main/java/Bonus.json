@@ -1,0 +1,100 @@
+[
+   {
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":1,
+    "type":"wood" }
+   },
+
+{
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":1,
+    "type":"wood" }
+   },
+
+{
+   "resourceType":"Stones",
+   "resourceData":{
+    "amount":1,
+    "type":"stone" }
+   },
+
+{
+   "resourceType":"Stones",
+   "resourceData":{
+    "amount":2,
+    "type":"stone" }
+   },
+
+{
+   "resourceType":"MilitaryPoints",
+   "resourceData":{
+    "amount":1,
+    "type":"military" }
+   },
+
+{
+   "resourceType":"MilitaryPoints",
+   "resourceData":{
+    "amount":2,
+    "type":"military" }
+   },
+
+{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":1,
+    "type":"coin" }
+   },
+
+{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":2,
+    "type":"coin" }
+   },
+    
+{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":5,
+    "type":"coin" }
+   },
+    
+{
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount":5,
+    "type":"servant" }
+   },
+    
+{
+   "resourceType":"MilitaryPoints",
+   "resourceData":{
+    "amount":3,
+    "type":"military" }
+   },
+    
+{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":2,
+    "type":"coin" }
+   },
+    
+{
+   "resourceType":"Privilege",
+   "resourceData":{
+    "amount":1,
+    "type":"privilege" }
+   },
+    
+{
+   "resourceType":"Privilege",
+   "resourceData":{
+    "amount":1,
+    "type":"privilege" }
+   },
+    
+]

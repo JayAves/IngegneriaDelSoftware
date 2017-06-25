@@ -1,7 +1,14 @@
 package it.polimi.ingsw.ps29.messages;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import com.google.gson.GsonBuilder;
+
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
+import it.polimi.ingsw.ps29.server.TimerJson;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 public class TowersAndDicesForView extends InteractionMessage {
@@ -13,16 +20,21 @@ public class TowersAndDicesForView extends InteractionMessage {
 	private TowersDTO towers;
 	private int[] dices = new int[3];
 	
+	
 	/*0 black
 	 *1 white
 	 *2 orange*/
+	
 	
 	public TowersAndDicesForView(String player, TowersDTO towers, int[] dices) {
 		super(player, false);
 		this.towers = towers;
 		this.dices = dices;
+		
+	
+	    
 	}
-
+	
 	@Override
 	public void visit(VisitorMessages visitor) {
 		// not used
@@ -42,5 +54,5 @@ public class TowersAndDicesForView extends InteractionMessage {
 	public int[] getDices () {
 		return dices;
 	}
-
+	
 }

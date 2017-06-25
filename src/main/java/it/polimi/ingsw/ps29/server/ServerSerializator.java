@@ -10,6 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
@@ -39,6 +40,14 @@ public class ServerSerializator {
 		
 		try {
 			
+			if (o instanceof FirstBoardInfo) {
+				((FirstBoardInfo)o).setTimer(thread.turnTimer);
+			}
+			
+			if (o instanceof InfoForView) {
+				((InfoForView)o).setTimer(thread.turnTimer);
+			}
+			
 			oos.writeObject(o);
 			oos.flush();
 	
@@ -64,7 +73,7 @@ public class ServerSerializator {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			
+			//ServerSerializator.this.thread.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
 			msg.setTimeExpired();
 			thread.notifyController(msg);

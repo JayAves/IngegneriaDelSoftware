@@ -17,6 +17,7 @@ public class FirstBoardInfo extends InteractionMessage {
 	private HashMap<String, PersonalBonusTileDTO> tile;
 	private ArrayList<ExcommunicationCardDTO> exCards;
 	private TowersAndDicesForView towers;
+	private int timer;
 
 	public FirstBoardInfo(String player, HashMap<String, PersonalBonusTileDTO> tile, ArrayList<ExcommunicationCardDTO> exCards, 
 			TowersAndDicesForView towers) {
@@ -49,5 +50,10 @@ public class FirstBoardInfo extends InteractionMessage {
 	public TowersAndDicesForView getTowers () {
 		return towers;
 	}
-
+	public void setTimer(int timer) {
+		this.timer=timer;
+	}
+	public int getTimer() {
+		return timer;
+	}
 }

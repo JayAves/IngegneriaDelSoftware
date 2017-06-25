@@ -64,7 +64,7 @@ public class SocketConnection extends Connection {
 			System.err.println("Unknown address!");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.err.println("Unable to connect to server!");
+			System.err.println("\nUnable to connect to server!");
 			
 		}
 		

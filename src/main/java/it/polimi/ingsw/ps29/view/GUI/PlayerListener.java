@@ -16,7 +16,7 @@ public class PlayerListener extends MouseAdapter {
 	@Override
 	public void mouseClicked (MouseEvent event) {
 		if(((JButton) event.getSource()).getText().equals("Do Action!")) {
-			gui.console.setText("Familiar: "+gui.familiar.getSelection().getActionCommand()+
+			gui.console.setText("Familiar: "+gui.family.getSelection().getActionCommand()+
 					"\n# Servants: "+gui.servants.getValue());
 		}
 	}
