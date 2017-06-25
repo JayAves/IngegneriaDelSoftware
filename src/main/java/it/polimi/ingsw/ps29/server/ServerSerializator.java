@@ -39,8 +39,9 @@ public class ServerSerializator {
 		
 		try {
 			
-			if (o instanceof TowersAndDicesForView) {
-				((TowersAndDicesForView)o).setTimer(thread.turnTimer);
+			if (o instanceof FirstBoardInfo) {
+				((FirstBoardInfo)o).setTimer(thread.turnTimer);
+				System.out.println("First timer: "+((FirstBoardInfo)o).getTimer());
 			}
 			oos.writeObject(o);
 			oos.flush();
@@ -67,7 +68,7 @@ public class ServerSerializator {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			ServerSerializator.this.thread.setInGame(false);
+			//ServerSerializator.this.thread.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
 			msg.setTimeExpired();
 			thread.notifyController(msg);

@@ -78,8 +78,8 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		// TODO Auto-generated method stub
 		if (inGame){
 			try {
-				if (msg instanceof TowersAndDicesForView) {
-					((TowersAndDicesForView)msg).setTimer(turnTimer);
+				if (msg instanceof FirstBoardInfo) {
+					((FirstBoardInfo)msg).setTimer(turnTimer);
 				}
 				
 				if ((msg).getBi()) { //only for bidirectional messages

@@ -50,4 +50,6 @@ public interface InputOutput {
 	abstract BonusChoice handleBonusAction (BonusChoice msg);
 	
 	abstract void setTimer(int timer);
+	
+	abstract int getTimer();
 }

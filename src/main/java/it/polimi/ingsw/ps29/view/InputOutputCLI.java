@@ -400,5 +400,7 @@ public class InputOutputCLI implements InputOutput {
 		scanner = new FakeScanner(turnTimer);
 		System.out.println("Timer: "+turnTimer);
 	}
-
+	public int getTimer() {
+		return turnTimer;
+	}
 }

@@ -136,4 +136,11 @@ public class InputOutputGUI implements InputOutput {
 		
 	}
 
+
+	@Override
+	public int getTimer() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
