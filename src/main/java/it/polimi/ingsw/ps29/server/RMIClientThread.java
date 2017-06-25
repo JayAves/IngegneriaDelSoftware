@@ -106,7 +106,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-		
+			RMIClientThread.this.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(username);
 			msg.setTimeExpired();
 			setChanged();

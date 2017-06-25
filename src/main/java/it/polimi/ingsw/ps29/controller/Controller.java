@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
@@ -108,6 +109,23 @@ public class Controller implements Observer{
 					view.startInteraction (object);
 				}
 				else {
+					sendInfo=false;
+					info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
+					info.familiar=placeRandomFamiliar();
+					info.space=12;
+					if (info.familiar!=-1)	
+						sendInfo=true;
+					if(sendInfo) {
+						info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
+						for(Player player: model.getBoard().getPlayers()) {
+							ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
+							for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
+								resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
+							info.resSituation.put(player.getName(), resCon);
+						}
+						for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
+							viewz.getValue().startInteraction(info);
+					}
 					model.getBoard().changePlayerOrder();
 					gameEngine();
 				}
@@ -115,6 +133,7 @@ public class Controller implements Observer{
 		
 		else {
 			
+			System.out.println("All players are disconnected!");
 			//setto lo stato della partita a fine
 			
 		}
@@ -279,6 +298,7 @@ public class Controller implements Observer{
 		model.getBoard().getPlayerByName(msg.getName()).setVaticanReportPerformed(true);
 		//function to define
 		System.out.println("...funzione vaticano...");
+		sendInfo=true;
 	}
 	
 	
@@ -312,8 +332,13 @@ public class Controller implements Observer{
 					view.getValue().startInteraction(playerInfoMessage);
 			
 			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
-				if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState))
-					placeRandomFamiliar();
+				if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState)) {
+					info.familiar=placeRandomFamiliar();
+					info.space=12;
+				if (info.familiar!=-1)	
+					sendInfo=true;
+				}
+					
 				if (stateOfAction instanceof VaticanChoice) {
 					VaticanChoice msg= new VaticanChoice(playerInfoMessage.getName());
 					msg.setSustain(false);
@@ -325,22 +350,50 @@ public class Controller implements Observer{
 			}
 			
 		}
-
-		private void placeRandomFamiliar() {
-			
-			if (!model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy())
-				model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
-			else {
-				
-				Dice minimalPower= model.getBoard().getDices().get(0);
-				for (Dice dice: model.getBoard().getDices())
-					if (dice.getValue()< minimalPower.getValue())
-						minimalPower=dice;
-				model.getBoard().getCurrentPlayer().getFamiliarByColor(minimalPower.getColor()).setBusy(true);
-			}	
-				
-		}
 	}
+	
+	private int placeRandomFamiliar() {
+		
+		if (!model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy()) {
+			model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
+			return 4;
+		}
+			
+		else {
+			
+			ArrayList<FamilyMemberInterface> freeMembers= new ArrayList<FamilyMemberInterface>();
+			
+			for (DiceColor color: DiceColor.values()) {
+				if (!model.getBoard().getCurrentPlayer().getFamiliarByColor(color).getBusy())
+					freeMembers.add(model.getBoard().getCurrentPlayer().getFamiliarByColor(color));
+			}	
+			Random random= new Random();
+			
+			FamilyMemberInterface randomMember= freeMembers.get(random.nextInt(freeMembers.size()));
+			
+			model.getBoard().getCurrentPlayer().getFamiliarByColor(randomMember.getFamiliarColor()).setBusy(true);
+			
+			switch(randomMember.getFamiliarColor()) {
+				
+				case BLACK:
+					return 1;
+					
+				case WHITE:
+					return 2;
+				
+				case ORANGE:
+					return 3;
+				
+				default:
+					System.out.println("Error in random placement");
+					return -1;
+						
+				}
+			}
+		}
+	
+
+	
 	
 	public void gameEngine () {
 		

@@ -136,6 +136,7 @@ public class RoomCreator extends Thread implements Observer{
 				System.out.println(e.getLocalizedMessage());
 			}
 			
+			
 		
 			
 		}
@@ -157,11 +158,11 @@ public class RoomCreator extends Thread implements Observer{
 			// TODO Auto-generated method stub
 		
 				if (counter>1) {
-					counter=0;
 					
 					roomHandler.add(new Room(playersInQueue));
 					System.out.println("Room from timer");
 					playersInQueue.clear();
+					counter=0;
 					try {
 						sleep(1000);
 					} catch (InterruptedException e) {

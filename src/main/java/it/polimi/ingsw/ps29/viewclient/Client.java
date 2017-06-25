@@ -88,9 +88,6 @@ public class Client implements Observer{
 
 			public void receive(PlayerInfoMessage playerInfoMessage) {
 				// TODO Auto-generated method stub
-				
-				
-				
 				view.showMessage(playerInfoMessage);
 			}
 			
