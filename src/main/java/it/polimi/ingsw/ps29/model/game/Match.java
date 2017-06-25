@@ -135,9 +135,12 @@ public class Match extends Observable{
 				}
 				board.getPlayers().get(i).getPersonalBoard().addLeaderCards(drafted);;
 			}
+
+			}
+
 			
 	    
-	}
+	
 	
 	
 	
