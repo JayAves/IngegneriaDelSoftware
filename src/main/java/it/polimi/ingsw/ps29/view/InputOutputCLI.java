@@ -69,7 +69,7 @@ public class InputOutputCLI implements InputOutput {
 				"\n2.Production" +
 				"\n3.Placement on TerritoriesTower" +
 				"\n4.Placement on BuildingsTower" +
-				"\n5.Placement on CharcatersTower" +
+				"\n5.Placement on CharactersTower" +
 				"\n6.Placement in VenturesTower" +
 				"\n7.Market space 1" +
 				"\n8.Market space 2" +

@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.space;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.messages.exception.FamiliarHereException;
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
@@ -62,8 +63,10 @@ public class TowerArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean isEnoughPowerful(int valuePlacement) {
-		return floors.get(placementFloor-1).isEnoughPowerful(valuePlacement);
+	public boolean isEnoughPowerful(int valuePlacement) throws NotEnoughPowerfulException {
+		if( floors.get(placementFloor-1).isEnoughPowerful(valuePlacement))
+			return true;
+		throw new NotEnoughPowerfulException();
 	}
 	
 	
