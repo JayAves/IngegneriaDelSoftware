@@ -41,16 +41,12 @@ import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
-import it.polimi.ingsw.ps29.model.cards.LeaderCard;
-import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
-import it.polimi.ingsw.ps29.model.game.roundstates.ActionsState;
 import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
@@ -91,6 +87,8 @@ public class Controller implements Observer{
 	
 	
 	public void callCorrectView () {
+		System.out.println("+++Action state: "+stateOfAction+" +++ Player: "+model.getBoard().getCurrentPlayer());
+		
 		ArrayList<ArrayList<Object>> leaderSituation;
 		leaderSituation = new ArrayList<ArrayList<Object>>();
 		if(PlayersConnected()) {
@@ -103,39 +101,37 @@ public class Controller implements Observer{
 			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 			stateOfAction = stateOfAction.beforeAction();
 			if  (view.getInGame()) {
-					//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
-					InteractionMessage object = stateOfAction.objectForView(playerName);
-					//System.out.println((" sono qui dentro"));
-					if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
-						leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
-						//l'oggetto generato è di tipo ActionChoice se entro in questo if//
-						((ActionChoice)object).setLeaderSituation(leaderSituation);
-					
-					}
-					view.startInteraction (object);
+				//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
+				InteractionMessage object = stateOfAction.objectForView(playerName);
+				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
+					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
+					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
+					((ActionChoice)object).setLeaderSituation(leaderSituation);
 				}
-				else {
-					sendInfo=false;
-					info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
-					info.familiar=placeRandomFamiliar();
-					info.space=12;
-					if (info.familiar!=-1)	
-						sendInfo=true;
-					if(sendInfo) {
-						info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
-						for(Player player: model.getBoard().getPlayers()) {
-							ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
-							for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
-								resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
-							info.resSituation.put(player.getName(), resCon);
-						}
-						for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
-							viewz.getValue().startInteraction(info);
-					}
-					model.getBoard().changePlayerOrder();
-					gameEngine();
-				}
+				view.startInteraction (object);
 			}
+			else {
+				sendInfo=false;
+				info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
+				info.familiar=placeRandomFamiliar();
+				info.space=12;
+				if (info.familiar!=-1)	
+					sendInfo=true;
+				if(sendInfo) {
+					info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
+					for(Player player: model.getBoard().getPlayers()) {
+						ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
+						for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
+							resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
+						info.resSituation.put(player.getName(), resCon);
+					}
+					for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
+						viewz.getValue().startInteraction(info);
+				}
+				model.getBoard().changePlayerOrder();
+				gameEngine();
+			}
+		}
 		
 		else {
 			
@@ -297,6 +293,7 @@ public class Controller implements Observer{
 	
 	private void handlePrivilegesChoice (PrivilegeChoice msg) {
 		AddPrivileges addPrivileges = new AddPrivileges();
+		System.out.println(msg.getChoices().get(0).getType());
 		addPrivileges.handlePrivileges(model.getBoard().getCurrentPlayer(), msg.getChoices());
 		stateOfAction = stateOfAction.afterAction(model); //ottengo lo stato precedente
 		stateOfAction = stateOfAction.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
@@ -406,10 +403,12 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-		for (LeaderCard card :model.getBoard().getPlayers().get(0).getPersonalBoard().getLeaderCards())
+		/*for (LeaderCard card :model.getBoard().getPlayers().get(0).getPersonalBoard().getLeaderCards())
 			System.out.println(model.getBoard().getPlayers().get(0).getName() + " " + card.toString());
 		for (LeaderCard card :model.getBoard().getPlayers().get(1).getPersonalBoard().getLeaderCards())
-			System.out.println(model.getBoard().getPlayers().get(1).getName() + " " +card.toString());
+			System.out.println(model.getBoard().getPlayers().get(1).getName() + " " +card.toString());*/
+		
+		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getBoard().getCurrentPlayer());
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2

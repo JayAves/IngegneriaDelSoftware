@@ -11,7 +11,7 @@ public enum ResourceType {
 		this.type = type;
 	}
 
-	String getType() {
+	public String getType() {
 		return type.toLowerCase();
 	}
 	
