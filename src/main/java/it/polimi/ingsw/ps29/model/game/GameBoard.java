@@ -73,23 +73,25 @@ public class GameBoard{
 		ArrayList<Resource> temporaryBonus4= new ArrayList<Resource>();
 		temporaryBonus4.add(resources[3]);
 		ArrayList<Resource> temporaryBonus5= new ArrayList<Resource>();
-		temporaryBonus1.add(resources[4]);
+		temporaryBonus5.add(resources[4]);
 		ArrayList<Resource> temporaryBonus6= new ArrayList<Resource>();
-		temporaryBonus2.add(resources[5]);
+		temporaryBonus6.add(resources[5]);
 		ArrayList<Resource> temporaryBonus7= new ArrayList<Resource>();
-		temporaryBonus3.add(resources[6]);
+		temporaryBonus7.add(resources[6]);
 		ArrayList<Resource> temporaryBonus8= new ArrayList<Resource>();
-		temporaryBonus4.add(resources[7]);
+		temporaryBonus8.add(resources[7]);
 		ArrayList<Resource> temporaryBonus9= new ArrayList<Resource>();
-		temporaryBonus1.add(resources[8]);
+		temporaryBonus9.add(resources[8]);
 		ArrayList<Resource> temporaryBonus10= new ArrayList<Resource>();
-		temporaryBonus2.add(resources[9]);
+		temporaryBonus10.add(resources[9]);
 		ArrayList<Resource> temporaryBonus11= new ArrayList<Resource>();
-		temporaryBonus3.add(resources[10]);
-		temporaryBonus3.add(resources[11]);
+		temporaryBonus11.add(resources[10]);
 		ArrayList<Resource> temporaryBonus12= new ArrayList<Resource>();
-		temporaryBonus4.add(resources[12]);
-		temporaryBonus4.add(resources[13]);
+		temporaryBonus12.add(resources[11]);
+		ArrayList<Resource> temporaryBonus13= new ArrayList<Resource>();
+		temporaryBonus13.add(resources[12]);
+		ArrayList<Resource> temporaryBonus14= new ArrayList<Resource>();
+		temporaryBonus12.add(resources[13]);
 		
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
