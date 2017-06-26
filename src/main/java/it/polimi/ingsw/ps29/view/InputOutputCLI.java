@@ -96,8 +96,10 @@ public class InputOutputCLI implements InputOutput {
 	
 	public int askNumberOfServants () throws ExpiredTimeException {
 		int number;
-		System.out.println("\nInsert the number of servant you want to use: ");
-		number = scanner.nextInt();
+		do {
+			System.out.println("\nInsert the number of servant you want to use: ");
+			number = scanner.nextInt();
+		} while (number<0);
 		
 		return number;
 	}
@@ -198,10 +200,10 @@ public class InputOutputCLI implements InputOutput {
 
 	@Override
 	public void printBonusAction(BonusActionEffect effect) {
-		System.out.println("\nBonus action value: "+effect.getValue());
-		System.out.println("\nType of action: "+effect.getType());
+		System.out.println("Bonus action value: "+effect.getValue());
+		System.out.println("Type of action: "+effect.getType());
 		if(effect instanceof BonusPlacementEffect){
-			System.out.println("\nDicount:\n");
+			System.out.println("Dicount:\n");
 			for (Resource res: ((BonusPlacementEffect) effect).getDiscount())
 				System.out.println(res);
 		}
@@ -374,23 +376,57 @@ public class InputOutputCLI implements InputOutput {
 		return msg;
 		
 	}
+	
+	public int askTower () throws ExpiredTimeException {
+		int choice;
+		System.out.println("\nInsert the number of the action you want to perform.");
+		do {
+			System.out.println(
+				"\n1.Placement on TerritoriesTower" +
+				"\n2.Placement on BuildingsTower" +
+				"\n3.Placement on CharactersTower" +
+				"\n4.Placement in VenturesTower" +
+				"\n5.No Action" +
+				"\nChoice: ");
+			
+				choice= scanner.nextInt();
+		
+		} while (choice<1 || choice>5);
+		
+		return choice;
+		
+	}
 
 	@Override
 	public BonusChoice handleBonusAction(BonusChoice msg) {
 		BonusActionEffect effect = msg.getBonus();
-		
+		int choice = 0;
 		printBonusAction (effect);
 		
 		try {
-			if(effect.getType().equals("territory")||effect.getType().equals("building")||
-					effect.getType().equals("character")||effect.getType().equals("venture"))
-				msg.setFloor(askFloor());
-		
-			msg.setServants(askNumberOfServants());
+			do {
+				System.out.println("Do you want to use Bonus Action? \n1)Yes\n2)No\nChoice:");
+				choice = scanner.nextInt();
+			} while(choice<1||choice>2);
+			
+			if (choice == 1) {
+				if(effect.getType().equals("all")) {
+					msg.setSpace(askTower());
+					msg.setFloor(askFloor());
+				}
+					
+				if(effect.getType().equals("territory")||effect.getType().equals("building")||
+						effect.getType().equals("character")||effect.getType().equals("venture"))
+					msg.setFloor(askFloor());
+			
+				msg.setServants(askNumberOfServants());
+			} 
 		
 		} catch (ExpiredTimeException e) {
 			System.out.println(e.getMessage()+"\n");
+			msg.setSpace(1);
 			msg.setFloor(1);
+			msg.setServants(0);
 		}
 		
 		return msg;

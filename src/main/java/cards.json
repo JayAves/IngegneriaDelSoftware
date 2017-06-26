@@ -2390,7 +2390,7 @@
         "effectData":
         {
         "valueAction":6,
-        "cardType":"production",
+        "cardType":"building",
         "discount":[{
         "resourceType":"Woods",
         "resourceData":{

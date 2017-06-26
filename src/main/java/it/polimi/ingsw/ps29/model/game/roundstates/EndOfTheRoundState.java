@@ -38,7 +38,7 @@ public class EndOfTheRoundState implements RoundState {
 		
 		RoundState state = new RoundSetupState();
 		
-		if(roundNumber==2) 
+		if(roundNumber==6) 
 			match.setEndOfMatch();
 			//nel gameEngine chiamata a funzione per calcolo del punteggio
 		else 

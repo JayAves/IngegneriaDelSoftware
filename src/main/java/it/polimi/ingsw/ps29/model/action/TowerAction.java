@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.model.action;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import it.polimi.ingsw.ps29.messages.exception.FullCardBoardException;
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughResourcesException;
@@ -10,15 +9,14 @@ import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
 import it.polimi.ingsw.ps29.messages.exception.TerritoryCardException;
 import it.polimi.ingsw.ps29.messages.exception.TowerCoinMalusException;
 import it.polimi.ingsw.ps29.model.action.actionstates.BonusActionState;
-import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 
 public class TowerAction extends Action {
@@ -53,10 +51,10 @@ public class TowerAction extends Action {
 			throw new TowerCoinMalusException();
 		
 		if(!space.getPlacementFloor().isEmpty() && !move.getPlayer().getLudovicoAriosto())
-			throw new SpaceOccupiedException();
+			throw new SpaceOccupiedException();			
 		
-		if (!space.familiarHere(move.getFamiliar().getPlayerColor()) 
-		&& canAffordCardResourcesCost() && enoughSlotSpace()
+		if ( (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || !space.familiarHere(move.getFamiliar().getPlayerColor()) ) &&
+		canAffordCardResourcesCost() && enoughSlotSpace()
 		&& enoughMilitaryPoints())  {
 			int power;
 			switch (move.getSpace()) {
@@ -106,10 +104,7 @@ public class TowerAction extends Action {
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) 
 			if (immediateEffect instanceof BonusActionEffect)
 				state = new BonusActionState(((BonusActionEffect)immediateEffect).clone());
-		
-		//eseguo l'effetto immediato se non si tratta di una bonus action
-		if(!state.equals(StateOfActionIdentifier.BONUS_ACTION))
-			for(Effect immediateEffect : space.takeCard().getImmediateEffects()) 
+			else //eseguo l'effetto immediato se non si tratta di una bonus action
 				immediateEffect.performEffect(move.getPlayer());
 		
 		space.getPlacementFloor().setCard(null); 

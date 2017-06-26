@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.ExchangeSupport;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -35,7 +36,7 @@ public class ProductionAction extends Action {
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
+		return (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || !space.familiarHere(move.getFamiliar().getPlayerColor()) ) && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
 	}
 
@@ -44,8 +45,9 @@ public class ProductionAction extends Action {
 		if(!space.isEmpty() && !move.getPlayer().getLudovicoAriosto())
 			penalty = -3;
 		
-		//placement
-		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
+		//placement (se azione bonus non lo faccio)
+		if(move.getFamiliar().getFamiliarColor()!=DiceColor.BONUS)
+			space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
 		//memorizzo tutti gli effetti di scambio per i quali posso chiedere all'utente se li vuole attivare
 		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();

@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class ChoiceToMove {
@@ -36,21 +37,25 @@ public class ChoiceToMove {
 	private FamilyMemberInterface getFamiliar (String player, int i) {
 		DiceColor color;
 		
-		switch (i) {
-			case 1:
-				color = DiceColor.BLACK;
-				break;
-			case 2:
-				color = DiceColor.WHITE;
-				break;
-			case 3:
-				color = DiceColor.ORANGE;
-				break;
-			default:
-				color = DiceColor.NEUTRAL;
-				break;
+		if(i>0) {
+			switch (i) {
+				case 1:
+					color = DiceColor.BLACK;
+					break;
+				case 2:
+					color = DiceColor.WHITE;
+					break;
+				case 3:
+					color = DiceColor.ORANGE;
+					break;
+				default:
+					color = DiceColor.NEUTRAL;
+					break;
+			}
+			return getPlayer(player).getFamiliarByColor(color);
 		}
-		return getPlayer(player).getFamiliarByColor(color);
+		
+		return new FamilyMember(DiceColor.BONUS, getPlayer(player).getColor());
 	}
 
 	private String getSpace(int choice) {

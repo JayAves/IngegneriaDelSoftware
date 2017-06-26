@@ -9,7 +9,6 @@ import com.google.gson.GsonBuilder;
 public class ServerMain {
 
 	
-	
 	public static void main( String[] args ) throws FileNotFoundException{
 		
 		BufferedReader btimer = new BufferedReader(new FileReader("src/main/java/timer.json"));

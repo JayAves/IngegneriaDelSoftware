@@ -10,6 +10,7 @@ public class BonusChoice extends InteractionMessage {
 	 */
 	private static final long serialVersionUID = 2828181730174467118L;
 	private BonusActionEffect bonus;
+	private int space;
 	private int floor;
 	private int servants;
 	
@@ -17,6 +18,8 @@ public class BonusChoice extends InteractionMessage {
 		super(player, true);
 		this.bonus = bonus;
 		floor = 0;
+		space = 0;
+		servants = -1;
 	}
 	
 	
@@ -59,4 +62,19 @@ public class BonusChoice extends InteractionMessage {
 		
 	}
 
+	public int getPower () {
+		return ((BonusActionEffect)bonus).getValue();
+	}
+
+
+	public int getSpace() {
+		return space;
+	}
+
+
+	public void setSpace(int space) {
+		this.space = space;
+	}
+	
+	
 }

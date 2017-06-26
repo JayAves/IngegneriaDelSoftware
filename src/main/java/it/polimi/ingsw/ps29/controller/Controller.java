@@ -102,13 +102,9 @@ public class Controller implements Observer{
 			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 			stateOfAction = stateOfAction.beforeAction();
 
-			System.out.println("+++Action state: "+stateOfAction.getState()+" +++ Player: "+model.getCurrentPlayer().getName());
-			
 			if  (view.getInGame()) {
 				//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
 				InteractionMessage object = stateOfAction.objectForView(playerName);
-				
-				System.out.println("Classe dell'oggetto: "+object.getClass());
 				
 				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
 					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
@@ -194,11 +190,14 @@ public class Controller implements Observer{
 	}
 	
 	
-	public void handleInputAction (ActionChoice arg) {
+	public void handleInputAction (ActionChoice arg, int power) {
 		
 		Action action;
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
 		Move move= adapter.createMove(arg);
+		
+		if(power>-1) //si tratta di un'azione bonus
+			move.getFamiliar().setPower(power);
 		
 		switch (arg.getChoice(0))	{
 		
@@ -259,7 +258,7 @@ public class Controller implements Observer{
 		}
 	}
 	
-	private ActionChoice handleBonusAction (BonusChoice msg) {
+	public ActionChoice handleBonusAction (BonusChoice msg) {
 		ActionChoice choice = new ActionChoice (msg.getName());
 		switch(msg.getBonus().getType()) {
 			case "harvest":
@@ -280,9 +279,27 @@ public class Controller implements Observer{
 			case "venture":
 				choice.setChoice(0, 6);
 				break;
-			default:
+			case "all":
+				switch (msg.getSpace()) {
+				case 1:
+					choice.setChoice(0, 3);
+					break;
+				case 2: 
+					choice.setChoice(0, 4);
+					break;
+				case 3:
+					choice.setChoice(0, 5);
+					break;
+				case 4:
+					choice.setChoice(0, 6);
+					break;
+				case 5:
+					choice.setChoice(0, 12);
+					break;
+				}
+			//non faccio azione bonus
+			if (choice.getChoice(2)<0)
 				choice.setChoice(0, 12);
-				break;
 		}
 		
 		//nel caso si tratta di un piazzamento sulla torre setto il piano scelto
@@ -331,7 +348,7 @@ public class Controller implements Observer{
 	public class VisitorMessages {
 		
 		public void visit (ActionChoice msg) {
-			handleInputAction(msg);
+			handleInputAction(msg, -1);
 		}
 		
 		public void visit (Exchange msg) {
@@ -339,7 +356,7 @@ public class Controller implements Observer{
 		}
 		
 		public void visit(BonusChoice msg){
-			handleInputAction(handleBonusAction (msg));
+			handleInputAction(handleBonusAction (msg), msg.getPower());
 		}
 		
 		public void visit(VaticanChoice msg){
@@ -451,7 +468,7 @@ public class Controller implements Observer{
 		else {
 			if (roundState.getStateNumber()==2)
 				
-				if(isStateTwoTerminated()) {
+				if(isStateTwoTerminated() && !(stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())) ) {
 					//ho concluso il turno di gioco: inizio la fase di VaticanReport
 					roundState = new VaticanReportState();
 					askForExcommunication();

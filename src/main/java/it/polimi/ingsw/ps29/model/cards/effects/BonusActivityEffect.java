@@ -3,12 +3,16 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 import it.polimi.ingsw.ps29.model.game.Player;
 
 public class BonusActivityEffect extends BonusActionEffect {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2489229689117313929L;
 	private String type;
 
 	public BonusActivityEffect(int valueAction, String type) {
 		this.valueAction = valueAction;
 		this.type = type;
-		//type può essere "Harvest" o "Production"
+		//type può essere "harvest" o "production"
 	}
 	public String getType() {
 		return this.type;

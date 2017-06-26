@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
@@ -31,7 +32,7 @@ public class HarvestAction extends Action {
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		return !space.familiarHere(move.getFamiliar().getPlayerColor()) && space.isEnoughPowerful(
+		return ( move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || !space.familiarHere(move.getFamiliar().getPlayerColor())) && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants());
 	}
 
@@ -40,8 +41,9 @@ public class HarvestAction extends Action {
 		if(!space.isEmpty())
 			penalty = -3;
 		
-		//placement
-		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
+		//placement (se azione bonus non lo faccio)
+		if(move.getFamiliar().getFamiliarColor()!=DiceColor.BONUS)
+			space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
 		//gestione bonus della tile
 		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
