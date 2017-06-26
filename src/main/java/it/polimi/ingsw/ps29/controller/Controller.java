@@ -297,10 +297,11 @@ public class Controller implements Observer{
 					choice.setChoice(0, 12);
 					break;
 				}
-			//non faccio azione bonus
-			if (choice.getChoice(2)<0)
-				choice.setChoice(0, 12);
 		}
+		
+		//non faccio azione bonus
+		if (choice.getChoice(2)<0)
+			choice.setChoice(0, 12);
 		
 		//nel caso si tratta di un piazzamento sulla torre setto il piano scelto
 		if(msg.getFloor()>0)

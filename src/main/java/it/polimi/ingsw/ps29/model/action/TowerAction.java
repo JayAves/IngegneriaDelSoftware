@@ -53,7 +53,8 @@ public class TowerAction extends Action {
 		if(!space.getPlacementFloor().isEmpty() && !move.getPlayer().getLudovicoAriosto())
 			throw new SpaceOccupiedException();			
 		
-		if ( (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || !space.familiarHere(move.getFamiliar().getPlayerColor()) ) &&
+		if ( (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS ||  move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
+				!space.familiarHere(move.getFamiliar().getPlayerColor()) ) &&
 		canAffordCardResourcesCost() && enoughSlotSpace()
 		&& enoughMilitaryPoints())  {
 			int power;
@@ -129,6 +130,18 @@ public class TowerAction extends Action {
 		
 		//if I have permanent effects about discounts...
 		applyDiscounts(discountedCost);
+		
+		//considero le 3 monete da pagare
+		if(!space.isEmpty()) {
+			boolean find = false;
+			for(Resource res: discountedCost)
+				if(res.getType().equals("coin")){
+					res.modifyAmount(3);
+					find = true;
+				}
+			if(!find)
+				discountedCost.add(new Resource("coin", 3));
+		}
 		
 		for(Resource res: discountedCost) {
 			if (res.getAmount()> move.getPlayer().getPersonalBoard().getSpecificResource(res.getType()).getAmount()) 

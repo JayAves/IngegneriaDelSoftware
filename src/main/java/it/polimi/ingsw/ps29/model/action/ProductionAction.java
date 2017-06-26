@@ -36,7 +36,8 @@ public class ProductionAction extends Action {
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		return (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || !space.familiarHere(move.getFamiliar().getPlayerColor()) ) && space.isEnoughPowerful(
+		return (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS ||  move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
+				!space.familiarHere(move.getFamiliar().getPlayerColor()) ) && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
 	}
 

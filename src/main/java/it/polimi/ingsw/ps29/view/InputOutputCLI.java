@@ -203,7 +203,7 @@ public class InputOutputCLI implements InputOutput {
 		System.out.println("Bonus action value: "+effect.getValue());
 		System.out.println("Type of action: "+effect.getType());
 		if(effect instanceof BonusPlacementEffect){
-			System.out.println("Dicount:\n");
+			System.out.println("Discount:");
 			for (Resource res: ((BonusPlacementEffect) effect).getDiscount())
 				System.out.println(res);
 		}
