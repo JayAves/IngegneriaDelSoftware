@@ -106,7 +106,9 @@ public class Controller implements Observer{
 					//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
 					InteractionMessage object = stateOfAction.objectForView(playerName);
 					//System.out.println((" sono qui dentro"));
+					System.out.println(stateOfAction.getState());
 					if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
+						System.out.println("sono qui");
 						leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
 						//l'oggetto generato è di tipo ActionChoice se entro in questo if//
 						((ActionChoice)object).setLeaderSituation(leaderSituation);
@@ -406,10 +408,10 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-		for (LeaderCard card :model.getBoard().getPlayers().get(0).getPersonalBoard().getLeaderCards())
-			System.out.println(model.getBoard().getPlayers().get(0).getName() + " " + card.toString());
-		for (LeaderCard card :model.getBoard().getPlayers().get(1).getPersonalBoard().getLeaderCards())
-			System.out.println(model.getBoard().getPlayers().get(1).getName() + " " +card.toString());
+		for (Player player : model.getBoard().getPlayers()){
+			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
+				System.out.println(" " + player.getName() + " " + card.toString());
+		}
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
