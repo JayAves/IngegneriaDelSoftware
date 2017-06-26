@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-	"turnTimer": 660000,
-=======
-	"turnTimer": 120000,
->>>>>>> dcf9b0e4cbbfaf5bd2696b04a581ba3012c0dd44
+	"turnTimer": 999000,
 	"roomTimer": 10000
 }
