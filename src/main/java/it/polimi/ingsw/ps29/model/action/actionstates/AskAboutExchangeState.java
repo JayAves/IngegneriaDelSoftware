@@ -41,13 +41,6 @@ public class AskAboutExchangeState implements ActionState {
 		return state.toString().toLowerCase();
 	}
 
-	
-
-	
-	public ActionState next () {
-		return effect.isEmpty() ? new PerformedState() : this;
-		
-	}
 
 	public ExchangeResourcesEffect getEffect (int index) {
 		return effect.get(index);

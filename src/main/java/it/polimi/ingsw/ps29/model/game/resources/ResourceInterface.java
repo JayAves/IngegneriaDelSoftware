@@ -9,5 +9,7 @@ public interface ResourceInterface {
 	public String getType();
 	
 	public void negativeAmount();
+	
+	public ResourceInterface clone();
 		
 }

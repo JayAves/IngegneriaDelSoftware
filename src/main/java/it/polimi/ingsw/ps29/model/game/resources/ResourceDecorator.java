@@ -38,6 +38,10 @@ public class ResourceDecorator implements ResourceInterface {
 	public String toString() {
 		return decoratedResource.toString() + ", modifier: " + modifier + "\n";
 	}
+	
+	public ResourceDecorator clone () {
+		return new ResourceDecorator(decoratedResource.clone(), modifier);
+	}
 		
 	
 }

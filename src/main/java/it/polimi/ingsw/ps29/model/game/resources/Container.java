@@ -20,7 +20,7 @@ public class Container {
 		if(resources.containsKey(res.getType())) 
 			resources.get(res.getType()).modifyAmount(res.getAmount());
 		else 
-			resources.put(res.getType(), res);
+			resources.put(res.getType().toLowerCase(), res);
 		
 	}
 	
@@ -34,7 +34,7 @@ public class Container {
 	}
 	
 	public ResourceInterface getResource(String resource){
-		return resources.get(resource);
+		return resources.get(resource)!= null ? resources.get(resource) : new Resource(resource, 0);
 	}
 
 	

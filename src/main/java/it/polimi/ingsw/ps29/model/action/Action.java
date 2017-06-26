@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.messages.exception.FamiliarBusyException;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
+import it.polimi.ingsw.ps29.messages.exception.ServantsException;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
@@ -9,11 +10,8 @@ import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
-import it.polimi.ingsw.ps29.model.game.resources.FaithPoints;
-import it.polimi.ingsw.ps29.model.game.resources.MilitaryPoints;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Servants;
-import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
 
 public abstract class Action {
 	
@@ -39,13 +37,9 @@ public abstract class Action {
 		
 	public ActionState actionHandler () throws RejectException {
 		
-		/*if(model.getBoard().getCurrentPlayer().getPersonalBoard().getSpecificResource("servant").getAmount() <
+		if(model.getCurrentPlayer().getPersonalBoard().getSpecificResource("servant").getAmount() <
 				move.getServants())
-			throw new ServantsException();*/
-		model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(new Servants(100));
-		model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(new FaithPoints(10));
-		model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(new MilitaryPoints(10));
-		model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(new VictoryPoints(10));
+			throw new ServantsException();
 		
 		if(move.getFamiliar().getBusy()) {
 			throw new FamiliarBusyException();
@@ -60,7 +54,7 @@ public abstract class Action {
 			
 			performAction();
 			//sottraggo i servitori usati nella mossa
-			model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(
+			model.getCurrentPlayer().getPersonalBoard().getResources().updateResource(
 					new Servants(- move.getServants()));
 		
 			if(!state.getState().equals("bonus_action") && !state.getState().equals("ask_exchange")
@@ -68,8 +62,8 @@ public abstract class Action {
 				state = new PerformedState();
 		}
 		
-		ResourceInterface privileges = model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().getResource("privilege");
-		if(privileges!=null)
+		ResourceInterface privileges = model.getCurrentPlayer().getPersonalBoard().getResources().getResource("privilege");
+		if(privileges.getAmount()!=0 )
 			state = new PrivilegesState(state, privileges.getAmount());
 		else
 			state = state.afterAction(model);

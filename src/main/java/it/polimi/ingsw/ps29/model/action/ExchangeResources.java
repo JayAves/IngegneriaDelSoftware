@@ -34,7 +34,7 @@ public class ExchangeResources {
 					msg.getChoice(1), msg.getChoice(2));
 			
 			//devo aggiornare anche le outResourcesUpdated
-			if(msg.getChoice(1)==erh.getResOut().size()) {
+			if(msg.getChoice(1)==0) {
 				current.getSupport().getOutResourcesUpdate().updateResource(erh.getResOut().get(msg.getChoice(1)));
 				current.getSupport().checkVector();
 			}

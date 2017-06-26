@@ -1,10 +1,12 @@
 package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 public class ExchangeSupport {
 	private ArrayList<ExchangeResourcesEffect> options;
@@ -29,7 +31,11 @@ public class ExchangeSupport {
 	}
 
 	public void setOutResourcesUpdate (Container outResourcesUpdated) {
-		this.outResourcesUpdate = outResourcesUpdated;
+		Container copy = new Container();
+		for(Map.Entry<String, ResourceInterface> entry: outResourcesUpdated.getResources().entrySet())
+			copy.getResources().put(entry.getKey(), entry.getValue().clone());
+		
+		this.outResourcesUpdate = copy;
 		checkVector();
 	}
 

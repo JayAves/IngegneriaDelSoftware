@@ -179,9 +179,9 @@ public class GameBoard{
 		return leaderCards;
 	}
 	
-	public Player getCurrentPlayer (){
+	/*public Player getCurrentPlayer (){
 		return playersOrder.get(0);
-	}
+	}*/
 	
 	public ExcommunicationCard getExcommunication(int round){
 		return excommunications.get(round);

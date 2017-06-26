@@ -23,7 +23,7 @@ public class PrivilegesState implements ActionState {
 
 	@Override
 	public ActionState afterAction(Match model) {
-		model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE);
+		model.getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE);
 		return previousState;
 	}
 

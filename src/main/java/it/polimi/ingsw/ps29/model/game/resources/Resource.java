@@ -1,7 +1,13 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-public class Resource implements ResourceInterface, Cloneable {
+import java.io.Serializable;
+
+public class Resource implements ResourceInterface, Cloneable, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4007137112395000936L;
 	protected int amount;
 	protected String type;
 	

@@ -36,12 +36,12 @@ import it.polimi.ingsw.ps29.model.action.ProductionAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
+import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
 import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
-import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -88,26 +88,29 @@ public class Controller implements Observer{
 	
 	
 	public void callCorrectView () {
-		System.out.println("+++Action state: "+stateOfAction+" +++ Player: "+model.getBoard().getCurrentPlayer());
 		
 		ArrayList<ArrayList<Object>> leaderSituation;
 		leaderSituation = new ArrayList<ArrayList<Object>>();
 		if(PlayersConnected()) {
 			
-			String playerName = model.getBoard().getCurrentPlayer().getName();
+			String playerName = model.getCurrentPlayer().getName();
 			//leaderSituation = model.getBoard().getCurrentPlayer().getPersonalBoard().buildLeaderChoice();
 			ClientThread view = views.get(playerName);
  			
 			
 			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 			stateOfAction = stateOfAction.beforeAction();
+
+			System.out.println("+++Action state: "+stateOfAction.getState()+" +++ Player: "+model.getCurrentPlayer().getName());
+			
 			if  (view.getInGame()) {
 				//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
 				InteractionMessage object = stateOfAction.objectForView(playerName);
-				//System.out.println((" sono qui dentro"));
-				System.out.println(stateOfAction.getState());
+				
+				System.out.println("Classe dell'oggetto: "+object.getClass());
+				
 				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
-					System.out.println("sono qui");
+					
 					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
 					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
 					((ActionChoice)object).setLeaderSituation(leaderSituation);
@@ -118,7 +121,7 @@ public class Controller implements Observer{
 			
 			else {
 				sendInfo=false;
-				info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
+				info = new InfoForView(model.getCurrentPlayer().getName());
 				info.familiar=placeRandomFamiliar();
 				info.space=12;
 				if (info.familiar!=-1)	
@@ -167,9 +170,11 @@ public class Controller implements Observer{
 		else if (o instanceof ClientThread) {
 			//eseguo l'azione scelta dall'utente
 			sendInfo = false;
-			info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
-			info.playerColor = model.getBoard().getCurrentPlayer().getColor();
+			info = new InfoForView(model.getCurrentPlayer().getName());
+			info.playerColor = model.getCurrentPlayer().getColor();
 			((InteractionMessage)arg).visit(visitor);
+			
+			//se l'azione ha modificato lo stato della partita mostro le info ai players
 			if(sendInfo) {
 				info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
 				for(Player player: model.getBoard().getPlayers()) {
@@ -246,8 +251,8 @@ public class Controller implements Observer{
 			}
 		
 		} catch (RejectException exception) {
-			views.get(model.getBoard().getCurrentPlayer().getName()).startInteraction(new RejectMessage(
-					model.getBoard().getCurrentPlayer().getName(), exception));
+			views.get(model.getCurrentPlayer().getName()).startInteraction(new RejectMessage(
+					model.getCurrentPlayer().getName(), exception));
 		}
 	}
 	
@@ -290,15 +295,22 @@ public class Controller implements Observer{
 	private void handleExchangeAction (Exchange msg) {
 		ExchangeResources res = new ExchangeResources(model, stateOfAction);
 		stateOfAction = res.exchangeHandler(msg);
+		sendInfo = true;
 		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())) 
-			sendInfo = true;
-		
+			if(model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount()>0) {
+				stateOfAction = new PrivilegesState(stateOfAction, model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount());
+				String name = model.getCurrentPlayer().getName();
+				views.get(name).startInteraction(stateOfAction.objectForView(name));
+				stateOfAction = stateOfAction.afterAction(model);
+				
+			}
+				
 	}
 	
 	private void handlePrivilegesChoice (PrivilegeChoice msg) {
 		AddPrivileges addPrivileges = new AddPrivileges();
 		System.out.println(msg.getChoices().get(0).getType());
-		addPrivileges.handlePrivileges(model.getBoard().getCurrentPlayer(), msg.getChoices());
+		addPrivileges.handlePrivileges(model.getCurrentPlayer(), msg.getChoices());
 		stateOfAction = stateOfAction.afterAction(model); //ottengo lo stato precedente
 		stateOfAction = stateOfAction.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
 		sendInfo = true;
@@ -341,7 +353,7 @@ public class Controller implements Observer{
 				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 					view.getValue().startInteraction(playerInfoMessage);
 			
-			if (playerInfoMessage.getName().contentEquals(model.getBoard().getCurrentPlayer().getName())) {
+			if (playerInfoMessage.getName().contentEquals(model.getCurrentPlayer().getName())) {
 				if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState)) {
 					info.familiar=placeRandomFamiliar();
 					info.space=12;
@@ -364,8 +376,8 @@ public class Controller implements Observer{
 	
 	private int placeRandomFamiliar() {
 		
-		if (!model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy()) {
-			model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
+		if (!model.getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy()) {
+			model.getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
 			return 4;
 		}
 			
@@ -374,14 +386,14 @@ public class Controller implements Observer{
 			ArrayList<FamilyMemberInterface> freeMembers= new ArrayList<FamilyMemberInterface>();
 			
 			for (DiceColor color: DiceColor.values()) {
-				if (!model.getBoard().getCurrentPlayer().getFamiliarByColor(color).getBusy())
-					freeMembers.add(model.getBoard().getCurrentPlayer().getFamiliarByColor(color));
+				if (!model.getCurrentPlayer().getFamiliarByColor(color).getBusy())
+					freeMembers.add(model.getCurrentPlayer().getFamiliarByColor(color));
 			}	
 			Random random= new Random();
 			
 			FamilyMemberInterface randomMember= freeMembers.get(random.nextInt(freeMembers.size()));
 			
-			model.getBoard().getCurrentPlayer().getFamiliarByColor(randomMember.getFamiliarColor()).setBusy(true);
+			model.getCurrentPlayer().getFamiliarByColor(randomMember.getFamiliarColor()).setBusy(true);
 			
 			switch(randomMember.getFamiliarColor()) {
 				
@@ -407,12 +419,10 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-		for (Player player : model.getBoard().getPlayers()){
+		/*for (Player player : model.getBoard().getPlayers()){
 			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
 				System.out.println(" " + player.getName() + " " + card.toString());
-		}
-		
-		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getBoard().getCurrentPlayer());
+		}*/
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
@@ -424,20 +434,19 @@ public class Controller implements Observer{
 		}
 		
 		else {
-			if (roundState.getStateNumber()==2 && isStateTwoTerminated()) {
-				//ho concluso il turno di gioco: inizio la fase di VaticanReport
-				roundState = new VaticanReportState();
-				askForExcommunication();
-			}
+			if (roundState.getStateNumber()==2)
+				
+				if(isStateTwoTerminated()) {
+					//ho concluso il turno di gioco: inizio la fase di VaticanReport
+					roundState = new VaticanReportState();
+					askForExcommunication();
+				} else
+					callCorrectView();
 			
-			else if (roundState.getStateNumber()==3 && isStateThreeTerminated()) {
+			else if (roundState.getStateNumber()==3)
+				if(isStateThreeTerminated()) 
 				//ho concluso la fase di VaticanReport
-				endVaticanState();
-			}
-			
-			else if (roundState.getStateNumber()==2)
-				//sono ancora nella fase 2: chiedo un'azione
-				callCorrectView();
+					endVaticanState();
 			else
 				//sono nell'azione 3: chiedo per il supporto alla Chiesa
 				askForExcommunication();
@@ -474,15 +483,15 @@ public class Controller implements Observer{
 		
 		if(model.getRound()%2==0) { //funzioni da svolgere solo nei turni pari
 			
-			while(!model.getBoard().getCurrentPlayer().canAskSubstain(0) && !isStateThreeTerminated()) {
+			while(!model.getCurrentPlayer().canAskSubstain(0) && !isStateThreeTerminated()) {
 				//se non ho abbastanza punti per sostenere la Chiesa e non ho ancora controllato tutti
-				model.getBoard().getCurrentPlayer().setVaticanReportPerformed(true);
+				model.getCurrentPlayer().setVaticanReportPerformed(true);
 				model.getBoard().changePlayerOrder();
 			}
 		
 			if(!isStateThreeTerminated()) {
 				//devo chiedere la scelta a un giocatore
-				player = model.getBoard().getCurrentPlayer().getName();
+				player = model.getCurrentPlayer().getName();
 				VaticanChoice msg = new VaticanChoice (player);
 				views.get(player).startInteraction(msg);
 			}

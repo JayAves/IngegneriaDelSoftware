@@ -131,8 +131,8 @@ public class InputOutputCLI implements InputOutput {
 		int i;
 		ExchangeResourcesEffect er = choice.getExchange();
 		do {
-			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte
-				System.out.println("\n"+i+")");
+			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte di un'azione di scambio
+				System.out.println("\n"+(i+1)+")");
 				showExchangeOption(er.getChoices().get(i));
 			}
 			System.out.println("\n"+(i+1)+") No exchange");
@@ -143,51 +143,53 @@ public class InputOutputCLI implements InputOutput {
 				System.err.println(e.getMessage());
 				choice.setChoice(0, i+1);
 			}
-		} while (choice.getChoice(0)<0||choice.getChoice(0)>(i+1));
+		} while (choice.getChoice(0)<0||choice.getChoice(0)>i+1);
 		
-		if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
-			do {		
-				for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResOut().size(); i++) {
-					System.out.println("\n"+i+")");
-					System.out.println((er.getChoices().get(choice.getChoice(0)).getResOut().get(i)));
-				}
-				System.out.println("\nInsert choice OUT: ");
-				try {
-					choice.setChoice(1, scanner.nextInt());
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-					choice.setChoice(1, 1);
-				}
-			} while(choice.getChoice(1)<0 || choice.getChoice(1)>i);
-		}
+		if(choice.getChoice(0)<er.getChoices().size())
+			if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
+				do {		
+					for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResOut().size(); i++) {
+						System.out.println("\n"+(i+1)+")");
+						System.out.println((er.getChoices().get(choice.getChoice(0)).getResOut().get(i)));
+					}
+					System.out.println("\nInsert choice OUT: ");
+					try {
+						choice.setChoice(1, scanner.nextInt());
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+						choice.setChoice(1, 1);
+					}
+				} while(choice.getChoice(1)<0 || choice.getChoice(1)>i);
+			}
 			
-		if(er.getChoices().get(choice.getChoice(0)).getBooleanIn()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
-			do {
-				for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResIn().size(); i++) {
-					System.out.println("\n"+i+")");
-					System.out.println((er.getChoices().get(choice.getChoice(0)).getResIn().get(i)));
-				}
-				System.out.println("\nInsert choice IN: ");
-				try {
-					choice.setChoice(2, scanner.nextInt());
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-					choice.setChoice(2, 0);
-				}
-			} while(choice.getChoice(2)<0 || choice.getChoice(2)>i);	
-		}
+		if(choice.getChoice(0)<er.getChoices().size())
+			if( er.getChoices().get(choice.getChoice(0)).getBooleanIn()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
+				do {
+					for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResIn().size(); i++) {
+						System.out.println("\n"+(i+1)+")");
+						System.out.println((er.getChoices().get(choice.getChoice(0)).getResIn().get(i)));
+					}
+					System.out.println("\nInsert choice IN: ");
+					try {
+						choice.setChoice(2, scanner.nextInt());
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+						choice.setChoice(2, 0);
+					}
+				} while(choice.getChoice(2)<0 || choice.getChoice(2)>i);	
+			}
 		
 		return choice;
 		
 	}
 	
 	public void showExchangeOption (ExchangeResourceHandler option) {
-		System.out.println("OUT: \n");
+		System.out.println("OUT: ");
 		for(Resource res: option.getResOut())
 			System.out.println(res);
 		if(option.getBooleanOut())
 			System.out.println("[optional]\n");
-		System.out.println("IN: \n");
+		System.out.println("IN: ");
 		for(Resource res: option.getResIn())
 			System.out.println(res);
 		if(option.getBooleanIn())

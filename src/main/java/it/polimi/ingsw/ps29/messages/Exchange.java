@@ -21,7 +21,7 @@ public class Exchange extends InteractionMessage {
 	}
 	
 	public void setChoice (int index, int ch) {
-		choice[index] = ch; 
+		choice[index] = ch-1; 
 	}
 	
 	public int getChoice (int index) {
