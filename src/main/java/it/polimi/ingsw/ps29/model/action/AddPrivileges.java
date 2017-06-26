@@ -15,7 +15,9 @@ public class AddPrivileges {
 	
 	public void handlePrivileges (Player player, ArrayList <ResourceType> res) {
 		for(ResourceType resType: res) 
-			switch(resType.toString()) {
+			
+			switch(resType.getType()) {
+				
 				case "wood":
 					player.getPersonalBoard().getResources().updateResource(new Woods (1));
 					player.getPersonalBoard().getResources().updateResource(new Stones(1));

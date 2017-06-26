@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class DeckTest {
