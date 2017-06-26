@@ -11,7 +11,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 
-public class SocketGatherer extends Observable {
+public class SocketGatherer extends Observable implements Runnable{
 
 	private ServerSocket serverSocket;
 	private ObjectOutputStream oos;
@@ -67,6 +67,7 @@ public class SocketGatherer extends Observable {
 						//System.out.println(virtualView.toString());
 						}
 				}
+					
 					//notifica RoomCreator//
 					setChanged();
 					notifyObservers(virtualView);
@@ -100,5 +101,11 @@ public class SocketGatherer extends Observable {
 	}
 	public void endOfConnection() {
 		endOfConnection=true;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		startServer();
 	}
 }

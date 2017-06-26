@@ -8,7 +8,7 @@ import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class RMIGatherer extends Observable implements Serializable{
+public class RMIGatherer extends Observable implements Serializable, Runnable{
 
 	/**
 	 * 
@@ -65,6 +65,12 @@ public class RMIGatherer extends Observable implements Serializable{
 	public void notifyRoomCreator(RMIClientThread thread) {
 		setChanged();
 		notifyObservers(thread);
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		startServer();
 	}
 	
 }
