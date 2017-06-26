@@ -41,6 +41,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -101,21 +102,20 @@ public class Controller implements Observer{
 			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 			stateOfAction = stateOfAction.beforeAction();
 			if  (view.getInGame()) {
-					//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
-					InteractionMessage object = stateOfAction.objectForView(playerName);
-					//System.out.println((" sono qui dentro"));
-					System.out.println(stateOfAction.getState());
-					if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
-						System.out.println("sono qui");
-						leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
-						//l'oggetto generato è di tipo ActionChoice se entro in questo if//
-						((ActionChoice)object).setLeaderSituation(leaderSituation);
-					
-					}
-					view.startInteraction (object);
+				//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
+				InteractionMessage object = stateOfAction.objectForView(playerName);
+				//System.out.println((" sono qui dentro"));
+				System.out.println(stateOfAction.getState());
+				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
+					System.out.println("sono qui");
+					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
+					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
+					((ActionChoice)object).setLeaderSituation(leaderSituation);
+				
 				}
 				view.startInteraction (object);
 			}
+			
 			else {
 				sendInfo=false;
 				info = new InfoForView(model.getBoard().getCurrentPlayer().getName());
@@ -140,13 +140,11 @@ public class Controller implements Observer{
 		}
 		
 		else {
-			
 			System.out.println("All players are disconnected!");
 			//setto lo stato della partita a fine
 			
 		}
-		
-}
+	}
 	
 
 	private boolean PlayersConnected() {
