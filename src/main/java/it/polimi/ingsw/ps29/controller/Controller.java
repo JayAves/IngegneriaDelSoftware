@@ -101,12 +101,18 @@ public class Controller implements Observer{
 			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 			stateOfAction = stateOfAction.beforeAction();
 			if  (view.getInGame()) {
-				//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
-				InteractionMessage object = stateOfAction.objectForView(playerName);
-				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
-					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
-					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
-					((ActionChoice)object).setLeaderSituation(leaderSituation);
+					//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
+					InteractionMessage object = stateOfAction.objectForView(playerName);
+					//System.out.println((" sono qui dentro"));
+					System.out.println(stateOfAction.getState());
+					if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
+						System.out.println("sono qui");
+						leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
+						//l'oggetto generato è di tipo ActionChoice se entro in questo if//
+						((ActionChoice)object).setLeaderSituation(leaderSituation);
+					
+					}
+					view.startInteraction (object);
 				}
 				view.startInteraction (object);
 			}
@@ -403,10 +409,10 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-		/*for (LeaderCard card :model.getBoard().getPlayers().get(0).getPersonalBoard().getLeaderCards())
-			System.out.println(model.getBoard().getPlayers().get(0).getName() + " " + card.toString());
-		for (LeaderCard card :model.getBoard().getPlayers().get(1).getPersonalBoard().getLeaderCards())
-			System.out.println(model.getBoard().getPlayers().get(1).getName() + " " +card.toString());*/
+		for (Player player : model.getBoard().getPlayers()){
+			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
+				System.out.println(" " + player.getName() + " " + card.toString());
+		}
 		
 		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getBoard().getCurrentPlayer());
 		

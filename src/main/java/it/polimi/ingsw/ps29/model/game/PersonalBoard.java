@@ -116,7 +116,7 @@ public class PersonalBoard {
 			satisfiedr = this.resources.isPossibleToPay(resources);
 		}
 
-		System.out.println("\n ho controllato i requisiti di " + card.toString() + " e il risultato è " + (satisfiedc || satisfiedr));
+		System.out.println("\n ho controllato i requisiti di " + card.toString() + " e il risultato è " + (satisfiedc && satisfiedr));
 		return (satisfiedc && satisfiedr);
 	}
 	
