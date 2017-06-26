@@ -100,23 +100,28 @@ public class PersonalBoard {
 		resources = card.getResourcesRequirements();
 		boolean satisfiedc = true;
 		boolean satisfiedr = true;
-		System.out.println("sto controllando requisiti di "+ card.toString());
+		System.out.println("\n sto controllando requisiti di "+ card.toString());
 		if (!requirements.isEmpty()){
 			if (requirements.containsKey("any")){
 				satisfiedc = checkIfCardsEqualsSize(requirements.get("any"));
 			}
+			
+				System.out.println(" vettore requirements " + requirements.toString());
 				Set<String> set = requirements.keySet();
-				for (String type : set)
+				System.out.println(" i requisiti di carte sono " );
+				for (String type : set){
+					System.out.println("\n " + type);
 					satisfiedc = satisfiedc &&  getCards(type).size() >= requirements.get(type);
+				}
 		}
 		
-		System.out.println("ho controlato le carte di " + card.toString() + " risultato " + satisfiedc );
+		System.out.println("\n ho controlato le carte di " + card.toString() + " risultato " + satisfiedc );
 		
 		if (!resources.isEmpty()){
 			satisfiedr = this.resources.isPossibleToPay(resources);
 		}
 
-		System.out.println("\n ho controllato i requisiti di " + card.toString() + " e il risultato è " + (satisfiedc && satisfiedr));
+		System.out.println(" ho controllato i requisiti di " + card.toString() + " e il risultato è " + (satisfiedc && satisfiedr));
 		return (satisfiedc && satisfiedr);
 	}
 	

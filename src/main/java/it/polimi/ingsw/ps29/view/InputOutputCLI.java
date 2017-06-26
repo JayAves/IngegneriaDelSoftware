@@ -324,7 +324,7 @@ public class InputOutputCLI implements InputOutput {
 				} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
 				
 				// l'utente ha scelto cosa fare con la carta
-				
+				System.out.println(" +++sto mettendo" + printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
 				leaderSituation.get(choice -1).add(printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
 			}
 		}

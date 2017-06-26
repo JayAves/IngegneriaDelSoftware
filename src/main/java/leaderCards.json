@@ -52,7 +52,7 @@
    "resourceType":"FaithPoints",
    "resourceData":{
     "amount":3,
-    "type":"military" } }                         
+    "type":"faith" } }                         
    ],
 "cardTypeRequirements" : [],
 "cardRequirements" : []
@@ -282,7 +282,7 @@
 			"resourceType":"Privilege",
 			"resourceData":{
 				"amount":1,
-				"type":"victory" }
+				"type":"privilege" }
 	}            ]}},
 "requirements" : [{
    "resourceType":"Servants",
@@ -303,7 +303,7 @@
 			"resourceType":"Privilege",
 			"resourceData":{
 				"amount":1,
-				"type":"victory" }
+				"type":"privilege" }
 	}            ]}},
 "requirements" : [{
    "resourceType":"Servants",

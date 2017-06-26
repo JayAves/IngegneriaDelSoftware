@@ -86,12 +86,10 @@ public class GameBoard{
 		temporaryBonus10.add(resources[9]);
 		ArrayList<Resource> temporaryBonus11= new ArrayList<Resource>();
 		temporaryBonus11.add(resources[10]);
+		temporaryBonus11.add(resources[11]);
 		ArrayList<Resource> temporaryBonus12= new ArrayList<Resource>();
-		temporaryBonus12.add(resources[11]);
-		ArrayList<Resource> temporaryBonus13= new ArrayList<Resource>();
-		temporaryBonus13.add(resources[12]);
-		ArrayList<Resource> temporaryBonus14= new ArrayList<Resource>();
-		temporaryBonus12.add(resources[13]);
+		temporaryBonus12.add(resources[12]);
+		temporaryBonus12.add(resources[13]);;
 		
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();

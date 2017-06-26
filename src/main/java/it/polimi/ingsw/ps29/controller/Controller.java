@@ -107,7 +107,6 @@ public class Controller implements Observer{
 				//System.out.println((" sono qui dentro"));
 				System.out.println(stateOfAction.getState());
 				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
-					System.out.println("sono qui");
 					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
 					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
 					((ActionChoice)object).setLeaderSituation(leaderSituation);
@@ -225,6 +224,8 @@ public class Controller implements Observer{
 			
 		case 13 :
 			action = new LeaderAction(model, move, arg);
+			System.out.println("\n Sto facendo una " + action.toString());
+			break;
 		
 		default:
 			action= new NoAction(model,move);
@@ -233,6 +234,7 @@ public class Controller implements Observer{
 		
 		try{
 			stateOfAction = action.actionHandler();
+			System.out.println(" sono dopo actionHandler" + stateOfAction + "da azione " + action.toString());
 			//recupero lo stato dopo che ho eseguito le istruzioni
 			
 			if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())
@@ -408,7 +410,16 @@ public class Controller implements Observer{
 	public void gameEngine () {
 		
 		for (Player player : model.getBoard().getPlayers()){
+			System.out.println(" "+ player.getName() + " leaderCards");
 			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
+				System.out.println(" " + player.getName() + " " + card.toString());
+		}
+		
+		System.out.println("\n");
+		
+		for (Player player  : model.getBoard().getPlayers()){
+			System.out.println(" "+ player.getName() + " playedLeaderCards");
+			for (LeaderCard card : player.getPersonalBoard().getPlayedLeaderCards())
 				System.out.println(" " + player.getName() + " " + card.toString());
 		}
 		
