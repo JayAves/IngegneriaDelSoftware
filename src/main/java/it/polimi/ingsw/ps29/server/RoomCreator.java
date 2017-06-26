@@ -52,9 +52,11 @@ public class RoomCreator extends Thread implements Observer{
 		if (counter==4){ //enough players for a new Room
 			counter=0;
 			System.out.println("New Room");
-			roomHandler.add(new Room(playersInQueue));
+			Room newRoom= new Room(playersInQueue);
+			roomHandler.add(newRoom);
 			System.out.println(roomHandler.size());
 			playersInQueue.clear();
+			newRoom.start();
 			
 		}
 	}
@@ -79,7 +81,7 @@ public class RoomCreator extends Thread implements Observer{
 			}	
 	}
 	
-	private synchronized boolean inQueueCheck(ClientThread arg) {
+	private boolean inQueueCheck(ClientThread arg) {
 		
 		for (ClientThread th: playersInQueue) {
 			
@@ -95,7 +97,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 	}
 
-	private synchronized boolean updateView(ClientThread thread) {
+	private boolean updateView(ClientThread thread) {
 		
 		for (Room room: roomHandler) {
 			
@@ -159,10 +161,15 @@ public class RoomCreator extends Thread implements Observer{
 		
 				if (counter>1) {
 					
-					roomHandler.add(new Room(playersInQueue));
-					System.out.println("Room from timer");
-					playersInQueue.clear();
 					counter=0;
+					System.out.println("Room from timer");
+					Room newRoom= new Room(playersInQueue);
+					roomHandler.add(newRoom);
+					System.out.println(roomHandler.size());
+					playersInQueue.clear();
+					newRoom.start();
+					
+					
 					try {
 						sleep(1000);
 					} catch (InterruptedException e) {

@@ -47,7 +47,7 @@ public class SocketConnection extends Connection {
 			oos.flush();
 			ois = new ObjectInputStream(socket.getInputStream());
 			
-			//utilizzo questo oggetto per l'invio di oggetti in rete
+			//utilizzo questo oggetto per l'invio di oggetti in rete//
 			serializator = new ClientSerializator(socket, oos, ois);
 			
 			

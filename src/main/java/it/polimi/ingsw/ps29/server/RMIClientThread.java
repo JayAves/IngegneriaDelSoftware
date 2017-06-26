@@ -7,9 +7,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread implements Serializable{
@@ -82,11 +82,16 @@ public class RMIClientThread extends ClientThread implements Serializable{
 					((FirstBoardInfo)msg).setTimer(turnTimer);
 				}
 				
+				if (msg instanceof InfoForView) {
+					((InfoForView)msg).setTimer(turnTimer);
+				}
+				
 				if ((msg).getBi()) { //only for bidirectional messages
 					Task task= new Task();
 					timeOuts.add(task);
 					timer.schedule(task,turnTimer);
 					}
+				
 				clientInterface.notify(msg);
 				
 		

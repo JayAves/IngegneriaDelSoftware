@@ -45,7 +45,7 @@ public class Room extends Thread{
 	
 		model.addObserver(controller);
     	
-    	controller.gameEngine();
+    	
 		
 		
 		}
@@ -60,7 +60,9 @@ public class Room extends Thread{
 		return views;
 	}
 
-	
+	public void run() {
+		controller.gameEngine();
+	}
 		
 	
 }	

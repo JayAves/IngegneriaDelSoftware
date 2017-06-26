@@ -1,4 +1,4 @@
 {
-	"turnTimer": 60000,
+	"turnTimer": 120000,
 	"roomTimer": 10000
 }
