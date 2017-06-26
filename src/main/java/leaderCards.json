@@ -3,7 +3,7 @@
 {
 "name" : "Francesco Sforza",
 "id" :1,
-"effect" : {
+"leaderEffect" : {
         "effectType": "BonusActivityEffect",
         "effectData" :
         { "type": "Harvest",
@@ -16,8 +16,8 @@
 {
 "name" : "Ludovico Ariosto",
 "id" :2,
-"effect" : {
-        "effectType": "GeneralEscommunications",
+"leaderEffect" : {
+        "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "Ludovico Ariosto"}},
 "requirements" : [],
 "cardTypeRequirements" : ["character"],
@@ -27,7 +27,7 @@
 {
 "name" : "Filippo Brunelleschi",
 "id" :3,
-"effect" : {
+"leaderEffect" : {
         "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "Filippo Brunelleschi"}},
 "requirements" : [],
@@ -38,9 +38,10 @@
 {
 "name" : "Sigismondo Malatesta",
 "id" :4,
-"effect" : {
-        "effectType": "NeutralFamilyMemberEmpowermentEffect",
-        "effectData" :{ }},
+"leaderEffect" : {
+        "effectType": "FamiliarEmpowermentByColor",
+        "effectData" :{ "diceEmpowerment" : 3,
+                        " colors" : ["NEUTRAL"]}},
 "requirements" : [{
    "resourceType":"MilitaryPoints",
    "resourceData":{
@@ -60,7 +61,7 @@
 {
 "name" : "Girolamo Savonarola",
 "id" :5,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
@@ -81,7 +82,7 @@
 {
 "name" : "Michelangelo Buonarroti",
 "id" :6,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
@@ -102,7 +103,7 @@
 {
 "name" : "Giovanni Dalle Bande Nere",
 "id" :7,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":{ 
             "resources": [
@@ -139,7 +140,7 @@
 {
 "name" : "Leonardo da Vinci",
 "id" :8,
-"effect" : {
+"leaderEffect" : {
         "effectType": "BonusActivityEffect",
         "effectData" :
         { "type": "Production",
@@ -152,7 +153,7 @@
 {
 "name" : "Sandro Botticelli",
 "id" :9,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
@@ -179,8 +180,8 @@
 {
 "name" : "Ludovico Il Moro",
 "id" :10,
-"effect" : {
-        "effectType": "FixFamilyMemberByColor",
+"leaderEffect" : {
+        "effectType": "FixFamilyMemberPowerByColor",
         "effectData" :{ "diceEmpowerment" : 5,
                          "colors" : ["BLACK" , "WHITE", "ORANGE"]}},
 "requirements" : [],
@@ -191,7 +192,7 @@
 {
 "name" : "Lucrezia Borgia",
 "id" :11,
-"effect" : {
+"leaderEffect" : {
         "effectType": "FamiliarEmpowermentByColor",
         "effectData" :{ "diceEmpowerment" : 2,
                          "colors" : ["NEUTRAL"]}},
@@ -204,8 +205,8 @@
 {
 "name" : "Sisto IV",
 "id" :14,
-"effect" : {
-        "effectType": "GeneralEscommunications",
+"leaderEffect" : {
+        "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "SistoIV"}},
 "requirements" : [{
    "resourceType":"Woods",
@@ -234,7 +235,7 @@
 {
 "name" : "Cosimo De Medici",
 "id" :17,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
@@ -257,7 +258,7 @@
 {
 "name" : "BartolomeoColleoni",
 "id" :18,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
@@ -274,7 +275,7 @@
 {
 "name" : "Ludocvico III Gonzaga",
 "id" :19,
-"effect" : {
+"leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{

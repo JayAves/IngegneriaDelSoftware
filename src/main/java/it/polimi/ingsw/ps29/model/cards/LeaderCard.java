@@ -33,7 +33,7 @@ public class LeaderCard {
 
     @Override
     public String toString(){
-		return name + "effect" + leaderEffect + "requirements :" + requirements + cardRequirements ;
+		return name + "effect " + leaderEffect + "requirements :" + requirements + cardRequirements ;
     	
     }
     
@@ -43,6 +43,10 @@ public class LeaderCard {
     
     public Effect getEffect() {
     	return leaderEffect;
+    }
+    
+    public ArrayList<Resource> getResourcesRequirements(){
+    	return requirements;
     }
     
     public HashMap<String, Integer> getCardRequirements(){

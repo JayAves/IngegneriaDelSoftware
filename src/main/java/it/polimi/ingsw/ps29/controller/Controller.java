@@ -41,6 +41,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -91,21 +92,25 @@ public class Controller implements Observer{
 	
 	public void callCorrectView () {
 		ArrayList<ArrayList<Object>> leaderSituation;
+		leaderSituation = new ArrayList<ArrayList<Object>>();
 		if(PlayersConnected()) {
 			
 			String playerName = model.getBoard().getCurrentPlayer().getName();
+			//leaderSituation = model.getBoard().getCurrentPlayer().getPersonalBoard().buildLeaderChoice();
 			ClientThread view = views.get(playerName);
-			
+ 			
 			
 			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
 			stateOfAction = stateOfAction.beforeAction();
 			if  (view.getInGame()) {
 					//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
 					InteractionMessage object = stateOfAction.objectForView(playerName);
+					//System.out.println((" sono qui dentro"));
 					if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABILISH.getName())) {
 						leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
 						//l'oggetto generato è di tipo ActionChoice se entro in questo if//
 						((ActionChoice)object).setLeaderSituation(leaderSituation);
+					
 					}
 					view.startInteraction (object);
 				}
@@ -400,6 +405,11 @@ public class Controller implements Observer{
 	
 	
 	public void gameEngine () {
+		
+		for (LeaderCard card :model.getBoard().getPlayers().get(0).getPersonalBoard().getLeaderCards())
+			System.out.println(model.getBoard().getPlayers().get(0).getName() + " " + card.toString());
+		for (LeaderCard card :model.getBoard().getPlayers().get(1).getPersonalBoard().getLeaderCards())
+			System.out.println(model.getBoard().getPlayers().get(1).getName() + " " +card.toString());
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2

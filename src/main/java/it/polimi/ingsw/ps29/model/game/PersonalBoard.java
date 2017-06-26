@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
@@ -95,16 +96,28 @@ public class PersonalBoard {
 	public boolean satisfyRequirements(LeaderCard card){
 		
 		HashMap<String, Integer> requirements = card.getCardRequirements();
-		boolean satisfied = true;
-		while (satisfied){
+		ArrayList<Resource> resources = new ArrayList<Resource>(); 
+		resources = card.getResourcesRequirements();
+		boolean satisfiedc = true;
+		boolean satisfiedr = true;
+		System.out.println("sto controllando requisiti di "+ card.toString());
+		if (!requirements.isEmpty()){
 			if (requirements.containsKey("any")){
-				return checkIfCardsEqualsSize(requirements.get("any"));
+				satisfiedc = checkIfCardsEqualsSize(requirements.get("any"));
 			}
-			for (HashMap.Entry<String, Integer> entry : requirements.entrySet()){
-		        satisfied = getCards(entry.getKey()).size() >= entry.getValue();
-			}
+				Set<String> set = requirements.keySet();
+				for (String type : set)
+					satisfiedc = satisfiedc &&  getCards(type).size() >= requirements.get(type);
 		}
-		return satisfied;
+		
+		System.out.println("ho controlato le carte di " + card.toString() + " risultato " + satisfiedc );
+		
+		if (!resources.isEmpty()){
+			satisfiedr = this.resources.isPossibleToPay(resources);
+		}
+
+		System.out.println("\n ho controllato i requisiti di " + card.toString() + " e il risultato è " + (satisfiedc || satisfiedr));
+		return (satisfiedc && satisfiedr);
 	}
 	
 	public ArrayList<ArrayList<Object>> buildLeaderChoice(){
@@ -112,21 +125,25 @@ public class PersonalBoard {
 		ArrayList<ArrayList<Object>> LeaderChoice = new ArrayList<ArrayList<Object>>();
 		
 		for (LeaderCard card : leaderCards){
+	
 		    ArrayList<Object> cardVector = new ArrayList<Object>();
-		    cardVector.add(0, card.getID());
-		    cardVector.add(1, card.toString());
-		    cardVector.add(2, 0);
-		    cardVector.add(3, satisfyRequirements(card));
-		    LeaderChoice.add(cardVector);
+		    cardVector.add(card.getID());
+		    cardVector.add(card.toString());
+		    cardVector.add(0);
+		    cardVector.add(satisfyRequirements(card));
+		   	LeaderChoice.add(cardVector);
+		    
 		}
 		
+		if (playedLeaderCards.size() > 0){
 		for (LeaderCard card : playedLeaderCards){
 		    ArrayList<Object> cardVector = new ArrayList<Object>();
-		    cardVector.add(0, card.getID());
-		    cardVector.add(1, card.toString());
-		    cardVector.add(2, 1);
-		    cardVector.add(3, true);
+		    cardVector.add(card.getID());
+		    cardVector.add(card.toString());
+		    cardVector.add(1);
+		    cardVector.add(true);
 		    LeaderChoice.add(cardVector);
+		}
 		}
 		
 		return LeaderChoice;

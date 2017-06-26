@@ -313,7 +313,7 @@ public class InputOutputCLI implements InputOutput {
 			if(choice!=5) {
 				//l'utente ha scelto il leader
 				do {
-					for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size(); i++)
+					for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size() ; i++)
 						System.out.println(" " + (i + 1) + " " + printCorrectOptions(leaderSituation.get(choice -1)).get(i));
 					try {
 						secondChoice = scanner.nextInt();
