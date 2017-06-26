@@ -17,10 +17,10 @@ import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 
-public class SocketConnection extends Connection {
+public class SocketConnectionForTest extends Connection {
 	
 	  
-	private final int PORT = 9001;
+	private final int PORT = 9003;
 	private final String ADDRESS = "localhost";
 	private Socket socket;
 	private ObjectOutputStream oos;
@@ -29,7 +29,7 @@ public class SocketConnection extends Connection {
 	private PlayerInfoMessage loginMessage;
 	
 	
-	public SocketConnection(String playerName) {
+	public SocketConnectionForTest(String playerName) {
 		
 		loginMessage= new PlayerInfoMessage(playerName);
 		try {

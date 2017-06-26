@@ -99,7 +99,9 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		System.out.println("Server says: "+line);
 	}
 
-	
+	public void setEnd() {
+		end=true;
+	}
 
 	
 	
