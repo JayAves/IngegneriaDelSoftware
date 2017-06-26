@@ -1,13 +1,18 @@
 package it.polimi.ingsw.ps29.model.cards.effects;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class ExchangeResourceHandler implements Cloneable {
+public class ExchangeResourceHandler implements Cloneable, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3524782719504036952L;
 	private ArrayList<Resource> resourcesOut;
 	private ArrayList<Resource> resourcesIn;
 	private boolean chooseOut;

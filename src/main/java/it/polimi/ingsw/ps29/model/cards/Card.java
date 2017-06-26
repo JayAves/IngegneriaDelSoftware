@@ -53,7 +53,10 @@ public abstract class Card {
 	}
 	
 	public ArrayList<Resource> getCost() {
-		return this.cost;
+		ArrayList <Resource> copy = new ArrayList<Resource>();
+		for(Resource res: cost)
+			copy.add(new Resource(res.getType(), res.getAmount()));
+		return copy;
 	}
 	
 	public String getName() {

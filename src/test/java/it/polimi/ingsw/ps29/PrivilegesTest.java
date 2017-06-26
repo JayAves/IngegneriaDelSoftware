@@ -38,7 +38,7 @@ public class PrivilegesTest extends TestCase {
 			e.printStackTrace();
 		}
 		Resource res = new Resource ("privilege", 1);
-		model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().updateResource(res);
+		model.getCurrentPlayer().getPersonalBoard().getResources().updateResource(res);
 		//System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE));
 		state = new PrivilegesState (new PerformedState(), 1);
 		state = state.afterAction(model);
@@ -48,7 +48,7 @@ public class PrivilegesTest extends TestCase {
 	public void test() {
 		
 		assertEquals(new Resource("privilege",0).toString(), 
-				model.getBoard().getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").toString());
+				model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").toString());
 		assertTrue(state.getState().equals("performed"));
 		
 	}

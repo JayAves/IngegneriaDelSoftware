@@ -55,7 +55,7 @@ public class PerformExchangeTest extends TestCase {
 		
 		Exchange msg = new Exchange("aa", eff2);
 		//scelgo il secondo scambio
-		msg.setChoice(0, 1);
+		msg.setChoice(0, 2);
 		
 		Container container = new Container();
 		//player.setSupport(new ExchangeSupport(array, container));

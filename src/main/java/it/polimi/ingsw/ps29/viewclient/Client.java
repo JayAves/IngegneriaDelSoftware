@@ -14,7 +14,6 @@ import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
-import it.polimi.ingsw.ps29.view.InputOutputCLI;
 import it.polimi.ingsw.ps29.view.View;
 
 public class Client implements Observer{
@@ -59,7 +58,6 @@ public class Client implements Observer{
 			}
 			
 	    	public void receive (Exchange msg) {
-				
 	    		view.askAboutExchange(msg);
 	    	}
 			
@@ -105,5 +103,5 @@ public class Client implements Observer{
 			}
 	}
 
-			
+		
 }

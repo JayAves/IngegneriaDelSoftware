@@ -73,7 +73,8 @@ public class TowerArea implements ActionSpace {
 
 	@Override
 	public void cleanSpace() {
-		// TODO Auto-generated method stub
+		for(Floor singleFloor: floors) 
+			singleFloor.getSpace().cleanSpace();
 		
 	}
 	

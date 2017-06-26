@@ -85,26 +85,13 @@ public class TowerAction extends Action {
 	public void performAction() {
 		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
 		
-		String[] resources = {"servant", "wood", "stone", "coin", "faith", "military", "victory", "privilege"};
-		System.out.println("+++ RISORSE GIOCATORE before 3 coin: +++");
-		for(int i=0; i<resources.length; i++)
-			System.out.println(move.getPlayer().getPersonalBoard().getSpecificResource(resources[i]).toString());
-		
 		if ((!space.isEmpty() && !move.getPlayer().getBrunelleschi())) 
 			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monete
-			
-		System.out.println("+++ RISORSE GIOCATORE after 3 coin: +++");
-		for(int i=0; i<resources.length; i++)
-			System.out.println(move.getPlayer().getPersonalBoard().getSpecificResource(resources[i]).toString());
 		
 		if(move.getFloor()>2) {
 			GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal piano, se non ne ha aggiungo null
 			effect.performEffect(move.getPlayer()); //aggiungo le risorse al player
 		}
-		
-		System.out.println("+++ RISORSE GIOCATORE after bonus floor: +++");
-		for(int i=0; i<resources.length; i++)
-			System.out.println(move.getPlayer().getPersonalBoard().getSpecificResource(resources[i]).toString());
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
 		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
@@ -116,10 +103,6 @@ public class TowerAction extends Action {
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
 		}
 		
-		System.out.println("+++ RISORSE GIOCATORE after pay card: +++");
-		for(int i=0; i<resources.length; i++)
-			System.out.println(move.getPlayer().getPersonalBoard().getSpecificResource(resources[i]).toString());
-		
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) 
 			if (immediateEffect instanceof BonusActionEffect)
 				state = new BonusActionState(((BonusActionEffect)immediateEffect).clone());
@@ -128,10 +111,6 @@ public class TowerAction extends Action {
 		if(!state.equals(StateOfActionIdentifier.BONUS_ACTION))
 			for(Effect immediateEffect : space.takeCard().getImmediateEffects()) 
 				immediateEffect.performEffect(move.getPlayer());
-		
-		System.out.println("+++ RISORSE GIOCATORE after imm effect: +++");
-		for(int i=0; i<resources.length; i++)
-			System.out.println(move.getPlayer().getPersonalBoard().getSpecificResource(resources[i]).toString());
 		
 		space.getPlacementFloor().setCard(null); 
 		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
@@ -150,14 +129,6 @@ public class TowerAction extends Action {
 		
 		ArrayList<Resource> discountedCost=space.takeCard().getCost();
 		
-		System.out.println("+++ COSTO DELLA CARTA: +++");
-		for(Resource res: discountedCost)
-			System.out.println(res.toString());
-		
-		System.out.println("+++ RISORSE DEL PLAYER: +++");
-		for(Map.Entry <String, ResourceInterface> res: move.getPlayer().getPersonalBoard().getResources().getResources().entrySet())
-			System.out.println(res.getValue().toString());
-		
 		if(move.getFloor()>2)
 			highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
 		
@@ -174,17 +145,10 @@ public class TowerAction extends Action {
 	
 	private void highFloorDiscount(ArrayList<Resource> cost) {
 		
-		System.out.println("+++ SCONTO DELLA TORRE: +++");
 		for (Resource res: cost) 
-			for(Resource source: space.takeResource()) {
-				System.out.println(source.toString());
-				if ((res.getType()==source.getType())&& (res.getAmount()>source.getAmount())) 
+			for(Resource source: space.takeResource()) 
+				if ((res.getType().equals(source.getType()))&& (res.getAmount()>source.getAmount())) 
 					res.modifyAmount(-source.getAmount());
-			}
-			
-		System.out.println("+++ COSTO DOPO LO SCONTO: +++");
-		for(Resource res: cost)
-			System.out.println(res.toString());
 	}
 	
 	private boolean enoughSlotSpace() throws FullCardBoardException{

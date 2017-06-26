@@ -10,7 +10,6 @@ import org.junit.Test;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.Action;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
-import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -49,14 +48,14 @@ public class ProvaTest extends TestCase {
 		names.add(player2);
 		
 		model = new Match(names);
-		FamilyMemberInterface member = model.getBoard().getCurrentPlayer().getFamiliarByColor(DiceColor.ORANGE);
+		FamilyMemberInterface member = model.getCurrentPlayer().getFamiliarByColor(DiceColor.ORANGE);
 		member.setPower(5);
-		System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources());
+		System.out.println(model.getCurrentPlayer().getPersonalBoard().getResources());
 		
 		RoundState rss = new RoundSetupState();
 		rss = rss.doAction(1, model);
 
-		move = new Move (model.getBoard().getCurrentPlayer(), "buildingTower", 2, 2, member);
+		move = new Move (model.getCurrentPlayer(), "buildingTower", 2, 2, member);
 		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).printCards());
 		System.out.println("\n\nCarta presa: \n\n");
 		((TowerArea)model.getBoard().getSpace(move.getSpace())).setPlacementFloor(2);

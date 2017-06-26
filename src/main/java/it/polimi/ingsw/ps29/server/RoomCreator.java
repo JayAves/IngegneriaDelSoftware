@@ -15,7 +15,7 @@ public class RoomCreator extends Thread implements Observer{
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
 	private int period;
-	private boolean startTimer;
+	
 	
 	
 	public RoomCreator(){
@@ -28,7 +28,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 		this.timer= new Timer();
 		
-		startTimer= false;
+		
 		
 		
 		
