@@ -42,6 +42,7 @@ import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -110,10 +111,6 @@ public class Controller implements Observer{
 				System.out.println("Classe dell'oggetto: "+object.getClass());
 				
 				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
-<<<<<<< HEAD
-=======
-					
->>>>>>> 049691f7e0af9c29a6d8e9d14b0f8890debceee9
 					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
 					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
 					((ActionChoice)object).setLeaderSituation(leaderSituation);
@@ -425,7 +422,6 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-<<<<<<< HEAD
 		for (Player player : model.getBoard().getPlayers()){
 			System.out.println(" "+ player.getName() + " leaderCards");
 			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
@@ -440,13 +436,8 @@ public class Controller implements Observer{
 				System.out.println(" " + player.getName() + " " + card.toString());
 		}
 		
-		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getBoard().getCurrentPlayer());
-=======
-		/*for (Player player : model.getBoard().getPlayers()){
-			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
-				System.out.println(" " + player.getName() + " " + card.toString());
-		}*/
->>>>>>> 049691f7e0af9c29a6d8e9d14b0f8890debceee9
+		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getCurrentPlayer());
+
 		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
 			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
