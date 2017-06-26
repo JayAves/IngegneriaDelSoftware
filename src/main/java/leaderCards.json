@@ -291,6 +291,27 @@
     "type":"servant" } }],
 "cardTypeRequirements" : [],
 "cardRequirements" : []
+},
+    
+{
+"name" : "Fake Ludocvico III Gonzaga ",
+"id" :19,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}            ]}},
+"requirements" : [{
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount" :15,
+    "type":"servant" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
 }
     
 ]
