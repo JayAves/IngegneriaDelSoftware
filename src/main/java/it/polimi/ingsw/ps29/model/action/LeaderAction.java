@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
+import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -15,6 +16,7 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 public class LeaderAction extends Action{
 	
 	ActionChoice choice;
+	int privilegeCounter = 0;
 
 	public LeaderAction(Match model, Move move, ActionChoice choice) {
 		super(model, move);
@@ -37,13 +39,19 @@ public class LeaderAction extends Action{
 	@Override
 	public ActionState actionHandler(){
 		performAction();
+		
+		state = new ToEstablishState();
+		
+		if (privilegeCounter > 0)
+			state = new PrivilegesState(state, privilegeCounter);
+		
 		return state;
 	}
 	
 
 	@Override
 	void performAction() {
-		
+				
 		for (ArrayList<Object> card :choice.getLeaderSituation()){
 			
 			if (card.size() > 4 ){
@@ -51,22 +59,22 @@ public class LeaderAction extends Action{
 					System.out.println("\n sono in discard");
 					ArrayList<Resource> discardBonus = new ArrayList<Resource>();
 					discardBonus.add(new Privilege(1));
+					privilegeCounter ++;
 					GainResourcesEffect effect = new GainResourcesEffect(discardBonus);
 					effect.performEffect(move.getPlayer());
 					move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
 				}
 					
-				if ( (card.get(4) == "ACTIVATE" || card.get(4) == "PLAY")){
+				if ( (card.get(4).equals("ACTIVATE") || card.get(4).equals("PLAY"))){
 					move.getPlayer().getPersonalBoard().getPlayedLeaderCards().add(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getLeaderCards()));
 					move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
-					if (card.get(4) == "ACTIVATE"){
+					if (card.get(4).equals("ACTIVATE")){
 						move.getPlayer().getPersonalBoard().getActivatedLeaderCards().add(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getPlayedLeaderCards()));
 						move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getActivatedLeaderCards()).getEffect().performEffect(move.getPlayer());;
 					}
 				}
 			}
-			}
-		state = new ToEstablishState();		
+			}		
 	}
 
 }
