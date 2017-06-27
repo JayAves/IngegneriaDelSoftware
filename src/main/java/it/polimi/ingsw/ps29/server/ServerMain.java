@@ -11,7 +11,7 @@ public class ServerMain {
 	
 	public static void main( String[] args ) throws FileNotFoundException{
 		
-		BufferedReader btimer = new BufferedReader(new FileReader("src/main/java/timer.json"));
+		BufferedReader btimer = new BufferedReader(new FileReader("src/main/java/Timer.json"));
 	    GsonBuilder gtimer = new GsonBuilder();
 	    TimerJson timer = gtimer.create().fromJson(btimer, TimerJson.class);	
 	    

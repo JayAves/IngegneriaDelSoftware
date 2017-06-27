@@ -608,7 +608,7 @@ public class Controller implements Observer{
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 		}
 			//views.get(model.getBoard().getCurrentPlayer().getName()).startInteraction(new FirstBoardInfo(model.getBoard().getCurrentPlayer().getName(), tiles, exCards,

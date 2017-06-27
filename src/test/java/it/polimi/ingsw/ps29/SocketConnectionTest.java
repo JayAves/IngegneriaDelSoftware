@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29;
+/*package it.polimi.ingsw.ps29;
 
 
 import org.junit.BeforeClass;
@@ -25,6 +25,7 @@ public class SocketConnectionTest extends TestCase {
 		super (testName);
 	}
 	
+
 	@BeforeClass
 	public void setUp () {
 
@@ -62,4 +63,4 @@ public class SocketConnectionTest extends TestCase {
 	}
 	
 
-}
+}*/

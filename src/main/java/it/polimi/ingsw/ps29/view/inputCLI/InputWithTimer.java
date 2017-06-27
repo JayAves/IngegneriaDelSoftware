@@ -29,14 +29,16 @@ public class InputWithTimer implements Runnable {
 					
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Thread.currentThread().interrupt();
 				}
 			}
 			
 			running = false;
 
-			if (in.ready()) 
+			//if ((in.ready()) && (in.readLine().chars().allMatch(Character::isDigit)) && (!in.readLine().equals("")))	
+			if (in.ready())	
 				return in.readLine();
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -57,7 +59,7 @@ public class InputWithTimer implements Runnable {
 				
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 			
 			if (System.currentTimeMillis() - startTime > timer)
