@@ -167,13 +167,14 @@ public class PersonalBoard {
 		return null;	
     }
 	
-    public void removeLeaderById( int id, ArrayList<LeaderCard> deck){
-		
-		for (LeaderCard card : deck){
+    public void removeLeaderById( int id){
+    	
+		for (LeaderCard card : leaderCards){
 			if (id == card.getID())
-				deck.remove(card);
+				leaderCards.remove(card);
+			break;
 		}
-			
+
     }
 
 

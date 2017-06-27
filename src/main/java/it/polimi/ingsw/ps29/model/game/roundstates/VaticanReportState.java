@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps29.model.game.roundstates;
 
+import java.util.ArrayList;
+
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class VaticanReportState implements RoundState {
 
@@ -21,7 +24,10 @@ public class VaticanReportState implements RoundState {
 			else{
 				boolean vaticanChoice = false;
 				if (vaticanChoice){
-					player.getPersonalBoard().getResources().updateResource(match.getBoard().getVaticanBonus(roundNumber));
+					ArrayList<Resource> vaticanBonus = new ArrayList<Resource>();
+					vaticanBonus = match.getBoard().getVaticanBonus(roundNumber);
+					for (Resource bonus : vaticanBonus)
+						player.getPersonalBoard().getResources().updateResource(bonus);
 					player.getSistoIVBonus();
 					player.getPersonalBoard().getResources().removeResource(ResourceType.FAITH);
 				}

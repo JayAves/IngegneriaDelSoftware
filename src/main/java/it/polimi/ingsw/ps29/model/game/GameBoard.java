@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
+import it.polimi.ingsw.ps29.model.space.BonusInit;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 import it.polimi.ingsw.ps29.model.space.FaithSpace;
 import it.polimi.ingsw.ps29.model.space.HarvestArea;
@@ -62,64 +63,37 @@ public class GameBoard{
 	}
 	
 	
-	public void initSpaces (Resource[] resources) {
-		
-		ArrayList<Resource> temporaryBonus1= new ArrayList<Resource>();
-		temporaryBonus1.add(resources[0]);
-		ArrayList<Resource> temporaryBonus2= new ArrayList<Resource>();
-		temporaryBonus2.add(resources[1]);
-		ArrayList<Resource> temporaryBonus3= new ArrayList<Resource>();
-		temporaryBonus3.add(resources[2]);
-		ArrayList<Resource> temporaryBonus4= new ArrayList<Resource>();
-		temporaryBonus4.add(resources[3]);
-		ArrayList<Resource> temporaryBonus5= new ArrayList<Resource>();
-		temporaryBonus5.add(resources[4]);
-		ArrayList<Resource> temporaryBonus6= new ArrayList<Resource>();
-		temporaryBonus6.add(resources[5]);
-		ArrayList<Resource> temporaryBonus7= new ArrayList<Resource>();
-		temporaryBonus7.add(resources[6]);
-		ArrayList<Resource> temporaryBonus8= new ArrayList<Resource>();
-		temporaryBonus8.add(resources[7]);
-		ArrayList<Resource> temporaryBonus9= new ArrayList<Resource>();
-		temporaryBonus9.add(resources[8]);
-		ArrayList<Resource> temporaryBonus10= new ArrayList<Resource>();
-		temporaryBonus10.add(resources[9]);
-		ArrayList<Resource> temporaryBonus11= new ArrayList<Resource>();
-		temporaryBonus11.add(resources[10]);
-		temporaryBonus11.add(resources[11]);
-		ArrayList<Resource> temporaryBonus12= new ArrayList<Resource>();
-		temporaryBonus12.add(resources[12]);
-		temporaryBonus12.add(resources[13]);;
-		
+	public void initSpaces (BonusInit[] resources) {
+				
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
 		spaces.put("Harvest", new HarvestArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("Production", new ProductionArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
 		spaces.put("territoryTower", new TowerArea ());
-		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus1,3);
-		((TowerArea)spaces.get("territoryTower")).setBonus(temporaryBonus2,4);
+		((TowerArea)spaces.get("territoryTower")).setBonus(resources[0].getBonus(),3);
+		((TowerArea)spaces.get("territoryTower")).setBonus(resources[1].getBonus(),4);
 		spaces.put("buildingTower", new TowerArea ());
-		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus3,3);
-		((TowerArea)spaces.get("buildingTower")).setBonus(temporaryBonus4,4);
+		((TowerArea)spaces.get("buildingTower")).setBonus(resources[2].getBonus(),3);
+		((TowerArea)spaces.get("buildingTower")).setBonus(resources[3].getBonus(),4);
 		spaces.put("characterTower", new TowerArea ());
-		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus5,3);
-		((TowerArea)spaces.get("characterTower")).setBonus(temporaryBonus6,4);
+		((TowerArea)spaces.get("characterTower")).setBonus(resources[4].getBonus(),3);
+		((TowerArea)spaces.get("characterTower")).setBonus(resources[5].getBonus(),4);
 		spaces.put("ventureTower", new TowerArea ());
-		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus7,3);
-		((TowerArea)spaces.get("ventureTower")).setBonus(temporaryBonus8,4);
-		spaces.put("FirstMarket", new MarketArea(1, temporaryBonus9));
-		spaces.put("SecondMarket", new MarketArea(1, temporaryBonus10));
-		spaces.put("ThirdMarket", new MarketArea(1,temporaryBonus11));
-		spaces.put("FourthMarket", new MarketArea(1, temporaryBonus12));
+		((TowerArea)spaces.get("ventureTower")).setBonus(resources[6].getBonus(),3);
+		((TowerArea)spaces.get("ventureTower")).setBonus(resources[7].getBonus(),4);
+		spaces.put("FirstMarket", new MarketArea(1, resources[8].getBonus()));
+		spaces.put("SecondMarket", new MarketArea(1, resources[9].getBonus()));
+		spaces.put("ThirdMarket", new MarketArea(1,resources[10].getBonus()));
+		spaces.put("FourthMarket", new MarketArea(1, resources[11].getBonus()));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		
 	}
 	
-	public void initFaithTrack(Resource[] bonuses){
+	public void initFaithTrack(BonusInit[] bonuses){
 		
 		faithTrack = new HashMap<Integer, FaithSpace>();
 		for (int i = 0 ; i < 16; i++)
-			faithTrack.put(i, new FaithSpace(bonuses[i]));
+			faithTrack.put(i, new FaithSpace(bonuses[i].getBonus()));
 	}
 	
 	public ArrayList <Player> getPlayers () {
@@ -198,8 +172,8 @@ public class GameBoard{
 		return tresHold;
 	}
 	
-	public Resource getVaticanBonus( int round){
-		Resource bonus = null;
+	public ArrayList<Resource> getVaticanBonus( int round){
+		ArrayList<Resource> bonus = null;
 		switch (round) {
 		case 2: bonus = faithTrack.get(3).getBonus();
 		       break;

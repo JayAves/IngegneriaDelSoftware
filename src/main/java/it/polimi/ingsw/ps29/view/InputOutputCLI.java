@@ -339,12 +339,12 @@ public class InputOutputCLI implements InputOutput {
 		ArrayList<String> toShow = new ArrayList<String>();
 		toShow.add("DO NOTHING");
 		if ((int)card.get(2) == 0){
-			toShow.add(" DISCARD");
+			toShow.add("DISCARD");
 			if ((boolean) card.get(3))
 				toShow.add("PLAY");
 		}
 		if ((boolean) card.get(3))
-				toShow.add(" ACTIVATE");
+				toShow.add("ACTIVATE");
 		return toShow;
 		}
 

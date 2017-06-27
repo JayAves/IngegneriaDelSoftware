@@ -22,6 +22,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
+import it.polimi.ingsw.ps29.model.space.BonusInit;
 
 public class Match extends Observable{
 	
@@ -45,21 +46,21 @@ public class Match extends Observable{
 		board.initFaithTrack(getFaithTrack());
 	}
 	
-	private Resource[] getBonuses() throws FileNotFoundException {
+	private BonusInit[] getBonuses() throws FileNotFoundException {
 		
 		BufferedReader bonuses = new BufferedReader(new FileReader("src/main/java/Bonus.json"));
 		GsonBuilder gBonus = new GsonBuilder();
 		gBonus.registerTypeAdapter(Resource.class, new ResourceAdapter());
-		Resource[] resources = gBonus.create().fromJson(bonuses, Resource[].class);
+		BonusInit [] resources = gBonus.create().fromJson(bonuses, BonusInit[].class);
 		return resources;
 	}
 	
-	private Resource[] getFaithTrack() throws FileNotFoundException {
+	private BonusInit[] getFaithTrack() throws FileNotFoundException {
 		
 		BufferedReader fBonuses = new BufferedReader(new FileReader("src/main/java/faithTrack.json"));
 		GsonBuilder fBonus = new GsonBuilder();
 		fBonus.registerTypeAdapter(Resource.class, new ResourceAdapter());
-		Resource[] resources = fBonus.create().fromJson(fBonuses, Resource[].class);
+		BonusInit[] resources = fBonus.create().fromJson(fBonuses, BonusInit[].class);
 		return resources;
 	}
 	
