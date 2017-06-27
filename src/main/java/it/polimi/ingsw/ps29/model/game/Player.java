@@ -66,7 +66,7 @@ public class Player {
 	
 	public FamilyMemberInterface getFamiliarByColor (DiceColor color) {
 		for (FamilyMemberInterface member: family) 
-			if(member.getFamiliarColor()==color)
+			if(member.getFamiliarColor().equals(color))
 				return member;
 		
 		return null;

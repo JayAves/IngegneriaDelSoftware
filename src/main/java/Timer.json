@@ -1,6 +1,6 @@
 {
 
-	"turnTimer": 30000,
+	"turnTimer": 600000,
 
 	"roomTimer": 15000
 

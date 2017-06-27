@@ -33,7 +33,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 		// TODO Auto-generated method stub
 		RMIClientThread thread=new RMIClientThread(player, clientInterface);
 		thread.setTurnTimer(myGatherer.turnTimer);
-		System.out.println("RMI connected with ID: "+player.getToken());
+		
 		RMIClientThread toDelete= null;
 		for(RMIClientThread th: myGatherer.clients) {
 			if (th.IDcode.contentEquals(thread.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
@@ -41,11 +41,11 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 				toDelete=th;
 				}
 		}
-		System.out.println(toDelete);
+		
 		if (toDelete!=null)
 			myGatherer.clients.remove(toDelete);
 		myGatherer.clients.add(thread);
-		System.out.println(myGatherer.clients);
+		
 		//Thread t= new Thread (thread);
 		//t.start();
 		myGatherer.notifyRoomCreator(thread);

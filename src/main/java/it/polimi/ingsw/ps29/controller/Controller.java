@@ -119,6 +119,7 @@ public class Controller implements Observer{
 				sendInfo=false;
 				info = new InfoForView(model.getCurrentPlayer().getName());
 				info.familiar=placeRandomFamiliar();
+				info.playerColor = model.getCurrentPlayer().getColor();
 				info.space=12;
 				if (info.familiar!=-1)	
 					sendInfo=true;
@@ -406,10 +407,13 @@ public class Controller implements Observer{
 			
 			ArrayList<FamilyMemberInterface> freeMembers= new ArrayList<FamilyMemberInterface>();
 			
-			for (DiceColor color: DiceColor.values()) {
-				if (!model.getCurrentPlayer().getFamiliarByColor(color).getBusy())
-					freeMembers.add(model.getCurrentPlayer().getFamiliarByColor(color));
+			
+			for (FamilyMemberInterface familiar: model.getCurrentPlayer().getFamily()) {
+				
+				if (!familiar.getBusy())
+					freeMembers.add(familiar);
 			}	
+			
 			Random random= new Random();
 			
 			FamilyMemberInterface randomMember= freeMembers.get(random.nextInt(freeMembers.size()));
