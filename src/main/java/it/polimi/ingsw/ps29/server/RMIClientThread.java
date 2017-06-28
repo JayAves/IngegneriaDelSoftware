@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.server.ServerSerializator.Task;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 public class RMIClientThread extends ClientThread implements Serializable{
@@ -100,9 +101,15 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		
 			} catch (RemoteException e) {
 			// TODO Auto-generated catch block
+			
 			System.err.println("Could not send message to client");
 			inGame=false;
 			PlayerInfoMessage error= new PlayerInfoMessage(username);
+			for (Task tsk: timeOuts) {
+				tsk.cancel();
+				//serializator.getTasks().remove(tsk);
+			}
+			timeOuts.clear();
 			setChanged();
 			notifyObservers(error);
 			}
