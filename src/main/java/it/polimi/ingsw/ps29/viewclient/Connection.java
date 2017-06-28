@@ -1,22 +1,16 @@
 package it.polimi.ingsw.ps29.viewclient;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.Observable;
 import java.util.Random;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
@@ -46,7 +40,6 @@ public abstract class Connection extends Observable implements Runnable{
 		 		
 		 		//I'm creating new Array with old token plus the new one, to be written in the json file Login//
 		 		String[] newjcode= new String[jcode.length+1]; 
-		 		System.out.println(newjcode.length);
 		 		for (int j=0; j<jcode.length; j++)
 		 			newjcode[j]=jcode[j];
 		 		

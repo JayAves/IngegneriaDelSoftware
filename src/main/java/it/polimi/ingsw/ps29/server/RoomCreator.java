@@ -136,6 +136,7 @@ public class RoomCreator extends Thread implements Observer{
 				// TODO Auto-generated catch block
 				
 				System.out.println(e.getLocalizedMessage());
+				interrupt();
 			}
 			
 			
@@ -175,6 +176,7 @@ public class RoomCreator extends Thread implements Observer{
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						System.out.println("Could not sleep!");
+						interrupt();
 						throw new RuntimeException();
 					}
 				}

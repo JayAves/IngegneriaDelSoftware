@@ -73,7 +73,7 @@ public class InputWithTimer implements Runnable {
 				
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 			
 			if (System.currentTimeMillis() - startTime > timer)
