@@ -17,13 +17,13 @@ public class RMIGatherer extends Observable implements Serializable, Runnable{
 	
 	protected ArrayList<RMIClientThread> clients;
 	
-	int turnTimer;
+	int actionTimer;
 	
 	
 	
 	public RMIGatherer(int turnTimer) {
 		
-		this.turnTimer = turnTimer;
+		this.actionTimer = turnTimer;
 		clients= new ArrayList<RMIClientThread>();
 	}
 

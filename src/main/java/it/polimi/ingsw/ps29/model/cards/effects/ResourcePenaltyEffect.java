@@ -10,4 +10,9 @@ public class ResourcePenaltyEffect extends Effect{
 				
 	}
 
+	@Override
+	public String toString() {
+		return "ResourcePenaltyExcommunication";	
+	}
+	
 }

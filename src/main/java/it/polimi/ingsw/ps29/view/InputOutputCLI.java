@@ -284,12 +284,16 @@ public class InputOutputCLI implements InputOutput {
 	@Override
 	public void showTowerAndDices(TowersAndDicesForView msg) {
 		String[] color = {"Black", "White", "Orange"};
+		System.out.println("\nDICES ROLLED: ");
 		for(int i=0; i<color.length; i++)
-			System.out.println("Value of "+color[i]+" dice: "+msg.getDices()[i]);
+			System.out.println("- "+color[i]+" dice: "+msg.getDices()[i]);
 		for(HashMap.Entry <String, ArrayList<CardDTO>> tower: msg.getTowers().getTowers().entrySet()) {
-			System.out.println("\n"+tower.getKey().toUpperCase()+"\n");
-			for(CardDTO card: tower.getValue())
-				System.out.println(card.toString());
+			System.out.println("\n"+tower.getKey().toUpperCase()+" Tower:\n");
+			int counter=1;
+			for(CardDTO card: tower.getValue()) {
+				System.out.println("Floor "+counter+": "+card.toString());
+				counter++;
+			}
 		}
 		
 	}
@@ -437,7 +441,7 @@ public class InputOutputCLI implements InputOutput {
 	public void setTimer(int timer) {
 		turnTimer= timer;
 		scanner = new FakeScanner(turnTimer);
-		System.out.println("Timer: "+turnTimer);
+	
 	}
 	public int getTimer() {
 		return turnTimer;

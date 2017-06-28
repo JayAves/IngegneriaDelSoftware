@@ -8,7 +8,7 @@ public abstract class ClientThread extends Observable implements Runnable{
 	
 	protected String IDcode;
 	protected boolean inGame;
-	protected int turnTimer;
+	protected int actionTimer;
 	
 	
 	
@@ -24,6 +24,6 @@ public abstract class ClientThread extends Observable implements Runnable{
 		return inGame;
 	}
 	public void setTurnTimer(int timer) {
-		turnTimer=timer;
+		actionTimer=timer;
 	}
 }

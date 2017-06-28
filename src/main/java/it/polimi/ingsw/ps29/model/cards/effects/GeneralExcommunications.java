@@ -26,5 +26,10 @@ public class GeneralExcommunications extends Effect{
 		}
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+ effectName;
+	}
+
 
 }

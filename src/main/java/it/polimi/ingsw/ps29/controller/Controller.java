@@ -134,7 +134,8 @@ public class Controller implements Observer{
 					for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
 						viewz.getValue().startInteraction(info);
 				}
-				model.getBoard().changePlayerOrder();
+				stateOfAction= new PerformedState();
+				stateOfAction.afterAction(model);
 				gameEngine();
 			}
 		}
@@ -444,7 +445,7 @@ public class Controller implements Observer{
 	
 	public void gameEngine () {
 		
-		for (Player player : model.getBoard().getPlayers()){
+		/*for (Player player : model.getBoard().getPlayers()){
 			System.out.println(" "+ player.getName() + " leaderCards");
 			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
 				System.out.println(" " + player.getName() + " " + card.toString());
@@ -457,7 +458,7 @@ public class Controller implements Observer{
 			for (LeaderCard card : player.getPersonalBoard().getPlayedLeaderCards())
 				System.out.println(" " + player.getName() + " " + card.toString());
 		}
-		
+		*/
 		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getCurrentPlayer());
 
 		

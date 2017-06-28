@@ -10,4 +10,9 @@ public class BuildingCostsPenaltyEffect extends Effect{
 		
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+"BuildingCostsPenaltyEffect";
+	}
+	
 }

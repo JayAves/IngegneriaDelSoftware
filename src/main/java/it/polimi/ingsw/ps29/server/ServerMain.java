@@ -19,10 +19,10 @@ public class ServerMain {
 		RoomCreator creator= new RoomCreator();
 		creator.setPeriod(timer.roomTimer);
 		creator.start();
-		SocketGatherer socketGatherer = new SocketGatherer(9001, timer.turnTimer);
+		SocketGatherer socketGatherer = new SocketGatherer(9001, timer.actionTimer);
 		socketGatherer.addObserver(creator);
 		
-		RMIGatherer rmiGatherer= new RMIGatherer(timer.turnTimer);
+		RMIGatherer rmiGatherer= new RMIGatherer(timer.actionTimer);
 		rmiGatherer.addObserver(creator);
 		
 		rmiGatherer.startServer();

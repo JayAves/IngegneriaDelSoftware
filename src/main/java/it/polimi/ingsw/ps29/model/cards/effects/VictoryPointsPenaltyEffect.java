@@ -10,4 +10,9 @@ public class VictoryPointsPenaltyEffect extends Effect{
 		
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+"VictoryPointsPenaltyExcommunication";
+	}
+	
 }

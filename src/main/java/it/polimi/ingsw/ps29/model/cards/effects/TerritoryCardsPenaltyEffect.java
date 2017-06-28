@@ -10,4 +10,9 @@ public class TerritoryCardsPenaltyEffect extends Effect{
 		
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+"TerritoryCardsPenaltyEffect ";
+	}
+	
 }

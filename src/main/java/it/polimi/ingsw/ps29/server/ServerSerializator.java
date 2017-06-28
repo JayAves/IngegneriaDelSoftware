@@ -41,11 +41,11 @@ public class ServerSerializator {
 		try {
 			
 			if (o instanceof FirstBoardInfo) {
-				((FirstBoardInfo)o).setTimer(thread.turnTimer);
+				((FirstBoardInfo)o).setTimer(thread.actionTimer);
 			}
 			
 			if (o instanceof InfoForView) {
-				((InfoForView)o).setTimer(thread.turnTimer);
+				((InfoForView)o).setTimer(thread.actionTimer);
 			}
 			
 			oos.writeObject(o);
@@ -54,7 +54,7 @@ public class ServerSerializator {
 			if (((InteractionMessage)o).getBi()) { //only for bidirectional messages
 				Task task= new Task();
 				timeOuts.add(task);
-				timer.schedule(task, thread.turnTimer);
+				timer.schedule(task, thread.actionTimer);
 			}	
 			
 			
@@ -73,7 +73,7 @@ public class ServerSerializator {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			//ServerSerializator.this.thread.setInGame(false);
+			ServerSerializator.this.thread.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
 			msg.setTimeExpired();
 			thread.notifyController(msg);

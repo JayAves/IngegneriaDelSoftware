@@ -23,6 +23,7 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	private RmiClientInterface clientInterface;
 	private Timer timer;
 	private ArrayList<Task> timeOuts;
+
 	
 	public RMIClientThread(PlayerInfoMessage login, RmiClientInterface clientInterface) {
 		
@@ -78,18 +79,20 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		// TODO Auto-generated method stub
 		if (inGame){
 			try {
+				
 				if (msg instanceof FirstBoardInfo) {
-					((FirstBoardInfo)msg).setTimer(turnTimer);
+					((FirstBoardInfo)msg).setTimer(actionTimer);
 				}
 				
 				if (msg instanceof InfoForView) {
-					((InfoForView)msg).setTimer(turnTimer);
+					((InfoForView)msg).setTimer(actionTimer);
 				}
 				
 				if ((msg).getBi()) { //only for bidirectional messages
 					Task task= new Task();
 					timeOuts.add(task);
-					timer.schedule(task,turnTimer);
+					timer.schedule(task,actionTimer);
+					
 					}
 				
 				clientInterface.notify(msg);

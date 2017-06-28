@@ -1,6 +1,6 @@
 {
 
-	"turnTimer": 600000,
+	"actionTimer": 60000,
 
 	"roomTimer": 15000
 

@@ -23,4 +23,12 @@ public class MalusResourcesExcommunication extends EffectAboutResources {
 		}
 	}
 
+	@Override
+	public String toString() {
+		String message= "MalusResourcesExcommunication for resources:";
+		for (Resource res: resources)
+			message+= ""+ res.toString()+",";
+		return message;
+	}
+	
 }

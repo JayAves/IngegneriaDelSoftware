@@ -27,4 +27,11 @@ public class FamiliarEmpowermentByColor extends EmpowermentActionEffect{
 				
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+"FamiliarEmpowermentByColorExcommunication ";
+	}
+	
+	
+
 }

@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.server.ServerSerializator.Task;
 
 public class SocketClientThread extends ClientThread {
 	
@@ -48,6 +49,7 @@ public class SocketClientThread extends ClientThread {
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				
 				serializator.getTasks().get(0).cancel();
+				System.out.println("\n\nMost recent task:+\n\n");
 				
 				//notifico Controller
 				setChanged();
@@ -106,6 +108,13 @@ public class SocketClientThread extends ClientThread {
 	}
 	
 	public void endOfThis() {
+		
+		for (Task tsk: serializator.getTasks()) {
+			tsk.cancel();
+			//serializator.getTasks().remove(tsk);
+		}
+		serializator.getTasks().clear();
+		
 		inGame=false;
 		PlayerInfoMessage msg= new PlayerInfoMessage(playerName);
 		setChanged();
