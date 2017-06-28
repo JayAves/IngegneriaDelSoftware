@@ -11,7 +11,7 @@ public class FakeScanner {
 	
 	public int nextInt () throws ExpiredTimeException {
 		InputWithTimer input = new InputWithTimer(timer);
-		int choice = new Integer(input.read());
+		int choice = input.read();
 		
 		return choice;
 	}
