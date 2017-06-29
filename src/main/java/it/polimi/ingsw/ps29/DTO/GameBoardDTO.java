@@ -147,9 +147,8 @@ public class GameBoardDTO implements Serializable{
 	
 	public void insertFamiliar (InfoForView info) {
 		FamilyMemberDTO fmDTO = new FamilyMemberDTO(info.playerColor, familiarColor(info.familiar));
-		if(isFamiliarPresent(fmDTO))
-			cleanSpace();
-		boardMap.get(firstLevel(info.space)).get(secondLevel(info.space, info.floor)).add(fmDTO);
+		if(!isFamiliarPresent(fmDTO))
+			boardMap.get(firstLevel(info.space)).get(secondLevel(info.space, info.floor)).add(fmDTO);
 	}
 	
 	public boolean isFamiliarPresent (FamilyMemberDTO familiar) {

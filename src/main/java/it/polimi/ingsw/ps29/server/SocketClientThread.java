@@ -7,7 +7,6 @@ import java.net.Socket;
 
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.server.ServerSerializator.Task;
 
 public class SocketClientThread extends ClientThread {
 	
@@ -22,10 +21,10 @@ public class SocketClientThread extends ClientThread {
 	
 	public SocketClientThread(Socket socket, PlayerInfoMessage playerLogin, ObjectOutputStream oos, ObjectInputStream ois) {
 		this.socket = socket;
-		//System.out.println("SocketVirtualView: "+socket);
 		this.playerName = playerLogin.getName();
 		this.oos = oos;
 		System.out.println(playerName);
+		
 		this.ois = ois;
 		IDcode= playerLogin.getToken();
 		inGame=false;
@@ -48,12 +47,12 @@ public class SocketClientThread extends ClientThread {
 				
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				
-				serializator.getTasks().get(0).cancel();
-				System.out.println("\n\nMost recent task:+\n\n");
+				//ha ricevuto un messaggio dal client: cancella il timer per l'azione
+				serializator.beeperHandle.cancel(true);
 				
-				//notifico Controller
 				setChanged();
 				notifyObservers(obj);
+				
 				
 			} catch (IOException e) {
 				
@@ -109,17 +108,15 @@ public class SocketClientThread extends ClientThread {
 	
 	public void endOfThis() {
 		
-		for (Task tsk: serializator.getTasks()) {
-			tsk.cancel();
-			//serializator.getTasks().remove(tsk);
-		}
-		serializator.getTasks().clear();
+		//se il giocatore si disconnette cancello il timer eventuale
+		if(serializator.beeperHandle != null)
+			serializator.beeperHandle.cancel(false);
 		
 		inGame=false;
 		PlayerInfoMessage msg= new PlayerInfoMessage(playerName);
+		endOfConnection=true;
 		setChanged();
 		notifyObservers(msg);
-		endOfConnection=true;
 	}
 
 	public void notifyController(InteractionMessage msg) {

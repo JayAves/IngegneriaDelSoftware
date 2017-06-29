@@ -143,4 +143,11 @@ public class InputOutputGUI implements InputOutput {
 		return 0;
 	}
 
+
+	@Override
+	public long getTimeStart() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

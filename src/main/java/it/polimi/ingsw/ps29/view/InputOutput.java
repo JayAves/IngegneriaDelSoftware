@@ -52,4 +52,6 @@ public interface InputOutput {
 	abstract void setTimer(int timer);
 	
 	abstract int getTimer();
+	
+	abstract long getTimeStart ();
 }

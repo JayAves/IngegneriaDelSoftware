@@ -134,6 +134,7 @@ public class View extends Observable implements Observer {
 		towersDTO = msg.getTowers();
 		dices = msg.getDices();
 		inputOutput.showTowerAndDices (msg);
+		gameBoardDTO.cleanSpace();
 	}
 	
 	

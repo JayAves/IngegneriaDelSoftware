@@ -1,19 +1,18 @@
 package it.polimi.ingsw.ps29.server;
 
 import java.io.IOException;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 
 public class ServerSerializator {
 	
@@ -21,42 +20,37 @@ public class ServerSerializator {
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private SocketClientThread thread;
-	private Timer timer;
-	private ArrayList<Task> timeOuts;
+	private final ScheduledExecutorService scheduler;
+	ScheduledFuture<?> beeperHandle;
 	
 	public ServerSerializator (SocketClientThread thread,Socket socket, ObjectOutputStream oos, ObjectInputStream ooi) {
 		this.socket = socket;
-		//System.out.println("ServerSerializator: "+socket);
 		this.thread= thread;
 		this.oos = oos;
 		this.ois = ois;
-		timer= new Timer();
-		timeOuts= new ArrayList<Task>();
+		scheduler = Executors.newScheduledThreadPool(1);
 		
 	}
 	
 	public void serializeObject (Object o) {
-		
-		
 		try {
 			
-			if (o instanceof FirstBoardInfo) {
+			if (o instanceof FirstBoardInfo) 
 				((FirstBoardInfo)o).setTimer(thread.actionTimer);
-			}
 			
-			if (o instanceof InfoForView) {
+			else if (o instanceof InfoForView) 
 				((InfoForView)o).setTimer(thread.actionTimer);
-			}
+			
 			
 			oos.writeObject(o);
 			oos.flush();
 	
 			if (((InteractionMessage)o).getBi()) { //only for bidirectional messages
 				Task task= new Task();
-				timeOuts.add(task);
-				timer.schedule(task, thread.actionTimer);
+				
+				beeperHandle = scheduler.schedule(task, thread.actionTimer, TimeUnit.MILLISECONDS);
+				System.out.println("Msg sended by: "+((InteractionMessage)o).getName());
 			}	
-			
 			
 			
 		} catch (IOException e) {
@@ -68,21 +62,20 @@ public class ServerSerializator {
 		
 	}
 	
-	protected class Task extends TimerTask{
+	protected class Task implements Runnable{
 
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
+			System.out.println("TIMER on the server EXPIRED");
+			
 			ServerSerializator.this.thread.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(thread.getName());
+			
 			msg.setTimeExpired();
 			thread.notifyController(msg);
-			
 		}
 		
 	}
 	
-	public ArrayList<Task> getTasks() {
-		return timeOuts;
-	}
+	
 }

@@ -5,21 +5,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
+import it.polimi.ingsw.ps29.view.InputOutput;
 
 public class InputWithTimer implements Runnable {
 	private boolean endTime = false;
 	private boolean running = false;
-	private long startTime;
 	private int timer;
+	private InputOutput inOut;
 	
-	public InputWithTimer(int timer) {
+	public InputWithTimer(int timer, InputOutput inOut) {
 		this.timer = timer;
+		this.inOut = inOut;
 	}
 	
 	public int read() throws ExpiredTimeException {
 		int input = -1;
 		BufferedReader in;
-		startTime = System.currentTimeMillis();
 		running = true;
 		
 		//parte il thread che controlla la scadenza del timer
@@ -39,9 +40,11 @@ public class InputWithTimer implements Runnable {
 					}
 				}
 	
-				if (!in.ready()) 
+				if (!in.ready())  {
 					//sono uscito dal while ma l'utente non ha inserito nessun messaggio
+					running = false;
 					throw new ExpiredTimeException();
+				}
 				
 				try {
 					input = new Integer(in.readLine());
@@ -68,6 +71,7 @@ public class InputWithTimer implements Runnable {
 	@Override
 	public void run() {
 		while (running) {
+			
 			try {
 				Thread.sleep(100);
 				
@@ -76,7 +80,7 @@ public class InputWithTimer implements Runnable {
 				Thread.currentThread().interrupt();
 			}
 			
-			if (System.currentTimeMillis() - startTime > timer)
+			if (System.currentTimeMillis() - inOut.getTimeStart() > timer)
 				endTime = true;
 		}
 	}

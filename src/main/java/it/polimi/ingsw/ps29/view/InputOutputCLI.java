@@ -31,7 +31,8 @@ public class InputOutputCLI implements InputOutput {
 	
 	//Scanner scanner;
 	private FakeScanner scanner;
-	private int turnTimer;
+	private int turnTimer; //tempo per completare l'azione
+	private long timeStart; //memorizzo il tempo di inizio dell'azione
 	
 	public InputOutputCLI () {
 		setTimer(19000);
@@ -46,15 +47,13 @@ public class InputOutputCLI implements InputOutput {
 		
 		if (message instanceof PlayerInfoMessage) {
 			
-				if (!((PlayerInfoMessage) message).getTimeExpired())
-					System.out.println( "\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+" has left the Game!\n\n");
+			if (!((PlayerInfoMessage) message).getTimeExpired())
+				System.out.println( "\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+" has left the Game!\n\n");
 				
 			else
-				
 				System.out.println("\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+"'s time for action expired! he's now suspended from game\n\n");
 			
-			
-				}
+		}
 		
 	}
 	
@@ -364,6 +363,7 @@ public class InputOutputCLI implements InputOutput {
 	@Override
 	public ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException {
 		System.out.println("\n"+msg.getName().toUpperCase()+", It's your turn!\n");
+		timeStart = System.currentTimeMillis();
 		
 		int[] temp = askTypeOfAction();
 		msg.setChoice(0, temp[0]);
@@ -440,10 +440,15 @@ public class InputOutputCLI implements InputOutput {
 	@Override
 	public void setTimer(int timer) {
 		turnTimer= timer;
-		scanner = new FakeScanner(turnTimer);
+		scanner = new FakeScanner(turnTimer, this);
 	
 	}
 	public int getTimer() {
 		return turnTimer;
+	}
+
+	@Override
+	public long getTimeStart() {
+		return timeStart;
 	}
 }
