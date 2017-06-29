@@ -111,7 +111,7 @@ public class RoomCreator extends Thread implements Observer{
 					System.out.println("\nOld view:"+client.toString());
 					client.stopClient();
 					room.getController().addView(thread.getClientName(),  thread );
-					
+					thread.addObserver(room.getController());
 					thread.setInGame(true);
 					System.out.println("\nNew View:"+thread.toString());
 					return true;
