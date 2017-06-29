@@ -67,8 +67,14 @@ public class GameBoard{
 				
 		//devo leggere ed assegnare bonus da file
 		spaces = new HashMap <String, ActionSpace> ();
-		spaces.put("Harvest", new HarvestArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
-		spaces.put("Production", new ProductionArea (new SingleSlotActionSpace(1), new QueueActionSpace(1)));
+		if (playersOrder.size()==2) {
+			spaces.put("Harvest", new HarvestArea (new SingleSlotActionSpace(1), new QueueActionSpace(1,true)));
+			spaces.put("Production", new ProductionArea (new SingleSlotActionSpace(1), new QueueActionSpace(1, true)));
+		}
+		else {
+			spaces.put("Harvest", new HarvestArea (new SingleSlotActionSpace(1), new QueueActionSpace(1,false)));
+			spaces.put("Production", new ProductionArea (new SingleSlotActionSpace(1), new QueueActionSpace(1, false)));
+		}
 		spaces.put("territoryTower", new TowerArea ());
 		((TowerArea)spaces.get("territoryTower")).setBonus(resources[0].getBonus(),3);
 		((TowerArea)spaces.get("territoryTower")).setBonus(resources[1].getBonus(),4);

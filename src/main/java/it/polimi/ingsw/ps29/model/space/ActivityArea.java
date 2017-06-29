@@ -48,5 +48,8 @@ public class ActivityArea implements ActionSpace {
 		
 	}
 	
+	public boolean getClosed() {
+		return queue.getClosed();
+	}
 
 }

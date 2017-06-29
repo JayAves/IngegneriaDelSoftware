@@ -34,7 +34,8 @@ public class HarvestAction extends Action {
 	public boolean isPlaceable() throws RejectException {
 		return ( move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
 				!space.familiarHere(move.getFamiliar().getPlayerColor())) 
-				&& space.isEnoughPowerful(move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants());
+				&& space.isEnoughPowerful(move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants())
+				&& ((!space.isEmpty())&&(space.getClosed()));
 	}
 
 	@Override

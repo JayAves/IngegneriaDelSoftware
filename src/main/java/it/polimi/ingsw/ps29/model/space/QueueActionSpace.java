@@ -10,13 +10,16 @@ public class QueueActionSpace {
 	
 	private ArrayList<FamilyMemberInterface> queue;
 	final int powerRequired;
+	private boolean closed;
 	
-	public QueueActionSpace (int power) {
+	public QueueActionSpace (int power, boolean close) {
 		queue = new ArrayList<FamilyMemberInterface>();
 		powerRequired = power;
+		this.closed= close;
 	}
 	
 	public boolean familiarHere (Color playerColor) {
+	
 		for (FamilyMemberInterface member: queue) 
 			if (member.getPlayerColor() == playerColor && member.getFamiliarColor()!=DiceColor.NEUTRAL) 
 				return true;
@@ -38,5 +41,8 @@ public class QueueActionSpace {
 	public void cleanSpace () {
 		queue = new ArrayList<FamilyMemberInterface>();
 	}
-
+	
+	public boolean getClosed() {
+		return closed;
+	}
 }

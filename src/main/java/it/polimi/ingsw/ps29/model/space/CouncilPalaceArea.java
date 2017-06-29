@@ -11,7 +11,7 @@ public class CouncilPalaceArea implements ActionSpace {
 	private QueueActionSpace queue;
 	
 	public CouncilPalaceArea (int power){
-		queue = new QueueActionSpace(power);
+		queue = new QueueActionSpace(power, false);
 	}
 
 	@Override
