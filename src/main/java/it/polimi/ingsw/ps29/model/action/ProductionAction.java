@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
+import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.Card;
@@ -36,12 +37,16 @@ public class ProductionAction extends Action {
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		return (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS ||  move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
+		return (twoPlayersCheck() && move.getFamiliar().getFamiliarColor()==DiceColor.BONUS ||  move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
 				!space.familiarHere(move.getFamiliar().getPlayerColor()) ) && space.isEnoughPowerful(
-				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants())
-				&& ((!space.isEmpty())&&(space.getClosed()));
+				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
 	}
 
+	private boolean twoPlayersCheck() throws SpaceOccupiedException {
+		if ((!space.isEmpty()) && (space.getClosed()))
+			throw new SpaceOccupiedException();
+		else return true;
+	}
 	@Override
 	public void performAction() {
 		if(!space.isEmpty() && !move.getPlayer().getLudovicoAriosto())

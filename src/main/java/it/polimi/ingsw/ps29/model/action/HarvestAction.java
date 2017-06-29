@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
+import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
@@ -32,10 +33,9 @@ public class HarvestAction extends Action {
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		return ( move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
+		return ( twoPlayersCheck() && move.getFamiliar().getFamiliarColor()==DiceColor.BONUS || move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
 				!space.familiarHere(move.getFamiliar().getPlayerColor())) 
-				&& space.isEnoughPowerful(move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants())
-				&& ((!space.isEmpty())&&(space.getClosed()));
+				&& space.isEnoughPowerful(move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getHarvestPower() + move.getServants());
 	}
 
 	@Override
@@ -66,5 +66,9 @@ public class HarvestAction extends Action {
 		move.getFamiliar().setBusy(true);
 		
 	}
-
+	private boolean twoPlayersCheck() throws SpaceOccupiedException {
+		if ((!space.isEmpty()) && (space.getClosed()))
+			throw new SpaceOccupiedException();
+		else return true;
+	}
 }
