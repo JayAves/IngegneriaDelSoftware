@@ -24,7 +24,7 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	public void messageforMyThread(String loginToken, InteractionMessage msg ) throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		myGatherer.getThread(loginToken).getTimeOuts().get(0).cancel();
+		myGatherer.getThread(loginToken).beeperHandle.cancel(true);
 		myGatherer.getThread(loginToken).notifyController(msg);
 	}
 

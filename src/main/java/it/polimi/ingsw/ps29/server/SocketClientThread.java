@@ -29,7 +29,7 @@ public class SocketClientThread extends ClientThread {
 		IDcode= playerLogin.getToken();
 		inGame=false;
 		
-		//turnTimer= TimerJson.turnTimer;
+		
 		
 		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
 	}
@@ -108,7 +108,7 @@ public class SocketClientThread extends ClientThread {
 	
 	public void endOfThis() {
 		
-		//se il giocatore si disconnette cancello il timer eventuale
+		//if player logs out, any scheduled timer is deleted//
 		if(serializator.beeperHandle != null)
 			serializator.beeperHandle.cancel(false);
 		
