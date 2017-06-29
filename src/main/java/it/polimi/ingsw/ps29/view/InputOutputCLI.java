@@ -175,7 +175,7 @@ public class InputOutputCLI implements InputOutput {
 						choice.setChoice(2, scanner.nextInt());
 					} catch (Exception e) {
 						System.err.println(e.getMessage());
-						choice.setChoice(2, 0);
+						choice.setChoice(2, 1);
 					}
 				} while(choice.getChoice(2)<0 || choice.getChoice(2)>i);	
 			}

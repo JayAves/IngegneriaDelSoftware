@@ -37,7 +37,6 @@ import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
-import it.polimi.ingsw.ps29.model.action.actionstates.RejectedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
@@ -133,30 +132,26 @@ public class Controller implements Observer{
 		}
 	}
 	
-	public void playerInactivePlacement () {
-		sendInfo=false;
-		info = new InfoForView(model.getCurrentPlayer().getName());
-		info.familiar=placeRandomFamiliar();
-		info.playerColor = model.getCurrentPlayer().getColor();
-		info.space=12;
-		if (info.familiar!=-1)	
-			sendInfo=true;
-		if(sendInfo) {
-			info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
-			for(Player player: model.getBoard().getPlayers()) {
-				ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
-				for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
-					resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
-				info.resSituation.put(player.getName(), resCon);
-			}
-			for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
-				viewz.getValue().startInteraction(info);
+	private void playerInactivePlacement () {
+		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), 
+				model.getCurrentPlayer().getColor(), placeRandomFamiliar());
+		
+		info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
+		for(Player player: model.getBoard().getPlayers()) {
+			ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
+			for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
+				resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
+			info.resSituation.put(player.getName(), resCon);
 		}
+		for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
+			viewz.getValue().startInteraction(info);
+		
 		stateOfAction= new PerformedState();
 		stateOfAction = stateOfAction.afterAction(model);
 		callGameEngine = false;
 		gameEngine();
 	}
+	
 
 	private boolean PlayersConnected() {
 		
@@ -382,21 +377,19 @@ public class Controller implements Observer{
 		public void visit(PlayerInfoMessage playerInfoMessage) {
 			// TODO Auto-generated method stub
 			
-//			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-//				view.getValue().startInteraction(playerInfoMessage);
+			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+				view.getValue().startInteraction(playerInfoMessage);
 			
 			//se il giocatore che si è disconnesso è di turno
 			if(playerInfoMessage.getName().equals(model.getCurrentPlayer().getName())) {
 				
-				System.out.println("1 - "+playerInfoMessage.getName());
-				if ((stateOfAction instanceof RejectedState)||(stateOfAction instanceof ToEstablishState)) 
+				if ((stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))||
+						(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))) 
 					playerInactivePlacement();
 				
-				else if (stateOfAction instanceof VaticanChoice) {
-					VaticanChoice msg= new VaticanChoice(playerInfoMessage.getName());
-					msg.setSustain(false);
-					handleExcommunication(msg);
-				}
+				else if (stateOfAction instanceof VaticanChoice) 
+					handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
+				
 				
 				else {
 					//gestione disconnessione in altri stati dell'azione
@@ -411,7 +404,7 @@ public class Controller implements Observer{
 		}
 	}
 	
-	private int placeRandomFamiliar() {
+	int placeRandomFamiliar() {
 		
 		if (!model.getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy()) {
 			model.getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
@@ -544,8 +537,17 @@ public class Controller implements Observer{
 			if(!isStateThreeTerminated()) {
 				//devo chiedere la scelta a un giocatore
 				player = model.getCurrentPlayer().getName();
-				VaticanChoice msg = new VaticanChoice (player);
-				views.get(player).startInteraction(msg);
+				
+				if(views.get(player).getInGame()) {
+					VaticanChoice msg = new VaticanChoice (player);
+					views.get(player).startInteraction(msg);
+				} 
+				
+				else {
+					handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
+					gameEngine();
+				}
+				
 			}
 		
 			else {
@@ -612,7 +614,7 @@ public class Controller implements Observer{
 		//costruisco l'oggetto per le scomuniche
 		ArrayList<ExcommunicationCardDTO> exCards = new ArrayList<ExcommunicationCardDTO>();
 		for (int i=0; i<3; i++) {
-			ExcommunicationCard exCard = model.getBoard().getExcommunication(i+1);
+			ExcommunicationCard exCard = model.getBoard().getExcommunication(2*(i+1));
 			exCards.add(new ExcommunicationCardDTO(exCard.getId(), exCard.getPeriod(), exCard.toString()));
 		}
 		
