@@ -198,7 +198,7 @@ public class TowerAction extends Action {
 	
 	private boolean enoughMilitaryPointsForVenture() throws NotEnoughMilitaryException{
 		
-		if((space.takeCard().getType().equals("venture"))&&(move.getPayment().equals("military"))) {
+		if(space.takeCard().getType().equals("venture")) {
 			
 			VentureCard card= (VentureCard) space.takeCard();
 			
