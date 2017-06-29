@@ -3,6 +3,7 @@
 {
 "name" : "Francesco Sforza",
 "id" :1,
+"permanent" : "false",
 "leaderEffect" : {
         "effectType": "BonusActivityEffect",
         "effectData" :
@@ -16,6 +17,7 @@
 {
 "name" : "Ludovico Ariosto",
 "id" :2,
+"permanent" : "true",
 "leaderEffect" : {
         "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "Ludovico Ariosto"}},
@@ -27,6 +29,7 @@
 {
 "name" : "Filippo Brunelleschi",
 "id" :3,
+"permanent" : "true",
 "leaderEffect" : {
         "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "Filippo Brunelleschi"}},
@@ -38,6 +41,7 @@
 {
 "name" : "Sigismondo Malatesta",
 "id" :4,
+"permanent" : "true",
 "leaderEffect" : {
         "effectType": "FamiliarEmpowermentByColor",
         "effectData" :{ "diceEmpowerment" : 3,
@@ -61,6 +65,7 @@
 {
 "name" : "Girolamo Savonarola",
 "id" :5,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -82,6 +87,7 @@
 {
 "name" : "Michelangelo Buonarroti",
 "id" :6,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -103,6 +109,7 @@
 {
 "name" : "Giovanni Dalle Bande Nere",
 "id" :7,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":{ 
@@ -140,6 +147,7 @@
 {
 "name" : "Leonardo da Vinci",
 "id" :8,
+"permanent" : "false",
 "leaderEffect" : {
         "effectType": "BonusActivityEffect",
         "effectData" :
@@ -153,6 +161,7 @@
 {
 "name" : "Sandro Botticelli",
 "id" :9,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -180,6 +189,7 @@
 {
 "name" : "Ludovico Il Moro",
 "id" :10,
+"permanent" : "true",
 "leaderEffect" : {
         "effectType": "FixFamilyMemberPowerByColor",
         "effectData" :{ "diceEmpowerment" : 5,
@@ -192,6 +202,7 @@
 {
 "name" : "Lucrezia Borgia",
 "id" :11,
+"permanent" : "true",
 "leaderEffect" : {
         "effectType": "FamiliarEmpowermentByColor",
         "effectData" :{ "diceEmpowerment" : 2,
@@ -205,6 +216,7 @@
 {
 "name" : "Sisto IV",
 "id" :14,
+"permanent" : "true",
 "leaderEffect" : {
         "effectType": "GeneralExcommunications",
         "effectData" :{ "effectName" : "SistoIV"}},
@@ -235,6 +247,7 @@
 {
 "name" : "Cosimo De Medici",
 "id" :17,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -258,6 +271,7 @@
 {
 "name" : "BartolomeoColleoni",
 "id" :18,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -275,6 +289,7 @@
 {
 "name" : "Ludocvico III Gonzaga",
 "id" :19,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
@@ -296,6 +311,7 @@
 {
 "name" : "Fake Ludocvico III Gonzaga ",
 "id" :19,
+"permanent" : "false",
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":

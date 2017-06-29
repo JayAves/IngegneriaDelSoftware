@@ -153,7 +153,7 @@ public class GameBoard{
 		return excommunicationDeck;
 	}
 	
-	public ArrayList<LeaderCard> getLeaaderDeck(){
+	public ArrayList<LeaderCard> getLeaderDeck(){
 		return leaderCards;
 	}
 	
@@ -194,7 +194,7 @@ public class GameBoard{
 	public void randomExcommunication () {
 		for(int i=0; i<excommunicationDeck.size(); i++) {
 			int rnd= new Random().nextInt(excommunicationDeck.get(i).getDeck().size());
-			excommunications.put(i+1, excommunicationDeck.get(i).getCard(rnd));
+			excommunications.put(2*(i+1), excommunicationDeck.get(i).getCard(rnd));
 		}
 	}
 	

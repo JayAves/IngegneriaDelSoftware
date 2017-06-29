@@ -6,6 +6,7 @@ import java.util.Random;
 import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.cards.Deck;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.game.Dice;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -22,7 +23,8 @@ public class RoundSetupState implements RoundState {
 		roundNumber++;
 		match.setRound(roundNumber);
 		initDecks (roundNumber, match.getBoard());
-		
+		flipLeaderCards(match);
+			
 		
 		for(Dice dice: match.getBoard().getDices()) {
 			dice.rollDice();
@@ -62,6 +64,20 @@ public class RoundSetupState implements RoundState {
 			}
 		}
 		
+	}
+	
+	private void flipLeaderCards(Match match){
+		for (Player player : match.getBoard().getPlayers()){
+			if (!player.getPersonalBoard().getActivatedLeaderCards().isEmpty()){
+				ArrayList<LeaderCard> toRemove = new ArrayList<LeaderCard>();
+				for (LeaderCard card : player.getPersonalBoard().getActivatedLeaderCards()){
+					if (!card.getIfPermanent())
+						toRemove.add(card);
+				}
+				player.getPersonalBoard().getPlayedLeaderCards().addAll(toRemove);
+				player.getPersonalBoard().getActivatedLeaderCards().removeAll(toRemove);
+		}
+		}
 	}
 	
 	public Period getPeriod(int roundnumber) {

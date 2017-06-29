@@ -65,16 +65,21 @@ public class LeaderAction extends Action{
 					move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
 				}
 					
-				if ( (card.get(4).equals("ACTIVATE") || card.get(4).equals("PLAY"))){
+				if (card.get(4).equals("PLAY")){
 					move.getPlayer().getPersonalBoard().getPlayedLeaderCards().add(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getLeaderCards()));
 					move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
-					if (card.get(4).equals("ACTIVATE")){
-						move.getPlayer().getPersonalBoard().getActivatedLeaderCards().add(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getPlayedLeaderCards()));
-						move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getActivatedLeaderCards()).getEffect().performEffect(move.getPlayer());;
+					}
+				if (card.get(4).equals("ACTIVATE")){
+					move.getPlayer().getPersonalBoard().getActivatedLeaderCards().add(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getPlayedLeaderCards()));
+					move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getActivatedLeaderCards()).getEffect().performEffect(move.getPlayer());
+					if ((int)card.get(2) == 0)
+						move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
+						else
+							move.getPlayer().getPersonalBoard().removePlayedLeaderById((int)card.get(0));
 					}
 				}
 			}
-			}		
+					
 	}
 
 }

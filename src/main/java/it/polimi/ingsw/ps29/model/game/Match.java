@@ -122,11 +122,11 @@ public class Match extends Observable{
 	    }
 	    
 	   for (LeaderCard card : lCardz)
-	    	board.getLeaaderDeck().add(card);
+	    	board.getLeaderDeck().add(card);
 	    
 	    board.randomExcommunication();
 	    
-			ArrayList<LeaderCard> draft = board.getLeaaderDeck();
+			ArrayList<LeaderCard> draft = board.getLeaderDeck();
 			for (int i = 0 ; i < board.getPlayers().size(); i++){
 				ArrayList<LeaderCard> drafted = new ArrayList<LeaderCard>();
 				for(int j = 0; j < 4 ; j++){

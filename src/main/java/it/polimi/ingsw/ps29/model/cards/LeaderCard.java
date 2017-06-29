@@ -49,6 +49,11 @@ public class LeaderCard {
     	return requirements;
     }
     
+    public boolean getIfPermanent(){
+    	return permantenteffect;
+    }
+    
+    
     public HashMap<String, Integer> getCardRequirements(){
     	
     	HashMap<String, Integer> cardRequirementsHash = new HashMap<String, Integer>();
