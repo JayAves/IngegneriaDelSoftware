@@ -19,8 +19,10 @@ public class VentureCard extends Card {
 	
 	@Override
 	public String toString () {
-		return super.toString()+"\nneededPoints: "+ neededPoints;
+		return super.toString()+", neededPoints: "+ neededPoints;
 	}
 	
-
+	public int getNeededPoints() {
+		return neededPoints;
+	}
 }

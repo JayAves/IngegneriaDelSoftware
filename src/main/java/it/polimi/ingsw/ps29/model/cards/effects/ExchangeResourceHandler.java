@@ -116,12 +116,12 @@ public class ExchangeResourceHandler implements Cloneable, Serializable {
 		for(Resource res: resourcesOut)
 			msg+=res.toString();
 		if(chooseOut)
-			msg+="[Optional]\n";
-		msg+="\nRes in: ";
+			msg+=", [Optional]: ";
+		msg+="; Res in: ";
 		for(Resource res: resourcesIn)
 			msg+=res.toString();
 		if(chooseIn)
-			msg+="[Optional]\n";
+			msg+="[Optional]: ";
 		return msg;
 	}
 }

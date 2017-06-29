@@ -62,18 +62,18 @@ public abstract class Card {
 	public String getName() {
 		return name;
 	}
-/*
-	@Override
+
+/*	@Override
 	public String toString() {
-		String msg = "Card name:" + name + ", period:" + period + ", type:" + type +"\nimmediate: ";
+		String msg = "Card name:" + name + ", period:" + period + ", type:" + type +"immediate: ";
 		for(Effect eff: immediateEffects)
 			msg+=eff.toString();
-		msg+="\npermanent:";
+		msg+=", permanent:";
 		for(Effect eff: permanentEffects)
 			msg+=eff.toString();
-		msg+="\ncost: ";
+		msg+=", cost: ";
 		for(Resource res: cost)
-			msg+=res.toString()+"\n";
+			msg+=res.toString()+"";
 		return msg;
 	}
 */

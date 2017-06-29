@@ -25,6 +25,6 @@ public class BuildingCard extends Card{
 	
 	@Override
 	public String toString () {
-		return super.toString()+"\nforce: "+productionForce;
+		return super.toString()+", force: "+productionForce;
 	}
 }

@@ -6,9 +6,10 @@ import it.polimi.ingsw.ps29.messages.exception.FullCardBoardException;
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughResourcesException;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
-import it.polimi.ingsw.ps29.messages.exception.TerritoryCardException;
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughMilitaryException;
 import it.polimi.ingsw.ps29.messages.exception.TowerCoinMalusException;
 import it.polimi.ingsw.ps29.model.action.actionstates.BonusActionState;
+import it.polimi.ingsw.ps29.model.cards.VentureCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
@@ -17,11 +18,13 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 
 public class TowerAction extends Action {
 
 	private TowerArea space;
+	private ResourceInterface power;
 	
 	public TowerAction(Match model, Move move) {
 		super(model, move);
@@ -38,13 +41,6 @@ public class TowerAction extends Action {
 	@Override
 	public boolean isPlaceable() throws RejectException {
 		// TODO Auto-generated method stub
-		/*System.out.println(move.getFamiliar().getTowerPower());
-		System.out.println(space.familiarHere(move.getFamiliar().getPlayerColor()));
-		System.out.println(space.isEnoughPowerful(move.getFamiliar().getTowerPower()+move.getServants()));
-		System.out.println(canAffordMalus());
-		System.out.println(canAffordCard());
-		System.out.println(enoughSlotSpace());
-		System.out.println(enoughVictoryPoints());*/
 		
 		//se è presente un familiare qualsiasi sulla torre e non si possono pagare tre monete
 		if(!space.isEmpty() && (!canAffordMalus() && !move.getPlayer().getBrunelleschi()))
@@ -56,7 +52,7 @@ public class TowerAction extends Action {
 		if ( (move.getFamiliar().getFamiliarColor()==DiceColor.BONUS ||  move.getFamiliar().getFamiliarColor()==DiceColor.NEUTRAL ||
 				!space.familiarHere(move.getFamiliar().getPlayerColor()) ) &&
 		canAffordCardResourcesCost() && enoughSlotSpace()
-		&& enoughMilitaryPoints())  {
+		&& enoughMilitaryPointsForTerritory() && enoughMilitaryPointsForVenture() )  { 
 			int power;
 			switch (move.getSpace()) {
 				case "territoryTower":
@@ -93,10 +89,12 @@ public class TowerAction extends Action {
 		}
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
-		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
-		//if I have permanent effects about discounts...
-		applyDiscounts(discountedCosts);
 		
+		
+		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
+			//if I have permanent effects about discounts...
+			applyDiscounts(discountedCosts);
+			
 		for(Resource res: discountedCosts){  //pago costi
 			res.negativeAmount();
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
@@ -107,7 +105,7 @@ public class TowerAction extends Action {
 				state = new BonusActionState(((BonusActionEffect)immediateEffect).clone());
 			else //eseguo l'effetto immediato se non si tratta di una bonus action
 				immediateEffect.performEffect(move.getPlayer());
-		
+	
 		space.getPlacementFloor().setCard(null); 
 		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
@@ -165,7 +163,7 @@ public class TowerAction extends Action {
 		throw new FullCardBoardException ();
 	}
 
-	private boolean enoughMilitaryPoints() throws TerritoryCardException {
+	private boolean enoughMilitaryPointsForTerritory() throws NotEnoughMilitaryException {
 		if(space.takeCard().getType().equals("territory")) {
 			
 			int size= move.getPlayer().getPersonalBoard().getCards("territory").size();
@@ -190,13 +188,32 @@ public class TowerAction extends Action {
 			}
 			if (canAfford)
 				return true;
-			throw new TerritoryCardException();
+			throw new NotEnoughMilitaryException();
 		}
 		
 		else 
 			return true;
 		//da fare la parte per i punti necessari alle venture card
 	}
+	
+	private boolean enoughMilitaryPointsForVenture() throws NotEnoughMilitaryException{
+		
+		if((space.takeCard().getType().equals("venture"))&&(move.getPayment().equals("military"))) {
+			
+			VentureCard card= (VentureCard) space.takeCard();
+			
+			if (move.getPlayer().getPersonalBoard().getResources().getResource("military").getAmount() >= card.getNeededPoints())
+				return true;
+			else 
+				throw new NotEnoughMilitaryException();
+			
+		}
+		
+		else
+			return true;
+	}
+		
+
 	
 	private void applyDiscounts( ArrayList<Resource> costs) {
 		for (Effect eff: move.getPlayer().specialPermanentEffects) 
