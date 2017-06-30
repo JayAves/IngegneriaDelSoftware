@@ -2,9 +2,6 @@ package it.polimi.ingsw.ps29.server;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -14,14 +11,17 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
-import it.polimi.ingsw.ps29.server.ServerSerializator.Task;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
+
+/**
+ * ClientThread that uses RMI technology for client-server Connection. Username is the one received by client.
+ * @author Pietro Grotti
+ * @see ClientThread
+ */
 
 public class RMIClientThread extends ClientThread implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 2656528845360500313L;
 	protected String username;
 	protected boolean recentlyPoked;
@@ -29,7 +29,11 @@ public class RMIClientThread extends ClientThread implements Serializable{
 	private final ScheduledExecutorService scheduler;
 	ScheduledFuture<?> beeperHandle;
 
-	
+	/**
+	 * Id and Username are set
+	 * @param login message got from Connection
+	 * @param clientInterface got from Connection
+	 */
 	public RMIClientThread(PlayerInfoMessage login, RmiClientInterface clientInterface) {
 		
 		this.username = login.getName();
@@ -77,7 +81,12 @@ public class RMIClientThread extends ClientThread implements Serializable{
 
 
 
-
+/**
+ * Before sending messages from Controller to Connection, if they are FirstBoardInfo or InfoForView fills their timer field
+ *  (in Client visitor will be used to set inputTimer).
+ * If notification of client fails, a PlayerInfoMessage to Controller is sent and a disconnection procedure is done.
+ */
+	
 	@Override
 	public void startInteraction(InteractionMessage msg) {
 		// TODO Auto-generated method stub
@@ -120,6 +129,11 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		}
 	}
 	
+/**
+ * Sends a PlayerInfoMessage to Controller and starts a disconnection procedure
+ * @author Pietro Grotti
+ *
+ */
 	protected class Task implements Runnable{
 
 		@Override

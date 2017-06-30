@@ -11,6 +11,12 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 
+/**
+ * Gathers new socket connections and manages SocketClientThreads, notifies the new ones to RoomCreator.
+ * @author Pietro Grotti
+ *
+ */
+
 public class SocketGatherer extends Observable implements Runnable{
 
 	private ServerSocket serverSocket;
@@ -36,6 +42,10 @@ public class SocketGatherer extends Observable implements Runnable{
 		clients= new ArrayList<SocketClientThread>();
 	}
 	
+	
+	/**
+	 * Accepts new connections, creates and notifies new SocketClientThreads, manages the old ones.
+	 */
 	public void startServer () {
 		
 		Socket socket;
@@ -49,8 +59,7 @@ public class SocketGatherer extends Observable implements Runnable{
 				oos.flush();
 				ois = new ObjectInputStream(socket.getInputStream());
 				
-				
-				//System.out.println("Connection estabilished with: "+socket);
+			
 				
 				try {
 					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
@@ -61,18 +70,17 @@ public class SocketGatherer extends Observable implements Runnable{
 					
 				for( SocketClientThread th: clients) {
 					
-					if (th.IDcode.contentEquals(virtualView.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
+					if (th.IDcode.contentEquals(virtualView.IDcode)) { //if finds player already in a game
 						virtualView.setInGame(true);
 						toDelete=th;
-						//System.out.println(virtualView.toString());
+						
 						}
 				}
 					
-					//notifica RoomCreator//
+					//notify RoomCreator//
 					setChanged();
 					notifyObservers(virtualView);
-					//System.out.println(toDelete);	
-					clients.remove(toDelete);	
+					clients.remove(toDelete);	//Get rid of old ClientThread
 					clients.add(virtualView);
 					Thread t = new Thread (virtualView);
 					t.start();

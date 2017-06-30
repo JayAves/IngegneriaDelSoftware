@@ -6,7 +6,13 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.controller.Controller;
 import it.polimi.ingsw.ps29.model.game.Match;
 
-
+/**
+ * Thread where a single game is hosted. Contains Model, Controller and ClientThreads as Views.
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ * @author Pietro Melzi
+ *
+ */
 public class Room extends Thread{
 	
 	private Match model;

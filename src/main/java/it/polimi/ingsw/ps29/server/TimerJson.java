@@ -1,5 +1,12 @@
 package it.polimi.ingsw.ps29.server;
 
+/**
+ * Contains all timers required for the App
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
+
 public class TimerJson {
     	
 	protected int actionTimer;
