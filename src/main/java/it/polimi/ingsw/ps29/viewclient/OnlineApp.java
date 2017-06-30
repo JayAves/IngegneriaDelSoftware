@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps29.view.View;
 
+/**
+ * App's client-side entry point
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * 
+ *
+ */
 
 
 public class OnlineApp {
@@ -24,7 +32,7 @@ public class OnlineApp {
 	    	System.out.println("\nSocket o RMI?");
 	    	
 	    	do { inputConnection = scanner.nextLine();
-	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI"));*/
+	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); */
 	    	
 	    
 	    	inputChoice = "CLI";	    	
@@ -37,7 +45,7 @@ public class OnlineApp {
     		View view = new View (inputChoice,  playerName);
     		
     		Client client = new Client (view, inputConnection);
-			view.addObserver(client);
+			
     		
     		//System.out.println("\nWaiting for a match");
     		

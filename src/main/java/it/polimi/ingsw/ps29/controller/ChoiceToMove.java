@@ -8,7 +8,19 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * Is responsible for conversion from client's ActionChoice or BonusChoice to Move.
+ * 
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @see Move
+ * 
+ * 
+ */
+
 public class ChoiceToMove {
+	
+	
 	
 	private GameBoard board;
 	

@@ -75,7 +75,7 @@ public class RoomCreator extends Thread implements Observer{
 		
 			} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			throw new RuntimeException();
+			interrupt();
 					
 				}
 			}	
@@ -177,7 +177,7 @@ public class RoomCreator extends Thread implements Observer{
 						// TODO Auto-generated catch block
 						System.out.println("Could not sleep!");
 						interrupt();
-						throw new RuntimeException();
+						
 					}
 				}
 				

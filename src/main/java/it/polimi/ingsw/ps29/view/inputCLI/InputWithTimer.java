@@ -7,6 +7,14 @@ import java.io.InputStreamReader;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.view.InputOutput;
 
+/**
+ * Puts a time limit for Scanner to read user input from CLI. Received a timer, uses System.currentTimeMillis to count;
+ * @author Pietro Melzi
+ * @throws ExpiredTimeException when time is over
+ * @see Scanner
+ *
+ */
+
 public class InputWithTimer implements Runnable {
 	private boolean endTime = false;
 	private boolean running = false;
@@ -36,7 +44,7 @@ public class InputWithTimer implements Runnable {
 						
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Thread.currentThread().interrupt();
 					}
 				}
 	

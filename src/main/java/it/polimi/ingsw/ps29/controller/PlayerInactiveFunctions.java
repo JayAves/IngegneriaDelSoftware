@@ -7,6 +7,12 @@ import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.game.Color;
 
+/**
+ * Allow game to go on without all players connected
+ * @author Pietro Melzi
+ *
+ */
+
 public class PlayerInactiveFunctions {
 	
 	
@@ -25,7 +31,7 @@ public class PlayerInactiveFunctions {
 		return msg;
 	}
 	
-	static ActionChoice playerinactiveBonusChoice (String player) {
+	static ActionChoice playerInactiveBonusChoice (String player) {
 		ActionChoice msg = new ActionChoice(player);
 		msg.setChoice(0, 12);
 		return msg;
