@@ -28,8 +28,6 @@ public interface InputOutput {
 	
 	abstract void showMessage(InteractionMessage message);
 	
-	abstract void printBonusAction (BonusActionEffect effect);
-	
 	abstract void showFirstInfo (FirstBoardInfo msg);
 	
 	abstract void showInfo (GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
