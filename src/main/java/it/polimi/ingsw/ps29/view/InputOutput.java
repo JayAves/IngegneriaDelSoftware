@@ -16,9 +16,25 @@ import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
+/**
+ * Contains all the methods to interact with user. Half is for showing, half is for asking and capturing input for View. A few methods are used for setting input timer.
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ *
+ */
+
 public interface InputOutput {
 	
 	abstract void showMessage(InteractionMessage message);
+	
+	abstract void printBonusAction (BonusActionEffect effect);
+	
+	abstract void showFirstInfo (FirstBoardInfo msg);
+	
+	abstract void showInfo (GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
+
+	abstract void showTowerAndDices(TowersAndDicesForView msg);
 	
 	abstract int[] askTypeOfAction () throws ExpiredTimeException;
 	
@@ -36,13 +52,7 @@ public interface InputOutput {
 	
 	abstract int askAboutExcommunication () throws ExpiredTimeException;
 	
-	abstract void showInfo (GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
-
-	abstract void showTowerAndDices(TowersAndDicesForView msg);
-
 	abstract ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation);
-
-	abstract void showFirstInfo (FirstBoardInfo msg);
 
 	abstract ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException;
 	

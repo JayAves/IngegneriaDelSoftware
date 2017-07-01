@@ -3,6 +3,12 @@ package it.polimi.ingsw.ps29.view.inputCLI;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.view.InputOutput;
 
+/**
+ * Emulates Scanner's methods, adding a timer to its behavior
+ * @author Pietro Melzi
+ *
+ */
+
 public class FakeScanner {
 	int timer;
 	InputOutput inputOutput;

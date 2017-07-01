@@ -27,15 +27,25 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.inputCLI.FakeScanner;
 
+/**
+ *
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @see InpuOutput
+ *
+ */
+
 public class InputOutputCLI implements InputOutput {
 	
 	//Scanner scanner;
 	private FakeScanner scanner;
 	private int turnTimer; //tempo per completare l'azione
 	private long timeStart; //memorizzo il tempo di inizio dell'azione
+	private final static int DEFAULT_TIMER= 19000;
+
 	
 	public InputOutputCLI () {
-		setTimer(19000);
+		setTimer(DEFAULT_TIMER);
 		
 	}
 

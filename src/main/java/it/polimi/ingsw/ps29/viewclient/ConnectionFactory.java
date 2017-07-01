@@ -2,15 +2,27 @@ package it.polimi.ingsw.ps29.viewclient;
 
 import java.io.IOException;
 
-public class ConnectionFactory extends AbstractFactory {
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 
-	/*@Override
-	Input getInput(String input) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+public class ConnectionFactory {
 
-	@Override
+	
+	/**
+	 * Establishes a connection to server, using the technology specified
+	 * @author Pietro Melzi
+	 * @author Pietro Grotti
+	 * @author Giovanni Mele
+	 * @param networking	 is the connection technology wanted
+	 * @param playerName	name to be sent to server
+	 * @return a working connection with server
+	 */
+	
 	Connection getNetworking(String networking, String playerName) {
 
 		if(networking.equals("Socket")) {

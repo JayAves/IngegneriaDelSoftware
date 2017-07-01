@@ -6,6 +6,12 @@ import java.io.FileReader;
 
 import com.google.gson.GsonBuilder;
 
+/**
+ * Entry point to turn the Server on
+ * @author Pietro Grotti
+ * 
+ *
+ */
 public class ServerMain {
 
 	

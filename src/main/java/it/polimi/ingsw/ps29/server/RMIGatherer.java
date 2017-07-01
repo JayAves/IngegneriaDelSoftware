@@ -8,11 +8,15 @@ import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.Observable;
 
+/**
+ * Sets up Registry for RMI connections, gathers new RMI connection and manages RMIClientThreads created, notifies RoomCreator of any new one.
+ * @author Pietro Grotti
+ * @see RmiServerImplementation
+ *
+ */
+
 public class RMIGatherer extends Observable implements Serializable, Runnable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3298080639785808439L;
 	
 	protected ArrayList<RMIClientThread> clients;
@@ -30,7 +34,7 @@ public class RMIGatherer extends Observable implements Serializable, Runnable{
 	public void startServer() {
 		// TODO Auto-generated method stub
 		try {
-			LocateRegistry.createRegistry(1099);//Creo un registy sulla porta 1099 (quella di default).
+			LocateRegistry.createRegistry(1099);	//Creates a registry on port 1099, the default one 
 		} catch (RemoteException e) {
 			System.out.println("Registry già presente!");			
 		}

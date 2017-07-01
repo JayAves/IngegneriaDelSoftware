@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29;
+/*package it.polimi.ingsw.ps29;
 
 import java.io.IOException;
 
@@ -36,18 +36,18 @@ public class RMITest extends TestCase {
 		creator.start();
 		
 		
-		/*String playerName= "Player";
+		String playerName= "Player";
 		RmiConnection connection1= new RmiConnection(playerName);
 		assertTrue(connection1!=null);
 		connection1.run();
 		
 	
 		assertTrue(!creator.getPlayersInQueue().isEmpty());
-		connection1.setEnd();*/
+		connection1.setEnd();
 		
 	}
 	
 	
 	
 	
-}
+}*/

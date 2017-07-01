@@ -7,6 +7,11 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
+/**
+ * Implementation of RmiServerInterface
+ * @author Pietro Grotti
+ *
+ */
 public class RmiServerImplementation extends UnicastRemoteObject implements RmiServerInterface {
 
 	RMIGatherer myGatherer;
@@ -20,6 +25,9 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 	
 	private static final long serialVersionUID = -7098548671967083832L;
 
+	/**
+	 * With the given loginToken extracts the correct RMIClientThread, resets any timer in it adn makes it send a message to Controller 
+	 */
 	@Override
 	public void messageforMyThread(String loginToken, InteractionMessage msg ) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -28,6 +36,9 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 		myGatherer.getThread(loginToken).notifyController(msg);
 	}
 
+	/**
+	 * Procedure of adding a new client
+	 */
 	@Override
 	public void addClient(RmiClientInterface clientInterface, PlayerInfoMessage player) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -36,32 +47,22 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 		
 		RMIClientThread toDelete= null;
 		for(RMIClientThread th: myGatherer.clients) {
-			if (th.IDcode.contentEquals(thread.IDcode)) { //se compare già notifico il roomCreator che dovrò allacciare alla partita giusta
+			if (th.IDcode.contentEquals(thread.IDcode)) { //if finds that client is already in a game
 				thread.setInGame(true);
 				toDelete=th;
 				}
 		}
 		
 		if (toDelete!=null)
-			myGatherer.clients.remove(toDelete);
+			myGatherer.clients.remove(toDelete); //Get rid of player's old ClientThread 
 		myGatherer.clients.add(thread);
 		
 		//Thread t= new Thread (thread);
 		//t.start();
 		myGatherer.notifyRoomCreator(thread);
-		
-		
-		//clientInterface.print("I added you as a client");
-		
+
 	}
 
-	@Override
-	public boolean inGame(String loginToken) throws RemoteException {
-		// TODO Auto-generated method stub
-		return myGatherer.getThread(loginToken).inGame;
-		
-	}
-	
 	public void setup(RMIGatherer server) {
 		myGatherer= server;
 		

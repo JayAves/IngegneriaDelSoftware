@@ -7,6 +7,12 @@ import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Hub where Rooms are made and managed. Has a queue used to put players together in new games. 
+ * @author Pietro Grotti
+ *@see Room
+ */
+
 public class RoomCreator extends Thread implements Observer{
 	
 	
@@ -42,6 +48,10 @@ public class RoomCreator extends Thread implements Observer{
 		increaseCounter();
 	}
 	
+	/**
+	 * Checks the number of players waiting, schedules roomTimer as soon as two players are in queue
+	 * @throws FileNotFoundException
+	 */
 	private synchronized void increaseCounter() throws FileNotFoundException{
 			
 		counter++;
@@ -61,7 +71,13 @@ public class RoomCreator extends Thread implements Observer{
 		}
 	}
 
-	
+	/**
+	 * Handles new players, verifying first if they are already in some games, second if they are already in queue
+	 * @param o  connection Gatherer in server
+	 * @param arg new ClientThread
+	 * @see SocketGatherer
+	 * @see RMIGatherer
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		
@@ -75,12 +91,17 @@ public class RoomCreator extends Thread implements Observer{
 		
 			} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			throw new RuntimeException();
+			interrupt();
 					
 				}
 			}	
 	}
 	
+	/**
+	 * Checks if player disconnected while in queue has reconnected
+	 * @param arg ClientThread of some player
+	 * @return if player is alreadyin queue
+	 */
 	private boolean inQueueCheck(ClientThread arg) {
 		
 		for (ClientThread th: playersInQueue) {
@@ -97,6 +118,11 @@ public class RoomCreator extends Thread implements Observer{
 		
 	}
 
+	/**
+	 * Looks for a ClientThread with same token among the ClientThreads in all Rooms. If finds any, will swap it and the new one (arg)
+	 * @param thread ClientThread of some player
+	 * @return if the ClientThread swap was performed
+	 */
 	private boolean updateView(ClientThread thread) {
 		
 		for (Room room: roomHandler) {
@@ -111,7 +137,7 @@ public class RoomCreator extends Thread implements Observer{
 					System.out.println("\nOld view:"+client.toString());
 					client.stopClient();
 					room.getController().addView(thread.getClientName(),  thread );
-					thread.addObserver(room.getController());
+					thread.addObserver(room.getController()); //Controller has new reference
 					thread.setInGame(true);
 					System.out.println("\nNew View:"+thread.toString());
 					return true;
@@ -153,7 +179,11 @@ public class RoomCreator extends Thread implements Observer{
 		return roomHandler;
 	}
 	
-	
+	/**
+	 * Works as a timer for queue. As it runs, if there are enough players in game will creare a new Room
+	 * @author Pietro Grotti
+	 *
+	 */
 	private class Task extends TimerTask{
 
 		@Override
@@ -177,11 +207,11 @@ public class RoomCreator extends Thread implements Observer{
 						// TODO Auto-generated catch block
 						System.out.println("Could not sleep!");
 						interrupt();
-						throw new RuntimeException();
+						
 					}
 				}
 				
-				//System.out.println("RoomTimer accessed");
+			
 				
 			
 		}

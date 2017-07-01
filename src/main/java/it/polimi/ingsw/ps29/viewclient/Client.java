@@ -16,12 +16,27 @@ import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.view.View;
 
+/**
+ * Responsible of client-server communication  from client side, stands between View and Connection. Manages messages between them.
+ * 
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ *
+ */
+
 public class Client implements Observer{
 	
 	
 	private View view;
 	private Connection networking;
 	private String name;
+	
+	
+	/**
+	 * Gets view's reference, creates and starts connection to server, becomes Observer of both. 
+	 * @param view player's View
+	 * @param net  wanted connection technology
+	 */
 	
 	public Client (View view, String net){
 		
@@ -30,9 +45,11 @@ public class Client implements Observer{
 		ConnectionFactory factory= new ConnectionFactory();
 		networking=factory.getNetworking(net, name);
 		networking.addObserver(this);
+		view.addObserver(this);
 		new Thread(networking).start();
 		
 	}
+	
 	
 	@Override
 	public void update(Observable o, Object arg) { //riceve da view e da socket/rmi
@@ -51,6 +68,12 @@ public class Client implements Observer{
 			throw new IllegalArgumentException();
 	}
 
+	/**
+	 * Client's dispatcher for messages coming from server. Each InteractionMessage is converted in calling a specific method on View
+	 * @author Pietro Melzi
+	 * @author Pietro Grotti
+	 *
+	 */
 	public class VisitorServerMessages{
 	    	
 	    	public void receive (ActionChoice msg) {

@@ -14,7 +14,8 @@ import it.polimi.ingsw.ps29.server.RmiServerInterface;
 public class RmiConnection extends Connection implements RmiClientInterface {
 
 	/**
-	 * 
+	 * Connection client-server through RMI
+	 * @author Pietro Grotti
 	 */
 	private static final long serialVersionUID = 9143857205348640115L;
 	String playerName;
@@ -23,6 +24,12 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	private PlayerInfoMessage loginMessage;
 	boolean end=false;
 	
+	/**
+	 * Sets login token, opens a new RMI connection with server( obtaining server's RmiServerInterface references and exporting its RmiClientInterface), sends its first info (name and login token).
+	 * @author Pietro Grotti
+	 * @param playerName
+	 * @throws IOException
+	 */
 	public RmiConnection(String playerName) throws IOException {
 	
 		
@@ -65,7 +72,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		}
 	}
 
-	//metodi di Connection//
+	//Connection's methods//
 	
 	@Override
 	public void sendMessage(InteractionMessage msg) {
@@ -83,7 +90,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	}
 
 	
-	//metodi di ClientInterface//
+	//ClientInterface's methods//
 	
 	@Override
 	public void notify(InteractionMessage object) throws RemoteException {

@@ -24,6 +24,14 @@ import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
+/**
+ * Displays all to info to user, catches and notifies any input from user.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
+
 public class View extends Observable implements Observer {
 	
 	private InputOutput inputOutput;
