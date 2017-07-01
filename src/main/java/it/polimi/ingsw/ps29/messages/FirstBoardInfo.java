@@ -8,11 +8,16 @@ import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
+/**
+ * Contains data about GameBoard to show in View. It is sent at the beginning of every round. Brings also turn's timer for FakeScanner.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @see GameBoard
+ * @see InputWithTimer
+ */
 public class FirstBoardInfo extends InteractionMessage {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -5849206424080102207L;
 	private HashMap<String, PersonalBonusTileDTO> tile;
 	private ArrayList<ExcommunicationCardDTO> exCards;

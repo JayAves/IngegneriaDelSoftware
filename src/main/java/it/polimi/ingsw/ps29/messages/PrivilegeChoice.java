@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
+/**
+ * Contains data about a privilege choice.
+ * @author Pietro Melzi
+ * 
+ */
 public class PrivilegeChoice extends InteractionMessage {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -7857119179517355732L;
 	private int prvilieges;
 	private ArrayList <ResourceType> choices;

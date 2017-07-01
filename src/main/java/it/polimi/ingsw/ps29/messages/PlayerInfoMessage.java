@@ -3,6 +3,15 @@ package it.polimi.ingsw.ps29.messages;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
+/**
+ * Contains data about players. 
+ * Is sent from client to server to queue in a new game or to reconnect to an existing one. 
+ * Is sent from ClientThreads to Controller in server to alert about a player disconnecting.
+ * Is sent from Controller to player's Views to notify some players' disconnection.
+ * @author Pietro Grotti
+ *
+ */
+
 public class PlayerInfoMessage extends InteractionMessage {
 
 	private String loginToken;
