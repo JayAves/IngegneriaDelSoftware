@@ -64,15 +64,23 @@ public class View extends Observable implements Observer {
 	
 	
 	public void askBonusAction (BonusChoice msg) {
-		msg = inputOutput.handleBonusAction (msg);
-		setChanged();
-		notifyObservers(msg);
+		try {
+			msg = inputOutput.handleBonusAction (msg);
+			setChanged();
+			notifyObservers(msg);
+		} catch (ExpiredTimeException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void askAboutExchange (Exchange msg) {
-		msg = inputOutput.askExchange(msg);
-		setChanged();
-		notifyObservers(msg);
+		try {
+			msg = inputOutput.askExchange(msg);
+			setChanged();
+			notifyObservers(msg);
+		} catch (ExpiredTimeException e) {
+			e.getMessage();
+		}
 	}
 
 	@Override
@@ -82,23 +90,32 @@ public class View extends Observable implements Observer {
 
 	
 	public void askAboutExcommunication (VaticanChoice msg) {
-		int choice = inputOutput.askAboutExcommunication();
-		//1 per sostenere, 0 per non sostenere
-		//la condizione choice==1 traduce la scelta in un boolean
-		msg.setSustain(choice==1);
-		setChanged();
-		notifyObservers(msg);
+		try {
+			int choice = inputOutput.askAboutExcommunication();
+			//1 per sostenere, 0 per non sostenere
+			//la condizione choice==1 traduce la scelta in un boolean
+			msg.setSustain(choice==1);
+			setChanged();
+			notifyObservers(msg);
+		} catch (ExpiredTimeException e) {
+			e.getMessage();
+		}
 	}
 	
 	public void askAboutPrivileges (PrivilegeChoice msg) {
-		ResourceType type;
-		while(msg.getChoices().size()<msg.getPrvilieges()){
-			type = inputOutput.askSpecificPrivilege();
-			if(!msg.isIn(type))
-				msg.getChoices().add(type);
+		try {
+			ResourceType type;
+			while(msg.getChoices().size()<msg.getPrvilieges()){
+				type = inputOutput.askSpecificPrivilege();
+				if(!msg.isIn(type))
+					msg.getChoices().add(type);
+			}
+			setChanged();
+			notifyObservers(msg);
+		
+		} catch (ExpiredTimeException e) {
+			e.getMessage();
 		}
-		setChanged();
-		notifyObservers(msg);
 	}
 	
 	

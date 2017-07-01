@@ -128,7 +128,7 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 	
-	public Exchange askExchange (Exchange choice) {
+	public Exchange askExchange (Exchange choice) throws ExpiredTimeException{
 		int i;
 		ExchangeResourcesEffect er = choice.getExchange();
 		do {
@@ -138,12 +138,9 @@ public class InputOutputCLI implements InputOutput {
 			}
 			System.out.println("\n"+(i+1)+") No exchange");
 			System.out.println("\nInsert choice: ");
-			try {
-				choice.setChoice(0, scanner.nextInt());
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				choice.setChoice(0, i+1);
-			}
+			
+			choice.setChoice(0, scanner.nextInt());
+		
 		} while (choice.getChoice(0)<0||choice.getChoice(0)>i+1);
 		
 		if(choice.getChoice(0)<er.getChoices().size())
@@ -153,13 +150,10 @@ public class InputOutputCLI implements InputOutput {
 						System.out.println("\n"+(i+1)+")");
 						System.out.println((er.getChoices().get(choice.getChoice(0)).getResOut().get(i)));
 					}
+				
 					System.out.println("\nInsert choice OUT: ");
-					try {
-						choice.setChoice(1, scanner.nextInt());
-					} catch (Exception e) {
-						System.err.println(e.getMessage());
-						choice.setChoice(1, 1);
-					}
+					choice.setChoice(1, scanner.nextInt());
+				
 				} while(choice.getChoice(1)<0 || choice.getChoice(1)>i);
 			}
 			
@@ -171,12 +165,8 @@ public class InputOutputCLI implements InputOutput {
 						System.out.println((er.getChoices().get(choice.getChoice(0)).getResIn().get(i)));
 					}
 					System.out.println("\nInsert choice IN: ");
-					try {
-						choice.setChoice(2, scanner.nextInt());
-					} catch (Exception e) {
-						System.err.println(e.getMessage());
-						choice.setChoice(2, 1);
-					}
+					choice.setChoice(2, scanner.nextInt());
+					
 				} while(choice.getChoice(2)<0 || choice.getChoice(2)>i);	
 			}
 		
@@ -210,7 +200,7 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public ResourceType askSpecificPrivilege() {
+	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
 		int choice;
 		do{
 			System.out.println("1) 1 wood - 1 stone\n");
@@ -219,12 +209,9 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println("4) 2 military points\n");
 			System.out.println("5) 1 faith point\n");
 			System.out.println("Choice must be different by previous in this turn: ");
-			try {
-				choice = scanner.nextInt();
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				choice = 1;
-			}
+			
+			choice = scanner.nextInt();
+		
 		} while (choice<1 || choice>5);
 		
 		ResourceType type = ResourceType.WOOD;
@@ -251,18 +238,15 @@ public class InputOutputCLI implements InputOutput {
 	}
 	
 	@Override
-	public int askAboutExcommunication () {
+	public int askAboutExcommunication () throws ExpiredTimeException {
 		int choice;
 		do {
 			System.out.println("\nDo you want to support Vatican?");
 			System.out.println("1) Yes");
 			System.out.println("2) No");
-			try {
-				choice = scanner.nextInt();
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				choice = 2;
-			}
+			
+			choice = scanner.nextInt();
+		
 		} while(choice<1 || choice>2);
 		
 		return choice;
@@ -404,36 +388,35 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public BonusChoice handleBonusAction(BonusChoice msg) {
+	public BonusChoice handleBonusAction(BonusChoice msg) throws ExpiredTimeException {
 		BonusActionEffect effect = msg.getBonus();
 		int choice = 0;
 		printBonusAction (effect);
 		
-		try {
-			do {
-				System.out.println("Do you want to use Bonus Action? \n1)Yes\n2)No\nChoice:");
-				choice = scanner.nextInt();
-			} while(choice<1||choice>2);
-			
-			if (choice == 1) {
-				if(effect.getType().equals("all")) {
-					msg.setSpace(askTower());
-					msg.setFloor(askFloor());
-				}
-					
-				if(effect.getType().equals("territory")||effect.getType().equals("building")||
-						effect.getType().equals("character")||effect.getType().equals("venture"))
-					msg.setFloor(askFloor());
-			
-				msg.setServants(askNumberOfServants());
-			} 
+		do {
+			System.out.println("Do you want to use Bonus Action? \n1)Yes\n2)No\nChoice:");
+			choice = scanner.nextInt();
+		} while(choice<1||choice>2);
 		
-		} catch (ExpiredTimeException e) {
+		if (choice == 1) {
+			if(effect.getType().equals("all")) {
+				msg.setSpace(askTower());
+				msg.setFloor(askFloor());
+			}
+				
+			if(effect.getType().equals("territory")||effect.getType().equals("building")||
+					effect.getType().equals("character")||effect.getType().equals("venture"))
+				msg.setFloor(askFloor());
+		
+			msg.setServants(askNumberOfServants());
+		} 
+		
+		/*} catch (ExpiredTimeException e) {
 			System.out.println(e.getMessage()+"\n");
 			msg.setSpace(1);
 			msg.setFloor(1);
 			msg.setServants(0);
-		}
+		}*/
 		
 		return msg;
 	}

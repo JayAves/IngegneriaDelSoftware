@@ -47,9 +47,11 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
+import it.polimi.ingsw.ps29.model.game.roundstates.StateOfRoundIdentifier;
 import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
 import it.polimi.ingsw.ps29.model.space.Floor;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
@@ -383,12 +385,22 @@ public class Controller implements Observer{
 			//se il giocatore che si è disconnesso è di turno
 			if(playerInfoMessage.getName().equals(model.getCurrentPlayer().getName())) {
 				
-				if ((stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))||
+				if (roundState.getState() == StateOfRoundIdentifier.VATICAN_REPORT)
+					handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
+				
+				else if ((stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))||
 						(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))) 
 					playerInactivePlacement();
 				
-				else if (stateOfAction instanceof VaticanChoice) 
-					handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
+				else if (stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName()) ||
+						stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName()) ) 
+					inactivePlayerEnd();
+				
+				
+				else if (stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
+					model.getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE);
+					inactivePlayerEnd();
+				}
 				
 				
 				else {
@@ -402,6 +414,12 @@ public class Controller implements Observer{
 				
 			
 		}
+	}
+	
+	private void inactivePlayerEnd () {
+		stateOfAction= new PerformedState();
+		stateOfAction = stateOfAction.afterAction(model);
+		sendInfo = false;
 	}
 	
 	int placeRandomFamiliar() {
@@ -550,10 +568,10 @@ public class Controller implements Observer{
 				
 			}
 		
-			else {
+			else 
 				//devo terminare il turno
 				endVaticanState ();
-			}	
+			
 		}
 		
 		else

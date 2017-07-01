@@ -11,7 +11,6 @@ import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
@@ -27,15 +26,15 @@ public interface InputOutput {
 	
 	abstract int askFamiliarColor () throws ExpiredTimeException;
 
-	abstract Exchange askExchange(Exchange msg);
+	abstract Exchange askExchange(Exchange msg) throws ExpiredTimeException;
 	
 	abstract int askFloor () throws ExpiredTimeException;
 	
 	abstract void printBonusAction (BonusActionEffect effect);
 
-	abstract ResourceType askSpecificPrivilege();
+	abstract ResourceType askSpecificPrivilege() throws ExpiredTimeException;
 	
-	abstract int askAboutExcommunication ();
+	abstract int askAboutExcommunication () throws ExpiredTimeException;
 	
 	abstract void showInfo (GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
 
@@ -47,7 +46,7 @@ public interface InputOutput {
 
 	abstract ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException;
 	
-	abstract BonusChoice handleBonusAction (BonusChoice msg);
+	abstract BonusChoice handleBonusAction (BonusChoice msg) throws ExpiredTimeException;
 	
 	abstract void setTimer(int timer);
 	

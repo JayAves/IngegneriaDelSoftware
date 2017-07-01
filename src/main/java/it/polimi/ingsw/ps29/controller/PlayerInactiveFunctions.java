@@ -1,10 +1,8 @@
 package it.polimi.ingsw.ps29.controller;
 
 import it.polimi.ingsw.ps29.messages.ActionChoice;
-import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
-import it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState;
 import it.polimi.ingsw.ps29.model.game.Color;
 
 public class PlayerInactiveFunctions {
