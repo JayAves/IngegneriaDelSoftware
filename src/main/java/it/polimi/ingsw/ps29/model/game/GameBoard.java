@@ -198,8 +198,33 @@ public class GameBoard{
 		}
 	}
 	
-	
-	
+	public void assignPointsForMilitaryTrack(){
+		ArrayList<Player> firstPlayers = new ArrayList<Player>();
+		ArrayList<Player> secondPlayers = new ArrayList<Player>();
+		firstPlayers.add(playersOrder.get(0));
+		for (int i = 1; i < playersOrder.size(); i++){
+			if (playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > firstPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount()){
+				secondPlayers = firstPlayers;
+				firstPlayers.clear();
+				firstPlayers.add(playersOrder.get(i));
+			}
+			else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == firstPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
+				firstPlayers.add(playersOrder.get(i));
+			else{
+				if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount()){
+					secondPlayers.clear();
+					secondPlayers.add(playersOrder.get(i));
+				}
+				else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
+						secondPlayers.add(playersOrder.get(i));
+			}
+		}
+		
+		for (Player player : firstPlayers)
+			player.getPersonalBoard().getResources().updateResource(new Resource("victory", 5));
+		for (Player player : secondPlayers)
+			player.getPersonalBoard().getResources().updateResource(new Resource("victory", 2));
+	}
 	
 }
 
