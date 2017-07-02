@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.view;
+package it.polimi.ingsw.ps29.view.inputCLI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
-import it.polimi.ingsw.ps29.view.inputCLI.FakeScanner;
+import it.polimi.ingsw.ps29.view.InputOutput;
 
 /**
  *
@@ -68,7 +68,7 @@ public class InputOutputCLI implements InputOutput {
 	}
 	
 	
-	public int[] askTypeOfAction () throws ExpiredTimeException {
+	private int[] askTypeOfAction () throws ExpiredTimeException {
 		int[] choice = new int [2];
 		choice[1]=0;
 		System.out.println("\nInsert the number of the action you want to perform.");
@@ -103,7 +103,7 @@ public class InputOutputCLI implements InputOutput {
 			
 	}
 	
-	public int askNumberOfServants () throws ExpiredTimeException {
+	private int askNumberOfServants () throws ExpiredTimeException {
 		int number;
 		do {
 			System.out.println("\nInsert the number of servant you want to use: ");
@@ -113,14 +113,14 @@ public class InputOutputCLI implements InputOutput {
 		return number;
 	}
 	
-	public int askFloor () throws ExpiredTimeException {
+	private int askFloor () throws ExpiredTimeException {
 		int number;
 		System.out.println("\nInsert the number of floor where you want to place: ");
 		number = scanner.nextInt();
 		return number;
 	}
 	
-	public int askFamiliarColor () throws ExpiredTimeException {
+	private int askFamiliarColor () throws ExpiredTimeException {
 		int choice;
 		System.out.println("\nInsert the color of the familiar member you want to use.");
 		do {
@@ -139,6 +139,7 @@ public class InputOutputCLI implements InputOutput {
 	}
 	
 	public Exchange askExchange (Exchange choice) throws ExpiredTimeException{
+		timeStart = System.currentTimeMillis();
 		int i;
 		ExchangeResourcesEffect er = choice.getExchange();
 		do {
@@ -211,6 +212,7 @@ public class InputOutputCLI implements InputOutput {
 
 	@Override
 	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
+		timeStart = System.currentTimeMillis();
 		int choice;
 		do{
 			System.out.println("1) 1 wood - 1 stone\n");
@@ -249,6 +251,7 @@ public class InputOutputCLI implements InputOutput {
 	
 	@Override
 	public int askAboutExcommunication () throws ExpiredTimeException {
+		timeStart = System.currentTimeMillis();
 		int choice;
 		do {
 			System.out.println("\nDo you want to support Vatican?");
@@ -399,6 +402,7 @@ public class InputOutputCLI implements InputOutput {
 
 	@Override
 	public BonusChoice handleBonusAction(BonusChoice msg) throws ExpiredTimeException {
+		timeStart = System.currentTimeMillis();
 		BonusActionEffect effect = msg.getBonus();
 		int choice = 0;
 		printBonusAction (effect);
@@ -438,6 +442,7 @@ public class InputOutputCLI implements InputOutput {
 		scanner = new FakeScanner(turnTimer, this);
 	
 	}
+	
 	public int getTimer() {
 		return turnTimer;
 	}

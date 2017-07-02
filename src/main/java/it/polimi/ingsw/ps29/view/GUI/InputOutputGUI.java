@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
@@ -18,11 +20,25 @@ import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
 
-public class InputOutputGUI implements InputOutput {
+public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private GUICore screen;
+	private boolean endTime = false;
+	private boolean running = true;
+	private int timer;
+	private long timeStart;
 	
-	public InputOutputGUI () {
-		screen = new GUICore();
+	/*
+	 * per ogni tipo di messaggio sono presenti questi oggetti:
+	 * - un booleano che indica quando il messaggio è pronto
+	 * - un oggetto che contiene il messaggio stesso che deve essere tornato alla funzione chiamante
+	 */
+	private boolean actionChoiceReady;
+	private ActionChoice actionChoice;
+	
+	public InputOutputGUI (String name) {
+		screen = new GUICore(name);
+		screen.addObserver (this);
+		actionChoiceReady = false;
 	}
 
 
@@ -33,33 +49,9 @@ public class InputOutputGUI implements InputOutput {
 	}
 
 	@Override
-	public int[] askTypeOfAction() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int askNumberOfServants() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int askFamiliarColor() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public Exchange askExchange(Exchange msg) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public int askFloor() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
@@ -118,9 +110,33 @@ public class InputOutputGUI implements InputOutput {
 
 
 	@Override
-	public ActionChoice handleAskNextAction(ActionChoice msg) {
-		// TODO Auto-generated method stub
-		return null;
+	public ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException {
+		timeStart = System.currentTimeMillis();
+		
+		//ogni funzione aspetta finchè l'update riceve un messaggio (messageReady passa a TRUE)
+		actionChoiceReady = false;
+		setTimerControl();
+		
+		new Thread(this).start();
+		
+		while(!actionChoiceReady && !endTime) {
+			try {
+				Thread.sleep(100);
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (endTime)  {
+			//sono uscito dal while ma l'utente non ha inserito nessun messaggio
+			running = false;
+			throw new ExpiredTimeException();
+		}
+		
+		running = false;
+		return actionChoice;
 	}
 
 
@@ -133,7 +149,7 @@ public class InputOutputGUI implements InputOutput {
 
 	@Override
 	public void setTimer(int timer) {
-		// TODO Auto-generated method stub
+		this.timer = timer;
 		
 	}
 
@@ -141,14 +157,45 @@ public class InputOutputGUI implements InputOutput {
 	@Override
 	public int getTimer() {
 		// TODO Auto-generated method stub
-		return 0;
+		return timer;
 	}
 
 
 	@Override
 	public long getTimeStart() {
 		// TODO Auto-generated method stub
-		return 0;
+		return timeStart;
 	}
 
+
+	@Override
+	public void update(Observable o, Object arg) {
+		
+		if (arg instanceof ActionChoice) {
+			actionChoice = (ActionChoice) arg;
+			actionChoiceReady = true;
+		}
+		
+	}
+	
+	@Override
+	public void run() {
+		while (running) {
+			
+			try {
+				Thread.sleep(100);
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				Thread.currentThread().interrupt();
+			}
+			if (System.currentTimeMillis() - this.getTimeStart() > timer)
+				endTime = true;
+		}
+	}
+
+	private void setTimerControl () {
+		running = true;
+		endTime = false;
+	}
 }

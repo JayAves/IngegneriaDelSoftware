@@ -9,6 +9,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class ImageToPrint extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8468475933709036985L;
+
 	double imageHeight, imageWidth, marginX, marginY, imageRatio;
 	
 		private BufferedImage image;

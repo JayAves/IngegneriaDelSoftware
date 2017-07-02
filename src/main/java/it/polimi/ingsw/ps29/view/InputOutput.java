@@ -34,15 +34,15 @@ public interface InputOutput {
 
 	abstract void showTowerAndDices(TowersAndDicesForView msg);
 	
-	abstract int[] askTypeOfAction () throws ExpiredTimeException;
+	/*abstract int[] askTypeOfAction () throws ExpiredTimeException;
 	
 	abstract int askNumberOfServants () throws ExpiredTimeException;
 	
 	abstract int askFamiliarColor () throws ExpiredTimeException;
+	
+	abstract int askFloor () throws ExpiredTimeException;*/
 
 	abstract Exchange askExchange(Exchange msg) throws ExpiredTimeException;
-	
-	abstract int askFloor () throws ExpiredTimeException;
 	
 	abstract void printBonusAction (BonusActionEffect effect);
 

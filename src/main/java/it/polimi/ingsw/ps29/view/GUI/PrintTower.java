@@ -14,14 +14,22 @@ import javax.swing.JPanel;
 
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerCards;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
+import it.polimi.ingsw.ps29.view.GUI.utilities.ConsoleMessages;
 
 public class PrintTower extends JPanel {
 	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3591511333427114163L;
 		private BufferedImage tower;
 		private ArrayList<BufferedImage> cards;
 		double imageHeight, imageWidth, marginX, marginY, imageRatio;
 		private CoordinateHandlerCards coordCards;
 		private CoordinateHandlerSpaces coordSpaces;
+		
+		private int indexSpacePressed = -1;
+		
 		
 		private class TowerListener extends MouseAdapter {
 			
@@ -53,7 +61,8 @@ public class PrintTower extends JPanel {
 				
 				//...DA SISTEMARE... (stampa l'id dello spazio cliccato)
 				if(indexSpace>-1 && indexSpace<23) {
-					gui.console.setText(indexSpace+"");
+					indexSpacePressed = indexSpace;
+					ConsoleMessages.writePlacement(indexSpace, gui.console);
 				}
 			}
 			
@@ -143,6 +152,10 @@ public class PrintTower extends JPanel {
 				xStart+=shiftWidth;
 				yStart = yBase;
 			}
+		}
+		
+		public int getIndexSpacePressed () {
+			return indexSpacePressed;
 		}
 		
 

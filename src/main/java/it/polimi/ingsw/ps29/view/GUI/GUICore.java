@@ -1,11 +1,13 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Observable;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -20,8 +22,11 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
+import it.polimi.ingsw.ps29.messages.InteractionMessage;
 
-public class GUICore {
+public class GUICore extends Observable{
+	String playerName;
+	
 	JFrame frame; 
 	TowersDTO towers;
 	
@@ -40,7 +45,7 @@ public class GUICore {
 	JLabel faith;
 	JLabel victory;
 	JLabel privileges;
-	ImageToPrint leader;
+	JButton leaderButton;
 	ImageToPrint excomm1;
 	ImageToPrint excomm2;
 	ImageToPrint excomm3;
@@ -48,7 +53,8 @@ public class GUICore {
 	
 	PlayerListener listener;
 	
-	public GUICore () {
+	public GUICore (String name) {
+		playerName = name;
 		listener = new PlayerListener(this);
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -141,12 +147,20 @@ public class GUICore {
 		
 		panelNorth.add(personal, c);
 		
-		leader = new ImageToPrint("leader.jpg", this);
+		JPanel leaderPanel = new JPanel ();
+		leaderPanel.setLayout(new BorderLayout());
+		
+		ImageToPrint leader = new ImageToPrint("leader.jpg", this);
+		leaderPanel.add(leader, BorderLayout.CENTER);
+		
+		leaderButton = new JButton ("Leader");
+		leaderPanel.add(leaderButton, BorderLayout.PAGE_END);
+		
 		c.gridx = 2;
 		c.weightx = 1;
 		c.weighty = 1;
 		c.gridheight = 1;
-		panelNorth.add(leader, c);
+		panelNorth.add(leaderPanel, c);
 		
 		excomm1 = new ImageToPrint("excomm_back_1.png", this);
 		c.gridx = 3;
@@ -279,7 +293,12 @@ public class GUICore {
 	}
 	
 	public static void main(String[] args) {
-		new GUICore ();
+		new GUICore ("test");
+	}
+	
+	public void notifyAboutInput (InteractionMessage msg) {
+		setChanged();
+		notifyObservers(msg);
 	}
 
 }

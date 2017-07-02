@@ -45,7 +45,7 @@ public class View extends Observable implements Observer {
 	
 	public View (String inputType, String name) {
 		
-		inputOutput = inputOutputFactory.getInput(inputType);
+		inputOutput = inputOutputFactory.getInput(inputType, name);
 		namePlayer = name;
 		gameBoardDTO = new GameBoardDTO();
 		towersDTO = new TowersDTO();
