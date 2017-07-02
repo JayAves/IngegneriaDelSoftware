@@ -252,6 +252,9 @@ public class TowerAction extends Action {
 	}
 	
 	private boolean isSpaceCorrect (String tower) {
+		if(tower.toLowerCase().equals("all"))
+			return true;
+		
 		switch(move.getSpace()) {
 			case "territoryTower":
 				return tower.toLowerCase().equals("territory");
