@@ -46,8 +46,11 @@ public class GUICore {
 	ImageToPrint excomm3;
 	JTextArea console;
 	
+	PlayerListener listener;
 	
 	public GUICore () {
+		listener = new PlayerListener(this);
+		
 		EventQueue.invokeLater(new Runnable() {
 		
 			@Override
@@ -247,7 +250,7 @@ public class GUICore {
 		doActionPanel.add(servants);
 		
 		doAction = new JButton("Do Action!");
-		doAction.addMouseListener(new PlayerListener(this));
+		doAction.addMouseListener(listener);
 		doActionPanel.add(doAction);
 	}
 	

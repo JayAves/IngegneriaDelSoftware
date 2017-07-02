@@ -32,6 +32,7 @@ public class PrintTower extends JPanel {
 				this.gui = gui;
 			}
 			
+			
 			@Override
 			public void mouseClicked (MouseEvent event) {
 				
@@ -51,7 +52,7 @@ public class PrintTower extends JPanel {
 				int indexSpace = coordSpaces.getIndexSpace(p);
 				
 				//...DA SISTEMARE... (stampa l'id dello spazio cliccato)
-				if(indexSpace>-1 && indexSpace<16) {
+				if(indexSpace>-1 && indexSpace<23) {
 					gui.console.setText(indexSpace+"");
 				}
 			}

@@ -8,7 +8,8 @@ public class CoordinateHandlerCards {
 	private ArrayList<Coordinates> cardCoords;
 
 	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY) {
-		/*al termine della funzione:
+		/*
+		 * al termine della funzione:
 		 *cardCoords.get(0) avrà le coordinate di territoryCard - floor 1
 		 *cardCoords.get(1) avrà le coordinate di territoryCard - floor 2
 		 *...
