@@ -152,7 +152,7 @@ public class Controller implements Observer{
 	/**
 	 * Puts a random familiar in the noAction space, notifies the updated situation to all active players' views and calls gameEngine to let the game go on.
 	 */
-	private void playerInactivePlacement () {
+	private void inactivePlacement () {
 		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), 
 				model.getCurrentPlayer().getColor(), placeRandomFamiliar());
 		
