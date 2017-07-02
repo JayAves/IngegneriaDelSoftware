@@ -211,12 +211,16 @@ public class GameBoard{
 			else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == firstPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
 				firstPlayers.add(playersOrder.get(i));
 			else{
-				if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount()){
-					secondPlayers.clear();
-					secondPlayers.add(playersOrder.get(i));
-				}
-				else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
+				if(secondPlayers.size() > 0){
+					if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount()){
+						secondPlayers.clear();
 						secondPlayers.add(playersOrder.get(i));
+					}
+					else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
+							secondPlayers.add(playersOrder.get(i));
+					}
+				else
+					secondPlayers.add(playersOrder.get(i));
 			}
 		}
 		

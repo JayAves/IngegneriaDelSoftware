@@ -10,7 +10,7 @@ import java.util.TimerTask;
 /**
  * Hub where Rooms are made and managed. Has a queue used to put players together in new games. 
  * @author Pietro Grotti
- *@see Room
+ * @see Room
  */
 
 public class RoomCreator extends Thread implements Observer{
@@ -20,7 +20,10 @@ public class RoomCreator extends Thread implements Observer{
 	private int counter; //metodi su counter devono essere synchronized
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
+	private Timer scheduler;
+	private static final int UPDATE_TIME= 3600000;
 	private int period;
+	
 	
 	
 	
@@ -34,6 +37,9 @@ public class RoomCreator extends Thread implements Observer{
 		
 		this.timer= new Timer();
 		
+		scheduler= new Timer();
+		
+		scheduler.scheduleAtFixedRate(new Updater(), UPDATE_TIME, UPDATE_TIME); // every UPDATE_TIME milliseconds, a Room management routine is scheduled 
 		
 		
 		
@@ -214,6 +220,33 @@ public class RoomCreator extends Thread implements Observer{
 			
 				
 			
+		}
+		
+	}
+	
+	/**
+	 * Checks if there are inactive Room and deletes them.
+	 * @author Pietro Grotti
+	 *
+	 */
+	private class Updater extends TimerTask {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println("\n\nUpdating routine...\n\n");
+			
+			ArrayList<Room> toDelete= new ArrayList<Room>();
+			
+			for (Room room: roomHandler) //inactive room's selection
+				if (!room.active) 
+					toDelete.add(room);
+			
+			for (Room room: toDelete) //inactive room's deletion
+				roomHandler.remove(room);
+			
+			System.out.println("roomHandler "+ roomHandler);
+				
 		}
 		
 	}
