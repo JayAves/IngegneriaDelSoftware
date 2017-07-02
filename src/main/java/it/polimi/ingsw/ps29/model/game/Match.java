@@ -180,7 +180,7 @@ public class Match extends Observable{
 	}
 	
 	
-	public void gameEngine() {
+	/*public void gameEngine() {
 		
 		System.out.println("Server: turno del giocatore "+getCurrentPlayer().getName());
 		
@@ -200,6 +200,7 @@ public class Match extends Observable{
 		
 		
 	}
+	*/
 	
 	public Player getCurrentPlayer () {
 		return board.getPlayers().get(0);

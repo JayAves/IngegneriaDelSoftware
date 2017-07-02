@@ -15,7 +15,7 @@ import it.polimi.ingsw.ps29.view.View;
  */
 public class App 
 { 
-	
+	/*
     public static void main( String[] args ) throws FileNotFoundException{
     	
     	Scanner scanner = new Scanner (System.in);
@@ -63,5 +63,5 @@ public class App
     	scanner.close();
     }
     
-    
+    */
 }

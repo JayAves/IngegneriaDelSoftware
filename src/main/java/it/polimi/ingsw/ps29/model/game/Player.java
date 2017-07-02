@@ -37,6 +37,7 @@ public class Player {
 		this.color = color;
 		this.board = new PersonalBoard(pbt);
 		initFamily();
+		finalScoring = new FinalScoring();
 		supportForExchange = new ExchangeSupport(new ArrayList<ExchangeResourcesEffect>(), new Container());
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
@@ -105,7 +106,7 @@ public class Player {
 	}
 	
 	public void passPersonalBoard(){
-		finalScoring.getPersonalBoard(board);
+		finalScoring.setPersonalBoard(board);
 	}
 	
 	public void getFinalPoints(){
@@ -153,7 +154,7 @@ public class Player {
 		sistoIV = true;
 	}
 	
-	public void getSistoIVBonus(){
+	public void addSistoIVBonus(){
 		if (sistoIV == true){
 			this.getPersonalBoard().getResources().updateResource(new VictoryPoints(5));
 		}

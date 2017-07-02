@@ -24,7 +24,7 @@ public class FinalScoring {
 	}
 	
 	public void setTerritoryCardsPenalty(){
-		territoryCardsPenalty = new CharacterFinalPointsOff();
+		territoryCardsPenalty = new TerritoryFinalPointsOff();
 	}
 	
 	public void setResourcePenalty(){
@@ -66,7 +66,7 @@ public class FinalScoring {
   
     }
 		
-    public void getPersonalBoard(PersonalBoard board){
+    public void setPersonalBoard(PersonalBoard board){
     	this.board = board;
     }
 }

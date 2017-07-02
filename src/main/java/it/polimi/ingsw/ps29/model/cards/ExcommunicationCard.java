@@ -5,8 +5,8 @@ import it.polimi.ingsw.ps29.model.game.Period;
 
 public class ExcommunicationCard {
 	
-	public final Effect effect;
-	public final Period period;
+	private final Effect effect;
+	private final Period period;
 	private final int id;
 	
 	public Period getPeriod() {
@@ -26,6 +26,10 @@ public class ExcommunicationCard {
 	
 	public int getId () {
 		return id;
+	}
+	
+	public Effect getEffect(){
+		return effect;
 	}
 	
 }
