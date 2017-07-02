@@ -1,13 +1,13 @@
-package it.polimi.ingsw.ps29.view.GUI;
+package it.polimi.ingsw.ps29.view.GUI.coordinates;
 
 import java.awt.Point;
 import java.util.ArrayList;
 
-public class CoordinateHandler {
+public class CoordinateHandlerCards {
 	
-	private ArrayList<CardCoordinates> cardCoords;
+	private ArrayList<Coordinates> cardCoords;
 
-	public CoordinateHandler(double imageHeight, double imageWidth, double marginX, double marginY) {
+	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY) {
 		/*al termine della funzione:
 		 *cardCoords.get(0) avrà le coordinate di territoryCard - floor 1
 		 *cardCoords.get(1) avrà le coordinate di territoryCard - floor 2
@@ -20,16 +20,16 @@ public class CoordinateHandler {
 		double yBase = marginY + ((double)21/607)*imageHeight;
 		double yStart = yBase;
 		double widthCard = ((double)51/413)*imageWidth;
-		double heightCard = ((double)91/607)*imageHeight;
+		double heightCard = ((double)85/607)*imageHeight;
 		double shiftWidth = ((double)97/413)*imageWidth;
-		double shiftHeight = ((double)97/607)*imageHeight;
+		double shiftHeight = ((double)91/607)*imageHeight;
 		
-		cardCoords = new ArrayList<CardCoordinates>();
+		cardCoords = new ArrayList<Coordinates>();
 		for(int i=0; i<16; i++)
 			cardCoords.add(null);
 		for(int i=0; i<4; i++){
 			for (int j=0; j<4; j++) {
-				cardCoords.set((i+1)*4-(j+1), new CardCoordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
+				cardCoords.set((i+1)*4-(j+1), new Coordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
 				yStart+=shiftHeight;
 			}
 			xStart+=shiftWidth;
@@ -41,7 +41,7 @@ public class CoordinateHandler {
 
 	public int getIndexCard (Point point) {
 		for(int i=0; i<cardCoords.size(); i++) {
-			if(cardCoords.get(i).isClickIntoCard(point))
+			if(cardCoords.get(i).isClickIntoArea(point))
 				return i;
 		}
 		return -1;
@@ -50,7 +50,7 @@ public class CoordinateHandler {
 	@Override
 	public String toString () {
 		String msg = "";
-		for (CardCoordinates coord: cardCoords)
+		for (Coordinates coord: cardCoords)
 			msg+=coord.toString()+"\n";
 		return msg;
 	}

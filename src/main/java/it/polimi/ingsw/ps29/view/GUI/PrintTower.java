@@ -12,12 +12,16 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerCards;
+import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
+
 public class PrintTower extends JPanel {
 	
 		private BufferedImage tower;
 		private ArrayList<BufferedImage> cards;
 		double imageHeight, imageWidth, marginX, marginY, imageRatio;
-		private CoordinateHandler coord;
+		private CoordinateHandlerCards coordCards;
+		private CoordinateHandlerSpaces coordSpaces;
 		
 		private class TowerListener extends MouseAdapter {
 			
@@ -35,12 +39,20 @@ public class PrintTower extends JPanel {
 				System.out.println(p.getX()+" - "+p.getY());
 				
 				//indice da 0 a 15 che mi dice su quale carta ho cliccato
-				int index = coord.getIndexCard(p);
+				int indexCard = coordCards.getIndexCard(p);
 				
 				//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
-				if(gui.getTowers() != null && index>-1 && index<16) {
-					int idCard = gui.getTowers().getIdCard(index);
+				if(gui.getTowers() != null && indexCard>-1 && indexCard<16) {
+					int idCard = gui.getTowers().getIdCard(indexCard);
 					gui.zoomImage(idCard);
+				}
+				
+				//indice da 0 a 15 che mi dice su quale spazio ho cliccato
+				int indexSpace = coordSpaces.getIndexSpace(p);
+				
+				//...DA SISTEMARE... (stampa l'id dello spazio cliccato)
+				if(indexSpace>-1 && indexSpace<16) {
+					gui.console.setText(indexSpace+"");
 				}
 			}
 			
@@ -94,31 +106,8 @@ public class PrintTower extends JPanel {
 				g.drawImage(tower, 0, (int)marginY, (int)imageWidth, (int)imageHeight, null);
 			}
 			
-			
-			//System.out.println(xStart +" - "+yStart+" - "+widthCard+" - "+heightCard);
-			/*g.drawImage(cards.get(0), (int) (xStart), (int) (yStart),
-					(int) (widthCard), (int) (heightCard), null);*/
-			
-			double xStart = marginX + ((double)14/tower.getWidth())*imageWidth;
-			double yBase = marginY + ((double)21/tower.getHeight())*imageHeight;
-			double yStart = yBase;
-			double widthCard = ((double)51/tower.getWidth())*imageWidth;
-			double heightCard = ((double)91/tower.getHeight())*imageHeight;
-			double shiftWidth = ((double)97/tower.getWidth())*imageWidth;
-			double shiftHeight = ((double)97/tower.getHeight())*imageHeight;
-			
-			coord = new CoordinateHandler(imageHeight, imageWidth, marginX, marginY);
-			
-			
-			for (int i=0; i<4; i++) {
-				for (int j=0; j<4; j++) {
-					g.drawImage(cards.get((i+1)*4-(1+j)), (int) (xStart), (int) (yStart),
-							(int) (widthCard), (int) (heightCard), null);
-					yStart+=shiftHeight;
-				}
-				xStart+=shiftWidth;
-				yStart = yBase;
-			}
+			//dimensioni assolute utilizzate per piazzare le carte
+			handlePosition(14,20,51,85,97,91, g);
 		}
 		
 			
@@ -131,6 +120,29 @@ public class PrintTower extends JPanel {
 			return tower.getHeight();
 		}
 		
+		private void handlePosition(int xStartAbs, int yBaseAbs, int widthAbs, int heightAbs, 
+				int shiftWidthAbs, int shiftHeightAbs, Graphics g) {
+			double xStart = marginX + ((double)xStartAbs/tower.getWidth())*imageWidth;
+			double yBase = marginY + ((double)yBaseAbs/tower.getHeight())*imageHeight;
+			double yStart = yBase;
+			double widthCard = ((double)widthAbs/tower.getWidth())*imageWidth;
+			double heightCard = ((double)heightAbs/tower.getHeight())*imageHeight;
+			double shiftWidth = ((double)shiftWidthAbs/tower.getWidth())*imageWidth;
+			double shiftHeight = ((double)shiftHeightAbs/tower.getHeight())*imageHeight;
+			
+			coordCards = new CoordinateHandlerCards(imageHeight, imageWidth, marginX, marginY);
+			coordSpaces = new CoordinateHandlerSpaces(imageHeight, imageWidth, marginX, marginY);
+			
+			for (int i=0; i<4; i++) {
+				for (int j=0; j<4; j++) {
+					g.drawImage(cards.get((i+1)*4-(1+j)), (int) (xStart), (int) (yStart),
+							(int) (widthCard), (int) (heightCard), null);
+					yStart+=shiftHeight;
+				}
+				xStart+=shiftWidth;
+				yStart = yBase;
+			}
+		}
 		
 
 }

@@ -5,6 +5,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
+import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
+
 public class PlayerListener extends MouseAdapter {
 	
 	GUICore gui;
