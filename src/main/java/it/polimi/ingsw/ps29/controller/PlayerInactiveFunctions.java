@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.model.game.Color;
 
 /**
- * Allow game to go on without all players connected
+ * Allow game to go on without all players connected.
  * @author Pietro Melzi
  *
  */

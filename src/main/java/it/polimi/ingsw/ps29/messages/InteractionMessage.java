@@ -2,6 +2,12 @@ package it.polimi.ingsw.ps29.messages;
 
 import java.io.Serializable;
 
+/**
+ * Used for communication between View and Controller.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ *
+ */
 public abstract class InteractionMessage implements Serializable {
 	
 	

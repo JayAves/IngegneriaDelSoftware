@@ -8,11 +8,17 @@ import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
+
+/**
+ * Contains data about game to be shown in View. Brings also turn's timer for FakeScanner.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @see FakeScanner
+ * @see InputWithTimer
+ */
 public class InfoForView extends InteractionMessage {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8295468107880613441L;
 	public Color playerColor;
 	public int space;

@@ -57,6 +57,13 @@ import it.polimi.ingsw.ps29.model.space.Floor;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 import it.polimi.ingsw.ps29.server.ClientThread;
 
+/**
+ * Stands between Views and Model. Every communication between the two passes through it. 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class Controller implements Observer{
 	
 	private Match model;
@@ -67,8 +74,9 @@ public class Controller implements Observer{
 	private boolean sendInfo;
 	private boolean callGameEngine = true;
 	
-	//il booleano è settato a false all'inizio di ogni gestione dell'input utente
-	//se ci sarà qualcosa da notificare viene settato a true
+	//boolean is set false at the beginning of any user input management 
+	//if there's anything to be notified it changes to true value.
+	
 	
 	public Controller (Match model) {
 		this.model = model;
@@ -88,7 +96,14 @@ public class Controller implements Observer{
 		System.out.println("\nPlayer "+playerName+ " is back in Game");
 	}
 	
-	
+	/**
+	 * Starts interaction with current player. Sends the correct InteractionMessage according to the current ActionState. 
+	 * If player is disconnected does a playerInactivePlacement.
+	 * If all players are disconnected ends the game.
+	 * 
+	 * @see ActionState
+	 * 
+	 */
 	public void callCorrectView () {
 		
 		ArrayList<ArrayList<Object>> leaderSituation;
@@ -103,8 +118,7 @@ public class Controller implements Observer{
 			//leaderSituation = model.getBoard().getCurrentPlayer().getPersonalBoard().buildLeaderChoice();
 			ClientThread view = views.get(playerName);
  			
-			
-			//modifico lo stato appena prima di interagire con la view, così da poter fare la giusta richiesta
+			//changes state before interacting with View, to do the correct request
 			stateOfAction = stateOfAction.beforeAction();
 
 			if  (view.getInGame()) {
@@ -129,12 +143,16 @@ public class Controller implements Observer{
 		
 		else {
 			System.out.println("All players are disconnected!");
-			//setto lo stato della partita a fine
-			
+
+			//missing end of game routine (stop the Room)
+			// for future expansion - save the game's stat on disk for future use.
 		}
 	}
 	
-	private void inactivePlacement () {
+	/**
+	 * Puts a random familiar in the noAction space, notifies the updated situation to all active players' views and calls gameEngine to let the game go on.
+	 */
+	private void playerInactivePlacement () {
 		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), 
 				model.getCurrentPlayer().getColor(), placeRandomFamiliar());
 		
@@ -154,7 +172,10 @@ public class Controller implements Observer{
 		gameEngine();
 	}
 	
-
+/**
+ * Checks if there are active players.
+ * @return true after the first active player found
+ */
 	private boolean PlayersConnected() {
 		
 		for(Map.Entry<String, ClientThread> entry: views.entrySet()) {
@@ -199,7 +220,11 @@ public class Controller implements Observer{
 			throw new IllegalArgumentException();
 	}
 	
-	
+	/**
+	 * Transforms an ActionChoice message in a Move and triggers corresponding action in Model. After feedback, prepares info to be sent to View. 
+	 * @param arg the message to handle
+	 * @param power dice power, meaning Action's power
+	 */
 	public void handleInputAction (ActionChoice arg, int power) {
 		
 		Action action;
@@ -249,12 +274,12 @@ public class Controller implements Observer{
 		try{
 			stateOfAction = action.actionHandler();
 			System.out.println(" sono dopo actionHandler" + stateOfAction + "da azione " + action.toString());
-			//recupero lo stato dopo che ho eseguito le istruzioni
+			//to check actionState after actionHandler instructions are executed
 			
 			if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())
 					||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
-				//se ho piazzato aggiorno la board da mostrare all'utente con le informazioni relative al nuovo piazzamento
-				//e al nuovo stato delle risorse (eventuali carte sono aggiunte appena vengono prelevate)
+				// if a placement was made, updates Gameboard's info to show in View and players' resources situation
+				
 				info.space = arg.getChoice(0);
 				info.floor = arg.getChoice(1);
 				info.familiar = arg.getChoice(3);
@@ -267,6 +292,11 @@ public class Controller implements Observer{
 		}
 	}
 	
+	/**
+	 * Manages BonusChoice messages. From a BonusChoice builds an ActionChoice.
+	 * @param msg bonusAction message
+	 * @return  ActionChoice to be transformed in Move
+	 */
 	public ActionChoice handleBonusAction (BonusChoice msg) {
 		ActionChoice choice = new ActionChoice (msg.getName());
 		switch(msg.getBonus().getType()) {
@@ -308,11 +338,11 @@ public class Controller implements Observer{
 				}
 		}
 		
-		//non faccio azione bonus
+		//bonus action is not performed
 		if (choice.getChoice(2)<0)
 			choice.setChoice(0, 12);
 		
-		//nel caso si tratta di un piazzamento sulla torre setto il piano scelto
+		//set the floor
 		if(msg.getFloor()>0)
 			choice.setChoice(1, msg.getFloor());
 		
@@ -321,6 +351,7 @@ public class Controller implements Observer{
 		
 		return choice;
 	}
+	
 	
 	private void handleExchangeAction (Exchange msg) {
 		ExchangeResources res = new ExchangeResources(model, stateOfAction);
@@ -353,7 +384,13 @@ public class Controller implements Observer{
 	}
 	
 	
-	
+	/**
+	 * Dispatcher of messages from views. For every type of message triggers corresponding action handler. 
+	 * @author Pietro Melzi
+	 * @author Pietro Grotti
+	 * @author Giovanni Mele
+	 *
+	 */
 	public class VisitorMessages {
 		
 		public void visit (ActionChoice msg) {
@@ -404,13 +441,13 @@ public class Controller implements Observer{
 				
 				
 				else {
-					//gestione disconnessione in altri stati dell'azione
+					//handles disconnection in other ActionState cases
 				}
 				
 			}
 			
-			else //il giocatore si disconnetet NON nel suo turno
-				callGameEngine = false; //il metodo update non dovrà chiamare game engine
+			else //player disconnects when he's not his turn
+				callGameEngine = false; //so method gameEngine will not be called
 				
 			
 		}
@@ -467,7 +504,10 @@ public class Controller implements Observer{
 	
 
 	
-	
+	/**
+	 * Allows the game to flow. Triggers correct Controller routine for the current roundState.
+	 * @see 
+	 */
 	public void gameEngine () {
 		
 		/*for (Player player : model.getBoard().getPlayers()){

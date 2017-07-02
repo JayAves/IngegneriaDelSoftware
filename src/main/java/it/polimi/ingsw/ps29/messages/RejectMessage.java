@@ -4,6 +4,12 @@ import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
+/**
+ * Contains a message about an Action being rejected.
+ * @author Pietro Melzi
+ *
+ */
+
 public class RejectMessage extends InteractionMessage {
 
 	private RejectException exception;

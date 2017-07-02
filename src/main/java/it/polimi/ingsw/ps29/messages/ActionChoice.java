@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
+/**
+ * Contains data about a normal Action.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class ActionChoice extends InteractionMessage {
 
 	

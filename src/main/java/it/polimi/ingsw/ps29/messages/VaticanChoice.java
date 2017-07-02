@@ -2,10 +2,12 @@ package it.polimi.ingsw.ps29.messages;
 
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 
+/**
+ * Contains data about Vatican round.
+ * @author Pietro Melzi
+ */
 public class VaticanChoice extends InteractionMessage {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -5276703313626469150L;
 	private boolean sustain;
 	
