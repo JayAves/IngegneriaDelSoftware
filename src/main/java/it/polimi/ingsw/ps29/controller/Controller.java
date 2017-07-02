@@ -594,7 +594,7 @@ public class Controller implements Observer{
 				
 			}
 			
-			
+			model.getBoard().assignPointsForMilitaryTrack();
 		}
 		
 	}
