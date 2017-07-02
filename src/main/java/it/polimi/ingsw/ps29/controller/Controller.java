@@ -64,7 +64,7 @@ import it.polimi.ingsw.ps29.server.ClientThread;
  * @author Giovanni Mele
  *
  */
-public class Controller implements Observer{
+public class Controller extends Observable implements Observer{
 	
 	private Match model;
 	private Map<String, ClientThread> views;
@@ -143,7 +143,8 @@ public class Controller implements Observer{
 		
 		else {
 			System.out.println("All players are disconnected!");
-
+			setChanged();
+			notifyObservers();
 			//missing end of game routine (stop the Room)
 			// for future expansion - save the game's stat on disk for future use.
 		}
@@ -506,7 +507,7 @@ public class Controller implements Observer{
 
 	
 	/**
-	 * Allows the game to flow. Triggers correct Controller routine for the current roundState.
+	 * Allows the game to flow. Triggers correct Controller's routine for the current roundState.
 	 * @see 
 	 */
 	public void gameEngine () {

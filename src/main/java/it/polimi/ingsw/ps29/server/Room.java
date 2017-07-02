@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps29.server;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import it.polimi.ingsw.ps29.controller.Controller;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -13,13 +15,16 @@ import it.polimi.ingsw.ps29.model.game.Match;
  * @author Pietro Melzi
  *
  */
-public class Room extends Thread{
+public class Room extends Thread implements Observer{
 	
 	private Match model;
 	private Controller controller;
 	private ArrayList<ClientThread> views;
+	protected boolean active;
 	
 	public Room (ArrayList<ClientThread> playersInQueue){
+		
+		active=true;
 		
 		views= new ArrayList<ClientThread>();
 		for (ClientThread th: playersInQueue) {
@@ -41,6 +46,7 @@ public class Room extends Thread{
 		}
 		
 		controller = new Controller (model);
+		controller.addObserver(this);
     	
 		for (ClientThread th: views){
 			
@@ -68,6 +74,12 @@ public class Room extends Thread{
 
 	public void run() {
 		controller.gameEngine();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		active=false;
 	}
 		
 	
