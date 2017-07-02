@@ -21,7 +21,6 @@ public class VaticanReportState implements RoundState {
 
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
-		
 		return new EndOfTheRoundState();
 	}
 	
@@ -29,7 +28,7 @@ public class VaticanReportState implements RoundState {
 		excommunication.getEffect().performEffect(player);
 	}
 	
-	public void handleVaticanChoice( VaticanChoice choice, Match match){
+	public void handleVaticanChoice(VaticanChoice choice, Match match){
 		Player player = match.getCurrentPlayer();
 		if (choice.isSustain()){
 			ArrayList<Resource> vaticanBonus = match.getBoard().getVaticanBonus(match.getRound());

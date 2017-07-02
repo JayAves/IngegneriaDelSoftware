@@ -7,40 +7,25 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
-import it.polimi.ingsw.ps29.DTO.CardDTO;
-import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
-import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
 import it.polimi.ingsw.ps29.DTO.ResourceDTO;
-import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
-import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
-import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.Action;
-import it.polimi.ingsw.ps29.model.action.AddPrivileges;
-import it.polimi.ingsw.ps29.model.action.CouncilPalaceAction;
 import it.polimi.ingsw.ps29.model.action.ExchangeResources;
-import it.polimi.ingsw.ps29.model.action.HarvestAction;
-import it.polimi.ingsw.ps29.model.action.LeaderAction;
-import it.polimi.ingsw.ps29.model.action.MarketAction;
-import it.polimi.ingsw.ps29.model.action.NoAction;
-import it.polimi.ingsw.ps29.model.action.ProductionAction;
-import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PerformedState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
 import it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
 import it.polimi.ingsw.ps29.model.cards.Card;
-import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -53,8 +38,6 @@ import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.StateOfRoundIdentifier;
 import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
-import it.polimi.ingsw.ps29.model.space.Floor;
-import it.polimi.ingsw.ps29.model.space.TowerArea;
 import it.polimi.ingsw.ps29.server.ClientThread;
 
 /**
@@ -74,7 +57,7 @@ public class Controller extends Observable implements Observer{
 	private boolean sendInfo;
 	private boolean callGameEngine = true;
 	
-	//boolean is set false at the beginning of any user input management 
+	//sendInfo is set false at the beginning of any user input management 
 	//if there's anything to be notified it changes to true value.
 	
 	
@@ -104,41 +87,36 @@ public class Controller extends Observable implements Observer{
 	 * @see ActionState
 	 * 
 	 */
+	
 	public void callCorrectView () {
-		
-		ArrayList<ArrayList<Object>> leaderSituation;
-		leaderSituation = new ArrayList<ArrayList<Object>>();
-		
-		for(Map.Entry<String, ClientThread> v: views.entrySet())
-			System.out.println("Is player: "+v.getKey()+" in game? "+v.getValue().getInGame());
 		
 		if(PlayersConnected()) {
 			
 			String playerName = model.getCurrentPlayer().getName();
-			//leaderSituation = model.getBoard().getCurrentPlayer().getPersonalBoard().buildLeaderChoice();
 			ClientThread view = views.get(playerName);
  			
 			//changes state before interacting with View, to do the correct request
 			stateOfAction = stateOfAction.beforeAction();
 
 			if  (view.getInGame()) {
-				//costruisco l'oggetto da utilizzare nell'interazione con l'utente//
+				//build of the object used in the interaction with the user
 				InteractionMessage object = stateOfAction.objectForView(playerName);
 				
 				if(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) {
+					ArrayList<ArrayList<Object>> leaderSituation;
+					leaderSituation = new ArrayList<ArrayList<Object>>();
+					
+					//set up of leader situation  
 					leaderSituation = model.getBoard().getPlayerByName(playerName).getPersonalBoard().buildLeaderChoice();
-					//l'oggetto generato è di tipo ActionChoice se entro in questo if//
 					((ActionChoice)object).setLeaderSituation(leaderSituation);
-				
 				}
-				view.startInteraction (object);
-			}
-			
-			else {
-				//sceglie un familiare e lo setta occupato per permettere alla partita di proseguire correttamente
-				inactivePlacement();
 				
-			}
+				view.startInteraction (object);	
+			} 
+			
+			else 
+				//set a familiar busy to ensure the correct flow of the game
+				inactivePlacement();
 		}
 		
 		else {
@@ -150,76 +128,63 @@ public class Controller extends Observable implements Observer{
 		}
 	}
 	
+	
 	/**
 	 * Puts a random familiar in the noAction space, notifies the updated situation to all active players' views and calls gameEngine to let the game go on.
 	 */
+	
 	private void inactivePlacement () {
 		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), 
 				model.getCurrentPlayer().getColor(), placeRandomFamiliar());
-		
-		info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
-		for(Player player: model.getBoard().getPlayers()) {
-			ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
-			for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
-				resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
-			info.resSituation.put(player.getName(), resCon);
-		}
-		for(HashMap.Entry <String, ClientThread> viewz: views.entrySet()) 
-			viewz.getValue().startInteraction(info);
+		generateResourcesDTOAndSend ();
 		
 		stateOfAction= new PerformedState();
 		stateOfAction = stateOfAction.afterAction(model);
+		
+		//if callGameEngine is FALSE, update method will not call gameEngine()
 		callGameEngine = false;
 		gameEngine();
 	}
 	
-/**
- * Checks if there are active players.
- * @return true after the first active player found
- */
+	
+	/**
+	 * Checks if there are active players.
+	 * @return true after the first active player found
+	 */
+	
 	private boolean PlayersConnected() {
-		
-		for(Map.Entry<String, ClientThread> entry: views.entrySet()) {
-			
+		for(Map.Entry<String, ClientThread> entry: views.entrySet()) 
 			if (entry.getValue().getInGame())
 				return true;
-		}
+		
 		return false;
 	}
 
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		//se arriva dalla view può riguardare azione standard, azione bonus, scelta exchange, scelta scomunica
-		VisitorMessages visitor = new VisitorMessages();
 		callGameEngine = true;
-		if(o instanceof Match){
-			//da capire se serve dopo il cambiamento nel flusso del gioco
-		}
-		else if (o instanceof ClientThread) {
-			//eseguo l'azione scelta dall'utente
-			sendInfo = false;
-			info = new InfoForView(model.getCurrentPlayer().getName());
-			info.playerColor = model.getCurrentPlayer().getColor();
+		
+		if (o instanceof ClientThread) {
+			initInfoForView();
+			VisitorMessages visitor = new VisitorMessages();
+			
+			//perform the specific type of action with pattern VISITOR
 			((InteractionMessage)arg).visit(visitor);
 			
-			//se l'azione ha modificato lo stato della partita mostro le info ai players
-			if(sendInfo) {
-				info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
-				for(Player player: model.getBoard().getPlayers()) {
-					ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
-					for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
-						resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
-					info.resSituation.put(player.getName(), resCon);
-				}
-				for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-					view.getValue().startInteraction(info);
-			}
-			if(callGameEngine) //devo chiamare GE e non è stata chiamata da metodi che gestiscono player disattivi
+			//if the situation of game is changed after the action...
+			if(sendInfo) 
+				generateResourcesDTOAndSend();
+			
+			//if gameEngin is not called yet
+			if(callGameEngine) 
 				gameEngine();
 		}
+		
 		else 
 			throw new IllegalArgumentException();
 	}
+	
 	
 	/**
 	 * Transforms an ActionChoice message in a Move and triggers corresponding action in Model. After feedback, prepares info to be sent to View. 
@@ -227,58 +192,23 @@ public class Controller extends Observable implements Observer{
 	 * @param power dice power, meaning Action's power
 	 */
 	public void handleInputAction (ActionChoice arg, int power) {
-		
-		Action action;
 		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
 		Move move= adapter.createMove(arg);
 		
-		if(power>-1) //si tratta di un'azione bonus
+		//power>-1 for BonusAction
+		if(power>-1) 
 			move.getFamiliar().setPower(power);
 		
-		switch (arg.getChoice(0))	{
-		
-		case 1:
-			action= new HarvestAction(model, move);
-			break;
-		
-		case 2:
-			action= new ProductionAction(model, move);
-			break;
-		
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-			action= new TowerAction(model, move);
-			break;
-		
-		case 7:
-		case 8:
-		case 9:
-		case 10:
-			action= new MarketAction(model, move);
-			break;
-		
-		case 11:
-			action= new CouncilPalaceAction(model, move);
-			break;
-			
-		case 13 :
-			action = new LeaderAction(model, move, arg);
-			break;
-		
-		default:
-			action= new NoAction(model,move);
-			break;
-		}
+		//create the action based on the user choice
+		Action action = ControllerSupporter.createAction(model, move, arg);
 		
 		try{
 			stateOfAction = action.actionHandler();
-			System.out.println(" sono dopo actionHandler" + stateOfAction + "da azione " + action.toString());
-			//to check actionState after actionHandler instructions are executed
 			
-			if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())
-					||stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())||stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
+			if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())||
+				stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName())||
+				stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())||
+				stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
 				// if a placement was made, updates Gameboard's info to show in View and players' resources situation
 				
 				info.space = arg.getChoice(0);
@@ -288,56 +218,21 @@ public class Controller extends Observable implements Observer{
 			}
 		
 		} catch (RejectException exception) {
-			views.get(model.getCurrentPlayer().getName()).startInteraction(new RejectMessage(
-					model.getCurrentPlayer().getName(), exception));
+			//show the reason why the placement is failed
+			views.get(model.getCurrentPlayer().getName()).startInteraction(
+					new RejectMessage(model.getCurrentPlayer().getName(), exception));
 		}
 	}
+	
 	
 	/**
 	 * Manages BonusChoice messages. From a BonusChoice builds an ActionChoice.
 	 * @param msg bonusAction message
 	 * @return  ActionChoice to be transformed in Move
 	 */
+	
 	public ActionChoice handleBonusAction (BonusChoice msg) {
-		ActionChoice choice = new ActionChoice (msg.getName());
-		switch(msg.getBonus().getType()) {
-			case "harvest":
-				choice.setChoice(0, 1);
-				break;
-			case "production":
-				choice.setChoice(0, 2);
-				break;
-			case "territory":
-				choice.setChoice(0, 3);
-				break;
-			case "building":
-				choice.setChoice(0, 4);
-				break;
-			case "character":
-				choice.setChoice(0, 5);
-				break;
-			case "venture":
-				choice.setChoice(0, 6);
-				break;
-			case "all":
-				switch (msg.getSpace()) {
-				case 1:
-					choice.setChoice(0, 3);
-					break;
-				case 2: 
-					choice.setChoice(0, 4);
-					break;
-				case 3:
-					choice.setChoice(0, 5);
-					break;
-				case 4:
-					choice.setChoice(0, 6);
-					break;
-				case 5:
-					choice.setChoice(0, 12);
-					break;
-				}
-		}
+		ActionChoice choice = ControllerSupporter.bonusActionChoice(msg);
 		
 		//bonus action is not performed
 		if (choice.getChoice(2)<0)
@@ -358,32 +253,69 @@ public class Controller extends Observable implements Observer{
 		ExchangeResources res = new ExchangeResources(model, stateOfAction);
 		stateOfAction = res.exchangeHandler(msg);
 		sendInfo = true;
+		
 		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())) 
 			if(model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount()>0) {
-				stateOfAction = new PrivilegesState(stateOfAction, model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount());
+				stateOfAction = new PrivilegesState(stateOfAction, 
+						model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount());
 				String name = model.getCurrentPlayer().getName();
+				
 				views.get(name).startInteraction(stateOfAction.objectForView(name));
 				stateOfAction = stateOfAction.afterAction(model);
 				
 			}
-				
 	}
 	
+	
 	private void handlePrivilegesChoice (PrivilegeChoice msg) {
-		AddPrivileges addPrivileges = new AddPrivileges();
-		addPrivileges.handlePrivileges(model.getCurrentPlayer(), msg.getChoices());
-		stateOfAction = stateOfAction.afterAction(model); //ottengo lo stato precedente
-		stateOfAction = stateOfAction.afterAction(model); //eseguo il comando che non ho potuto eseguire nell'interazione precedente
+		((PrivilegesState)stateOfAction).handlePrivileges(model.getCurrentPlayer(), msg.getChoices());
+		
+		stateOfAction = stateOfAction.afterAction(model); //back to previous state
+		stateOfAction = stateOfAction.afterAction(model); //do the instruction of previous state
 		sendInfo = true;
 	}
 	
-	private  void handleExcommunication (VaticanChoice msg) {
+	
+	private void handleExcommunication (VaticanChoice msg) {
 		model.getBoard().getPlayerByName(msg.getName()).setVaticanReportPerformed(true);
-		//function to define
-		((VaticanReportState)roundState).handleVaticanChoice( msg, model);
-		System.out.println("...funzione vaticano...");
+		
+		((VaticanReportState)roundState).handleVaticanChoice(msg, model);
 		sendInfo=true;
 	}
+	
+	
+	private void handlePlayerInfoMessage (PlayerInfoMessage msg) {
+		
+		//show the info to each user
+		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+			view.getValue().startInteraction(msg);
+		
+		//if player disconnetted is also current player
+		if(msg.getName().equals(model.getCurrentPlayer().getName())) {
+			
+			if (roundState.getState() == StateOfRoundIdentifier.VATICAN_REPORT)
+				handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
+			
+			else if (stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName())) 
+				inactivePlacement();
+			
+			else if (stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName()) ||
+					stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName()) ) 
+				inactivePlayerEnd();
+			
+			
+			else if (stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
+				model.getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE);
+				inactivePlayerEnd();
+			}
+			
+		}
+		
+		//player disconnects when he's not his turn
+		else 
+			callGameEngine = false; 
+	}
+	
 	
 	
 	/**
@@ -415,45 +347,11 @@ public class Controller extends Observable implements Observer{
 			handlePrivilegesChoice(msg);
 		}
 
-		public void visit(PlayerInfoMessage playerInfoMessage) {
-			// TODO Auto-generated method stub
-			
-			for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-				view.getValue().startInteraction(playerInfoMessage);
-			
-			//se il giocatore che si è disconnesso è di turno
-			if(playerInfoMessage.getName().equals(model.getCurrentPlayer().getName())) {
-				
-				if (roundState.getState() == StateOfRoundIdentifier.VATICAN_REPORT)
-					handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
-				
-				else if ((stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))||
-						(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))) 
-					inactivePlacement();
-				
-				else if (stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName()) ||
-						stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName()) ) 
-					inactivePlayerEnd();
-				
-				
-				else if (stateOfAction.getState().equals(StateOfActionIdentifier.PRIVILEGES.getName())) {
-					model.getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE);
-					inactivePlayerEnd();
-				}
-				
-				
-				else {
-					//handles disconnection in other ActionState cases
-				}
-				
-			}
-			
-			else //player disconnects when he's not his turn
-				callGameEngine = false; //so method gameEngine will not be called
-				
-			
+		public void visit(PlayerInfoMessage msg) {
+			handlePlayerInfoMessage(msg);
 		}
 	}
+	
 	
 	private void inactivePlayerEnd () {
 		stateOfAction= new PerformedState();
@@ -461,88 +359,57 @@ public class Controller extends Observable implements Observer{
 		sendInfo = false;
 	}
 	
-	int placeRandomFamiliar() {
-		
+	
+	private int placeRandomFamiliar() {
 		if (!model.getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).getBusy()) {
 			model.getCurrentPlayer().getFamiliarByColor(DiceColor.NEUTRAL).setBusy(true);
 			return 4;
 		}
 			
 		else {
-			
 			ArrayList<FamilyMemberInterface> freeMembers= new ArrayList<FamilyMemberInterface>();
-			
-			
-			for (FamilyMemberInterface familiar: model.getCurrentPlayer().getFamily()) {
-				
+			for (FamilyMemberInterface familiar: model.getCurrentPlayer().getFamily())
 				if (!familiar.getBusy())
 					freeMembers.add(familiar);
-			}	
 			
 			Random random= new Random();
-			
 			FamilyMemberInterface randomMember= freeMembers.get(random.nextInt(freeMembers.size()));
-			
 			model.getCurrentPlayer().getFamiliarByColor(randomMember.getFamiliarColor()).setBusy(true);
 			
 			switch(randomMember.getFamiliarColor()) {
-				
-				case BLACK:
-					return 1;
-					
-				case WHITE:
-					return 2;
-				
-				case ORANGE:
-					return 3;
-				
-				default:
-					System.out.println("Error in random placement");
-					return -1;
+			case BLACK:
+				return 1;
+			case WHITE:
+				return 2;
+			case ORANGE:
+				return 3;
+			default:
+				System.out.println("Error in random placement");
+				return -1;
 						
-				}
 			}
 		}
-	
+	}
 
 	
 	/**
 	 * Allows the game to flow. Triggers correct Controller's routine for the current roundState.
 	 * @see 
 	 */
+	
 	public void gameEngine () {
 		
-		/*for (Player player : model.getBoard().getPlayers()){
-			System.out.println(" "+ player.getName() + " leaderCards");
-			for (LeaderCard card : player.getPersonalBoard().getLeaderCards())
-				System.out.println(" " + player.getName() + " " + card.toString());
-		}
-		
-		System.out.println("\n");
-		
-		for (Player player  : model.getBoard().getPlayers()){
-			System.out.println(" "+ player.getName() + " playedLeaderCards");
-			for (LeaderCard card : player.getPersonalBoard().getPlayedLeaderCards())
-				System.out.println(" " + player.getName() + " " + card.toString());
-		}
-		*/
-		System.out.println("+++Round state: "+roundState+" +++ Player: "+model.getCurrentPlayer());
-
-		
 		if (roundState.getStateNumber()==1 || roundState.getStateNumber()==4) { 
-			roundState = roundState.doAction(model.getRound(), model); //mi porto nello stato 2
-			
-			initGameMessagesForView();
-			//initRoundMessagesForView(); //entra in questo ramo della funzione solo la prima volta
-			
-			callCorrectView(); //svolgo action
+			//change to state two
+			roundState = roundState.doAction(model.getRound(), model); 
+			CreationMessagesSupporter.initGameMessagesForView(model, views);
+			callCorrectView();
 		}
 		
 		else {
+			
 			if (roundState.getStateNumber()==2)
-				
 				if(isStateTwoTerminated() && !(stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName())) ) {
-					//ho concluso il turno di gioco: inizio la fase di VaticanReport
 					roundState = new VaticanReportState(model);
 					askForExcommunication();
 				} else
@@ -550,73 +417,66 @@ public class Controller extends Observable implements Observer{
 			
 			else if (roundState.getStateNumber()==3)
 				if(isStateThreeTerminated()) 
-				//ho concluso la fase di VaticanReport
 					endVaticanState();
-			else
-				//sono nell'azione 3: chiedo per il supporto alla Chiesa
-				askForExcommunication();
+				else
+					askForExcommunication();
 		}
 			
 	}
 
+	
 	private boolean isStateTwoTerminated() {
 		for(Player player: model.getBoard().getPlayers())
 			for(FamilyMemberInterface member: player.getFamily())
 				if (!member.getBusy())
 					return false;
 		
-		//ha controllato che tutti i familiari sono occupati, se anche un eventuale azione
-		//che richiede interazione è terminata torna true
+		//each familiar is busy and the last action is performed
 		return (stateOfAction.getState().equals("performed"));
 	}
 
+	
 	private boolean isStateThreeTerminated() {
 		for (Player player: model.getBoard().getPlayers())
 			if (!player.isVaticanReportPerformed())
 				return false;
+		//vatican report is managed for each player
 		return true;
 	}
 	
+	
 	private void conclusion () {
-		//funzione per la terminazione del gioco: gestione punteggi, connessioni, notifiche alle view...
-		System.out.println("...end of match..");
 		
 		for (Player player : model.getBoard().getPlayers()){
 			player.passPersonalBoard();
 			player.getFinalPoints();
-			if (!player.getVentureCardPenalty()){
-				ArrayList<Card> ventures = player.getPersonalBoard().getCards("ventures");
-				for (Card card : ventures){
-					ArrayList<Effect> finalEffects = card.getPermanentEffects();
-					for (Effect effect : finalEffects){
-						effect.performEffect(player);
-					}
-				}
-				
-			}
 			
+			if (!player.getVentureCardPenalty())
+				for (Card card : player.getPersonalBoard().getCards("venture"))
+					for (Effect effect : card.getPermanentEffects())
+						effect.performEffect(player);
+				
 			model.getBoard().assignPointsForMilitaryTrack();
 		}
 		
 	}
 	
+	
 	private void askForExcommunication () {
-		String player;
 		
 		if(model.getRound()%2==0) { //funzioni da svolgere solo nei turni pari
-			
 			int tresHold = model.getBoard().getExcommunicationTreshold(model.getRound());
 			
 			while(!model.getCurrentPlayer().canAskSubstain(tresHold) && !isStateThreeTerminated()) {
-				//se non ho abbastanza punti per sostenere la Chiesa e non ho ancora controllato tutti
+				//the player doesn't have enough points to substain but the state isn't terminated yet
 				model.getCurrentPlayer().setVaticanReportPerformed(true);
 				((VaticanReportState)roundState).excommunicatePlayer(model.getCurrentPlayer());
 				model.getBoard().changePlayerOrder();
 			}
 		
 			if(!isStateThreeTerminated()) {
-				//devo chiedere la scelta a un giocatore
-				player = model.getCurrentPlayer().getName();
+				//ask to a player if he want to substain the curch
+				String player = model.getCurrentPlayer().getName();
 				
 				if(views.get(player).getInGame()) {
 					VaticanChoice msg = new VaticanChoice (player);
@@ -627,96 +487,53 @@ public class Controller extends Observable implements Observer{
 					handleExcommunication(PlayerInactiveFunctions.playerInactiveVatican(model.getCurrentPlayer().getName()));
 					gameEngine();
 				}
-				
 			}
 		
 			else 
-				//devo terminare il turno
-				endVaticanState ();
+				//conclusion of the state
+				endVaticanState();
 			
 		}
 		
-		else
-			endVaticanState();
+		else 		
+			endVaticanState();	//in odd rounds the Vatican report isn't performed	
 	}
 	
-	public void endVaticanState () {
-		//chiamo questa funzione quando non devo fare il Vatican Report
-		//oppure mi accorgo di averlo concluso senza aver svolto un'azione per la gameEngine 
+	
+	public void endVaticanState () {		
+		roundState= roundState.doAction(model.getRound(), model);	//go to state four
+		roundState = roundState.doAction(model.getRound(), model); 	//do the action is state four
 		
-		roundState= roundState.doAction(model.getRound(), model);
-		roundState = roundState.doAction(model.getRound(), model); //dopo aver cambiato lo stato, svolgo azione
-		
-		if(model.endOfMatch) //se la partita termina esco, altrimenti devo richiamare una funzione per proseguire
+		if(model.endOfMatch) //if the match ends
 			conclusion();
-		
 		else {
-			initRoundMessagesForView();
-			callCorrectView(); //inizia una nuova fase per le azioni
+			CreationMessagesSupporter.initRoundMessagesForView(model, views); 
+			callCorrectView(); //a new round starts
 		}
 		
 	}
 	
-	public TowersDTO createTowersDTO () {
-		TowersDTO msg = new TowersDTO();
-		String [] towersName = {"territoryTower", "buildingTower", "characterTower", "ventureTower"};
-		for (String towerName: towersName)
-			for (Floor floor: ((TowerArea)model.getBoard().getSpace(towerName)).getFloors()) {
-				Card cardOnTower = floor.getCard();
-				msg.addCard(new CardDTO (cardOnTower.getId(), cardOnTower.getType(), cardOnTower.toString()));
-			}
-		return msg;
+	
+	private void initInfoForView () {
+		//if I need to send info to view after this method I'll set sendInfo to TRUE
+		sendInfo = false;
+		info = new InfoForView(model.getCurrentPlayer().getName());
+		info.playerColor = model.getCurrentPlayer().getColor();
 	}
 	
-	public int[] createDicesDTO () {
-		int[] dices = new int[3];
-		for (int i=0; i<model.getBoard().getDices().size(); i++)
-			dices[i] = model.getBoard().getDices().get(i).getValue();
-		return dices;
-	}
-	
-	public void initRoundMessagesForView () {
-		//mostro le torri alle view
-		TowersDTO towersForView = createTowersDTO();
-		int[] dices = createDicesDTO();
-		
+	private void generateResourcesDTOAndSend () {
+		info.resSituation = new HashMap<String, ArrayList<ResourceDTO>>();
+		for(Player player: model.getBoard().getPlayers()) {
+			ArrayList<ResourceDTO> resCon = new ArrayList<ResourceDTO>();
+			for(ResourceInterface res: player.getPersonalBoard().getResources().hashMapToArrayListResources())
+				resCon.add(new ResourceDTO(res.getType(), res.getAmount()));
+			info.resSituation.put(player.getName(), resCon);
+		}
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-			view.getValue().startInteraction(new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices));
+			view.getValue().startInteraction(info);
 	}
 	
-	public void initGameMessagesForView () {
-		//costruisco l'oggetto per le tile
-		HashMap <String, PersonalBonusTileDTO> tiles = new HashMap <String, PersonalBonusTileDTO> ();
-		for (Player player: model.getBoard().getPlayers())
-			tiles.put(player.getName(), new PersonalBonusTileDTO(
-					player.getPersonalBoard().getPersonalBonusTile().getId(), 
-					player.getPersonalBoard().getPersonalBonusTile().toString()));
-		
-		//costruisco l'oggetto per le scomuniche
-		ArrayList<ExcommunicationCardDTO> exCards = new ArrayList<ExcommunicationCardDTO>();
-		for (int i=0; i<3; i++) {
-			ExcommunicationCard exCard = model.getBoard().getExcommunication(2*(i+1));
-			exCards.add(new ExcommunicationCardDTO(exCard.getId(), exCard.getPeriod(), exCard.toString()));
-		}
-		
-		TowersDTO towersForView = createTowersDTO();
-		int[] dices = createDicesDTO();
-		
-		//invio il messaggio alle view
-		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) {
-			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards,
-					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices)));
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				Thread.currentThread().interrupt();
-			}
-		}
-			//views.get(model.getBoard().getCurrentPlayer().getName()).startInteraction(new FirstBoardInfo(model.getBoard().getCurrentPlayer().getName(), tiles, exCards,
-				//	new TowersAndDicesForView(model.getBoard().getCurrentPlayer().getName(), towersForView, dices)));
-		
-		}
 	
-	}
+	
+}
 
