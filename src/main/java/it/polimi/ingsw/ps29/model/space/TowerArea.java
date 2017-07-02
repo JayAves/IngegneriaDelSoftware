@@ -109,5 +109,8 @@ public class TowerArea implements ActionSpace {
 		floors.get(placementFloor-1).getSpace().setFamilyMember(familiar);
 	}
 
+	public void setCard(Card card, int floor) {
+		floors.get(floor-1).setCard(card);
+	}
 	
 }

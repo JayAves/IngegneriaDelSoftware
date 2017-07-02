@@ -2148,7 +2148,7 @@
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
 		{ "diceEmpowerment": 2,
-          "towerType": "Harvest",
+          "towerType": "Territory",
           "discount" :[]
             
         }}],
@@ -2172,7 +2172,7 @@
 		"effectType": "EmpowermentPlacementEffect",
 		"effectData":
 		{ "diceEmpowerment": 2,
-          "towerType": "Production",
+          "towerType": "Building",
           "discount" :[]
             
         }}],
@@ -2234,7 +2234,7 @@
   "effectType": "EmpowermentPlacementEffect",
   "effectData":
   { "diceEmpowerment": 2,
-    "towerType": "venture",
+    "towerType": "Venture",
   "discount":[]}}],
  "cost":[{
    "resourceType":"Coins",

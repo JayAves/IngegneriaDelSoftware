@@ -4,9 +4,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-@RunWith(Suite.class)
-@SuiteClasses({ AppTest.class /*, DeckTest.class*/ })
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
-public class AllTests {
+@RunWith(Suite.class)
+@SuiteClasses({ BonusActionTest.class})
+
+public class AllTests {	
+	
+	public static Test suite () {
+		TestSuite suite = new TestSuite();
+		/*suite.addTest(new PrivilegesTest("test"));
+		suite.addTest(new BonusActionTest("test"));*/
+		
+		suite.addTest(new DiscountEffectTest("test"));
+		
+		return suite;
+	}
+		
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+		
+	}
+
 
 }

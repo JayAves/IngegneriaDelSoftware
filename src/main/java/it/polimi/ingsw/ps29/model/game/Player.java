@@ -22,7 +22,7 @@ public class Player {
 	private FakeFamilyMemberInterface fakeFamiliar;
 	private ExcommunicationCard [] excommunication;
 	private ExchangeSupport supportForExchange;
-	public ArrayList<Effect> specialPermanentEffects;
+	private ArrayList<Effect> specialPermanentEffects;
 	private FinalScoring finalScoring;
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
@@ -171,5 +171,20 @@ public class Player {
         return noMarket;
 	}
 
+
+	public ArrayList<Effect> getSpecialPermanentEffects() {
+		return specialPermanentEffects;
+	}
+
+
+	public void addSpecialPermanentEffects(Effect specialPermanentEffect) {
+		this.specialPermanentEffects.add(specialPermanentEffect);
+	}
+	
+	public void setSpecialPermanentEffects(ArrayList<Effect> specialPermanentEffect) {
+		this.specialPermanentEffects = specialPermanentEffect;
+	}
+
+    
     
 }

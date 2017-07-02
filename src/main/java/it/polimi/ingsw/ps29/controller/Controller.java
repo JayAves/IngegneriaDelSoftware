@@ -122,7 +122,7 @@ public class Controller implements Observer{
 			
 			else {
 				//sceglie un familiare e lo setta occupato per permettere alla partita di proseguire correttamente
-				playerInactivePlacement();
+				inactivePlacement();
 				
 			}
 		}
@@ -134,7 +134,7 @@ public class Controller implements Observer{
 		}
 	}
 	
-	private void playerInactivePlacement () {
+	private void inactivePlacement () {
 		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), 
 				model.getCurrentPlayer().getColor(), placeRandomFamiliar());
 		
@@ -390,7 +390,7 @@ public class Controller implements Observer{
 				
 				else if ((stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))||
 						(stateOfAction.getState().equals(StateOfActionIdentifier.TO_ESTABLISH.getName()))) 
-					playerInactivePlacement();
+					inactivePlacement();
 				
 				else if (stateOfAction.getState().equals(StateOfActionIdentifier.BONUS_ACTION.getName()) ||
 						stateOfAction.getState().equals(StateOfActionIdentifier.ASK_EXCHANGE.getName()) ) 

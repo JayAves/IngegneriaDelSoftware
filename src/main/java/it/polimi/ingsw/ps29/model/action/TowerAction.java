@@ -3,16 +3,17 @@ package it.polimi.ingsw.ps29.model.action;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.messages.exception.FullCardBoardException;
+import it.polimi.ingsw.ps29.messages.exception.NotEnoughMilitaryException;
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughResourcesException;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
-import it.polimi.ingsw.ps29.messages.exception.NotEnoughMilitaryException;
 import it.polimi.ingsw.ps29.messages.exception.TowerCoinMalusException;
 import it.polimi.ingsw.ps29.model.action.actionstates.BonusActionState;
 import it.polimi.ingsw.ps29.model.cards.VentureCard;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
-import it.polimi.ingsw.ps29.model.cards.effects.DiscountForCardTypeEffect;
+import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
+import it.polimi.ingsw.ps29.model.cards.effects.EmpowermentPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
@@ -93,23 +94,43 @@ public class TowerAction extends Action {
 		
 		ArrayList<Resource> discountedCosts= space.takeCard().getCost();
 			//if I have permanent effects about discounts...
-			applyDiscounts(discountedCosts);
+			applyDiscounts(discountedCosts, move.getFamiliar().getFamiliarColor());
 			
 		for(Resource res: discountedCosts){  //pago costi
 			res.negativeAmount();
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
 		}
 		
+		//gestione degli effetti immediati
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) 
-			if (immediateEffect instanceof BonusActionEffect)
+			
+			//se l'effetto è bonus cambio stato per gestirlo successivamente, eventualmente memorizzo sconti su risorse
+			if (immediateEffect instanceof BonusActionEffect) {
 				state = new BonusActionState(((BonusActionEffect)immediateEffect).clone());
+				if (immediateEffect instanceof BonusPlacementEffect)
+					move.getPlayer().addSpecialPermanentEffects(immediateEffect);
+			}
+				
 			else //eseguo l'effetto immediato se non si tratta di una bonus action
 				immediateEffect.performEffect(move.getPlayer());
-	
+		
+		//gestione degli effetti permanenti
+		for(Effect permanentEffect: space.takeCard().getPermanentEffects()) {
+			permanentEffect.performEffect(move.getPlayer());
+			
+			//se l'effetto prevede uno sconto permanente di risorse memorizzo in un ArrayList sul player
+			if(permanentEffect instanceof EmpowermentPlacementEffect)
+				if (!((EmpowermentPlacementEffect) permanentEffect).getDiscount().isEmpty())
+					move.getPlayer().addSpecialPermanentEffects(permanentEffect);
+		}
+		
 		space.getPlacementFloor().setCard(null); 
 		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
 		move.getFamiliar().setBusy(true);
+		
+		if(move.getFamiliar().getFamiliarColor() == DiceColor.BONUS)
+			removeBonusDiscount();
 	
 	}
 		
@@ -127,7 +148,7 @@ public class TowerAction extends Action {
 			highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
 		
 		//if I have permanent effects about discounts...
-		applyDiscounts(discountedCost);
+		applyDiscounts(discountedCost, move.getFamiliar().getFamiliarColor());
 		
 		//considero le 3 monete da pagare
 		if(!space.isEmpty()) {
@@ -215,14 +236,50 @@ public class TowerAction extends Action {
 		
 
 	
-	private void applyDiscounts( ArrayList<Resource> costs) {
-		for (Effect eff: move.getPlayer().specialPermanentEffects) 
-			if (eff.toString().equals("DiscountForCardType")) 
-				for(Resource res: ((DiscountForCardTypeEffect)eff).getDiscount()) 
-					for (Resource source: costs) 
-						if (res.getType()==source.getType()) 
-							source.modifyAmount(-res.getAmount());
+	public void applyDiscounts( ArrayList<Resource> costs, DiceColor familiar) {
+		
+		//gestione degli sconti che derivano da EmpowermentPlacementEffect
+		for (Effect eff: move.getPlayer().getSpecialPermanentEffects()) 
+			if (eff instanceof EmpowermentPlacementEffect && isSpaceCorrect(((EmpowermentPlacementEffect) eff).getTowerType())) 
+				manageDiscount(((EmpowermentPlacementEffect) eff).getDiscount(), costs);
+		
+		//gestione degli sconti che derivano da BonusPlacementEffect
+		if (familiar==DiceColor.BONUS)
+			for (Effect eff: move.getPlayer().getSpecialPermanentEffects()) 
+				if (eff instanceof BonusPlacementEffect && isSpaceCorrect(((BonusPlacementEffect) eff).getType()) ) 
+					manageDiscount(((BonusPlacementEffect) eff).getDiscount(), costs);
+		
+	}
+	
+	private boolean isSpaceCorrect (String tower) {
+		switch(move.getSpace()) {
+			case "territoryTower":
+				return tower.toLowerCase().equals("territory");
+			case "buildingTower":
+				return tower.toLowerCase().equals("building");
+			case "characterTower":
+				return tower.toLowerCase().equals("character");
+			case "ventureTower":
+				return tower.toLowerCase().equals("venture");
+			default:
+				return false;
+		}
+	}
+	
+	private void manageDiscount (ArrayList<Resource> eff, ArrayList<Resource> costs) {
+		for(Resource res: eff) 
+			for (Resource source: costs) 
+				if (res.getType()==source.getType()) 
+					source.modifyAmount(-res.getAmount());
 	}
 
+	public void removeBonusDiscount () {
+		ArrayList<Effect> newSpecialEffects = new ArrayList<Effect>();
+		for (Effect eff: move.getPlayer().getSpecialPermanentEffects())
+			if (!(eff instanceof BonusPlacementEffect))
+				newSpecialEffects.add(eff);
+		move.getPlayer().setSpecialPermanentEffects(newSpecialEffects);
+				
+	}
 
 }
