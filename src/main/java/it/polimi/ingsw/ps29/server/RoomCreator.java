@@ -182,31 +182,28 @@ public class RoomCreator extends Thread implements Observer {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-		
-				if (counter>1) {
+	
+			if (counter>1) {
+				
+				counter=0;
+				System.out.println("Room from timer");
+				Room newRoom= new Room(playersInQueue);
+				roomHandler.add(newRoom);
+				System.out.println(roomHandler.size());
+				playersInQueue.clear();
+				newRoom.start();
+				
+				
+				try {
+					sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Could not sleep!");
+					interrupt();
 					
-					counter=0;
-					System.out.println("Room from timer");
-					Room newRoom= new Room(playersInQueue);
-					roomHandler.add(newRoom);
-					System.out.println(roomHandler.size());
-					playersInQueue.clear();
-					newRoom.start();
-					
-					
-					try {
-						sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						System.out.println("Could not sleep!");
-						interrupt();
-						
-					}
 				}
+			}
 				
-			
-				
-			
 		}
 		
 	}

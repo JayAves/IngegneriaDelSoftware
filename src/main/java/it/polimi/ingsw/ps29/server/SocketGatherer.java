@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.server;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -47,40 +46,29 @@ public class SocketGatherer extends Observable implements Runnable{
 	 */
 	
 	public void startServer () {
-		Socket socket;
-		SocketClientThread virtualView;
 		
 		while(!endOfConnection) {
 			
 			try {
-				socket = serverSocket.accept();
+				Socket socket = serverSocket.accept();
 				oos = new ObjectOutputStream(socket.getOutputStream());
 				oos.flush();
 				ois = new ObjectInputStream(socket.getInputStream());
 				
 				try {
 					PlayerInfoMessage tempLogin = (PlayerInfoMessage) ois.readObject();
-					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
+					SocketClientThread virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
 					virtualView.setTurnTimer(turnTimer);
 					SocketClientThread toDelete= null;
 					
-					for(SocketClientThread th: clients)
+					for(SocketClientThread th: clients) 
 						//if finds player already in a game
 						if (th.IDcode.contentEquals(virtualView.IDcode)) { 
 							virtualView.setInGame(true);
 							toDelete=th;
 						}
 					
-					//notify RoomCreator
-					setChanged();
-					notifyObservers(virtualView);
-					
-					//Get rid of old ClientThread
-					clients.remove(toDelete);	
-					clients.add(virtualView);
-					
-					Thread t = new Thread (virtualView);
-					t.start();
+					handleVirtualView(virtualView, toDelete);
 				
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
@@ -96,10 +84,25 @@ public class SocketGatherer extends Observable implements Runnable{
 	}
 	
 	
-	public ArrayList<SocketClientThread> getClients(){
+	private void handleVirtualView (SocketClientThread virtualView, SocketClientThread toDelete) {
 		
+		//notify RoomCreator
+		setChanged();
+		notifyObservers(virtualView);
+		
+		//Get rid of old ClientThread
+		clients.remove(toDelete);	
+		clients.add(virtualView);
+		
+		Thread t = new Thread (virtualView);
+		t.start();
+	}
+	
+	
+	public ArrayList<SocketClientThread> getClients(){
 		return clients;
 	}
+	
 	public void endOfConnection() {
 		endOfConnection=true;
 	}

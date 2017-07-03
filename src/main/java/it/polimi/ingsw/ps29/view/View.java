@@ -172,8 +172,11 @@ public class View extends Observable implements Observer {
 	public void showInitialInfo (FirstBoardInfo msg) {
 		//setto le tile su ogni board
 		for(HashMap.Entry<String, PersonalBonusTileDTO> tile: msg.getTiles().entrySet())
-			if(personalBoardsDTO.get(tile.getKey()).getTile() == null)
+			if(personalBoardsDTO.get(tile.getKey()) == null)
 				personalBoardsDTO.put(tile.getKey(), new PersonalBoardDTO(tile.getKey(), tile.getValue()));
+			else
+				personalBoardsDTO.replace(tile.getKey(), new PersonalBoardDTO(tile.getKey(), tile.getValue()));
+		
 		exCards = msg.getExCards();
 		inputOutput.showFirstInfo (msg);
 		showTowersAndDices(msg.getTowers());
