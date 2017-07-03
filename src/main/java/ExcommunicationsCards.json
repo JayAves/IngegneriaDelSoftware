@@ -100,7 +100,7 @@
   "effectType": "FamiliarEmpowermentByColor",
   "effectData":
   { "diceEmpowerment": -1,
-     "colors": ["BLACK, WHITE, ORANGE"]     
+     "colors": ["BLACK", "WHITE", "ORANGE"]     
         }}
      
 
