@@ -45,7 +45,7 @@
 "leaderEffect" : {
         "effectType": "FamiliarEmpowermentByColor",
         "effectData" :{ "diceEmpowerment" : 3,
-                        " colors" : ["NEUTRAL"]}},
+                        "colors" : ["NEUTRAL"]}},
 "requirements" : [{
    "resourceType":"MilitaryPoints",
    "resourceData":{

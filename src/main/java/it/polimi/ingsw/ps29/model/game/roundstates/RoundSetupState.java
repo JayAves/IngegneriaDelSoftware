@@ -71,7 +71,7 @@ public class RoundSetupState implements RoundState {
 			if (!player.getPersonalBoard().getActivatedLeaderCards().isEmpty()){
 				ArrayList<LeaderCard> toRemove = new ArrayList<LeaderCard>();
 				for (LeaderCard card : player.getPersonalBoard().getActivatedLeaderCards()){
-					if (!card.getIfPermanent())
+					if (!card.isPermanent())
 						toRemove.add(card);
 				}
 				player.getPersonalBoard().getPlayedLeaderCards().addAll(toRemove);

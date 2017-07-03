@@ -49,7 +49,7 @@ public class LeaderCard {
     	return requirements;
     }
     
-    public boolean getIfPermanent(){
+    public boolean isPermanent(){
     	return permantenteffect;
     }
     
