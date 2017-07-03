@@ -17,7 +17,7 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
  */
 public class TowersAndDicesForView extends InteractionMessage {
 
-	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = 1158495027760084133L;
 	private TowersDTO towers;
 	private int[] dices = new int[3];

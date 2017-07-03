@@ -7,7 +7,16 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
+/**
+ * DTO implementation of object GameBoard
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.game.GameBoard
+ *
+ */
 public class GameBoardDTO implements Serializable{
+	
+	//auto-generated serialVersionUID
+	private static final long serialVersionUID = 3400069665316183033L;
 	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
 
 	public GameBoardDTO() {

@@ -26,6 +26,7 @@ public class PlayerInfoMessage extends InteractionMessage {
 		
 	}
 	
+	// standard UID version
 	private static final long serialVersionUID = 1L;
 
 	@Override

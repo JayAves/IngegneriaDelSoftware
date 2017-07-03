@@ -1,5 +1,12 @@
 package it.polimi.ingsw.ps29.model.action.actionstates;
 
+/**
+ * Labels various states and ActionState can have.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public enum StateOfActionIdentifier {
 	PERFORMED ("performed"),
 	REJECTED ("rejected"),

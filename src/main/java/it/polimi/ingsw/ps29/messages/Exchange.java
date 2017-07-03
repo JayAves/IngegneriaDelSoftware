@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.viewclient.Client;
 /**
  * Contains data about an ExchangeResourcesEffect.
  * @author Pietro Melzi
- * @see ExchangeResourceEffect
+ * @see it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect
  */
 public class Exchange extends InteractionMessage {
 	

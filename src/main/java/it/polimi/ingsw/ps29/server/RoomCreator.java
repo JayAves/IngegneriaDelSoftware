@@ -90,7 +90,7 @@ public class RoomCreator extends Thread implements Observer {
 		}
 		
 		else if (updated)
-			((ClientThread)arg).restoreSituation();
+			((ClientThread)arg).restoreSituation(); //ask Controller updated info for new View
 	}
 	
 	/**

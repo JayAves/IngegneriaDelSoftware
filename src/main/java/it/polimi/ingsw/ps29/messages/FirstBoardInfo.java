@@ -12,8 +12,8 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
  * Contains data about GameBoard to show in View. It is sent at the beginning of every round. Brings also turn's timer for FakeScanner.
  * @author Pietro Melzi
  * @author Pietro Grotti
- * @see GameBoard
- * @see InputWithTimer
+ * @see it.polimi.ingsw.ps29.model.game.GameBoard
+ * @see it.polimi.ingsw.ps29.view.inputCLI.InputWithTimer
  */
 public class FirstBoardInfo extends InteractionMessage {
 	

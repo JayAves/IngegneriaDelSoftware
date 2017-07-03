@@ -6,9 +6,7 @@ public class NotEnoughPowerfulException extends RejectException {
 		message = "Action rejected: value of the action isn't enough powerful!";
 	}
 
-	/**
-	 * 
-	 */
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = 7564590807042881141L;
 
 }

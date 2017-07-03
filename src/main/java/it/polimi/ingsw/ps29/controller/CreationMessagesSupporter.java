@@ -29,6 +29,12 @@ import it.polimi.ingsw.ps29.model.space.ProductionArea;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 import it.polimi.ingsw.ps29.server.ClientThread;
 
+/**
+ * Creates all kind of messages and DTO. Only info to be shown, nothing has to come back to server.
+ * @author Pietro melzi
+ * @author Pietro Grotti
+ *
+ */
 public class CreationMessagesSupporter {
 	
 	public static TowersDTO createTowersDTO (Match model) {

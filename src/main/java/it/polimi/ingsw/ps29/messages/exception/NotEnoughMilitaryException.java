@@ -6,9 +6,7 @@ public class NotEnoughMilitaryException extends RejectException {
 		message = "Action rejected: you don't have enough military points to take this card!";
 	}
 	
-	/**
-	 * 
-	 */
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -924280406593117473L;
 
 }
