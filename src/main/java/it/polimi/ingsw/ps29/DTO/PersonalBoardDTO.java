@@ -47,7 +47,9 @@ public class PersonalBoardDTO implements Serializable {
 		return tile;
 	}
 	
-	
+	public String getName () {
+		return name;
+	}
 	
 	
 }

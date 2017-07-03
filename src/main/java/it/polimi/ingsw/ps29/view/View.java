@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
@@ -180,6 +181,17 @@ public class View extends Observable implements Observer {
 		exCards = msg.getExCards();
 		inputOutput.showFirstInfo (msg);
 		showTowersAndDices(msg.getTowers());
+	}
+	
+	public void restoreSituation (RestoreSituation msg) {
+		showInitialInfo(msg.getFirstInfo());
+		gameBoardDTO = msg.getGameBoard();
+		for (PersonalBoardDTO pBoard: msg.getPersonalBoard())
+			if(personalBoardsDTO.get(pBoard.getName())==null)
+				personalBoardsDTO.put(pBoard.getName(), pBoard);
+			else
+				personalBoardsDTO.replace(pBoard.getName(), pBoard);
+		
 	}
 	
 	public InputOutput getInputOutput() {

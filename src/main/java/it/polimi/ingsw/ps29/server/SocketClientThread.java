@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 
 /**
  * ClientThread that uses socket technology for client-server Connection. Username is the one received by client.
@@ -41,8 +42,6 @@ public class SocketClientThread extends ClientThread {
 		IDcode= playerLogin.getToken();
 		inGame=false;
 		
-		
-		
 		serializator = new ServerSerializator(this,socket, this.oos, this.ois);
 	}
 	
@@ -62,7 +61,7 @@ public class SocketClientThread extends ClientThread {
 				
 				System.out.println("Server: msg received by "+playerName+":\n"+obj.toString()+"\n");
 				
-				//feedback arrived: timer must be reset//
+				//feedback arrived: timer must be reset
 				serializator.beeperHandle.cancel(true);
 				
 				setChanged();
@@ -100,7 +99,6 @@ public class SocketClientThread extends ClientThread {
 
 	@Override
 	public String getClientName() {
-		// TODO Auto-generated method stub
 		return playerName;
 	}
 
@@ -109,25 +107,23 @@ public class SocketClientThread extends ClientThread {
 	public void startInteraction(InteractionMessage msg) {
 		if (inGame) {
 			serializator.serializeObject(msg);
-	
 		}
 	}
 
 
 	@Override
 	protected void stopClient() {
-		// TODO Auto-generated method stub
 		endOfConnection=true;
 		newConnection=true;
 	}
 	
 	public void endOfThis() {
 		
-		//if player logs out, any scheduled timer is deleted//
+		//if player logs out, any scheduled timer is deleted
 		if(serializator.beeperHandle != null)
 			serializator.beeperHandle.cancel(false);
 		
-		inGame=false;
+		inGame = false;
 		PlayerInfoMessage msg= new PlayerInfoMessage(playerName);
 		endOfConnection=true;
 		setChanged();
@@ -138,6 +134,14 @@ public class SocketClientThread extends ClientThread {
 		setChanged();
 		notifyObservers(msg);
 	}
+	
+	@Override
+	public void restoreSituation() {
+		RestoreSituation restoreSituation = new RestoreSituation(playerName);
+		setChanged();
+		notifyObservers(restoreSituation);
+	}
+
 	
 	/**
 	 * Part responsible of sending messages through socket and scheduling turnTimers for good server behavior

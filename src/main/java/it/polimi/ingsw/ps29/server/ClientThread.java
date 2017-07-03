@@ -35,7 +35,10 @@ public abstract class ClientThread extends Observable implements Runnable{
 	public boolean getInGame() {
 		return inGame;
 	}
+	
 	public void setTurnTimer(int timer) {
 		actionTimer=timer;
 	}
+	
+	public abstract void restoreSituation();
 }

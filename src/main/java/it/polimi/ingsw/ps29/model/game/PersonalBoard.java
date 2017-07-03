@@ -95,28 +95,21 @@ public class PersonalBoard {
 			resources = card.getResourcesRequirements();
 			boolean satisfiedc = true;
 			boolean satisfiedr = true;
-			System.out.println("\n sto controllando requisiti di "+ card.toString());
 			if (!requirements.isEmpty()){
 				if (requirements.containsKey("any")){
 					satisfiedc = checkIfCardsEqualsInSize(requirements.get("any"));
 				}
 			
-					System.out.println(" vettore requirements " + requirements.toString());
 					Set<String> set = requirements.keySet();
-					System.out.println(" i requisiti di carte sono " );
-					for (String type : set){
-						System.out.println("\n " + type);
+					for (String type : set)
 						satisfiedc = satisfiedc &&  getCards(type).size() >= requirements.get(type);
-					}
+					
 			}
-		
-			System.out.println("\n ho controlato le carte di " + card.toString() + " risultato " + satisfiedc );
 		
 			if (!resources.isEmpty()){
 				satisfiedr = this.resources.isPossibleToPay(resources);
 			}
 
-			System.out.println(" ho controllato i requisiti di " + card.toString() + " e il risultato è " + (satisfiedc && satisfiedr));
 			return (satisfiedc && satisfiedr);
 	}
 	
@@ -224,5 +217,7 @@ public class PersonalBoard {
 	public ArrayList<LeaderCard> getActivatedLeaderCards(){
 		return activatedLeaderCards;
 	}
+	
+	
 	
 }

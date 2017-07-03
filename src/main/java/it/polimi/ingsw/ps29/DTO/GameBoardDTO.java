@@ -151,6 +151,16 @@ public class GameBoardDTO implements Serializable{
 			boardMap.get(firstLevel(info.space)).get(secondLevel(info.space, info.floor)).add(fmDTO);
 	}
 	
+	public void insertSingleFamiliar (String first, String second, FamilyMemberDTO familiar) {
+		if(familiar!=null)
+			boardMap.get(first).get(second).add(familiar);
+	}
+	
+	public void insertQueueFamiliar (String first, String second, ArrayList<FamilyMemberDTO> family) {
+		for(FamilyMemberDTO member: family)
+			boardMap.get(first).get(second).add(member);
+	}
+	
 	public boolean isFamiliarPresent (FamilyMemberDTO familiar) {
 		for (String firstKey: boardMap.keySet()) 
 			for(String secondKey: boardMap.get(firstKey).keySet()) 

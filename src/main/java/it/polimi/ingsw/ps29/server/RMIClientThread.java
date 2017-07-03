@@ -150,4 +150,10 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		
 	}
 
+@Override
+public void restoreSituation() {
+	// TODO Auto-generated method stub
+	
+}
+
 }

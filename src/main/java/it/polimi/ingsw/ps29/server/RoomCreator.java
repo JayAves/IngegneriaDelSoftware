@@ -24,7 +24,7 @@ public class RoomCreator extends Thread implements Observer {
 	private int period;
 	
 	public RoomCreator(){
-		this.counter =0;
+		this.counter = 0;
 		this.roomHandler= new ArrayList<Room>();
 		this.playersInQueue= new ArrayList<ClientThread>();
 		
@@ -45,6 +45,7 @@ public class RoomCreator extends Thread implements Observer {
 	 * Checks the number of players waiting, schedules roomTimer as soon as two players are in queue
 	 * @throws FileNotFoundException
 	 */
+	
 	private synchronized void increaseCounter() throws FileNotFoundException{
 			
 		counter++;
@@ -71,6 +72,7 @@ public class RoomCreator extends Thread implements Observer {
 	 * @see SocketGatherer
 	 * @see RMIGatherer
 	 */
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		
@@ -79,34 +81,32 @@ public class RoomCreator extends Thread implements Observer {
 		
 		if ((!updated)&& (!queued)) {
 			try {
-				
 				addPlayer((ClientThread) arg);
 		
 			} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			interrupt();
-					
-				}
-			}	
+				interrupt();
+			}
+			
+		}
+		
+		else if (updated)
+			((ClientThread)arg).restoreSituation();
 	}
 	
 	/**
 	 * Checks if player disconnected while in queue has reconnected
 	 * @param arg ClientThread of some player
-	 * @return if player is alreadyin queue
+	 * @return if player is already in queue
 	 */
 	private boolean inQueueCheck(ClientThread arg) {
 		
-		for (ClientThread th: playersInQueue) {
-			
+		for (ClientThread th: playersInQueue) 
 			if (th.IDcode.contentEquals(arg.IDcode)) {
-				
 				playersInQueue.remove(th);
 				playersInQueue.add(arg);
 				return true;
 			}
-				
-		}
+		
 		return false;
 		
 	}
