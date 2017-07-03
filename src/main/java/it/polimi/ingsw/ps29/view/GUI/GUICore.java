@@ -50,6 +50,10 @@ public class GUICore extends Observable{
 	ImageToPrint excomm2;
 	ImageToPrint excomm3;
 	JTextArea console;
+	JLabel coin;
+	JLabel stone;
+	JLabel wood;
+	JLabel servant;
 	
 	PlayerListener listener;
 	
@@ -205,18 +209,34 @@ public class GUICore extends Observable{
 		GridBagConstraints c = new GridBagConstraints();
 		
 		preview = new ImageToPrint("devcards_f_en_c_1.png", this);
-		c.weightx = 1;
+		c.weightx = 2;
 		c.fill = GridBagConstraints.BOTH;
 		panelSouth.add(preview, c);
 		
 		c.gridx = 1;
-		c.weightx = 3;
+		c.weightx = 2;
 		c.weighty = 1;
 		
 		console = new JTextArea("console...");
 		console.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(console);
 		panelSouth.add(scrollPane, c);
+		
+		c.gridx = 2;
+		c.weightx = 1;
+		JPanel resourcesPanel = new JPanel();
+		resourcesPanel.setLayout(new GridLayout(4, 1));
+		
+		coin = new JLabel("Coins: 0");
+		resourcesPanel.add(coin);
+		stone = new JLabel("Stones: 0");
+		resourcesPanel.add(stone);
+		wood = new JLabel("Wood: 0");
+		resourcesPanel.add(wood);
+		servant = new JLabel("Servants: 0");
+		resourcesPanel.add(servant);
+		
+		panelSouth.add(resourcesPanel, c);
 		
 	}
 	
