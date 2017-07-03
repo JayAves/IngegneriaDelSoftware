@@ -519,7 +519,6 @@ public class Controller extends Observable implements Observer{
 		
 		public void visit (ActionChoice msg) {
 			handleInputAction(msg, -1);
-			System.out.println("1");
 		}
 		
 		public void visit (Exchange msg) {
@@ -541,13 +540,11 @@ public class Controller extends Observable implements Observer{
 		//called after disconnection of a player
 		public void visit(PlayerInfoMessage msg) {
 			handlePlayerInfoMessage(msg);
-			System.out.println("2");
 		}
 		
 		//called after a player came back in game
 		public void visit(RestoreSituation msg) {
 			restoreSituation(msg);
-			System.out.println("3");
 		}
 	}
 	

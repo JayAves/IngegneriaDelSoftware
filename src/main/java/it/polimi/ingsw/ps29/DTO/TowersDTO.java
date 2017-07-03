@@ -15,6 +15,7 @@ public class TowersDTO implements Serializable {
 	//auto-generated serialVersionUID
 	static final long serialVersionUID = 2547684498839129802L;
 	private HashMap <String, ArrayList<CardDTO>> towers;
+	private String [] types = {"territory", "character", "building", "venture"};
 	
 	public TowersDTO () {
 		 towers = new HashMap <String, ArrayList<CardDTO>> ();
@@ -32,9 +33,8 @@ public class TowersDTO implements Serializable {
 	
 	public CardDTO takeCard (int space, int floor) {
 		CardDTO takenCard;
-		String [] towersName = {"territory", "building", "character", "venture"};
-		takenCard = towers.get(towersName[space-3]).get(floor-1);
-		towers.get(towersName[space-3]).set(floor-1, new CardDTO(0, "", ""));
+		takenCard = towers.get(types[space-3]).get(floor-1);
+		towers.get(types[space-3]).set(floor-1, new CardDTO(0, "", ""));
 		return takenCard;
 	}
 	
@@ -44,7 +44,7 @@ public class TowersDTO implements Serializable {
 	
 	//given a 0-15 index, looks for the corresponding card
 	public int getIdCard (int index) {
-		String [] types = {"territory", "building", "character", "venture"};
+		
 		return towers.get(types[index/4]).get(index%4).getId();
 	}
 }

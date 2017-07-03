@@ -84,7 +84,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		screen.setTowers(msg.getTowers());
 		TowersDTO towers = msg.getTowers();
 		ArrayList<Integer> idCards = new ArrayList<Integer>();
-		String[] types = {"territory", "building", "character", "venture"};
+		String[] types = {"territory", "character", "building", "venture"};
 		for(int i=0; i<types.length; i++)
 			for(CardDTO card: towers.getTowers().get(types[i]))
 				idCards.add(card.getId());
