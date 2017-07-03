@@ -7,6 +7,7 @@ public class ExpiredTimeException extends RejectException {
 		message = "Time expired! Restart main to get back in the game! \n";
 	}
 	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = 1431338168254942152L;
 
 }

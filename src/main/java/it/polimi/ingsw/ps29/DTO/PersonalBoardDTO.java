@@ -4,7 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * DTO implementation of object PersonalBoard
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.game.PersonalBoard
+ *
+ */
 public class PersonalBoardDTO implements Serializable {
+	
+
+	//auto-generated serialVersionUID
+	private static final long serialVersionUID = 8473486441407471854L;
+	
 	String name;
 	HashMap <String, ArrayList<CardDTO>> cards;
 	ArrayList<ResourceDTO> resources;

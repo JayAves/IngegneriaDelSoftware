@@ -14,6 +14,13 @@ import it.polimi.ingsw.ps29.model.game.resources.Servants;
 import it.polimi.ingsw.ps29.model.game.resources.Stones;
 import it.polimi.ingsw.ps29.model.game.resources.Woods;
 
+/**
+ * When one ore more privileges are to be dealt with.
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.game.resources.Privilege
+ * 
+ *
+ */
 public class PrivilegesState implements ActionState {
 	private ActionState previousState;
 	private int privileges;

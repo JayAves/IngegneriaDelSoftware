@@ -135,6 +135,9 @@ public class SocketClientThread extends ClientThread {
 		notifyObservers(msg);
 	}
 	
+	/**
+	 * To notify Controller about a reconnected player who needs updated game situation
+	 */
 	@Override
 	public void restoreSituation() {
 		RestoreSituation restoreSituation = new RestoreSituation(playerName);

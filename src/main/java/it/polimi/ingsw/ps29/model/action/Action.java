@@ -13,6 +13,13 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Servants;
 
+/**
+ * 
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ *
+ */
 public abstract class Action {
 	
 	protected Match model;

@@ -4,6 +4,13 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.model.game.Match;
 
+/**
+ * When Action and Bonus Action are finished. 
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class PerformedState implements ActionState {
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.PERFORMED;
 

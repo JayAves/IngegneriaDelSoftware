@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
 
 /**
@@ -129,6 +130,17 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		}
 	}
 	
+	/**
+	 * To notify Controller about a reconnected player who needs updated game situation
+	 */
+	@Override
+	public void restoreSituation() {
+	// TODO Auto-generated method stub
+		RestoreSituation restoreSituation = new RestoreSituation(username);
+		setChanged();
+		notifyObservers(restoreSituation);
+	}
+	
 /**
  * Sends a PlayerInfoMessage to Controller and starts a disconnection procedure
  * @author Pietro Grotti
@@ -149,11 +161,5 @@ public class RMIClientThread extends ClientThread implements Serializable{
 		}
 		
 	}
-
-@Override
-public void restoreSituation() {
-	// TODO Auto-generated method stub
-	
-}
 
 }

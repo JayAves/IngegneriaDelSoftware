@@ -7,11 +7,16 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 
+/**
+ * When one ore more exchanges are to be asked to some player
+ * @author Pietro Melzi
+ *
+ */
 public class AskAboutExchangeState implements ActionState {
 	private ArrayList <ExchangeResourcesEffect> effect;
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.ASK_EXCHANGE;
 	
-	//indice che memorizza fino a quale effetto ho chiesto se l'utente vuole scambiare le risorse
+	
 	
 	public AskAboutExchangeState(ArrayList<ExchangeResourcesEffect> effect) {
 		this.effect = effect;
@@ -31,13 +36,13 @@ public class AskAboutExchangeState implements ActionState {
 
 	@Override
 	public ActionState afterAction(Match model) {
-		// aggiorna view
+		//update view
 		return this;
 	}
 
 	@Override
 	public String getState() {
-		// TODO Auto-generated method stub
+
 		return state.toString().toLowerCase();
 	}
 

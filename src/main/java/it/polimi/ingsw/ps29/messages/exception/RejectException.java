@@ -14,7 +14,7 @@ public class RejectException extends Exception implements Serializable {
 		return message;
 	}
 
-	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -6522209486698592907L;
 
 }

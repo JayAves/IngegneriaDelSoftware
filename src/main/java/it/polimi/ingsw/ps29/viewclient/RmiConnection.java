@@ -102,7 +102,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 
 	@Override
 	public void print(String line) throws RemoteException {
-		// TODO Auto-generated method stub
+
 		System.out.println("Server says: "+line);
 	}
 

@@ -19,9 +19,7 @@ public class RejectMessage extends InteractionMessage {
 		this.exception = exception;
 	}
 
-	/**
-	 * 
-	 */
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -1338638932183505667L;
 
 	@Override

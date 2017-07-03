@@ -7,6 +7,11 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 
+/**
+ * 
+ * @author Pietro Melzi
+ *
+ */
 public class SupportGameBoardDTO {
 	
 	public static FamilyMemberDTO singleSpaceOccupant (SingleSlotActionSpace space) {

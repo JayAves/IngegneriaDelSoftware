@@ -4,7 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * DTO implementation of object Tower
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.space.TowerArea
+ *
+ */
 public class TowersDTO implements Serializable {
+	
+	//auto-generated serialVersionUID
+	static final long serialVersionUID = 2547684498839129802L;
 	private HashMap <String, ArrayList<CardDTO>> towers;
 	
 	public TowersDTO () {
@@ -33,7 +42,7 @@ public class TowersDTO implements Serializable {
 		return towers;
 	}
 	
-	//dato un index 0-15 torna l'id della carta cercata
+	//given a 0-15 index, looks for the corresponding card
 	public int getIdCard (int index) {
 		String [] types = {"territory", "building", "character", "venture"};
 		return towers.get(types[index/4]).get(index%4).getId();

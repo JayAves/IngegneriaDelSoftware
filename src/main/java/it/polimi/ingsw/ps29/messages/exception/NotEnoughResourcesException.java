@@ -6,9 +6,7 @@ public class NotEnoughResourcesException extends RejectException {
 		message = "Action rejected: you don't have enough resources to pay for this card!";
 	}
 	
-	/**
-	 * 
-	 */
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -6075616447599332006L;
 
 }

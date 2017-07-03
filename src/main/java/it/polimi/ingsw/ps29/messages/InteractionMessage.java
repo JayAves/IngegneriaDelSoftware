@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public abstract class InteractionMessage implements Serializable {
 	
-	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -7844810327964082967L;
 	private String player;
 	private boolean biDirectional;

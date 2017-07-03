@@ -31,7 +31,7 @@ import it.polimi.ingsw.ps29.view.InputOutput;
  *
  * @author Pietro Melzi
  * @author Pietro Grotti
- * @see InpuOutput
+ * @see it.polimi.ingsw.ps29.view.InputOutput
  *
  */
 
