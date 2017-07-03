@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.server;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -38,7 +37,6 @@ public class SocketGatherer extends Observable implements Runnable{
 			e.printStackTrace();
 		}
 		
-		
 		clients= new ArrayList<SocketClientThread>();
 	}
 	
@@ -46,67 +44,65 @@ public class SocketGatherer extends Observable implements Runnable{
 	/**
 	 * Accepts new connections, creates and notifies new SocketClientThreads, manages the old ones.
 	 */
+	
 	public void startServer () {
-		
-		Socket socket;
-		SocketClientThread virtualView;
 		
 		while(!endOfConnection) {
 			
 			try {
-				socket = serverSocket.accept();
+				Socket socket = serverSocket.accept();
 				oos = new ObjectOutputStream(socket.getOutputStream());
 				oos.flush();
 				ois = new ObjectInputStream(socket.getInputStream());
 				
-			
-				
 				try {
-					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
-					tempLogin = (PlayerInfoMessage) ois.readObject();
-					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
+					PlayerInfoMessage tempLogin = (PlayerInfoMessage) ois.readObject();
+					SocketClientThread virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
 					virtualView.setTurnTimer(turnTimer);
 					SocketClientThread toDelete= null;
 					
-				for( SocketClientThread th: clients) {
-					
-					if (th.IDcode.contentEquals(virtualView.IDcode)) { //if finds player already in a game
-						virtualView.setInGame(true);
-						toDelete=th;
-						
+					for(SocketClientThread th: clients) 
+						//if finds player already in a game
+						if (th.IDcode.contentEquals(virtualView.IDcode)) { 
+							virtualView.setInGame(true);
+							toDelete=th;
 						}
-				}
 					
-					//notify RoomCreator//
-					setChanged();
-					notifyObservers(virtualView);
-					clients.remove(toDelete);	//Get rid of old ClientThread
-					clients.add(virtualView);
-					Thread t = new Thread (virtualView);
-					t.start();
-					
-						
+					handleVirtualView(virtualView, toDelete);
 				
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
 					e.printStackTrace();
 				}
 				
-				//System.out.println("Virtual view created for: "+socket);
-				
 			} catch (IOException e) {
 				System.err.println("Unable to add a user!");
 				e.printStackTrace();
-				//disconnessione del server
 			}
 		}
+		
+	}
+	
+	
+	private void handleVirtualView (SocketClientThread virtualView, SocketClientThread toDelete) {
+		
+		//notify RoomCreator
+		setChanged();
+		notifyObservers(virtualView);
+		
+		//Get rid of old ClientThread
+		clients.remove(toDelete);	
+		clients.add(virtualView);
+		
+		Thread t = new Thread (virtualView);
+		t.start();
 	}
 	
 	
 	public ArrayList<SocketClientThread> getClients(){
-		
 		return clients;
 	}
+	
 	public void endOfConnection() {
 		endOfConnection=true;
 	}

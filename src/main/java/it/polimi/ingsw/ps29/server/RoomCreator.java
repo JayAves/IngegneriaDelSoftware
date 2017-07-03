@@ -13,8 +13,7 @@ import java.util.TimerTask;
  * @see Room
  */
 
-public class RoomCreator extends Thread implements Observer{
-	
+public class RoomCreator extends Thread implements Observer {
 	
 	private ArrayList<ClientThread> playersInQueue;
 	private int counter; //metodi su counter devono essere synchronized
@@ -24,30 +23,18 @@ public class RoomCreator extends Thread implements Observer{
 	private static final int UPDATE_TIME= 3600000;
 	private int period;
 	
-	
-	
-	
 	public RoomCreator(){
-		
 		this.counter =0;
-		
 		this.roomHandler= new ArrayList<Room>();
-		
 		this.playersInQueue= new ArrayList<ClientThread>();
 		
 		this.timer= new Timer();
-		
 		scheduler= new Timer();
-		
-		scheduler.scheduleAtFixedRate(new Updater(), UPDATE_TIME, UPDATE_TIME); // every UPDATE_TIME milliseconds, a Room management routine is scheduled 
-		
-		
-		
-		
+		//every UPDATE_TIME milliseconds, a Room management routine is scheduled
+		scheduler.scheduleAtFixedRate(new Updater(), UPDATE_TIME, UPDATE_TIME); 
 	}
 	
 	public void addPlayer(ClientThread s) throws FileNotFoundException{
-		
 		playersInQueue.add(s);
 		System.out.println("Player queued");
 		
@@ -195,31 +182,28 @@ public class RoomCreator extends Thread implements Observer{
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-		
-				if (counter>1) {
+	
+			if (counter>1) {
+				
+				counter=0;
+				System.out.println("Room from timer");
+				Room newRoom= new Room(playersInQueue);
+				roomHandler.add(newRoom);
+				System.out.println(roomHandler.size());
+				playersInQueue.clear();
+				newRoom.start();
+				
+				
+				try {
+					sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Could not sleep!");
+					interrupt();
 					
-					counter=0;
-					System.out.println("Room from timer");
-					Room newRoom= new Room(playersInQueue);
-					roomHandler.add(newRoom);
-					System.out.println(roomHandler.size());
-					playersInQueue.clear();
-					newRoom.start();
-					
-					
-					try {
-						sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						System.out.println("Could not sleep!");
-						interrupt();
-						
-					}
 				}
+			}
 				
-			
-				
-			
 		}
 		
 	}

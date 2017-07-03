@@ -21,7 +21,7 @@ public class FirstBoardInfo extends InteractionMessage {
 	private static final long serialVersionUID = -5849206424080102207L;
 	private HashMap<String, PersonalBonusTileDTO> tile;
 	private ArrayList<ExcommunicationCardDTO> exCards;
-	private TowersAndDicesForView towers;
+	private TowersAndDicesForView towersAndDices;
 	private int timer;
 
 	public FirstBoardInfo(String player, HashMap<String, PersonalBonusTileDTO> tile, ArrayList<ExcommunicationCardDTO> exCards, 
@@ -29,7 +29,7 @@ public class FirstBoardInfo extends InteractionMessage {
 		super(player,false);
 		this.tile = tile;
 		this.exCards = exCards;
-		this.towers = towers;
+		this.towersAndDices = towers;
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class FirstBoardInfo extends InteractionMessage {
 	}
 	
 	public TowersAndDicesForView getTowers () {
-		return towers;
+		return towersAndDices;
 	}
 	public void setTimer(int timer) {
 		this.timer=timer;

@@ -318,42 +318,6 @@ public class Controller extends Observable implements Observer{
 	}
 	
 	
-	
-	/**
-	 * Dispatcher of messages from views. For every type of message triggers corresponding action handler. 
-	 * @author Pietro Melzi
-	 * @author Pietro Grotti
-	 * @author Giovanni Mele
-	 *
-	 */
-	public class VisitorMessages {
-		
-		public void visit (ActionChoice msg) {
-			handleInputAction(msg, -1);
-		}
-		
-		public void visit (Exchange msg) {
-			handleExchangeAction(msg);
-		}
-		
-		public void visit(BonusChoice msg){
-			handleInputAction(handleBonusAction (msg), msg.getPower());
-		}
-		
-		public void visit(VaticanChoice msg){
-			handleExcommunication(msg);
-		}
-		
-		public void visit(PrivilegeChoice msg){
-			handlePrivilegesChoice(msg);
-		}
-
-		public void visit(PlayerInfoMessage msg) {
-			handlePlayerInfoMessage(msg);
-		}
-	}
-	
-	
 	private void inactivePlayerEnd () {
 		stateOfAction= new PerformedState();
 		stateOfAction = stateOfAction.afterAction(model);
@@ -532,6 +496,41 @@ public class Controller extends Observable implements Observer{
 		}
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
 			view.getValue().startInteraction(info);
+	}
+	
+	
+	/**
+	 * Dispatcher of messages from views. For every type of message triggers corresponding action handler. 
+	 * @author Pietro Melzi
+	 * @author Pietro Grotti
+	 * @author Giovanni Mele
+	 *
+	 */
+	public class VisitorMessages {
+		
+		public void visit (ActionChoice msg) {
+			handleInputAction(msg, -1);
+		}
+		
+		public void visit (Exchange msg) {
+			handleExchangeAction(msg);
+		}
+		
+		public void visit(BonusChoice msg){
+			handleInputAction(handleBonusAction (msg), msg.getPower());
+		}
+		
+		public void visit(VaticanChoice msg){
+			handleExcommunication(msg);
+		}
+		
+		public void visit(PrivilegeChoice msg){
+			handlePrivilegesChoice(msg);
+		}
+
+		public void visit(PlayerInfoMessage msg) {
+			handlePlayerInfoMessage(msg);
+		}
 	}
 	
 	
