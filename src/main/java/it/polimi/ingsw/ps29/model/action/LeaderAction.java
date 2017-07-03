@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
 import it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState;
 import it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState;
+import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -63,6 +64,7 @@ public class LeaderAction extends Action{
 					GainResourcesEffect effect = new GainResourcesEffect(discardBonus);
 					effect.performEffect(move.getPlayer());
 					move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
+
 				}
 					
 				if (card.get(4).equals("PLAY")){

@@ -328,10 +328,8 @@ public class InputOutputCLI implements InputOutput {
 				} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
 				
 				// l'utente ha scelto cosa fare con la carta
-				while (secondChoice != 1){
 					System.out.println(" +++sto mettendo" + printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
 					leaderSituation.get(choice -1).add(printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
-				}
 			}
 		}
 		return leaderSituation;
@@ -340,7 +338,7 @@ public class InputOutputCLI implements InputOutput {
 	private ArrayList<String> printCorrectOptions(ArrayList<Object> card){
 		ArrayList<String> toShow = new ArrayList<String>();
 		toShow.add("DO NOTHING");
-		if (card.get(2).equals("HAND")){
+		if (card.get(2).equals(0)){
 			toShow.add("DISCARD");
 			if ((boolean) card.get(3))
 				toShow.add("PLAY");

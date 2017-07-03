@@ -169,31 +169,47 @@ public class PersonalBoard {
 	
     public void removeLeaderById( int id){
     	
-		for (LeaderCard card : leaderCards){
-			if (id == card.getID())
-				leaderCards.remove(card);
-			break;
-		}
+    	int toRemove = 0;
+    	ArrayList<LeaderCard> temp = leaderCards;
+    	
+    	for (int i = 0; i < temp.size(); i++){
+    		if (temp.get(i).getID() == id)
+    			toRemove = i;
+    	}
+    	
+    	leaderCards.remove(toRemove);
+    	
+		//System.out.println("ora le carte leader sono");
+		//for (LeaderCard card : leaderCards)
+			//System.out.println("\n" + card.toString());
 
     }
 
     public void removePlayedLeaderById( int id){
     	
- 		for (LeaderCard card : playedLeaderCards){
- 			if (id == card.getID())
- 				playedLeaderCards.remove(card);
- 			break;
- 		}
+    	int toRemove = 0;
+    	ArrayList<LeaderCard> temp = playedLeaderCards;
+    	
+    	for (int i = 0; i < temp.size(); i++){
+    		if (temp.get(i).getID() == id)
+    			toRemove = i;
+    	}
+    	
+    	playedLeaderCards.remove(toRemove);
 
      }
     
     public void removeActivatedLeaderById( int id){
     	
- 		for (LeaderCard card : activatedLeaderCards){
- 			if (id == card.getID())
- 				activatedLeaderCards.remove(card);
- 			break;
- 		}
+    	int toRemove = 0;
+    	ArrayList<LeaderCard> temp = activatedLeaderCards;
+    	
+    	for (int i = 0; i < temp.size(); i++){
+    		if (temp.get(i).getID() == id)
+    			toRemove = i;
+    	}
+    	
+    	activatedLeaderCards.remove(toRemove);
 
      }
 
