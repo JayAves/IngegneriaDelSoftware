@@ -280,6 +280,7 @@ public class Controller extends Observable implements Observer{
 		model.getBoard().getPlayerByName(msg.getName()).setVaticanReportPerformed(true);
 		
 		((VaticanReportState)roundState).handleVaticanChoice(msg, model);
+		model.getBoard().changePlayerOrder();
 		sendInfo=true;
 	}
 	
