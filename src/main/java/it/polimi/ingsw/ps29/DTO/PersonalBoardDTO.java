@@ -43,6 +43,10 @@ public class PersonalBoardDTO implements Serializable {
 		this.tile = tile;
 	}
 	
+	public PersonalBonusTileDTO getTile () {
+		return tile;
+	}
+	
 	
 	
 	

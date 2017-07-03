@@ -38,7 +38,6 @@ public class SocketGatherer extends Observable implements Runnable{
 			e.printStackTrace();
 		}
 		
-		
 		clients= new ArrayList<SocketClientThread>();
 	}
 	
@@ -46,8 +45,8 @@ public class SocketGatherer extends Observable implements Runnable{
 	/**
 	 * Accepts new connections, creates and notifies new SocketClientThreads, manages the old ones.
 	 */
+	
 	public void startServer () {
-		
 		Socket socket;
 		SocketClientThread virtualView;
 		
@@ -59,47 +58,41 @@ public class SocketGatherer extends Observable implements Runnable{
 				oos.flush();
 				ois = new ObjectInputStream(socket.getInputStream());
 				
-			
-				
 				try {
-					PlayerInfoMessage tempLogin= new PlayerInfoMessage(null);
-					tempLogin = (PlayerInfoMessage) ois.readObject();
+					PlayerInfoMessage tempLogin = (PlayerInfoMessage) ois.readObject();
 					virtualView = new SocketClientThread(socket, tempLogin, oos, ois);
 					virtualView.setTurnTimer(turnTimer);
 					SocketClientThread toDelete= null;
 					
-				for( SocketClientThread th: clients) {
-					
-					if (th.IDcode.contentEquals(virtualView.IDcode)) { //if finds player already in a game
-						virtualView.setInGame(true);
-						toDelete=th;
-						
+					for(SocketClientThread th: clients)
+						//if finds player already in a game
+						if (th.IDcode.contentEquals(virtualView.IDcode)) { 
+							virtualView.setInGame(true);
+							toDelete=th;
 						}
-				}
 					
-					//notify RoomCreator//
+					//notify RoomCreator
 					setChanged();
 					notifyObservers(virtualView);
-					clients.remove(toDelete);	//Get rid of old ClientThread
+					
+					//Get rid of old ClientThread
+					clients.remove(toDelete);	
 					clients.add(virtualView);
+					
 					Thread t = new Thread (virtualView);
 					t.start();
-					
-						
 				
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
 					e.printStackTrace();
 				}
 				
-				//System.out.println("Virtual view created for: "+socket);
-				
 			} catch (IOException e) {
 				System.err.println("Unable to add a user!");
 				e.printStackTrace();
-				//disconnessione del server
 			}
 		}
+		
 	}
 	
 	

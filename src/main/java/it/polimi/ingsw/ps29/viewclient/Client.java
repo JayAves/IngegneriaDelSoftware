@@ -43,7 +43,7 @@ public class Client implements Observer{
 		this.view=view;
 		this.name=view.getName();
 		ConnectionFactory factory= new ConnectionFactory();
-		networking=factory.getNetworking(net, name);
+		networking = factory.getNetworking(net, name);
 		networking.addObserver(this);
 		view.addObserver(this);
 		new Thread(networking).start();
