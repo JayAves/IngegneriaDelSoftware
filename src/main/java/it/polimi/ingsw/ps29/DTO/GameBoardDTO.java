@@ -172,11 +172,13 @@ public class GameBoardDTO implements Serializable{
 	public String toString () {
 		StringBuilder bld = new StringBuilder().append("GameBoard\n");
 		for (String firstKey: boardMap.keySet()) {
-			bld.append(firstKey+" ");
+			bld.append("\n");
+			bld.append(firstKey+" \n");
 			for(String secondKey: boardMap.get(firstKey).keySet()) {
-				bld.append(secondKey+":\n");
+				bld.append(secondKey+":");
 				for (FamilyMemberDTO fmDTO: boardMap.get(firstKey).get(secondKey))
-					bld.append(fmDTO.toString()+"\n");
+					bld.append(fmDTO.toString());
+				bld.append("\n");
 			}
 		}
 		

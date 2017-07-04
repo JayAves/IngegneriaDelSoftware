@@ -303,7 +303,7 @@ public class InputOutputCLI implements InputOutput {
 		while (choice != 5){
 			do{
 				for ( int i = 0 ; i < leaderSituation.size(); i++)
-					System.out.println( " " + (i + 1) + " " + leaderSituation.get(i).get(1));
+					System.out.println( " " + (i + 1) + ") " + leaderSituation.get(i).get(1));
 				
 				System.out.println((" 5 No azione Leader"));
 				try {
@@ -343,7 +343,7 @@ public class InputOutputCLI implements InputOutput {
 			if ((boolean) card.get(3))
 				toShow.add("PLAY");
 		}
-		if (card.get(2).equals("PLAYED"))
+		if (card.get(2).equals(1))
 				toShow.add("ACTIVATE");
 		return toShow;
 		}
@@ -380,7 +380,7 @@ public class InputOutputCLI implements InputOutput {
 	
 	public int askTower () throws ExpiredTimeException {
 		int choice;
-		System.out.println("\nInsert the number of the action you want to perform.");
+		System.out.println("\nInsert the number of the action you want to perform :");
 		do {
 			System.out.println(
 				"\n1.Placement on TerritoriesTower" +

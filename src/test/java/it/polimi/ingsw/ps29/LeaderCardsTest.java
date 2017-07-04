@@ -97,7 +97,7 @@ public class LeaderCardsTest extends TestCase{
 		assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(permanentLeaderCards));
 		
 		assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(temporaryLeaderCards));
-      //assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
+        //assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
 	}
 
 }

@@ -12,14 +12,15 @@ public class LeaderCard {
 	private String name;
 	private final int id;
 	private Effect leaderEffect; 
-	boolean permantenteffect;
+	boolean permanentEffect;
 	private ArrayList<Resource> requirements;
 	private ArrayList<String> cardTypeRequirements;
 	private ArrayList<Integer> cardRequirements;
 	
-    public LeaderCard ( String name, int id, Effect effect, ArrayList<Resource> requirements, ArrayList<String> cardTypeRequirements, ArrayList<Integer> cardRequirements){
+    public LeaderCard ( String name, int id, boolean permanent, Effect effect, ArrayList<Resource> requirements, ArrayList<String> cardTypeRequirements, ArrayList<Integer> cardRequirements){
     	this.name = name;
     	this.id = id;
+    	this.permanentEffect = permanent;
     	this.leaderEffect = effect;
     	this.requirements = new ArrayList<Resource>();
     	for (Resource res : requirements){
@@ -50,7 +51,7 @@ public class LeaderCard {
     }
     
     public boolean isPermanent(){
-    	return permantenteffect;
+    	return permanentEffect;
     }
     
     
