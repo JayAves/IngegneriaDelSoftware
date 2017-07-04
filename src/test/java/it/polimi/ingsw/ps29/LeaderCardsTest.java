@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29;
 
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -44,6 +42,7 @@ public class LeaderCardsTest extends TestCase{
 		permanentLeaderCards = new ArrayList<LeaderCard>();
 		
 		for (LeaderCard card : model.getBoard().getPlayerByName("primo").getPersonalBoard().getLeaderCards()){
+			System.out.println(card.toString());
 			if (card.isPermanent())
 				permanentLeaderCards.add(card);
 			else
@@ -95,9 +94,12 @@ public class LeaderCardsTest extends TestCase{
 		 */
 		assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(temporaryLeaderCards));
 		assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(permanentLeaderCards));
-		
+		/*
+		 * verifico che nelle carte attivate non ci siano più quelle con temporary effect
+		 * e che in quelle giocate non ci siano più quelle con permanent effect
+		 */
 		assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(temporaryLeaderCards));
-        //assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
+        assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
 	}
 
 }
