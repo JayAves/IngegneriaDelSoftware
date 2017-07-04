@@ -111,7 +111,6 @@ public class SocketConnection extends Connection {
 	 * Part of SocketConnection responsible for sending messages to server
 	 * @author Pietro Melzi
 	 * @author Pietro Grotti
-	 * @see SocketConnection
 	 * @see Socket
 	 *
 	 */

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
+import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
 public class NoAction extends Action{
 
@@ -24,6 +25,7 @@ public class NoAction extends Action{
 
 	@Override
 	void performAction() {
+		((CouncilPalaceArea)model.getBoard().getSpace("NoAction")).placeFamiliar(move.getFamiliar(), false);
 		move.getFamiliar().setBusy(true);
 		
 	}

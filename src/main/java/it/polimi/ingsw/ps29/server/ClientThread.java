@@ -11,8 +11,8 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
  * @author Pietro Grotti
  * @author Pietro Melzi
  * @author Giovanni Mele
- * @see Controller
- * @see View
+ * @see it.polimi.ingsw.ps29.controller.Controller
+ * @see it.polimi.ingsw.ps29.view.View
  *
  */
 
@@ -35,7 +35,10 @@ public abstract class ClientThread extends Observable implements Runnable{
 	public boolean getInGame() {
 		return inGame;
 	}
+	
 	public void setTurnTimer(int timer) {
 		actionTimer=timer;
 	}
+	
+	public abstract void restoreSituation();
 }

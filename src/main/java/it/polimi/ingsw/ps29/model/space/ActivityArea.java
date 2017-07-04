@@ -52,4 +52,13 @@ public class ActivityArea implements ActionSpace {
 		return queue.getClosed();
 	}
 
+	public SingleSlotActionSpace getHead() {
+		return head;
+	}
+
+	public QueueActionSpace getQueue() {
+		return queue;
+	}
+
+	
 }

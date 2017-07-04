@@ -7,7 +7,16 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
+/**
+ * DTO implementation of object GameBoard
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.game.GameBoard
+ *
+ */
 public class GameBoardDTO implements Serializable{
+	
+	//auto-generated serialVersionUID
+	private static final long serialVersionUID = 3400069665316183033L;
 	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
 
 	public GameBoardDTO() {
@@ -149,6 +158,16 @@ public class GameBoardDTO implements Serializable{
 		FamilyMemberDTO fmDTO = new FamilyMemberDTO(info.playerColor, familiarColor(info.familiar));
 		if(!isFamiliarPresent(fmDTO))
 			boardMap.get(firstLevel(info.space)).get(secondLevel(info.space, info.floor)).add(fmDTO);
+	}
+	
+	public void insertSingleFamiliar (String first, String second, FamilyMemberDTO familiar) {
+		if(familiar!=null)
+			boardMap.get(first).get(second).add(familiar);
+	}
+	
+	public void insertQueueFamiliar (String first, String second, ArrayList<FamilyMemberDTO> family) {
+		for(FamilyMemberDTO member: family)
+			boardMap.get(first).get(second).add(member);
 	}
 	
 	public boolean isFamiliarPresent (FamilyMemberDTO familiar) {

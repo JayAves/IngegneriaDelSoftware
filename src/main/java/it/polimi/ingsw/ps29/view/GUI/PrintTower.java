@@ -56,10 +56,10 @@ public class PrintTower extends JPanel {
 					gui.zoomImage(idCard);
 				}
 				
-				//indice da 0 a 15 che mi dice su quale spazio ho cliccato
+				//indice da 0 a 22 che mi dice su quale spazio ho cliccato
 				int indexSpace = coordSpaces.getIndexSpace(p);
 				
-				//...DA SISTEMARE... (stampa l'id dello spazio cliccato)
+				//save index pressed and show msg on the console 
 				if(indexSpace>-1 && indexSpace<23) {
 					indexSpacePressed = indexSpace;
 					ConsoleMessages.writePlacement(indexSpace, gui.console);

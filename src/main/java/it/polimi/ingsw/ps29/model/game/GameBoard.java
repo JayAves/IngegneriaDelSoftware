@@ -92,6 +92,7 @@ public class GameBoard{
 		spaces.put("ThirdMarket", new MarketArea(1,resources[10].getBonus()));
 		spaces.put("FourthMarket", new MarketArea(1, resources[11].getBonus()));
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
+		spaces.put("NoAction", new CouncilPalaceArea(0));
 		
 	}
 	
@@ -229,6 +230,8 @@ public class GameBoard{
 		for (Player player : secondPlayers)
 			player.getPersonalBoard().getResources().updateResource(new Resource("victory", 2));
 	}
+	
+	
 	
 }
 

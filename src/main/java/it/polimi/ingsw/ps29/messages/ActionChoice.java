@@ -16,16 +16,16 @@ public class ActionChoice extends InteractionMessage {
 	
 	private static final long serialVersionUID = -2158602926454517213L;
 	private int[] choices;
-	//int [0] spazio
-	//int [1] piano (ev. vale 0)
-	//int [2] num servitori
-	//int [3] familiare
+	//int [0] space
+	//int [1] floor (0 if not needed)
+	//int [2] servants' number
+	//int [3] familiar
 	ArrayList<ArrayList<Object>> leaderSituation;
 	//0 :id
 	//1 :toString
-	//2 : mazzo di appartenenza (0 in mano, 1 giocata)
-	//3 :attivabile
-	//4 :scelta utente DISCARD PLAY ACTIVATE
+	//2 : where it comes from (0 hand, 1 board)
+	//3 : activable
+	//4 : user choice DISCARD PLAY ACTIVATE
 	
 	public ActionChoice (String player) {
 		super (player,true);

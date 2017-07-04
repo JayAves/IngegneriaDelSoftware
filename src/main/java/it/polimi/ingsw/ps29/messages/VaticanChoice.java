@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
  */
 public class VaticanChoice extends InteractionMessage {
 
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -5276703313626469150L;
 	private boolean sustain;
 	

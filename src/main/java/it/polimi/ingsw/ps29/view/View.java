@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
@@ -100,8 +101,8 @@ public class View extends Observable implements Observer {
 	public void askAboutExcommunication (VaticanChoice msg) {
 		try {
 			int choice = inputOutput.askAboutExcommunication();
-			//1 per sostenere, 0 per non sostenere
-			//la condizione choice==1 traduce la scelta in un boolean
+			//1 to sustain Church, 0 otherwise
+			
 			msg.setSustain(choice==1);
 			setChanged();
 			notifyObservers(msg);
@@ -128,27 +129,29 @@ public class View extends Observable implements Observer {
 	
 	
 	public void handleInfo (InfoForView msg) {
-		//DA RIVEDERE QUANDO SI INTRODUCE LA GUI
+		
 		
 		InfoForView info = (InfoForView)msg;
 		CardDTO takenCard;
 		
-		//se ho piazzato un familiare lo aggiungo alla board
+		//if familiar is placed, board is updated
 		if(info.familiar>0 && info.familiar<5)
 			gameBoardDTO.insertFamiliar(msg);
 		
-		//all'inizio: se non ho ancora memorizzato una personal board la creo
+		
+		//at the beginning: if no personal board is found, it is created
 		for(String name: info.resSituation.keySet())
 			if(personalBoardsDTO.get(name)==null)
 				personalBoardsDTO.put(name, new PersonalBoardDTO(name, null));
 		
-		//se ho preso una carta la tolgo dalla torre e la metto nella personal board
+		
+		// if a card was taken, must be took off the tower and  put in personal board.
 		if(info.space>2 && info.space<7) {
 			takenCard = towersDTO.takeCard(info.space, info.floor);
 			personalBoardsDTO.get(info.getName()).insertCard(takenCard);
 		}
 		
-		//aggiorno le risorse e stampo
+		//update resources and show
 		for (HashMap.Entry <String, ArrayList<ResourceDTO>> resSituation: info.resSituation.entrySet())
 			personalBoardsDTO.get(resSituation.getKey()).setResources(resSituation.getValue());
 		
@@ -170,7 +173,8 @@ public class View extends Observable implements Observer {
 	}
 	
 	public void showInitialInfo (FirstBoardInfo msg) {
-		//setto le tile su ogni board
+		
+		//every board needsits tile
 		for(HashMap.Entry<String, PersonalBonusTileDTO> tile: msg.getTiles().entrySet())
 			if(personalBoardsDTO.get(tile.getKey()) == null)
 				personalBoardsDTO.put(tile.getKey(), new PersonalBoardDTO(tile.getKey(), tile.getValue()));
@@ -180,6 +184,17 @@ public class View extends Observable implements Observer {
 		exCards = msg.getExCards();
 		inputOutput.showFirstInfo (msg);
 		showTowersAndDices(msg.getTowers());
+	}
+	
+	public void restoreSituation (RestoreSituation msg) {
+		showInitialInfo(msg.getFirstInfo());
+		gameBoardDTO = msg.getGameBoard();
+		for (PersonalBoardDTO pBoard: msg.getPersonalBoard())
+			if(personalBoardsDTO.get(pBoard.getName())==null)
+				personalBoardsDTO.put(pBoard.getName(), pBoard);
+			else
+				personalBoardsDTO.replace(pBoard.getName(), pBoard);
+		
 	}
 	
 	public InputOutput getInputOutput() {

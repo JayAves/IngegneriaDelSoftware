@@ -5,10 +5,17 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 
+/**
+ * When a Bonus Action has to be done.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class BonusActionState implements ActionState {
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.BONUS_ACTION;
 	private BonusActionEffect effect;
-	//memorizzo l'effetto su cui c'è il valore del dado e il tipo di posizionamento
+	//all info needed are into this Effect object
 	
 	public BonusActionState(BonusActionEffect effect) {
 		this.effect = effect;

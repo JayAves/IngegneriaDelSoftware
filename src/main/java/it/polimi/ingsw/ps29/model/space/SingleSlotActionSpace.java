@@ -44,4 +44,8 @@ public class SingleSlotActionSpace {
 		member = null;
 		state = new Free();
 	}
+	
+	public FamilyMemberInterface getFamiliar () {
+		return member;
+	}
 }

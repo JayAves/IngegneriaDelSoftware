@@ -2,10 +2,15 @@ package it.polimi.ingsw.ps29.DTO;
 
 import java.io.Serializable;
 
+/**
+ * DTO implementation of object Resource
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.game.resources.Resource
+ *
+ */
 public class ResourceDTO implements Serializable {
-	/**
-	 * 
-	 */
+	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -4473321896259503015L;
 	String type;
 	int amount;

@@ -13,6 +13,13 @@ import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 
+/**
+ * Contains methods to create Actions 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ * @see Action
+ */
 public class ControllerSupporter {
 	
 	public static Action createAction (Match model, Move move, ActionChoice arg) {

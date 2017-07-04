@@ -19,25 +19,14 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
  */
 
 public class ChoiceToMove {
-	
-	
-	
-	private GameBoard board;
-	
-	
-	
-	public ChoiceToMove(GameBoard board) {
-		super();
-		this.board = board;
-	}
 
-	public Move createMove (ActionChoice choice) {
+	public static Move createMove (ActionChoice choice, GameBoard board) {
 		
-		return new Move (getPlayer(choice.getName()), getSpace(choice.getChoice(0) ), choice.getChoice(1), 
-				choice.getChoice(2), getFamiliar(choice.getName(), choice.getChoice(3)));
+		return new Move (getPlayer(choice.getName(), board), getSpace(choice.getChoice(0)), choice.getChoice(1), 
+				choice.getChoice(2), getFamiliar(choice.getName(), board, choice.getChoice(3)));
 	}
 	
-	private Player getPlayer (String player) {
+	private static Player getPlayer (String player, GameBoard board) {
 		for (Player p: board.getPlayers()) {
 			if(p.getName().equals(player))
 				return p;
@@ -46,7 +35,7 @@ public class ChoiceToMove {
 	}	
 	
 	
-	private FamilyMemberInterface getFamiliar (String player, int i) {
+	private static FamilyMemberInterface getFamiliar (String player, GameBoard board, int i) {
 		DiceColor color;
 		
 		if(i>0) {
@@ -64,13 +53,13 @@ public class ChoiceToMove {
 					color = DiceColor.NEUTRAL;
 					break;
 			}
-			return getPlayer(player).getFamiliarByColor(color);
+			return getPlayer(player, board).getFamiliarByColor(color);
 		}
 		
-		return new FamilyMember(DiceColor.BONUS, getPlayer(player).getColor());
+		return new FamilyMember(DiceColor.BONUS, getPlayer(player, board).getColor());
 	}
 
-	private String getSpace(int choice) {
+	private static String getSpace(int choice) {
 		
 		String space= "";
 		

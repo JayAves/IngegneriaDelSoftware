@@ -16,6 +16,7 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.Action;
@@ -134,8 +135,9 @@ public class Controller extends Observable implements Observer{
 	 */
 	
 	private void inactivePlacement () {
-		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), 
+		info = PlayerInactiveFunctions.playerInactivePlacement(model.getCurrentPlayer().getName(), model,
 				model.getCurrentPlayer().getColor(), placeRandomFamiliar());
+		
 		generateResourcesDTOAndSend ();
 		
 		stateOfAction= new PerformedState();
@@ -192,8 +194,7 @@ public class Controller extends Observable implements Observer{
 	 * @param power dice power, meaning Action's power
 	 */
 	public void handleInputAction (ActionChoice arg, int power) {
-		ChoiceToMove adapter = new ChoiceToMove(model.getBoard());
-		Move move= adapter.createMove(arg);
+		Move move= ChoiceToMove.createMove(arg, model.getBoard());
 		
 		//power>-1 for BonusAction
 		if(power>-1) 
@@ -317,6 +318,14 @@ public class Controller extends Observable implements Observer{
 			callGameEngine = false; 
 	}
 	
+	private void restoreSituation (RestoreSituation msg) {
+		for (Map.Entry<String, ClientThread> view: views.entrySet())
+			if(view.getKey().equals(msg.getName()))
+				view.getValue().startInteraction(CreationMessagesSupporter.restoreSituation(model, msg));
+		sendInfo = true;
+		callGameEngine = false;
+	}
+	
 	
 	private void inactivePlayerEnd () {
 		stateOfAction= new PerformedState();
@@ -359,7 +368,7 @@ public class Controller extends Observable implements Observer{
 	
 	/**
 	 * Allows the game to flow. Triggers correct Controller's routine for the current roundState.
-	 * @see 
+	 * 
 	 */
 	
 	public void gameEngine () {
@@ -528,8 +537,14 @@ public class Controller extends Observable implements Observer{
 			handlePrivilegesChoice(msg);
 		}
 
+		//called after disconnection of a player
 		public void visit(PlayerInfoMessage msg) {
 			handlePlayerInfoMessage(msg);
+		}
+		
+		//called after a player came back in game
+		public void visit(RestoreSituation msg) {
+			restoreSituation(msg);
 		}
 	}
 	

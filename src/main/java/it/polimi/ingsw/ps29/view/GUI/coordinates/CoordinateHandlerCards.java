@@ -13,7 +13,7 @@ public class CoordinateHandlerCards {
 		 *cardCoords.get(0) avrà le coordinate di territoryCard - floor 1
 		 *cardCoords.get(1) avrà le coordinate di territoryCard - floor 2
 		 *...
-		 *cardCoords.get(4) avrà le coordinate di buildingCard - floor 1
+		 *cardCoords.get(4) avrà le coordinate di characterCard - floor 1
 		 *...
 		 */
 		

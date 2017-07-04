@@ -4,7 +4,16 @@ import java.io.Serializable;
 
 import it.polimi.ingsw.ps29.model.game.Period;
 
+/**
+ * DTO implementation of object ExcommunicationCard
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.cards.ExcommunicationCard
+ *
+ */
 public class ExcommunicationCardDTO implements Serializable {
+	
+	//auto-generated serialVersionUID
+	private static final long serialVersionUID = 3700954837686083468L;
 	int id;
 	Period period;
 	String effectToString;

@@ -5,9 +5,8 @@ public class ServantsException extends RejectException{
 	public ServantsException() {
 		message = "Action rejected: you don't have enough servants!";
 	}
-	/**
-	 * 
-	 */
+	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -2729074865585947957L;
 
 }

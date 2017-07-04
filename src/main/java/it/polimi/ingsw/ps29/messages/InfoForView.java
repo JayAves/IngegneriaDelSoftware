@@ -13,8 +13,8 @@ import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
  * Contains data about game to be shown in View. Brings also turn's timer for FakeScanner.
  * @author Pietro Melzi
  * @author Pietro Grotti
- * @see FakeScanner
- * @see InputWithTimer
+ * @see it.polimi.ingsw.ps29.view.inputCLI.FakeScanner
+ * @see it.polimi.ingsw.ps29.view.inputCLI.InputWithTimer
  */
 public class InfoForView extends InteractionMessage {
 
