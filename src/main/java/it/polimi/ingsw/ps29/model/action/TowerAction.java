@@ -22,6 +22,12 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 
+/**
+ * When player tries to place a familiar in TowerArea
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ */
 public class TowerAction extends Action {
 
 	private TowerArea space;
@@ -134,23 +140,30 @@ public class TowerAction extends Action {
 	
 	}
 		
-		//aggiungo l'effetto permanente della carta appena pescata dal giocatore alla classe BonusAndMalusPlayer - da implementare
-	
+	/**
+	 * Verifies if player can afford extra three coins for placement 
+	 * @return true if so
+	 */
 	private boolean canAffordMalus() {
 		return (move.getPlayer().getPersonalBoard().getResources().getResource("coin").getAmount()>=3);
 	}
 	
+	/**
+	 * Checks if player can afford to pay the Card he wants to take
+	 * @return true if so
+	 * @throws NotEnoughResourcesException
+	 */
 	private boolean canAffordCardResourcesCost() throws NotEnoughResourcesException {
 		
 		ArrayList<Resource> discountedCost=space.takeCard().getCost();
 		
 		if(move.getFloor()>2)
-			highFloorDiscount(discountedCost); //posso spendere il guadagno di risorse del terzo/quarto piano per prendere la carta
+			highFloorDiscount(discountedCost); //high floor bonuses can be used to pay for cards
 		
 		//if I have permanent effects about discounts...
 		applyDiscounts(discountedCost, move.getFamiliar().getFamiliarColor());
 		
-		//considero le 3 monete da pagare
+		//see again if player can play three extra coins
 		if(!space.isEmpty()) {
 			boolean find = false;
 			for(Resource res: discountedCost)
@@ -170,6 +183,10 @@ public class TowerAction extends Action {
 		
 	}
 	
+	/**
+	 * Takes any bonus given by high floors and takes it off the Card's costs
+	 * @param cost is the Card's cost
+	 */
 	private void highFloorDiscount(ArrayList<Resource> cost) {
 		
 		for (Resource res: cost) 
@@ -178,12 +195,22 @@ public class TowerAction extends Action {
 					res.modifyAmount(-source.getAmount());
 	}
 	
+	/**
+	 * Checks if player has space in his PersonalBoard for another Card
+	 * @return true if so
+	 * @throws FullCardBoardException
+	 */
 	private boolean enoughSlotSpace() throws FullCardBoardException{
 		if (move.getPlayer().getPersonalBoard().getCards(space.takeCard().getType()).size()<6)
 			return true;
 		throw new FullCardBoardException ();
 	}
 
+	/**
+	 * If Card is a Territory, checks if player has enough military points to take that Card.
+	 * @return true if so
+	 * @throws NotEnoughMilitaryException
+	 */
 	private boolean enoughMilitaryPointsForTerritory() throws NotEnoughMilitaryException {
 		if(space.takeCard().getType().equals("territory")) {
 			
@@ -214,9 +241,14 @@ public class TowerAction extends Action {
 		
 		else 
 			return true;
-		//da fare la parte per i punti necessari alle venture card
+		
 	}
 	
+	/**
+	 * If Card is a Venture, checks if player has enough military points to take that Card.
+	 * @return true if so
+	 * @throws NotEnoughMilitaryException
+	 */
 	private boolean enoughMilitaryPointsForVenture() throws NotEnoughMilitaryException{
 		
 		if(space.takeCard().getType().equals("venture")) {
@@ -235,15 +267,19 @@ public class TowerAction extends Action {
 	}
 		
 
-	
+	/**
+	 * If player has permanent Effecs giving any discount, it is applied to costs.
+	 * @param costs
+	 * @param familiar
+	 */
 	public void applyDiscounts( ArrayList<Resource> costs, DiceColor familiar) {
 		
-		//gestione degli sconti che derivano da EmpowermentPlacementEffect
+		//discounts from EmpowermentPlacementEffect s
 		for (Effect eff: move.getPlayer().getSpecialPermanentEffects()) 
 			if (eff instanceof EmpowermentPlacementEffect && isSpaceCorrect(((EmpowermentPlacementEffect) eff).getTowerType())) 
 				manageDiscount(((EmpowermentPlacementEffect) eff).getDiscount(), costs);
 		
-		//gestione degli sconti che derivano da BonusPlacementEffect
+		//discounts from BonusPlacementEffect s
 		if (familiar==DiceColor.BONUS)
 			for (Effect eff: move.getPlayer().getSpecialPermanentEffects()) 
 				if (eff instanceof BonusPlacementEffect && isSpaceCorrect(((BonusPlacementEffect) eff).getType()) ) 

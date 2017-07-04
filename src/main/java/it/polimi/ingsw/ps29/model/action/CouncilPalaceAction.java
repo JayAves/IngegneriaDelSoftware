@@ -11,6 +11,12 @@ import it.polimi.ingsw.ps29.model.game.resources.Privilege;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
+/**
+ * When player tries to place a familiar in CouncilArea
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ *
+ */
 public class CouncilPalaceAction extends Action{
 
 	private CouncilPalaceArea space;
