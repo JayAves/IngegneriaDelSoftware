@@ -6,6 +6,11 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 
+/**
+ * When player tries to place a familiar in one MarketArea
+ * @author Pietro Grotti
+ * 
+ */
 public class MarketAction extends Action{
 
 	private MarketArea space;
@@ -30,7 +35,7 @@ public class MarketAction extends Action{
 	}
 
 	@Override
-	public void performAction(/*Player currentPlayer, MarketArea area*/) {		
+	public void performAction() {		
 		GainResourcesEffect effect = new GainResourcesEffect(space.getSlot().getBonus());
 		effect.performEffect(move.getPlayer());
 		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());

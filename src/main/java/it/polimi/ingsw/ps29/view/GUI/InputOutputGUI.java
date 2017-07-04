@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
+import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
@@ -13,12 +14,15 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
+import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
 
 public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private GUICore screen;
@@ -44,7 +48,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public void showMessage(InteractionMessage message) {
-		// TODO Auto-generated method stub
+		if(message instanceof RejectMessage)
+			screen.console.append(((RejectMessage)message).getException().getMessage());
 		
 	}
 
@@ -73,10 +78,11 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	}
 
 	@Override
-	public void showInfo(GameBoardDTO gameBoardDTO, TowersDTO towerdDTO,
+	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towerdDTO,
 		HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
-		// TODO Auto-generated method stub
-		
+		int spaceIndex = PrintInfoFunctions.getIndex(info.space, info.floor);
+		FamilyMemberDTO fam = PrintInfoFunctions.getFamiliarDTO(info);
+		screen.tower.showFamiliar(spaceIndex, fam);
 	}
 
 	@Override
@@ -89,6 +95,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			for(CardDTO card: towers.getTowers().get(types[i]))
 				idCards.add(card.getId());
 		screen.tower.setCards(idCards);
+		
+		//show dices
 		
 	}
 

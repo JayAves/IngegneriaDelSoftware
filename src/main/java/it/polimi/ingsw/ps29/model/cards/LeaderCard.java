@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class LeaderCard {
@@ -12,14 +11,15 @@ public class LeaderCard {
 	private String name;
 	private final int id;
 	private Effect leaderEffect; 
-	boolean permantenteffect;
+	int permanent;
 	private ArrayList<Resource> requirements;
 	private ArrayList<String> cardTypeRequirements;
 	private ArrayList<Integer> cardRequirements;
 	
-    public LeaderCard ( String name, int id, Effect effect, ArrayList<Resource> requirements, ArrayList<String> cardTypeRequirements, ArrayList<Integer> cardRequirements){
+	public LeaderCard ( String name, int id, int permanent, Effect effect, ArrayList<Resource> requirements, ArrayList<String> cardTypeRequirements, ArrayList<Integer> cardRequirements){
     	this.name = name;
     	this.id = id;
+    	this.permanent = permanent;
     	this.leaderEffect = effect;
     	this.requirements = new ArrayList<Resource>();
     	for (Resource res : requirements){
@@ -33,7 +33,7 @@ public class LeaderCard {
 
     @Override
     public String toString(){
-		return name + "effect " + leaderEffect + "requirements :" + requirements + cardRequirements ;
+		return name + "effect " + "id" + id + " permanent" + isPermanent() +leaderEffect + "requirements :" + requirements + cardRequirements ;
     	
     }
     
@@ -50,7 +50,14 @@ public class LeaderCard {
     }
     
     public boolean isPermanent(){
-    	return permantenteffect;
+    	boolean isPermanent = false;
+    	switch(permanent){
+    	case(1) : isPermanent = true;
+    		break;
+    	case(0) : isPermanent = false;
+    		break;	
+    	}
+    	return isPermanent;
     }
     
     

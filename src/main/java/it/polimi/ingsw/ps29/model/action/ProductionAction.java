@@ -17,6 +17,12 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 
+/**
+ * When player tries to place a familiar in ProductionArea
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ *
+ */
 public class ProductionAction extends Action {
 	
 	private ActivityArea space;
@@ -84,6 +90,11 @@ public class ProductionAction extends Action {
 		
 	}
 	
+	/**
+	 * Finds exchanges that can be activated and prepares a list of them.
+	 * @return a list of Effects
+	 * @see it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect
+	 */
 	public ArrayList<ExchangeResourcesEffect> buildExchangeSupportVector () {
 		ArrayList<ExchangeResourcesEffect> options = new ArrayList<ExchangeResourcesEffect>();
 		for(Card card: move.getPlayer().getPersonalBoard().getCards("building"))

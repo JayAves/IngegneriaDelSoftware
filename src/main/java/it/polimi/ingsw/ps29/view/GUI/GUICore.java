@@ -214,12 +214,13 @@ public class GUICore extends Observable{
 		panelSouth.add(preview, c);
 		
 		c.gridx = 1;
-		c.weightx = 2;
+		c.weightx = 3;
 		c.weighty = 1;
 		
 		console = new JTextArea("console...");
 		console.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(console);
+		scrollPane.setAutoscrolls(true);
 		panelSouth.add(scrollPane, c);
 		
 		c.gridx = 2;
