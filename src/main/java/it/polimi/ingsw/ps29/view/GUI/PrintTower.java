@@ -65,7 +65,7 @@ public class PrintTower extends JPanel {
 			int indexSpace = coordSpaces.getIndexSpace(p);
 			
 			//save index pressed and show msg on the console 
-			if(indexSpace>-1 && indexSpace<23) {
+			if(gui.getTowers() != null && indexSpace>-1 && indexSpace<23) {
 				indexSpacePressed = indexSpace;
 				ConsoleMessages.writePlacement(indexSpace, gui.console);
 			}
@@ -192,8 +192,8 @@ public class PrintTower extends JPanel {
 		for(Map.Entry<Integer, ArrayList<FamilyMemberDTO>> famInSpace: coordFamiliar.entrySet()) {
 			
 			if(famInSpace.getKey()!=16 && famInSpace.getKey()!=17 && famInSpace.getKey()!=22) {
-				
 				//function to print in single spaces
+				
 				Coordinates space = coordSpaces.getSpaceCoord(famInSpace.getKey());
 				if(space!=null)
 					//print each familiar on its position
@@ -202,9 +202,9 @@ public class PrintTower extends JPanel {
 			}
 				
 			else {
+				//function to print in harvest, production or council spaces
 				int widthSingleSlot = (int)coordSpaces.getWidthSpace();
 				
-				//function to print in harvest, production or council spaces
 				Coordinates space = coordSpaces.getSpaceCoord(famInSpace.getKey());
 				
 				if(!famInSpace.getValue().isEmpty()) {
@@ -218,10 +218,9 @@ public class PrintTower extends JPanel {
 					
 				}
 				
-				
 			}
-			
 		}
+		
 	}
 	
 	
