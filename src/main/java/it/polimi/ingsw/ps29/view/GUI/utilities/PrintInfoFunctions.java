@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps29.view.GUI.utilities;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
@@ -58,5 +61,20 @@ public class PrintInfoFunctions {
 		}
 	}
 	
+	public static ArrayList<Integer> createIdCards (HashMap<String, ArrayList<Integer>> hash) {
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		for(int i=0; i<12; i++)
+			ids.add(-1);
+		
+		if(hash.get("territory")!=null)
+			for(int i=0; i<hash.get("territory").size(); i++)
+				ids.set(i*2, hash.get("territory").get(i));
+		
+		if(hash.get("building")!=null)
+			for(int i=0; i<hash.get("building").size(); i++)
+				ids.set(1+i*2, hash.get("building").get(i));
+		
+		return ids;
+	}
 	
 }

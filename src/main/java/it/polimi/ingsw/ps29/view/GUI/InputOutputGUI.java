@@ -86,8 +86,12 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		screen.tower.showFamiliar(spaceIndex, fam);
 		//if a card is taken, getIdCards will return -1 as ID of that card
 		screen.tower.setCards(towersDTO.getIdCards(), false);
-		
 		screen.tower.repaint();
+		
+		if(screen.playerName.equals(info.getName())) {
+			ArrayList<Integer> ids = PrintInfoFunctions.createIdCards(personalBoardsDTO.get(info.getName()).getIdCards());
+			screen.personal.setCards(ids, true);	
+		}
 	}
 
 	@Override

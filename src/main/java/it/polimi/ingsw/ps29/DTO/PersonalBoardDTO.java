@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.DTO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * DTO implementation of object PersonalBoard
@@ -75,6 +76,18 @@ public class PersonalBoardDTO implements Serializable {
 	
 	public String getName () {
 		return name;
+	}
+	
+	public HashMap<String, ArrayList<Integer>> getIdCards () {
+		HashMap <String, ArrayList<Integer>> ids = new HashMap<String, ArrayList<Integer>> ();
+		for(String index: cards.keySet())
+			ids.put(index, new ArrayList<Integer>());
+		
+		for(Map.Entry<String, ArrayList<CardDTO>> row: cards.entrySet())
+			for(CardDTO card: row.getValue())
+				ids.get(row.getKey()).add(card.getId());
+		
+		return ids;
 	}
 	
 	
