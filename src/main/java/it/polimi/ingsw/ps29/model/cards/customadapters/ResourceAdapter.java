@@ -13,6 +13,12 @@ import com.google.gson.JsonSerializer;
 
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Serializes and deserializes any Resource and inheriting-from-Resource object. Same procedure as CardAdapter. 
+ * @author Pietro Grotti
+ * @see CardAdapter
+ *
+ */
 public class ResourceAdapter implements JsonSerializer<Resource>, JsonDeserializer<Resource> {
 	
 	

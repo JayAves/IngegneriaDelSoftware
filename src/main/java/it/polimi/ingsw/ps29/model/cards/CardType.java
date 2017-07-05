@@ -1,10 +1,16 @@
 package it.polimi.ingsw.ps29.model.cards;
 
-
+/**
+ * Describes card type
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public enum CardType {
 	TERRITORY ("territory"), BUILDING ("building"), CHARACTER ("character"), VENTURE ("venture"), 
 	EXCOMMUNICATION ("excommunication"), ALL ("all");
-	//All è previsto per gli effetti che valgono per ogni tipo di carta
+	//All is used for some special effects (such as Abess Character Card)
 
 	private final String type;
 	

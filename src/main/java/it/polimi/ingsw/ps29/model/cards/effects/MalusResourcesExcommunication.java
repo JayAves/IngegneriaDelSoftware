@@ -7,11 +7,16 @@ import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceDecorator;
 
+/**
+ * EXCOMMUNICATION
+ * @author Giovanni Mele
+ *
+ */
 public class MalusResourcesExcommunication extends EffectAboutResources {
 
 	public MalusResourcesExcommunication(ArrayList<Resource> resources) {
 		super(resources);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override

@@ -7,13 +7,17 @@ import it.polimi.ingsw.ps29.model.cards.CardType;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * EXCOMMUNICATION: every time VictoryPoints are gained, part of them is lost.
+ * @author jaycaves
+ *
+ */
 public class LoseVictoryPoint extends EffectAboutResources {
 	
 	private int interval;
-	private CardType typeCard;
+	private CardType typeCard; //type is null when effect is on resources, not on cardss
 	
-	//passare null in typeCard se l'effetto non riguarda nessun particolare tipo di carta ma solo le risorse
-	//in possesso del giocatore
+	
 	public LoseVictoryPoint(int interval, CardType typeCard, ArrayList<Resource> res) {
 		super(res);
 		this.interval = interval;

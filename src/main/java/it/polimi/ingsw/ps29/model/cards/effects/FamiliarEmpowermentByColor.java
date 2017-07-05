@@ -7,6 +7,11 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberPowerDecorator;
 
+/**
+ * LEADER: Empowers some familiars, not necessarily all of them.
+ * @author Giovanni Mele
+ *
+ */
 public class FamiliarEmpowermentByColor extends EmpowermentActionEffect{
 	
 	private ArrayList<String> colors;

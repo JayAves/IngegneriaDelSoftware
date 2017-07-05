@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * CARD EFFECT & LEADER: Allows player to do an extra TowerAction without placing a familiar.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ * @see it.polimi.ingsw.ps29.model.action.TowerAction
+ *
+ */
 public class BonusPlacementEffect extends BonusActionEffect {
 	private String cardType;
 	private ArrayList <Resource> discount;
@@ -18,9 +26,7 @@ public class BonusPlacementEffect extends BonusActionEffect {
 
 	@Override
 	public void performEffect(Player player) {
-		//interazione con l'utente, a cui devo passare il tipo di carta relativa alla torre su 
-		//cui piazzare e il valore dell'azione (con eventuale sconto)
-		//Non essendo un effetto permanente non memorizzo lo sconto ma lo considero solamente per la mossa attuale.
+		//effect is performed differently, in Controller's visitor pattern
 		
 	}
 
