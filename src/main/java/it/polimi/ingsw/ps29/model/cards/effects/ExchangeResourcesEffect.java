@@ -5,11 +5,14 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
+/**
+ * CARD EFFECT: Allows to do a Resources Exchange
+ * @author Pietro Melzi
+ *
+ */
 public class ExchangeResourcesEffect extends Effect implements Cloneable, Serializable {
 
-	/**
-	 * 
-	 */
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -7432793364767288256L;
 	private ArrayList<ExchangeResourceHandler> choices;
 	
@@ -17,11 +20,7 @@ public class ExchangeResourcesEffect extends Effect implements Cloneable, Serial
 		choices = erh;
 	}
 	
-	/*
-	//aggiunge le alternative tra cui scegliere
-	void AddExchangeResource (ExchangeResourceHandler erh) {
-		choices.add(erh);
-	}*/
+
 	
 	public ArrayList<ExchangeResourceHandler> getChoices () {
 		return choices;
@@ -30,15 +29,19 @@ public class ExchangeResourcesEffect extends Effect implements Cloneable, Serial
 
 	@Override
 	public void performEffect(Player player) {
-		//mostra all'utente tutte le alternative presenti in choices e chiedi se vuole effettuare uno scambio
-		//in caso ci sia una scelta da fare all'interno di un possibile scambio chiede anche quella
+		//not necessary. 
 		
 		
 	}
 
-	//indexExchange indica il tipo di scambio che si vuole effettuare tra quelli proposti
-	//indexResource indica la risorsa da scambiare scelta all'interno di quelle proposte
-	//vale -1 se non occorre scegliere tra queste risorse
+	
+	/**
+	 * Real performEffect. 
+	 * @param player
+	 * @param indexExchange explains Exchange type
+	 * @param indexOut is what resource was chosen among the ones to pay
+	 * @param indexIn is what resource was chosen among the ones to get
+	 */
 	public void exchangeResources (Player player, int indexExchange, int indexOut, int indexIn) {
 		choices.get(indexExchange).performExchange(player.getPersonalBoard().getResources(), indexOut, indexIn);
 	}

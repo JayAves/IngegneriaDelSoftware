@@ -2,6 +2,13 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
+/**
+ * EXCOMMUNICATION: At the end of the game  Victory Points gain will be reduced.
+
+ * @author Giovanni Mele
+
+ *
+ */
 public class VictoryPointsPenaltyEffect extends Effect{
 
 	@Override

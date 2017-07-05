@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public abstract class EffectAboutResources extends Effect{
 
 	protected ArrayList<Resource> resources;

@@ -6,6 +6,12 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * CARD & LEADER EFFECT: Gives a certain amount of Resources.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ *
+ */
 public class GainResourcesEffect extends EffectAboutResources {
 	
 	public GainResourcesEffect(ArrayList<Resource> resources) {
