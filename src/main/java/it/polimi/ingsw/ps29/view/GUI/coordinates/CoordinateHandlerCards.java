@@ -7,7 +7,8 @@ public class CoordinateHandlerCards {
 	
 	private ArrayList<Coordinates> cardCoords;
 
-	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY, int rows, int cols) {
+	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY, 
+			StartCoordinates startCoord, int originW, int originH) {
 		/*
 		 * al termine della funzione:
 		 *cardCoords.get(0) avrà le coordinate di territoryCard - floor 1
@@ -17,20 +18,20 @@ public class CoordinateHandlerCards {
 		 *...
 		 */
 		
-		double xStart = marginX + ((double)14/413)*imageWidth;
-		double yBase = marginY + ((double)21/607)*imageHeight;
+		double xStart = marginX + ((double)startCoord.getX()/originW)*imageWidth;
+		double yBase = marginY + ((double)startCoord.getY()/originH)*imageHeight;
 		double yStart = yBase;
-		double widthCard = ((double)51/413)*imageWidth;
-		double heightCard = ((double)85/607)*imageHeight;
-		double shiftWidth = ((double)97/413)*imageWidth;
-		double shiftHeight = ((double)91/607)*imageHeight;
+		double widthCard = ((double)startCoord.getWidth()/originW)*imageWidth;
+		double heightCard = ((double)startCoord.getHeight()/originH)*imageHeight;
+		double shiftWidth = ((double)startCoord.getShiftX()/originW)*imageWidth;
+		double shiftHeight = ((double)startCoord.getShiftY()/originH)*imageHeight;
 		
 		cardCoords = new ArrayList<Coordinates>();
-		for(int i=0; i<rows*cols; i++)
+		for(int i=0; i<startCoord.getRows()*startCoord.getCols(); i++)
 			cardCoords.add(null);
-		for(int i=0; i<cols; i++){
-			for (int j=0; j<rows; j++) {
-				cardCoords.set((i+1)*rows-(j+1), new Coordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
+		for(int i=0; i<startCoord.getCols(); i++){
+			for (int j=0; j<startCoord.getRows(); j++) {
+				cardCoords.set((i+1)*startCoord.getRows()-(j+1), new Coordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
 				yStart+=shiftHeight;
 			}
 			xStart+=shiftWidth;
@@ -54,5 +55,9 @@ public class CoordinateHandlerCards {
 		for (Coordinates coord: cardCoords)
 			msg+=coord.toString()+"\n";
 		return msg;
+	}
+	
+	public int length() {
+		return cardCoords.size();
 	}
 }

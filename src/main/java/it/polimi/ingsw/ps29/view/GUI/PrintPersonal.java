@@ -20,9 +20,13 @@ public class PrintPersonal extends ImageToPrint {
 	protected StartCoordinates startCoord;
 	protected CoordinateHandlerCards coordCards;
 	private ArrayList<BufferedImage> cards;
+	private ArrayList<Integer> idCards;
+	int orW, orH;
 	
-	public PrintPersonal(String path, GUICore gui, StartCoordinates startCoord) {
+	public PrintPersonal(String path, GUICore gui, StartCoordinates startCoord, int width, int height) {
 		super(path);
+		orW = width;
+		orH = height;
 		addMouseListener(new BoardListener(gui));
 		this.startCoord = startCoord;
 	}
@@ -45,9 +49,16 @@ public class PrintPersonal extends ImageToPrint {
 			int indexCard = coordCards.getIndexCard(p);
 			
 			//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
-			if(gui.getTowers() != null && indexCard>-1 && indexCard<16) {
-				int idCard = gui.getTowers().getIdCard(indexCard);
+			if(gui.getTowers() != null && indexCard>-1 && indexCard<coordCards.length()) {
+				int idCard = 1;
+				
+				if(coordCards.length()==16)
+					idCard = gui.getTowers().getIdCard(indexCard);
+				else if (coordCards.length()==12)
+					idCard = idCards.get(indexCard);
+					
 				gui.zoomImage(idCard);
+					
 			}
 			
 		}
@@ -61,9 +72,12 @@ public class PrintPersonal extends ImageToPrint {
 		//dimensioni assolute utilizzate per piazzare le carte
 		handlePosition(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
 				startCoord.getShiftX(), startCoord.getShiftY(), g);
+		
+		System.out.println(coordCards.toString());
 	}
 	
 	public void setCards (ArrayList<Integer> idCards, boolean repaint) {
+		this.idCards = idCards;
 		cards = new ArrayList<BufferedImage> ();
 		for(int id: idCards)
 			if(id!=-1)
@@ -85,8 +99,7 @@ public class PrintPersonal extends ImageToPrint {
 		double shiftWidth = ((double)shiftWidthAbs/image.getWidth())*imageWidth;
 		double shiftHeight = ((double)shiftHeightAbs/image.getHeight())*imageHeight;
 		
-		coordCards = new CoordinateHandlerCards(imageHeight, imageWidth, marginX, marginY, 
-				startCoord.getRows(), startCoord.getCols());
+		coordCards = new CoordinateHandlerCards(imageHeight, imageWidth, marginX, marginY, startCoord, orW, orH);
 		
 		if(cards!=null) {
 			while(cards.size()<startCoord.getRows()*startCoord.getCols()) {

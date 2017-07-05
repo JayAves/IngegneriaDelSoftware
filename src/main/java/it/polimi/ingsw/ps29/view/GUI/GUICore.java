@@ -30,6 +30,7 @@ public class GUICore extends Observable{
 	JFrame frame; 
 	TowersDTO towers;
 	
+	
 	PrintTower tower;
 	ImageToPrint tile;
 	PrintPersonal personal;
@@ -88,7 +89,7 @@ public class GUICore extends Observable{
 		c.weightx = 4;
 		c.fill = GridBagConstraints.BOTH;
 		StartCoordinates startCoord = new StartCoordinates(14,20,51,85,97,91,4,4);
-		tower = new PrintTower("gameboard.png", this, startCoord);
+		tower = new PrintTower("gameboard.png", this, startCoord, 413, 607);
 		frame.add(tower, c);
 		
 		c.gridx = 1;
@@ -139,7 +140,8 @@ public class GUICore extends Observable{
 		panelNorth.add(tile, c);
 		
 		StartCoordinates startCoord = new StartCoordinates(6, 9, 59, 92, 67, 115, 2, 6);
-		personal = new PrintPersonal("personalboard.jpg", this, startCoord);
+		personal = new PrintPersonal("personalboard.jpg", this, startCoord, 400, 285);
+		
 		c.gridx = 1;
 		c.weightx = 6;
 		c.weighty = 2;

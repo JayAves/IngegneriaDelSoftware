@@ -49,8 +49,8 @@ public class PrintTower extends PrintPersonal {
 			
 	}
 	
-	public PrintTower(String path, GUICore gui, StartCoordinates startCoord) {
-		super(path, gui, startCoord);
+	public PrintTower(String path, GUICore gui, StartCoordinates startCoord, int orW, int orH) {
+		super(path, gui, startCoord, orW, orH);
 		addMouseListener(new TowerListener(gui));
 		this.startCoord = startCoord;
 		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();	
