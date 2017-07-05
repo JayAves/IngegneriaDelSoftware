@@ -5,33 +5,28 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerCards;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.Coordinates;
+import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 import it.polimi.ingsw.ps29.view.GUI.utilities.ConsoleMessages;
 
-public class PrintTower extends JPanel {
+public class PrintTower extends PrintPersonal {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3591511333427114163L;
-	private BufferedImage tower;
+	
 	private ArrayList<BufferedImage> cards;
-	double imageHeight, imageWidth, marginX, marginY, imageRatio;
-	private CoordinateHandlerCards coordCards;
 	private CoordinateHandlerSpaces coordSpaces;
 	private HashMap <Integer, ArrayList<FamilyMemberDTO>> coordFamiliar;
+	private StartCoordinates startCoords;
 	
 	private int indexSpacePressed = -1;
 	
@@ -73,104 +68,27 @@ public class PrintTower extends JPanel {
 			
 	}
 		
-	public PrintTower(ArrayList<Integer> idCards, GUICore gui) {
-		tower = loadImage("gameboard.png");
-		setCards(idCards, true);
+	public PrintTower(String path, ArrayList<Integer> idCards, GUICore gui, StartCoordinates startCoord) {
+		super(path,idCards, gui, startCoord);
 		addMouseListener(new TowerListener(gui));
+		this.startCoord = startCoord;
 		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();				
-	}
-	
-	public void setCards (ArrayList<Integer> idCards, boolean repaint) {
-		cards = new ArrayList<BufferedImage> ();
-		for(int id: idCards)
-			if(id!=-1)
-				cards.add(loadImage("cards/devcards_f_en_c_"+id+".png"));
-			else 
-				cards.add(loadImage("leader.jpg"));
-		if(repaint)
-			repaint();
-	}
-	
-	private BufferedImage loadImage(String path){
-		BufferedImage result = null;
-		try {
-			result = ImageIO.read(new File ("images/"+path));
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
 	}
 	
 	
 	@Override
 	public void paintComponent (Graphics g) {
-		imageRatio = (double)tower.getHeight()/(double)tower.getWidth();
-		imageHeight = imageRatio*getSize().getWidth();
-		
-		if(imageHeight>getSize().getHeight()) { //altezza occupa tutto il panel
-			imageWidth = getSize().getHeight()/imageRatio;
-			imageHeight = getSize().getHeight();
-			marginX = (getSize().getWidth()-imageWidth)/2;
-			marginY = 0;
-			g.drawImage(tower, (int)marginX, 0, (int)imageWidth, (int)imageHeight, null);
-		}
-		
-		else { //larghezza occupa tutto il panel
-			marginY = (getSize().getHeight()-imageHeight)/2;
-			marginX = 0;
-			imageWidth = getSize().getWidth();
-			g.drawImage(tower, 0, (int)marginY, (int)imageWidth, (int)imageHeight, null);
-		}
+		super.paintComponent(g);
 		
 		//dimensioni assolute utilizzate per piazzare le carte
-		handlePosition(14,20,51,85,97,91, g);
+		handleTower(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
+				startCoord.getShiftX(), startCoord.getShiftY(), g);
 	}
 	
-		
-	
-	public int getWidthImage () {
-		return tower.getWidth();
-	}
-	
-	public int getHeightImage () {
-		return tower.getHeight();
-	}
-	
-	private void handlePosition(int xStartAbs, int yBaseAbs, int widthAbs, int heightAbs, 
+	private void handleTower(int xStartAbs, int yBaseAbs, int widthAbs, int heightAbs, 
 			int shiftWidthAbs, int shiftHeightAbs, Graphics g) {
-		double xStart = marginX + ((double)xStartAbs/tower.getWidth())*imageWidth;
-		double yBase = marginY + ((double)yBaseAbs/tower.getHeight())*imageHeight;
-		double yStart = yBase;
-		double widthCard = ((double)widthAbs/tower.getWidth())*imageWidth;
-		double heightCard = ((double)heightAbs/tower.getHeight())*imageHeight;
-		double shiftWidth = ((double)shiftWidthAbs/tower.getWidth())*imageWidth;
-		double shiftHeight = ((double)shiftHeightAbs/tower.getHeight())*imageHeight;
 		
-		coordCards = new CoordinateHandlerCards(imageHeight, imageWidth, marginX, marginY);
-		coordSpaces = new CoordinateHandlerSpaces(imageHeight, imageWidth, marginX, marginY);
-		
-		while(cards.size()<16) {
-			//wait...
-			try {
-				Thread.sleep(100);
-				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		for (int i=0; i<4; i++) {
-			for (int j=0; j<4; j++) {
-				g.drawImage(cards.get((i+1)*4-(1+j)), (int) (xStart), (int) (yStart),
-						(int) (widthCard), (int) (heightCard), null);
-				yStart+=shiftHeight;
-			}
-			xStart+=shiftWidth;
-			yStart = yBase;
-		}
-		
+		coordSpaces = new CoordinateHandlerSpaces(imageHeight, imageWidth, marginX, marginY);		
 		printAllFam(g);
 	}
 	

@@ -23,6 +23,7 @@ import javax.swing.SpinnerNumberModel;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 
 public class GUICore extends Observable{
 	String playerName;
@@ -32,7 +33,7 @@ public class GUICore extends Observable{
 	
 	PrintTower tower;
 	ImageToPrint tile;
-	ImageToPrint personal;
+	PrintPersonal personal;
 	ButtonGroup family;
 	JSpinner servants;
 	JButton doAction;
@@ -92,7 +93,8 @@ public class GUICore extends Observable{
 		ArrayList<Integer> id = new ArrayList<Integer> ();
 		for(int i=0; i<16; i++)
 			id.add(i+1);
-		tower = new PrintTower(id, this);
+		StartCoordinates startCoord = new StartCoordinates(14,20,51,85,97,91,4,4);
+		tower = new PrintTower("gameboard.png", id, this, startCoord);
 		frame.add(tower, c);
 		
 		c.gridx = 1;
@@ -142,8 +144,12 @@ public class GUICore extends Observable{
 		c.fill = GridBagConstraints.BOTH;
 		panelNorth.add(tile, c);
 		
-		
-		personal = new ImageToPrint("personalboard.jpg", this);
+		//load for test
+		ArrayList<Integer> id = new ArrayList<Integer> ();
+		for(int i=0; i<12; i++)
+			id.add(i+1);
+		StartCoordinates startCoord = new StartCoordinates(6, 9, 59, 92, 67, 115, 2, 6);
+		personal = new PrintPersonal("personalboard.jpg", id, this, startCoord);
 		c.gridx = 1;
 		c.weightx = 6;
 		c.weighty = 2;

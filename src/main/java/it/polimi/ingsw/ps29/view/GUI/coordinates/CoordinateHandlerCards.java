@@ -7,7 +7,7 @@ public class CoordinateHandlerCards {
 	
 	private ArrayList<Coordinates> cardCoords;
 
-	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY) {
+	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY, int rows, int cols) {
 		/*
 		 * al termine della funzione:
 		 *cardCoords.get(0) avrà le coordinate di territoryCard - floor 1
@@ -26,11 +26,11 @@ public class CoordinateHandlerCards {
 		double shiftHeight = ((double)91/607)*imageHeight;
 		
 		cardCoords = new ArrayList<Coordinates>();
-		for(int i=0; i<16; i++)
+		for(int i=0; i<rows*cols; i++)
 			cardCoords.add(null);
-		for(int i=0; i<4; i++){
-			for (int j=0; j<4; j++) {
-				cardCoords.set((i+1)*4-(j+1), new Coordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
+		for(int i=0; i<cols; i++){
+			for (int j=0; j<rows; j++) {
+				cardCoords.set((i+1)*rows-(j+1), new Coordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
 				yStart+=shiftHeight;
 			}
 			xStart+=shiftWidth;
