@@ -1,8 +1,6 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
-import java.awt.BasicStroke;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -191,37 +189,87 @@ public class PrintTower extends JPanel {
 	}
 	
 	private void printAllFam(Graphics g) {
-		//print each familiar on the towers
-		for(Map.Entry<Integer, ArrayList<FamilyMemberDTO>> famInSpace: coordFamiliar.entrySet())
-			for(FamilyMemberDTO famDTO: famInSpace.getValue()) {
+		for(Map.Entry<Integer, ArrayList<FamilyMemberDTO>> famInSpace: coordFamiliar.entrySet()) {
+			
+			if(famInSpace.getKey()!=16 && famInSpace.getKey()!=17 && famInSpace.getKey()!=22) {
+				
+				//function to print in single spaces
 				Coordinates space = coordSpaces.getSpaceCoord(famInSpace.getKey());
-				
 				if(space!=null)
-					printSingleFamiliar(space, famDTO, g);
-				
+					//print each familiar on its position
+					printSingleFamiliar(space, famInSpace.getValue().get(0), g);
 				//else TO_DO: show familiar used for no actions
 			}
+				
+			else {
+				int widthSingleSlot = (int)coordSpaces.getWidthSpace();
+				
+				//function to print in harvest, production or council spaces
+				Coordinates space = coordSpaces.getSpaceCoord(famInSpace.getKey());
+				
+				if(!famInSpace.getValue().isEmpty()) {
+					//first familiar in queue
+					space = new Coordinates(space.getCoordX(), space.getCoordY(), 
+							widthSingleSlot, widthSingleSlot);
+					printSingleFamiliar(space, famInSpace.getValue().get(0), g);
+					
+					if(famInSpace.getValue().size()>1)
+						printQueue(famInSpace.getValue(), space, g, famInSpace.getKey()==22 ? 1 : 2);
+					
+				}
+				
+				
+			}
+			
+		}
 	}
 	
-	public int getIndexSpacePressed () {
-		return indexSpacePressed;
-	}
 	
 	private void printSingleFamiliar (Coordinates space, FamilyMemberDTO fam, Graphics g) {
 		//print outer circle with player color
 		g.setColor(fam.getPlayerColor().getColor());
-		((Graphics2D)g).setStroke(new BasicStroke(space.getWidth()/6));
-		((Graphics2D)g).fillOval(space.getCoordX(), space.getCoordY(), space.getWidth(), space.getHeight());
+		g.fillOval(space.getCoordX(), space.getCoordY(), space.getWidth(), space.getWidth());
 		
 		//print inner circle with familiar color
 		g.setColor(fam.getFamiliarColor().getColor());
 		
-		int coordX = space.getCoordX() + space.getWidth() /3;
-		int coordY = space.getCoordY() + space.getHeight()/3;
-		int width  = space.getWidth() /3;
-		int height = space.getHeight()/3;
+		int coordX = space.getCoordX() + space.getWidth() *3/8;
+		int coordY = space.getCoordY() + space.getWidth()*3/8;
+		int width  = space.getWidth() *1/4;
+		int height = space.getHeight()*1/4;
 		
-		g.fillOval(coordX, coordY, width, height);
+		g.fillOval(coordX, coordY, width, width);
+	}
+	
+	/*
+	 * valueToStart is the value used to do subList
+	 * 
+	 * valueToStart = 1 for council palace
+	 * valueToStart = 2 for harvest and production
+	 */
+	private void printQueue(ArrayList<FamilyMemberDTO> famInSpace, Coordinates space, Graphics g, int valueToStart ) {
+		int offset = (int)coordSpaces.getSpaceHeadQueue();
+		int widthSingleSlot = (int)coordSpaces.getWidthSpace();
+		
+		if (valueToStart==2) {
+			space = new Coordinates(space.getCoordX()+widthSingleSlot+offset, space.getCoordY(),
+					widthSingleSlot, widthSingleSlot);
+			printSingleFamiliar(space, famInSpace.get(1), g);
+		}
+		
+		ArrayList<FamilyMemberDTO> supportList = new ArrayList<FamilyMemberDTO>();
+		for (int i = valueToStart; i<famInSpace.size(); i++)
+			supportList.add(famInSpace.get(i));
+		
+		for (FamilyMemberDTO famQueue: supportList) {
+			space = new Coordinates(space.getCoordX()+widthSingleSlot, space.getCoordY(), 
+					widthSingleSlot, widthSingleSlot);
+			printSingleFamiliar(space, famQueue, g);
+		}
+	}
+	
+	public int getIndexSpacePressed () {
+		return indexSpacePressed;
 	}
 
 }
