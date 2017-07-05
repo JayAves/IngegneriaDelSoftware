@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.util.Observable;
 
 import javax.swing.ButtonGroup;
@@ -76,8 +75,6 @@ public class GUICore extends Observable{
 				int ySize = ((int) tk.getScreenSize().getHeight());
 				frame.setSize(xSize,ySize);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
-				
 			}
 		});
 	}
@@ -90,11 +87,8 @@ public class GUICore extends Observable{
 		c.weighty = 1;
 		c.weightx = 4;
 		c.fill = GridBagConstraints.BOTH;
-		ArrayList<Integer> id = new ArrayList<Integer> ();
-		for(int i=0; i<16; i++)
-			id.add(i+1);
 		StartCoordinates startCoord = new StartCoordinates(14,20,51,85,97,91,4,4);
-		tower = new PrintTower("gameboard.png", id, this, startCoord);
+		tower = new PrintTower("gameboard.png", this, startCoord);
 		frame.add(tower, c);
 		
 		c.gridx = 1;
@@ -144,12 +138,8 @@ public class GUICore extends Observable{
 		c.fill = GridBagConstraints.BOTH;
 		panelNorth.add(tile, c);
 		
-		//load for test
-		ArrayList<Integer> id = new ArrayList<Integer> ();
-		for(int i=0; i<12; i++)
-			id.add(i+1);
 		StartCoordinates startCoord = new StartCoordinates(6, 9, 59, 92, 67, 115, 2, 6);
-		personal = new PrintPersonal("personalboard.jpg", id, this, startCoord);
+		personal = new PrintPersonal("personalboard.jpg", this, startCoord);
 		c.gridx = 1;
 		c.weightx = 6;
 		c.weighty = 2;

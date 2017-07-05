@@ -18,6 +18,11 @@ public class PrintPersonal extends ImageToPrint {
 	protected CoordinateHandlerCards coordCards;
 	private ArrayList<BufferedImage> cards;
 	
+	public PrintPersonal(String path, GUICore gui, StartCoordinates startCoord) {
+		super(path, gui);
+		this.startCoord = startCoord;
+	}
+	
 	public PrintPersonal(String path, ArrayList<Integer> idCards, GUICore gui, StartCoordinates startCoord) {
 		super(path, gui);
 		setCards(idCards, true);
@@ -58,25 +63,27 @@ public class PrintPersonal extends ImageToPrint {
 		coordCards = new CoordinateHandlerCards(imageHeight, imageWidth, marginX, marginY, 
 				startCoord.getRows(), startCoord.getCols());
 		
-		while(cards.size()<startCoord.getRows()*startCoord.getCols()) {
-			//wait...
-			try {
-				Thread.sleep(100);
-				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+		if(cards!=null) {
+			while(cards.size()<startCoord.getRows()*startCoord.getCols()) {
+				//wait...
+				try {
+					Thread.sleep(100);
+					
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-		}
-		
-		//print cards
-		for (int i=0; i<startCoord.getCols(); i++) {
-			for (int j=0; j<startCoord.getRows(); j++) {
-				g.drawImage(cards.get((i+1)*startCoord.getRows()-(1+j)), (int) (xStart), (int) (yStart),
-						(int) (widthCard), (int) (heightCard), null);
-				yStart+=shiftHeight;
+			
+			//print cards
+			for (int i=0; i<startCoord.getCols(); i++) {
+				for (int j=0; j<startCoord.getRows(); j++) {
+					g.drawImage(cards.get((i+1)*startCoord.getRows()-(1+j)), (int) (xStart), (int) (yStart),
+							(int) (widthCard), (int) (heightCard), null);
+					yStart+=shiftHeight;
+				}
+				xStart+=shiftWidth;
+				yStart = yBase;
 			}
-			xStart+=shiftWidth;
-			yStart = yBase;
 		}
 	}
 	

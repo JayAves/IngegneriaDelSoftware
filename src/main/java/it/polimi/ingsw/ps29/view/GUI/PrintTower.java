@@ -4,13 +4,11 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
-import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerCards;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.Coordinates;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
@@ -23,10 +21,8 @@ public class PrintTower extends PrintPersonal {
 	 */
 	private static final long serialVersionUID = -3591511333427114163L;
 	
-	private ArrayList<BufferedImage> cards;
 	private CoordinateHandlerSpaces coordSpaces;
 	private HashMap <Integer, ArrayList<FamilyMemberDTO>> coordFamiliar;
-	private StartCoordinates startCoords;
 	
 	private int indexSpacePressed = -1;
 	
@@ -67,7 +63,14 @@ public class PrintTower extends PrintPersonal {
 		}
 			
 	}
-		
+	
+	public PrintTower(String path, GUICore gui, StartCoordinates startCoord) {
+		super(path, gui, startCoord);
+		addMouseListener(new TowerListener(gui));
+		this.startCoord = startCoord;
+		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();				
+	}
+	
 	public PrintTower(String path, ArrayList<Integer> idCards, GUICore gui, StartCoordinates startCoord) {
 		super(path,idCards, gui, startCoord);
 		addMouseListener(new TowerListener(gui));
@@ -153,7 +156,6 @@ public class PrintTower extends PrintPersonal {
 		int coordX = space.getCoordX() + space.getWidth() *3/8;
 		int coordY = space.getCoordY() + space.getWidth()*3/8;
 		int width  = space.getWidth() *1/4;
-		int height = space.getHeight()*1/4;
 		
 		g.fillOval(coordX, coordY, width, width);
 	}
