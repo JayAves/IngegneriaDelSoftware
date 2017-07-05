@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -19,15 +22,37 @@ public class PrintPersonal extends ImageToPrint {
 	private ArrayList<BufferedImage> cards;
 	
 	public PrintPersonal(String path, GUICore gui, StartCoordinates startCoord) {
-		super(path, gui);
+		super(path);
+		addMouseListener(new BoardListener(gui));
 		this.startCoord = startCoord;
 	}
 	
-	public PrintPersonal(String path, ArrayList<Integer> idCards, GUICore gui, StartCoordinates startCoord) {
-		super(path, gui);
-		setCards(idCards, true);
-		this.startCoord = startCoord;
+	protected class BoardListener extends MouseAdapter {
+		
+		protected GUICore gui;
+		
+		public BoardListener(GUICore gui) {
+			this.gui = gui;
+		}
+		
+		@Override
+		public void mouseClicked (MouseEvent event) {
+			
+			Point p = event.getPoint();
+			System.out.println(p.getX()+" - "+p.getY());
+			
+			//indice che mi dice su quale carta ho cliccato
+			int indexCard = coordCards.getIndexCard(p);
+			
+			//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
+			if(gui.getTowers() != null && indexCard>-1 && indexCard<16) {
+				int idCard = gui.getTowers().getIdCard(indexCard);
+				gui.zoomImage(idCard);
+			}
+			
+		}
 	}
+	
 	
 	@Override
 	public void paintComponent (Graphics g) {

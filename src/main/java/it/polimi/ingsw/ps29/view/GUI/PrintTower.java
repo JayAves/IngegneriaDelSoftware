@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,31 +26,17 @@ public class PrintTower extends PrintPersonal {
 	private int indexSpacePressed = -1;
 	
 	
-	private class TowerListener extends MouseAdapter {
-		
-		private GUICore gui;
-		
+	protected class TowerListener extends BoardListener {
 		
 		public TowerListener(GUICore gui) {
-			this.gui = gui;
+			super(gui);
 		}
-		
 		
 		@Override
 		public void mouseClicked (MouseEvent event) {
 			
+			super.mouseClicked(event);
 			Point p = event.getPoint();
-			System.out.println(p.getX()+" - "+p.getY());
-			
-			//indice da 0 a 15 che mi dice su quale carta ho cliccato
-			int indexCard = coordCards.getIndexCard(p);
-			
-			//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
-			if(gui.getTowers() != null && indexCard>-1 && indexCard<16) {
-				int idCard = gui.getTowers().getIdCard(indexCard);
-				gui.zoomImage(idCard);
-			}
-			
 			//indice da 0 a 22 che mi dice su quale spazio ho cliccato
 			int indexSpace = coordSpaces.getIndexSpace(p);
 			
@@ -68,16 +53,8 @@ public class PrintTower extends PrintPersonal {
 		super(path, gui, startCoord);
 		addMouseListener(new TowerListener(gui));
 		this.startCoord = startCoord;
-		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();				
+		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();	
 	}
-	
-	public PrintTower(String path, ArrayList<Integer> idCards, GUICore gui, StartCoordinates startCoord) {
-		super(path,idCards, gui, startCoord);
-		addMouseListener(new TowerListener(gui));
-		this.startCoord = startCoord;
-		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();				
-	}
-	
 	
 	@Override
 	public void paintComponent (Graphics g) {

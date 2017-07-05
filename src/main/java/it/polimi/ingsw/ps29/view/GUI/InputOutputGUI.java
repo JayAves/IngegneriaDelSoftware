@@ -100,7 +100,6 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			for(CardDTO card: towers.getTowers().get(types[i]))
 				idCards.add(card.getId());
 		screen.tower.setCards(idCards, true);
-		
 		//show dices
 		
 	}

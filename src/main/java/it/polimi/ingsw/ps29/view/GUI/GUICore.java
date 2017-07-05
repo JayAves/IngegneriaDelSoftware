@@ -132,7 +132,7 @@ public class GUICore extends Observable{
 		panelNorth.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		tile = new ImageToPrint("bonus_tiles/personalbonustile_1.png", this);
+		tile = new ImageToPrint("bonus_tiles/personalbonustile_1.png");
 		c.gridheight = 2;
 		c.weightx = 1;
 		c.fill = GridBagConstraints.BOTH;
@@ -149,7 +149,7 @@ public class GUICore extends Observable{
 		JPanel leaderPanel = new JPanel ();
 		leaderPanel.setLayout(new BorderLayout());
 		
-		ImageToPrint leader = new ImageToPrint("leader.jpg", this);
+		ImageToPrint leader = new ImageToPrint("leader.jpg");
 		leaderPanel.add(leader, BorderLayout.CENTER);
 		
 		leaderButton = new JButton ("Leader");
@@ -161,16 +161,16 @@ public class GUICore extends Observable{
 		c.gridheight = 1;
 		panelNorth.add(leaderPanel, c);
 		
-		excomm1 = new ImageToPrint("excomm_back_1.png", this);
+		excomm1 = new ImageToPrint("excomm_back_1.png");
 		c.gridx = 3;
 		panelNorth.add(excomm1, c);
 		
-		excomm2 = new ImageToPrint("excomm_back_2.png", this);
+		excomm2 = new ImageToPrint("excomm_back_2.png");
 		c.gridx = 2;
 		c.gridy = 1;
 		panelNorth.add(excomm2, c);
 		
-		excomm3 = new ImageToPrint("excomm_back_3.png", this);
+		excomm3 = new ImageToPrint("excomm_back_3.png");
 		c.gridx = 3;
 		panelNorth.add(excomm3, c);
 	}
@@ -203,7 +203,7 @@ public class GUICore extends Observable{
 		panelSouth.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		preview = new ImageToPrint("devcards_f_en_c_1.png", this);
+		preview = new ImageToPrint("devcards_f_en_c_1.png");
 		c.weightx = 2;
 		c.fill = GridBagConstraints.BOTH;
 		panelSouth.add(preview, c);

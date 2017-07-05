@@ -18,7 +18,7 @@ public class ImageToPrint extends JPanel {
 	
 	protected BufferedImage image;
 	
-	public ImageToPrint(String path, GUICore gui) {
+	public ImageToPrint(String path) {
 		image = loadImage(path);
 	}
 	
