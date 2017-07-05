@@ -33,7 +33,7 @@ public class LeaderCard {
 
     @Override
     public String toString(){
-		return name + "effect " + "id" + id + " permanent" + isPermanent() +leaderEffect + "requirements :" + requirements + cardRequirements ;
+		return name + " permanent " + isPermanent() +" effect " +leaderEffect + "\n     requirements :" + requirements + getCardRequirements() ;
     	
     }
     

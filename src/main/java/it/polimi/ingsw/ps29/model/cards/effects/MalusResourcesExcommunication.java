@@ -18,14 +18,14 @@ public class MalusResourcesExcommunication extends EffectAboutResources {
 	public void performEffect(Player player) {
 		Container playerResources = player.getPersonalBoard().getResources();
 		for (Resource res: resources) {
-			playerResources.substituteResource(new ResourceDecorator (playerResources.getResource(res.getType()), -1));
+			playerResources.substituteResource(new ResourceDecorator (playerResources.getResource(res.getType()), - (res.getAmount())));
 			
 		}
 	}
 
 	@Override
 	public String toString() {
-		String message= "MalusResourcesExcommunication for resources:";
+		String message= "MalusResourcesExcommunication for resources: ";
 		for (Resource res: resources)
 			message+= ""+ res.toString()+",";
 		return message;

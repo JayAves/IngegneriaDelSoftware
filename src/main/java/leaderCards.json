@@ -310,7 +310,7 @@
     
 {
 "name" : "Fake Ludocvico III Gonzaga ",
-"id" :19,
+"id" :20,
 "permanent" : 0,
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",

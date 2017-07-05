@@ -92,16 +92,16 @@ public class LeaderCardsTest extends TestCase{
 		/*testo che le carte con temporary effect siano state rimesse nel vettore playedLeaderCards
 		 * e che le carte con permanent effects siano ancora in ActivatedLeaderCards
 		 */
-		//assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(temporaryLeaderCards));
-		//assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(permanentLeaderCards));
+		
+		assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(temporaryLeaderCards));
+		assertEquals(true, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(permanentLeaderCards));
 		/*
 		 * verifico che nelle carte attivate non ci siano più quelle con temporary effect
 		 * e che in quelle giocate non ci siano più quelle con permanent effect
 		 */
-		//assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(temporaryLeaderCards));
-			//assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
-		//assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(temporaryLeaderCards));
-        //assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
+		
+		assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getActivatedLeaderCards().containsAll(temporaryLeaderCards));
+        assertEquals(false, model.getBoard().getPlayerByName("primo").getPersonalBoard().getPlayedLeaderCards().containsAll(permanentLeaderCards));
 	}
 
 }
