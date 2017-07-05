@@ -69,7 +69,6 @@ public class GUICore extends Observable{
 	
 				frame = new JFrame ();
 				frame.setVisible(true);
-				//frame.setResizable(false);
 				setFrame (frame);
 				Toolkit tk = Toolkit.getDefaultToolkit();
 				int xSize = ((int) tk.getScreenSize().getWidth());
@@ -220,7 +219,6 @@ public class GUICore extends Observable{
 		console = new JTextArea("console...");
 		console.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(console);
-		scrollPane.setAutoscrolls(true);
 		panelSouth.add(scrollPane, c);
 		
 		c.gridx = 2;

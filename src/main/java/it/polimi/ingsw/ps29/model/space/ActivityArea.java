@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.space;
 
 import it.polimi.ingsw.ps29.messages.exception.FamiliarHereException;
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class ActivityArea implements ActionSpace {
@@ -16,7 +16,7 @@ public class ActivityArea implements ActionSpace {
 		this.queue = queue;
 	}
 	
-	public boolean familiarHere (Color playerColor) throws FamiliarHereException{
+	public boolean familiarHere (PlayerColor playerColor) throws FamiliarHereException{
 		if( !head.familiarHere(playerColor) && !queue.familiarHere(playerColor))
 			return false;
 		throw new FamiliarHereException();

@@ -149,7 +149,7 @@ public class Match extends Observable{
 	private ArrayList<Player> initPlayers (ArrayList<String> playersNames) throws FileNotFoundException {
 
 		ArrayList<Player> players = new ArrayList<Player> ();
-    	Color[] colors = Color.values();
+    	PlayerColor[] colors = PlayerColor.values();
     	
     	for(int i=0; i<playersNames.size(); i++) 
     		players.add(new Player(playersNames.get(i), colors[i], null));

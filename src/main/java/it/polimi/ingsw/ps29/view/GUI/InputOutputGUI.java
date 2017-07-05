@@ -78,11 +78,16 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	}
 
 	@Override
-	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towerdDTO,
+	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towersDTO,
 		HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		int spaceIndex = PrintInfoFunctions.getIndex(info.space, info.floor);
 		FamilyMemberDTO fam = PrintInfoFunctions.getFamiliarDTO(info);
+		
 		screen.tower.showFamiliar(spaceIndex, fam);
+		//if a card is taken, getIdCards will return -1 as ID of that card
+		screen.tower.setCards(towersDTO.getIdCards(), false);
+		
+		screen.tower.repaint();
 	}
 
 	@Override
@@ -94,7 +99,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		for(int i=0; i<types.length; i++)
 			for(CardDTO card: towers.getTowers().get(types[i]))
 				idCards.add(card.getId());
-		screen.tower.setCards(idCards);
+		screen.tower.setCards(idCards, true);
 		
 		//show dices
 		
@@ -110,10 +115,24 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	public void showFirstInfo(FirstBoardInfo msg) {
 		screen.frame.setTitle(msg.getName());
 		int tileId = msg.getTiles().get(msg.getName()).getId();
-		screen.tile.setImage("bonus_tiles/personalbonustile_"+tileId+".png");
-		screen.excomm1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
-		screen.excomm2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
-		screen.excomm3.setImage("excomm_card/excomm_3_"+msg.getExCards().get(2).getId()+".png");
+		boolean ready = false;
+		
+		do {
+			try {
+				screen.tile.setImage("bonus_tiles/personalbonustile_"+tileId+".png");
+				screen.excomm1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
+				screen.excomm2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
+				screen.excomm3.setImage("excomm_card/excomm_3_"+msg.getExCards().get(2).getId()+".png");
+				ready = true;
+			}
+			
+			catch (NullPointerException e) {
+				ready = false;
+			}
+			
+		} while (!ready);
+		
+		
 	}
 
 

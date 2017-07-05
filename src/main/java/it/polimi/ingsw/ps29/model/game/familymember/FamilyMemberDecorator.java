@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
@@ -72,7 +72,7 @@ public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 	}
 	
 	@Override
-	public Color getPlayerColor(){
+	public PlayerColor getPlayerColor(){
 		return decoratedFamilyMember.getPlayerColor();
 	}
 	

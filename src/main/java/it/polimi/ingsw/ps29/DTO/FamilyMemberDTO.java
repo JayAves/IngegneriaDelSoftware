@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.DTO;
 
 import java.io.Serializable;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 /**
@@ -15,11 +15,11 @@ public class FamilyMemberDTO implements Serializable {
 	
 	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -5829592886372144973L;
-	private Color playerColor;
+	private PlayerColor playerColor;
 	private DiceColor familiarColor;
 	
 	
-	public FamilyMemberDTO(Color playerColor, DiceColor familiarColor) {
+	public FamilyMemberDTO(PlayerColor playerColor, DiceColor familiarColor) {
 		this.playerColor = playerColor;
 		this.familiarColor = familiarColor;
 	}
@@ -28,4 +28,14 @@ public class FamilyMemberDTO implements Serializable {
 	public String toString () {
 		return "Familiar "+familiarColor+" - Player "+playerColor;
 	}
+
+	public PlayerColor getPlayerColor() {
+		return playerColor;
+	}
+
+	public DiceColor getFamiliarColor() {
+		return familiarColor;
+	}
+	
+	
 }

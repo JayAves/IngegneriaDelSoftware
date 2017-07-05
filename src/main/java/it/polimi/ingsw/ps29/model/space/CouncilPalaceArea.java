@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.model.space;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 public class CouncilPalaceArea implements ActionSpace {
@@ -20,7 +20,7 @@ public class CouncilPalaceArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean familiarHere(Color playerColor) {
+	public boolean familiarHere(PlayerColor playerColor) {
 		return queue.familiarHere(playerColor);
 	}
 
@@ -35,16 +35,16 @@ public class CouncilPalaceArea implements ActionSpace {
 		return queue;
 	}
 	
-	public boolean containedIn(ArrayList<Color> order, FamilyMemberInterface fam) {
-		for (Color col: order) {
+	public boolean containedIn(ArrayList<PlayerColor> order, FamilyMemberInterface fam) {
+		for (PlayerColor col: order) {
 			if(col==fam.getPlayerColor())
 				return true;
 		}
 		return false;
 	}
 	
-	public ArrayList<Color> playersOrder () {
-		ArrayList<Color> order = new ArrayList<Color> ();
+	public ArrayList<PlayerColor> playersOrder () {
+		ArrayList<PlayerColor> order = new ArrayList<PlayerColor> ();
 		for (int i=0; i<queue.getQueue().size(); i++)
 			if(!containedIn(order, queue.getQueue().get(i)))
 				order.add(queue.getQueue().get(i).getPlayerColor());

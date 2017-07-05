@@ -11,7 +11,7 @@ import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.EmpowermentPlacementEffect;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -33,7 +33,7 @@ public class DiscountEffectTest extends TestCase {
 
 	@BeforeClass
 	public void setUp () throws FileNotFoundException {
-		p = new Player("aa", Color.BLUE, null);
+		p = new Player("aa", PlayerColor.BLUE, null);
 		ArrayList<Resource> discount = new ArrayList<>();
 		discount.add(new Resource ("wood", 2));
 		
@@ -58,7 +58,7 @@ public class DiscountEffectTest extends TestCase {
 		Match model = new Match(names);
 		
 		//prevedo una mossa che piazza sulla buildingTower (dove sono previsti sconti) per un'azione bonus
-		Move move = new Move(p, "buildingTower", 1, 0, new FamilyMember(DiceColor.BONUS, Color.BLUE));
+		Move move = new Move(p, "buildingTower", 1, 0, new FamilyMember(DiceColor.BONUS, PlayerColor.BLUE));
 		action = new TowerAction(model, move);
 		
 		//mi aspetto uno sconto di 2 wood sul costo della carta (3 wood)

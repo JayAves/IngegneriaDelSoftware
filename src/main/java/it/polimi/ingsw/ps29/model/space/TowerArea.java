@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.messages.exception.FamiliarHereException;
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
 import it.polimi.ingsw.ps29.model.cards.Card;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
@@ -55,7 +55,7 @@ public class TowerArea implements ActionSpace {
 	}
 
 	@Override
-	public boolean familiarHere(Color playerColor) throws FamiliarHereException {
+	public boolean familiarHere(PlayerColor playerColor) throws FamiliarHereException {
 		for (Floor i: floors) 
 			if (i.familiarHere(playerColor))
 				throw new FamiliarHereException();

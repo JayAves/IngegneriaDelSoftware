@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
@@ -18,7 +18,7 @@ public class QueueActionSpace {
 		this.closed= close;
 	}
 	
-	public boolean familiarHere (Color playerColor) {
+	public boolean familiarHere (PlayerColor playerColor) {
 	
 		for (FamilyMemberInterface member: queue) 
 			if (member.getPlayerColor() == playerColor && member.getFamiliarColor()!=DiceColor.NEUTRAL) 

@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.model.space;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 public class Floor {
@@ -20,7 +20,7 @@ public class Floor {
 		return space.isEmpty();
 	}
 	
-	public boolean familiarHere (Color playerColor) {
+	public boolean familiarHere (PlayerColor playerColor) {
 		return space.familiarHere(playerColor);
 	}
 	

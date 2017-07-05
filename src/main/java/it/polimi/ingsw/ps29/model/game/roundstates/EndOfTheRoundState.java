@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.model.game.roundstates;
 import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
@@ -22,7 +22,7 @@ public class EndOfTheRoundState implements RoundState {
 			player.setVaticanReportPerformed(false);
 		
 		//modifica ordine di turno
-		ArrayList<Color> colorOrder = ((CouncilPalaceArea)match.getBoard().getSpace("CouncilPalace")).playersOrder();
+		ArrayList<PlayerColor> colorOrder = ((CouncilPalaceArea)match.getBoard().getSpace("CouncilPalace")).playersOrder();
 		ArrayList<Player> playerOrder = convertOrder (colorOrder, match.getBoard());
 		match.getBoard().setPlayers(createOrder (playerOrder, match.getBoard()));
 		
@@ -49,9 +49,9 @@ public class EndOfTheRoundState implements RoundState {
 	
 	
 	
-	private ArrayList<Player> convertOrder (ArrayList<Color> colorOrder, GameBoard board) {
+	private ArrayList<Player> convertOrder (ArrayList<PlayerColor> colorOrder, GameBoard board) {
 		ArrayList<Player> playerOrderFinal = new ArrayList<Player> ();
-		for(Color color: colorOrder) 
+		for(PlayerColor color: colorOrder) 
 			for(Player player: board.getPlayers())
 				if(player.getColor() == color) 
 					playerOrderFinal.add(player);

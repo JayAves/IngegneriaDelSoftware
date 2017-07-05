@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.space;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
@@ -32,7 +32,7 @@ public class SingleSlotActionSpace {
 		return member==null;
 	}
 	
-	public boolean familiarHere (Color playerColor) {
+	public boolean familiarHere (PlayerColor playerColor) {
 		return member!= null && member.getPlayerColor()==playerColor && member.getFamiliarColor()!=DiceColor.NEUTRAL;
 	}
 	

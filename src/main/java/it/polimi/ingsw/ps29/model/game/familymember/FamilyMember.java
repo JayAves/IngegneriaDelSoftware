@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 public class FamilyMember implements FamilyMemberInterface{
@@ -8,9 +8,9 @@ public class FamilyMember implements FamilyMemberInterface{
 	private int power;
 	private boolean busy;
 	private DiceColor familiarColor;
-	private Color playerColor;
+	private PlayerColor playerColor;
     private boolean fixedPower;
-	public FamilyMember (DiceColor familiarColor, Color playerColor) {
+	public FamilyMember (DiceColor familiarColor, PlayerColor playerColor) {
 		this.busy = false;
 		this.familiarColor = familiarColor;
 		this.playerColor = playerColor;
@@ -47,7 +47,7 @@ public class FamilyMember implements FamilyMemberInterface{
 		return familiarColor;
 	}
 
-	public Color getPlayerColor() {
+	public PlayerColor getPlayerColor() {
 		return playerColor;
 	}
 

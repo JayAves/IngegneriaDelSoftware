@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
+import java.awt.BasicStroke;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -75,18 +77,21 @@ public class PrintTower extends JPanel {
 		
 	public PrintTower(ArrayList<Integer> idCards, GUICore gui) {
 		tower = loadImage("gameboard.png");
-		setCards(idCards);
+		setCards(idCards, true);
 		addMouseListener(new TowerListener(gui));
 		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();				
 	}
 	
-	public void setCards (ArrayList<Integer> idCards) {
+	public void setCards (ArrayList<Integer> idCards, boolean repaint) {
 		cards = new ArrayList<BufferedImage> ();
 		for(int id: idCards)
-			cards.add(loadImage("cards/devcards_f_en_c_"+id+".png"));
-		repaint();
+			if(id!=-1)
+				cards.add(loadImage("cards/devcards_f_en_c_"+id+".png"));
+			else 
+				cards.add(loadImage("leader.jpg"));
+		if(repaint)
+			repaint();
 	}
-	
 	
 	private BufferedImage loadImage(String path){
 		BufferedImage result = null;
@@ -148,6 +153,16 @@ public class PrintTower extends JPanel {
 		coordCards = new CoordinateHandlerCards(imageHeight, imageWidth, marginX, marginY);
 		coordSpaces = new CoordinateHandlerSpaces(imageHeight, imageWidth, marginX, marginY);
 		
+		while(cards.size()<16) {
+			//wait...
+			try {
+				Thread.sleep(100);
+				
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		for (int i=0; i<4; i++) {
 			for (int j=0; j<4; j++) {
 				g.drawImage(cards.get((i+1)*4-(1+j)), (int) (xStart), (int) (yStart),
@@ -158,16 +173,11 @@ public class PrintTower extends JPanel {
 			yStart = yBase;
 		}
 		
-		//stampa sulla tower i familiari
-		for(Map.Entry<Integer, ArrayList<FamilyMemberDTO>> famInSpace: coordFamiliar.entrySet())
-			for(FamilyMemberDTO famDTO: famInSpace.getValue()) {
-				Coordinates space = coordSpaces.getSpaceCoord(famInSpace.getKey());
-				if(space!=null)
-					g.drawRect(space.getCoordX(), space.getCoordY(), space.getWidth(), space.getHeight());
-				//else mostro i familiar delle no action
-			}
+		printAllFam(g);
 	}
 	
+	//add in coordFamiliar a FamilyMemberDTO using the index of the space
+	//the familiar will be printed in paintComponent method
 	public void showFamiliar(int index, FamilyMemberDTO fam) {
 		if(coordFamiliar.get(index)!= null)
 			coordFamiliar.get(index).add(fam);
@@ -178,12 +188,40 @@ public class PrintTower extends JPanel {
 			coordFamiliar.put(index, arrFam);
 		}
 		
-		repaint();
+	}
+	
+	private void printAllFam(Graphics g) {
+		//print each familiar on the towers
+		for(Map.Entry<Integer, ArrayList<FamilyMemberDTO>> famInSpace: coordFamiliar.entrySet())
+			for(FamilyMemberDTO famDTO: famInSpace.getValue()) {
+				Coordinates space = coordSpaces.getSpaceCoord(famInSpace.getKey());
+				
+				if(space!=null)
+					printSingleFamiliar(space, famDTO, g);
+				
+				//else TO_DO: show familiar used for no actions
+			}
 	}
 	
 	public int getIndexSpacePressed () {
 		return indexSpacePressed;
 	}
 	
+	private void printSingleFamiliar (Coordinates space, FamilyMemberDTO fam, Graphics g) {
+		//print outer circle with player color
+		g.setColor(fam.getPlayerColor().getColor());
+		((Graphics2D)g).setStroke(new BasicStroke(space.getWidth()/6));
+		((Graphics2D)g).fillOval(space.getCoordX(), space.getCoordY(), space.getWidth(), space.getHeight());
+		
+		//print inner circle with familiar color
+		g.setColor(fam.getFamiliarColor().getColor());
+		
+		int coordX = space.getCoordX() + space.getWidth() /3;
+		int coordY = space.getCoordY() + space.getHeight()/3;
+		int width  = space.getWidth() /3;
+		int height = space.getHeight()/3;
+		
+		g.fillOval(coordX, coordY, width, height);
+	}
 
 }

@@ -55,7 +55,7 @@ public class GameBoard{
 		
 	}
 	
-	public Color getColorByName (String name) {
+	public PlayerColor getColorByName (String name) {
 		for(Player player: playersOrder)
 			if (player.getName().equals(name))
 				return player.getColor();

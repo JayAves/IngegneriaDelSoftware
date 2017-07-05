@@ -23,7 +23,6 @@ public class OnlineApp {
 	    	String inputConnection;
 	    	String playerName;
 	    	
-	    	
 	    	/*System.out.println("[CLI-GUI]");
 	    	
 	    	do { inputChoice = scanner.nextLine();
@@ -34,21 +33,15 @@ public class OnlineApp {
 	    	do { inputConnection = scanner.nextLine();
 	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); */
 	    	
-	    
-	    	inputChoice = "CLI";	    	
+	    	inputChoice = "GUI";	    	
 	    	inputConnection = "Socket";
-	    	
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
     		
-    		
     		View view = new View (inputChoice,  playerName);
-    		
     		Client client = new Client (view, inputConnection);
 			
-    		
     		//System.out.println("\nWaiting for a match");
-    		
     		
 	 }
 }
