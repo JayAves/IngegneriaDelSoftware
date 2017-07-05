@@ -100,4 +100,8 @@ public class CoordinateHandlerSpaces {
 			msg+=coord.toString()+"\n";
 		return msg;
 	}
+	
+	public Coordinates getSpaceCoord (int index) {
+		return index<23 ? spaceCoords.get(index) : null;
+	}
 }

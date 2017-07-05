@@ -13,6 +13,13 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Privilege;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * When a player is playing a Leader or discarding it.
+ * @author Giovanni Mele
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.cards.LeaderCard
+ *
+ */
 public class LeaderAction extends Action{
 	
 	ActionChoice choice;

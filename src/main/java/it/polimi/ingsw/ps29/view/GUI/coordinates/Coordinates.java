@@ -26,6 +26,23 @@ public class Coordinates {
 		return "Coordinates [coordX=" + coordX + ", coordY=" + coordY + ", width=" + width + ", height=" + height
 				+ "]";
 	}
+
+	public int getCoordX() {
+		return coordX;
+	}
+
+	public int getCoordY() {
+		return coordY;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
 	
 	
 

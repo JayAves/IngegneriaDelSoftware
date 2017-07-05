@@ -35,7 +35,6 @@ public class Room extends Thread implements Observer{
 		for (ClientThread th: playersInQueue)
 			names.add(th.getClientName());	
 		
-		
 		try {
 			
 			model= new Match(names);
@@ -57,10 +56,7 @@ public class Room extends Thread implements Observer{
 	
 		model.addObserver(controller);
     	
-    	
-		
-		
-		}
+	}
 
 	public Controller getController() {
 		return controller;
@@ -72,6 +68,7 @@ public class Room extends Thread implements Observer{
 		return views;
 	}
 
+	@Override
 	public void run() {
 		controller.gameEngine();
 	}

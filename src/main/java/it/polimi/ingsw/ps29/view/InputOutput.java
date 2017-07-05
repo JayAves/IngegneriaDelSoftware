@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
@@ -30,17 +31,9 @@ public interface InputOutput {
 	
 	abstract void showFirstInfo (FirstBoardInfo msg);
 	
-	abstract void showInfo (GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
+	abstract void showInfo (InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
 
 	abstract void showTowerAndDices(TowersAndDicesForView msg);
-	
-	/*abstract int[] askTypeOfAction () throws ExpiredTimeException;
-	
-	abstract int askNumberOfServants () throws ExpiredTimeException;
-	
-	abstract int askFamiliarColor () throws ExpiredTimeException;
-	
-	abstract int askFloor () throws ExpiredTimeException;*/
 
 	abstract Exchange askExchange(Exchange msg) throws ExpiredTimeException;
 	

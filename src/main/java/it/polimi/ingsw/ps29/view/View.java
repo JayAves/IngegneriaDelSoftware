@@ -155,7 +155,7 @@ public class View extends Observable implements Observer {
 		for (HashMap.Entry <String, ArrayList<ResourceDTO>> resSituation: info.resSituation.entrySet())
 			personalBoardsDTO.get(resSituation.getKey()).setResources(resSituation.getValue());
 		
-		inputOutput.showInfo(gameBoardDTO, towersDTO, personalBoardsDTO);
+		inputOutput.showInfo(msg, gameBoardDTO, towersDTO, personalBoardsDTO);
 	}
 
 	public void showTowersAndDices (TowersAndDicesForView msg) {

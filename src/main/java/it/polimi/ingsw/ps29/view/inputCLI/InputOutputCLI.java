@@ -14,6 +14,7 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
+import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
@@ -268,7 +269,7 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public void showInfo(GameBoardDTO gameBoardDTO, TowersDTO towersDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towersDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		System.out.println("Updated situation of the game: ");
 		System.out.println(gameBoardDTO.toString());
 		//showTower(towersDTO);

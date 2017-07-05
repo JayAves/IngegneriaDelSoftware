@@ -14,6 +14,13 @@ import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.space.ActivityArea;
 
+/**
+ * When player tries to place a familiar in HarvestArea 
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ * @see it.polimi.ingsw.ps29.model.space.HarvestArea
+ *
+ */
 public class HarvestAction extends Action {
 	
 	private ActivityArea space;

@@ -14,7 +14,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Servants;
 
 /**
- * 
+ * Changes Model by triggering certain kind of effects.
  * @author Pietro Grotti
  * @author Pietro Melzi
  * @author Giovanni Mele
@@ -32,16 +32,28 @@ public abstract class Action {
 		state = new ToEstablishState();
 	}
 	
-	//questo metodo controlla se la mossa è impedita da una scomunica
+	
+	//checks if there is an Excommunication that does not allow move
 	abstract boolean isForbidden (); 
 	
-	//questo metodo controlla se è possibile piazzare il famigliare (posizione libera, famigliare dello stesso colore non presente, 
-	//valore dell'azione modificata con effetti e servitori maggiore o uguale al valore richiesto
+
+	//checks if it is possible to place the chosen familiar in the chosen space
 	abstract boolean isPlaceable() throws RejectException;
 	
-	//chiamato se i precedenti controlli vanno a buon fine, implementato in maniera diversa per ogni spazio azione
+	//called only if previous checks are true, is different for any ActionSpace
 	abstract void performAction ();
 		
+	
+	/**
+	 * Does necessary checks and if possible performs Action. In the end:
+	 * if state is REJECTED, a new Move is asked.
+	 * if state is INCOMPLETE, View is updated and if BonusAction or ExchangeResource they are triggered.
+	 * if state is PERFORMED , View is updated and next player for a new turn is picked.
+	 * if some privilege are to be transformed, state is PRIVILEGES
+	 * @return final state
+	 * @throws RejectException
+	 * @see it.polimi.ingsw.ps29.model.action.actionstates.StateOfActionIdentifier
+	 */
 	public ActionState actionHandler () throws RejectException {
 		
 		if(model.getCurrentPlayer().getPersonalBoard().getSpecificResource("servant").getAmount() <
@@ -60,7 +72,7 @@ public abstract class Action {
 		else {
 			
 			performAction();
-			//sottraggo i servitori usati nella mossa
+			//pay servants used for Action
 			model.getCurrentPlayer().getPersonalBoard().getResources().updateResource(
 					new Servants(- move.getServants()));
 		
@@ -76,17 +88,7 @@ public abstract class Action {
 			state = state.afterAction(model);
 		
 		return state;
-		
-		/* 
-		se lo stato è REJECTED chiedo una nuova Move
-		se lo stato è INCOMPLETE (posso dettagliarlo) aggiorno la view e: 
-			se AzioneBonus passo i parametri "fissi" della Move e ne chiedo di altri
-				gestione normale di una Move
-			se ExchangeResources chiedo soltanto se effettuare lo scambio (se possibile)
-				gestione straordinaria da pensare (discorso thread)
-		se lo stato è PERFORMED aggiorno la view e cambio il turno
-			
-		*/
+
 	}
 	
 	

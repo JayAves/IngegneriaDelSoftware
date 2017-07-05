@@ -9,6 +9,11 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Deals with exchanges, if there are.
+ * @author Pietro Melzi
+ *
+ */
 public class ExchangeResources {
 	
 	private Match model;

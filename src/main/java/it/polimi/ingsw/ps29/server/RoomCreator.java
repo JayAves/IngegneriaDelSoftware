@@ -144,10 +144,10 @@ public class RoomCreator extends Thread implements Observer {
 		this.period=period;
 	}
 
+	@Override
 	public void run(){
 		
 		while (true){
-			
 			
 			try {
 				sleep(1000);
@@ -158,8 +158,6 @@ public class RoomCreator extends Thread implements Observer {
 				interrupt();
 			}
 			
-			
-		
 			
 		}
 	}
