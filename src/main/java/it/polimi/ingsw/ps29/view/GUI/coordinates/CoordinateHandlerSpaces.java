@@ -102,7 +102,7 @@ public class CoordinateHandlerSpaces {
 	}
 	
 	public Coordinates getSpaceCoord (int index) {
-		return index<23 ? spaceCoords.get(index) : null;
+		return index>-1 && index<23 ? spaceCoords.get(index) : null;
 	}
 	
 	//called for print familiar in queue spaces, return the coordinates of space between head and queue

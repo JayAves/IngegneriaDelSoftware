@@ -154,11 +154,22 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			
 		} while (!ready);
 		
+		ready = false;
 		
-		for(Map.Entry<String, ArrayList<ResourceDTO>> row: msg.getInitialResources().entrySet())
-			if(msg.getName().equals(row.getKey()))
-				PrintInfoFunctions.printUpdatedResources(screen, row.getValue());
-		
+		do {
+			try {
+				
+				for(Map.Entry<String, ArrayList<ResourceDTO>> row: msg.getInitialResources().entrySet())
+					if(msg.getName().equals(row.getKey()))
+						PrintInfoFunctions.printUpdatedResources(screen, row.getValue());
+				ready = true;
+			}
+			
+			catch (NullPointerException e) {
+				ready = false;
+			}
+			
+		} while(!ready);
 		
 	}
 

@@ -79,7 +79,7 @@ public class PrintInfoFunctions {
 		return ids;
 	}
 	
-	public static void printUpdatedResources (GUICore gui, ArrayList<ResourceDTO> container) {
+	public static void printUpdatedResources (GUICore gui, ArrayList<ResourceDTO> container) throws NullPointerException {
 		for (ResourceDTO res: container)
 			switch (res.getType()) {
 			case "coin":
