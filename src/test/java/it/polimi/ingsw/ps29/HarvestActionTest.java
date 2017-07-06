@@ -23,7 +23,9 @@ public class HarvestActionTest extends TestCase{
 	
 	Match model;
 	HarvestAction scndAction;
+	HarvestAction thrdAction;
 	ActivityArea space;
+	boolean value;
 	
 	@BeforeClass
 	public void setUp() throws FileNotFoundException, RejectException{
@@ -34,6 +36,7 @@ public class HarvestActionTest extends TestCase{
  		ArrayList<String> names= new ArrayList<String>();
 		names.add(player1);
 		names.add(player2);
+		names.add(player3);
 		
 		model = new Match(names);
 		
@@ -41,7 +44,7 @@ public class HarvestActionTest extends TestCase{
 		System.out.println(space);
 		
 		model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.BLACK).setPower(4);
-		model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.BLACK).setPower(2);
+		model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.BLACK).setPower(4);
 		model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.ORANGE).setPower(2);
 		
 		ActionChoice aChoiceFirst = new ActionChoice("primo");
@@ -52,19 +55,26 @@ public class HarvestActionTest extends TestCase{
 		
 			
 		HarvestAction action = new HarvestAction(model, move);
-		//System.out.println(model.getBoard().getSpace("harvest"));
 		action.actionHandler();
-		//System.out.println(model.getBoard().getSpace("harvest"));
-		System.out.println(model.getBoard().getSpace("Harvest"));
 		
-		ActionChoice aChoiceSecond = new ActionChoice("secondo");
+		ActionChoice aChoiceSecond = new ActionChoice("primo");
 		aChoiceSecond.setChoice(0, 1);
-		aChoiceSecond.setChoice(3, 1);
+		aChoiceSecond.setChoice(3, 3);
 		
 		Move moveSecond = ChoiceToMove.createMove(aChoiceSecond, model.getBoard());
 		
 		scndAction = new HarvestAction(model, moveSecond);
-		//scndAction.actionHandler();
+		
+		ActionChoice aChoiceThird = new ActionChoice("secondo");
+		aChoiceThird.setChoice(0, 1);
+		aChoiceThird.setChoice(3, 1);
+		
+		Move moveThird = ChoiceToMove.createMove(aChoiceThird, model.getBoard());
+		
+		thrdAction = new HarvestAction(model, moveThird);
+		
+		value = thrdAction.isPlaceable();
+
 		
 	}
 	
@@ -73,7 +83,7 @@ public class HarvestActionTest extends TestCase{
 	public void test(){
 		//fail("Not yet implemented");
 		assertEquals(true, model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.BLACK).getBusy());
-		assertEquals(true, space.getClosed());
+		assertEquals(false, space.getClosed());
 		try {
 			scndAction.isPlaceable();
 			fail ("expected SpaceOccupiedException");
@@ -83,6 +93,7 @@ public class HarvestActionTest extends TestCase{
 		
 		
 		assertEquals(false, model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.BLACK).getBusy());
+		assertEquals(true, value);
 			
 	}
 
