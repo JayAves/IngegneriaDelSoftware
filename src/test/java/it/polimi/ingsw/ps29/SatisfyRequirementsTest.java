@@ -104,7 +104,7 @@ public class SatisfyRequirementsTest extends TestCase{
 		//fail("Not yet implemented");
 		assertEquals(false,player.getPersonalBoard().satisfyRequirements(player.getPersonalBoard().getLeaderCards().get(0)));
 		assertEquals(false,player.getPersonalBoard().satisfyRequirements(player.getPersonalBoard().getLeaderCards().get(1)));
-		//assertEquals(true ,player.getPersonalBoard().satisfyRequirements(player.getPersonalBoard().getLeaderCards().get(2)));
+		assertEquals(true ,player.getPersonalBoard().satisfyRequirements(player.getPersonalBoard().getLeaderCards().get(2)));
 	}
 
 }

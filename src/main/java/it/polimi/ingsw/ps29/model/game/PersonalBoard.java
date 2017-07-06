@@ -57,12 +57,10 @@ public class PersonalBoard {
 		boolean check = true;
 		ArrayList<Integer> sizes = new ArrayList<Integer>();
 		sizes = getCadsSizes();
-		while (check){
 			for (int i = 0; i < sizes.size(); i++)
 				check = sizes.get(i) >= size;
-		}
-   
-		return false;
+  
+		return check;
 		
 	}
 
@@ -99,10 +97,11 @@ public class PersonalBoard {
 				if (requirements.containsKey("any")){
 					satisfiedc = checkIfCardsEqualsInSize(requirements.get("any"));
 				}
-			
+				else{
 					Set<String> set = requirements.keySet();
 					for (String type : set)
 						satisfiedc = satisfiedc &&  getCards(type).size() >= requirements.get(type);
+				}
 					
 			}
 		
