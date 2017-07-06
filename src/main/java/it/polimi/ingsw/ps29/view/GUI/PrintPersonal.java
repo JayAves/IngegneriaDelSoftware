@@ -20,7 +20,7 @@ public class PrintPersonal extends ImageToPrint {
 	protected StartCoordinates startCoord;
 	protected CoordinateHandlerCards coordCards;
 	private ArrayList<BufferedImage> cards;
-	private ArrayList<Integer> idCards;
+	private ArrayList<Integer> idCards = new ArrayList<Integer>();
 	int orW, orH;
 	
 	public PrintPersonal(String path, GUICore gui, StartCoordinates startCoord, int width, int height) {
@@ -49,18 +49,10 @@ public class PrintPersonal extends ImageToPrint {
 			int indexCard = coordCards.getIndexCard(p);
 			
 			//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
-			if(gui.getTowers() != null && indexCard>-1 && indexCard<coordCards.length()) {
-				int idCard = 1;
-				
-				if(coordCards.length()==16)
-					idCard = gui.getTowers().getIdCard(indexCard);
-				else if (coordCards.length()==12)
-					idCard = idCards.get(indexCard);
+			if(!idCards.isEmpty() && indexCard>-1 && indexCard<coordCards.length()) 
+				if(idCards.get(indexCard) != -1)
+					gui.zoomImage(idCards.get(indexCard));
 					
-				gui.zoomImage(idCard);
-					
-			}
-			
 		}
 	}
 	
@@ -73,7 +65,6 @@ public class PrintPersonal extends ImageToPrint {
 		handlePosition(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
 				startCoord.getShiftX(), startCoord.getShiftY(), g);
 		
-		System.out.println(coordCards.toString());
 	}
 	
 	public void setCards (ArrayList<Integer> idCards, boolean repaint) {
@@ -83,7 +74,7 @@ public class PrintPersonal extends ImageToPrint {
 			if(id!=-1)
 				cards.add(loadImage("cards/devcards_f_en_c_"+id+".png"));
 			else 
-				cards.add(loadImage("leader.jpg"));
+				cards.add(null);
 		if(repaint)
 			repaint();
 	}
@@ -115,10 +106,13 @@ public class PrintPersonal extends ImageToPrint {
 			//print cards
 			for (int i=0; i<startCoord.getCols(); i++) {
 				for (int j=0; j<startCoord.getRows(); j++) {
-					g.drawImage(cards.get((i+1)*startCoord.getRows()-(1+j)), (int) (xStart), (int) (yStart),
-							(int) (widthCard), (int) (heightCard), null);
+					if(cards.get((i+1)*startCoord.getRows()-(1+j))!=null) 
+						g.drawImage(cards.get((i+1)*startCoord.getRows()-(1+j)), (int) (xStart), (int) (yStart),
+								(int) (widthCard), (int) (heightCard), null);
+					
 					yStart+=shiftHeight;
 				}
+				
 				xStart+=shiftWidth;
 				yStart = yBase;
 			}
