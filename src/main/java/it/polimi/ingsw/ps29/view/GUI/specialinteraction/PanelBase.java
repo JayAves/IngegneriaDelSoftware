@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps29.view.GUI.specialinteraction;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,9 +26,10 @@ public class PanelBase extends JFrame {
 		add(leftPanel);
 		add(rightPanel);
 		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		setVisible(true);
 		pack();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	
