@@ -22,19 +22,22 @@ public class PlayerListener extends MouseAdapter {
 		//gestione click su DO ACTION
 		if(((JButton) event.getSource()).getText().equals("Do Action!")) {
 			
-			//notifico all'utente la scelta appena effettuata
-			gui.console.append("\nFamiliar selected: "+gui.family.getSelection().getActionCommand()+
-					"\nNumber of Servants: "+gui.servants.getValue()+"\n\n");
-			
-			//costruisco il pacchetto da inviare al server
-			ActionChoice msg = new ActionChoice(gui.playerName);
-			msg.setChoice(0, InteractionMessagesFunctions.translateSpace(gui.tower.getIndexSpacePressed()));
-			msg.setChoice(1, InteractionMessagesFunctions.translateFloor(gui.tower.getIndexSpacePressed()));
-			msg.setChoice(2, new Integer(gui.servants.getValue().toString()));
-			msg.setChoice(3, InteractionMessagesFunctions.translateFamiliar(gui.family.getSelection().getActionCommand()));
-			
-			//chiamo la funzione che notifica alla classe "InputOutputGUI" la scelta fatta
-			gui.notifyAboutInput(msg);
+			if(gui.tower.getIndexSpacePressed() != -1) {
+				
+				//notifico all'utente la scelta appena effettuata
+				gui.console.append("\nFamiliar selected: "+gui.family.getSelection().getActionCommand()+
+						"\nNumber of Servants: "+gui.servants.getValue()+"\n\n");
+				
+				//costruisco il pacchetto da inviare al server
+				ActionChoice msg = new ActionChoice(gui.playerName);
+				msg.setChoice(0, InteractionMessagesFunctions.translateSpace(gui.tower.getIndexSpacePressed()));
+				msg.setChoice(1, InteractionMessagesFunctions.translateFloor(gui.tower.getIndexSpacePressed()));
+				msg.setChoice(2, new Integer(gui.servants.getValue().toString()));
+				msg.setChoice(3, InteractionMessagesFunctions.translateFamiliar(gui.family.getSelection().getActionCommand()));
+				
+				//chiamo la funzione che notifica alla classe "InputOutputGUI" la scelta fatta
+				gui.notifyAboutInput(msg);
+			}
 			
 		}
 		

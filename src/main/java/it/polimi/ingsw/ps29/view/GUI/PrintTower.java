@@ -167,5 +167,9 @@ public class PrintTower extends PrintPersonal {
 	public int getIndexSpacePressed () {
 		return indexSpacePressed;
 	}
+	
+	public void deleteIndexSpacePressed () {
+		indexSpacePressed = -1;
+	}
 
 }

@@ -168,10 +168,13 @@ public class CreationMessagesSupporter {
 		TowersDTO towersForView = createTowersDTO(model);
 		int[] dices = createDicesDTO(model);
 		
+		
+		
 		//send message to users
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) {
 			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards,
-					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices)));
+					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices), 
+					buildInitialResourcesState(model)));
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -203,7 +206,7 @@ public class CreationMessagesSupporter {
 		int[] dices = createDicesDTO(model);
 		
 		msg.setFirstInfo(new FirstBoardInfo(msg.getName(), tiles, exCards, 
-				new TowersAndDicesForView(msg.getName(), towersForView, dices)));
+				new TowersAndDicesForView(msg.getName(), towersForView, dices), buildInitialResourcesState(model)));
 		
 		for(Player player: model.getBoard().getPlayers())
 			msg.setPersonalBoard(createPersonalBoardDTO(player.getPersonalBoard(), player.getName()));
@@ -211,6 +214,17 @@ public class CreationMessagesSupporter {
 		return msg;
 	}
 	
-	
+	private static HashMap<String, ArrayList<ResourceDTO>> buildInitialResourcesState (Match model) {
+		//build initial resources state
+		HashMap<String, ArrayList<ResourceDTO>> initialResources = new HashMap <String, ArrayList<ResourceDTO>> ();
+		for(Player player: model.getBoard().getPlayers())
+			initialResources.put(player.getName(), new ArrayList<ResourceDTO>());
+		
+		for(Player player: model.getBoard().getPlayers())
+			for(ResourceInterface res: player.getPersonalBoard().getResources().getResources().values())
+				initialResources.get(player.getName()).add(new ResourceDTO(res.getType(), res.getAmount()));
+		
+		return initialResources;
+	}
 
 }

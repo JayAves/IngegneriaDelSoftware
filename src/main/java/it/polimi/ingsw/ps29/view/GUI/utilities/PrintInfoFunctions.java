@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
+import it.polimi.ingsw.ps29.view.GUI.GUICore;
 
 public class PrintInfoFunctions {
 
@@ -77,4 +79,33 @@ public class PrintInfoFunctions {
 		return ids;
 	}
 	
+	public static void printUpdatedResources (GUICore gui, ArrayList<ResourceDTO> container) {
+		for (ResourceDTO res: container)
+			switch (res.getType()) {
+			case "coin":
+				gui.getCoin().setText("COINS: "+res.getAmount());
+				break;
+			case "stone":
+				gui.getStone().setText("STONES: "+res.getAmount());
+				break;
+			case "wood":
+				gui.getWood().setText("WOODS: "+res.getAmount());
+				break;
+			case "servant":
+				gui.getServant().setText("SERVANTS: "+res.getAmount());
+				break;
+			case "faith":
+				gui.getFaith().setText("FAITH: "+res.getAmount());
+				break;
+			case "military":
+				gui.getMilitary().setText("MILITARY: "+res.getAmount());
+				break;
+			case "victory":
+				gui.getVictory().setText("VICTORY: "+res.getAmount());
+				break;
+			case "privilege":
+				gui.getPrivileges().setText("PRIVILEGES: "+res.getAmount());
+				break;
+			}
+	}
 }

@@ -90,5 +90,8 @@ public class PersonalBoardDTO implements Serializable {
 		return ids;
 	}
 	
+	public ArrayList<ResourceDTO> getResources () {
+		return resources;
+	}
 	
 }

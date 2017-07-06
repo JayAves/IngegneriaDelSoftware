@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.view.GUI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -9,6 +10,7 @@ import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
@@ -80,6 +82,10 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towersDTO,
 		HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
+		
+		//reset previous action on that board
+		screen.tower.deleteIndexSpacePressed();
+		
 		int spaceIndex = PrintInfoFunctions.getIndex(info.space, info.floor);
 		FamilyMemberDTO fam = PrintInfoFunctions.getFamiliarDTO(info);
 		
@@ -90,7 +96,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		
 		if(screen.playerName.equals(info.getName())) {
 			ArrayList<Integer> ids = PrintInfoFunctions.createIdCards(personalBoardsDTO.get(info.getName()).getIdCards());
-			screen.personal.setCards(ids, true);	
+			screen.personal.setCards(ids, true);
+			PrintInfoFunctions.printUpdatedResources(screen, personalBoardsDTO.get(info.getName()).getResources());
 		}
 	}
 
@@ -104,6 +111,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			for(CardDTO card: towers.getTowers().get(types[i]))
 				idCards.add(card.getId());
 		screen.tower.setCards(idCards, true);
+		
 		//show dices
 		
 	}
@@ -134,6 +142,10 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			}
 			
 		} while (!ready);
+		
+		for(Map.Entry<String, ArrayList<ResourceDTO>> row: msg.getInitialResources().entrySet())
+			if(msg.getName().equals(row.getKey()))
+				PrintInfoFunctions.printUpdatedResources(screen, row.getValue());
 		
 		
 	}

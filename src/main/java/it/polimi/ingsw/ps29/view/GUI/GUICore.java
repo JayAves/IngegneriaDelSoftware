@@ -38,24 +38,91 @@ public class GUICore extends Observable{
 	JSpinner servants;
 	JButton doAction;
 	ImageToPrint preview;
+	
 	JButton venture;
 	JButton character;
 	JButton prev;
 	JButton next;
+	
+	JLabel coin;
+	JLabel stone;
+	JLabel wood;
+	JLabel servant;
 	JLabel military;
 	JLabel faith;
 	JLabel victory;
 	JLabel privileges;
+	
 	JButton leaderButton;
 	ImageToPrint excomm1;
 	ImageToPrint excomm2;
 	ImageToPrint excomm3;
 	JTextArea console;
-	JLabel coin;
-	JLabel stone;
-	JLabel wood;
-	JLabel servant;
 	
+	public JLabel getCoin() {
+		return coin;
+	}
+
+	public void setCoin(JLabel coin) {
+		this.coin = coin;
+	}
+
+	public JLabel getStone() {
+		return stone;
+	}
+
+	public void setStone(JLabel stone) {
+		this.stone = stone;
+	}
+
+	public JLabel getWood() {
+		return wood;
+	}
+
+	public void setWood(JLabel wood) {
+		this.wood = wood;
+	}
+
+	public JLabel getServant() {
+		return servant;
+	}
+
+	public void setServant(JLabel servant) {
+		this.servant = servant;
+	}
+
+	public JLabel getMilitary() {
+		return military;
+	}
+
+	public void setMilitary(JLabel military) {
+		this.military = military;
+	}
+
+	public JLabel getFaith() {
+		return faith;
+	}
+
+	public void setFaith(JLabel faith) {
+		this.faith = faith;
+	}
+
+	public JLabel getVictory() {
+		return victory;
+	}
+
+	public void setVictory(JLabel victory) {
+		this.victory = victory;
+	}
+
+	public JLabel getPrivileges() {
+		return privileges;
+	}
+
+	public void setPrivileges(JLabel privileges) {
+		this.privileges = privileges;
+	}
+
 	PlayerListener listener;
 	
 	public GUICore (String name) {
@@ -224,13 +291,13 @@ public class GUICore extends Observable{
 		JPanel resourcesPanel = new JPanel();
 		resourcesPanel.setLayout(new GridLayout(4, 1));
 		
-		coin = new JLabel("Coins: 0");
+		coin = new JLabel("COINS: 0");
 		resourcesPanel.add(coin);
-		stone = new JLabel("Stones: 0");
+		stone = new JLabel("STONES: 0");
 		resourcesPanel.add(stone);
-		wood = new JLabel("Wood: 0");
+		wood = new JLabel("WOODS: 0");
 		resourcesPanel.add(wood);
-		servant = new JLabel("Servants: 0");
+		servant = new JLabel("SERVANTS: 0");
 		resourcesPanel.add(servant);
 		
 		panelSouth.add(resourcesPanel, c);
@@ -287,13 +354,13 @@ public class GUICore extends Observable{
 	
 	public void setPointsPanel (JPanel pointsPanel) {
 		
-		military = new JLabel("Military: 0");
+		military = new JLabel("MILITARY: 0");
 		pointsPanel.add(military);
-		faith = new JLabel("Faith: 0");
+		faith = new JLabel("FAITH: 0");
 		pointsPanel.add(faith);
-		victory = new JLabel("Victory: 0");
+		victory = new JLabel("VICTORY: 0");
 		pointsPanel.add(victory);
-		privileges = new JLabel("Privileges: 0");
+		privileges = new JLabel("PRIVILEGES: 0");
 		pointsPanel.add(privileges);
 	}	
 	
