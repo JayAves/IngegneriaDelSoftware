@@ -1,5 +1,10 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
+/**
+ * 
+ * @author Giovanni Mele
+ *
+ */
 public class FakeFamilyMemberProductionTowerDecorator extends FakeFamilyMemberDecorator{
 	
 	private int pTowerModifier;

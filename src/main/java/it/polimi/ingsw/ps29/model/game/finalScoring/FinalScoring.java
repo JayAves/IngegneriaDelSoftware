@@ -3,6 +3,11 @@ package it.polimi.ingsw.ps29.model.game.finalScoring;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Calculates all final VictoryPoints, corresponding to final game points.
+ * @author Giovanni Mele
+ *
+ */
 public class FinalScoring {
 	
 	PersonalBoard board;

@@ -1,5 +1,10 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
+/**
+ * Ad hoc decorator for Leader Card named Santa Rita's effect.
+ * @author Giovanni Mele
+ *
+ */
 public class ResourceSantaRitaDecorator extends ResourceDecorator{
 	
 	int modifier;

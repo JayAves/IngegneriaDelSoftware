@@ -1,5 +1,11 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
+/**
+ * Decorator Pattern is used to modify dynamically any FamilyMember's power in any Action. Is used on FakeFamilyMember. 
+ * @author Giovanni Mele
+ * @see FakeFamilyMember
+ * 
+ */
 public class FakeFamilyMemberDecorator implements FakeFamilyMemberInterface {
 	
 	protected FakeFamilyMemberInterface decoratedFakeFamilyMember;

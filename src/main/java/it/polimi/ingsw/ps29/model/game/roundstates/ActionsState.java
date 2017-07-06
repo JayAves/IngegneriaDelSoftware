@@ -2,6 +2,14 @@ package it.polimi.ingsw.ps29.model.game.roundstates;
 
 import it.polimi.ingsw.ps29.model.game.Match;
 
+/**
+ * Describes current round's status.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ * @see StateOfRoundIdentifier
+ *
+ */
 public class ActionsState implements RoundState {
 
 	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ACTIONS;

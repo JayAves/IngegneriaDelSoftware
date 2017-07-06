@@ -3,6 +3,13 @@ package it.polimi.ingsw.ps29.model.game.familymember;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
+/**
+ * Familiar.
+ * @author Giovanni Mele
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ *
+ */
 public class FamilyMember implements FamilyMemberInterface{
 
 	private int power;
@@ -10,7 +17,8 @@ public class FamilyMember implements FamilyMemberInterface{
 	private DiceColor familiarColor;
 	private Color playerColor;
     private boolean fixedPower;
-	public FamilyMember (DiceColor familiarColor, Color playerColor) {
+	
+    public FamilyMember (DiceColor familiarColor, Color playerColor) {
 		this.busy = false;
 		this.familiarColor = familiarColor;
 		this.playerColor = playerColor;

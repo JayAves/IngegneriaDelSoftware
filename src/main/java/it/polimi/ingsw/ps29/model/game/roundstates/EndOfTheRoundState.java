@@ -10,6 +10,12 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
+/**
+ * Round status that comes after all actions are performed and Vatican reports are done.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ *
+ */
 public class EndOfTheRoundState implements RoundState {
 
 	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.END_OF_THE_ROUND;
@@ -17,22 +23,23 @@ public class EndOfTheRoundState implements RoundState {
 	@Override
 	public RoundState doAction(int roundNumber, Match match) {
 		
-		//pulisco il flag che indica che la richiesta di supporto alla Chiesa è stata performata
+		
+		//all vatican reports are set to not performed
 		for (Player player: match.getBoard().getPlayers())
 			player.setVaticanReportPerformed(false);
 		
-		//modifica ordine di turno
+		//changes player's order.
 		ArrayList<Color> colorOrder = ((CouncilPalaceArea)match.getBoard().getSpace("CouncilPalace")).playersOrder();
 		ArrayList<Player> playerOrder = convertOrder (colorOrder, match.getBoard());
 		match.getBoard().setPlayers(createOrder (playerOrder, match.getBoard()));
 		
-		//imposta tutti i busy su familiare a false
+		//sets not busy all FamilyMembers
 		for(Player player: match.getBoard().getPlayers()) {
 			for (int i=0; i<player.getFamily().length; i++)
 				player.getFamily()[i].setBusy(false);
 		}
 		
-		//svuotare gli spazi azione
+		//empties all ActionSpaces
 		for (ActionSpace space: match.getBoard().getSpaces().values()) 
 			space.cleanSpace();
 		
@@ -40,15 +47,15 @@ public class EndOfTheRoundState implements RoundState {
 		
 		if(roundNumber==6) 
 			match.setEndOfMatch();
-			//nel gameEngine chiamata a funzione per calcolo del punteggio
+			//conclusion in controller
 		else 
 			state = state.doAction(roundNumber, match);
 		
-		return state; //se non è finito il gioco ha già svolto RoundSetup e tornerà ActionsState
+		return state; //if game is not over state will be  ActionsState
 	}
 	
 	
-	
+	//converts familar colors into corresponding players
 	private ArrayList<Player> convertOrder (ArrayList<Color> colorOrder, GameBoard board) {
 		ArrayList<Player> playerOrderFinal = new ArrayList<Player> ();
 		for(Color color: colorOrder) 
@@ -59,6 +66,8 @@ public class EndOfTheRoundState implements RoundState {
 		return playerOrderFinal;
 	}
 	
+	
+	//creates a new turn order
 	private ArrayList<Player> createOrder (ArrayList <Player> playerOrder, GameBoard board) {
 		ArrayList <Player> playerOrderInitial = board.getPlayers();
 		for(Player player: playerOrder)

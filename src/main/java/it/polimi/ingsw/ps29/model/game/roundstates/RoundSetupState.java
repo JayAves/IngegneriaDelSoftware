@@ -14,6 +14,13 @@ import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 
+/**
+ * Round Status that prepares game for Actions.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class RoundSetupState implements RoundState {
 
 	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.ROUND_SETUP;
@@ -38,11 +45,12 @@ public class RoundSetupState implements RoundState {
 		
 	}
 	
+	
 	private void initDecks (int roundNumber, GameBoard board) {
 		Period currentPeriod= getPeriod(roundNumber);
 		CardType[] types= CardType.values();
 		
-		for (int i=0;i<types.length;i++) { //per ogni tipo di carta
+		for (int i=0;i<types.length;i++) { //for all CardTypes
 		
 			if ((!types[i].getType().equalsIgnoreCase(CardType.ALL.getType()))
 					&& (!types[i].getType().equalsIgnoreCase(CardType.EXCOMMUNICATION.getType()))){
@@ -50,7 +58,7 @@ public class RoundSetupState implements RoundState {
 				Deck deck= board.getSpecificDeck(types[i], currentPeriod);
 				ArrayList<Card> newCards= new ArrayList<Card>();
 				
-				for (int j=0;j<4;j++) {	//scelgo 4 carte a caso dal deck
+				for (int j=0;j<4;j++) {	//pick 4 random cards
 					
 					int rnd= new Random().nextInt(deck.getSize());
 					newCards.add(deck.getCard(rnd));

@@ -8,10 +8,15 @@ import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
+/**
+ * Used in {@link Exchange}, checks if resources to pay can be paid.
+ * @author Pietro Melzi
+ *
+ */
 public class ExchangeSupport {
 	private ArrayList<ExchangeResourcesEffect> options;
 	private Container outResourcesUpdate;
-	//outUpdatedResources: aggiorno solo le risorse in uscita per controllare se uno scambio è possibile
+	//outUpdatedResources: update only out resources to see if exchange is possible
 	
 	public ExchangeSupport(ArrayList<ExchangeResourcesEffect> options, Container resources) {
 		this.options = options;

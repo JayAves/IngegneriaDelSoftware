@@ -9,6 +9,13 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Turn Status where Vatican Report has to be made.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class VaticanReportState implements RoundState {
 
 	private final StateOfRoundIdentifier state = StateOfRoundIdentifier.VATICAN_REPORT;
@@ -28,6 +35,7 @@ public class VaticanReportState implements RoundState {
 		excommunication.getEffect().performEffect(player);
 	}
 	
+	//if some player sustained he will receive a bonus and will lose all Faith Points
 	public void handleVaticanChoice(VaticanChoice choice, Match match){
 		Player player = match.getCurrentPlayer();
 		if (choice.isSustain()){
