@@ -26,6 +26,8 @@ import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PanelBase;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
 
 public class InputOutputGUI implements InputOutput, Observer, Runnable {
@@ -72,7 +74,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ResourceType askSpecificPrivilege() {
-		// TODO Auto-generated method stub
+		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator ();
+		PanelBase prova = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel());
 		return null;
 	}
 

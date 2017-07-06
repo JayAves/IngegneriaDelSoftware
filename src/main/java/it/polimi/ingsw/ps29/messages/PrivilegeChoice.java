@@ -34,9 +34,7 @@ public class PrivilegeChoice extends InteractionMessage {
 		choices.add(choice);
 	}
 
-
-
-	public int getPrvilieges() {
+	public int getPrivileges() {
 		return prvilieges;
 	}
 
@@ -46,15 +44,10 @@ public class PrivilegeChoice extends InteractionMessage {
 		return choices;
 	}
 
-
-
 	@Override
 	public void visit(VisitorMessages visitor) {
 		visitor.visit(this);
 	}
-
-	
-	
 
 	@Override
 	public void receive(it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages visitor) {
@@ -62,4 +55,5 @@ public class PrivilegeChoice extends InteractionMessage {
 		visitor.receive(this);
 	}
 
+	
 }
