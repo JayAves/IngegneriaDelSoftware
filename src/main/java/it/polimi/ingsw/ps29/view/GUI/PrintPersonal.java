@@ -55,7 +55,7 @@ public class PrintPersonal extends ImageToPrint {
 					
 		}
 	}
-	
+
 	
 	@Override
 	public void paintComponent (Graphics g) {

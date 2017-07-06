@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JOptionPane;
+
 import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
@@ -51,7 +53,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public void showMessage(InteractionMessage message) {
 		if(message instanceof RejectMessage)
-			screen.console.append(((RejectMessage)message).getException().getMessage());
+			//screen.console.append(((RejectMessage)message).getException().getMessage());
+			JOptionPane.showMessageDialog(null, ((RejectMessage)message).getException().getMessage());
 		
 	}
 
@@ -85,6 +88,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		
 		//reset previous action on that board
 		screen.tower.deleteIndexSpacePressed();
+		screen.console.setText("");
 		
 		int spaceIndex = PrintInfoFunctions.getIndex(info.space, info.floor);
 		FamilyMemberDTO fam = PrintInfoFunctions.getFamiliarDTO(info);
@@ -112,7 +116,11 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 				idCards.add(card.getId());
 		screen.tower.setCards(idCards, true);
 		
-		//show dices
+		ArrayList<Integer> values = new ArrayList<Integer>();
+		for(int value: msg.getDices())
+			values.add(value);
+		
+		screen.tower.setValueDices(values);
 		
 	}
 
@@ -142,6 +150,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			}
 			
 		} while (!ready);
+		
 		
 		for(Map.Entry<String, ArrayList<ResourceDTO>> row: msg.getInitialResources().entrySet())
 			if(msg.getName().equals(row.getKey()))

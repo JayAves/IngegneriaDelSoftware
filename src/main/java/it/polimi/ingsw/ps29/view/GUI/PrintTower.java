@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -22,6 +23,8 @@ public class PrintTower extends PrintPersonal {
 	
 	private CoordinateHandlerSpaces coordSpaces;
 	private HashMap <Integer, ArrayList<FamilyMemberDTO>> coordFamiliar;
+	private ArrayList<Integer> valueDices = new ArrayList<Integer>();
+	private int orW, orH;
 	
 	private int indexSpacePressed = -1;
 	
@@ -51,6 +54,8 @@ public class PrintTower extends PrintPersonal {
 	
 	public PrintTower(String path, GUICore gui, StartCoordinates startCoord, int orW, int orH) {
 		super(path, gui, startCoord, orW, orH);
+		this.orH = orH;
+		this.orW = orW;
 		addMouseListener(new TowerListener(gui));
 		this.startCoord = startCoord;
 		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();	
@@ -59,6 +64,8 @@ public class PrintTower extends PrintPersonal {
 	@Override
 	public void paintComponent (Graphics g) {
 		super.paintComponent(g);
+		
+		printDices(g);
 		
 		//dimensioni assolute utilizzate per piazzare le carte
 		handleTower(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
@@ -162,6 +169,29 @@ public class PrintTower extends PrintPersonal {
 					widthSingleSlot, widthSingleSlot);
 			printSingleFamiliar(space, famQueue, g);
 		}
+	}
+	
+	private void printDices (Graphics g) {
+		double x =  marginX + (254*imageWidth)/orW;
+		double y =  marginY + (582*imageHeight)/orH;
+		int shift = (int) (47*imageWidth)/orW;
+		
+		for (int i=0; i<valueDices.size(); i++) {
+			if(i==0)
+				g.setColor(Color.WHITE);
+			else
+				g.setColor(Color.BLACK);
+			
+			g.drawString(valueDices.get(i)+"",(int)x, (int)y);
+			//(loadImage("leader.jpg"), (int)x, (int)y, width, width, null);
+			x+=shift;
+		}
+			
+		
+	}
+	
+	public void setValueDices (ArrayList<Integer> values) {
+		valueDices = values;
 	}
 	
 	public int getIndexSpacePressed () {
