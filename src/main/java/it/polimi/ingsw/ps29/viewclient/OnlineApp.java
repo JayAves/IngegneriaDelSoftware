@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.viewclient;
+ package it.polimi.ingsw.ps29.viewclient;
 
 import java.util.Scanner;
 

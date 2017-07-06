@@ -2,16 +2,10 @@ package it.polimi.ingsw.ps29.view.GUI.specialinteraction;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -51,9 +45,8 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		JButton confirm = new JButton("OK");
 		confirm.addActionListener(new ActionListener() {
 			
-		    public void actionPerformed(ActionEvent e)
-		    {
-		    	ResourceType type = createPrivilegeMessage();//(new Integer (choice.getSelection().getActionCommand()) ); 
+		    public void actionPerformed(ActionEvent e) {
+		    	ResourceType type = createPrivilegeMessage();
 		    	gui.notifyPrivilege(type);
 		    	SwingUtilities.getWindowAncestor(end).dispose();
 		    }
@@ -61,7 +54,6 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		});
 		
 		end.add(confirm);
-		
 		
 		topPanel.add(panel, BorderLayout.CENTER);
 		topPanel.add(end, BorderLayout.PAGE_END);
@@ -131,20 +123,4 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		
 	}
 	
-	public JLabel createSingleLabel (String path) {
-		JLabel label = null;
-		
-		try {
-			BufferedImage img = ImageIO.read(new File(path));
-			Image imgScaled = img.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	        ImageIcon icon = new ImageIcon(imgScaled);
-	        label = new JLabel(icon);
-	        
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return label;
-	}
 }

@@ -62,7 +62,7 @@ public class ControllerSupporter {
 	public static ActionChoice bonusActionChoice (BonusChoice msg) {
 		ActionChoice choice = new ActionChoice (msg.getName());
 		
-		switch(msg.getBonus().getType()) {
+		switch(msg.getBonus().getType().toLowerCase()) {
 		case "harvest":
 			choice.setChoice(0, 1);
 			break;

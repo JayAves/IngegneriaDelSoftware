@@ -424,13 +424,6 @@ public class InputOutputCLI implements InputOutput {
 			msg.setServants(askNumberOfServants());
 		} 
 		
-		/*} catch (ExpiredTimeException e) {
-			System.out.println(e.getMessage()+"\n");
-			msg.setSpace(1);
-			msg.setFloor(1);
-			msg.setServants(0);
-		}*/
-		
 		return msg;
 	}
 	

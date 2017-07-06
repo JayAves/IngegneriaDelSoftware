@@ -26,6 +26,7 @@ import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BonusPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PanelBase;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
@@ -36,7 +37,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private boolean running = true;
 	private int timer;
 	private long timeStart;
-	private PanelBase privilegesPanel;
+	private PanelBase interactionPanel;
 	private ResourceType resType;
 	
 	/*
@@ -78,7 +79,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
 		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen);
-		privilegesPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel());
+		interactionPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel());
 		messageInTime();
 		
 		return resType; 
@@ -187,9 +188,12 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 
 	@Override
-	public BonusChoice handleBonusAction(BonusChoice msg) {
-		// TODO Auto-generated method stub
-		return null;
+	public BonusChoice handleBonusAction(BonusChoice msg) throws ExpiredTimeException {
+		BonusPanelCreator bpc = new BonusPanelCreator (screen, msg.getBonus());
+		interactionPanel = new PanelBase (bpc.createLeftPanel(), bpc.createRightPanel());
+		messageInTime();
+		
+		return msg;
 	}
 
 
@@ -273,8 +277,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		if (endTime)  {
 			//out from the while, but the user doesn't insert anything
 			running = false;
-			if(privilegesPanel!=null)
-				privilegesPanel.dispose();
+			if(interactionPanel!=null)
+				interactionPanel.dispose();
 			throw new ExpiredTimeException();
 		}
 		
