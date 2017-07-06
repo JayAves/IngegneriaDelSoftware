@@ -59,70 +59,6 @@ public class GUICore extends Observable{
 	ImageToPrint excomm2;
 	ImageToPrint excomm3;
 	JTextArea console;
-	
-	public JLabel getCoin() {
-		return coin;
-	}
-
-	public void setCoin(JLabel coin) {
-		this.coin = coin;
-	}
-
-	public JLabel getStone() {
-		return stone;
-	}
-
-	public void setStone(JLabel stone) {
-		this.stone = stone;
-	}
-
-	public JLabel getWood() {
-		return wood;
-	}
-
-	public void setWood(JLabel wood) {
-		this.wood = wood;
-	}
-
-	public JLabel getServant() {
-		return servant;
-	}
-
-	public void setServant(JLabel servant) {
-		this.servant = servant;
-	}
-
-	public JLabel getMilitary() {
-		return military;
-	}
-
-	public void setMilitary(JLabel military) {
-		this.military = military;
-	}
-
-	public JLabel getFaith() {
-		return faith;
-	}
-
-	public void setFaith(JLabel faith) {
-		this.faith = faith;
-	}
-
-	public JLabel getVictory() {
-		return victory;
-	}
-
-	public void setVictory(JLabel victory) {
-		this.victory = victory;
-	}
-
-	public JLabel getPrivileges() {
-		return privileges;
-	}
-
-	public void setPrivileges(JLabel privileges) {
-		this.privileges = privileges;
-	}
 
 	PlayerListener listener;
 	
@@ -389,6 +325,38 @@ public class GUICore extends Observable{
 	public void notifyPrivilege (ResourceType resType) {
 		setChanged();
 		notifyObservers(resType);
+	}
+	
+	public JLabel getCoin() {
+		return coin;
+	}
+
+	public JLabel getStone() {
+		return stone;
+	}
+
+	public JLabel getWood() {
+		return wood;
+	}
+
+	public JLabel getServant() {
+		return servant;
+	}
+
+	public JLabel getMilitary() {
+		return military;
+	}
+
+	public JLabel getFaith() {
+		return faith;
+	}
+
+	public JLabel getVictory() {
+		return victory;
+	}
+
+	public JLabel getPrivileges() {
+		return privileges;
 	}
 
 }

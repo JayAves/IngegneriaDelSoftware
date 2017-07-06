@@ -31,8 +31,11 @@ public class PrivilegesPanelCreator extends PanelCreator {
 
 	@Override
 	public JPanel createLeftPanel() {
-		JPanel panel = new JPanel();
-		panel.add(new JLabel("Chose the privilege!"));
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(new JLabel("Chose the privilege!"), BorderLayout.PAGE_START);
+		
+		panel.add(createSingleLabel("images/resources/privilege.png"), BorderLayout.CENTER);
+		
 		return panel;
 	}
 
@@ -40,25 +43,8 @@ public class PrivilegesPanelCreator extends PanelCreator {
 	public JPanel createRightPanel() {
 		JPanel topPanel = new JPanel (new BorderLayout());
 		JPanel panel = new JPanel(new GridLayout(2, 5));
-		String[] types = {"wood","servant", "coin", "military", "faith"};
 		
-		//create the options
-		for(int i=0; i<5; i++) {
-			
-			BufferedImage img;
-			try {
-				img = ImageIO.read(new File("images/resources/"+types[i]+".png"));
-				Image imgScaled = img.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-		        ImageIcon icon = new ImageIcon(imgScaled);
-		        JLabel label = new JLabel(icon);
-		        panel.add(label);
-		        
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-			
+		createOptionLabel(panel);	
 		createOptions(panel);
 		
 		JPanel end = new JPanel ();
@@ -134,5 +120,31 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		}
 		
 		return type;
+	}
+	
+	public void createOptionLabel (JPanel panel) {
+		String[] types = {"wood","servant", "coin", "military", "faith"};
+		
+		//create the options
+		for(int i=0; i<5; i++) 
+			panel.add(createSingleLabel("images/resources/"+types[i]+"priv.png"));
+		
+	}
+	
+	public JLabel createSingleLabel (String path) {
+		JLabel label = null;
+		
+		try {
+			BufferedImage img = ImageIO.read(new File(path));
+			Image imgScaled = img.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	        ImageIcon icon = new ImageIcon(imgScaled);
+	        label = new JLabel(icon);
+	        
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return label;
 	}
 }
