@@ -183,7 +183,6 @@ public class PrintTower extends PrintPersonal {
 				g.setColor(Color.BLACK);
 			
 			g.drawString(valueDices.get(i)+"",(int)x, (int)y);
-			//(loadImage("leader.jpg"), (int)x, (int)y, width, width, null);
 			x+=shift;
 		}
 			

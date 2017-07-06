@@ -40,13 +40,13 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	 * - un booleano che indica quando il messaggio è pronto
 	 * - un oggetto che contiene il messaggio stesso che deve essere tornato alla funzione chiamante
 	 */
-	private boolean actionChoiceReady;
-	private ActionChoice actionChoice;
+	private boolean interactionReady;
+	private InteractionMessage userMessage;
 	
 	public InputOutputGUI (String name) {
 		screen = new GUICore(name);
 		screen.addObserver (this);
-		actionChoiceReady = false;
+		interactionReady = false;
 	}
 
 
@@ -162,32 +162,9 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException {
-		timeStart = System.currentTimeMillis();
-		
-		//ogni funzione aspetta finchè l'update riceve un messaggio (messageReady passa a TRUE)
-		actionChoiceReady = false;
-		setTimerControl();
-		
-		new Thread(this).start();
-		
-		while(!actionChoiceReady && !endTime) {
-			try {
-				Thread.sleep(100);
-				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		if (endTime)  {
-			//sono uscito dal while ma l'utente non ha inserito nessun messaggio
-			running = false;
-			throw new ExpiredTimeException();
-		}
-		
-		running = false;
-		return actionChoice;
+		//timer control
+		messageInTime();
+		return (ActionChoice)userMessage;
 	}
 
 
@@ -223,8 +200,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	public void update(Observable o, Object arg) {
 		
 		if (arg instanceof ActionChoice) {
-			actionChoice = (ActionChoice) arg;
-			actionChoiceReady = true;
+			userMessage = (ActionChoice) arg;
+			interactionReady = true;
 		}
 		
 	}
@@ -248,5 +225,37 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private void setTimerControl () {
 		running = true;
 		endTime = false;
+	}
+	
+	
+	private boolean messageInTime () throws ExpiredTimeException {
+		//set the initial time of the action
+		timeStart = System.currentTimeMillis();
+		
+		//each function waits until receives a message (messageReady goes TRUE)
+		interactionReady = false;
+		setTimerControl();
+		
+		//thread to handle timeout
+		new Thread(this).start();
+		
+		while(!interactionReady && !endTime) {
+			try {
+				Thread.sleep(100);
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (endTime)  {
+			//out from the while, but the user doesn't insert anything
+			running = false;
+			throw new ExpiredTimeException();
+		}
+		
+		running = false;
+		return true;
 	}
 }
