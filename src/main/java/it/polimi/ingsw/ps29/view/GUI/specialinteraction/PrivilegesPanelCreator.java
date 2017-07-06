@@ -18,14 +18,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
-import it.polimi.ingsw.ps29.view.GUI.InputOutputGUI;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
+import it.polimi.ingsw.ps29.view.GUI.GUICore;
 
 
 public class PrivilegesPanelCreator extends PanelCreator {
 	private ButtonGroup choice;
 	
-	public PrivilegesPanelCreator(InputOutputGUI ioGUI) {
-		super(ioGUI);
+	public PrivilegesPanelCreator(GUICore gui) {
+		super(gui);
 	}
 
 	@Override
@@ -66,9 +67,11 @@ public class PrivilegesPanelCreator extends PanelCreator {
 			
 		    public void actionPerformed(ActionEvent e)
 		    {
-		    	ioGUI.setChoice(new Integer (choice.getSelection().getActionCommand()) ); 
+		    	ResourceType type = createPrivilegeMessage();//(new Integer (choice.getSelection().getActionCommand()) ); 
+		    	gui.notifyPrivilege(type);
 		    	SwingUtilities.getWindowAncestor(end).dispose();
 		    }
+		    
 		});
 		
 		end.add(confirm);
@@ -107,5 +110,29 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		choice.add(third);
 		choice.add(fourth);
 		choice.add(fifth);
+	}
+	
+	private ResourceType createPrivilegeMessage () {
+		ResourceType type = ResourceType.WOOD;
+		switch (new Integer (choice.getSelection().getActionCommand()) ) {
+			case 1:
+				type = ResourceType.WOOD;
+				break;
+			case 2:
+				type = ResourceType.SERVANT;
+				break;
+			case 3:
+				type = ResourceType.COIN;
+				break;
+			case 4:
+				type = ResourceType.MILITARY;
+				break;
+			case 5:
+				type = ResourceType.FAITH;
+				break;
+				
+		}
+		
+		return type;
 	}
 }

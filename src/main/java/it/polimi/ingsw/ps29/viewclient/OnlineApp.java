@@ -16,7 +16,7 @@ import it.polimi.ingsw.ps29.view.View;
 
 public class OnlineApp {
 	 
-	public static void main( String[] args ) {
+	public static void main (String[] args) {
 	    	
 	    	Scanner scanner = new Scanner (System.in);
 	    	String inputChoice;

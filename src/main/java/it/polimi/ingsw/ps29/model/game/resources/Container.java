@@ -24,10 +24,11 @@ public class Container {
 		
 	}
 	
-	public ResourceInterface removeResource (ResourceType type) {
+	public void removeResource (ResourceType type) {
 		if(resources.get(type.getType().toLowerCase())!=null)
-			return resources.remove(type.getType().toLowerCase());
-		return new Resource (type.getType().toLowerCase(), 0);
+			resources.replace(type.getType().toLowerCase(), new Resource (type.getType().toLowerCase(), 0));
+		else
+			resources.put(type.getType().toLowerCase(), new Resource (type.getType().toLowerCase(), 0));
 	}
 	
 	

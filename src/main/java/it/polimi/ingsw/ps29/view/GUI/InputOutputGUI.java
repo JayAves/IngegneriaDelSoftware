@@ -36,8 +36,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private boolean running = true;
 	private int timer;
 	private long timeStart;
-	private int choice; //used for privileges
 	private PanelBase privilegesPanel;
+	private ResourceType resType;
 	
 	/*
 	 * per ogni tipo di messaggio sono presenti questi oggetti:
@@ -77,30 +77,11 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
-		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (this);
+		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen);
 		privilegesPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel());
 		messageInTime();
 		
-		ResourceType type = ResourceType.WOOD;
-		switch (choice) {
-			case 1:
-				type = ResourceType.WOOD;
-				break;
-			case 2:
-				type = ResourceType.SERVANT;
-				break;
-			case 3:
-				type = ResourceType.COIN;
-				break;
-			case 4:
-				type = ResourceType.MILITARY;
-				break;
-			case 5:
-				type = ResourceType.FAITH;
-				break;
-		}
-		
-		return type; 
+		return resType; 
 	}
 
 	@Override
@@ -125,11 +106,10 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		screen.tower.setCards(towersDTO.getIdCards(), false);
 		screen.tower.repaint();
 		
-		if(screen.playerName.equals(info.getName())) {
-			ArrayList<Integer> ids = PrintInfoFunctions.createIdCards(personalBoardsDTO.get(info.getName()).getIdCards());
-			screen.personal.setCards(ids, true);
-			PrintInfoFunctions.printUpdatedResources(screen, personalBoardsDTO.get(info.getName()).getResources());
-		}
+		ArrayList<Integer> ids = PrintInfoFunctions.createIdCards(personalBoardsDTO.get(screen.playerName).getIdCards());
+		screen.personal.setCards(ids, true);
+		PrintInfoFunctions.printUpdatedResources(screen, personalBoardsDTO.get(screen.playerName).getResources());
+		
 	}
 
 	@Override
@@ -237,10 +217,13 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		if (arg instanceof ActionChoice) {
-			userMessage = (ActionChoice) arg;
-			interactionReady = true;
-		}
+		if (arg instanceof InteractionMessage) 
+			userMessage = (InteractionMessage)arg;
+		
+		else if (arg instanceof ResourceType) 
+			resType = (ResourceType) arg;
+		
+		interactionReady = true;
 		
 	}
 	
@@ -299,7 +282,5 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		return true;
 	}
 	
-	public void setChoice (int choice) {
-		this.choice = choice;
-	}
+	
 }

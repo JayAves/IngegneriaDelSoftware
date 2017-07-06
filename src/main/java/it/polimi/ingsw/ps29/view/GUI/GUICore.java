@@ -22,6 +22,7 @@ import javax.swing.SpinnerNumberModel;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 
 public class GUICore extends Observable{
@@ -383,6 +384,11 @@ public class GUICore extends Observable{
 	public void notifyAboutInput (InteractionMessage msg) {
 		setChanged();
 		notifyObservers(msg);
+	}
+	
+	public void notifyPrivilege (ResourceType resType) {
+		setChanged();
+		notifyObservers(resType);
 	}
 
 }
