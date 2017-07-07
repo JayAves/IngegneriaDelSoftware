@@ -47,7 +47,7 @@ public class BonusPanelCreator extends PanelCreator{
 			for(int i=0; i<((BonusPlacementEffect)effect).getDiscount().size(); i++) {
 				c.gridx = i+1;
 				JLabel discount = createSingleLabel("images/resources/"+
-						((BonusPlacementEffect)effect).getDiscount().get(0).getType()+".png");
+						((BonusPlacementEffect)effect).getDiscount().get(0).getType()+".png", 40, 40);
 				panel.add(discount, c);	
 			}
 		

@@ -40,7 +40,7 @@ public class ExchangePanelCreator extends PanelCreator {
 
 			for (Resource res: erh.getResOut()) {
 				c.gridy = 2;
-				singleOption.add(createSingleLabel("images/resources/"+res.getType()+".png"),c);
+				singleOption.add(createSingleLabel("images/resources/"+res.getType()+".png", 40, 40),c);
 				c.gridy = 3;
 				singleOption.add(new JLabel(res.getAmount()+""),c);
 				
@@ -53,7 +53,7 @@ public class ExchangePanelCreator extends PanelCreator {
 
 			for (Resource res: erh.getResIn()) {
 				c.gridy = 5;
-				singleOption.add(createSingleLabel("images/resources/"+res.getType()+".png"),c);
+				singleOption.add(createSingleLabel("images/resources/"+res.getType()+".png", 40, 40),c);
 				c.gridy = 6;
 				singleOption.add(new JLabel(res.getAmount()+""),c);
 

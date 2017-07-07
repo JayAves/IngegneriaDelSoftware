@@ -4,8 +4,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import it.polimi.ingsw.ps29.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.LeaderPanel;
 import it.polimi.ingsw.ps29.view.GUI.utilities.InteractionMessagesFunctions;
 
 public class PlayerListener extends MouseAdapter {
@@ -55,6 +57,13 @@ public class PlayerListener extends MouseAdapter {
 			gui.notifyInput(msg);
 		}
 		
+		
+		//gestione click su LEADER ACTION
+		else if(((JButton) event.getSource()).getText().equals("Leader")) {
+			gui.console.append("Leader action!");
+			LeaderPanel leaderPanel = new LeaderPanel(gui);
+			leaderPanel.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		}
 		
 		
 	}

@@ -185,7 +185,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException {
-		//timer control
+		screen.setMessage(msg);
 		messageInTime();
 		return (ActionChoice)userMessage;
 	}
@@ -256,6 +256,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		running = true;
 		endTime = false;
 	}
+	
+	//public void set
 	
 	
 	private boolean messageInTime () throws ExpiredTimeException {

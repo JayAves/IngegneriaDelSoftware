@@ -30,12 +30,12 @@ public abstract class PanelCreator {
 	abstract public JPanel createLeftPanel();
 	abstract public JPanel createRightPanel();
 	
-	public JLabel createSingleLabel (String path) {
+	public JLabel createSingleLabel (String path, int width, int height) {
 		JLabel label = null;
 		
 		try {
 			BufferedImage img = ImageIO.read(new File(path));
-			Image imgScaled = img.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+			Image imgScaled = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 	        ImageIcon icon = new ImageIcon(imgScaled);
 	        label = new JLabel(icon);
 	        

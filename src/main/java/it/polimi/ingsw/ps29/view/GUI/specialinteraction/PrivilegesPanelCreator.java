@@ -27,8 +27,7 @@ public class PrivilegesPanelCreator extends PanelCreator {
 	public JPanel createLeftPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(new JLabel("Chose the privilege!"), BorderLayout.PAGE_START);
-		
-		panel.add(createSingleLabel("images/resources/privilege.png"), BorderLayout.CENTER);
+		panel.add(createSingleLabel("images/resources/privilege.png", 40, 40), BorderLayout.CENTER);
 		
 		return panel;
 	}
@@ -118,7 +117,7 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		
 		//create the options
 		for(int i=0; i<5; i++) 
-			panel.add(createSingleLabel("images/resources/"+types[i]+"priv.png"));
+			panel.add(createSingleLabel("images/resources/"+types[i]+"priv.png", 40, 40));
 		
 	}
 	

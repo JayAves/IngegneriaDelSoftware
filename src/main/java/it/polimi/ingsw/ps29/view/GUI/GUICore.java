@@ -21,6 +21,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
+import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 
 public class GUICore extends Observable{
@@ -28,7 +29,7 @@ public class GUICore extends Observable{
 	
 	JFrame frame; 
 	TowersDTO towers;
-	
+	ActionChoice message; //used for leaders
 	
 	PrintTower tower;
 	ImageToPrint tile;
@@ -158,6 +159,7 @@ public class GUICore extends Observable{
 		leaderPanel.add(leader, BorderLayout.CENTER);
 		
 		leaderButton = new JButton ("Leader");
+		leaderButton.addMouseListener(listener);
 		leaderPanel.add(leaderButton, BorderLayout.PAGE_END);
 		
 		c.gridx = 2;
@@ -325,6 +327,14 @@ public class GUICore extends Observable{
 	public void notifyInput (Object msg) {
 		setChanged();
 		notifyObservers(msg);
+	}
+	
+	public void setMessage (ActionChoice msg) {
+		message = msg;
+	}
+	
+	public ActionChoice getMessage () {
+		return message;
 	}
 	
 	public JLabel getCoin() {
