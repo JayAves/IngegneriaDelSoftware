@@ -49,7 +49,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* **Pietro Melzi** - *PietroMelzi* - (https://github.com/PietroMelzi) - codice persona
+* **Pietro Melzi** - *[PietroMelzi](https://github.com/PietroMelzi)* - codice persona
 * **Pietro Grotti** - *JayAves* - (https://github.com/JayAves) - codice persona
 * **Giovanni Mele** - *LesterNygaard* - (https://github.com/LesterNygaard) codice persona
 
