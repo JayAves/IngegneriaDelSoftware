@@ -6,6 +6,13 @@ import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * Spaces where FamilyMembers can be placed.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public interface ActionSpace {
 	
 	abstract boolean isEmpty() throws SpaceOccupiedException;

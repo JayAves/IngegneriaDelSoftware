@@ -6,6 +6,13 @@ import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * Where familiar is placed to change players' order or get privileges.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class CouncilPalaceArea implements ActionSpace {
 	
 	private QueueActionSpace queue;

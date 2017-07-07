@@ -6,6 +6,13 @@ import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Tower's floor. Contains card and space for FamilyMember to place.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class Floor {
 	
 	private Card card;
