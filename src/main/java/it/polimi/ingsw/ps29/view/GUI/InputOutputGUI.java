@@ -131,6 +131,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			values.add(value);
 		
 		screen.tower.setValueDices(values);
+		screen.tower.cleanCoordFamiliar();
 		
 	}
 

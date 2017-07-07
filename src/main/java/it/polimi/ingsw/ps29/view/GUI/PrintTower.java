@@ -192,6 +192,10 @@ public class PrintTower extends PrintPersonal {
 		
 	}
 	
+	public void cleanCoordFamiliar () {
+		coordFamiliar = new HashMap<Integer, ArrayList<FamilyMemberDTO>>();	
+	}
+	
 	public void setValueDices (ArrayList<Integer> values) {
 		valueDices = values;
 	}
