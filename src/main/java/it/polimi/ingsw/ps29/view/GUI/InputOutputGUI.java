@@ -23,10 +23,10 @@ import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
-import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BonusPanelCreator;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.ExchangePanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PanelBase;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
@@ -65,15 +65,15 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	}
 
 	@Override
-	public Exchange askExchange(Exchange msg) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void printBonusAction(BonusActionEffect effect) {
-		// TODO Auto-generated method stub
+	public Exchange askExchange(Exchange msg) throws ExpiredTimeException {
+		ExchangePanelCreator epc = new ExchangePanelCreator (screen, msg);
+		interactionPanel = new PanelBase (epc.createLeftPanel(), epc.createRightPanel(), "EXCHANGE ACTION");
 		
+		System.out.println("lalalalal");
+		messageInTime();
+		// to do...
+		
+		return null;
 	}
 
 	@Override

@@ -199,7 +199,6 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println("[optional]\n");
 	}
 
-	@Override
 	public void printBonusAction(BonusActionEffect effect) {
 		System.out.println("Bonus action value: "+effect.getValue());
 		System.out.println("Type of action: "+effect.getType());
