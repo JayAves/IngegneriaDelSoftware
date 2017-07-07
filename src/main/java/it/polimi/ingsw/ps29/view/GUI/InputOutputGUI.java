@@ -40,7 +40,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private long timeStart;
 	private PanelBase interactionPanel;
 	
-	//used to coomunicate user choice, because initial CLI implementation is reused
+	//facilities used to communicate user choice
 	private ResourceType resType;
 	private int excommunicationChoice;
 	
@@ -59,7 +59,6 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		interactionReady = false;
 	}
 
-
 	@Override
 	public void showMessage(InteractionMessage message) {
 		if(message instanceof RejectMessage)
@@ -67,7 +66,6 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			JOptionPane.showMessageDialog(null, ((RejectMessage)message).getException().getMessage());
 	}
 	
-
 	@Override
 	public Exchange askExchange(Exchange msg) throws ExpiredTimeException {
 		ExchangePanelCreator epc = new ExchangePanelCreator (screen, msg);
@@ -256,9 +254,6 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		running = true;
 		endTime = false;
 	}
-	
-	//public void set
-	
 	
 	private boolean messageInTime () throws ExpiredTimeException {
 		//set the initial time of the action

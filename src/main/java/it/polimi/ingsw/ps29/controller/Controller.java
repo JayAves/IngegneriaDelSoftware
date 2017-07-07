@@ -258,7 +258,7 @@ public class Controller extends Observable implements Observer{
 		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())) 
 			if(model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount()>0) {
 				stateOfAction = new PrivilegesState(stateOfAction, 
-						model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount());
+						model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount(), true);
 				String name = model.getCurrentPlayer().getName();
 				
 				views.get(name).startInteraction(stateOfAction.objectForView(name));
