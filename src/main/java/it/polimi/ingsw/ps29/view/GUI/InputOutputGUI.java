@@ -68,12 +68,9 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	public Exchange askExchange(Exchange msg) throws ExpiredTimeException {
 		ExchangePanelCreator epc = new ExchangePanelCreator (screen, msg);
 		interactionPanel = new PanelBase (epc.createLeftPanel(), epc.createRightPanel(), "EXCHANGE ACTION");
-		
-		System.out.println("lalalalal");
 		messageInTime();
-		// to do...
 		
-		return null;
+		return msg;
 	}
 
 	@Override
