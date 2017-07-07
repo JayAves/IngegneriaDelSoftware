@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 
 import org.junit.BeforeClass;
@@ -13,10 +11,10 @@ import it.polimi.ingsw.ps29.model.cards.CharacterCard;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.VentureCard;
-import it.polimi.ingsw.ps29.model.game.Color;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.PersonalBonusTile;
 import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import junit.framework.TestCase;
 
@@ -38,7 +36,7 @@ public class SatisfyRequirementsTest extends TestCase{
 		
 	PersonalBonusTile tile = new PersonalBonusTile(1, harvest, production);
 		
-	player = new Player("primo",Color.BLUE, null);
+	player = new Player("primo", PlayerColor.BLUE, null);
 	
 	for (int i = 0; i < 5 ; i++){
 		Card card = new CharacterCard("stub", Period.FIRST, "character", i, null, null, null);
