@@ -2341,7 +2341,7 @@
 	"cost":[{
 			"resourceType":"Coins",
 			"resourceData":{
-				"amount":2,
+				"amount":3,
 				"type":"coin" }
 			}]}
  },

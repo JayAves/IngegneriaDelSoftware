@@ -18,12 +18,9 @@ public abstract class PanelCreator {
 	protected InteractionMessage msg;
 	protected GUICore gui;
 	
-	PanelCreator (InteractionMessage msg) {
-		this.msg = msg;
-	}
-	
-	PanelCreator (GUICore gui) {
+	PanelCreator (GUICore gui, InteractionMessage msg) {
 		this.gui = gui;
+		this.msg = msg;
 	}
 	
 	public InteractionMessage getMessage () {

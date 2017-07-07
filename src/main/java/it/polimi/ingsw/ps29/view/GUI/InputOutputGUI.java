@@ -78,8 +78,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
-		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen);
-		interactionPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel());
+		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen, null);
+		interactionPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel(), "PRIVILEGE CHOICE");
 		messageInTime();
 		
 		return resType; 
@@ -189,8 +189,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public BonusChoice handleBonusAction(BonusChoice msg) throws ExpiredTimeException {
-		BonusPanelCreator bpc = new BonusPanelCreator (screen, msg.getBonus());
-		interactionPanel = new PanelBase (bpc.createLeftPanel(), bpc.createRightPanel());
+		BonusPanelCreator bpc = new BonusPanelCreator (screen, msg);
+		interactionPanel = new PanelBase (bpc.createLeftPanel(), bpc.createRightPanel(), "BONUS ACTION");
 		messageInTime();
 		
 		return msg;

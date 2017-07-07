@@ -17,8 +17,9 @@ public class PanelBase extends JFrame {
 	protected JPanel leftPanel;
 	protected JPanel rightPanel;
 	
-	public PanelBase (JPanel leftPanel, JPanel rightPanel) {
+	public PanelBase (JPanel leftPanel, JPanel rightPanel, String title) {
 		setLayout(new GridLayout(1, 2));
+		setTitle(title);
 		
 		this.leftPanel = leftPanel;
 		this.rightPanel = rightPanel;
