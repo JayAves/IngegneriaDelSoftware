@@ -5,6 +5,7 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+
 public class CharacterFinalPoints implements EndGameVictoryPointsGatherer {
 
 	private HashMap < Integer, Resource> points;

@@ -8,6 +8,14 @@ import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Contains one space for Market in GameBoard.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ * @see it.polimi.ingsw.ps29.model.game.GameBoard
+ *
+ */
 public class MarketArea implements ActionSpace {
 	
 	private BonusActionSpace slot;

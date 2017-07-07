@@ -5,6 +5,11 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
+/**
+ * FamilyMembers of any color.
+ * @author Giovanni Mele
+ *
+ */
 public class Family {
 	
 	private HashMap <DiceColor, FamilyMemberInterface> familyMembers;

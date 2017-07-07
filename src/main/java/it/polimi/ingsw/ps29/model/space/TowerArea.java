@@ -9,13 +9,19 @@ import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Represents a Tower with four floors in GameBoard.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class TowerArea implements ActionSpace {
 	
 	private ArrayList<Floor> floors;
 	private final int NUMBER_OF_FLOORS = 4;
-	private int placementFloor;
-	//questo attributo serve per poter implementare correttamente il metodo ereditato isEnoughPowerful(). contiene indice del piano dove si vuole piazzare
-	//Ha valore compreso tra 1 e 4 
+	private int placementFloor; //is used in return right dice power needed in PowefulEnough method. Is a number between 1 and 4
+	
 	
 	public TowerArea () {
 		
@@ -26,7 +32,7 @@ public class TowerArea implements ActionSpace {
 			if(i<2)
 				floors.add(new Floor (new SingleSlotActionSpace (power[i])));
 			else
-				floors.add(new Floor (new BonusActionSpace (power[i])));
+				floors.add(new Floor (new BonusActionSpace (power[i]))); //top floors have bonuses
 		}
 		placementFloor = 0;
 	}
@@ -35,7 +41,7 @@ public class TowerArea implements ActionSpace {
 		this.placementFloor = placementFloor;
 	}
 	
-	public Floor getPlacementFloor(){ //serve per capire da quale piano devo togliere la carta
+	public Floor getPlacementFloor(){ 
 		return floors.get(placementFloor-1);
 	}
 	

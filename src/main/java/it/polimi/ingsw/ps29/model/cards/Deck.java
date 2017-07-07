@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Period;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class Deck {
 	private Period period;
 	private CardType type;

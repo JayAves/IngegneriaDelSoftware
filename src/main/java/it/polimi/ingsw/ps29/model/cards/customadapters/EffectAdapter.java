@@ -13,6 +13,12 @@ import com.google.gson.JsonSerializer;
 
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 
+/**
+ * Serializes and deserializes any Effect and inheriting-from-Effect object. Same procedure as CardAdapter. 
+ * @author Pietro Grotti
+ * @see CardAdapter
+ *
+ */
 public class EffectAdapter implements JsonSerializer<Effect>, JsonDeserializer<Effect> {
 	
 	

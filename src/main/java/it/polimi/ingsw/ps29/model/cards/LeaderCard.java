@@ -6,6 +6,12 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ *
+ */
 public class LeaderCard {
 	
 	private String name;
@@ -33,7 +39,7 @@ public class LeaderCard {
 
     @Override
     public String toString(){
-		return name + "effect " + "id" + id + " permanent" + isPermanent() +leaderEffect + "requirements :" + requirements + cardRequirements ;
+		return name + " permanent " + isPermanent() +" effect " +leaderEffect + "\n     requirements :" + requirements + getCardRequirements() ;
     	
     }
     

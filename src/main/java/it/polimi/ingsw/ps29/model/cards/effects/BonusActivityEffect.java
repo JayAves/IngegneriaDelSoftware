@@ -2,26 +2,31 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
+/**
+ * CARD EFFECT & LEADER: Allows player to do an extra activity (production or harvest) without placing a familiar. 
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class BonusActivityEffect extends BonusActionEffect {
-	/**
-	 * 
-	 */
+	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = 2489229689117313929L;
 	private String type;
 
 	public BonusActivityEffect(int valueAction, String type) {
 		this.valueAction = valueAction;
 		this.type = type;
-		//type può essere "harvest" o "production"
+		//type can be harvest or production
 	}
 	public String getType() {
 		return this.type;
 	}
+	
 	@Override
 	public void performEffect(Player player) {
-		//interazione con l'utente che passa il tipo di azione da cui si ricava lo spazio 
-		//all'utente è richiesto il numero di servitori
-		
+		//effect is performed differently, in Controller's visitor pattern
 	}
 	
 	@Override

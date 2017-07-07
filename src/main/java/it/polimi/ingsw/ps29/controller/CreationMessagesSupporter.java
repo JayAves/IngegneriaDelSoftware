@@ -31,7 +31,7 @@ import it.polimi.ingsw.ps29.server.ClientThread;
 
 /**
  * Creates all kind of messages and DTO. Only info to be shown, nothing has to come back to server.
- * @author Pietro melzi
+ * @author Pietro Melzi
  * @author Pietro Grotti
  *
  */

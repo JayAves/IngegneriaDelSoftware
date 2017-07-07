@@ -24,6 +24,13 @@ import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.space.BonusInit;
 
+/**
+ * Complete Model of a game.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class Match extends Observable{
 	
 	private static final int NUMBER_OF_FAMILIARS = 4;
@@ -32,7 +39,7 @@ public class Match extends Observable{
 	private int round;
 	public boolean endOfMatch= false;
 	private RoundState state;
-	private ArrayList<Player> players; //per ora tengo i players anche i match, poi si può pensare come evitarlo [pie ha un'idea]
+	private ArrayList<Player> players; 
 	
 	
 	public Match (ArrayList<String> playerNames) throws FileNotFoundException {
@@ -65,6 +72,7 @@ public class Match extends Observable{
 	}
 	
 	private void initDecks () throws FileNotFoundException {
+		
 		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
 	    GsonBuilder gcards = new GsonBuilder();
 	    gcards.registerTypeAdapter(Card.class, new CardAdapter());
@@ -134,18 +142,13 @@ public class Match extends Observable{
 					drafted.add(draft.get(rnd));
 					draft.remove(rnd);
 				}
+				
 				board.getPlayers().get(i).getPersonalBoard().addLeaderCards(drafted);;
-			}
+		}
 
-			}
+	}
 
-			
-	    
-	
-	
-	
-	
-	
+	//init players and their PersonalBoards and BonusTiles.		
 	private ArrayList<Player> initPlayers (ArrayList<String> playersNames) throws FileNotFoundException {
 
 		ArrayList<Player> players = new ArrayList<Player> ();
@@ -168,7 +171,7 @@ public class Match extends Observable{
     		players.get(i).setPersonalBonusTile(tilez[0]);
     	}
     	
-    	int startingCoins=5; //distribuisco le monete iniziali
+    	int startingCoins=5; 
     	
     	for (int i=0; i<players.size(); i++) {
     		players.get(i).getPersonalBoard().getResources().updateResource(new Resource("coin",startingCoins));
@@ -178,29 +181,6 @@ public class Match extends Observable{
     	return players;
 
 	}
-	
-	
-	/*public void gameEngine() {
-		
-		System.out.println("Server: turno del giocatore "+getCurrentPlayer().getName());
-		
-		for (Player player : board.getPlayers()){
-			player.passPersonalBoard();
-			player.getFinalPoints();
-			if (player.getVentureCardPenalty() == false){
-				ArrayList<Card> ventures = player.getPersonalBoard().getCards("ventures");
-				for (Card card : ventures){
-					ArrayList<Effect> finalEffects = card.getPermanentEffects();
-					for (Effect effect : finalEffects){
-						effect.performEffect(player);
-					}
-				}
-			}
-		}
-		
-		
-	}
-	*/
 	
 	public Player getCurrentPlayer () {
 		return board.getPlayers().get(0);

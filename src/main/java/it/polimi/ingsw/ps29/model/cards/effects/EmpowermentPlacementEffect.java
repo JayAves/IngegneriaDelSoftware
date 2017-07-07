@@ -11,6 +11,13 @@ import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionTo
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberVenturesTowerDecorator;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * CARD EFFECT: Empowers familiars in tower placement.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 
 	private ArrayList<Resource> discount;
@@ -51,11 +58,7 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 		default:
 		    break;
 		}
-		//deve notificare lo sconto di risorse quando si prende lo specifico tipo di carta
-		
-		//boolean che notifica la presenza di uno sconto di risorse da mettere su tutte le torri della board?
-		//se il valore è vero si cerca la carta con questo effetto permanente e se ne recuperano le risorse scontate
-		//non è un modificatore che vale sempre per la risorsa MA solo quando si paga in una certa torre
+
 		
 	}
 	

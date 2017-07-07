@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Player;
 
+/**
+ * LEADER: Set all familiars' power to 5.
+ * @author Giovanni Mele
+ *
+ */
 public class FixFamilyMemberPowerByColor extends EmpowermentActionEffect{
 	
 	private ArrayList<String> colors;

@@ -5,6 +5,13 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * CARD & LEADER EFFECT: Gives a Resource amount depending by the number of cards of a certain type player owns.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class MultipliedResourcesEffect extends Effect {
 	
 	private String resourceType;

@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 public interface FamilyMemberInterface {
 	
-	// public int setPower();
+	
 	
 	public int getPower();
 	

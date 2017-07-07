@@ -6,6 +6,13 @@ import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * In all areas where more than one FamilyMember can be placed, represents the tail after first slot.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class QueueActionSpace {
 	
 	private ArrayList<FamilyMemberInterface> queue;

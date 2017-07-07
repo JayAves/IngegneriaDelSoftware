@@ -6,7 +6,7 @@ public class TerritoryFinalPointsOff implements EndGameVictoryPointsGatherer{
 
 	@Override
 	public void getVictoryPoints(PersonalBoard board) {
-		System.out.println("Non prendi punti per le carte territorio");
+		System.out.println("You don't get VictoryPoints for TerritotyCard you own");
 	}
 
 }

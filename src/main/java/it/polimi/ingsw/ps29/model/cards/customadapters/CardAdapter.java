@@ -20,6 +20,15 @@ import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Serializes and deseriaizes any Card and inheriting-from-Card object. 
+ * Since all cards necessary for the game are stored in the same Json file and 
+ * are of different types ( Building, Territory, Character and Venture), in writing in Json CardAdapter adds class name as a header.
+ * That header's content is used during deserialization to recognize card's type,
+ *  by looking into it.polimi.ingsw.ps29.model.cards package for the right class. 
+ * @author Pietro Grotti
+ *
+ */
 public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card> {
 
 	@Override

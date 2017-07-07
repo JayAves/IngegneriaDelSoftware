@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
@@ -11,6 +10,13 @@ import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
+/**
+ * Player's private board. Contains all cards and resources Player owns.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class PersonalBoard {
 	
 	private HashMap <String, ArrayList <Card>> cards;
@@ -38,7 +44,7 @@ public class PersonalBoard {
 		cards.get(card.getType()).add(card);
 	}
 	
-	public ArrayList<Integer> getCadsSizes(){
+	public ArrayList<Integer> getCardsSizes(){
 		ArrayList<Integer> sizes = new ArrayList<Integer>();
 		sizes.add(cards.get("territory").size());
 		sizes.add(cards.get("building").size());
@@ -56,18 +62,16 @@ public class PersonalBoard {
 		
 		boolean check = true;
 		ArrayList<Integer> sizes = new ArrayList<Integer>();
-		sizes = getCadsSizes();
-		while (check){
+		sizes = getCardsSizes();
 			for (int i = 0; i < sizes.size(); i++)
 				check = sizes.get(i) >= size;
-		}
-   
-		return false;
+  
+		return check;
 		
 	}
 
 	public PersonalBonusTile getPersonalBonusTile() {
-		// TODO Auto-generated method stub
+
 		return personalTile;
 	}
 	
@@ -99,10 +103,11 @@ public class PersonalBoard {
 				if (requirements.containsKey("any")){
 					satisfiedc = checkIfCardsEqualsInSize(requirements.get("any"));
 				}
-			
+				else{
 					Set<String> set = requirements.keySet();
 					for (String type : set)
 						satisfiedc = satisfiedc &&  getCards(type).size() >= requirements.get(type);
+				}
 					
 			}
 		
@@ -171,10 +176,7 @@ public class PersonalBoard {
     	}
     	
     	leaderCards.remove(toRemove);
-    	
-		//System.out.println("ora le carte leader sono");
-		//for (LeaderCard card : leaderCards)
-			//System.out.println("\n" + card.toString());
+
 
     }
 
@@ -192,19 +194,7 @@ public class PersonalBoard {
 
      }
     
-    public void removeActivatedLeaderById( int id){
-    	
-    	int toRemove = 0;
-    	ArrayList<LeaderCard> temp = activatedLeaderCards;
-    	
-    	for (int i = 0; i < temp.size(); i++){
-    		if (temp.get(i).getID() == id)
-    			toRemove = i;
-    	}
-    	
-    	activatedLeaderCards.remove(toRemove);
-
-     }
+    
 
 	public ArrayList<LeaderCard> getLeaderCards() {
 		return leaderCards;

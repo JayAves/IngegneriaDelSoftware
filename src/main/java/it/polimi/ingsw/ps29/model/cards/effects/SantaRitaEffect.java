@@ -8,6 +8,11 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceDecorator;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceSantaRitaDecorator;
 
+/**
+ * LEADER Santa Rita
+ * @author Giovanni Mele
+ *
+ */
 public class SantaRitaEffect extends EffectAboutResources{
 
 	public SantaRitaEffect(ArrayList<Resource> resources) {

@@ -1,8 +1,14 @@
 package it.polimi.ingsw.ps29.model.game;
 
-import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * Set of user's choices about an Action.
+ * @author Pietro Grotti
+ * @author Pietro Melzi
+ * @see it.polimi.ing sw.ps29.model.action.Action
+ *
+ */
 public class Move {
 	
 	private Player player;

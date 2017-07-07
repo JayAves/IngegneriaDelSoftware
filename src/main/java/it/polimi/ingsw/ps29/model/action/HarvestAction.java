@@ -73,9 +73,10 @@ public class HarvestAction extends Action {
 		move.getFamiliar().setBusy(true);
 		
 	}
+	
 	private boolean twoPlayersCheck() throws SpaceOccupiedException {
-		if ((!space.isEmpty()) && (space.getClosed()))
-			throw new SpaceOccupiedException();
+		if ((!space.isEmpty()) && space.getClosed())
+				throw new SpaceOccupiedException();
 		else return true;
 	}
 }

@@ -2,6 +2,13 @@ package it.polimi.ingsw.ps29.model.cards;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class ExcommunicationDeck {
 	
 	private ArrayList<ExcommunicationCard> deck;

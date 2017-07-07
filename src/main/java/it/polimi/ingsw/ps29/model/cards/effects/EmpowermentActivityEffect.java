@@ -4,6 +4,13 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberHarvestDecorator;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionDecorator;
 
+/**
+ * CARD EFFECT: Empowers familiars for production or harvest.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class EmpowermentActivityEffect extends EmpowermentActionEffect {
 	
 	private String activityName;

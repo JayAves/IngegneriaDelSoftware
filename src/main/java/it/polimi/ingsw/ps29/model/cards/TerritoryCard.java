@@ -6,6 +6,13 @@ import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class TerritoryCard extends Card  {
 
 	private final int harvestForce;

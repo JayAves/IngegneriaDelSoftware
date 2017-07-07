@@ -42,7 +42,7 @@ import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
 import it.polimi.ingsw.ps29.server.ClientThread;
 
 /**
- * Stands between Views and Model. Every communication between the two passes through it. 
+ * Stands between {@link View } s and  {@link Match} (Model) . Every communication between the two passes through it. 
  * @author Pietro Melzi
  * @author Pietro Grotti
  * @author Giovanni Mele

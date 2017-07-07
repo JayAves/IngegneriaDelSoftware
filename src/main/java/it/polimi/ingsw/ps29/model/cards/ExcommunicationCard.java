@@ -3,6 +3,13 @@ package it.polimi.ingsw.ps29.model.cards;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.Period;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class ExcommunicationCard {
 	
 	private final Effect effect;

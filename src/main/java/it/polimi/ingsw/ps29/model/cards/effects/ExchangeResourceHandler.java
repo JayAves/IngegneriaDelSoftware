@@ -7,17 +7,20 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * 
+ * @author Pietro Melzi
+ *
+ */
 public class ExchangeResourceHandler implements Cloneable, Serializable {
 	
-	/**
-	 * 
-	 */
+	//auto-generated serialVErsionUID
 	private static final long serialVersionUID = 3524782719504036952L;
 	private ArrayList<Resource> resourcesOut;
 	private ArrayList<Resource> resourcesIn;
 	private boolean chooseOut;
 	private boolean chooseIn;
-	//i booleani se sono veri indicano che la risorsa è a scelta tra quelle dell'ArrayList. 
+	//booleans mean there are alternatives in resources gain/pay 
 	
 	public ExchangeResourceHandler (ArrayList<Resource> resOut, ArrayList<Resource> resIn, boolean cOut, boolean cIn) {
 		resourcesOut = resOut;
@@ -51,13 +54,12 @@ public class ExchangeResourceHandler implements Cloneable, Serializable {
 		chooseIn = value;
 	}
 	
-	//avvertimento per chiedere a scelta all'utente
+	//warning for player if he has to choose
 	public boolean isResourceToChoose () {
 		return chooseOut || chooseIn;
 	}
 	
-	//questi due metodi tornano la risorsa nella posizione index
-	//usati in caso di scelta:
+	//returns what alternative was chosen
 	Resource choiceOutResource (int index) {
 		return resourcesOut.get(index);
 	}
@@ -68,9 +70,9 @@ public class ExchangeResourceHandler implements Cloneable, Serializable {
 	
 	public void performExchange (Container resources, int indexOut, int indexIn) {
 
-		// se nello scambio non è richiesta una scelta tra risorse
+		// if no alternatives in paying
 		if(!chooseOut) {
-			//resources contiene le risorse del giocatore che ha deciso di scambiare le sue risorse
+			//resources contais players chose to pay
 			for(Resource resOut: resourcesOut) {
 				resOut.negativeAmount();
 				resources.updateResource(resOut);
@@ -81,7 +83,7 @@ public class ExchangeResourceHandler implements Cloneable, Serializable {
 			resources.updateResource(resOut);
 		}
 		
-		// se nello scambio non è richiesta una scelta tra risorse
+		// if no alternatives in getting
 		if(!chooseIn) {
 			for (Resource resIn: resourcesIn) 
 				resources.updateResource(resIn);	
@@ -94,7 +96,7 @@ public class ExchangeResourceHandler implements Cloneable, Serializable {
 		if(!chooseOut)
 			return resourcesOut;
 		ArrayList<Resource> temp = new ArrayList<Resource> ();
-		//utilizzo nel caso le resOut richiedano una scelta da parte dell'utente
+		//use if user has to choose sth
 		temp.add(choiceOutResource(indexOut));
 		return temp;
 	}

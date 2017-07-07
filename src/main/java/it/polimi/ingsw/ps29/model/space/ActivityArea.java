@@ -5,6 +5,13 @@ import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
 import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * Where FamilyMember are placed to do a ProductionAction or an HarvestAction.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class ActivityArea implements ActionSpace {
 	
 	private final SingleSlotActionSpace head;
