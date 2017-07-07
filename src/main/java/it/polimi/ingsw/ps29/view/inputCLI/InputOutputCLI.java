@@ -374,7 +374,6 @@ public class InputOutputCLI implements InputOutput {
 			msg.setLeaderSituation(askLeader(msg.getLeaderSituation()));
 		
 		
-		
 		return msg;
 		
 	}

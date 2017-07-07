@@ -137,7 +137,7 @@ public class LeaderPanel extends JFrame {
 				ActionChoice msg = new ActionChoice(gui.getPlayerName());
 				msg.setChoice(0, 13);
 				msg.setLeaderSituation(leaderSituation);
-				gui.notifyInput(1);
+				gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(rightPanel).dispose();
 				
 			}
