@@ -79,11 +79,11 @@ public class GameBoard{
 		((TowerArea)spaces.get("territoryTower")).setBonus(resources[0].getBonus(),3);
 		((TowerArea)spaces.get("territoryTower")).setBonus(resources[1].getBonus(),4);
 		spaces.put("buildingTower", new TowerArea ());
-		((TowerArea)spaces.get("buildingTower")).setBonus(resources[2].getBonus(),3);
-		((TowerArea)spaces.get("buildingTower")).setBonus(resources[3].getBonus(),4);
+		((TowerArea)spaces.get("buildingTower")).setBonus(resources[4].getBonus(),3);
+		((TowerArea)spaces.get("buildingTower")).setBonus(resources[5].getBonus(),4);
 		spaces.put("characterTower", new TowerArea ());
-		((TowerArea)spaces.get("characterTower")).setBonus(resources[4].getBonus(),3);
-		((TowerArea)spaces.get("characterTower")).setBonus(resources[5].getBonus(),4);
+		((TowerArea)spaces.get("characterTower")).setBonus(resources[2].getBonus(),3);
+		((TowerArea)spaces.get("characterTower")).setBonus(resources[3].getBonus(),4);
 		spaces.put("ventureTower", new TowerArea ());
 		((TowerArea)spaces.get("ventureTower")).setBonus(resources[6].getBonus(),3);
 		((TowerArea)spaces.get("ventureTower")).setBonus(resources[7].getBonus(),4);
