@@ -99,7 +99,7 @@ public class BonusPanelCreator extends PanelCreator{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		    	gui.notifyAboutInput(msg);
+		    	gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(panel).dispose();
 			}
 			
@@ -113,7 +113,7 @@ public class BonusPanelCreator extends PanelCreator{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				createBonusMessage();
-		    	gui.notifyAboutInput(msg);
+		    	gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(panel).dispose();
 			}
 			

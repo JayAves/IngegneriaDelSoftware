@@ -25,14 +25,9 @@ public class VaticanChoice extends InteractionMessage {
 		visitor.visit(this);
 	}
 
-	
-
-
 	public boolean isSustain() {
 		return sustain;
 	}
-
-
 
 	public void setSustain(boolean sustain) {
 		this.sustain = sustain;

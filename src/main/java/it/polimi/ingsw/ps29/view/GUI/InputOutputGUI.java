@@ -29,6 +29,7 @@ import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BonusPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.ExchangePanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PanelBase;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.VaticanPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
 
 public class InputOutputGUI implements InputOutput, Observer, Runnable {
@@ -38,7 +39,10 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private int timer;
 	private long timeStart;
 	private PanelBase interactionPanel;
+	
+	//used to coomunicate user choice, because initial CLI implementation is reused
 	private ResourceType resType;
+	private int excommunicationChoice;
 	
 	/*
 	 * per ogni tipo di messaggio sono presenti questi oggetti:
@@ -61,8 +65,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		if(message instanceof RejectMessage)
 			//screen.console.append(((RejectMessage)message).getException().getMessage());
 			JOptionPane.showMessageDialog(null, ((RejectMessage)message).getException().getMessage());
-		
 	}
+	
 
 	@Override
 	public Exchange askExchange(Exchange msg) throws ExpiredTimeException {
@@ -75,7 +79,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
-		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen, null);
+		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen);
 		interactionPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel(), "PRIVILEGE CHOICE");
 		messageInTime();
 		
@@ -83,9 +87,12 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	}
 
 	@Override
-	public int askAboutExcommunication() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int askAboutExcommunication() throws ExpiredTimeException {
+		VaticanPanelCreator vpc = new VaticanPanelCreator (screen);
+		interactionPanel = new PanelBase(vpc.createLeftPanel(), vpc.createRightPanel(), "EXCOMMUNICATION CHOICE");
+		messageInTime();
+		
+		return excommunicationChoice;
 	}
 
 	@Override
@@ -203,14 +210,12 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public int getTimer() {
-		// TODO Auto-generated method stub
 		return timer;
 	}
 
 
 	@Override
 	public long getTimeStart() {
-		// TODO Auto-generated method stub
 		return timeStart;
 	}
 
@@ -223,6 +228,9 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		
 		else if (arg instanceof ResourceType) 
 			resType = (ResourceType) arg;
+		
+		else if (arg instanceof Integer)
+			excommunicationChoice = new Integer (arg.toString());
 		
 		interactionReady = true;
 		

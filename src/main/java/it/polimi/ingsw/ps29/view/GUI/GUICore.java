@@ -317,14 +317,9 @@ public class GUICore extends Observable{
 		new GUICore ("test");
 	}
 	
-	public void notifyAboutInput (InteractionMessage msg) {
+	public void notifyInput (Object msg) {
 		setChanged();
 		notifyObservers(msg);
-	}
-	
-	public void notifyPrivilege (ResourceType resType) {
-		setChanged();
-		notifyObservers(resType);
 	}
 	
 	public JLabel getCoin() {
@@ -357,6 +352,10 @@ public class GUICore extends Observable{
 
 	public JLabel getPrivileges() {
 		return privileges;
+	}
+	
+	public String getPlayerName () {
+		return playerName;
 	}
 
 }

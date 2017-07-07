@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
-import it.polimi.ingsw.ps29.messages.PrivilegeChoice;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 
@@ -20,8 +19,8 @@ import it.polimi.ingsw.ps29.view.GUI.GUICore;
 public class PrivilegesPanelCreator extends PanelCreator {
 	private ButtonGroup choice;
 	
-	public PrivilegesPanelCreator(GUICore gui, PrivilegeChoice msg) {
-		super(gui, msg);
+	public PrivilegesPanelCreator(GUICore gui) {
+		super(gui, null);
 	}
 
 	@Override
@@ -48,7 +47,7 @@ public class PrivilegesPanelCreator extends PanelCreator {
 			
 		    public void actionPerformed(ActionEvent e) {
 		    	ResourceType type = createPrivilegeMessage();
-		    	gui.notifyPrivilege(type);
+		    	gui.notifyInput(type);
 		    	SwingUtilities.getWindowAncestor(end).dispose();
 		    }
 		    

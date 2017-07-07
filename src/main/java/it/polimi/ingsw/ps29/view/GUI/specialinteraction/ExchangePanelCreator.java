@@ -93,7 +93,7 @@ public class ExchangePanelCreator extends PanelCreator {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				((Exchange)msg).setChoice(0, new Integer(choice.getSelection().getActionCommand()) );
-		    	gui.notifyAboutInput(msg);
+		    	gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(panel).dispose();
 				
 			}

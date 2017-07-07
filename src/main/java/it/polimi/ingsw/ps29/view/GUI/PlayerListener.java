@@ -36,7 +36,7 @@ public class PlayerListener extends MouseAdapter {
 				msg.setChoice(3, InteractionMessagesFunctions.translateFamiliar(gui.family.getSelection().getActionCommand()));
 				
 				//chiamo la funzione che notifica alla classe "InputOutputGUI" la scelta fatta
-				gui.notifyAboutInput(msg);
+				gui.notifyInput(msg);
 			}
 			
 		}
