@@ -21,8 +21,6 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
-import it.polimi.ingsw.ps29.messages.InteractionMessage;
-import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 
 public class GUICore extends Observable{
@@ -38,6 +36,7 @@ public class GUICore extends Observable{
 	ButtonGroup family;
 	JSpinner servants;
 	JButton doAction;
+	JButton noAction;
 	ImageToPrint preview;
 	
 	JButton venture;
@@ -191,7 +190,7 @@ public class GUICore extends Observable{
 		
 		buttonsPanel.setLayout(new GridLayout(2, 2));
 		familiarPanel.setLayout(new GridLayout(2, 2));
-		doActionPanel.setLayout(new GridLayout(2, 1));
+		doActionPanel.setLayout(new GridLayout(2, 2));
 		pointsPanel.setLayout(new GridLayout(2, 2));
 		
 		setButtonsPanel(buttonsPanel);
@@ -279,6 +278,8 @@ public class GUICore extends Observable{
 	}
 	
 	public void setDoActionPanel (JPanel doActionPanel) {
+		JLabel labelServants = new JLabel("# of servants: ");
+		doActionPanel.add(labelServants);
 		
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
 		servants = new JSpinner(model);
@@ -287,6 +288,10 @@ public class GUICore extends Observable{
 		doAction = new JButton("Do Action!");
 		doAction.addMouseListener(listener);
 		doActionPanel.add(doAction);
+		
+		noAction = new JButton("NO Action");
+		noAction.addMouseListener(listener);
+		doActionPanel.add(noAction);
 	}
 	
 	public void setPointsPanel (JPanel pointsPanel) {

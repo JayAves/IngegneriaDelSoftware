@@ -42,6 +42,19 @@ public class PlayerListener extends MouseAdapter {
 		}
 		
 		
+		//gestione click su NO ACTION
+		else if(((JButton) event.getSource()).getText().equals("NO Action")) {
+			gui.console.append("NO action!");
+			
+			//costruisco il pacchetto da inviare al server
+			ActionChoice msg = new ActionChoice(gui.playerName);
+			msg.setChoice(0, 12);
+			msg.setChoice(3, InteractionMessagesFunctions.translateFamiliar(gui.family.getSelection().getActionCommand()));
+			
+			//chiamo la funzione che notifica alla classe "InputOutputGUI" la scelta fatta
+			gui.notifyInput(msg);
+		}
+		
 		
 		
 	}

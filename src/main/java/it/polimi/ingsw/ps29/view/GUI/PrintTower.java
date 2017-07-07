@@ -103,7 +103,10 @@ public class PrintTower extends PrintPersonal {
 				if(space!=null)
 					//print each familiar on its position
 					printSingleFamiliar(space, famInSpace.getValue().get(0), g);
-				//else TO_DO: show familiar used for no actions
+				
+				else {
+					//TO_DO: show familiar used for no actions
+				}
 			}
 				
 			else {

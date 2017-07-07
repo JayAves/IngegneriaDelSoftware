@@ -99,7 +99,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towersDTO,
 		HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		
-		//reset previous action on that board
+		//reset previous action on player's board
 		screen.tower.deleteIndexSpacePressed();
 		screen.console.setText("");
 		
