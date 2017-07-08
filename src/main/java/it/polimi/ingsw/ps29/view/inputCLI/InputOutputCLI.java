@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
@@ -66,7 +67,35 @@ public class InputOutputCLI implements InputOutput {
 			
 		}
 		
+		if (message instanceof FinalScores) {
+		
+			int i= ((FinalScores) message).getPlayers().indexOf(message.getName());
+			boolean max=true;
+			System.out.println("\n\nYour final score is: "+ ((FinalScores) message).getScores()[i]+ "\n\n" );
+			
+			for (int j=0;j< ((FinalScores) message).getScores().length; j++) {
+				
+				if ((((FinalScores) message).getScores()[i]) > ((FinalScores) message).getScores()[j])
+					max=true;
+				else
+					max=false;
+			}
+			if (max)
+				System.out.println("CONGRATULATIONS YOU WIN\n");
+			
+			System.out.println("Final Standings:");
+			
+			int j=1;
+			
+			for (String name: ((FinalScores) message).getPlayers()) {
+				
+				 System.out.println(j+") "+ name.toUpperCase()+ " with: "+((FinalScores) message).getScores()[j-1]);
+				 j++;
+			}
+		}
 	}
+		
+
 	
 	/**
 	 * Shows all options for an Action.

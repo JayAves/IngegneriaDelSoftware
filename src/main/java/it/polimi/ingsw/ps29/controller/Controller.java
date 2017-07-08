@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -11,6 +12,7 @@ import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
@@ -124,7 +126,7 @@ public class Controller extends Observable implements Observer{
 			System.out.println("All players are disconnected!");
 			setChanged();
 			notifyObservers();
-			//missing end of game routine (stop the Room)
+			
 			// for future expansion - save the game's stat on disk for future use.
 		}
 	}
@@ -429,9 +431,27 @@ public class Controller extends Observable implements Observer{
 				for (Card card : player.getPersonalBoard().getCards("venture"))
 					for (Effect effect : card.getPermanentEffects())
 						effect.performEffect(player);
-				
+		}		
 			model.getBoard().assignPointsForMilitaryTrack();
+		
+		int[] scores= new int[model.getBoard().getPlayers().size()];
+		ArrayList<String> names= new ArrayList<String>();
+		int j=0;
+		
+		for (Player player: model.getBoard().getPlayers()) {
+			
+			names.add(player.getName());
+			scores[j]= player.getPersonalBoard().getSpecificResource("victory").getAmount();
+			j++;
 		}
+		
+		//send final scores
+		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
+			view.getValue().startInteraction(new FinalScores(view.getValue().getClientName(), scores.length, names ));
+		
+		//Room will be closed
+		setChanged();
+		notifyObservers();
 		
 	}
 	

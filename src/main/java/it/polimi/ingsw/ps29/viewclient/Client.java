@@ -6,6 +6,7 @@ import java.util.Observer;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
@@ -124,6 +125,11 @@ public class Client implements Observer{
 		
 		public void receive (RejectMessage msg) {
 			view.showMessage(msg); 
+		}
+
+		public void receive(FinalScores finalScore) {
+			// TODO Auto-generated method stub
+			view.showMessage(finalScore);
 		}
 	
 	}
