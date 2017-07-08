@@ -19,7 +19,7 @@ public class ColorIconSelected extends ColorIcon {
             RenderingHints.KEY_ANTIALIASING,
             RenderingHints.VALUE_ANTIALIAS_ON);
         
-        g2d.setColor(Color.RED);
+        g2d.setColor(Color.BLUE);
         g2d.fillOval(1, 1, size+6, size+6);
         g2d.setColor(color);
         g2d.fillOval(4, 4, size, size);

@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.util.Observable;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -77,7 +78,7 @@ public class GUICore extends Observable{
 				setFrame (frame);
 				Toolkit tk = Toolkit.getDefaultToolkit();
 				int xSize = ((int) tk.getScreenSize().getWidth());
-				int ySize = ((int) tk.getScreenSize().getHeight());
+				int ySize = ((int) tk.getScreenSize().getHeight())-38;
 				frame.setSize(xSize,ySize);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
@@ -98,7 +99,6 @@ public class GUICore extends Observable{
 		
 		c.gridx = 1;
 		c.weightx = 1;
-		c.fill = GridBagConstraints.VERTICAL;
 		JPanel centralPanel = new JPanel();
 		setCentralPanel(centralPanel);
 		frame.add(centralPanel, c);
@@ -108,9 +108,12 @@ public class GUICore extends Observable{
 		centralPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		JPanel panelNorth = new JPanel ();
+		JPanel panelNorth = new JPanel();
+		panelNorth.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
 		JPanel panelCenter = new JPanel ();
+		panelCenter.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
 		JPanel panelSouth = new JPanel ();
+		panelSouth.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
 		
 		setPanelNorth(panelNorth);
 		setPanelCenter(panelCenter);
@@ -123,7 +126,6 @@ public class GUICore extends Observable{
 		
 		c.gridy = 1;
 		c.weighty = 1;
-		c.fill = GridBagConstraints.NONE;
 		centralPanel.add(panelCenter, c);
 		
 		c.gridy = 2;
@@ -313,14 +315,14 @@ public class GUICore extends Observable{
 		JLabel labelServants = new JLabel("# of servants: ");
 		doActionPanel.add(labelServants);
 		
-		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
-		servants = new JSpinner(model);
-		doActionPanel.add(servants);
-		
 		doAction = new JButton("Do Action!");
 		doAction.setEnabled(false);
 		doAction.addMouseListener(listener);
 		doActionPanel.add(doAction);
+		
+		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
+		servants = new JSpinner(model);
+		doActionPanel.add(servants);
 		
 		noAction = new JButton("NO Action");
 		noAction.setEnabled(false);
