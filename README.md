@@ -32,21 +32,21 @@ Following game parts can be customized:
 
 ### Resource Bonuses
 
-* GameBoard ActionSpaces' bonuses  (find them in Bonus.json)
-* PersonalBonusTiles bonuses (find them in personalbounstile.json)
+* GameBoard ActionSpaces' bonuses  (find them in bonus.json)
+* PersonalBonusTiles bonuses (find them in personalBonusTile.json)
 * Faith Track bonuses (find them in faithTrack.json)
 
 ### Cards
 
 * Cards (find them in cards.json)
-* ExcommunicationCards (find them in ExcommunicationsCards.json)
+* ExcommunicationCards (find them in excommunicationsCards.json)
 * LeaderCards (find them in leaderCards.json)
 
 ### Timers
 
 * Action - timer player has to do an Action
 * Room  - timer before a new starts after two players are in queue
-Both can be found in Timer.json
+Both can be found in timer.json
 
 All these json files can be found in folder "_data_".
 
