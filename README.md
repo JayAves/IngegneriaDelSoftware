@@ -1,4 +1,4 @@
-![logo](https://github.com/JayAves/IngegneriaDelSoftware/tree/master/src/data/l.jpg)
+![logo](https://github.com/JayAves/IngegneriaDelSoftware/tree/master/src/data/l.png)
 # Lorenzo Il Magnifico - Java Project 
 
 This Java Project was made as part of _Ingegneria del Sofware_ course, held by Professor Sampietro.
