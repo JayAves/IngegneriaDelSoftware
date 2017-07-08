@@ -31,13 +31,15 @@ public class OtherCardsPanel extends FromBoardPanel {
 	private JPanel createPanel (ArrayList<Integer> idCards, int index) {
 		JPanel panel = new JPanel(new GridLayout(1, 6));
 		int count = 0;
-		for(int i=index; i<index+6; i++)
-			if(idCards.get(i) != -1) {
-				panel.add(GUIUtilities.createSingleLabel("images/cards/devcards_f_en_c_"+idCards.get(i)+".png", 140, 207));
-				count++;
-			}
-		for(int i=count; i<6; i++)
-			panel.add(GUIUtilities.createSingleLabel("images/leader.jpg", 140, 207));
+		if(!idCards.isEmpty()) {
+			for(int i=index; i<index+6; i++)
+				if(idCards.get(i) != -1) {
+					panel.add(GUIUtilities.createSingleLabel("images/cards/devcards_f_en_c_"+idCards.get(i)+".png", 140, 207));
+					count++;
+				}
+			for(int i=count; i<6; i++)
+				panel.add(GUIUtilities.createSingleLabel("images/leader.jpg", 140, 207));
+		}
 		return panel;
 	}
 	

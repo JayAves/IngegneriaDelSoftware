@@ -43,8 +43,6 @@ public class ImageToPrint extends JPanel {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		/*super.paintComponent(g);
-		g.drawImage(image, 0, 0, getSize().width, getSize().height, null);*/
 		
 		imageRatio = (double)image.getHeight()/(double)image.getWidth();
 		imageHeight = imageRatio*getSize().getWidth();
@@ -62,6 +60,7 @@ public class ImageToPrint extends JPanel {
 			imageWidth = getSize().getWidth();
 		}
 		
+		g.clearRect(0, 0, (int)getSize().getWidth(), (int)getSize().getWidth());
 		g.drawImage(image, (int)marginX, (int)marginY, (int)imageWidth, (int)imageHeight, null);
 		
 	}
