@@ -1,7 +1,7 @@
 
 # Lorenzo Il Magnifico - Java Project 
 
-This Java Project was made as part of _Ingegneria del Sofware_ course, held by Professor Sampietro.
+This Java Project was made as part of _Ingegneria del Sofware_ course, held by Professor San Pietro.
 
 ## Getting Started
 
