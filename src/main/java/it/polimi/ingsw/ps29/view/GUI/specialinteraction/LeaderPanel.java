@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view.GUI.specialinteraction;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -42,23 +43,28 @@ public class LeaderPanel extends FromBoardPanel {
 	}
 	
 	private JPanel setLeftPanel () {
-		JPanel leftPanel = new JPanel(new GridLayout(3, leaderSituation.size()));
+		JPanel panel = new JPanel(new BorderLayout());
 		
 		//first row in the panel
+		JPanel northPanel = new JPanel (new GridLayout(1, leaderSituation.size()));
 		for(ArrayList<Object> leader: leaderSituation)
 			if(new Integer (leader.get(2).toString()) == 0)
-				leftPanel.add(new JLabel("IN HAND"));
+				northPanel.add(new JLabel("IN HAND"));
 			else
-				leftPanel.add(new JLabel("IN BOARD"));
+				northPanel.add(new JLabel("IN BOARD"));
+		panel.add(northPanel, BorderLayout.NORTH);
 				
 		//second row in the panel
+		JPanel centerPanel = new JPanel (new GridLayout(1, leaderSituation.size()));
 		for(ArrayList<Object> leader: leaderSituation)
-			leftPanel.add(createSingleLabel("images/leaders/leaders_f_c_"+leader.get(0)+".jpg", 140, 220));
+			centerPanel.add(createSingleLabel("images/leaders/leaders_f_c_"+leader.get(0)+".jpg", 140, 207));
+		panel.add(centerPanel, BorderLayout.CENTER);
 		
 		//third row in the panel
+		JPanel southPanel = new JPanel(new GridLayout(1, leaderSituation.size()));
 		for(int i=0; i<leaderSituation.size(); i++) {
 			JButton button = new JButton("USE");
-			leftPanel.add(button);
+			southPanel.add(button);
 			final int index = i;
 			button.addActionListener(new ActionListener() {
 				
@@ -89,8 +95,9 @@ public class LeaderPanel extends FromBoardPanel {
 				
 			});
 		}
+		panel.add(southPanel, BorderLayout.SOUTH);
 				
-		return leftPanel;
+		return panel;
 	}
 	
 	public JPanel setRightPanel() {

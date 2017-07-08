@@ -61,7 +61,9 @@ public class PlayerListener extends MouseAdapter {
 		//handle click on LEADER ACTION
 		else if(((JButton) event.getSource()).getText().equals("LEADER")) {
 			gui.console.append("Leader action!");
-			LeaderPanel leaderPanel = new LeaderPanel(gui, "LEADER PANEL");
+			LeaderPanel leaderPanel;
+			if(gui.getMessage() != null)
+				leaderPanel = new LeaderPanel(gui, "LEADER PANEL");
 		}
 		
 		
