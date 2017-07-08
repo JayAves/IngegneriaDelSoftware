@@ -29,7 +29,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
 
 /**
- *
+ * Command Line Interface InputOutput. 
  * @author Pietro Melzi
  * @author Pietro Grotti
  * @see it.polimi.ingsw.ps29.view.InputOutput
@@ -38,10 +38,10 @@ import it.polimi.ingsw.ps29.view.InputOutput;
 
 public class InputOutputCLI implements InputOutput {
 	
-	//Scanner scanner;
+	
 	private FakeScanner scanner;
-	private int turnTimer; //tempo per completare l'azione
-	private long timeStart; //memorizzo il tempo di inizio dell'azione
+	private int turnTimer; //time to complete action
+	private long timeStart; //timer starting value before it's decremented.
 	private final static int DEFAULT_TIMER= 19000;
 
 	
@@ -68,7 +68,11 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 	
-	
+	/**
+	 * Shows all options for an Action.
+	 * @return user choices
+	 * @throws ExpiredTimeException
+	 */
 	private int[] askTypeOfAction () throws ExpiredTimeException {
 		int[] choice = new int [2];
 		choice[1]=0;
@@ -144,7 +148,7 @@ public class InputOutputCLI implements InputOutput {
 		int i;
 		ExchangeResourcesEffect er = choice.getExchange();
 		do {
-			for(i=0; i<er.getChoices().size(); i++) { //mostra le possibili scelte di un'azione di scambio
+			for(i=0; i<er.getChoices().size(); i++) { //shows all possible exchanges
 				System.out.println("\n"+(i+1)+")");
 				showExchangeOption(er.getChoices().get(i));
 			}
@@ -156,7 +160,7 @@ public class InputOutputCLI implements InputOutput {
 		} while (choice.getChoice(0)<0||choice.getChoice(0)>i+1);
 		
 		if(choice.getChoice(0)<er.getChoices().size())
-			if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
+			if(er.getChoices().get(choice.getChoice(0)).getBooleanOut()) { //if there are alternatives in what resources to pay
 				do {		
 					for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResOut().size(); i++) {
 						System.out.println("\n"+(i+1)+")");
@@ -170,7 +174,7 @@ public class InputOutputCLI implements InputOutput {
 			}
 			
 		if(choice.getChoice(0)<er.getChoices().size())
-			if( er.getChoices().get(choice.getChoice(0)).getBooleanIn()) { //la scelta dell'utente prevede alternative tra le risorse da scambiare
+			if( er.getChoices().get(choice.getChoice(0)).getBooleanIn()) { //if there are alternatives in what resource to get
 				do {
 					for(i=0; i<er.getChoices().get(choice.getChoice(0)).getResIn().size(); i++) {
 						System.out.println("\n"+(i+1)+")");
@@ -271,7 +275,7 @@ public class InputOutputCLI implements InputOutput {
 	public void showInfo(InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towersDTO, HashMap<String, PersonalBoardDTO> personalBoardsDTO) {
 		System.out.println("Updated situation of the game: ");
 		System.out.println(gameBoardDTO.toString());
-		//showTower(towersDTO);
+		
 		for (Entry<String, PersonalBoardDTO> personalBoardDTO: personalBoardsDTO.entrySet())
 			System.out.println(personalBoardDTO.toString());
 		
@@ -315,7 +319,7 @@ public class InputOutputCLI implements InputOutput {
 			}while( choice < 1 || choice > 5);
 			
 			if(choice!=5) {
-				//l'utente ha scelto il leader
+				//user chose leader
 				do {
 					for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size() ; i++)
 						System.out.println(" " + (i + 1) + " " + printCorrectOptions(leaderSituation.get(choice -1)).get(i));
@@ -327,7 +331,7 @@ public class InputOutputCLI implements InputOutput {
 					}
 				} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
 				
-				// l'utente ha scelto cosa fare con la carta
+				// user chose what to do with leader
 				leaderSituation.get(choice -1).add(printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
 			}
 		}

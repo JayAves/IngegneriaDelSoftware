@@ -47,7 +47,6 @@ public class GameBoard{
 	private ArrayList<Player> playersOrder;
 	private ArrayList<LeaderCard> leaderCards;
 	private ArrayList<LeaderCard> playedLeaderCards;
-	//variabile utilizzata nel metodo GameEngine della classe Match
 	private ArrayList<Deck> decks;
 	private ArrayList<ExcommunicationDeck> excommunicationDeck;
 	private HashMap<Integer, ExcommunicationCard> excommunications;
@@ -86,7 +85,7 @@ public class GameBoard{
 	//init all spaces with certain bonuses
 	public void initSpaces (BonusInit[] resources) {
 				
-		//devo leggere ed assegnare bonus da file
+		
 		spaces = new HashMap <String, ActionSpace> ();
 		if (playersOrder.size()==2) {
 			spaces.put("Harvest", new HarvestArea (new SingleSlotActionSpace(1), new QueueActionSpace(1,true)));

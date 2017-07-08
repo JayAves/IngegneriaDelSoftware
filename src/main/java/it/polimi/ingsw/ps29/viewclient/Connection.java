@@ -41,7 +41,7 @@ public abstract class Connection extends Observable implements Runnable{
 	
 	public void setLoginToken(PlayerInfoMessage loginMessage) throws IOException{
 		
-		BufferedReader login = new BufferedReader(new FileReader("src/main/java/Login.json"));
+		BufferedReader login = new BufferedReader(new FileReader("src/data/login.json"));
 	    GsonBuilder gcode = new GsonBuilder();
 	    String[] jcode = gcode.create().fromJson(login, String[].class );
 	    String newToken= "";
