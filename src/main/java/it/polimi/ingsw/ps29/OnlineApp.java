@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps29.viewclient.Client;
  * @author Pietro Grotti
  * @author Pietro Melzi
  * @author Giovanni Mele
- * 
  *
  */
 
