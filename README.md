@@ -31,16 +31,19 @@ Main for server is located in class ServerMain (in package **server**). Run it t
 Following game parts can be customized:
 
 ###Resource Bonuses
+
 * GameBoard ActionSpaces' bonuses  (find them in Bonus.json)
 * PersonalBonusTiles bonuses (find them in personalbounstile.json)
 * Faith Track bonuses (find them in faithTrack.json)
 
 ###Cards
+
 * Cards (find them in cards.json)
 * ExcommunicationCards (find them in ExcommunicationsCards.json)
 * LeaderCards (find them in leaderCards.json)
 
 ###Timers
+
 * Action - timer player has to do an Action
 * Room  - timer before a new starts after two players are in queue
 Both can be found in Timer.json
