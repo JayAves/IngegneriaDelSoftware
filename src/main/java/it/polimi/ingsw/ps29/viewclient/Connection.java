@@ -102,7 +102,7 @@ public abstract class Connection extends Observable implements Runnable{
 	 			newjcode[j]=jcode[j];
 		}
 		Gson gson=new Gson();
-		File myfile = new File("src/main/java/Login.json");
+		File myfile = new File("src/data/login.json");
  		FileOutputStream fout= new FileOutputStream(myfile);
  		OutputStreamWriter myOutWriter= new OutputStreamWriter(fout);
  		myOutWriter.append(gson.toJson(newjcode));
