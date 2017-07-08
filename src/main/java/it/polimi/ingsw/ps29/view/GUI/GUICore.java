@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -276,21 +277,31 @@ public class GUICore extends Observable{
 	
 	public void setFamiliarPanel (JPanel familiarPanel) {
 		
-		JRadioButton black = new JRadioButton("Black");
+		JRadioButton black = new JRadioButton("BLACK");
 		black.setActionCommand("Black");
 		black.setSelected(true);
+		black.setIcon(new ColorIcon(16, Color.BLACK));
+		black.setSelectedIcon(new ColorIconSelected(16, Color.BLACK));
+//		black.setIcon(new ImageIcon("images/resources/coin.png"));
+//		black.setSize(10, 10);
 		familiarPanel.add(black);
 		
-		JRadioButton white = new JRadioButton("White");
+		JRadioButton white = new JRadioButton("WHITE");
 		white.setActionCommand("White");
+		white.setIcon(new ColorIcon(16, Color.WHITE));
+		white.setSelectedIcon(new ColorIconSelected(16, Color.WHITE));
 		familiarPanel.add(white);
 		
-		JRadioButton orange = new JRadioButton("Orange");
+		JRadioButton orange = new JRadioButton("ORANGE");
 		orange.setActionCommand("Orange");
+		orange.setIcon(new ColorIcon(16, Color.ORANGE));
+		orange.setSelectedIcon(new ColorIconSelected(16, Color.ORANGE));
 		familiarPanel.add(orange);
 		
-		JRadioButton neutral = new JRadioButton("Neutral");
+		JRadioButton neutral = new JRadioButton("NEUTRAL");
 		neutral.setActionCommand("Neutral");
+		neutral.setIcon(new ColorIcon(16, Color.LIGHT_GRAY));
+		neutral.setSelectedIcon(new ColorIconSelected(16, Color.LIGHT_GRAY));
 		familiarPanel.add(neutral);
 		
 		family = new ButtonGroup();
