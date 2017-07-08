@@ -304,21 +304,21 @@ public class InputOutputCLI implements InputOutput {
 		int choice = 0;
 		int secondChoice = 0;
 		
-		while (choice != 5){
+		while (choice != leaderSituation.size() + 1){
 			do{
 				for ( int i = 0 ; i < leaderSituation.size(); i++)
 					System.out.println( " " + (i + 1) + ") " + leaderSituation.get(i).get(1));
 				
-				System.out.println((" 5 No azione Leader"));
+				System.out.println(( leaderSituation.size() + 1 + " No azione Leader"));
 				try {
 					choice = scanner.nextInt();
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
 					choice = 5;
 				}
-			}while( choice < 1 || choice > 5);
+			}while( choice < 1 || choice > leaderSituation.size() + 1);
 			
-			if(choice!=5) {
+			if(choice!=leaderSituation.size() + 1) {
 				//user chose leader
 				do {
 					for (int i=0; i < printCorrectOptions(leaderSituation.get(choice-1)).size() ; i++)
