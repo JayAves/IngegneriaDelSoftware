@@ -24,11 +24,13 @@ import it.polimi.ingsw.ps29.model.game.resources.Woods;
 public class PrivilegesState implements ActionState {
 	private ActionState previousState;
 	private int privileges;
+	private boolean different;
 	private final StateOfActionIdentifier state = StateOfActionIdentifier.PRIVILEGES;
 	
 	
-	public PrivilegesState(ActionState previousState, int privileges) {
+	public PrivilegesState(ActionState previousState, int privileges, boolean different) {
 		this.privileges = privileges;
+		this.different = different;
 		this.previousState = previousState;
 	}
 
@@ -50,7 +52,7 @@ public class PrivilegesState implements ActionState {
 
 	@Override
 	public InteractionMessage objectForView(String player) {
-		return new PrivilegeChoice(player, privileges);
+		return new PrivilegeChoice(player, privileges, different);
 	}
 
 	public ActionState getPreviousState() {

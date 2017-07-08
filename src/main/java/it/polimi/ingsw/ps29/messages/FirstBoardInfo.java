@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
+import it.polimi.ingsw.ps29.DTO.PersonalBoardDTO;
 import it.polimi.ingsw.ps29.DTO.PersonalBonusTileDTO;
+import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
@@ -23,13 +25,15 @@ public class FirstBoardInfo extends InteractionMessage {
 	private ArrayList<ExcommunicationCardDTO> exCards;
 	private TowersAndDicesForView towersAndDices;
 	private int timer;
+	private HashMap <String, ArrayList<ResourceDTO>> initialResources;
 
 	public FirstBoardInfo(String player, HashMap<String, PersonalBonusTileDTO> tile, ArrayList<ExcommunicationCardDTO> exCards, 
-			TowersAndDicesForView towers) {
+			TowersAndDicesForView towers, HashMap<String, ArrayList<ResourceDTO>> initialResources) {
 		super(player,false);
 		this.tile = tile;
 		this.exCards = exCards;
 		this.towersAndDices = towers;
+		this.initialResources = initialResources;
 	}
 
 	@Override
@@ -61,4 +65,9 @@ public class FirstBoardInfo extends InteractionMessage {
 	public int getTimer() {
 		return timer;
 	}
+
+	public HashMap <String, ArrayList<ResourceDTO>> getInitialResources() {
+		return initialResources;
+	}
+
 }

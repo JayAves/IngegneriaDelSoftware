@@ -2,11 +2,16 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class Resource implements ResourceInterface, Cloneable, Serializable {
 	
-	/**
-	 * 
-	 */
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -4007137112395000936L;
 	protected int amount;
 	protected String type;
@@ -20,7 +25,7 @@ public class Resource implements ResourceInterface, Cloneable, Serializable {
 		return amount;
 	}
 
-	public void modifyAmount(int amount) {//da implementare eccezione nel caso diventa < 0
+	public void modifyAmount(int amount) {
 		this.amount += amount;
 	}
 

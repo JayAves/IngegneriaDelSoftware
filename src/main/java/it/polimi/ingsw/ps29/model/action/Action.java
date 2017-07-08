@@ -83,7 +83,7 @@ public abstract class Action {
 		
 		ResourceInterface privileges = model.getCurrentPlayer().getPersonalBoard().getResources().getResource("privilege");
 		if(privileges.getAmount()!=0 )
-			state = new PrivilegesState(state, privileges.getAmount());
+			state = new PrivilegesState(state, privileges.getAmount(), true);
 		else
 			state = state.afterAction(model);
 		

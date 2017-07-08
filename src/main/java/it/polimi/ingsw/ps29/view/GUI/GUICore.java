@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.util.Observable;
 
 import javax.swing.ButtonGroup;
@@ -22,39 +21,45 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import it.polimi.ingsw.ps29.DTO.TowersDTO;
-import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.ActionChoice;
+import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 
 public class GUICore extends Observable{
 	String playerName;
 	
 	JFrame frame; 
 	TowersDTO towers;
+	ActionChoice message; //used for leaders
 	
 	PrintTower tower;
 	ImageToPrint tile;
-	ImageToPrint personal;
+	PrintPersonal personal;
 	ButtonGroup family;
 	JSpinner servants;
 	JButton doAction;
+	JButton noAction;
 	ImageToPrint preview;
+	
 	JButton venture;
 	JButton character;
 	JButton prev;
 	JButton next;
+	
+	JLabel coin;
+	JLabel stone;
+	JLabel wood;
+	JLabel servant;
 	JLabel military;
 	JLabel faith;
 	JLabel victory;
 	JLabel privileges;
+	
 	JButton leaderButton;
 	ImageToPrint excomm1;
 	ImageToPrint excomm2;
 	ImageToPrint excomm3;
 	JTextArea console;
-	JLabel coin;
-	JLabel stone;
-	JLabel wood;
-	JLabel servant;
-	
+
 	PlayerListener listener;
 	
 	public GUICore (String name) {
@@ -69,15 +74,12 @@ public class GUICore extends Observable{
 	
 				frame = new JFrame ();
 				frame.setVisible(true);
-				//frame.setResizable(false);
 				setFrame (frame);
 				Toolkit tk = Toolkit.getDefaultToolkit();
 				int xSize = ((int) tk.getScreenSize().getWidth());
 				int ySize = ((int) tk.getScreenSize().getHeight());
 				frame.setSize(xSize,ySize);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
-				
 			}
 		});
 	}
@@ -90,10 +92,8 @@ public class GUICore extends Observable{
 		c.weighty = 1;
 		c.weightx = 4;
 		c.fill = GridBagConstraints.BOTH;
-		ArrayList<Integer> id = new ArrayList<Integer> ();
-		for(int i=0; i<16; i++)
-			id.add(i+1);
-		tower = new PrintTower(id, this);
+		StartCoordinates startCoord = new StartCoordinates(14,20,51,85,97,91,4,4);
+		tower = new PrintTower("gameboard.png", this, startCoord, 413, 607);
 		frame.add(tower, c);
 		
 		c.gridx = 1;
@@ -137,14 +137,15 @@ public class GUICore extends Observable{
 		panelNorth.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		tile = new ImageToPrint("bonus_tiles/personalbonustile_1.png", this);
+		tile = new ImageToPrint("bonus_tiles/personalbonustile_1.png");
 		c.gridheight = 2;
 		c.weightx = 1;
 		c.fill = GridBagConstraints.BOTH;
 		panelNorth.add(tile, c);
 		
+		StartCoordinates startCoord = new StartCoordinates(6, 9, 59, 92, 67, 115, 2, 6);
+		personal = new PrintPersonal("personalboard.jpg", this, startCoord, 400, 285);
 		
-		personal = new ImageToPrint("personalboard.jpg", this);
 		c.gridx = 1;
 		c.weightx = 6;
 		c.weighty = 2;
@@ -154,10 +155,11 @@ public class GUICore extends Observable{
 		JPanel leaderPanel = new JPanel ();
 		leaderPanel.setLayout(new BorderLayout());
 		
-		ImageToPrint leader = new ImageToPrint("leader.jpg", this);
+		ImageToPrint leader = new ImageToPrint("leader.jpg");
 		leaderPanel.add(leader, BorderLayout.CENTER);
 		
 		leaderButton = new JButton ("Leader");
+		leaderButton.addMouseListener(listener);
 		leaderPanel.add(leaderButton, BorderLayout.PAGE_END);
 		
 		c.gridx = 2;
@@ -166,16 +168,16 @@ public class GUICore extends Observable{
 		c.gridheight = 1;
 		panelNorth.add(leaderPanel, c);
 		
-		excomm1 = new ImageToPrint("excomm_back_1.png", this);
+		excomm1 = new ImageToPrint("excomm_back_1.png");
 		c.gridx = 3;
 		panelNorth.add(excomm1, c);
 		
-		excomm2 = new ImageToPrint("excomm_back_2.png", this);
+		excomm2 = new ImageToPrint("excomm_back_2.png");
 		c.gridx = 2;
 		c.gridy = 1;
 		panelNorth.add(excomm2, c);
 		
-		excomm3 = new ImageToPrint("excomm_back_3.png", this);
+		excomm3 = new ImageToPrint("excomm_back_3.png");
 		c.gridx = 3;
 		panelNorth.add(excomm3, c);
 	}
@@ -190,7 +192,7 @@ public class GUICore extends Observable{
 		
 		buttonsPanel.setLayout(new GridLayout(2, 2));
 		familiarPanel.setLayout(new GridLayout(2, 2));
-		doActionPanel.setLayout(new GridLayout(2, 1));
+		doActionPanel.setLayout(new GridLayout(2, 2));
 		pointsPanel.setLayout(new GridLayout(2, 2));
 		
 		setButtonsPanel(buttonsPanel);
@@ -208,7 +210,7 @@ public class GUICore extends Observable{
 		panelSouth.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		preview = new ImageToPrint("devcards_f_en_c_1.png", this);
+		preview = new ImageToPrint("devcards_f_en_c_1.png");
 		c.weightx = 2;
 		c.fill = GridBagConstraints.BOTH;
 		panelSouth.add(preview, c);
@@ -220,7 +222,6 @@ public class GUICore extends Observable{
 		console = new JTextArea("console...");
 		console.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(console);
-		scrollPane.setAutoscrolls(true);
 		panelSouth.add(scrollPane, c);
 		
 		c.gridx = 2;
@@ -228,13 +229,13 @@ public class GUICore extends Observable{
 		JPanel resourcesPanel = new JPanel();
 		resourcesPanel.setLayout(new GridLayout(4, 1));
 		
-		coin = new JLabel("Coins: 0");
+		coin = new JLabel("COINS: 0");
 		resourcesPanel.add(coin);
-		stone = new JLabel("Stones: 0");
+		stone = new JLabel("STONES: 0");
 		resourcesPanel.add(stone);
-		wood = new JLabel("Wood: 0");
+		wood = new JLabel("WOODS: 0");
 		resourcesPanel.add(wood);
-		servant = new JLabel("Servants: 0");
+		servant = new JLabel("SERVANTS: 0");
 		resourcesPanel.add(servant);
 		
 		panelSouth.add(resourcesPanel, c);
@@ -279,6 +280,8 @@ public class GUICore extends Observable{
 	}
 	
 	public void setDoActionPanel (JPanel doActionPanel) {
+		JLabel labelServants = new JLabel("# of servants: ");
+		doActionPanel.add(labelServants);
 		
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 99, 1);     
 		servants = new JSpinner(model);
@@ -287,17 +290,21 @@ public class GUICore extends Observable{
 		doAction = new JButton("Do Action!");
 		doAction.addMouseListener(listener);
 		doActionPanel.add(doAction);
+		
+		noAction = new JButton("NO Action");
+		noAction.addMouseListener(listener);
+		doActionPanel.add(noAction);
 	}
 	
 	public void setPointsPanel (JPanel pointsPanel) {
 		
-		military = new JLabel("Military: 0");
+		military = new JLabel("MILITARY: 0");
 		pointsPanel.add(military);
-		faith = new JLabel("Faith: 0");
+		faith = new JLabel("FAITH: 0");
 		pointsPanel.add(faith);
-		victory = new JLabel("Victory: 0");
+		victory = new JLabel("VICTORY: 0");
 		pointsPanel.add(victory);
-		privileges = new JLabel("Privileges: 0");
+		privileges = new JLabel("PRIVILEGES: 0");
 		pointsPanel.add(privileges);
 	}	
 	
@@ -317,9 +324,53 @@ public class GUICore extends Observable{
 		new GUICore ("test");
 	}
 	
-	public void notifyAboutInput (InteractionMessage msg) {
+	public void notifyInput (Object msg) {
 		setChanged();
 		notifyObservers(msg);
+	}
+	
+	public void setMessage (ActionChoice msg) {
+		message = msg;
+	}
+	
+	public ActionChoice getMessage () {
+		return message;
+	}
+	
+	public JLabel getCoin() {
+		return coin;
+	}
+
+	public JLabel getStone() {
+		return stone;
+	}
+
+	public JLabel getWood() {
+		return wood;
+	}
+
+	public JLabel getServant() {
+		return servant;
+	}
+
+	public JLabel getMilitary() {
+		return military;
+	}
+
+	public JLabel getFaith() {
+		return faith;
+	}
+
+	public JLabel getVictory() {
+		return victory;
+	}
+
+	public JLabel getPrivileges() {
+		return privileges;
+	}
+	
+	public String getPlayerName () {
+		return playerName;
 	}
 
 }

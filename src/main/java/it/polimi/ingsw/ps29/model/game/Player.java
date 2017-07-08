@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.ArrayList;
 
+
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.LeaderCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
@@ -14,9 +15,24 @@ import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
 
+/**
+ * Contains all player info:
+ * 	<ul>
+ * 		<li>{@link Color}
+ * 		<li>{@link FamilyMember} 
+ * 		<li>{@link PersonalBoard} e {@link PersonalBonusTile}
+ * 		<li>{@link ExcommunicationCard} if excommunicated
+ * 		<li>{@link Effect}s from Leaders and Cards
+ * 		<li> {@link FinalScoring}
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class Player {
 	private String name;
-	private Color color;
+	private PlayerColor color;
 	private PersonalBoard board;
 	private FamilyMemberInterface[] family; 
 	private FakeFamilyMemberInterface fakeFamiliar;
@@ -32,7 +48,7 @@ public class Player {
 	private boolean picoDellaMirandola;
 	private boolean noMarket;
 	
-	public Player (String name, Color color, PersonalBonusTile pbt) {
+	public Player (String name, PlayerColor color, PersonalBonusTile pbt) {
 		this.name = name;
 		this.color = color;
 		this.board = new PersonalBoard(pbt);
@@ -85,7 +101,7 @@ public class Player {
 		this.fakeFamiliar = fakeFamiliar;
 	}
 
-	public Color getColor() {
+	public PlayerColor getColor() {
 		return color;
 	}
 	

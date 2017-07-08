@@ -33,8 +33,12 @@ public class TowersDTO implements Serializable {
 	
 	public CardDTO takeCard (int space, int floor) {
 		CardDTO takenCard;
+		if(space==4)
+			space = 5;
+		else if (space==5)
+			space = 4;
 		takenCard = towers.get(types[space-3]).get(floor-1);
-		towers.get(types[space-3]).set(floor-1, new CardDTO(0, "", ""));
+		towers.get(types[space-3]).set(floor-1, new CardDTO(-1, "", ""));
 		return takenCard;
 	}
 	
@@ -47,4 +51,13 @@ public class TowersDTO implements Serializable {
 		
 		return towers.get(types[index/4]).get(index%4).getId();
 	}
+	
+	public ArrayList<Integer> getIdCards () {
+		ArrayList<Integer> id = new ArrayList<Integer>();
+		for(String type: types)
+			for(CardDTO card: towers.get(type))
+				id.add(card.getId());
+		return id;
+	}
+	
 }

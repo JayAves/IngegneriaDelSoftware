@@ -199,7 +199,6 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println("[optional]\n");
 	}
 
-	@Override
 	public void printBonusAction(BonusActionEffect effect) {
 		System.out.println("Bonus action value: "+effect.getValue());
 		System.out.println("Type of action: "+effect.getType());
@@ -329,8 +328,7 @@ public class InputOutputCLI implements InputOutput {
 				} while (secondChoice < 1 || secondChoice > printCorrectOptions(leaderSituation.get(choice-1)).size());
 				
 				// l'utente ha scelto cosa fare con la carta
-					System.out.println(" +++sto mettendo" + printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
-					leaderSituation.get(choice -1).add(printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
+				leaderSituation.get(choice -1).add(printCorrectOptions(leaderSituation.get(choice-1)).get(secondChoice -1));
 			}
 		}
 		return leaderSituation;
@@ -339,15 +337,17 @@ public class InputOutputCLI implements InputOutput {
 	private ArrayList<String> printCorrectOptions(ArrayList<Object> card){
 		ArrayList<String> toShow = new ArrayList<String>();
 		toShow.add("DO NOTHING");
+		
 		if (card.get(2).equals(0)){
 			toShow.add("DISCARD");
 			if ((boolean) card.get(3))
 				toShow.add("PLAY");
 		}
+		
 		if (card.get(2).equals(1))
 				toShow.add("ACTIVATE");
 		return toShow;
-		}
+	}
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
@@ -372,7 +372,6 @@ public class InputOutputCLI implements InputOutput {
 			msg.setChoice(3, askFamiliarColor());
 		if (temp[0] == 13)
 			msg.setLeaderSituation(askLeader(msg.getLeaderSituation()));
-		
 		
 		
 		return msg;
@@ -423,13 +422,6 @@ public class InputOutputCLI implements InputOutput {
 		
 			msg.setServants(askNumberOfServants());
 		} 
-		
-		/*} catch (ExpiredTimeException e) {
-			System.out.println(e.getMessage()+"\n");
-			msg.setSpace(1);
-			msg.setFloor(1);
-			msg.setServants(0);
-		}*/
 		
 		return msg;
 	}

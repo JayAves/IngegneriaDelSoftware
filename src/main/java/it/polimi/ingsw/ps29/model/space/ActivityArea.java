@@ -2,9 +2,16 @@ package it.polimi.ingsw.ps29.model.space;
 
 import it.polimi.ingsw.ps29.messages.exception.FamiliarHereException;
 import it.polimi.ingsw.ps29.messages.exception.NotEnoughPowerfulException;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
+/**
+ * Where FamilyMember are placed to do a ProductionAction or an HarvestAction.
+ * @author Pietro Melzi
+ * @author Giovanni Mele
+ * @author Pietro Grotti
+ *
+ */
 public class ActivityArea implements ActionSpace {
 	
 	private final SingleSlotActionSpace head;
@@ -16,7 +23,7 @@ public class ActivityArea implements ActionSpace {
 		this.queue = queue;
 	}
 	
-	public boolean familiarHere (Color playerColor) throws FamiliarHereException{
+	public boolean familiarHere (PlayerColor playerColor) throws FamiliarHereException{
 		if( !head.familiarHere(playerColor) && !queue.familiarHere(playerColor))
 			return false;
 		throw new FamiliarHereException();

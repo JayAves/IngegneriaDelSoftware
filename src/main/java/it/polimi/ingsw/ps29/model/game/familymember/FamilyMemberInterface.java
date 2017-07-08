@@ -1,11 +1,11 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
 public interface FamilyMemberInterface {
 	
-	// public int setPower();
+	
 	
 	public int getPower();
 	
@@ -31,6 +31,6 @@ public interface FamilyMemberInterface {
 	
 	public boolean getBusy ();
 	
-	public Color getPlayerColor();
+	public PlayerColor getPlayerColor();
 	
 }

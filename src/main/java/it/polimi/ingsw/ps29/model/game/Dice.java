@@ -2,6 +2,13 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.util.Random;
 
+/**
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class Dice {
 	private int value;
 	private DiceColor color;

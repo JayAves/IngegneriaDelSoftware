@@ -23,7 +23,7 @@ public class CoordinateHandlerSpaces {
 		 *spaceCoords.get(0) avrà le coordinate di territorySpace - floor 1
 		 *spaceCoords.get(1) avrà le coordinate di territorySpace - floor 2
 		 *...
-		 *spaceCoords.get(4) avrà le coordinate di buildingSpace - floor 1
+		 *spaceCoords.get(4) avrà le coordinate di characterSpace - floor 1
 		 *...
 		 */
 		
@@ -102,6 +102,17 @@ public class CoordinateHandlerSpaces {
 	}
 	
 	public Coordinates getSpaceCoord (int index) {
-		return index<23 ? spaceCoords.get(index) : null;
+		return index>-1 && index<23 ? spaceCoords.get(index) : null;
 	}
+	
+	//called for print familiar in queue spaces, return the coordinates of space between head and queue
+	public double getSpaceHeadQueue () {
+		return calculateValue(24, true);
+	}
+	
+	public double getWidthSpace () {
+		return calculateValue(29, true);
+	}
+	
+	
 }

@@ -114,9 +114,9 @@ public class View extends Observable implements Observer {
 	public void askAboutPrivileges (PrivilegeChoice msg) {
 		try {
 			ResourceType type;
-			while(msg.getChoices().size()<msg.getPrvilieges()){
+			while(msg.getChoices().size()<msg.getPrivileges()){
 				type = inputOutput.askSpecificPrivilege();
-				if(!msg.isIn(type))
+				if(!msg.getDifferent() || !msg.isIn(type))
 					msg.getChoices().add(type);
 			}
 			setChanged();

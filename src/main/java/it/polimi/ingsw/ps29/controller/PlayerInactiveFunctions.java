@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.controller;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.VaticanChoice;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
@@ -19,7 +19,7 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 public class PlayerInactiveFunctions {
 	
 	
-	static InfoForView playerInactivePlacement (String player, Match model, Color playerColor, int familiar) {
+	static InfoForView playerInactivePlacement (String player, Match model, PlayerColor playerColor, int familiar) {
 		FamilyMemberInterface fam = getFamiliar(model.getBoard().getPlayerByName(player), familiar);
 		((CouncilPalaceArea)model.getBoard().getSpace("NoAction")).placeFamiliar(fam, false);
 		fam.setBusy(true);

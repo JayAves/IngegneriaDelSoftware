@@ -1,6 +1,13 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
 
+/**
+ * Describes with a enum all resources' types.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public enum ResourceType {
 	COIN ("coin"), WOOD ("wood"), STONE ("stone"), SERVANT ("servant"), FAITH ("faith"),
 	MILITARY ("military"), VICTORY ("victory"), PRIVILEGE("privilege") ;

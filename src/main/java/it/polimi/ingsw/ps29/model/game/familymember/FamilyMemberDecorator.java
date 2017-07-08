@@ -1,8 +1,15 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
+/**
+ * 
+ * @author Giovanni Mele
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ *
+ */
 public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 	
 	protected FamilyMemberInterface decoratedFamilyMember;
@@ -72,7 +79,7 @@ public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 	}
 	
 	@Override
-	public Color getPlayerColor(){
+	public PlayerColor getPlayerColor(){
 		return decoratedFamilyMember.getPlayerColor();
 	}
 	

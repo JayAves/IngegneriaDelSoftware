@@ -50,7 +50,7 @@ public class LeaderAction extends Action{
 		state = new ToEstablishState();
 		
 		if (privilegeCounter > 0)
-			state = new PrivilegesState(state, privilegeCounter);
+			state = new PrivilegesState(state, privilegeCounter, false);
 		
 		return state;
 	}

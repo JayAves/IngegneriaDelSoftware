@@ -1,5 +1,10 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
+/**
+ * Patter Decorator's realization for Resources.
+ * @author Giovanni Mele
+ *
+ */
 public class ResourceDecorator implements ResourceInterface {
 	
 	int modifier;

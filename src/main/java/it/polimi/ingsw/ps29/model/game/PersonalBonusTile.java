@@ -3,6 +3,15 @@ package it.polimi.ingsw.ps29.model.game;
 import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**
+ * Contains harvest and production default bonuses.
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ * @see it.polimi.ingsw.ps29.model.action.HarvestAction
+ * @see it.polimi.ingsw.ps29.model.action.ProductionAction
+ *
+ */
 public class PersonalBonusTile {
 	private int id;
 	private final ArrayList<Resource> productionBonus;

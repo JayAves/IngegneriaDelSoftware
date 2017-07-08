@@ -23,6 +23,23 @@ import it.polimi.ingsw.ps29.model.space.QueueActionSpace;
 import it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 
+/**
+ * Contains most of game's elements:
+ * <ul>
+ * 	<li> {@link Dice}	s
+ * 	<li> {@link ActionSpace}	s
+ * 	<li> {@link Player}	s in Order
+ * 	<li> {@link LeaderCard}	s played
+ *	<li> {@link	Card}	s and {@link ExcommunicationCard}	s
+ *	<li> {@link Excommunication	} s received
+ *	<li> {@link FaithTrack}
+ * <br>
+ * 
+ * @author Pietro Melzi
+ * @author Pietro Grotti
+ * @author Giovanni Mele
+ *
+ */
 public class GameBoard{
 	
 	private ArrayList <Dice> dices;
@@ -40,6 +57,10 @@ public class GameBoard{
 	
 	
 	
+	/**
+	 * Initializes all elements necessary for the game to begin.
+	 * @param players list given from {@link Match}
+	 */
 	public GameBoard (ArrayList<Player> players) {
 		dices = new ArrayList<Dice> ();
 		dices.add(new Dice(DiceColor.BLACK));
@@ -55,14 +76,14 @@ public class GameBoard{
 		
 	}
 	
-	public Color getColorByName (String name) {
+	public PlayerColor getColorByName (String name) {
 		for(Player player: playersOrder)
 			if (player.getName().equals(name))
 				return player.getColor();
 		return null;
 	}
 	
-	
+	//init all spaces with certain bonuses
 	public void initSpaces (BonusInit[] resources) {
 				
 		//devo leggere ed assegnare bonus da file
@@ -79,11 +100,11 @@ public class GameBoard{
 		((TowerArea)spaces.get("territoryTower")).setBonus(resources[0].getBonus(),3);
 		((TowerArea)spaces.get("territoryTower")).setBonus(resources[1].getBonus(),4);
 		spaces.put("buildingTower", new TowerArea ());
-		((TowerArea)spaces.get("buildingTower")).setBonus(resources[2].getBonus(),3);
-		((TowerArea)spaces.get("buildingTower")).setBonus(resources[3].getBonus(),4);
+		((TowerArea)spaces.get("buildingTower")).setBonus(resources[4].getBonus(),3);
+		((TowerArea)spaces.get("buildingTower")).setBonus(resources[5].getBonus(),4);
 		spaces.put("characterTower", new TowerArea ());
-		((TowerArea)spaces.get("characterTower")).setBonus(resources[4].getBonus(),3);
-		((TowerArea)spaces.get("characterTower")).setBonus(resources[5].getBonus(),4);
+		((TowerArea)spaces.get("characterTower")).setBonus(resources[2].getBonus(),3);
+		((TowerArea)spaces.get("characterTower")).setBonus(resources[3].getBonus(),4);
 		spaces.put("ventureTower", new TowerArea ());
 		((TowerArea)spaces.get("ventureTower")).setBonus(resources[6].getBonus(),3);
 		((TowerArea)spaces.get("ventureTower")).setBonus(resources[7].getBonus(),4);
@@ -96,6 +117,7 @@ public class GameBoard{
 		
 	}
 	
+	//gets bonuses from file faithTrack.json
 	public void initFaithTrack(BonusInit[] bonuses){
 		
 		faithTrack = new HashMap<Integer, FaithSpace>();

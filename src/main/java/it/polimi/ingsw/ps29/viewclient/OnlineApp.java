@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.viewclient;
+ package it.polimi.ingsw.ps29.viewclient;
 
 import java.util.Scanner;
 
@@ -16,13 +16,12 @@ import it.polimi.ingsw.ps29.view.View;
 
 public class OnlineApp {
 	 
-	public static void main( String[] args ) {
+	public static void main (String[] args) {
 	    	
 	    	Scanner scanner = new Scanner (System.in);
 	    	String inputChoice;
 	    	String inputConnection;
 	    	String playerName;
-	    	
 	    	
 	    	/*System.out.println("[CLI-GUI]");
 	    	
@@ -34,21 +33,15 @@ public class OnlineApp {
 	    	do { inputConnection = scanner.nextLine();
 	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); */
 	    	
-	    
-	    	inputChoice = "CLI";	    	
+	    	inputChoice = "GUI";	    	
 	    	inputConnection = "Socket";
-	    	
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
     		
-    		
     		View view = new View (inputChoice,  playerName);
-    		
     		Client client = new Client (view, inputConnection);
 			
-    		
     		//System.out.println("\nWaiting for a match");
-    		
     		
 	 }
 }

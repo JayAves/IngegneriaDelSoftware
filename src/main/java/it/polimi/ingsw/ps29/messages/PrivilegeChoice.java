@@ -15,11 +15,13 @@ public class PrivilegeChoice extends InteractionMessage {
 	//auto-generated serialVersionUID
 	private static final long serialVersionUID = -7857119179517355732L;
 	private int prvilieges;
+	private boolean different;
 	private ArrayList <ResourceType> choices;
 
-	public PrivilegeChoice(String player, int privileges) {
+	public PrivilegeChoice(String player, int privileges, boolean different) {
 		super(player, true);
 		this.prvilieges = privileges;
+		this.different = different;
 		choices = new ArrayList<ResourceType>();
 	}
 	
@@ -34,9 +36,7 @@ public class PrivilegeChoice extends InteractionMessage {
 		choices.add(choice);
 	}
 
-
-
-	public int getPrvilieges() {
+	public int getPrivileges() {
 		return prvilieges;
 	}
 
@@ -46,20 +46,20 @@ public class PrivilegeChoice extends InteractionMessage {
 		return choices;
 	}
 
-
-
 	@Override
 	public void visit(VisitorMessages visitor) {
 		visitor.visit(this);
 	}
-
-	
-	
 
 	@Override
 	public void receive(it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages visitor) {
 		// TODO Auto-generated method stub
 		visitor.receive(this);
 	}
+	
+	public boolean getDifferent () {
+		return different;
+	}
 
+	
 }

@@ -31,13 +31,11 @@ public interface InputOutput {
 	
 	abstract void showFirstInfo (FirstBoardInfo msg);
 	
-	abstract void showInfo (InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towerdDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
+	abstract void showInfo (InfoForView info, GameBoardDTO gameBoardDTO, TowersDTO towersDTO, HashMap <String, PersonalBoardDTO> personalBoardsDTO);
 
 	abstract void showTowerAndDices(TowersAndDicesForView msg);
 
 	abstract Exchange askExchange(Exchange msg) throws ExpiredTimeException;
-	
-	abstract void printBonusAction (BonusActionEffect effect);
 
 	abstract ResourceType askSpecificPrivilege() throws ExpiredTimeException;
 	

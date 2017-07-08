@@ -40,7 +40,7 @@ public class PrivilegesTest extends TestCase {
 		Resource res = new Resource ("privilege", 1);
 		model.getCurrentPlayer().getPersonalBoard().getResources().updateResource(res);
 		//System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources().removeResource(ResourceType.PRIVILEGE));
-		state = new PrivilegesState (new PerformedState(), 1);
+		state = new PrivilegesState (new PerformedState(), 1, true);
 		state = state.afterAction(model);
 	}
 	

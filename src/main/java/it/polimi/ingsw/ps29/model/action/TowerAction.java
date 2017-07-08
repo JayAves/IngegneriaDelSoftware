@@ -120,15 +120,16 @@ public class TowerAction extends Action {
 			else //eseguo l'effetto immediato se non si tratta di una bonus action
 				immediateEffect.performEffect(move.getPlayer());
 		
-		//gestione degli effetti permanenti
-		for(Effect permanentEffect: space.takeCard().getPermanentEffects()) {
-			permanentEffect.performEffect(move.getPlayer());
-			
-			//se l'effetto prevede uno sconto permanente di risorse memorizzo in un ArrayList sul player
-			if(permanentEffect instanceof EmpowermentPlacementEffect)
-				if (!((EmpowermentPlacementEffect) permanentEffect).getDiscount().isEmpty())
-					move.getPlayer().addSpecialPermanentEffects(permanentEffect);
-		}
+		//gestione degli effetti permanenti per characters
+		if(move.getSpace().equals("characterTower")) 
+			for(Effect permanentEffect: space.takeCard().getPermanentEffects()) {
+				permanentEffect.performEffect(move.getPlayer());
+				
+				//se l'effetto prevede uno sconto permanente di risorse memorizzo in un ArrayList sul player
+				if(permanentEffect instanceof EmpowermentPlacementEffect)
+					if (!((EmpowermentPlacementEffect) permanentEffect).getDiscount().isEmpty())
+						move.getPlayer().addSpecialPermanentEffects(permanentEffect);
+			}
 		
 		space.getPlacementFloor().setCard(null); 
 		space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());

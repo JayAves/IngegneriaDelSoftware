@@ -1,5 +1,11 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
+/**
+ * Instead of decorating the real {@link FamilyMember}
+ * @author Giovanni Mele
+ * @author Pietro Melzi
+ *
+ */
 public class FakeFamilyMember implements FakeFamilyMemberInterface{
 	
 	private final int fakepower = 0;

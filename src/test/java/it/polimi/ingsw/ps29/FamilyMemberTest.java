@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionDecorator;
@@ -22,7 +22,7 @@ public class FamilyMemberTest extends TestCase {
 	
 	@BeforeClass
 	public void setUp () {
-		member = new FamilyMember(DiceColor.ORANGE, Color.RED);
+		member = new FamilyMember(DiceColor.ORANGE, PlayerColor.RED);
 		FakeFamilyMember fake = new FakeFamilyMember();
 		fakedec = new FakeFamilyMemberProductionDecorator (fake, 2);
 		member.setPower(3);

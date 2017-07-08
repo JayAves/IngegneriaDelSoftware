@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.ResourceDTO;
 import it.polimi.ingsw.ps29.controller.Controller.VisitorMessages;
-import it.polimi.ingsw.ps29.model.game.Color;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages;
 
 
@@ -20,7 +20,7 @@ public class InfoForView extends InteractionMessage {
 
 	
 	private static final long serialVersionUID = 8295468107880613441L;
-	public Color playerColor;
+	public PlayerColor playerColor;
 	public int space;
 	public int floor;
 	public int familiar;
