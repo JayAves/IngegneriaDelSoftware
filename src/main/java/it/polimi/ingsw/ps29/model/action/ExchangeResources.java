@@ -40,21 +40,22 @@ public class ExchangeResources {
 			
 			//devo aggiornare anche le outResourcesUpdated
 			if(msg.getChoice(1)==0) {
-				current.getSupport().getOutResourcesUpdate().updateResource(erh.getResOut().get(msg.getChoice(1)));
+				for(Resource resOut: erh.getResOut()) {
+					resOut.negativeAmount();
+					current.getSupport().getOutResourcesUpdate().updateResource(resOut);
+				}
 				current.getSupport().checkVector();
 			}
 			else 
 				for(Resource res: erh.resOut(msg.getChoice(1))) {
 					current.getSupport().getOutResourcesUpdate().updateResource(res);
-					current.getSupport().checkVector();
+				current.getSupport().checkVector();
 				}
 		}
+		
+		//setEffect return performed state if option is empty
 		state = ((AskAboutExchangeState)state).setEffect(current.getSupport().getOptions());
 		
-		//dopo questo comando l'azione può essere in stato di scambio o terminata 
-		//perchè cancello le opzioni rimaste
-		
-		state = state.afterAction(model);
 		return state;
 	}
 

@@ -282,8 +282,6 @@ public class GUICore extends Observable{
 		black.setSelected(true);
 		black.setIcon(new ColorIcon(16, Color.BLACK));
 		black.setSelectedIcon(new ColorIconSelected(16, Color.BLACK));
-//		black.setIcon(new ImageIcon("images/resources/coin.png"));
-//		black.setSize(10, 10);
 		familiarPanel.add(black);
 		
 		JRadioButton white = new JRadioButton("WHITE");

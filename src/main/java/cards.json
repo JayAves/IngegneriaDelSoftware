@@ -240,7 +240,7 @@
 		{ "resources": [{
 			"resourceType":"Privilege",
 			"resourceData":{
-				"amount":3,
+				"amount":1,
 				"type":"privilege" }
 			}]}}],
 	"cost":[],

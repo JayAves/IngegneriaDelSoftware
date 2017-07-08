@@ -36,7 +36,7 @@ public interface InputOutput {
 
 	abstract Exchange askExchange(Exchange msg) throws ExpiredTimeException;
 
-	abstract ResourceType askSpecificPrivilege(boolean different) throws ExpiredTimeException;
+	abstract ResourceType askSpecificPrivilege(boolean different, boolean multiple) throws ExpiredTimeException;
 	
 	abstract int askAboutExcommunication () throws ExpiredTimeException;
 	

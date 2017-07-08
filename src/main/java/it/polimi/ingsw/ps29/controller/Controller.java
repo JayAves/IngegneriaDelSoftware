@@ -255,7 +255,7 @@ public class Controller extends Observable implements Observer{
 		stateOfAction = res.exchangeHandler(msg);
 		sendInfo = true;
 		
-		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())) 
+		if(stateOfAction.getState().equals(StateOfActionIdentifier.PERFORMED.getName())) {
 			if(model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount()>0) {
 				stateOfAction = new PrivilegesState(stateOfAction, 
 						model.getCurrentPlayer().getPersonalBoard().getSpecificResource("privilege").getAmount(), true);
@@ -263,8 +263,14 @@ public class Controller extends Observable implements Observer{
 				
 				views.get(name).startInteraction(stateOfAction.objectForView(name));
 				stateOfAction = stateOfAction.afterAction(model);
-				
 			}
+			
+			//if state is performed and there aren't privileges
+			else 
+				stateOfAction = stateOfAction.afterAction(model);
+		}
+		
+		
 	}
 	
 	

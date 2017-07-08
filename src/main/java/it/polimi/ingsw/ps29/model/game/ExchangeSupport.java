@@ -20,7 +20,7 @@ public class ExchangeSupport {
 	
 	public ExchangeSupport(ArrayList<ExchangeResourcesEffect> options, Container resources) {
 		this.options = options;
-		this.setOutResourcesUpdate(resources);
+		this.setOutResourcesUpdate(resources); //performed with function clone
 	}
 	
 	public ArrayList<ExchangeResourcesEffect> getOptions() {

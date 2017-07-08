@@ -21,7 +21,6 @@ public class ServerMain {
 	    GsonBuilder gtimer = new GsonBuilder();
 	    TimerJson timer = gtimer.create().fromJson(btimer, TimerJson.class);	
 	    
-		
 		RoomCreator creator= new RoomCreator();
 		creator.setPeriod(timer.roomTimer);
 		creator.start();

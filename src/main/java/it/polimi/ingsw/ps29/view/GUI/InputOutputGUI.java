@@ -76,8 +76,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	}
 
 	@Override
-	public ResourceType askSpecificPrivilege(boolean different) throws ExpiredTimeException {
-		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen, different);
+	public ResourceType askSpecificPrivilege(boolean different, boolean multiple) throws ExpiredTimeException {
+		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen, different, multiple);
 		interactionPanel = new BasePanel (ppc.createLeftPanel(), ppc.createRightPanel(), "PRIVILEGE CHOICE");
 		messageInTime();
 		

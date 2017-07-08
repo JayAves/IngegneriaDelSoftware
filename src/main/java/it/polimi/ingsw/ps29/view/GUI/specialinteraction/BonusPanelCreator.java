@@ -78,7 +78,7 @@ public class BonusPanelCreator extends PanelCreator{
 			panel.add(tower, c);
 		}
 		
-		if (!effect.getType().equals("harvest") && !effect.getType().equals("production")) {
+		if (!effect.getType().toLowerCase().equals("harvest") && !effect.getType().toLowerCase().equals("production")) {
 			c.gridy++;
 			floor = new JComboBox<String>();
 			floor.addItem("first");

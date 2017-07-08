@@ -35,27 +35,25 @@ public class ExchangePanelCreator extends PanelCreator {
 			JPanel singleOption = new JPanel(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			
-			c.gridx = 1;
-			c.gridy = 1;
 			singleOption.add(new JLabel("Res OUT:"),c);
 
 			for (Resource res: erh.getResOut()) {
-				c.gridy = 2;
+				c.gridy = 1;
 				singleOption.add(GUIUtilities.createSingleLabel("images/resources/"+res.getType()+".png", 40, 40),c);
-				c.gridy = 3;
+				c.gridy = 2;
 				singleOption.add(new JLabel(res.getAmount()+""),c);
 				
 				c.gridx++;
 			}
 			
-			c.gridx = 1;
-			c.gridy = 4;
+			c.gridx = 0;
+			c.gridy = 3;
 			singleOption.add(new JLabel("Res IN:"),c);
 
 			for (Resource res: erh.getResIn()) {
-				c.gridy = 5;
+				c.gridy = 4;
 				singleOption.add(GUIUtilities.createSingleLabel("images/resources/"+res.getType()+".png", 40, 40),c);
-				c.gridy = 6;
+				c.gridy = 5;
 				singleOption.add(new JLabel(res.getAmount()+""),c);
 
 				c.gridx++;
@@ -75,7 +73,7 @@ public class ExchangePanelCreator extends PanelCreator {
 		panel.add(new JLabel("Make your choice: "));
 		int i;
 		for(i=1; i<=((Exchange)msg).getExchange().getChoices().size(); i++) {
-			JRadioButton option = new JRadioButton();
+			JRadioButton option = new JRadioButton("OPTION: "+i);
 			option.setActionCommand(i+"");
 			choice.add(option);
 			panel.add(option);

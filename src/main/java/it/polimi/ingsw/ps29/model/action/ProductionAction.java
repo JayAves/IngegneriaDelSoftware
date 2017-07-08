@@ -53,6 +53,7 @@ public class ProductionAction extends Action {
 			throw new SpaceOccupiedException();
 		else return true;
 	}
+	
 	@Override
 	public void performAction() {
 		if(!space.isEmpty() && !move.getPlayer().getLudovicoAriosto())
@@ -71,9 +72,11 @@ public class ProductionAction extends Action {
 			//rimuovo tutti gli scambi che non sono possibili a causa delle risorse del giocatore
 			support.checkVector();
 			
-			move.getPlayer().setSupport(support);
-			//creo lo stato con solo gli scambi che possono essere effettivemente fattibili
-			state = new AskAboutExchangeState(move.getPlayer().getSupport().getOptions());
+			if(!support.getOptions().isEmpty()) {
+				move.getPlayer().setSupport(support);
+				//creo lo stato con solo gli scambi che possono essere effettivemente fattibili
+				state = new AskAboutExchangeState(move.getPlayer().getSupport().getOptions());
+			}
 		}
 				
 		//gestione bonus della tile

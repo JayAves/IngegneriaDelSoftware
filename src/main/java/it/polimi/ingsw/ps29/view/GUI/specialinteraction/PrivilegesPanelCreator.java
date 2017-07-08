@@ -20,17 +20,19 @@ import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 public class PrivilegesPanelCreator extends PanelCreator {
 	private ButtonGroup choice;
 	private boolean different;
+	private boolean multiple;
 	
-	public PrivilegesPanelCreator(GUICore gui, boolean different) {
+	public PrivilegesPanelCreator(GUICore gui, boolean different, boolean multiple) {
 		super(gui, null);
 		this.different = different;
+		this.multiple = multiple;
 	}
 
 	@Override
 	public JPanel createLeftPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
 		String infoPrivilege = "Choose the privilege!";
-		if(different)
+		if(different && multiple)
 			infoPrivilege = "<html>Choose the privilege! <br/> Each choice must be different <br/> "
 					+ "from the others <br/> made in this round</html>";
 		panel.add(new JLabel(infoPrivilege), BorderLayout.PAGE_START);
