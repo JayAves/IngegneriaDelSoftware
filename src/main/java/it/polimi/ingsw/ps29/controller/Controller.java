@@ -82,6 +82,10 @@ public class Controller extends Observable implements Observer{
 		System.out.println("\nPlayer "+playerName+ " is back in Game");
 	}
 	
+	public Map<String, ClientThread> getViews(){
+		return views;
+	}
+	
 	/**
 	 * Starts interaction with current player. Sends the correct InteractionMessage according to the current ActionState. 
 	 * If player is disconnected does a playerInactivePlacement.
@@ -421,7 +425,7 @@ public class Controller extends Observable implements Observer{
 	}
 	
 	
-	private void conclusion () {
+	private void conclusion ()  {
 		
 		for (Player player : model.getBoard().getPlayers()){
 			player.passPersonalBoard();
@@ -452,6 +456,8 @@ public class Controller extends Observable implements Observer{
 		//Room will be closed
 		setChanged();
 		notifyObservers();
+		
+		
 		
 	}
 	

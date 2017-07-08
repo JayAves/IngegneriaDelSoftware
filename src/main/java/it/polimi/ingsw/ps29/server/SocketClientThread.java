@@ -9,6 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
@@ -128,6 +129,7 @@ public class SocketClientThread extends ClientThread {
 		endOfConnection=true;
 		setChanged();
 		notifyObservers(msg);
+		
 	}
 
 	public void notifyController(InteractionMessage msg) {
@@ -192,6 +194,9 @@ public class SocketClientThread extends ClientThread {
 					beeperHandle = scheduler.schedule(task, thread.actionTimer, TimeUnit.MILLISECONDS);
 					System.out.println("Msg sended by: "+((InteractionMessage)o).getName());
 				}	
+				
+				if (o instanceof FinalScores)
+					stopClient();
 				
 				
 			} catch (IOException e) {
