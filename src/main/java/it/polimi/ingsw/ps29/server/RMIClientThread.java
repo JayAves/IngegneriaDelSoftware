@@ -7,6 +7,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
@@ -110,6 +111,9 @@ public class RMIClientThread extends ClientThread implements Serializable{
 					}
 				
 				clientInterface.notify(msg);
+				
+				if (msg instanceof FinalScores)
+					stopClient();
 				
 		
 			} catch (RemoteException e) {

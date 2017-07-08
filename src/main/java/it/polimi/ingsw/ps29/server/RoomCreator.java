@@ -124,7 +124,7 @@ public class RoomCreator extends Thread implements Observer {
 			
 			for (ClientThread client: room.getViews()) {
 				
-				if (client.IDcode.contentEquals(thread.IDcode)) {
+				if ((client.IDcode.contentEquals(thread.IDcode))&& room.active) {
 					
 					room.getController().removeView(client.getClientName(), client);
 					System.out.println("\nOld view:"+client.toString());

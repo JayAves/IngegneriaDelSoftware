@@ -321,7 +321,7 @@ public class GUICore extends Observable{
 	}
 	
 	public static void main(String[] args) {
-		new GUICore ("test");
+		//new GUICore ("test");
 	}
 	
 	public void notifyInput (Object msg) {

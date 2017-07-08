@@ -6,7 +6,7 @@ public class CharacterFinalPointsOff implements EndGameVictoryPointsGatherer{
 
 	@Override
 	public void getVictoryPoints(PersonalBoard board) {
-		System.out.println("Non prendi punti per le carte personaggio");
+		System.out.println("You don't get victoryPoints for Characters you own");
 	}
 
 }

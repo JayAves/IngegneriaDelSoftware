@@ -20,6 +20,7 @@ public class Container {
 		resources.put("wood", new Resource("wood",2));
 		resources.put("servant", new Resource("servant",3));
 		resources.put("stone", new Resource("stone",2));
+		resources.put("victory", new Resource("victory",0));
 	}
 	
 	public void updateResource (ResourceInterface res) {
