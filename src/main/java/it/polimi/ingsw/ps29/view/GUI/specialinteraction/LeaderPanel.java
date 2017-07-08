@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
 
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
+import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
 public class LeaderPanel extends FromBoardPanel {
 	
@@ -57,7 +58,7 @@ public class LeaderPanel extends FromBoardPanel {
 		//second row in the panel
 		JPanel centerPanel = new JPanel (new GridLayout(1, leaderSituation.size()));
 		for(ArrayList<Object> leader: leaderSituation)
-			centerPanel.add(createSingleLabel("images/leaders/leaders_f_c_"+leader.get(0)+".jpg", 140, 207));
+			centerPanel.add(GUIUtilities.createSingleLabel("images/leaders/leaders_f_c_"+leader.get(0)+".jpg", 140, 207));
 		panel.add(centerPanel, BorderLayout.CENTER);
 		
 		//third row in the panel

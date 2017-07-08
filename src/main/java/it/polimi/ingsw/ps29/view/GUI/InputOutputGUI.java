@@ -63,7 +63,6 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public void showMessage(InteractionMessage message) {
 		if(message instanceof RejectMessage)
-			//screen.console.append(((RejectMessage)message).getException().getMessage());
 			JOptionPane.showMessageDialog(null, ((RejectMessage)message).getException().getMessage());
 	}
 	
@@ -77,8 +76,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	}
 
 	@Override
-	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
-		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen);
+	public ResourceType askSpecificPrivilege(boolean different) throws ExpiredTimeException {
+		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen, different);
 		interactionPanel = new BasePanel (ppc.createLeftPanel(), ppc.createRightPanel(), "PRIVILEGE CHOICE");
 		messageInTime();
 		

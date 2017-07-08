@@ -211,7 +211,7 @@ public class InputOutputCLI implements InputOutput {
 	}
 
 	@Override
-	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
+	public ResourceType askSpecificPrivilege(boolean different) throws ExpiredTimeException {
 		timeStart = System.currentTimeMillis();
 		int choice;
 		do{
@@ -220,7 +220,8 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println("3) 2 coins\n");
 			System.out.println("4) 2 military points\n");
 			System.out.println("5) 1 faith point\n");
-			System.out.println("Choice must be different by previous in this turn: ");
+			if (different)
+				System.out.println("Each choice must be different from the others made in this round: ");
 			
 			choice = scanner.nextInt();
 		

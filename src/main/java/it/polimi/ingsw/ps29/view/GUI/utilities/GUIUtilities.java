@@ -1,8 +1,16 @@
 package it.polimi.ingsw.ps29.view.GUI.utilities;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-public class ConsoleMessages {
+public class GUIUtilities {
 	
 	public static void writePlacement (int index, JTextArea console) {
 		switch (index) {
@@ -79,5 +87,39 @@ public class ConsoleMessages {
 		
 		console.append("Choose familiar and number of servants and press Do Action!\n");
 	}
+	
+	public static JLabel createSingleLabel (String path, int width, int height) {
+		JLabel label = null;
+		
+		try {
+			BufferedImage img = ImageIO.read(new File(path));
+			Image imgScaled = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+	        ImageIcon icon = new ImageIcon(imgScaled);
+	        label = new JLabel(icon);
+	        
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return label;
+	}
+	
+	public static JLabel createSingleLabelNoDim (String path) {
+		JLabel label = null;
+		
+		try {
+			BufferedImage img = ImageIO.read(new File(path));
+	        ImageIcon icon = new ImageIcon(img);
+	        label = new JLabel(icon);
+	        
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return label;
+	}
+
 
 }

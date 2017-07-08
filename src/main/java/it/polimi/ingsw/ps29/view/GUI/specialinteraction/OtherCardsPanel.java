@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
+
 public class OtherCardsPanel extends FromBoardPanel {
 	
 	/**
@@ -31,11 +33,11 @@ public class OtherCardsPanel extends FromBoardPanel {
 		int count = 0;
 		for(int i=index; i<index+6; i++)
 			if(idCards.get(i) != -1) {
-				panel.add(createSingleLabel("images/cards/devcards_f_en_c_"+idCards.get(i)+".png", 140, 207));
+				panel.add(GUIUtilities.createSingleLabel("images/cards/devcards_f_en_c_"+idCards.get(i)+".png", 140, 207));
 				count++;
 			}
 		for(int i=count; i<6; i++)
-			panel.add(createSingleLabel("images/leader.jpg", 140, 207));
+			panel.add(GUIUtilities.createSingleLabel("images/leader.jpg", 140, 207));
 		return panel;
 	}
 	

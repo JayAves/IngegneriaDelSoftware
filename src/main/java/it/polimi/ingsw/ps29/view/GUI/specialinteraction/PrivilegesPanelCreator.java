@@ -14,20 +14,27 @@ import javax.swing.SwingUtilities;
 
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
+import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
 
 public class PrivilegesPanelCreator extends PanelCreator {
 	private ButtonGroup choice;
+	private boolean different;
 	
-	public PrivilegesPanelCreator(GUICore gui) {
+	public PrivilegesPanelCreator(GUICore gui, boolean different) {
 		super(gui, null);
+		this.different = different;
 	}
 
 	@Override
 	public JPanel createLeftPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
-		panel.add(new JLabel("Chose the privilege!"), BorderLayout.PAGE_START);
-		panel.add(createSingleLabel("images/resources/privilege.png", 40, 40), BorderLayout.CENTER);
+		String infoPrivilege = "Choose the privilege!";
+		if(different)
+			infoPrivilege = "<html>Choose the privilege! <br/> Each choice must be different <br/> "
+					+ "from the others <br/> made in this round</html>";
+		panel.add(new JLabel(infoPrivilege), BorderLayout.PAGE_START);
+		panel.add(GUIUtilities.createSingleLabel("images/resources/privilege.png", 40, 40), BorderLayout.CENTER);
 		
 		return panel;
 	}
@@ -117,7 +124,7 @@ public class PrivilegesPanelCreator extends PanelCreator {
 		
 		//create the options
 		for(int i=0; i<5; i++) 
-			panel.add(createSingleLabel("images/resources/"+types[i]+"priv.png", 40, 40));
+			panel.add(GUIUtilities.createSingleLabel("images/resources/"+types[i]+"priv.png", 40, 40));
 		
 	}
 	

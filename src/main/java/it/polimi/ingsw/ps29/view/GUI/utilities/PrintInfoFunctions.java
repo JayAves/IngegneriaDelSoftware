@@ -92,28 +92,28 @@ public class PrintInfoFunctions {
 		for (ResourceDTO res: container)
 			switch (res.getType()) {
 			case "coin":
-				gui.getCoin().setText("COINS: "+res.getAmount());
+				gui.getCoin().setText(""+res.getAmount());
 				break;
 			case "stone":
-				gui.getStone().setText("STONES: "+res.getAmount());
+				gui.getStone().setText(""+res.getAmount());
 				break;
 			case "wood":
-				gui.getWood().setText("WOODS: "+res.getAmount());
+				gui.getWood().setText(""+res.getAmount());
 				break;
 			case "servant":
-				gui.getServant().setText("SERVANTS: "+res.getAmount());
+				gui.getServant().setText(""+res.getAmount());
 				break;
 			case "faith":
-				gui.getFaith().setText("FAITH: "+res.getAmount());
+				gui.getFaith().setText(""+res.getAmount());
 				break;
 			case "military":
-				gui.getMilitary().setText("MILITARY: "+res.getAmount());
+				gui.getMilitary().setText(""+res.getAmount());
 				break;
 			case "victory":
-				gui.getVictory().setText("VICTORY: "+res.getAmount());
+				gui.getVictory().setText(""+res.getAmount());
 				break;
 			case "privilege":
-				gui.getPrivileges().setText("PRIVILEGES: "+res.getAmount());
+				gui.getPrivileges().setText(""+res.getAmount());
 				break;
 			}
 	}

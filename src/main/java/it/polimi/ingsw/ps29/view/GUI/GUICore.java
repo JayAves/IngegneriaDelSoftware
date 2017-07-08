@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -193,7 +192,7 @@ public class GUICore extends Observable{
 		buttonsPanel.setLayout(new GridBagLayout());
 		familiarPanel.setLayout(new GridLayout(2, 2));
 		doActionPanel.setLayout(new GridLayout(2, 2));
-		pointsPanel.setLayout(new GridLayout(2, 2));
+		pointsPanel.setLayout(new GridLayout(2, 4));
 		
 		setButtonsPanel(buttonsPanel);
 		setFamiliarPanel(familiarPanel);
@@ -227,15 +226,30 @@ public class GUICore extends Observable{
 		c.gridx = 2;
 		c.weightx = 1;
 		JPanel resourcesPanel = new JPanel();
-		resourcesPanel.setLayout(new GridLayout(4, 1));
+		resourcesPanel.setLayout(new GridLayout(4, 2));
 		
-		coin = new JLabel("COINS: 0");
+		ImageToPrint coinIMG = new ImageToPrint("resources/coin.png");
+		resourcesPanel.add(coinIMG);
+		coin = new JLabel("0");
+		coin.setHorizontalAlignment(JLabel.RIGHT);
 		resourcesPanel.add(coin);
-		stone = new JLabel("STONES: 0");
+		
+		ImageToPrint stoneIMG = new ImageToPrint("resources/stone.png");
+		resourcesPanel.add(stoneIMG);
+		stone = new JLabel("0");
+		stone.setHorizontalAlignment(JLabel.RIGHT);
 		resourcesPanel.add(stone);
-		wood = new JLabel("WOODS: 0");
+		
+		ImageToPrint woodIMG = new ImageToPrint("resources/wood.png");
+		resourcesPanel.add(woodIMG);
+		wood = new JLabel("0");
+		wood.setHorizontalAlignment(JLabel.RIGHT);
 		resourcesPanel.add(wood);
-		servant = new JLabel("SERVANTS: 0");
+		
+		ImageToPrint servantIMG = new ImageToPrint("resources/servant.png");
+		resourcesPanel.add(servantIMG);
+		servant = new JLabel("0");
+		servant.setHorizontalAlignment(JLabel.RIGHT);
 		resourcesPanel.add(servant);
 		
 		panelSouth.add(resourcesPanel, c);
@@ -307,13 +321,24 @@ public class GUICore extends Observable{
 	
 	public void setPointsPanel (JPanel pointsPanel) {
 		
-		military = new JLabel("MILITARY: 0");
+		ImageToPrint militaryIMG = new ImageToPrint("resources/military.png");
+		pointsPanel.add(militaryIMG);
+		military = new JLabel("0");
 		pointsPanel.add(military);
-		faith = new JLabel("FAITH: 0");
+		
+		ImageToPrint faithIMG = new ImageToPrint("resources/faith.png");
+		pointsPanel.add(faithIMG);
+		faith = new JLabel("0");
 		pointsPanel.add(faith);
-		victory = new JLabel("VICTORY: 0");
+		
+		ImageToPrint victoryIMG = new ImageToPrint("resources/victory.png");
+		pointsPanel.add(victoryIMG);
+		victory = new JLabel("0");
 		pointsPanel.add(victory);
-		privileges = new JLabel("PRIVILEGES: 0");
+		
+		ImageToPrint privilegeIMG = new ImageToPrint("resources/privilege.png");
+		pointsPanel.add(privilegeIMG);
+		privileges = new JLabel("0");
 		pointsPanel.add(privileges);
 	}	
 	

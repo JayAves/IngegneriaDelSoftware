@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
+import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
 public class BonusPanelCreator extends PanelCreator{
 	BonusActionEffect effect;
@@ -46,7 +47,7 @@ public class BonusPanelCreator extends PanelCreator{
 		if(effect instanceof BonusPlacementEffect)
 			for(int i=0; i<((BonusPlacementEffect)effect).getDiscount().size(); i++) {
 				c.gridx = i+1;
-				JLabel discount = createSingleLabel("images/resources/"+
+				JLabel discount = GUIUtilities.createSingleLabel("images/resources/"+
 						((BonusPlacementEffect)effect).getDiscount().get(0).getType()+".png", 40, 40);
 				panel.add(discount, c);	
 			}

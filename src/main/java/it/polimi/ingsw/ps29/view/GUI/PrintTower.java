@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.Coordinates;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
-import it.polimi.ingsw.ps29.view.GUI.utilities.ConsoleMessages;
+import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
 public class PrintTower extends PrintPersonal {
 	
@@ -46,7 +46,7 @@ public class PrintTower extends PrintPersonal {
 			//save index pressed and show msg on the console 
 			if(gui.getTowers() != null && indexSpace>-1 && indexSpace<23) {
 				indexSpacePressed = indexSpace;
-				ConsoleMessages.writePlacement(indexSpace, gui.console);
+				GUIUtilities.writePlacement(indexSpace, gui.console);
 			}
 		}
 			

@@ -14,7 +14,6 @@ import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
-import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 
 /**
@@ -37,7 +36,7 @@ public interface InputOutput {
 
 	abstract Exchange askExchange(Exchange msg) throws ExpiredTimeException;
 
-	abstract ResourceType askSpecificPrivilege() throws ExpiredTimeException;
+	abstract ResourceType askSpecificPrivilege(boolean different) throws ExpiredTimeException;
 	
 	abstract int askAboutExcommunication () throws ExpiredTimeException;
 	
