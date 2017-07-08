@@ -41,7 +41,6 @@ public class OnlineApp {
     		View view = new View (inputChoice,  playerName);
     		Client client = new Client (view, inputConnection);
 			
-    		//System.out.println("\nWaiting for a match");
     		
 	 }
 }

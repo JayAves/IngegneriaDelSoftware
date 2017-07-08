@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -40,8 +41,7 @@ public class GUICore extends Observable{
 	JButton noAction;
 	ImageToPrint preview;
 	
-	JButton venture;
-	JButton character;
+	JButton otherCards;
 	JButton prev;
 	JButton next;
 	
@@ -158,7 +158,7 @@ public class GUICore extends Observable{
 		ImageToPrint leader = new ImageToPrint("leader.jpg");
 		leaderPanel.add(leader, BorderLayout.CENTER);
 		
-		leaderButton = new JButton ("Leader");
+		leaderButton = new JButton ("LEADER");
 		leaderButton.addMouseListener(listener);
 		leaderPanel.add(leaderButton, BorderLayout.PAGE_END);
 		
@@ -190,7 +190,7 @@ public class GUICore extends Observable{
 		JPanel doActionPanel = new JPanel();
 		JPanel pointsPanel = new JPanel();
 		
-		buttonsPanel.setLayout(new GridLayout(2, 2));
+		buttonsPanel.setLayout(new GridBagLayout());
 		familiarPanel.setLayout(new GridLayout(2, 2));
 		doActionPanel.setLayout(new GridLayout(2, 2));
 		pointsPanel.setLayout(new GridLayout(2, 2));
@@ -243,14 +243,21 @@ public class GUICore extends Observable{
 	}
 	
 	public void setButtonsPanel (JPanel buttonsPanel) {
-		venture = new JButton("Venture");
-		buttonsPanel.add(venture);
-		character = new JButton("Character");
-		buttonsPanel.add(character);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 2;
+		otherCards = new JButton("OTHER CARDS");
+		otherCards.addMouseListener(listener);
+		buttonsPanel.add(otherCards, c);
+		
+		c.gridy = 1;
+		c.gridwidth = 1;
 		prev = new JButton("Prev");
-		buttonsPanel.add(prev);
+		buttonsPanel.add(prev, c);
+		
+		c.gridx = 1;
 		next = new JButton("Next");
-		buttonsPanel.add(next);
+		buttonsPanel.add(next, c);
 	}
 	
 	public void setFamiliarPanel (JPanel familiarPanel) {
@@ -288,10 +295,12 @@ public class GUICore extends Observable{
 		doActionPanel.add(servants);
 		
 		doAction = new JButton("Do Action!");
+		doAction.setEnabled(false);
 		doAction.addMouseListener(listener);
 		doActionPanel.add(doAction);
 		
 		noAction = new JButton("NO Action");
+		noAction.setEnabled(false);
 		noAction.addMouseListener(listener);
 		doActionPanel.add(noAction);
 	}

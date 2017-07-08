@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +28,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BonusPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.ExchangePanelCreator;
-import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PanelBase;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BasePanel;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.VaticanPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
@@ -38,7 +39,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private boolean running = true;
 	private int timer;
 	private long timeStart;
-	private PanelBase interactionPanel;
+	private BasePanel interactionPanel;
 	
 	//facilities used to communicate user choice
 	private ResourceType resType;
@@ -69,7 +70,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public Exchange askExchange(Exchange msg) throws ExpiredTimeException {
 		ExchangePanelCreator epc = new ExchangePanelCreator (screen, msg);
-		interactionPanel = new PanelBase (epc.createLeftPanel(), epc.createRightPanel(), "EXCHANGE ACTION");
+		interactionPanel = new BasePanel (epc.createLeftPanel(), epc.createRightPanel(), "EXCHANGE ACTION");
 		messageInTime();
 		
 		return msg;
@@ -78,7 +79,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public ResourceType askSpecificPrivilege() throws ExpiredTimeException {
 		PrivilegesPanelCreator ppc = new PrivilegesPanelCreator (screen);
-		interactionPanel = new PanelBase (ppc.createLeftPanel(), ppc.createRightPanel(), "PRIVILEGE CHOICE");
+		interactionPanel = new BasePanel (ppc.createLeftPanel(), ppc.createRightPanel(), "PRIVILEGE CHOICE");
 		messageInTime();
 		
 		return resType; 
@@ -87,7 +88,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public int askAboutExcommunication() throws ExpiredTimeException {
 		VaticanPanelCreator vpc = new VaticanPanelCreator (screen);
-		interactionPanel = new PanelBase(vpc.createLeftPanel(), vpc.createRightPanel(), "EXCOMMUNICATION CHOICE");
+		interactionPanel = new BasePanel(vpc.createLeftPanel(), vpc.createRightPanel(), "EXCOMMUNICATION CHOICE");
 		messageInTime();
 		
 		return excommunicationChoice;
@@ -184,8 +185,20 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException {
+		//save the message sended by server where is showed the leader situation
 		screen.setMessage(msg);
+		
+		screen.console.setText("IT'S YOUR TURN!");
+		screen.doAction.setEnabled(true);
+		screen.doAction.setBackground(Color.RED);
+		screen.noAction.setEnabled(true);
+		
 		messageInTime();
+		
+		screen.console.setText("SENDING INFO TO SERVER...");
+		screen.doAction.setEnabled(false);
+		screen.doAction.setBackground(null);
+		screen.noAction.setEnabled(false);
 		return (ActionChoice)userMessage;
 	}
 
@@ -193,7 +206,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	@Override
 	public BonusChoice handleBonusAction(BonusChoice msg) throws ExpiredTimeException {
 		BonusPanelCreator bpc = new BonusPanelCreator (screen, msg);
-		interactionPanel = new PanelBase (bpc.createLeftPanel(), bpc.createRightPanel(), "BONUS ACTION");
+		interactionPanel = new BasePanel (bpc.createLeftPanel(), bpc.createRightPanel(), "BONUS ACTION");
 		messageInTime();
 		
 		return msg;

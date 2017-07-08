@@ -2,19 +2,12 @@ package it.polimi.ingsw.ps29.view.GUI.specialinteraction;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -22,7 +15,7 @@ import javax.swing.SwingUtilities;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 
-public class LeaderPanel extends JFrame {
+public class LeaderPanel extends FromBoardPanel {
 	
 	/**
 	 * 
@@ -34,21 +27,18 @@ public class LeaderPanel extends JFrame {
 	private ArrayList<JButton> possibilities = new ArrayList<JButton>();
 	private int selectedLeader = -1;
 	
-	public LeaderPanel (GUICore gui) {
+	public LeaderPanel (GUICore gui, String title) {
+		super(title);
 		this.gui = gui;
 		leaderSituation = gui.getMessage().getLeaderSituation();
 		
 		setLayout(new GridLayout(1, 2));
-		setTitle("");
 	
 		add(setLeftPanel());
 		add(setRightPanel());
-		
+		pack();
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-		setVisible(true);
-		pack();
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}
 	
 	private JPanel setLeftPanel () {
@@ -147,22 +137,5 @@ public class LeaderPanel extends JFrame {
 		
 	}
 	
-	
-	public JLabel createSingleLabel (String path, int width, int height) {
-		JLabel label = null;
-		
-		try {
-			BufferedImage img = ImageIO.read(new File(path));
-			Image imgScaled = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-	        ImageIcon icon = new ImageIcon(imgScaled);
-	        label = new JLabel(icon);
-	        
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return label;
-	}
 	
 }

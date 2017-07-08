@@ -4,10 +4,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.LeaderPanel;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.OtherCardsPanel;
 import it.polimi.ingsw.ps29.view.GUI.utilities.InteractionMessagesFunctions;
 
 public class PlayerListener extends MouseAdapter {
@@ -21,7 +21,7 @@ public class PlayerListener extends MouseAdapter {
 	@Override
 	public void mouseClicked (MouseEvent event) {
 		
-		//gestione click su DO ACTION
+		//handle click on DO ACTION
 		if(((JButton) event.getSource()).getText().equals("Do Action!")) {
 			
 			if(gui.tower.getIndexSpacePressed() != -1) {
@@ -44,7 +44,7 @@ public class PlayerListener extends MouseAdapter {
 		}
 		
 		
-		//gestione click su NO ACTION
+		//handle click on NO ACTION
 		else if(((JButton) event.getSource()).getText().equals("NO Action")) {
 			gui.console.append("NO action!");
 			
@@ -58,11 +58,18 @@ public class PlayerListener extends MouseAdapter {
 		}
 		
 		
-		//gestione click su LEADER ACTION
-		else if(((JButton) event.getSource()).getText().equals("Leader")) {
+		//handle click on LEADER ACTION
+		else if(((JButton) event.getSource()).getText().equals("LEADER")) {
 			gui.console.append("Leader action!");
-			LeaderPanel leaderPanel = new LeaderPanel(gui);
-			leaderPanel.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+			LeaderPanel leaderPanel = new LeaderPanel(gui, "LEADER PANEL");
+		}
+		
+		
+		//handle click on OTHER CARDS
+		else if(((JButton) event.getSource()).getText().equals("OTHER CARDS")) {
+			OtherCardsPanel otherPanel;
+			if(gui.personal.getIdCards() != null)
+				otherPanel = new OtherCardsPanel("OTHER CARDS PANEL", gui.personal.getIdCards());
 		}
 		
 		

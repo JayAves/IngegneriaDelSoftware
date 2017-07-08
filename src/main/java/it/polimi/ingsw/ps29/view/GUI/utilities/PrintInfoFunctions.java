@@ -65,7 +65,7 @@ public class PrintInfoFunctions {
 	
 	public static ArrayList<Integer> createIdCards (HashMap<String, ArrayList<Integer>> hash) {
 		ArrayList<Integer> ids = new ArrayList<Integer>();
-		for(int i=0; i<12; i++)
+		for(int i=0; i<24; i++)
 			ids.add(-1);
 		
 		if(hash.get("territory")!=null)
@@ -75,6 +75,15 @@ public class PrintInfoFunctions {
 		if(hash.get("building")!=null)
 			for(int i=0; i<hash.get("building").size(); i++)
 				ids.set(1+i*2, hash.get("building").get(i));
+		
+		//the order is different from previous two because the way in which they are showed is different
+		if(hash.get("character")!=null)
+			for(int i=0; i<hash.get("character").size(); i++)
+				ids.set(12+i, hash.get("character").get(i));
+		
+		if(hash.get("venture")!=null)
+			for(int i=0; i<hash.get("venture").size(); i++)
+				ids.set(18+i, hash.get("venture").get(i));
 		
 		return ids;
 	}

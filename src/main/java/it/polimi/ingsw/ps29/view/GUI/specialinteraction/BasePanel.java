@@ -7,7 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PanelBase extends JFrame {
+public class BasePanel extends JFrame {
 
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class PanelBase extends JFrame {
 	protected JPanel leftPanel;
 	protected JPanel rightPanel;
 	
-	public PanelBase (JPanel leftPanel, JPanel rightPanel, String title) {
+	public BasePanel (JPanel leftPanel, JPanel rightPanel, String title) {
 		setLayout(new GridLayout(1, 2));
 		setTitle(title);
 		
@@ -28,9 +28,9 @@ public class PanelBase extends JFrame {
 		add(rightPanel);
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		pack();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		setVisible(true);
-		pack();
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}
 	

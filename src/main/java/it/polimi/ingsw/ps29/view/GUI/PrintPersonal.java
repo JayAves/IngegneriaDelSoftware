@@ -120,4 +120,7 @@ public class PrintPersonal extends ImageToPrint {
 	}
 	
 
+	public ArrayList<Integer> getIdCards () {
+		return idCards;
+	}
 }
