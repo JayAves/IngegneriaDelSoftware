@@ -30,19 +30,19 @@ Main for server is located in class ServerMain (in package **server**). Run it t
 
 Following game parts can be customized:
 
-###Resource Bonuses
+### Resource Bonuses
 
 * GameBoard ActionSpaces' bonuses  (find them in Bonus.json)
 * PersonalBonusTiles bonuses (find them in personalbounstile.json)
 * Faith Track bonuses (find them in faithTrack.json)
 
-###Cards
+### Cards
 
 * Cards (find them in cards.json)
 * ExcommunicationCards (find them in ExcommunicationsCards.json)
 * LeaderCards (find them in leaderCards.json)
 
-###Timers
+### Timers
 
 * Action - timer player has to do an Action
 * Room  - timer before a new starts after two players are in queue
@@ -51,6 +51,13 @@ Both can be found in Timer.json
 All these json files can be found in folder "_data_".
 
 ## Project Requirements developed
+
+* Complete Rules
+* Command Line Interface
+* Graphical User Interface
+* Socket
+* Remote Method Invocation
+
 
 ## Built With
 
