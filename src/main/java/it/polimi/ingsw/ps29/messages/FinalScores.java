@@ -17,9 +17,9 @@ public class FinalScores extends InteractionMessage {
 	private ArrayList<String> playerNames;
 	private int[] scores;
 	
-	public FinalScores(String player, int roomSize, ArrayList<String> playerNames) {
+	public FinalScores(String player, int[] scores, ArrayList<String> playerNames) {
 		super(player, false);
-		scores= new int[roomSize];
+		this.scores= scores;
 		this.playerNames=playerNames;
 	}
 

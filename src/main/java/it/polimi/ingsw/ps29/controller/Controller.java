@@ -451,7 +451,7 @@ public class Controller extends Observable implements Observer{
 		
 		//send final scores
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-			view.getValue().startInteraction(new FinalScores(view.getValue().getClientName(), scores.length, names ));
+			view.getValue().startInteraction(new FinalScores(view.getValue().getClientName(), scores, names ));
 		
 		//Room will be closed
 		setChanged();
