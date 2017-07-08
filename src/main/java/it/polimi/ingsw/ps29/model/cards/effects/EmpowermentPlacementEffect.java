@@ -46,7 +46,7 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 		case "character":
 			player.setFakeFamiliar(new FakeFamilyMemberCharacterTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
-		case "ventures":
+		case "venture":
 			player.setFakeFamiliar(new FakeFamilyMemberVenturesTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
 		case "all" :

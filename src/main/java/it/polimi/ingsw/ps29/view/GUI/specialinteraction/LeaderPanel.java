@@ -34,10 +34,10 @@ public class LeaderPanel extends FromBoardPanel {
 		this.gui = gui;
 		leaderSituation = gui.getMessage().getLeaderSituation();
 		
-		setLayout(new GridLayout(1, 2));
+		setLayout(new BorderLayout());
 	
-		add(setLeftPanel());
-		add(setRightPanel());
+		add(setLeftPanel(), BorderLayout.CENTER);
+		add(setRightPanel(), BorderLayout.LINE_END);
 		pack();
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -107,6 +107,7 @@ public class LeaderPanel extends FromBoardPanel {
 		
 		for(int i=0; i<command.length; i++) {
 			JButton button = new JButton(command[i]);
+			button.setEnabled(false);
 			possibilities.add(button);
 			final int index = i;
 			button.addActionListener(new ActionListener() {

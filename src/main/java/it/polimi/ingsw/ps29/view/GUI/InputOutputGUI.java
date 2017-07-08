@@ -40,6 +40,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private int timer;
 	private long timeStart;
 	private BasePanel interactionPanel;
+	private int round = 0;
 	
 	//facilities used to communicate user choice
 	private ResourceType resType;
@@ -117,6 +118,8 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public void showTowerAndDices(TowersAndDicesForView msg) {
+		round++;
+		screen.frame.setTitle("Player: "+msg.getName()+" - Round "+round);
 		screen.setTowers(msg.getTowers());
 		TowersDTO towers = msg.getTowers();
 		ArrayList<Integer> idCards = new ArrayList<Integer>();
@@ -143,7 +146,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
-		screen.frame.setTitle(msg.getName());
+		screen.frame.setTitle("Player: "+msg.getName()+" - Round: "+round);
 		int tileId = msg.getTiles().get(msg.getName()).getId();
 		boolean ready = false;
 		

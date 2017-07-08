@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
+import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.Coordinates;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
@@ -82,14 +83,15 @@ public class PrintTower extends PrintPersonal {
 	//add in coordFamiliar a FamilyMemberDTO using the index of the space
 	//the familiar will be printed in paintComponent method
 	public void showFamiliar(int index, FamilyMemberDTO fam) {
-		if(coordFamiliar.get(index)!= null)
-			coordFamiliar.get(index).add(fam);
-		
-		else {
-			ArrayList<FamilyMemberDTO> arrFam = new ArrayList<FamilyMemberDTO>();
-			arrFam.add(fam);
-			coordFamiliar.put(index, arrFam);
-		}
+		if(fam.getFamiliarColor() != DiceColor.BONUS || (index>-1 && index<16))
+			if(coordFamiliar.get(index)!= null)
+				coordFamiliar.get(index).add(fam);
+			
+			else {
+				ArrayList<FamilyMemberDTO> arrFam = new ArrayList<FamilyMemberDTO>();
+				arrFam.add(fam);
+				coordFamiliar.put(index, arrFam);
+			}
 		
 	}
 	
