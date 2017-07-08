@@ -1,0 +1,146 @@
+[
+
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":0,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":1,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":2,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":3,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":4,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":5,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":7,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":9,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":11,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":13,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":15,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":17,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":19,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":22,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":25,
+    "type":"victory" }
+    }]
+    },
+    
+    {"bonus":
+     [{
+    "resourceType":"VictoryPoints",
+    "resourceData":{
+    "amount":30,
+    "type":"victory" }
+    }]
+    },
+]

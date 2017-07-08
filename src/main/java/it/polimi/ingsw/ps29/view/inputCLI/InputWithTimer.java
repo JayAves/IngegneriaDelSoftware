@@ -31,7 +31,7 @@ public class InputWithTimer implements Runnable {
 		BufferedReader in;
 		running = true;
 		
-		//parte il thread che controlla la scadenza del timer
+		//timer thread starts
 		new Thread(this).start();
 		
 		do{
@@ -43,13 +43,13 @@ public class InputWithTimer implements Runnable {
 						Thread.sleep(100);
 						
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
+
 						Thread.currentThread().interrupt();
 					}
 				}
 	
 				if (!in.ready())  {
-					//sono uscito dal while ma l'utente non ha inserito nessun messaggio
+					//no input was captured
 					running = false;
 					throw new ExpiredTimeException();
 				}
@@ -58,12 +58,12 @@ public class InputWithTimer implements Runnable {
 					input = new Integer(in.readLine());
 					
 				} catch (NumberFormatException e) {
-					//l'input inserito dall'utente non è un intero
+					//input is not Integer
 					input = -1;
 				}
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		
@@ -84,7 +84,7 @@ public class InputWithTimer implements Runnable {
 				Thread.sleep(100);
 				
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+
 				Thread.currentThread().interrupt();
 			}
 			

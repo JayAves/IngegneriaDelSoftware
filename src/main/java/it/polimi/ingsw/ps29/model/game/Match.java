@@ -55,7 +55,7 @@ public class Match extends Observable{
 	
 	private BonusInit[] getBonuses() throws FileNotFoundException {
 		
-		BufferedReader bonuses = new BufferedReader(new FileReader("src/main/java/Bonus.json"));
+		BufferedReader bonuses = new BufferedReader(new FileReader("src/data/bonus.json"));
 		GsonBuilder gBonus = new GsonBuilder();
 		gBonus.registerTypeAdapter(Resource.class, new ResourceAdapter());
 		BonusInit [] resources = gBonus.create().fromJson(bonuses, BonusInit[].class);
@@ -64,7 +64,7 @@ public class Match extends Observable{
 	
 	private BonusInit[] getFaithTrack() throws FileNotFoundException {
 		
-		BufferedReader fBonuses = new BufferedReader(new FileReader("src/main/java/faithTrack.json"));
+		BufferedReader fBonuses = new BufferedReader(new FileReader("src/data/faithTrack.json"));
 		GsonBuilder fBonus = new GsonBuilder();
 		fBonus.registerTypeAdapter(Resource.class, new ResourceAdapter());
 		BonusInit[] resources = fBonus.create().fromJson(fBonuses, BonusInit[].class);
@@ -73,18 +73,18 @@ public class Match extends Observable{
 	
 	private void initDecks () throws FileNotFoundException {
 		
-		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
+		BufferedReader cards = new BufferedReader(new FileReader("src/data/cards.json"));
 	    GsonBuilder gcards = new GsonBuilder();
 	    gcards.registerTypeAdapter(Card.class, new CardAdapter());
 	    gcards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    gcards.registerTypeAdapter(Resource.class, new ResourceAdapter());
 	    
-	    BufferedReader eCards = new BufferedReader(new FileReader ("src/main/java/ExcommunicationsCards.json"));
+	    BufferedReader eCards = new BufferedReader(new FileReader ("src/data/excommunicationsCards.json"));
 	    GsonBuilder geCards = new GsonBuilder();
 	    geCards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    geCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
 	    
-	    BufferedReader lCards = new BufferedReader(new FileReader("src/main/java/leaderCards.json"));
+	    BufferedReader lCards = new BufferedReader(new FileReader("src/data/leaderCards.json"));
 	    GsonBuilder glCards = new GsonBuilder();
 	    glCards.registerTypeAdapter(Effect.class, new EffectAdapter());
 	    glCards.registerTypeAdapter(Resource.class, new ResourceAdapter());
@@ -99,7 +99,7 @@ public class Match extends Observable{
 	    CardType [] types = CardType.values();
 	    
 	    
-	    for (Period period : periods) {		//creo deck separati per periodo
+	    for (Period period : periods) {		//decks by Period
 	    	
 	    	for (int index=0; index<4; index++) {
 	    		
@@ -157,7 +157,7 @@ public class Match extends Observable{
     	for(int i=0; i<playersNames.size(); i++) 
     		players.add(new Player(playersNames.get(i), colors[i], null));
     	
-    	BufferedReader tiles = new BufferedReader(new FileReader("src/main/java/personalbonustile.json"));
+    	BufferedReader tiles = new BufferedReader(new FileReader("src/data/personalBonusTile.json"));
 	    GsonBuilder gtiles = new GsonBuilder();
 	    
 	    gtiles.registerTypeAdapter(Resource.class, new ResourceAdapter());
@@ -166,8 +166,7 @@ public class Match extends Observable{
 	    
     	for(int i=0; i<players.size(); i++) {
     		/*int rnd= new Random().nextInt(tilez.length);
-    		players.get(i).setPersonalBonusTile(tilez[rnd]); // assegno una bonusTile casuale
-    		*/
+    		players.get(i).setPersonalBonusTile(tilez[rnd]); // random bonus tile*/
     		players.get(i).setPersonalBonusTile(tilez[0]);
     	}
     	

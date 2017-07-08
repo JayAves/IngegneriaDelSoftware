@@ -1,0 +1,333 @@
+[
+
+{
+"name" : "Francesco Sforza",
+"id" :1,
+"permanent" : 0,
+"leaderEffect" : {
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Harvest",
+          "valueAction":1} },
+"requirements" : [],
+"cardTypeRequirements" : ["venture"],
+"cardRequirements" : [5]
+},
+
+{
+"name" : "Ludovico Ariosto",
+"id" :2,
+"permanent" : 1,
+"leaderEffect" : {
+        "effectType": "GeneralExcommunications",
+        "effectData" :{ "effectName" : "Ludovico Ariosto"}},
+"requirements" : [],
+"cardTypeRequirements" : ["character"],
+"cardRequirements" : [5]
+},
+
+{
+"name" : "Filippo Brunelleschi",
+"id" :3,
+"permanent" : 1,
+"leaderEffect" : {
+        "effectType": "GeneralExcommunications",
+        "effectData" :{ "effectName" : "Filippo Brunelleschi"}},
+"requirements" : [],
+"cardTypeRequirements" : ["building"],
+"cardRequirements" : [5]
+},
+
+{
+"name" : "Sigismondo Malatesta",
+"id" :4,
+"permanent" : 1,
+"leaderEffect" : {
+        "effectType": "FamiliarEmpowermentByColor",
+        "effectData" :{ "diceEmpowerment" : 3,
+                        "colors" : ["NEUTRAL"]}},
+"requirements" : [{
+   "resourceType":"MilitaryPoints",
+   "resourceData":{
+    "amount":7,
+    "type":"military" } },
+                      
+   {
+   "resourceType":"FaithPoints",
+   "resourceData":{
+    "amount":3,
+    "type":"faith" } }                         
+   ],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+
+{
+"name" : "Girolamo Savonarola",
+"id" :5,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}},
+"requirements" : [{
+   "resourceType":Coins,
+   "resourceData":{
+    "amount":18,
+    "type":"coins" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+
+{
+"name" : "Michelangelo Buonarroti",
+"id" :6,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coins" }
+	}]}},
+"requirements" : [{
+   "resourceType":"Stones",
+   "resourceData":{
+    "amount":10,
+    "type":"stones" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+
+{
+"name" : "Giovanni Dalle Bande Nere",
+"id" :7,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":{ 
+            "resources": [
+     {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coins" }
+	},
+    
+     {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	},
+                       
+    {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stones" }
+	}               
+    ]}},
+"requirements" : [{
+   "resourceType":"MilitaryPoints",
+   "resourceData":{
+    "amount":12,
+    "type":"military" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Leonardo da Vinci",
+"id" :8,
+"permanent" : 0,
+"leaderEffect" : {
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Production",
+          "valueAction":0} },
+"requirements" : [],
+"cardTypeRequirements" : ["territory" , "character"],
+"cardRequirements" : [2 , 4]
+},
+    
+{
+"name" : "Sandro Botticelli",
+"id" :9,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	},
+    {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}                   ]}},
+"requirements" : [{
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":10,
+    "type":"wood" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Ludovico Il Moro",
+"id" :10,
+"permanent" : 1,
+"leaderEffect" : {
+        "effectType": "FixFamilyMemberPowerByColor",
+        "effectData" :{ "diceEmpowerment" : 5,
+                         "colors" : ["BLACK" , "WHITE", "ORANGE"]}},
+"requirements" : [],
+"cardTypeRequirements" : ["territory", "building", "character", "venture"],
+"cardRequirements" : [2, 2, 2, 2]
+},
+    
+{
+"name" : "Lucrezia Borgia",
+"id" :11,
+"permanent" : 1,
+"leaderEffect" : {
+        "effectType": "FamiliarEmpowermentByColor",
+        "effectData" :{ "diceEmpowerment" : 2,
+                         "colors" : ["NEUTRAL"]}},
+"requirements" : [],
+"cardTypeRequirements" : ["any"],
+"cardRequirements" : [ 6 ]
+},
+    
+
+{
+"name" : "Sisto IV",
+"id" :14,
+"permanent" : 1,
+"leaderEffect" : {
+        "effectType": "GeneralExcommunications",
+        "effectData" :{ "effectName" : "SistoIV"}},
+"requirements" : [{
+   "resourceType":"Woods",
+   "resourceData":{
+    "amount":6,
+    "type":"wood" } },
+                 {
+   "resourceType":"Stones",
+   "resourceData":{
+    "amount":6,
+    "type":"stone" } },
+                 {
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount" :6,
+    "type":"servant" } },
+                 {
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":6,
+    "type":"coin" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Cosimo De Medici",
+"id" :17,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	},
+    {
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":3,
+				"type":"servant" }
+	}                   ]}},
+"requirements" : [],
+"cardTypeRequirements" : ["building" , "character"],
+"cardRequirements" : [4, 2]
+},
+    
+{
+"name" : "BartolomeoColleoni",
+"id" :18,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+	}]}},
+"requirements" : [],
+"cardTypeRequirements" : ["territory" , "venture"],
+"cardRequirements" : [4, 2]
+},
+    
+{
+"name" : "Ludocvico III Gonzaga",
+"id" :19,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}            ]}},
+"requirements" : [{
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount" :15,
+    "type":"servant" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+},
+    
+{
+"name" : "Fake Ludocvico III Gonzaga ",
+"id" :20,
+"permanent" : 0,
+"leaderEffect" : {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}            ]}},
+"requirements" : [{
+   "resourceType":"Servants",
+   "resourceData":{
+    "amount" :15,
+    "type":"servant" } }],
+"cardTypeRequirements" : [],
+"cardRequirements" : []
+}
+    
+]

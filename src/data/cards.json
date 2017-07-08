@@ -1,0 +1,3768 @@
+[
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Commercial Hub",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 1,
+	"immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]}}],
+	"cost":[],
+	"harvestForce":1}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Woods",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 2,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			}]}}],
+	"cost":[],
+	"harvestForce":2}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Village",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 3,            
+	"immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+			}]}}],
+	"cost":[],
+	"harvestForce":3}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Gravel Pit",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 4,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+			}]}}],
+	"cost":[],
+	"harvestForce":4}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Forest",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 5,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":5}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Monastery",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 6,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+			}]}},
+			    {	
+		"effectType": "GainResourcesEffect",
+		"effectData":
+			{ "resources": [{
+			 	"resourceType":"Stones",
+			 	"resourceData":{
+					"amount":1,
+					"type":"stone" }
+	}]}}],
+	"cost":[],
+	"harvestForce":2}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Citadel",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 7,            
+	"immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":5}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "City",
+	"period": "FIRST",
+	"type": "TERRITORY",
+    "id" : 8,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":3,
+				"type":"privilege" }
+			}]}}],
+	"cost":[],
+	"harvestForce":6}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Gold Mine",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 9,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":1}
+ },
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Mountain Town",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 10,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"military" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":3}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Mining Town",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 11,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":2,
+				"type":"servant" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":4}
+},  
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Rock Pit",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 12,           
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}]}}],
+	"cost":[],
+	"harvestForce":3}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Estate",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 13,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":2,
+				"type":"servant" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":4}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Hermitage",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 14,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+			}]}}],
+	"cost":[],
+	"harvestForce":2}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Manor House",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 15,            
+	"immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":2,
+				"type":"servant" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":5}
+}, 
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Dukedom",
+	"period": "SECOND",
+	"type": "TERRITORY",
+    "id" : 16, 
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":4,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}]}}
+			    ],
+	"cost":[],
+	"harvestForce":6}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Trading Town",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 17,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			}]}}],
+	"cost":[],
+	"harvestForce":1}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Farm",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 18,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}]}}],
+	"cost":[],
+	"harvestForce":3}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Colony",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 19,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}]}}],
+	"cost":[],
+	"harvestForce":5}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Marble Pit",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 20,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victoy" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}]}}],
+	"cost":[],
+	"harvestForce":2}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Province",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 21,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}]}}],
+	"cost":[],
+	"harvestForce":6}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Sanctuary",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 22,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"faith" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]}}],
+	"cost":[],
+	"harvestForce":1}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Castle",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 23,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victoy" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"military" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":1,
+				"type":"servant" }
+			}]}}],
+	"cost":[],
+	"harvestForce":4}
+},
+{
+	"cardType": "TerritoryCard",
+	
+	"cardData":{"name": "Fortified Town",
+	"period": "THIRD",
+	"type": "TERRITORY",
+    "id" : 24,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":2,
+				"type":"servant" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"military" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":2,
+				"type":"servant" }
+			}]}}],
+	"cost":[],
+	"harvestForce":3}
+},
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Stronghold",
+	"period": "SECOND",
+	"type": "BUILDING",	
+    "id" : 40,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+             {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			
+             }]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Stonemasons' Guild",
+	"period": "SECOND",
+	"type": "BUILDING",	
+    "id" : 37,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":1,
+				"type":"wood" }},
+                            {
+			 "resourceType":"Servants",
+			 "resourceData":{
+				"amount":1,
+				"type":"servant" }},
+                            {
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":1,
+				"type":"stone" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":6,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }]}}],
+	"cost":[
+        
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":4}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Baptistery",
+	"period": "SECOND",
+	"type": "BUILDING",
+    "id" : 38,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }},
+       {
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }}               
+                       ]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"FaithPoints",
+			 "resourceData":{
+				"amount":1,
+				"type":"faith" }}],
+            "resourcesIn":[{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":2,
+				"type":"coin" }},
+                          {
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":2,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         
+         ]}}],
+	"cost":[
+       
+      
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Residence",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 32,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":1,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"Privilege",
+			 "resourceData":{
+				"amount":1,
+				"type":"privilege" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Marketplace",
+	"period": "SECOND",
+	"type": "BUILDING",
+    "id" : 33,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":3,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":2,
+				"type":"wood" }},
+            { "resourceType": "Stones", 
+              "resourceData": {
+                  "amount": 2,
+                  "type": "stone"
+              }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }]}}
+			    ],
+	"cost":[
+       
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":3}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Treasury",
+	"period": "SECOND",
+	"type": "BUILDING",	
+    "id" : 34,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":1,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":3,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" },
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":2,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":5,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}],
+	"cost":[
+        
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			}
+    ],
+	"productionForce":3}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Painters' Guild",
+	"period": "SECOND",
+	"type": "BUILDING",
+    "id" : 35,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":1,
+				"type":"wood" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":3,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" },
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":3,
+				"type":"wood" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":7,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Sculptor's Guild",
+	"period": "SECOND",
+	"type": "BUILDING",
+    "id" : 36,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":1,
+				"type":"stone" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":3,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" },
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":3,
+				"type":"stone" }}],
+            "resourcesIn":[{
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":7,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":4,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":5}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Bank",
+	"period": "THIRD",
+	"type": "BUILDING",	
+    "id" : 41,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":2}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Stonemason's shop",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 30,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":1,
+				"type":"stone" }}],
+            "resourcesIn":[{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":3,
+				"type":"coin" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" },
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":2,
+				"type":"stone" }}],
+            "resourcesIn":[{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":5,
+				"type":"coin" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":1,
+				"type":"coin" }
+			},
+      {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":3}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Chapel",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 31,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":1,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"FaithPoints",
+			 "resourceData":{
+				"amount":1,
+				"type":"faith" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}],
+	"productionForce":2}
+},
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Mint",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 25,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "coin",
+            "amount":1,
+            "cardType": "building"
+        }}],
+	"cost":[{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":5}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Tax Office",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 26,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "coin",
+            "amount":1,
+            "cardType": "territory"
+        }}],
+	"cost":[{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":5}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Triumphal Arc",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 27,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "victory",
+            "amount":1,
+            "cardType": "venture"
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Theater",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 28,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "victory",
+            "amount":1,
+            "cardType": "character"
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood"}
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Carpenter's Shop",
+	"period": "FIRST",
+	"type": "BUILDING",
+    "id" : 29,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":1,
+				"type":"wood" }}],
+            "resourcesIn":[{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":3,
+				"type":"coin" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" },
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":2,
+				"type":"wood" }}],
+            "resourcesIn":[{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":5,
+				"type":"coin" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Garden",
+	"period": "THIRD",
+	"type": "BUILDING",
+    "id" : 43,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":2,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Barracks",
+	"period": "SECOND",
+	"type": "BUILDING",
+    "id" : 39,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Servants",
+			 "resourceData":{
+				"amount":1,
+				"type":"servant" }}],
+            "resourcesIn":[{
+			 "resourceType":"MilitaryPoints",
+			 "resourceData":{
+				"amount":3,
+				"type":"military" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}],
+	"cost":[{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Fair",
+	"period": "THIRD",
+	"type": "BUILDING",	
+    "id" : 42,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":4,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":3,
+				"type":"wood" }},
+            {
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":3,
+				"type":"stone" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":4,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			}
+    ],
+	"productionForce":4}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Palace",
+	"period": "THIRD",
+	"type": "BUILDING",	
+    "id" : 45,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":9,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Coins",
+			 "resourceData":{
+				"amount":1,
+				"type":"coin" }}],
+            "resourcesIn":[{
+			 "resourceType":"Servants",
+			 "resourceData":{
+				"amount":2,
+				"type":"servant" }},
+            {
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":4,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":6}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Church",
+	"period": "THIRD",
+	"type": "BUILDING",	
+    "id" : 46,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+	},
+                       {
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Woods",
+			 "resourceData":{
+				"amount":1,
+				"type":"wood" }},
+                            {
+			 "resourceType":"Stones",
+			 "resourceData":{
+				"amount":1,
+				"type":"stone" }}],
+            "resourcesIn":[{
+			 "resourceType":"FaithPoints",
+			 "resourceData":{
+				"amount":2,
+				"type":"faith" }}],
+            "chooseOut": "true",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+   
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":4,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":1}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Military Academy",
+	"period": "THIRD",
+	"type": "BUILDING",	
+    "id" : 47,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "ExchangeResourcesEffect",
+		"effectData":
+		{ "choices":[
+         {  
+            "resourcesOut": [{
+			 "resourceType":"Servants",
+			 "resourceData":{
+				"amount":1,
+				"type":"servant" }}],
+            "resourcesIn":[{
+			 "resourceType":"MilitaryPoints",
+			 "resourceData":{
+				"amount":3,
+				"type":"military" }},
+                           {
+			 "resourceType":"VictoryPoints",
+			 "resourceData":{
+				"amount":1,
+				"type":"victory" }}],
+            "chooseOut": "false",
+             "chooseIn": "false" }
+         ]}}
+			    ],
+	"cost":[
+        {"resourceType":"Servants",
+         "resourceData":{
+				"amount":1,
+				"type":"servant" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":3}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Fortress",
+	"period": "THIRD",
+	"type": "BUILDING",	
+    "id" :  44,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":9,
+				"type":"victory" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			}]}},
+                 {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+			}]}}
+			    ],
+	"cost":[
+        {"resourceType":"Coins",
+         "resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":4,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":5}
+ },
+{
+	"cardType": "BuildingCard",
+	
+	"cardData":{"name": "Cathedral",
+	"period": "THIRD",
+	"type": "BUILDING",
+    "id" : 48,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+	}]}},{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"faith" }
+	}]}}
+                        ],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+        {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			},
+        {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":4,
+				"type":"stone" }
+			}
+    ],
+	"productionForce":2}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Warlord",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "id" : 49,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources":[ {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"military" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": 2,
+          "towerType": "Territory",
+          "discount" :[]
+            
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Stonemason",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "id" : 50,            
+    "immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": 2,
+          "towerType": "Building",
+          "discount" :[]
+            
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Dame",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "id" : 51,            
+    "immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": 2,
+          "towerType": "Character",
+          "discount" :[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			}]
+            
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":4,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Knight",
+ "period": "FIRST",
+ "type": "CHARACTER",
+ "id" : 52,             
+    "immediateEffects": [{
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"Privilege",
+         "resourceData":{
+         "amount":1,
+          "type":"privilege"
+        }}]}}],
+ "permanentEffects":[{
+  "effectType": "EmpowermentPlacementEffect",
+  "effectData":
+  { "diceEmpowerment": 2,
+    "towerType": "Venture",
+  "discount":[]}}],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":2,
+    "type":"coin" }
+   }
+    ]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Farmer",
+ "period": "FIRST",
+ "type": "CHARACTER",
+ "id" : 53,             
+    "immediateEffects": [],
+ "permanentEffects":[{
+  "effectType": "EmpowermentActivityEffect",
+  "effectData":
+  { "diceEmpowerment": 2,
+          "activityName": "Harvest"
+            
+        }}],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":3,
+    "type":"coin" }
+   }
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Artisan",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "id" : 54,            
+    "immediateEffects": [],
+	"permanentEffects":[{
+		"effectType": "EmpowermentActivityEffect",
+		"effectData":
+		{ "diceEmpowerment": 2,
+          "activityName": "Production"
+            
+        }}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Preacher",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "id" :  55,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			}
+    ]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Abbess",
+	"period": "FIRST",
+	"type": "CHARACTER",
+    "id" : 56,            
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}},
+     { "effectType": "BonusPlacementEffect",
+       "effectData":{
+           "valueAction": 4,
+            "cardType": "all",
+            "discount":[]
+       }}],
+	"permanentEffects":[],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			}]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Captain",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 57,              
+    "immediateEffects": [{
+        "effectType":"BonusPlacementEffect",
+        "effectData":
+        {
+        "valueAction":6,
+        "cardType":"territory",
+        "discount":[]
+        }},
+        {
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"MilitaryPoints",
+         "resourceData":{
+         "amount":2,
+          "type":"military"
+        }}]}}],
+ "permanentEffects":[],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Architect",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 58,             
+    "immediateEffects": [{
+        "effectType":"BonusPlacementEffect",
+        "effectData":
+        {
+        "valueAction":6,
+        "cardType":"building",
+        "discount":[{
+        "resourceType":"Woods",
+        "resourceData":{
+        "amount":1,
+        "type":"wood" }},
+        {
+        "resourceType":"Stones",
+        "resourceData":{
+        "amount":1,
+        "type":"stone" }}           ]
+        }},
+        {
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"MilitaryPoints",
+         "resourceData":{
+         "amount":2,
+          "type":"military"
+        }}]}}],
+ "permanentEffects":[],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Patron",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 59,              
+    "immediateEffects": [{
+        "effectType":"BonusPlacementEffect",
+        "effectData":
+        {
+        "valueAction":6,
+        "cardType":"character",
+        "discount":[{
+        "resourceType":"Coins",
+        "resourceData":{
+        "amount":2,
+        "type":"coin" }}]
+        }}],
+ "permanentEffects":[],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":3,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Hero",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 60,              
+    "immediateEffects": [{
+        "effectType":"BonusPlacementEffect",
+        "effectData":
+        {
+        "valueAction":6,
+        "cardType":"venture",
+        "discount":[]
+        }},
+        {
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"Privilege",
+         "resourceData":{
+         "amount":1,
+          "type":"privilege"
+        }}]}}],
+ "permanentEffects":[],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Paesant",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 61,             
+    "immediateEffects": [],
+ "permanentEffects":[{
+     "effectType" : "EmpowermentActivityEffect",
+     "effectData" :
+     {"diceEmpowerment": 3,
+      "activityName": "Harvest"      
+     }}],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Scholar",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 62,             
+    "immediateEffects": [],
+ "permanentEffects":[{
+     "effectType" : "EmpowermentActivityEffect",
+     "effectData" :
+     {"diceEmpowerment": 3,
+      "activityName": "Production"      
+     }}],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Papal Messenger",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 63,             
+    "immediateEffects": [{
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"FaithPoints",
+         "resourceData":{
+         "amount":3,
+          "type":"faith"
+        }}]}}],
+ "permanentEffects":[],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":5,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Royal Messenger",
+ "period": "SECOND",
+ "type": "CHARACTER",
+ "id" : 64,             
+    "immediateEffects": [{
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"Privilege",
+         "resourceData":{
+         "amount":1,
+          "type":"privilege"
+        }}]}},
+             {
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"Privilege",
+         "resourceData":{
+         "amount":1,
+          "type":"privilege"
+        }}]}},
+              {
+        "effectType":"GainResourcesEffect",
+        "effectData":
+        {
+         "resources": [{
+         "resourceType":"Privilege",
+         "resourceData":{
+         "amount":1,
+          "type":"privilege"
+        }}]}}],
+ "permanentEffects":[],
+ "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":5,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Noble",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 65,              
+    "immediateEffects": [{
+        "effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "victory",
+            "amount":2,
+            "cardType": "harvest"
+        }}],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":6,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Governor",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 66,             
+    "immediateEffects": [{
+        "effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "victory",
+            "amount":2,
+            "cardType": "production"
+        }}],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":6,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Paramour",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 67,             
+    "immediateEffects": [{
+        "effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "victory",
+            "amount":2,
+            "cardType": "character"
+        }}],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":7,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Herald",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 68,             
+    "immediateEffects": [{
+        "effectType": "MultipliedResourcesEffect",
+		"effectData":
+		{ "resourceType": "victory",
+            "amount":2,
+            "cardType": "venture"
+        }}],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":7,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Cardinal",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 69,              
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"faith" }
+	}]}},
+        {
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Harvest",
+          "valueAction":4} } ],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "Bishop",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 70,             
+    "immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}},
+        {
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Production",
+          "valueAction":4} } ],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":4,
+    "type":"coin" }
+   }]}
+ },
+{
+ "cardType": "CharacterCard",
+ 
+ "cardData":{"name": "General",
+ "period": "THIRD",
+ "type": "CHARACTER",
+ "id" : 71,             
+    "immediateEffects": [{
+		"effectType": "MultipliedResourcesForResourceEffect",
+		"effectData":
+		{ "multiplied": "military",
+          "amount": 2,
+          "gained" : "victory"}}],
+  "permanentEffects":[],
+  "cost":[{
+   "resourceType":"Coins",
+   "resourceData":{
+    "amount":5,
+    "type":"coin" }
+   }]}
+ },
+{
+	"cardType": "CharacterCard",
+	
+	"cardData":{"name": "Ambassador",
+	"period": "THIRD",
+	"type": "CHARACTER",
+    "id" : 72,            
+    "immediateEffects": [{ "effectType": "BonusPlacementEffect",
+       "effectData":{
+           "valueAction": 7,
+            "cardType": "all",
+            "discount":[]}},
+                         {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}}
+                        ],
+	"permanentEffects":[],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":6,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Hiring Recruits",
+    "neededPoints" : 0,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 73,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"military" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":4,
+				"type":"coin" }
+			}]}
+ },
+    
+{
+	"cardType": "VentureCard",
+    
+	"cardData":{"name": "Repairing the Church",
+    "neededPoints" : 0,            
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 74,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":1,
+				"type":"coin" }
+			},
+            {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},
+            {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Building the Walls",
+    "neededPoints" : 0,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 75,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+	}]}},
+       {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Raising a Statue",
+    "neededPoints" : 0,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 76,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}},
+       {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+           {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+    
+	"cardData":{"name": "Military Campaign",
+    "neededPoints" : 3,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 77,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Hosting Panhandlers",
+    "neededPoints" : 0,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 78,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":4,
+				"type":"servant" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Fighting Heresies",
+    "neededPoints" : 5,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 79,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[
+            {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Support the Bishop",
+    "neededPoints" : 4,
+	"period": "FIRST",
+	"type": "VENTURE",
+    "id" : 80,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+            {
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"military" }
+			},
+            {
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":1,
+				"type":"wood" }
+			},{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":1,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Hiring Soldiers",
+    "neededPoints" : 0,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 81,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"military" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":6,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+    
+	"cardData":{"name": "Repairing the Abbey",
+    "neededPoints" : 0,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 82,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"faith" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":2,
+				"type":"coin" }
+			},
+           {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			},
+           {
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":2,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Building the Bastions",
+    "neededPoints" : 0,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 83,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"military" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":4,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Support the King",
+    "neededPoints" : 6,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 84,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":5,
+				"type":"coin" }
+	}]}},
+        {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+	}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Improving the canals",
+    "neededPoints" : 0,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 85,            
+	"immediateEffects": [{
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Harvest",
+          "valueAction":4} }],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Servants",
+			"resourceData":{
+				"amount":3,
+				"type":"servant" }
+			},
+           {
+			"resourceType": "Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Hosting Foreigners",
+    "neededPoints" : 0,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 86,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Servants",
+			"resourceData":{
+				"amount":5,
+				"type":"servant" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Woods",
+			"resourceData":{
+				"amount":4,
+				"type":"wood" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Crusade",
+    "neededPoints" : 8,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 87,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":5,
+				"type":"coin" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "MilitaryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Support the cardinal",
+    "neededPoints" : 7,
+	"period": "SECOND",
+	"type": "VENTURE",
+    "id" : 88,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"faith" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "MilitaryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"military" }
+			},
+            {
+			"resourceType": "Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+            {
+			"resourceType": "Woods",
+			"resourceData":{
+				"amount":2,
+				"type":"wood" }
+			},
+            {
+			"resourceType": "Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Hiring mercenaries",
+    "neededPoints" : 0,
+	"period": "THIRD",
+	"type": "VENTURE",
+    "id" : 89,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"military" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Coins",
+			"resourceData":{
+				"amount":8,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Repairing the Cathedral",
+    "neededPoints" : 0,
+	"period": "THIRD",
+	"type": "VENTURE",
+    "id" : 90,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":1,
+				"type":"faith" }
+			}]}},
+                { "effectType": "BonusPlacementEffect",
+       "effectData":{
+           "valueAction": 7,
+            "cardType": "all",
+            "discount":[]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			},
+            {
+			"resourceType": "Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			},
+            {
+			"resourceType": "Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Building Towers",
+    "neededPoints" : 0,
+	"period": "THIRD",
+	"type": "VENTURE",
+    "id" : 91,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"MilitaryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"military" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Privilege",
+			"resourceData":{
+				"amount":1,
+				"type":"privilege" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Stones",
+			"resourceData":{
+				"amount":6,
+				"type":"stone" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Promoting Sacred Art",
+    "neededPoints" : 0,
+	"period": "THIRD",
+	"type": "VENTURE",
+    "id" : 92,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"faith" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":3,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Woods",
+			"resourceData":{
+				"amount":6,
+				"type":"wood" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+
+	"cardData":{"name": "MIlitary Conquest",
+    "neededPoints" : 12,
+	"period": "THIRD",
+	"type": "VENTURE",
+    "id" : 93,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Coins",
+			"resourceData":{
+				"amount":3,
+				"type":"coin" }
+			}]}},
+                {
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":7,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "MilitaryPoints",
+			"resourceData":{
+				"amount":6,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Improving the Roads",
+    "neededPoints" : 0,
+	"period": "THIRD",
+	"type": "VENTURE",	
+    "id" : 94,            
+	"immediateEffects": [{
+        "effectType": "BonusActivityEffect",
+        "effectData" :
+        { "type": "Production",
+          "valueAction":4} }],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "Servants",
+			"resourceData":{
+				"amount":3,
+				"type":"servant" }
+			},
+            {
+			"resourceType": "Coins",
+			"resourceData":{
+				"amount":4,
+				"type":"coin" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Sacred War",
+    "neededPoints" : 15,
+	"period": "THIRD",
+	"type": "VENTURE",	
+    "id" : 95,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":4,
+				"type":"faith" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "MilitaryPoints",
+			"resourceData":{
+				"amount":8,
+				"type":"military" }
+			}]}
+ },
+{
+	"cardType": "VentureCard",
+	
+	"cardData":{"name": "Support the Pope",
+    "neededPoints" : 10,
+	"period": "THIRD",
+	"type": "VENTURE",
+    "id" : 96,            
+	"immediateEffects": [{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"FaithPoints",
+			"resourceData":{
+				"amount":2,
+				"type":"faith" }
+			}]}}],
+	"permanentEffects":[{
+		"effectType": "GainResourcesEffect",
+		"effectData":
+		{ "resources": [{
+			"resourceType":"VictoryPoints",
+			"resourceData":{
+				"amount":10,
+				"type":"victory" }
+			}]}}],
+	"cost":[{
+			"resourceType": "MilitaryPoints",
+			"resourceData":{
+				"amount":5,
+				"type":"military" }
+			},
+            {
+			"resourceType": "Woods",
+			"resourceData":{
+				"amount":3,
+				"type":"wood" }
+			},
+            {
+			"resourceType": "Stones",
+			"resourceData":{
+				"amount":3,
+				"type":"stone" }
+			},
+            {
+			"resourceType": "Coins",
+			"resourceData":{
+				"amount":4,
+				"type":"coin" }
+			}]}
+ }
+]
