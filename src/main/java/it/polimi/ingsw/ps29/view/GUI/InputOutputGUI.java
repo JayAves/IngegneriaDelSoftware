@@ -22,13 +22,14 @@ import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.InputOutput;
+import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BasePanel;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BonusPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.ExchangePanelCreator;
-import it.polimi.ingsw.ps29.view.GUI.specialinteraction.BasePanel;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.VaticanPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
@@ -136,12 +137,6 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		screen.tower.setValueDices(values);
 		screen.tower.cleanCoordFamiliar();
 		
-	}
-
-	@Override
-	public ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -303,6 +298,34 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		running = false;
 		return true;
 	}
+
+	@Override
+	public void restore(RestoreSituation msg) {
+		//get the index of coordinates to show family members on the towers
+		for(Map.Entry <String, HashMap<String, ArrayList<FamilyMemberDTO>>> first: msg.getGameBoard().getBoardMap().entrySet()) 
+			for (Map.Entry<String, ArrayList<FamilyMemberDTO>> second: first.getValue().entrySet()) 
+				for(FamilyMemberDTO famDTO: second.getValue()) {
+					int index = PrintInfoFunctions.getIndexFromHashMap(first.getKey(), second.getKey());
+					screen.tower.showFamiliar(index, famDTO);
+				}
+		
+		//set the cards (with ev null cards)
+		screen.tower.setCards(msg.getFirstInfo().getTowers().getTowers().getIdCards(), true);
+		
+		//get personal board of the player
+		PersonalBoardDTO pbSearched = null;
+		for(PersonalBoardDTO pbDTO: msg.getPersonalBoard())
+			if(pbDTO.getName().equals(screen.playerName))
+				pbSearched = pbDTO;
+		
+		//show cards and resources of the player
+		ArrayList<Integer> ids = PrintInfoFunctions.createIdCards(pbSearched.getIdCards());
+		screen.personal.setCards(ids, true);
+		PrintInfoFunctions.printUpdatedResources(screen, pbSearched.getResources());
+		
+			
+	}
+	
 	
 	
 }

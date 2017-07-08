@@ -17,7 +17,7 @@ public class GameBoardDTO implements Serializable{
 	
 	//auto-generated serialVersionUID
 	private static final long serialVersionUID = 3400069665316183033L;
-	HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
+	private HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> boardMap;
 
 	public GameBoardDTO() {
 		boardMap = new HashMap <String, HashMap <String, ArrayList<FamilyMemberDTO>>> ();
@@ -202,6 +202,10 @@ public class GameBoardDTO implements Serializable{
 		}
 		
 		return bld.toString();
+	}
+	
+	public HashMap<String, HashMap <String, ArrayList<FamilyMemberDTO>>> getBoardMap () {
+		return boardMap;
 	}
 	
 }

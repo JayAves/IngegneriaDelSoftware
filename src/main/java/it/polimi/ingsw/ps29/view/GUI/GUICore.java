@@ -234,25 +234,25 @@ public class GUICore extends Observable{
 		ImageToPrint coinIMG = new ImageToPrint("resources/coin.png");
 		resourcesPanel.add(coinIMG);
 		coin = new JLabel("0");
-		coin.setHorizontalAlignment(JLabel.RIGHT);
+		coin.setHorizontalAlignment(JLabel.CENTER);
 		resourcesPanel.add(coin);
 		
 		ImageToPrint stoneIMG = new ImageToPrint("resources/stone.png");
 		resourcesPanel.add(stoneIMG);
 		stone = new JLabel("0");
-		stone.setHorizontalAlignment(JLabel.RIGHT);
+		stone.setHorizontalAlignment(JLabel.CENTER);
 		resourcesPanel.add(stone);
 		
 		ImageToPrint woodIMG = new ImageToPrint("resources/wood.png");
 		resourcesPanel.add(woodIMG);
 		wood = new JLabel("0");
-		wood.setHorizontalAlignment(JLabel.RIGHT);
+		wood.setHorizontalAlignment(JLabel.CENTER);
 		resourcesPanel.add(wood);
 		
 		ImageToPrint servantIMG = new ImageToPrint("resources/servant.png");
 		resourcesPanel.add(servantIMG);
 		servant = new JLabel("0");
-		servant.setHorizontalAlignment(JLabel.RIGHT);
+		servant.setHorizontalAlignment(JLabel.CENTER);
 		resourcesPanel.add(servant);
 		
 		panelSouth.add(resourcesPanel, c);
@@ -335,21 +335,25 @@ public class GUICore extends Observable{
 		ImageToPrint militaryIMG = new ImageToPrint("resources/military.png");
 		pointsPanel.add(militaryIMG);
 		military = new JLabel("0");
+		military.setHorizontalAlignment(JLabel.CENTER);
 		pointsPanel.add(military);
 		
 		ImageToPrint faithIMG = new ImageToPrint("resources/faith.png");
 		pointsPanel.add(faithIMG);
 		faith = new JLabel("0");
+		faith.setHorizontalAlignment(JLabel.CENTER);
 		pointsPanel.add(faith);
 		
 		ImageToPrint victoryIMG = new ImageToPrint("resources/victory.png");
 		pointsPanel.add(victoryIMG);
 		victory = new JLabel("0");
+		victory.setHorizontalAlignment(JLabel.CENTER);
 		pointsPanel.add(victory);
 		
 		ImageToPrint privilegeIMG = new ImageToPrint("resources/privilege.png");
 		pointsPanel.add(privilegeIMG);
 		privileges = new JLabel("0");
+		privileges.setHorizontalAlignment(JLabel.CENTER);
 		pointsPanel.add(privileges);
 	}	
 	

@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.cards.effects.BonusActionEffect;
@@ -295,7 +296,6 @@ public class InputOutputCLI implements InputOutput {
 		
 	}
 
-	@Override
 	public ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
 		// TODO Auto-generated method stub
 		int choice = 0;
@@ -442,5 +442,11 @@ public class InputOutputCLI implements InputOutput {
 	@Override
 	public long getTimeStart() {
 		return timeStart;
+	}
+
+	@Override
+	public void restore(RestoreSituation msg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

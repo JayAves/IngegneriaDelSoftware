@@ -194,6 +194,7 @@ public class View extends Observable implements Observer {
 				personalBoardsDTO.put(pBoard.getName(), pBoard);
 			else
 				personalBoardsDTO.replace(pBoard.getName(), pBoard);
+		inputOutput.restore(msg);
 		
 	}
 	

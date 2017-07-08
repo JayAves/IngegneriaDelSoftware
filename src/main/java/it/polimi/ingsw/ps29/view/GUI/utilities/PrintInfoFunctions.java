@@ -117,4 +117,43 @@ public class PrintInfoFunctions {
 				break;
 			}
 	}
+	
+	public static int getIndexFromHashMap (String first, String second) {
+		switch (first) {
+		case "harvest":
+			return 16;
+		case "production":
+			return 17;
+		case "territoryTower":
+			return secondLevel(second, 0);
+		case "buildingTower":
+			return secondLevel(second, 8);
+		case "characterTower":
+			return secondLevel(second, 4);
+		case "ventureTower":
+			return secondLevel(second, 12);
+		case "market":
+			return secondLevel(second, 18);
+		case "council":
+			return 22;
+			default:
+				return 23;
+		}
+	}
+	
+	public static int secondLevel(String second, int index) {
+		switch (second) {
+		case "first":
+			return index;
+		case "second":
+			return index+1;
+		case "third":
+			return index+2;
+		case "fourth":
+			return index+3;
+			default:
+				return -1;
+		}
+		
+	}
 }

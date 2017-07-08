@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps29.view;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.DTO.GameBoardDTO;
@@ -12,6 +11,7 @@ import it.polimi.ingsw.ps29.messages.Exchange;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
 import it.polimi.ingsw.ps29.messages.exception.ExpiredTimeException;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
@@ -39,8 +39,6 @@ public interface InputOutput {
 	abstract ResourceType askSpecificPrivilege(boolean different, boolean multiple) throws ExpiredTimeException;
 	
 	abstract int askAboutExcommunication () throws ExpiredTimeException;
-	
-	abstract ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation);
 
 	abstract ActionChoice handleAskNextAction(ActionChoice msg) throws ExpiredTimeException;
 	
@@ -51,4 +49,6 @@ public interface InputOutput {
 	abstract int getTimer();
 	
 	abstract long getTimeStart ();
+
+	abstract void restore(RestoreSituation msg);
 }

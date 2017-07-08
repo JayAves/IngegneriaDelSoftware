@@ -40,11 +40,18 @@ public class CreationMessagesSupporter {
 	public static TowersDTO createTowersDTO (Match model) {
 		TowersDTO msg = new TowersDTO();
 		String [] towersName = {"territoryTower", "buildingTower", "characterTower", "ventureTower"};
-		for (String towerName: towersName)
+		String[] towersType = {"territory", "building", "character", "venure"};
+		int i=-1; 
+		for (String towerName: towersName) {
+			i++;
 			for (Floor floor: ((TowerArea)model.getBoard().getSpace(towerName)).getFloors()) {
 				Card cardOnTower = floor.getCard();
-				msg.addCard(new CardDTO (cardOnTower.getId(), cardOnTower.getType(), cardOnTower.toString()));
+				if(cardOnTower==null)
+					msg.addCard(new CardDTO(-1, towersType[i], null));
+				else
+					msg.addCard(new CardDTO (cardOnTower.getId(), cardOnTower.getType(), cardOnTower.toString()));
 			}
+		}
 		return msg;
 	}
 	
