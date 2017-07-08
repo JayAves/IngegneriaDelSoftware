@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
+  router="FAN">  
+  <class id="1" language="java" name="it.polimi.ingsw.ps29.model.game.Player" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/Player.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="921" width="283" x="1125" y="865"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="it.polimi.ingsw.ps29.model.game.PersonalBoard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/PersonalBoard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1672" y="794"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="it.polimi.ingsw.ps29.model.game.PersonalBonusTile" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/PersonalBonusTile.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2160" y="204"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="it.polimi.ingsw.ps29.model.game.GameBoard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/GameBoard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="784" y="1004"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="it.polimi.ingsw.ps29.model.game.Match" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/Match.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="416" y="1846"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Servants" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Servants.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="2038" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Coins" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Coins.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="2267" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="it.polimi.ingsw.ps29.model.game.resources.ResourceInterface" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/ResourceInterface.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="189" x="3697" y="362"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="it.polimi.ingsw.ps29.model.game.resources.ResourceDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/ResourceDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3455" y="331"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Container" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Container.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2151" y="556"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Stones" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Stones.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="2496" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="it.polimi.ingsw.ps29.model.game.resources.FaithPoints" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/FaithPoints.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="2725" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="it.polimi.ingsw.ps29.model.game.resources.VictoryPoints" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/VictoryPoints.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="2954" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Resource" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Resource.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="189" x="2840" y="539"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="it.polimi.ingsw.ps29.model.game.resources.ResourceSantaRitaDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/ResourceSantaRitaDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="279" x="3320" y="539"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Privilege" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Privilege.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="3183" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="it.polimi.ingsw.ps29.model.game.resources.MilitaryPoints" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/MilitaryPoints.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="3412" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="it.polimi.ingsw.ps29.model.game.resources.Woods" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/resources/Woods.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2026" y="754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="19" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberInterface.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1718" y="1922"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="20" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1993" y="1468"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberPowerDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberPowerDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2016" y="1832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FamilyMember" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMember.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1718" y="1522"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2944" y="1167"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" 
+    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberCharacterTowerDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberCharacterTowerDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2709" y="1707"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" 
+    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberHarvestTowerDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberHarvestTowerDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3144" y="1755"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="26" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberInterface.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2360" y="1627"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="27" language="java" 
+    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionTowerDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberProductionTowerDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3424" y="1540"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberMarketDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberMarketDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3362" y="1408"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" 
+    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberVenturesTowerDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberVenturesTowerDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3375" y="1277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMember.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2353" y="1889"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberProductionDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3363" y="1148"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberHarvestDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberHarvestDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3357" y="1015"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="it.polimi.ingsw.ps29.model.cards.CharacterCard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/CharacterCard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3205" y="-208"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="it.polimi.ingsw.ps29.model.cards.ExcommunicationDeck" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/ExcommunicationDeck.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="625" y="2282"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="it.polimi.ingsw.ps29.model.cards.LeaderCard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/LeaderCard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1291" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="it.polimi.ingsw.ps29.model.cards.Card" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/Card.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2659" y="-196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="it.polimi.ingsw.ps29.model.cards.Deck" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/Deck.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="619" y="-169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="it.polimi.ingsw.ps29.model.cards.ExcommunicationCard" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/ExcommunicationCard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="961" y="2318"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="it.polimi.ingsw.ps29.model.cards.TerritoryCard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/TerritoryCard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3208" y="-25"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="it.polimi.ingsw.ps29.model.cards.VentureCard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/VentureCard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3208" y="131"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="it.polimi.ingsw.ps29.model.cards.BuildingCard" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/cards/BuildingCard.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3210" y="-366"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="it.polimi.ingsw.ps29.model.action.CouncilPalaceAction" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/CouncilPalaceAction.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2983" y="2921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="it.polimi.ingsw.ps29.model.action.HarvestAction" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/HarvestAction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2572" y="2206"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="it.polimi.ingsw.ps29.model.action.TowerAction" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/TowerAction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3597" y="2261"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="it.polimi.ingsw.ps29.model.action.LeaderAction" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/LeaderAction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3229" y="2218"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="it.polimi.ingsw.ps29.model.action.NoAction" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/NoAction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3240" y="2388"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="it.polimi.ingsw.ps29.model.action.ExchangeResources" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/ExchangeResources.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="430" y="2791"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="it.polimi.ingsw.ps29.model.action.MarketAction" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/MarketAction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3142" y="2612"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="it.polimi.ingsw.ps29.model.action.ProductionAction" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/ProductionAction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2593" y="2577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="it.polimi.ingsw.ps29.model.action.Action" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2761" y="2363"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.BonusActionState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/BonusActionState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3848" y="4016"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.RejectedState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/RejectedState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3496" y="3722"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.PerformedState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/PerformedState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3826" y="3784"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.PrivilegesState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/PrivilegesState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4146" y="3829"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.AskAboutExchangeState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/AskAboutExchangeState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4502" y="3785"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="56" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.ActionState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/ActionState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3730" y="3497"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="57" language="java" name="it.polimi.ingsw.ps29.model.action.actionstates.ToEstablishState" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/action/actionstates/ToEstablishState.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3530" y="3932"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="it.polimi.ingsw.ps29.model.space.ActivityArea" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/ActivityArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2070" y="2505"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="59" language="java" name="it.polimi.ingsw.ps29.model.space.ActionSpace" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/ActionSpace.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2178" y="3546"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="60" language="java" name="it.polimi.ingsw.ps29.model.space.FaithSpace" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/FaithSpace.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="32" y="364"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="it.polimi.ingsw.ps29.model.space.SingleSlotActionSpace" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/SingleSlotActionSpace.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1545" y="3514"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="it.polimi.ingsw.ps29.model.space.ProductionArea" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/ProductionArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1432" y="2614"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="it.polimi.ingsw.ps29.model.space.TowerArea" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/TowerArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2227" y="2904"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="it.polimi.ingsw.ps29.model.space.HarvestArea" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/HarvestArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1433" y="2734"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="it.polimi.ingsw.ps29.model.space.Floor" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/Floor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1573" y="3232"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="it.polimi.ingsw.ps29.model.space.CouncilPalaceArea" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/CouncilPalaceArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2569" y="3245"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="it.polimi.ingsw.ps29.model.space.MarketArea" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/MarketArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2530" y="3003"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="it.polimi.ingsw.ps29.model.space.BonusActionSpace" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/BonusActionSpace.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-206" y="1427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="it.polimi.ingsw.ps29.model.space.QueueActionSpace" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/QueueActionSpace.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1841" y="3506"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="it.polimi.ingsw.ps29.model.space.BonusInit" project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/space/BonusInit.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3960" y="792"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="71">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="72">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="73" name="family"/>      
+      <multiplicity id="74" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="76" name="member"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="78">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="59"/>  
+  </realization>  
+  <association id="79">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="80" name="power"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="83" name="space"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="86" name="bonus"/>      
+      <multiplicity id="87" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="88">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="90">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="91" name="space"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="63" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="93">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <association id="94">    
+    <end type="SOURCE" refId="65" navigable="false">      
+      <attribute id="95" name="space"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="61" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="97">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <association id="98">    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="99" name="model"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="102" name="deck"/>      
+      <multiplicity id="103" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="105">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="106" name="bonus"/>      
+      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="109" name="model"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="111">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <generalization id="112">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="113">    
+    <bendpoint x="1653" y="510"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="114" name="activatedLeaderCards"/>      
+      <multiplicity id="115" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="117" name="playedLeaderCards"/>      
+      <multiplicity id="118" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="119">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="58"/>  
+  </generalization>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="58"/>  
+  </generalization>  
+  <generalization id="121">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="122">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="123" name="previousState"/>      
+      <multiplicity id="124" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="125">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="126" name="queue"/>      
+      <multiplicity id="127" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="128">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="129">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="130" name="decoratedResource"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="132">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <generalization id="133">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <realization id="134">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <generalization id="135">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="136">    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="137" name="state"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="139">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="140">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="141" name="queue"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="144" name="resources"/>      
+      <multiplicity id="145" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="146">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="147" name="space"/>      
+      <multiplicity id="148" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="66" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="149">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="59"/>  
+  </realization>  
+  <association id="150">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="151" name="productionBonus"/>      
+      <multiplicity id="152" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="153">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="154">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="155">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="156">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="157" name="decoratedFamilyMember"/>      
+      <multiplicity id="158" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="159">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="160" name="cards"/>      
+      <multiplicity id="161" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="163" name="excommunication"/>      
+      <multiplicity id="164" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="165">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <generalization id="166">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <realization id="167">    
+    <end type="SOURCE" refId="63"/>    
+    <end type="TARGET" refId="59"/>  
+  </realization>  
+  <realization id="168">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <generalization id="169">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="61"/>  
+  </generalization>  
+  <realization id="170">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="59"/>  
+  </realization>  
+  <realization id="171">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <generalization id="172">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="173">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="174" name="personalTile"/>      
+      <multiplicity id="175" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="176">    
+    <bendpoint x="1610" y="564"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="177" name="playedLeaderCards"/>      
+      <multiplicity id="178" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="179">    
+    <end type="SOURCE" refId="63" navigable="false">      
+      <attribute id="180" name="floors"/>      
+      <multiplicity id="181" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="65" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="183" name="board"/>      
+      <multiplicity id="184" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="185">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="186">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="187" name="resources"/>      
+      <multiplicity id="188" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="189">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="190" name="spaces"/>      
+      <multiplicity id="191" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="192">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="193" name="requirements"/>      
+      <multiplicity id="194" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="195">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="196" name="decoratedFakeFamilyMember"/>      
+      <multiplicity id="197" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="198">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="199" name="decks"/>      
+      <multiplicity id="200" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="201">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <association id="202">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="203" name="playersOrder"/>      
+      <multiplicity id="204" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="205">    
+    <bendpoint x="1389" y="686"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="206" name="leaderCards"/>      
+      <multiplicity id="207" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="208">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="209" name="space"/>      
+      <multiplicity id="210" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="67" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="211">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="212" name="decoratedResource"/>      
+      <multiplicity id="213" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="214">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <generalization id="215">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="216">    
+    <end type="SOURCE" refId="65" navigable="false">      
+      <attribute id="217" name="card"/>      
+      <multiplicity id="218" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="219">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="220" name="harvestBonus"/>      
+      <multiplicity id="221" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="222">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="223" name="leaderCards"/>      
+      <multiplicity id="224" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="225">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="226" name="bonus"/>      
+      <multiplicity id="227" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="228">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="229">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="230">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="231">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="232" name="players"/>      
+      <multiplicity id="233" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="234">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="235" name="fakeFamiliar"/>      
+      <multiplicity id="236" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="237">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="238" name="cost"/>      
+      <multiplicity id="239" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="240">    
+    <bendpoint x="3622" y="402"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <generalization id="241">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <realization id="242">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <association id="243">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="244" name="state"/>      
+      <multiplicity id="245" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="246">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="247" name="excommunications"/>      
+      <multiplicity id="248" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="249">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="250">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="251" name="space"/>      
+      <multiplicity id="252" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="253">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <association id="254">    
+    <end type="SOURCE" refId="66" navigable="false">      
+      <attribute id="255" name="queue"/>      
+      <multiplicity id="256" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="257">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <realization id="258">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="259">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="260" name="board"/>      
+      <multiplicity id="261" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="262">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="263" name="head"/>      
+      <multiplicity id="264" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="61" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="265">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="266" name="excommunicationDeck"/>      
+      <multiplicity id="267" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="268">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="269" name="faithTrack"/>      
+      <multiplicity id="270" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="271">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <realization id="272">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="273">    
+    <end type="SOURCE" refId="67" navigable="false">      
+      <attribute id="274" name="slot"/>      
+      <multiplicity id="275" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="276">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
