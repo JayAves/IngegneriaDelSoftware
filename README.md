@@ -81,4 +81,4 @@ We're all Politecnico di Milano students.
 * [Gson](https://github.com/google/gson) - Google project for Json management 
 * [SonarQube](https://www.sonarqube.org/)- Code inspection tool
 * The project was developed in Eclipse Java Neon Environment
-
+* For more detailed info look at our wiki pages
