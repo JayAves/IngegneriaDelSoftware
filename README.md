@@ -11,7 +11,7 @@ In _Lorenzo il Magnifico_, you are the head of an influential family in Florence
 
 Complete Game Rules can be found in "_src_" subfolder called "_data_" (/src/data/GameRules.pdf).
 
-A bit different is the part concerning the LeaderCards' distribution. In this project, they're randomly given to players.
+Slightly different is the part concerning the LeaderCards' distribution. In this project, they're randomly given to players.
 
 
 ## How to start the client-side of the App
