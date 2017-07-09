@@ -58,6 +58,11 @@ public class FamiliarEmpowermentTest  extends TestCase{
 	public void test() {
 		//fail("Not yet implemented");
 		assertEquals(3, model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.BLACK).getPower());
+		assertEquals(3, model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.WHITE).getPower());
+		assertEquals(3, model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.BLACK).getPower());
+		assertEquals(3, model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.WHITE).getPower());
+		assertEquals(1, model.getBoard().getPlayerByName("terzo").getFamiliarByColor(DiceColor.BLACK).getPower());
+		assertEquals(1, model.getBoard().getPlayerByName("terzo").getFamiliarByColor(DiceColor.WHITE).getPower());
 	}
 
 }
