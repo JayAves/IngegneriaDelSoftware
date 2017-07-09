@@ -44,19 +44,19 @@ public class PersonalBoardDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		//return "Player:" + name + " has cards:" + cards + ", has resources:" + resources + ", has Bonustile=" + tile;
-		StringBuilder bld = new StringBuilder().append("Player " + name + " situation :" );
+		
+		StringBuilder bld = new StringBuilder(); 
 		bld.append("\n\n has cards:\n");
 		for (String cardKey: cards.keySet()){
 			bld.append("\n " + cardKey);
 			for (CardDTO carddto : cards.get(cardKey))
 				bld.append("\n            " + carddto);
 		}
-		bld.append("\n has resources:\n");
+		bld.append("\n\n has resources:\n");
 		while(resources==null) {}
 		for (ResourceDTO rDTO : resources)
 			bld.append("\n " + rDTO);
-		bld.append("\n has bonus Tile:");
+		bld.append("\n\n has bonus Tile:\n");
 		bld.append("\n" + tile);
 		bld.append("\n");
 		

@@ -40,7 +40,7 @@ public class PersonalBonusTile {
 
 	@Override
 	public String toString() {
-		return " ProductionBonus=" + productionBonus + ", harvestBonus:" + harvestBonus ;
+		return " ProductionBonus=" + productionBonus + ";	 HarvestBonus:" + harvestBonus ;
 	}
 	
 	public int getId () {
