@@ -1,8 +1,11 @@
 package it.polimi.ingsw.ps29.view.inputCLI;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
@@ -339,7 +342,7 @@ public class InputOutputCLI implements InputOutput {
 				for ( int i = 0 ; i < leaderSituation.size(); i++)
 					System.out.println( " " + (i + 1) + ") " + leaderSituation.get(i).get(1));
 				
-				System.out.println(( leaderSituation.size() + 1 + " No azione Leader"));
+				System.out.println(( leaderSituation.size() + 1 + " No Leader action"));
 				try {
 					choice = scanner.nextInt();
 				} catch (Exception e) {
@@ -386,8 +389,11 @@ public class InputOutputCLI implements InputOutput {
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
+		System.out.println("\nLet the game begin!\n");
+		System.out.println("Bonus Tiles extracted:\n");
 		for(HashMap.Entry<String, PersonalBonusTileDTO> tile: msg.getTiles().entrySet())
-			System.out.println(tile.getValue().toString());
+			System.out.println("Player "+ tile.getKey()+ ": "+tile.getValue().toString());
+		System.out.println("\nExcommunicatons extracted:\n");
 		for(ExcommunicationCardDTO exCard: msg.getExCards())
 			System.out.println(exCard.toString());
 		
