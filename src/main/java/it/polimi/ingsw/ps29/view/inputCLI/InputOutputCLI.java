@@ -368,6 +368,7 @@ public class InputOutputCLI implements InputOutput {
 		return leaderSituation;
 	}
 	
+	//print possible actions for leader cards
 	private ArrayList<String> printCorrectOptions(ArrayList<Object> card){
 		ArrayList<String> toShow = new ArrayList<String>();
 		toShow.add("DO NOTHING");
