@@ -43,8 +43,9 @@ public class GUICore extends Observable{
 	ImageToPrint preview;
 	
 	JButton otherCards;
-	JButton prev;
-	JButton next;
+	JLabel ts1;
+	JLabel ts2;
+	JLabel ts3;
 	
 	JLabel coin;
 	JLabel stone;
@@ -268,13 +269,21 @@ public class GUICore extends Observable{
 		buttonsPanel.add(otherCards, c);
 		
 		c.gridy = 1;
+		buttonsPanel.add(new JLabel("EXCOMM THSH"), c);
+		
+		c.gridx = 0;
+		c.gridy = 2;
 		c.gridwidth = 1;
-		prev = new JButton("Prev");
-		buttonsPanel.add(prev, c);
+		ts1 = new JLabel ("I");
+		buttonsPanel.add(ts1, c);
 		
 		c.gridx = 1;
-		next = new JButton("Next");
-		buttonsPanel.add(next, c);
+		ts2 = new JLabel ("II");
+		buttonsPanel.add(ts2, c);
+		
+		c.gridx = 2;
+		ts3 = new JLabel ("III");
+		buttonsPanel.add(ts3, c);
 	}
 	
 	public void setFamiliarPanel (JPanel familiarPanel) {
@@ -370,7 +379,7 @@ public class GUICore extends Observable{
 	}
 	
 	public static void main(String[] args) {
-		//new GUICore ("test");
+		new GUICore ("test");
 	}
 	
 	public void notifyInput (Object msg) {

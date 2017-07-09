@@ -14,9 +14,9 @@ public class InputoutputFactory {
 	
 	public InputOutput getInput (String inputOutputType, String name) {
 		
-		if(inputOutputType.equals("CLI")) 
+		if(inputOutputType.equals("cli")) 
 			return new InputOutputCLI ();
-		else if (inputOutputType.equals("GUI"))
+		else if (inputOutputType.equals("gui"))
 			return new InputOutputGUI (name);
 		return new InputOutputCLI();
 	}

@@ -135,6 +135,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			values.add(value);
 		
 		screen.tower.setValueDices(values);
+		screen.tower.setPlayerOrder(msg.getPlayerOrder());
 		screen.tower.cleanCoordFamiliar();
 		
 	}
@@ -151,6 +152,9 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 				screen.excomm1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
 				screen.excomm2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
 				screen.excomm3.setImage("excomm_card/excomm_3_"+msg.getExCards().get(2).getId()+".png");
+				screen.ts1.setText("I: "+msg.getThreshold()[0]);
+				screen.ts2.setText("II: "+msg.getThreshold()[1]);
+				screen.ts3.setText("III: "+msg.getThreshold()[2]);
 				ready = true;
 			}
 			

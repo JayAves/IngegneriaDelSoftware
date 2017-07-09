@@ -29,17 +29,18 @@ public class OnlineApp {
 	    	System.out.println("                    |          A LONG LONG TIME AGO, IN MEDIEVAL TIMES...          |");
 	    	System.out.println("                    |                                                              |");
 	    	System.out.println("                     -------------------------------------------------------------- ");
-	    	System.out.println("\nChoose the interface you want to use between CLI and GUI.");
-	    	System.out.println("Type 'CLI' or 'GUI' and press ENTER: ");
 	    	
 	    	do { 
+	    		System.out.println("\nChoose the interface you want to use between CLI and GUI.");
+		    	System.out.println("Type 'CLI' or 'GUI' and press ENTER: ");
 	    		inputChoice = scanner.nextLine().toLowerCase();
 	    	} while(!inputChoice.equals("cli") && !inputChoice.equals("gui"));
 	    	
-	    	System.out.println("Choose the connection you want to use between Socket and RMI.");
-	    	System.out.println("Type 'socket' or 'RMI' and press ENTER: ");
 	    	
-	    	do { inputConnection = scanner.nextLine().toLowerCase();
+	    	do { 
+	    		System.out.println("Choose the connection you want to use between Socket and RMI.");
+		    	System.out.println("Type 'socket' or 'RMI' and press ENTER: ");
+		    	inputConnection = scanner.nextLine().toLowerCase();
 	    	} while(!inputConnection.equals("socket") && !inputConnection.equals("rmi")); 
 	    	
 	    	System.out.println("\nInsert your username: ");

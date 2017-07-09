@@ -20,6 +20,7 @@ import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 import it.polimi.ingsw.ps29.model.space.Floor;
@@ -68,7 +69,8 @@ public class CreationMessagesSupporter {
 		int[] dices = createDicesDTO(model);
 		
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) 
-			view.getValue().startInteraction(new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices));
+			view.getValue().startInteraction(new TowersAndDicesForView(view.getValue().getClientName(), 
+					towersForView, dices, createPlayerOrder(model.getBoard())));
 	}
 	
 	private static GameBoardDTO createGameBoardDTO (GameBoard board) {
@@ -180,8 +182,8 @@ public class CreationMessagesSupporter {
 		//send message to users
 		for(HashMap.Entry <String, ClientThread> view: views.entrySet()) {
 			view.getValue().startInteraction(new FirstBoardInfo(view.getValue().getClientName(), tiles, exCards,
-					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices), 
-					buildInitialResourcesState(model)));
+					new TowersAndDicesForView(view.getValue().getClientName(), towersForView, dices, createPlayerOrder(model.getBoard())), 
+					buildInitialResourcesState(model), createThresholds(model.getBoard())));
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -213,7 +215,8 @@ public class CreationMessagesSupporter {
 		int[] dices = createDicesDTO(model);
 		
 		msg.setFirstInfo(new FirstBoardInfo(msg.getName(), tiles, exCards, 
-				new TowersAndDicesForView(msg.getName(), towersForView, dices), buildInitialResourcesState(model)));
+				new TowersAndDicesForView(msg.getName(), towersForView, dices, createPlayerOrder(model.getBoard())),
+				buildInitialResourcesState(model), createThresholds(model.getBoard())));
 		
 		for(Player player: model.getBoard().getPlayers())
 			msg.setPersonalBoard(createPersonalBoardDTO(player.getPersonalBoard(), player.getName()));
@@ -234,4 +237,18 @@ public class CreationMessagesSupporter {
 		return initialResources;
 	}
 
+	
+	private static int[] createThresholds (GameBoard board) {
+		int[] ts = {board.getExcommunicationTreshold(2),
+				board.getExcommunicationTreshold(4),
+				board.getExcommunicationTreshold(6)};
+		return ts;
+	}
+	
+	private static ArrayList<PlayerColor> createPlayerOrder (GameBoard board) {
+		ArrayList<PlayerColor> playerOrder = new ArrayList<PlayerColor>();
+		for(Player player: board.getPlayers())
+			playerOrder.add(player.getColor());
+		return playerOrder;
+	}
 }

@@ -25,11 +25,11 @@ public class ConnectionFactory {
 	
 	Connection getNetworking(String networking, String playerName) {
 
-		if(networking.equals("Socket")) {
+		if(networking.equals("socket")) {
 			return new SocketConnection(playerName);
 		} 
 		
-		else if (networking.equals("RMI")) {
+		else if (networking.equals("rmi")) {
 		
 			try {
 				return new RmiConnection(playerName);

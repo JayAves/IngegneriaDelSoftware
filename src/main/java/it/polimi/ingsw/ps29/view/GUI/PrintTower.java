@@ -10,6 +10,7 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps29.DTO.FamilyMemberDTO;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerSpaces;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.Coordinates;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
@@ -25,6 +26,7 @@ public class PrintTower extends PrintPersonal {
 	private CoordinateHandlerSpaces coordSpaces;
 	private HashMap <Integer, ArrayList<FamilyMemberDTO>> coordFamiliar;
 	private ArrayList<Integer> valueDices = new ArrayList<Integer>();
+	private ArrayList<PlayerColor> playerOrder = new ArrayList<PlayerColor>();
 	private int orW, orH;
 	
 	private int indexSpacePressed = -1;
@@ -67,6 +69,7 @@ public class PrintTower extends PrintPersonal {
 		super.paintComponent(g);
 		
 		printDices(g);
+		printOrder(g);
 		
 		//dimensioni assolute utilizzate per piazzare le carte
 		handleTower(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
@@ -189,8 +192,20 @@ public class PrintTower extends PrintPersonal {
 			
 			g.drawString(valueDices.get(i)+"",(int)x, (int)y);
 			x+=shift;
+		}		
+	}
+	
+	private void printOrder (Graphics g) {
+		double x =  marginX + (368*imageWidth)/orW;
+		double y =  marginY + (367*imageHeight)/orH;
+		int shift = (int) (28*imageHeight)/orH;
+		int width = (int) (22*imageWidth)/orW;
+		
+		for(PlayerColor color: playerOrder) {
+			g.setColor(color.getColor());
+			g.fillOval((int)x, (int)y, width, width);
+			y+=shift;
 		}
-			
 		
 	}
 	
@@ -200,6 +215,10 @@ public class PrintTower extends PrintPersonal {
 	
 	public void setValueDices (ArrayList<Integer> values) {
 		valueDices = values;
+	}
+	
+	public void setPlayerOrder (ArrayList<PlayerColor> order) {
+		playerOrder = order;
 	}
 	
 	public int getIndexSpacePressed () {
