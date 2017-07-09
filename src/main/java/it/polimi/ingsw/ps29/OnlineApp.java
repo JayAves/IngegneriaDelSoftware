@@ -22,18 +22,27 @@ public class OnlineApp {
 	    	String inputChoice;
 	    	String inputConnection;
 	    	String playerName;
+	    	System.out.println("                     -------------------------------------------------------------- ");
+	    	System.out.println("                    |                                                              |");
+	    	System.out.println("                    |                     Lorenzo il Magnifico                     |");
+	    	System.out.println("                    |                                                              |");
+	    	System.out.println("                    |          A LONG LONG TIME AGO, IN MEDIEVAL TIMES...          |");
+	    	System.out.println("                    |                                                              |");
+	    	System.out.println("                     -------------------------------------------------------------- ");
+	    	System.out.println("\nChoose the interface you want to use between CLI and GUI.");
+	    	System.out.println("Type 'CLI' or 'GUI' and press ENTER: ");
 	    	
-	    	System.out.println("[CLI-GUI]");
+	    	do { 
+	    		inputChoice = scanner.nextLine().toLowerCase();
+	    	} while(!inputChoice.equals("cli") && !inputChoice.equals("gui"));
 	    	
-	    	do { inputChoice = scanner.nextLine();
-	    	} while(!inputChoice.equals("CLI") && !inputChoice.equals("GUI"));
+	    	System.out.println("Choose the connection you want to use between Socket and RMI.");
+	    	System.out.println("Type 'socket' or 'RMI' and press ENTER: ");
 	    	
-	    	System.out.println("\nSocket o RMI?");
+	    	do { inputConnection = scanner.nextLine().toLowerCase();
+	    	} while(!inputConnection.equals("socket") && !inputConnection.equals("rmi")); 
 	    	
-	    	do { inputConnection = scanner.nextLine();
-	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); 
-	    	
-	    	System.out.println("\nPlayer name: ");
+	    	System.out.println("\nInsert your username: ");
     		playerName= scanner.next();
     		
     		View view = new View (inputChoice,  playerName);
