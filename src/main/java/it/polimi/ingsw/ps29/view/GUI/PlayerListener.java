@@ -4,8 +4,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import it.polimi.ingsw.ps29.messages.ActionChoice;
+import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.LeaderPanel;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.OtherCardsPanel;
 import it.polimi.ingsw.ps29.view.GUI.utilities.InteractionMessagesFunctions;
@@ -40,6 +42,9 @@ public class PlayerListener extends MouseAdapter {
 				//chiamo la funzione che notifica alla classe "InputOutputGUI" la scelta fatta
 				gui.notifyInput(msg);
 			}
+			
+			else
+				JOptionPane.showMessageDialog(null, ("SELECT A SPACE TO PERFORM YOUR ACTION"));
 			
 		}
 		

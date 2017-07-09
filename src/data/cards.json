@@ -2179,7 +2179,7 @@
 	"cost":[{
 			"resourceType":"Coins",
 			"resourceData":{
-				"amount":2,
+				"amount":4,
 				"type":"coin" }
 			}
     ]}
@@ -2676,7 +2676,7 @@
   "cost":[{
    "resourceType":"Coins",
    "resourceData":{
-    "amount":7,
+    "amount":6,
     "type":"coin" }
    }]}
  },

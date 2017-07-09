@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps29.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -42,6 +41,7 @@ import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.StateOfRoundIdentifier;
 import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
 import it.polimi.ingsw.ps29.server.ClientThread;
+import it.polimi.ingsw.ps29.view.View;
 
 /**
  * Stands between {@link View } s and  {@link Match} (Model) . Every communication between the two passes through it. 

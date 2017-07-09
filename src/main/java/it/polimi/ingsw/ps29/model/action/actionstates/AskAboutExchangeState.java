@@ -48,7 +48,7 @@ public class AskAboutExchangeState implements ActionState {
 
 
 	public ExchangeResourcesEffect getEffect (int index) {
-		return effect.get(index);
+		return effect.get(index).clone();
 	}
 
 	@Override

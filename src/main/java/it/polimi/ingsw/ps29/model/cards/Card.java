@@ -40,7 +40,10 @@ public abstract class Card {
 	}
 	
 	public ArrayList<Effect> getImmediateEffects() {
-		return immediateEffects;
+		ArrayList<Effect> copy = new ArrayList<Effect>();
+		for(Effect eff: immediateEffects)
+			copy.add(eff);
+		return copy;
 	}
 
 	public void setImmediateEffects(ArrayList<Effect> immediateEffects) {
@@ -48,7 +51,10 @@ public abstract class Card {
 	}
 
 	public ArrayList<Effect> getPermanentEffects() {
-		return permanentEffects;
+		ArrayList<Effect> copy = new ArrayList<Effect>();
+		for(Effect eff: permanentEffects)
+			copy.add(eff);
+		return copy;
 	}
 
 	public void setPermanentEffects(ArrayList<Effect> permanentEffects) {

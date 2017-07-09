@@ -21,7 +21,10 @@ public class BonusActionSpace extends SingleSlotActionSpace {
 	}
 
 	public ArrayList<Resource> getBonus() {
-		return bonus;
+		ArrayList<Resource> copy = new ArrayList<Resource> ();
+		for (Resource res: bonus)
+			copy.add(new Resource(res.getType(), res.getAmount()));
+		return copy;
 	}
 	
 	public void setBonus(ArrayList<Resource> bonus) {
