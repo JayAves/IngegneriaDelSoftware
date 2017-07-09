@@ -60,7 +60,7 @@ public class ImageToPrint extends JPanel {
 			imageWidth = getSize().getWidth();
 		}
 		
-		g.clearRect(0, 0, (int)getSize().getWidth(), (int)getSize().getWidth());
+		g.clearRect(0, 0, 1000, 1000);
 		g.drawImage(image, (int)marginX, (int)marginY, (int)imageWidth, (int)imageHeight, null);
 		
 	}

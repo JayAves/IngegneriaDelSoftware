@@ -23,7 +23,7 @@ public class OnlineApp {
 	    	String inputConnection;
 	    	String playerName;
 	    	
-	    	/*System.out.println("[CLI-GUI]");
+	    	System.out.println("[CLI-GUI]");
 	    	
 	    	do { inputChoice = scanner.nextLine();
 	    	} while(!inputChoice.equals("CLI") && !inputChoice.equals("GUI"));
@@ -31,10 +31,8 @@ public class OnlineApp {
 	    	System.out.println("\nSocket o RMI?");
 	    	
 	    	do { inputConnection = scanner.nextLine();
-	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); */
+	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); 
 	    	
-	    	inputChoice = "GUI";
-	    	inputConnection = "Socket";
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
     		

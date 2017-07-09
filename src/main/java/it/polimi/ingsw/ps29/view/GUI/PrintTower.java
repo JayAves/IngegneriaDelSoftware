@@ -142,9 +142,9 @@ public class PrintTower extends PrintPersonal {
 		//print inner circle with familiar color
 		g.setColor(fam.getFamiliarColor().getColor());
 		
-		int coordX = space.getCoordX() + space.getWidth() *3/8;
-		int coordY = space.getCoordY() + space.getWidth()*3/8;
-		int width  = space.getWidth() *1/4;
+		int coordX = space.getCoordX() + space.getWidth() *5/16;
+		int coordY = space.getCoordY() + space.getWidth()*5/16;
+		int width  = space.getWidth() *3/8;
 		
 		g.fillOval(coordX, coordY, width, width);
 	}
