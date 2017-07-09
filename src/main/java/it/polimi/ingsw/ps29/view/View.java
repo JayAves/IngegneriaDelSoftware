@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps29.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
-import java.util.Observer;
 
 import it.polimi.ingsw.ps29.DTO.CardDTO;
 import it.polimi.ingsw.ps29.DTO.ExcommunicationCardDTO;
@@ -162,9 +161,7 @@ public class View extends Observable {
 	
 	
 	public void showMessage(InteractionMessage message) {
-
 			inputOutput.showMessage(message);
-				
 	}
 	
 	public void showInitialInfo (FirstBoardInfo msg) {

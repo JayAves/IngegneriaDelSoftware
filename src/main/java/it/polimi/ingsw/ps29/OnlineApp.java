@@ -22,13 +22,13 @@ public class OnlineApp {
 	    	String inputChoice;
 	    	String inputConnection;
 	    	String playerName;
-	    	System.out.println("                     -------------------------------------------------------------- ");
-	    	System.out.println("                    |                                                              |");
-	    	System.out.println("                    |                     Lorenzo il Magnifico                     |");
-	    	System.out.println("                    |                                                              |");
-	    	System.out.println("                    |          A LONG LONG TIME AGO, IN MEDIEVAL TIMES...          |");
-	    	System.out.println("                    |                                                              |");
-	    	System.out.println("                     -------------------------------------------------------------- ");
+	    	System.out.println("              -------------------------------------------------------------- ");
+	    	System.out.println("             |                                                              |");
+	    	System.out.println("             |                     Lorenzo il Magnifico                     |");
+	    	System.out.println("             |                                                              |");
+	    	System.out.println("             |          A LONG LONG TIME AGO, IN MEDIEVAL TIMES...          |");
+	    	System.out.println("             |                                                              |");
+	    	System.out.println("              -------------------------------------------------------------- ");
 	    	
 	    	do { 
 	    		System.out.println("\nChoose the interface you want to use between CLI and GUI.");

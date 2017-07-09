@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps29.DTO.TowersDTO;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.BonusChoice;
 import it.polimi.ingsw.ps29.messages.Exchange;
+import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
@@ -67,6 +68,9 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	public void showMessage(InteractionMessage message) {
 		if(message instanceof RejectMessage)
 			JOptionPane.showMessageDialog(null, ((RejectMessage)message).getException().getMessage());
+		else if (message instanceof FinalScores)
+			printFinalScore((FinalScores)message);
+			
 	}
 	
 	@Override
@@ -335,6 +339,24 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		PrintInfoFunctions.printUpdatedResources(screen, pbSearched.getResources());
 		
 			
+	}
+	
+	public void printFinalScore (FinalScores msg) {
+		StringBuilder sb = new StringBuilder();
+		for (int i=0; i<msg.getPlayers().size(); i++)
+			sb.append("Player: "+msg.getPlayers().get(i)+" - Score: "+msg.getScores()[i]+"\n");
+		screen.console.setText(sb.toString());
+		
+		int max = msg.getScores()[0];
+		int iMax=0;
+		for(int i=1; i<msg.getScores().length; i++)
+			if(msg.getScores()[i]>max) {
+				max = msg.getScores()[i];
+				iMax = i;
+			}
+		
+		if(screen.getPlayerName().equals(msg.getPlayers().get(iMax)))
+			screen.console.append("\n\nCONGRATULATIONS YOU WIN\n");
 	}
 	
 	

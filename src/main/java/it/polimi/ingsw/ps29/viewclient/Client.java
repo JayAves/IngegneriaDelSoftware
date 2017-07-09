@@ -128,7 +128,6 @@ public class Client implements Observer{
 		}
 
 		public void receive(FinalScores finalScore) {
-			// TODO Auto-generated method stub
 			view.showMessage(finalScore);
 		}
 	

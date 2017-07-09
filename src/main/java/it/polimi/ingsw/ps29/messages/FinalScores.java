@@ -45,4 +45,5 @@ public class FinalScores extends InteractionMessage {
 	public int[] getScores() {
 		return scores;
 	}
+	
 }

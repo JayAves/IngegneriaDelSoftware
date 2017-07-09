@@ -433,7 +433,7 @@ public class Controller extends Observable implements Observer{
 	
 	private void conclusion ()  {
 		
-		for (Player player : model.getBoard().getPlayers()){
+		for (Player player : model.getBoard().getPlayers()) {
 			player.passPersonalBoard();
 			player.getFinalPoints();
 			
@@ -442,7 +442,8 @@ public class Controller extends Observable implements Observer{
 					for (Effect effect : card.getPermanentEffects())
 						effect.performEffect(player);
 		}		
-			model.getBoard().assignPointsForMilitaryTrack();
+		
+		model.getBoard().assignPointsForMilitaryTrack();
 		
 		int[] scores= new int[model.getBoard().getPlayers().size()];
 		ArrayList<String> names= new ArrayList<String>();
