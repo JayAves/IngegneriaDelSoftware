@@ -276,7 +276,7 @@ public class GUICore extends Observable{
 		buttonsPanel.add(otherCards, c);
 		
 		c.gridy = 1;
-		buttonsPanel.add(new JLabel("EXCOMM THSH"), c);
+		buttonsPanel.add(new JLabel("THRESHOLDS"), c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
