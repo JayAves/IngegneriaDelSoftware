@@ -16,7 +16,6 @@ public class GainResourcesEffect extends EffectAboutResources {
 	
 	public GainResourcesEffect(ArrayList<Resource> resources) {
 		super(resources);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -24,6 +23,7 @@ public class GainResourcesEffect extends EffectAboutResources {
 		Container playerResources = player.getPersonalBoard().getResources();
 		for (Resource res: resources)
 			playerResources.updateResource(res);
+
 	}
 
 	@Override

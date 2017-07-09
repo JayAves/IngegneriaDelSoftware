@@ -27,7 +27,7 @@ public class Container {
 		if(resources.containsKey(res.getType())) 
 			resources.get(res.getType()).modifyAmount(res.getAmount());
 		else 
-			resources.put(res.getType().toLowerCase(), res);
+			resources.put(res.getType().toLowerCase(), new Resource(res.getType(), res.getAmount()));
 		
 	}
 	

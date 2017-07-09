@@ -24,7 +24,10 @@ public abstract class EffectAboutResources extends Effect{
 	}
 	
 	public ArrayList<Resource> getResources () {
-		return resources;
+		ArrayList<Resource> copy = new ArrayList<Resource> ();
+		for(Resource res: resources)
+			copy.add(new Resource(res.getType(), res.getAmount()));
+		return copy;
 	}
 	
 	

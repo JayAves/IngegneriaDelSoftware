@@ -186,7 +186,7 @@
 					"type":"stone" }
 	}]}}],
 	"cost":[],
-	"harvestForce":2}
+	"harvestForce":6}
  },
 {
 	"cardType": "TerritoryCard",

@@ -67,6 +67,12 @@ public class HarvestAction extends Action {
 				if (move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
 				 ((TerritoryCard)card).getHarvestForce()) {
 					effect.performEffect(move.getPlayer());
+					if (effect instanceof GainResourcesEffect){
+						System.out.println(move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
+						System.out.println(((TerritoryCard)card).getHarvestForce());
+						for (Resource res: ((GainResourcesEffect)effect).getResources())
+							System.out.println(res.getType()+" - "+res.getAmount());
+					}
 				}
 			}
 		}
