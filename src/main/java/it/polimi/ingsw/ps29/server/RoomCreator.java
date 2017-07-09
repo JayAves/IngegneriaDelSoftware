@@ -20,7 +20,7 @@ public class RoomCreator extends Thread implements Observer {
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
 	private Timer scheduler;
-	private static final int UPDATE_TIME= 3600000;
+	private static final int UPDATE_TIME= 600000;
 	private int period;
 	
 	public RoomCreator(){
@@ -53,7 +53,7 @@ public class RoomCreator extends Thread implements Observer {
 		if (counter==2) //countdown to game start is set
 			timer.schedule(new Task(), period);
 			
-		if (counter==1){ //enough players for a new Room
+		if (counter==2){ //enough players for a new Room
 			counter=0;
 			System.out.println("New Room");
 			Room newRoom= new Room(playersInQueue);
@@ -119,8 +119,6 @@ public class RoomCreator extends Thread implements Observer {
 	private boolean updateView(ClientThread thread) {
 		
 		for (Room room: roomHandler) {
-			
-			System.out.println(room.getViews());
 			
 			for (ClientThread client: room.getViews()) {
 				

@@ -33,7 +33,7 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
  *
  */
 
-public class View extends Observable implements Observer {
+public class View extends Observable {
 	
 	private InputOutput inputOutput;
 	private InputoutputFactory inputOutputFactory = new InputoutputFactory ();
@@ -90,11 +90,6 @@ public class View extends Observable implements Observer {
 		} catch (ExpiredTimeException e) {
 			e.getMessage();
 		}
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		
 	}
 
 	
@@ -174,7 +169,7 @@ public class View extends Observable implements Observer {
 	
 	public void showInitialInfo (FirstBoardInfo msg) {
 		
-		//every board needsits tile
+		//every board needs its tile
 		for(HashMap.Entry<String, PersonalBonusTileDTO> tile: msg.getTiles().entrySet())
 			if(personalBoardsDTO.get(tile.getKey()) == null)
 				personalBoardsDTO.put(tile.getKey(), new PersonalBoardDTO(tile.getKey(), tile.getValue()));

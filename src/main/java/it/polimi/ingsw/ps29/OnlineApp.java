@@ -33,7 +33,7 @@ public class OnlineApp {
 	    	do { inputConnection = scanner.nextLine();
 	    	} while(!inputConnection.equals("Socket") && !inputConnection.equals("RMI")); */
 	    	
-	    	inputChoice = "CLI";	    	
+	    	inputChoice = "GUI";	    	
 	    	inputConnection = "Socket";
 	    	System.out.println("\nPlayer name: ");
     		playerName= scanner.next();
