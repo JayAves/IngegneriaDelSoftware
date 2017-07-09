@@ -14,6 +14,10 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
  *
  */
 public class BonusPlacementEffect extends BonusActionEffect {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -294451113077440329L;
 	private String cardType;
 	private ArrayList <Resource> discount;
 	

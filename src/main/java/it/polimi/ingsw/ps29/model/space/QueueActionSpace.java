@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps29.model.space;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 
 /**
