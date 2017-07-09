@@ -1,0 +1,237 @@
+[
+{
+"period" : "FIRST",
+"id" : 1,
+    "effect" : {"effectType" :"MalusResourcesExcommunication",
+    "effectData" :{
+               "resources" : [
+                           { "resourceType" : "MilitaryPoints",
+                              "resourceData" : {
+                                              "amount" : 1,
+                                              "type" : "military"}}
+    ]
+}
+}},
+
+{
+"period" : "FIRST",
+"id" : 2,
+"effect" :{
+       "effectType" : "MalusResourcesExcommunication",
+       "effectData":{
+                 "resources" : [
+                                {"resourceType" : "Coins",
+			                    "resourceData" : {
+				                            "amount": 1,
+				                            "type" : "coin"} }    
+                 ]
+       }
+}
+},
+
+{
+"period" : "FIRST",
+"id" : 3,    
+"effect" :{
+       "effectType" : "MalusResourcesExcommunication",
+       "effectData":{
+                 "resources" : [{
+                                "resourceType":"Servants",
+			                    "resourceData":{
+				                            "amount":1,
+				                             "type":"servant"}}     
+                 ]
+       }
+}
+},
+    
+{
+"period" : "FIRST",
+"id" : 4,
+"effect" :{
+       "effectType" : "MalusResourcesExcommunication",
+       "effectData":{
+                 "resources" : [{
+                                "resourceType":"Stones",
+			                    "resourceData":{
+				                            "amount":1,
+				                             "type":"stone"} ,
+                                "resourceType":"Woods",
+			                    "resourceData":{
+				                            "amount":1,
+				                             "type":"wood"}
+                     }]
+       }
+}
+},
+
+{
+"period" : "FIRST",
+"id" : 5,
+"effect" :{
+  "effectType": "EmpowermentActivityEffect",
+  "effectData":
+  { "diceEmpowerment": -3,
+          "activityName": "Harvest"
+            
+        }}
+     
+
+}, 
+
+{
+"period" : "FIRST",
+"id" : 6,
+"effect" :{
+  "effectType": "EmpowermentActivityEffect",
+  "effectData":
+  { "diceEmpowerment": -3,
+          "activityName": "Production"
+            
+        }}
+     
+
+},
+    
+{
+"period" : "FIRST",
+"id" : 7,
+"effect" :{
+  "effectType": "FamiliarEmpowermentByColor",
+  "effectData":
+  { "diceEmpowerment": -1,
+     "colors": ["BLACK", "WHITE", "ORANGE"]     
+        }}
+     
+
+},
+
+{
+"period" : "SECOND",
+"id" : 1,
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Harvest",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+"id" : 2,
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Production",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+"id" : 3,
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Character",
+          "discount" :[]
+            
+        }
+    }
+},
+
+{
+"period" : "SECOND",
+"id" : 4,
+    "effect" : {
+		"effectType": "EmpowermentPlacementEffect",
+		"effectData":
+		{ "diceEmpowerment": -4,
+          "towerType": "Venture",
+          "discount" :[]
+            
+        }
+    }
+},
+    
+{
+"period" : "SECOND",
+"id" : 5,
+    "effect" : {
+		"effectType": "GeneralExcommunications",
+		"effectData":{ "effectName" : "NoMarket"}
+    }
+}, 
+
+{
+"period" : "THIRD",
+"id" : 1,
+    "effect": {
+        "effectType" : "TerritoryCardsPenaltyEffect",
+        "effectData":{}
+    }
+},
+
+{
+"period" : "THIRD",
+"id" : 2,
+    "effect": {
+        "effectType" : "CharacterCardsPenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+"id" : 3,
+    "effect": {
+        "effectType" : "TerritoryCardsPenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+"id" : 4,
+    "effect": {
+        "effectType" : "BuildingCostsPenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+"id" : 5,
+    "effect": {
+        "effectType" : "ResourcePenaltyEffect",
+        "effectData" :{}
+    }
+},
+
+{
+"period" : "THIRD",
+"id" : 6,
+    "effect": {
+        "effectType" : "VictoryPointsPenaltyEffect",
+        "effectData":{}
+    }
+},
+
+{
+"period" : "THIRD",
+"id" : 7,
+    "effect": {
+        "effectType" : "MilitaryPointsPenaltyEffect",
+        "effectData":{}
+    }
+}
+    
+]

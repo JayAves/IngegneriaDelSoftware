@@ -41,7 +41,6 @@ public class HarvestActionTest extends TestCase{
 		model = new Match(names);
 		
 		space = (ActivityArea) model.getBoard().getSpace("Harvest");
-		System.out.println(space);
 		
 		model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.BLACK).setPower(4);
 		model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.BLACK).setPower(4);

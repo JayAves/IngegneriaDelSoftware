@@ -283,7 +283,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 				
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 		}
 		

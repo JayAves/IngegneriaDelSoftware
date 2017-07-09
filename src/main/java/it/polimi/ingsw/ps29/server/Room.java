@@ -73,10 +73,17 @@ public class Room extends Thread implements Observer{
 		controller.gameEngine();
 	}
 
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		active=false;
+
+		active=false; //for roomUpdater in RoomCreator
+		
+		for (ClientThread view: views) { //stop all Client Threads
+			view.deleteObservers();
+			
+		}
+		controller.getViews().clear();
 	}
 		
 	

@@ -58,19 +58,5 @@ public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card>
 	}
 	
 	
-	public static void main(String[] args) throws FileNotFoundException {
-		
-		
-		BufferedReader cards = new BufferedReader(new FileReader("src/main/java/cards.json"));
-	    GsonBuilder gcards = new GsonBuilder();
-	    gcards.registerTypeAdapter(Card.class, new CardAdapter());
-	    gcards.registerTypeAdapter(Effect.class, new EffectAdapter());
-	    gcards.registerTypeAdapter(Resource.class, new ResourceAdapter());
-	    Card[] cardz = gcards.create().fromJson(cards, Card[].class);
-	    if (cardz[1].getType().equalsIgnoreCase("territory")){
-	    	
-	    	System.out.println(((TerritoryCard)cardz[1]).getHarvestForce());
-	   }
-	    
-	}
+
 }
