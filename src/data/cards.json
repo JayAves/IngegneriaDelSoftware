@@ -3090,28 +3090,12 @@
 				"amount":1,
 				"type":"victory" }
 			}]}}],
-	"cost":[{
-			"resourceType":"Coins",
-			"resourceData":{
-				"amount":2,
-				"type":"coin" }
-			},
+	"cost":[
             {
 			"resourceType":"MilitaryPoints",
 			"resourceData":{
 				"amount":2,
 				"type":"military" }
-			},
-            {
-			"resourceType":"Woods",
-			"resourceData":{
-				"amount":1,
-				"type":"wood" }
-			},{
-			"resourceType":"Stones",
-			"resourceData":{
-				"amount":1,
-				"type":"stone" }
 			}]}
  },
 {
@@ -3417,24 +3401,6 @@
 			"resourceData":{
 				"amount":4,
 				"type":"military" }
-			},
-            {
-			"resourceType": "Coins",
-			"resourceData":{
-				"amount":3,
-				"type":"coin" }
-			},
-            {
-			"resourceType": "Woods",
-			"resourceData":{
-				"amount":2,
-				"type":"wood" }
-			},
-            {
-			"resourceType": "Stones",
-			"resourceData":{
-				"amount":3,
-				"type":"stone" }
 			}]}
  },
 {
@@ -3745,24 +3711,6 @@
 			"resourceData":{
 				"amount":5,
 				"type":"military" }
-			},
-            {
-			"resourceType": "Woods",
-			"resourceData":{
-				"amount":3,
-				"type":"wood" }
-			},
-            {
-			"resourceType": "Stones",
-			"resourceData":{
-				"amount":3,
-				"type":"stone" }
-			},
-            {
-			"resourceType": "Coins",
-			"resourceData":{
-				"amount":4,
-				"type":"coin" }
 			}]}
  }
 ]
