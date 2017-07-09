@@ -108,7 +108,6 @@ public class BonusPanelCreator extends PanelCreator{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				((BonusChoice)msg).setSpace(12);
 		    	gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(panel).dispose();
 			}
@@ -153,7 +152,7 @@ public class BonusPanelCreator extends PanelCreator{
 		case "venture":
 			return 4;
 		default:
-			return 12;
+			return 5;
 		}
 	}
 	
