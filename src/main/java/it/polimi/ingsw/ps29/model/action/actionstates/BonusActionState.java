@@ -38,7 +38,7 @@ public class BonusActionState implements ActionState {
 	}
 	
 	public BonusActionEffect getEffect () {
-		return effect;
+		return effect.clone();
 	}
 
 	@Override
