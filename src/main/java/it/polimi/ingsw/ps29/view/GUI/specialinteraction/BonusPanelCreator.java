@@ -108,6 +108,8 @@ public class BonusPanelCreator extends PanelCreator{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				((BonusChoice)msg).setSpace(5);
+				((BonusChoice)msg).setServants(-1);
 		    	gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(panel).dispose();
 			}

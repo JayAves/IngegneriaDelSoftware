@@ -2604,7 +2604,7 @@
 		"effectData":
 		{ "resourceType": "victory",
             "amount":2,
-            "cardType": "harvest"
+            "cardType": "territory"
         }}],
   "permanentEffects":[],
   "cost":[{
@@ -2626,7 +2626,7 @@
 		"effectData":
 		{ "resourceType": "victory",
             "amount":2,
-            "cardType": "production"
+            "cardType": "building"
         }}],
   "permanentEffects":[],
   "cost":[{
