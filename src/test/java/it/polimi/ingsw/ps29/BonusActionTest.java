@@ -38,12 +38,14 @@ public class BonusActionTest extends TestCase {
 		GameBoard board = model.getBoard();
 		Controller c = new Controller(model);
 		BonusChoice msg = new BonusChoice(new BonusActivityEffect(2, "harvest"), "aa");
+		msg.setServants(0);
 		ActionChoice aChoice = c.handleBonusAction(msg);
 		move = ChoiceToMove.createMove(aChoice, board);
 		
 		BonusChoice msg2 = new BonusChoice(new BonusPlacementEffect(2, "all", null), "aa");
 		msg2.setSpace(3);
 		msg2.setFloor(1);
+		msg2.setServants(0);
 		ActionChoice aChoice2 = c.handleBonusAction(msg2);
 		move2 = ChoiceToMove.createMove(aChoice2, board);
 		
