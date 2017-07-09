@@ -141,12 +141,12 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 
 	@Override
 	public void showFirstInfo(FirstBoardInfo msg) {
-		screen.frame.setTitle("Player: "+msg.getName()+" - Round: "+round);
-		int tileId = msg.getTiles().get(msg.getName()).getId();
+		screen.frame.setTitle("Player: "+msg.getName()+" - Round: "+round);		
 		boolean ready = false;
 		
 		do {
 			try {
+				int tileId = msg.getTiles().get(msg.getName()).getId();
 				screen.tile.setImage("bonus_tiles/personalbonustile_"+tileId+".png");
 				screen.excomm1.setImage("excomm_card/excomm_1_"+msg.getExCards().get(0).getId()+".png");
 				screen.excomm2.setImage("excomm_card/excomm_2_"+msg.getExCards().get(1).getId()+".png");
@@ -189,6 +189,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		screen.doAction.setEnabled(true);
 		screen.doAction.setBackground(Color.RED);
 		screen.noAction.setEnabled(true);
+		screen.servants.setValue(0);
 		
 		messageInTime();
 		

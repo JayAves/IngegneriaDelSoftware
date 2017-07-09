@@ -53,6 +53,7 @@ public class PersonalBoardDTO implements Serializable {
 				bld.append("\n            " + carddto);
 		}
 		bld.append("\n has resources:\n");
+		while(resources==null) {}
 		for (ResourceDTO rDTO : resources)
 			bld.append("\n " + rDTO);
 		bld.append("\n has bonus Tile:");
