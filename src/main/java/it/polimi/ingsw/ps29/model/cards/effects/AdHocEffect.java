@@ -2,11 +2,11 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
-public class GeneralExcommunications extends Effect{
+public class AdHocEffect extends Effect{
 	
 	private String effectName;
 	
-	public GeneralExcommunications( String effectName) {
+	public AdHocEffect( String effectName) {
 		
 		this.effectName = effectName;
 	}

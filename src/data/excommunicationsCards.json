@@ -166,7 +166,7 @@
 "period" : "SECOND",
 "id" : 5,
     "effect" : {
-		"effectType": "GeneralExcommunications",
+		"effectType": "AdHocEffect",
 		"effectData":{ "effectName" : "NoMarket"}
     }
 }, 

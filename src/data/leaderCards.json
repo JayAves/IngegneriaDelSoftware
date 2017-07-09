@@ -19,7 +19,7 @@
 "id" :2,
 "permanent" : 1,
 "leaderEffect" : {
-        "effectType": "GeneralExcommunications",
+        "effectType": "AdHocEffect",
         "effectData" :{ "effectName" : "Ludovico Ariosto"}},
 "requirements" : [],
 "cardTypeRequirements" : ["character"],
@@ -31,7 +31,7 @@
 "id" :3,
 "permanent" : 1,
 "leaderEffect" : {
-        "effectType": "GeneralExcommunications",
+        "effectType": "AdHocEffect",
         "effectData" :{ "effectName" : "Filippo Brunelleschi"}},
 "requirements" : [],
 "cardTypeRequirements" : ["building"],
@@ -218,7 +218,7 @@
 "id" :14,
 "permanent" : 1,
 "leaderEffect" : {
-        "effectType": "GeneralExcommunications",
+        "effectType": "AdHocEffect",
         "effectData" :{ "effectName" : "SistoIV"}},
 "requirements" : [{
    "resourceType":"Woods",
