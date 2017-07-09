@@ -19,9 +19,10 @@ public abstract class FamilyMemberDecorator implements FamilyMemberInterface{
 		this.decoratedFamilyMember = decoratedFamilyMember;
 	}
 
+    @Override
 	public int getPower() {
 		return decoratedFamilyMember.getPower();
-	}
+    }
 
 	@Override
 	public int getHarvestPower() {

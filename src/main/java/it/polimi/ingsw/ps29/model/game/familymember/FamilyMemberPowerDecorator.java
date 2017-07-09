@@ -19,6 +19,12 @@ public class FamilyMemberPowerDecorator extends FamilyMemberDecorator {
 		return super.getPower() + diceModifier;
 	}
 	
+	@Override
+	public String toString(){
+		return "FamilyMember [power=" + getPower() + ", busy=" + getBusy() + ", familiarColor=" + getFamiliarColor() + ", playerColor="
+				+ getPlayerColor() + "]";
+	}
+	
 	
 
 }
