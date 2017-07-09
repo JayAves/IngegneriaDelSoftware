@@ -32,11 +32,6 @@ public abstract class Action {
 		state = new ToEstablishState();
 	}
 	
-	
-	//checks if there is an Excommunication that does not allow move
-	abstract boolean isForbidden (); 
-	
-
 	//checks if it is possible to place the chosen familiar in the chosen space
 	abstract boolean isPlaceable() throws RejectException;
 	
@@ -64,7 +59,7 @@ public abstract class Action {
 			throw new FamiliarBusyException();
 		}
 		
-		if (isForbidden() || !isPlaceable()) {
+		if ( !isPlaceable()) {
 			state = new RejectedState();
 		}
 		

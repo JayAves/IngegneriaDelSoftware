@@ -32,7 +32,7 @@ public class TowerArea implements ActionSpace {
 			if(i<2)
 				floors.add(new Floor (new SingleSlotActionSpace (power[i])));
 			else
-				floors.add(new Floor (new BonusActionSpace (power[i]))); //top floors have bonuses
+				floors.add(new Floor (new BonusActionSpace (power[i], false))); //top floors have bonuses
 		}
 		placementFloor = 0;
 	}

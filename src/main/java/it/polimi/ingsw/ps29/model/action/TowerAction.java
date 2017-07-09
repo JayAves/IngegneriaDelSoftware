@@ -40,10 +40,7 @@ public class TowerAction extends Action {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isForbidden() {
-		return false;
-	}
+	
 
 	@Override
 	public boolean isPlaceable() throws RejectException {

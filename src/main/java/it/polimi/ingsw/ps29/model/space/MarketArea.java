@@ -20,8 +20,8 @@ public class MarketArea implements ActionSpace {
 	
 	private BonusActionSpace slot;
 	
-	public MarketArea (int power, ArrayList <Resource> bonus) {
-		slot = new BonusActionSpace (power);
+	public MarketArea (int power, ArrayList <Resource> bonus, boolean closed) {
+		slot = new BonusActionSpace (power,closed);
 		slot.setBonus(bonus);
 	}
 	
@@ -60,5 +60,8 @@ public class MarketArea implements ActionSpace {
 		
 	}
 	
+	public boolean getClosed() {
+		return slot.getClosed();
+	}
 	
 }

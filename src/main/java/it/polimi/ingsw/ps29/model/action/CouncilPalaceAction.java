@@ -28,11 +28,7 @@ public class CouncilPalaceAction extends Action{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isForbidden() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public boolean isPlaceable() throws RejectException {

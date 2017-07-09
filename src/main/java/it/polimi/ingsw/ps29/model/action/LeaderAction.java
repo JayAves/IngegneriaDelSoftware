@@ -31,11 +31,7 @@ public class LeaderAction extends Action{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	boolean isForbidden() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	boolean isPlaceable() throws RejectException {

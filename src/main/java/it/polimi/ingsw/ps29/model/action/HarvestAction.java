@@ -32,11 +32,7 @@ public class HarvestAction extends Action {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isForbidden() { //da verificare carte scomunica in arrayList di bonusAndMalusPlyer
-		
-		return false;
-	}
+	
 
 	@Override
 	public boolean isPlaceable() throws RejectException {

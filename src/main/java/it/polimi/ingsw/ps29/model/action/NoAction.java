@@ -17,11 +17,7 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	boolean isForbidden() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	boolean isPlaceable() {

@@ -31,15 +31,11 @@ public class ProductionAction extends Action {
 	public ProductionAction(Match model, Move move) {
 		super(model, move);
 		this.space = (ActivityArea) model.getBoard().getSpace(move.getSpace());
-		// TODO Auto-generated co
+		
 		penalty = 0;
 	}
 
-	@Override
-	public boolean isForbidden() { //da verificare carte scomunica in arrayList di bonusAndMalusPlyer
-		
-		return false;
-	}
+	
 
 	@Override
 	public boolean isPlaceable() throws RejectException {

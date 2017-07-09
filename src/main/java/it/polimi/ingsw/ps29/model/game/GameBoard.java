@@ -107,10 +107,18 @@ public class GameBoard{
 		spaces.put("ventureTower", new TowerArea ());
 		((TowerArea)spaces.get("ventureTower")).setBonus(resources[6].getBonus(),3);
 		((TowerArea)spaces.get("ventureTower")).setBonus(resources[7].getBonus(),4);
-		spaces.put("FirstMarket", new MarketArea(1, resources[8].getBonus()));
-		spaces.put("SecondMarket", new MarketArea(1, resources[9].getBonus()));
-		spaces.put("ThirdMarket", new MarketArea(1,resources[10].getBonus()));
-		spaces.put("FourthMarket", new MarketArea(1, resources[11].getBonus()));
+		spaces.put("FirstMarket", new MarketArea(1, resources[8].getBonus(),false));
+		spaces.put("SecondMarket", new MarketArea(1, resources[9].getBonus(),false));
+		
+		if (playersOrder.size()==4) {
+			spaces.put("ThirdMarket", new MarketArea(1,resources[10].getBonus(),false));
+			spaces.put("FourthMarket", new MarketArea(1, resources[11].getBonus(), false));
+		}
+		else {
+			spaces.put("ThirdMarket", new MarketArea(1,resources[10].getBonus(),true));
+			spaces.put("FourthMarket", new MarketArea(1, resources[11].getBonus(),true));
+		}
+	
 		spaces.put("CouncilPalace", new CouncilPalaceArea(1));
 		spaces.put("NoAction", new CouncilPalaceArea(0));
 		

@@ -14,9 +14,11 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 public class BonusActionSpace extends SingleSlotActionSpace {
 
 	private ArrayList <Resource> bonus;
+	private boolean closed;
 	
-	public BonusActionSpace(int power) {
+	public BonusActionSpace(int power, boolean closed) {
 		super(power);
+		this.closed=closed;
 		
 	}
 
@@ -30,5 +32,8 @@ public class BonusActionSpace extends SingleSlotActionSpace {
 	public void setBonus(ArrayList<Resource> bonus) {
 		this.bonus=bonus;
 	}
-
+	
+	public boolean getClosed() {
+		return closed;
+	}
 }

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps29.model.action;
 
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
+import it.polimi.ingsw.ps29.messages.exception.SpaceClosedException;
 import it.polimi.ingsw.ps29.model.cards.effects.GainResourcesEffect;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -21,15 +22,11 @@ public class MarketAction extends Action{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isForbidden() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		return  space.isEnoughPowerful(
+		return spaceClosedCheck() && space.isEnoughPowerful(
 				move.getFamiliar().getPower() + move.getPlayer().getFakeFamiliar().getMarketPower() + move.getServants()) &&
 				(space.isEmpty() || move.getPlayer().getLudovicoAriosto());
 	}
@@ -42,5 +39,10 @@ public class MarketAction extends Action{
 		move.getFamiliar().setBusy(true);
 	}
 	
+	private boolean spaceClosedCheck() throws SpaceClosedException {
+		if (space.getClosed())
+			throw new SpaceClosedException();
+		else return true;
+	}
 
 }
