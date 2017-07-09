@@ -28,6 +28,13 @@ public class FamiliarEmpowermentByColor extends EmpowermentActionEffect{
 		for (String color: colors){
 			FamilyMemberInterface member = player.getFamiliarByColor(DiceColor.valueOf(color));
 			member= new FamilyMemberPowerDecorator(member, diceEmpowerment);
+			
+			for ( int i = 0; i < player.getFamily().length; i++){
+				if (player.getFamily()[i].getFamiliarColor() == DiceColor.valueOf(color)){
+					player.getFamily()[i] = member;
+				}
+					
+			}
 		}
 				
 	}
