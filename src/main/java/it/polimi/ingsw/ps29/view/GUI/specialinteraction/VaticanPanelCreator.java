@@ -11,6 +11,11 @@ import javax.swing.SwingUtilities;
 
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 
+/**
+ * Creates the panel used in vatican interactions
+ * @author Pietro Melzi
+ *
+ */
 public class VaticanPanelCreator extends PanelCreator {
 
 	public VaticanPanelCreator(GUICore gui) {

@@ -1,5 +1,10 @@
 package it.polimi.ingsw.ps29.view.GUI;
 
+/**
+ * Creates the GUI of the application
+ * @author Pietro Melzi
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -34,32 +39,14 @@ public class GUICore extends Observable{
 	ActionChoice message; //used for leaders
 	
 	PrintTower tower;
-	ImageToPrint tile;
+	ImageToPrint tile, preview;
 	PrintPersonal personal;
 	ButtonGroup family;
 	JSpinner servants;
-	JButton doAction;
-	JButton noAction;
-	ImageToPrint preview;
-	
-	JButton otherCards;
-	JLabel ts1;
-	JLabel ts2;
-	JLabel ts3;
-	
-	JLabel coin;
-	JLabel stone;
-	JLabel wood;
-	JLabel servant;
-	JLabel military;
-	JLabel faith;
-	JLabel victory;
-	JLabel privileges;
-	
-	JButton leaderButton;
-	ImageToPrint excomm1;
-	ImageToPrint excomm2;
-	ImageToPrint excomm3;
+	JButton doAction, noAction, otherCards, leaderButton;
+	JLabel ts1, ts2, ts3;
+	JLabel coin, stone, wood, servant, military, faith, victory, privileges;
+	ImageToPrint excomm1, excomm2, excomm3;
 	JTextArea console;
 
 	PlayerListener listener;
@@ -72,7 +59,6 @@ public class GUICore extends Observable{
 		
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 	
 				frame = new JFrame ();
 				frame.setVisible(true);
@@ -85,12 +71,15 @@ public class GUICore extends Observable{
 			}
 		});
 	}
+	/**
+	 * Splits the window in two parts: tower and utilities
+	 * @param frame contains each element of the GUI
+	 */
 	
 	public void setFrame (JFrame frame) {
 		frame.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-			
 		c.weighty = 1;
 		c.weightx = 4;
 		c.fill = GridBagConstraints.BOTH;
@@ -104,6 +93,11 @@ public class GUICore extends Observable{
 		setCentralPanel(centralPanel);
 		frame.add(centralPanel, c);
 	}
+	
+	/**
+	 * Creates threee panels in order to organize the content of the application
+	 * @param centralPanel
+	 */
 	
 	public void setCentralPanel (JPanel centralPanel) {
 		centralPanel.setLayout(new GridBagLayout());
@@ -135,6 +129,11 @@ public class GUICore extends Observable{
 		centralPanel.add(panelSouth,  c);
 				
 	}
+	
+	/**
+	 * North panel contains tile, personal board, leader cards and excommunications info
+	 * @param panelNorth
+	 */
 	
 	public void setPanelNorth (JPanel panelNorth) {
 		panelNorth.setLayout(new GridBagLayout());
@@ -185,6 +184,10 @@ public class GUICore extends Observable{
 		panelNorth.add(excomm3, c);
 	}
 	
+	/**
+	 * Central panel contains info about points, cards that aren't shown on board and the buttons used to perform actions
+	 * @param panelCenter
+	 */
 	public void setPanelCenter (JPanel panelCenter) {
 		panelCenter.setLayout(new GridLayout(1, 4));
 		
@@ -209,6 +212,10 @@ public class GUICore extends Observable{
 		panelCenter.add(pointsPanel);
 	}
 	
+	/**
+	 * South panel contains a zoom of the card selected, a console where info messages are shown and the situation of the resources
+	 * @param panelSouth
+	 */
 	public void setPanelSouth (JPanel panelSouth) {
 		panelSouth.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();

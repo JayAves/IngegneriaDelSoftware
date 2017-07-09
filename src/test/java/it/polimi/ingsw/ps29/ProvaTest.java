@@ -10,6 +10,9 @@ import org.junit.Test;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.model.action.Action;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
+import it.polimi.ingsw.ps29.model.cards.BuildingCard;
+import it.polimi.ingsw.ps29.model.cards.Card;
+import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
@@ -18,6 +21,7 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+import it.polimi.ingsw.ps29.model.game.resources.Stones;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
@@ -59,6 +63,10 @@ public class ProvaTest extends TestCase {
 		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).printCards());
 		System.out.println("\n\nCarta presa: \n\n");
 		((TowerArea)model.getBoard().getSpace(move.getSpace())).setPlacementFloor(2);
+		ArrayList<Resource> cost = new ArrayList<Resource>();
+		cost.add(new Stones(2));
+		Card card = new BuildingCard("", null, "building", 1, new ArrayList<Effect>(), null, cost, 2);
+		((TowerArea)model.getBoard().getSpace(move.getSpace())).setCard(card, 2);
 		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).takeCard());
 		
 		action = new TowerAction(model, move);
@@ -79,11 +87,7 @@ public class ProvaTest extends TestCase {
 
 	@Test
 	public void test() {
-		//costi da diminuire anzichè aumentare
-		
-		
-		//assertEquals(true, ((TowerAction)action).isPlaceable());
-		//assertEquals(true, move.getPlayer().getPersonalBoard().getResources());
+		assertEquals(0, move.getPlayer().getPersonalBoard().getSpecificResource("stone").getAmount());
 	}
 
 }

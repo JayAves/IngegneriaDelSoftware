@@ -17,6 +17,11 @@ import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
+/**
+ * Show leader cards of a player and allows the user to make an action with them
+ * @author Pietro Melzi
+ *
+ */
 public class LeaderPanel extends FromBoardPanel {
 	
 	/**

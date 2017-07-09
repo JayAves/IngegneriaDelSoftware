@@ -4,9 +4,14 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+/**
+ * Prints on a panel an image. Used simply to show an image on the GUI but also like background image for other images that will be printed over
+ * @author Pietro Melzi
+ *
+ */
 
 public class ImageToPrint extends JPanel {
 	/**
@@ -15,7 +20,6 @@ public class ImageToPrint extends JPanel {
 	private static final long serialVersionUID = -8468475933709036985L;
 
 	double imageHeight, imageWidth, marginX, marginY, imageRatio;
-	
 	protected BufferedImage image;
 	
 	public ImageToPrint(String path) {
@@ -40,6 +44,10 @@ public class ImageToPrint extends JPanel {
 		return result;
 	}
 	
+	/**
+	 * Image height is calculated holding the ratio, as if the image fills completely the available width
+	 * If the height calculated is greater than the available height the same operation is made calculating the width
+	 */
 	
 	@Override
 	protected void paintComponent(Graphics g) {

@@ -5,6 +5,11 @@ import javax.swing.JPanel;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 
+/**
+ * Standard for the creation of interactive panels
+ * @author Pietro Melzi
+ *
+ */
 public abstract class PanelCreator {
 	
 	protected InteractionMessage msg;

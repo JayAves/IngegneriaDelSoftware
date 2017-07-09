@@ -19,6 +19,11 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
+/**
+ * Creates the panel used in exchange interactions
+ * @author Pietro Melzi
+ *
+ */
 public class ExchangePanelCreator extends PanelCreator {
 	private ButtonGroup choice;
 

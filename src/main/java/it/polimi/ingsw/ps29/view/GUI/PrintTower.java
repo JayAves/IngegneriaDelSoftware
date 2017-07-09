@@ -16,6 +16,12 @@ import it.polimi.ingsw.ps29.view.GUI.coordinates.Coordinates;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
+/**
+ * Prints the tower filled with cards and calculates cards and spaces coords every time window is resized 
+ * @author Pietro Melzi
+ *
+ */
+
 public class PrintTower extends PrintPersonal {
 	
 	/**
@@ -43,7 +49,7 @@ public class PrintTower extends PrintPersonal {
 			
 			super.mouseClicked(event);
 			Point p = event.getPoint();
-			//indice da 0 a 22 che mi dice su quale spazio ho cliccato
+			//index between 0 and 22 relative to the space clicked
 			int indexSpace = coordSpaces.getIndexSpace(p);
 			
 			//save index pressed and show msg on the console 
@@ -71,7 +77,6 @@ public class PrintTower extends PrintPersonal {
 		printDices(g);
 		printOrder(g);
 		
-		//dimensioni assolute utilizzate per piazzare le carte
 		handleTower(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
 				startCoord.getShiftX(), startCoord.getShiftY(), g);
 	}

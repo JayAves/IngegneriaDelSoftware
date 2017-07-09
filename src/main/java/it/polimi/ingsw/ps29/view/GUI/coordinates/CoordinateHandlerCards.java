@@ -3,18 +3,34 @@ package it.polimi.ingsw.ps29.view.GUI.coordinates;
 import java.awt.Point;
 import java.util.ArrayList;
 
+/**
+ * Container for coordinates, calculated every time the panel where card must be printed changes its dimensions.
+ * Coordinates are used to print cards in the same position over a background image every time the image is resized.
+ * @author Pietro Melzi
+ *
+ */
 public class CoordinateHandlerCards {
 	
 	private ArrayList<Coordinates> cardCoords;
 
+	/**
+	 * 
+	 * @param imageHeight height of the content where cards are printed, changes when the window is resized
+	 * @param imageWidth width of the content where cards are printed, changes when the window is resized
+	 * @param marginX horizontal margin between content and image 
+	 * @param marginY vertical margin
+	 * @param startCoord @see StartCoordinates
+	 * @param originW width of the file used in background
+	 * @param originH height of the file used in background
+	 */
 	public CoordinateHandlerCards(double imageHeight, double imageWidth, double marginX, double marginY, 
 			StartCoordinates startCoord, int originW, int originH) {
 		/*
-		 * al termine della funzione:
-		 *cardCoords.get(0) avrà le coordinate di territoryCard - floor 1
-		 *cardCoords.get(1) avrà le coordinate di territoryCard - floor 2
+		 * in the end of function:
+		 *cardCoords.get(0) will contain territoryCard - floor 1 coords
+		 *cardCoords.get(1) will contain di territoryCard coords
 		 *...
-		 *cardCoords.get(4) avrà le coordinate di characterCard - floor 1
+		 *cardCoords.get(4) will contain di characterCard - floor 1 coords
 		 *...
 		 */
 		

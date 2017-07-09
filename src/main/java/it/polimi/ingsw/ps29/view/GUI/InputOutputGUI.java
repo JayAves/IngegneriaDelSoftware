@@ -34,6 +34,11 @@ import it.polimi.ingsw.ps29.view.GUI.specialinteraction.PrivilegesPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.VaticanPanelCreator;
 import it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions;
 
+/**
+ * Graphical User Interface InputOutput
+ * @author Pietro Melzi
+ *
+ */
 public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private GUICore screen;
 	private boolean endTime = false;
@@ -43,18 +48,14 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 	private BasePanel interactionPanel;
 	private int round = 0;
 	
-	//facilities used to communicate user choice
+	/*facilities used to communicate user choice
+	 * interactionReady is true when the message is ready
+	 * userMessage contains the message for the calling function
+	 */
 	private ResourceType resType;
 	private int excommunicationChoice;
-	
-	/*
-	 * per ogni tipo di messaggio sono presenti questi oggetti:
-	 * - un booleano che indica quando il messaggio è pronto
-	 * - un oggetto che contiene il messaggio stesso che deve essere tornato alla funzione chiamante
-	 */
 	private boolean interactionReady;
-	private InteractionMessage userMessage;
-	
+	private InteractionMessage userMessage;	
 	
 	public InputOutputGUI (String name) {
 		screen = new GUICore(name);
@@ -157,24 +158,21 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 				screen.ts3.setText("III: "+msg.getThreshold()[2]);
 				ready = true;
 			}
-			
 			catch (NullPointerException e) {
 				ready = false;
 			}
 			
 		} while (!ready);
 		
-		ready = false;
 		
+		ready = false;
 		do {
 			try {
-				
 				for(Map.Entry<String, ArrayList<ResourceDTO>> row: msg.getInitialResources().entrySet())
 					if(msg.getName().equals(row.getKey()))
 						PrintInfoFunctions.printUpdatedResources(screen, row.getValue());
 				ready = true;
 			}
-			
 			catch (NullPointerException e) {
 				ready = false;
 			}

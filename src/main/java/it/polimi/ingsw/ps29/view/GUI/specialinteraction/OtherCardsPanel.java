@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 
 import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
+/**
+ * Shows venture cards and character cards that aren't visible on personal board
+ * @author Pietro Melzi
+ *
+ */
 public class OtherCardsPanel extends FromBoardPanel {
 	
 	/**

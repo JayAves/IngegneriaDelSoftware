@@ -20,6 +20,11 @@ import it.polimi.ingsw.ps29.model.cards.effects.BonusPlacementEffect;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
+/**
+ * Creates the panel used in bonus interactions
+ * @author Pietro Melzi
+ *
+ */
 public class BonusPanelCreator extends PanelCreator{
 	BonusActionEffect effect;
 	JComboBox<String> tower, floor;

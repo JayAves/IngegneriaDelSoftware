@@ -3,6 +3,11 @@ package it.polimi.ingsw.ps29.view.GUI.coordinates;
 import java.awt.Point;
 import java.util.ArrayList;
 
+/**
+ * Container for spaces coordinates, calculated every time the tower image change its dimensions
+ * @author Pietro Melzi
+ *
+ */
 public class CoordinateHandlerSpaces {
 	
 	private final double WIDTH  = 413;
@@ -19,11 +24,11 @@ public class CoordinateHandlerSpaces {
 		this.imageWidth  = imageWidth;
 		
 		/*
-		 * al termine della prima parte di funzione:
-		 *spaceCoords.get(0) avrà le coordinate di territorySpace - floor 1
-		 *spaceCoords.get(1) avrà le coordinate di territorySpace - floor 2
+		 * after the first part of function:
+		 *spaceCoords.get(0) will contain territorySpace - floor 1 coords
+		 *spaceCoords.get(1) will contain territorySpace - floor 2 coords
 		 *...
-		 *spaceCoords.get(4) avrà le coordinate di characterSpace - floor 1
+		 *spaceCoords.get(4) will contain characterSpace - floor 1 coords
 		 *...
 		 */
 		
@@ -35,33 +40,32 @@ public class CoordinateHandlerSpaces {
 		double shiftWidth  = calculateValue (98, true);
 		double shiftHeight = calculateValue(90, false);
 		
-		//aggiungo le coordinate degli spazi azione sulle torri
+		//calculate action space coords
 		spaceCoords = new ArrayList<Coordinates>();
 		for(int i=0; i<16; i++)
-			//mi permette di settare nell'ordine che voglio le coordinate nel ArrayList al ciclo successivo
 			spaceCoords.add(null);
+		
 		for(int i=0; i<4; i++){
 			for (int j=0; j<4; j++) {
 				spaceCoords.set((i+1)*4-(j+1), new Coordinates((int)xStart, (int)yStart, (int)widthCard, (int)heightCard));
 				yStart+=shiftHeight;
 			}
-			
 			xStart+=shiftWidth;
 			yStart = yBase;
 		}
 		
 		/*
-		 * seconda parte della funzione:
-		 * spaceCoords.get(16) avrà le coordinate di harvest
-		 * spaceCoords.get(17) avrà le coordinate di production
-		 * spaceCoords.get(18) avrà le coordinate di market1
-		 * spaceCoords.get(19) avrà le coordinate di market2
-		 * spaceCoords.get(20) avrà le coordinate di market3
-		 * spaceCoords.get(21) avrà le coordinate di market4
-		 * spaceCoords.get(22) avrà le coordinate di council palace
+		 * second part of function:
+		 * spaceCoords.get(16) will contain harvest coords
+		 * spaceCoords.get(17) will contain production coords
+		 * spaceCoords.get(18) will contain market1 coords
+		 * spaceCoords.get(19) will contain market2 coords
+		 * spaceCoords.get(20) will contain market3 coords
+		 * spaceCoords.get(21) will contain market4 coords
+		 * spaceCoords.get(22) will contain council palace coords
 		 */
 		
-		//aggiungo le coordinate degli altri spazi azione
+		//adds the other action spaces coords
 		createOtherSpaceCoord(marginX, marginY, 15,  557, 145, 32); //harvest
 		createOtherSpaceCoord(marginX, marginY, 15,  495, 145, 32); //production
 		createOtherSpaceCoord(marginX, marginY, 252, 487,  30, 30); //market1
@@ -81,6 +85,12 @@ public class CoordinateHandlerSpaces {
 		spaceCoords.add(new Coordinates((int)coordX, (int)coordY, (int)width, (int)height));
 	}
 	
+	/**
+	 * given a length of a specific element in the source image, calculate the length when the image is resized
+	 * @param origin length in the original image
+	 * @param width true if is an horizontal length
+	 * @return
+	 */
 	private double calculateValue (double origin, boolean width) {
 		return width ? (origin/WIDTH)*imageWidth : (origin/HEIGHT)*imageHeight;
 	}

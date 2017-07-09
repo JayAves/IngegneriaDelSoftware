@@ -7,6 +7,12 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * The model of panels used to handle interaction between server and user.
+ * It is composed by a left panel where info are shown and a right panel for the interaction 
+ * @author Pietro Melzi
+ *
+ */
 public class BasePanel extends JFrame {
 
 	/**

@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.CoordinateHandlerCards;
 import it.polimi.ingsw.ps29.view.GUI.coordinates.StartCoordinates;
 
+/**
+ * This class extends ImageToPrint and it's used when cards must be printed over a background image
+ * @author Pietro Melzi
+ *
+ */
 public class PrintPersonal extends ImageToPrint {
 
 	/**
@@ -45,10 +50,10 @@ public class PrintPersonal extends ImageToPrint {
 			Point p = event.getPoint();
 			System.out.println(p.getX()+" - "+p.getY());
 			
-			//indice che mi dice su quale carta ho cliccato
+			//index of the card clicked
 			int indexCard = coordCards.getIndexCard(p);
 			
-			//se non ho inizializzato le torri o se ho cliccato fuori dallo spazio delle carte non fa nulla
+			//if towers aren't initialized or the click is out of cards space there's nothing to do
 			if(!idCards.isEmpty() && indexCard>-1 && indexCard<coordCards.length()) 
 				if(idCards.get(indexCard) != -1)
 					gui.zoomImage(idCards.get(indexCard));
@@ -61,7 +66,6 @@ public class PrintPersonal extends ImageToPrint {
 	public void paintComponent (Graphics g) {
 		super.paintComponent(g);
 		
-		//dimensioni assolute utilizzate per piazzare le carte
 		handlePosition(startCoord.getX(), startCoord.getY(), startCoord.getWidth(), startCoord.getHeight(),
 				startCoord.getShiftX(), startCoord.getShiftY(), g);
 		

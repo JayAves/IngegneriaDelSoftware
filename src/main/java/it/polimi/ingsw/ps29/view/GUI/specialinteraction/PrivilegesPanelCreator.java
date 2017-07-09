@@ -16,7 +16,11 @@ import it.polimi.ingsw.ps29.model.game.resources.ResourceType;
 import it.polimi.ingsw.ps29.view.GUI.GUICore;
 import it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities;
 
-
+/**
+ * Creates the panel used in privileges interactions
+ * @author Pietro Melzi
+ *
+ */
 public class PrivilegesPanelCreator extends PanelCreator {
 	private ButtonGroup choice;
 	private boolean different;
