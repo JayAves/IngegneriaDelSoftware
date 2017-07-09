@@ -290,6 +290,14 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		if (endTime)  {
 			//out from the while, but the user doesn't insert anything
 			running = false;
+
+			//notify on GUI that time is expired
+			screen.frame.setTitle("Player: "+screen.playerName+" - DISCONNETTED");
+			screen.doAction.setEnabled(false);
+			screen.doAction.setBackground(null);
+			screen.noAction.setEnabled(false);
+			JOptionPane.showMessageDialog(null, "Time expired! Restart main to get back in the game!");
+			
 			if(interactionPanel!=null)
 				interactionPanel.dispose();
 			throw new ExpiredTimeException();

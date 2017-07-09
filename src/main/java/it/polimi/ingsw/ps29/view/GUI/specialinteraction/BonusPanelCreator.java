@@ -36,21 +36,29 @@ public class BonusPanelCreator extends PanelCreator{
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.weightx = 1;
-		JLabel type = new JLabel (effect.getType());
+		JLabel type = GUIUtilities.createSingleLabel("images/bonus_action/"+effect.getType().toLowerCase()+".png", 30, 40);
 		panel.add(type, c);
 		
-		c.gridx = 2;
-		JLabel value = new JLabel (effect.getValue()+"");
+		c.gridx = 1;
+		JLabel value = GUIUtilities.createSingleLabel("images/bonus_action/dice"+effect.getValue()+".png", 35, 40);
 		panel.add(value, c);
 		
-		c.gridy = 2;
-		if(effect instanceof BonusPlacementEffect)
+		if(effect instanceof BonusPlacementEffect) {
+			c.gridx = 0;
+			c.gridy = 1;
+			panel.add(new JLabel("Discount: "), c);
+			
 			for(int i=0; i<((BonusPlacementEffect)effect).getDiscount().size(); i++) {
-				c.gridx = i+1;
+				c.gridx = i;
+				c.gridy = 2;
 				JLabel discount = GUIUtilities.createSingleLabel("images/resources/"+
-						((BonusPlacementEffect)effect).getDiscount().get(0).getType()+".png", 40, 40);
+						((BonusPlacementEffect)effect).getDiscount().get(i).getType()+".png", 35, 35);
 				panel.add(discount, c);	
+				
+				c.gridy = 3;
+				panel.add(new JLabel(((BonusPlacementEffect)effect).getDiscount().get(i).getAmount()+""), c);
 			}
+		}
 		
 		
 		return panel;
@@ -100,6 +108,7 @@ public class BonusPanelCreator extends PanelCreator{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				((BonusChoice)msg).setSpace(12);
 		    	gui.notifyInput(msg);
 		    	SwingUtilities.getWindowAncestor(panel).dispose();
 			}
