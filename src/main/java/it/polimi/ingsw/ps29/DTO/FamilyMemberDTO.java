@@ -26,7 +26,7 @@ public class FamilyMemberDTO implements Serializable {
 	
 	@Override
 	public String toString () {
-		return "Familiar "+familiarColor+" - Player "+playerColor;
+		return "Familiar "+familiarColor+" - Player "+playerColor + " , ";
 	}
 
 	public PlayerColor getPlayerColor() {

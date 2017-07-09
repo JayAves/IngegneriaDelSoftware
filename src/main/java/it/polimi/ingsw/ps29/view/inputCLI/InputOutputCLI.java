@@ -47,7 +47,7 @@ public class InputOutputCLI implements InputOutput {
 	private FakeScanner scanner;
 	private int turnTimer; //time to complete action
 	private long timeStart; //timer starting value before it's decremented.
-	private final static int DEFAULT_TIMER= 19000;
+	private final static int DEFAULT_TIMER= 190000;
 
 	
 	public InputOutputCLI () {
