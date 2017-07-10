@@ -54,20 +54,16 @@ public class ProvaTest extends TestCase {
 		model = new Match(names);
 		FamilyMemberInterface member = model.getCurrentPlayer().getFamiliarByColor(DiceColor.ORANGE);
 		member.setPower(5);
-		System.out.println(model.getCurrentPlayer().getPersonalBoard().getResources());
 		
 		RoundState rss = new RoundSetupState();
 		rss = rss.doAction(1, model);
 
 		move = new Move (model.getCurrentPlayer(), "buildingTower", 2, 2, member);
-		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).printCards());
-		System.out.println("\n\nCarta presa: \n\n");
 		((TowerArea)model.getBoard().getSpace(move.getSpace())).setPlacementFloor(2);
 		ArrayList<Resource> cost = new ArrayList<Resource>();
 		cost.add(new Stones(2));
 		Card card = new BuildingCard("", null, "building", 1, new ArrayList<Effect>(), null, cost, 2);
 		((TowerArea)model.getBoard().getSpace(move.getSpace())).setCard(card, 2);
-		System.out.println (((TowerArea)model.getBoard().getSpace(move.getSpace())).takeCard());
 		
 		action = new TowerAction(model, move);
 		try {
@@ -77,11 +73,6 @@ public class ProvaTest extends TestCase {
 			e.printStackTrace();
 		}
 		
-		
-		
-		System.out.println(move.getPlayer().getPersonalBoard().getResources());
-		//System.out.println(model.getBoard().getCurrentPlayer().getPersonalBoard().getResources());
-		//System.out.println(model.getBoard().getDecks().get(2).getCard(2));
 		
 	}
 

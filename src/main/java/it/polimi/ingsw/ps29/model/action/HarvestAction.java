@@ -58,20 +58,11 @@ public class HarvestAction extends Action {
 		
 		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("territory");
 		//ciclo lettura effetti da personalBoard
-		for(Card card: importedSlot) {
-			for(Effect effect: card.getPermanentEffects()) {
+		for(Card card: importedSlot) 
+			for(Effect effect: card.getPermanentEffects()) 
 				if (move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=
-				 ((TerritoryCard)card).getHarvestForce()) {
+				 ((TerritoryCard)card).getHarvestForce()) 
 					effect.performEffect(move.getPlayer());
-					if (effect instanceof GainResourcesEffect){
-						System.out.println(move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants());
-						System.out.println(((TerritoryCard)card).getHarvestForce());
-						for (Resource res: ((GainResourcesEffect)effect).getResources())
-							System.out.println(res.getType()+" - "+res.getAmount());
-					}
-				}
-			}
-		}
 		move.getFamiliar().setBusy(true);
 		
 	}

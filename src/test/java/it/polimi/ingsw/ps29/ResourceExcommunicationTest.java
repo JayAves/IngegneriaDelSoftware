@@ -13,7 +13,6 @@ import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Period;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.game.GameBoard;
 import junit.framework.TestCase;
 
 public class ResourceExcommunicationTest extends TestCase{

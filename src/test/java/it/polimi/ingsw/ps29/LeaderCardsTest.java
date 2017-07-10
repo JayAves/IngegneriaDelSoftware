@@ -42,7 +42,6 @@ public class LeaderCardsTest extends TestCase{
 		permanentLeaderCards = new ArrayList<LeaderCard>();
 		
 		for (LeaderCard card : model.getBoard().getPlayerByName("primo").getPersonalBoard().getLeaderCards()){
-			System.out.println(card.toString());
 			if (card.isPermanent())
 				permanentLeaderCards.add(card);
 			else

@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29;
 
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -12,13 +10,11 @@ import it.polimi.ingsw.ps29.controller.ChoiceToMove;
 import it.polimi.ingsw.ps29.messages.ActionChoice;
 import it.polimi.ingsw.ps29.messages.exception.RejectException;
 import it.polimi.ingsw.ps29.messages.exception.SpaceOccupiedException;
-import it.polimi.ingsw.ps29.model.action.HarvestAction;
 import it.polimi.ingsw.ps29.model.action.TowerAction;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Move;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundSetupState;
-import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 import junit.framework.TestCase;
 

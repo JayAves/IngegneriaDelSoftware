@@ -11,7 +11,6 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-import it.polimi.ingsw.ps29.model.cards.effects.Effect;
 import it.polimi.ingsw.ps29.model.cards.effects.ExchangeResourceHandler;
 
 public class ExchangeResourceAdapter implements JsonSerializer<ExchangeResourceHandler>, JsonDeserializer<ExchangeResourceHandler> {

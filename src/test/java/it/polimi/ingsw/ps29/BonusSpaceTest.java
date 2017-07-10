@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps29.model.game.Match;
-import it.polimi.ingsw.ps29.model.space.BonusActionSpace;
 import it.polimi.ingsw.ps29.model.space.MarketArea;
 import it.polimi.ingsw.ps29.model.space.TowerArea;
 import junit.framework.TestCase;

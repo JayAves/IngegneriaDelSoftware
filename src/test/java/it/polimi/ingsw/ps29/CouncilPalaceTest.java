@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps29;
 
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -19,7 +17,6 @@ import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.roundstates.EndOfTheRoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
-import it.polimi.ingsw.ps29.model.space.ActivityArea;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 import junit.framework.TestCase;
 

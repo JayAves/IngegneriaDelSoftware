@@ -1,11 +1,7 @@
 package it.polimi.ingsw.ps29.model.cards.customadapters;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.lang.reflect.Type;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -16,9 +12,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 import it.polimi.ingsw.ps29.model.cards.Card;
-import it.polimi.ingsw.ps29.model.cards.TerritoryCard;
-import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
 /**
  * Serializes and deseriaizes any Card and inheriting-from-Card object. 

@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import it.polimi.ingsw.ps29.messages.ActionChoice;
-import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.LeaderPanel;
 import it.polimi.ingsw.ps29.view.GUI.specialinteraction.OtherCardsPanel;
 import it.polimi.ingsw.ps29.view.GUI.utilities.InteractionMessagesFunctions;

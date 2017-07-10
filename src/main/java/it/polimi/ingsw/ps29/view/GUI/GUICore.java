@@ -192,9 +192,13 @@ public class GUICore extends Observable{
 		panelCenter.setLayout(new GridLayout(1, 4));
 		
 		JPanel buttonsPanel = new JPanel ();
+		buttonsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		JPanel familiarPanel = new JPanel();
+		familiarPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		JPanel doActionPanel = new JPanel();
+		doActionPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		JPanel pointsPanel = new JPanel();
+		pointsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		
 		buttonsPanel.setLayout(new GridBagLayout());
 		familiarPanel.setLayout(new GridLayout(2, 2));
@@ -270,16 +274,22 @@ public class GUICore extends Observable{
 	public void setButtonsPanel (JPanel buttonsPanel) {
 		GridBagConstraints c = new GridBagConstraints();
 		
-		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridwidth = 3;
 		otherCards = new JButton("OTHER CARDS");
 		otherCards.addMouseListener(listener);
 		buttonsPanel.add(otherCards, c);
 		
+		c.fill = GridBagConstraints.NONE;
 		c.gridy = 1;
 		buttonsPanel.add(new JLabel("THRESHOLDS"), c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
+		c.weightx = 1;
 		c.gridwidth = 1;
 		ts1 = new JLabel ("I");
 		buttonsPanel.add(ts1, c);
@@ -385,9 +395,9 @@ public class GUICore extends Observable{
 		preview.setImage("cards/devcards_f_en_c_"+idCard+".png");
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		new GUICore ("test");
-	}
+	}*/
 	
 	public void notifyInput (Object msg) {
 		setChanged();

@@ -2,11 +2,10 @@ package it.polimi.ingsw.ps29.model.game.roundstates;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps29.model.action.actionstates.ActionState;
-import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.GameBoard;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.Player;
+import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.space.ActionSpace;
 import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 

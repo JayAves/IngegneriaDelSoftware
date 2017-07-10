@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 public class Family {
 	
 	private HashMap <DiceColor, FamilyMemberInterface> familyMembers;
-	private FakeFamilyMemberInterface fakeFamiltMember;
+	private FakeFamilyMemberInterface fakeFamilyMember;
 	
 	public Family(PlayerColor playerColor){
 		

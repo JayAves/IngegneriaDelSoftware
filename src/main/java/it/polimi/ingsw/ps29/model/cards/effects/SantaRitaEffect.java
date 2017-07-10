@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
-import it.polimi.ingsw.ps29.model.game.resources.ResourceDecorator;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceSantaRitaDecorator;
 
 /**

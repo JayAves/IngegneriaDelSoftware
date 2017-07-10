@@ -17,7 +17,7 @@ public class ResourceDecorator implements ResourceInterface {
 
 	@Override
 	public void modifyAmount(int amount) {
-		if(amount < 0)
+		if(amount <= 0)
 			decoratedResource.modifyAmount(amount);
 		else
 			decoratedResource.modifyAmount(amount + modifier);
