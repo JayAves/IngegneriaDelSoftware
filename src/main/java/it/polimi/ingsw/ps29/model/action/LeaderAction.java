@@ -59,7 +59,7 @@ public class LeaderAction extends Action{
 			
 			if (card.size() > 4 ){
 				if (card.get(4).equals("DISCARD")){
-					System.out.println("\n sono in discard");
+					//System.out.println("\n sono in discard");
 					ArrayList<Resource> discardBonus = new ArrayList<Resource>();
 					discardBonus.add(new Privilege(1));
 					privilegeCounter ++;
@@ -74,8 +74,11 @@ public class LeaderAction extends Action{
 					move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
 					}
 				if (card.get(4).equals("ACTIVATE")){
+					//System.out.println("\n sono in activate");
 					move.getPlayer().getPersonalBoard().getActivatedLeaderCards().add(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getPlayedLeaderCards()));
+					System.out.println(move.getPlayer().getPersonalBoard().getActivatedLeaderCards());
 					move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getActivatedLeaderCards()).getEffect().performEffect(move.getPlayer());
+					//System.out.println(move.getPlayer().getPersonalBoard().getLeaderById((int)card.get(0), move.getPlayer().getPersonalBoard().getActivatedLeaderCards()).getEffect());
 					if ((int)card.get(2) == 0)
 						move.getPlayer().getPersonalBoard().removeLeaderById((int)card.get(0));
 						else
