@@ -58,6 +58,13 @@ public class SocketConnection extends Connection {
 			//invio al server nome e token del client
 			oos.writeObject(loginMessage);
 			oos.flush();
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				Thread.currentThread().interrupt();
+			}
 
 		} catch (UnknownHostException e) {
 			System.err.println("Unknown address!");
@@ -98,6 +105,12 @@ public class SocketConnection extends Connection {
 			}
 		}
 		
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			Thread.currentThread().interrupt();
+		}
 	}
 
 
@@ -136,6 +149,13 @@ public class SocketConnection extends Connection {
 				
 			} catch (IOException e) {
 				System.err.println("Unable to send object!");
+				Thread.currentThread().interrupt();
+			}
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
 				Thread.currentThread().interrupt();
 			}
 		}

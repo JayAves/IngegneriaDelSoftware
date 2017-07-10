@@ -23,6 +23,7 @@ public class RoomCreator extends Thread implements Observer {
 	private static final int UPDATE_TIME= 600000;
 	private int period;
 	
+	
 	public RoomCreator(){
 		this.counter = 0;
 		this.roomHandler= new ArrayList<Room>();
@@ -51,6 +52,7 @@ public class RoomCreator extends Thread implements Observer {
 		counter++;
 		
 		if (counter==2) //countdown to game start is set
+			
 			timer.schedule(new Task(), period);
 			
 		if (counter==4){ //enough players for a new Room
@@ -60,6 +62,7 @@ public class RoomCreator extends Thread implements Observer {
 			roomHandler.add(newRoom);
 			System.out.println(roomHandler.size());
 			playersInQueue.clear();
+			
 			newRoom.start();
 			
 		}
@@ -226,6 +229,13 @@ public class RoomCreator extends Thread implements Observer {
 				roomHandler.remove(room);
 			
 			System.out.println("roomHandler "+ roomHandler);
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				Thread.currentThread().interrupt();
+			}
 				
 		}
 		

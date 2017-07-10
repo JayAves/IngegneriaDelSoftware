@@ -81,6 +81,12 @@ public class SocketGatherer extends Observable implements Runnable{
 			}
 		}
 		
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			Thread.currentThread().interrupt();
+		}
 	}
 	
 	
@@ -111,5 +117,11 @@ public class SocketGatherer extends Observable implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		startServer();
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			Thread.currentThread().interrupt();
+		}
 	}
 }

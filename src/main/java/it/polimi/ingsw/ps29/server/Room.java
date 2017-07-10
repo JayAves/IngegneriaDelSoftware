@@ -70,6 +70,13 @@ public class Room extends Thread implements Observer{
 	@Override
 	public void run() {
 		controller.gameEngine();
+		
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			Thread.currentThread().interrupt();
+		}
 	}
 
 	
