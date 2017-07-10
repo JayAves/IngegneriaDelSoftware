@@ -64,7 +64,8 @@ public class InputWithTimer implements Runnable {
 				
 			} catch (IOException e) {
 
-				e.printStackTrace();
+				System.err.println("Failed to read scanner input");
+				Thread.currentThread().interrupt();
 			}
 		
 		} while (input == -1);

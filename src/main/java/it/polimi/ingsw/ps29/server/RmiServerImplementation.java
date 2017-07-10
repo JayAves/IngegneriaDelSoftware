@@ -57,8 +57,6 @@ public class RmiServerImplementation extends UnicastRemoteObject implements RmiS
 			myGatherer.clients.remove(toDelete); //Get rid of player's old ClientThread 
 		myGatherer.clients.add(thread);
 		
-		//Thread t= new Thread (thread);
-		//t.start();
 		myGatherer.notifyRoomCreator(thread);
 
 	}

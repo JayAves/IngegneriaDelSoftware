@@ -334,6 +334,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 				pbSearched = pbDTO;
 		
 		//show cards and resources of the player
+		
 		ArrayList<Integer> ids = PrintInfoFunctions.createIdCards(pbSearched.getIdCards());
 		screen.personal.setCards(ids, true);
 		PrintInfoFunctions.printUpdatedResources(screen, pbSearched.getResources());

@@ -25,7 +25,6 @@ public class Room extends Thread implements Observer{
 	public Room (ArrayList<ClientThread> playersInQueue){
 		
 		active=true;
-		
 		views= new ArrayList<ClientThread>();
 		for (ClientThread th: playersInQueue) {
 			views.add(th);
@@ -41,7 +40,7 @@ public class Room extends Thread implements Observer{
 		
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
-			System.out.println();
+			
 		}
 		
 		controller = new Controller (model);

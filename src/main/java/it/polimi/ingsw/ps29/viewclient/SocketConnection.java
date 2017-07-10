@@ -61,7 +61,7 @@ public class SocketConnection extends Connection {
 
 		} catch (UnknownHostException e) {
 			System.err.println("Unknown address!");
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
 			
 		} catch (IOException e) {
 			System.err.println("\nUnable to connect to server!");
@@ -136,7 +136,7 @@ public class SocketConnection extends Connection {
 				
 			} catch (IOException e) {
 				System.err.println("Unable to send object!");
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 		}
 
