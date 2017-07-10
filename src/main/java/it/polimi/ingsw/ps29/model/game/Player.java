@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps29.model.game;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
@@ -11,6 +12,15 @@ import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.BuildingCostsPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.CharacterCardVictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.MilitaryPenaltyPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.PenaltyGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.ResourcePenaltyPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.ResourcesVictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.TerritoryCardVictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.VictoryPenaltyPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalScoring2.VictoryPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
 
@@ -39,6 +49,8 @@ public class Player {
 	private ExchangeSupport supportForExchange;
 	private ArrayList<Effect> specialPermanentEffects;
 	private FinalScoring finalScoring;
+	private HashMap <String, VictoryPointsGatherer> finalScoring2; 
+	private HashMap <String, VictoryPointsGatherer> finalPenalties; 
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
 	private boolean ludovicoAriosto;
@@ -46,6 +58,7 @@ public class Player {
 	private boolean sistoIV;
 	private boolean picoDellaMirandola;
 	private boolean noMarket;
+
 	
 	public Player (String name, PlayerColor color, PersonalBonusTile pbt) {
 		this.name = name;
@@ -62,6 +75,19 @@ public class Player {
 		filippoBrunelleschi = false;
 		sistoIV = false;
 		picoDellaMirandola = false;
+		
+		finalScoring2 = new HashMap<String, VictoryPointsGatherer>(); 
+	    finalScoring2.put("character", new CharacterCardVictoryPointsGatherer()); 
+	    finalScoring2.put("territory", new TerritoryCardVictoryPointsGatherer()); 
+	    finalScoring2.put("resources", new ResourcesVictoryPointsGatherer()); 
+	     
+	    finalPenalties = new HashMap<String, VictoryPointsGatherer>(); 
+	    finalPenalties.put("military", new MilitaryPenaltyPointsGatherer()); 
+	    finalPenalties.put("resourcepenalty", new ResourcePenaltyPointsGatherer()); 
+	    finalPenalties.put("cost", new BuildingCostsPointsGatherer()); 
+	    finalPenalties.put("victory", new VictoryPenaltyPointsGatherer());
+	    
+	    
 	}
 	
 	
@@ -128,8 +154,18 @@ public class Player {
 		finalScoring.calculateFinalScore();
 	}
 	
+	public void getFinalPoints2(){
+		ArrayList<VictoryPointsGatherer> finalGatherers = (ArrayList<VictoryPointsGatherer>) finalScoring2.values();
+		for ( VictoryPointsGatherer gatherer : finalGatherers)
+			gatherer.getVictoryPoints(board);
+	}
+	
 	public boolean getVentureCardPenalty(){
 		return ventureCardsPenaltyOn;
+	}
+	
+	public void setVentureCardPenalty(){
+		ventureCardsPenaltyOn = true;
 	}
 	
 	public FinalScoring getFinalScoring(){
@@ -199,6 +235,15 @@ public class Player {
 	
 	public void setSpecialPermanentEffects(ArrayList<Effect> specialPermanentEffect) {
 		this.specialPermanentEffects = specialPermanentEffect;
+	}
+	
+	public void removeGatherer( String gathererType){
+		finalScoring2.remove(gathererType);
+	}
+	
+	public void addGatherer (String gathererType, int interval) {
+		((PenaltyGatherer) finalPenalties.get(gathererType)).setPenalty(interval);
+		finalScoring2.put( gathererType, finalPenalties.get(gathererType));
 	}
 
     
