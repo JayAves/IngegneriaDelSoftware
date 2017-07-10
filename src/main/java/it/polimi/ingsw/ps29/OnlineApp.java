@@ -30,7 +30,7 @@ public class OnlineApp {
 	    	System.out.println("             |                                                              |");
 	    	System.out.println("              -------------------------------------------------------------- ");
 	    	
-	    	do { 
+	    	/*do { 
 	    		System.out.println("\nChoose the interface you want to use between CLI and GUI.");
 		    	System.out.println("Type 'CLI' or 'GUI' and press ENTER: ");
 	    		inputChoice = scanner.nextLine().toLowerCase();
@@ -41,7 +41,10 @@ public class OnlineApp {
 	    		System.out.println("Choose the connection you want to use between Socket and RMI.");
 		    	System.out.println("Type 'socket' or 'RMI' and press ENTER: ");
 		    	inputConnection = scanner.nextLine().toLowerCase();
-	    	} while(!inputConnection.equals("socket") && !inputConnection.equals("rmi")); 
+	    	} while(!inputConnection.equals("socket") && !inputConnection.equals("rmi")); */
+	    	inputChoice= "cli";
+	    	inputConnection= "rmi";
+	    
 	    	
 	    	System.out.println("\nInsert your username: ");
     		playerName= scanner.next();
