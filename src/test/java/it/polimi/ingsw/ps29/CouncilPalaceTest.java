@@ -56,7 +56,6 @@ public class CouncilPalaceTest extends TestCase{
 		for (Player player : temp)
 			beforePlayers.add(player.getColor());
 		
-		System.out.println(beforePlayers);
 		
 		model.getBoard().getPlayerByName("primo").getFamiliarByColor(DiceColor.BLACK).setPower(4);
 		model.getBoard().getPlayerByName("secondo").getFamiliarByColor(DiceColor.WHITE).setPower(2);
@@ -88,13 +87,9 @@ public class CouncilPalaceTest extends TestCase{
 		
 		space = (CouncilPalaceArea) model.getBoard().getSpace("CouncilPalace");
 		councilPlayers =space.playersOrder();
-		System.out.println(space);
 		
 		RoundState state = new EndOfTheRoundState();
 		state.doAction(2, model);
-		
-		//councilPlayers =space.playersOrder();
-		System.out.println(councilPlayers);
 		
 		
 	}

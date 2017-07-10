@@ -4,28 +4,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import it.polimi.ingsw.ps29.model.cards.Deck;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BonusActionTest.class})
+@SuiteClasses({ BonusActionTest.class, PrivilegesTest.class, BonusSpaceTest.class, DiscountEffectTest.class, 
+	CheckVectorExchangeTest.class, CleanTowerTest.class, CouncilPalaceTest.class, FamiliarEmpowermentTest.class,
+	FamilyMemberTest.class, FinalScoringTest.class, LeaderCardsTest.class, MalusResourcesTest.class, MilitaryTrackTest.class,
+	PerformExchangeTest.class, ProvaTest.class, ResourceExcommunicationTest.class, ResourcesTest.class, SatisfyRequirementsTest.class,
+	TowerActionTest.class})
 
-public class AllTests {	
-	
-	public static Test suite () {
-		TestSuite suite = new TestSuite();
-		/*suite.addTest(new PrivilegesTest("test"));
-		suite.addTest(new BonusActionTest("test"));*/
-		
-		suite.addTest(new DiscountEffectTest("test"));
-		
-		return suite;
-	}
-		
-	public static void main(String[] args) {
-		junit.textui.TestRunner.run(suite());
-		
-	}
-
-
-}
+public class AllTests{}
