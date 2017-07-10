@@ -309,23 +309,23 @@
 },
     
 {
-"name" : "Fake Ludocvico III Gonzaga ",
+"name" : "Lorenzo De Medici ",
 "id" :15,
 "permanent" : 0,
 "leaderEffect" : {
 		"effectType": "GainResourcesEffect",
 		"effectData":
 		{ "resources": [{
-			"resourceType":"Privilege",
+			"resourceType":"Coins",
 			"resourceData":{
-				"amount":1,
-				"type":"privilege" }
+				"amount":5,
+				"type":"coin" }
 	}            ]}},
 "requirements" : [{
-   "resourceType":"Servants",
+   "resourceType":"VictoryPoints",
    "resourceData":{
-    "amount" :15,
-    "type":"servant" } }],
+    "amount" :35,
+    "type":"victory" } }],
 "cardTypeRequirements" : [],
 "cardRequirements" : []
 }
