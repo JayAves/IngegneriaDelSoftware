@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.model.game.finalScoring2;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class ResourcsPointsGatherer implements VictoryPointsGatherer{
+public class ResourcesVictoryPointsGatherer implements VictoryPointsGatherer{
 	
 	private final int INTERVAL = 5;
 
