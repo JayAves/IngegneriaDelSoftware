@@ -3,13 +3,12 @@ package it.polimi.ingsw.ps29.model.game.finalScoring2;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class MilitaryPenaltyPointsGatherer implements VictoryPointsGatherer{
+public class MilitaryPenaltyPointsGatherer extends PenaltyGatherer{
 	
-	int penalty = 0;
 	int interval = 1;
 	
-	public void setPenalty(int penalty , int interval){
-		this.penalty = penalty;
+	public void setPenalty(int interval){
+		this.interval = interval;
 	}
 
 	@Override

@@ -6,15 +6,13 @@ import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class BuildingCostsPointsGatherer implements VictoryPointsGatherer{
-	
-	int penalty = 0;
+public class BuildingCostsPointsGatherer extends PenaltyGatherer{
+
 	int interval = 1;
 	
-	public void setPenalty(int penalty , int interval){
-		this.penalty = penalty;
-		this.interval = interval;
-		
+	@Override
+	public void setPenalty(int interval){
+		this.interval = interval;	
 	}
 
 	@Override
