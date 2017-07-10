@@ -1,4 +1,4 @@
- package it.polimi.ingsw.ps29;
+package it.polimi.ingsw.ps29;
 
 import java.util.Scanner;
 
