@@ -35,7 +35,7 @@ public abstract class Connection extends Observable implements Runnable{
 	 *	Before creating a new token, checks if in file there is one consisting with playerName written in the parameter loginMessage. If so, that token is set in loginMessage. Otherwise the new one is set.
 	 * @param loginMessage	where playerName is taken from and token is put
 	 * @throws IOException for any trouble reading/writing Login.json file
-	 * @see LoginMessage
+	 * 
 	 */
 	
 	public void setLoginToken(PlayerInfoMessage loginMessage) throws IOException{

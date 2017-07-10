@@ -10,8 +10,8 @@ import it.polimi.ingsw.ps29.view.InputOutput;
 /**
  * Puts a time limit for Scanner to read user input from CLI. Received a timer, uses System.currentTimeMillis to count;
  * @author Pietro Melzi
- * @throws ExpiredTimeException when time is over
- * @see Scanner
+ * 
+ * @see FakeScanner
  *
  */
 

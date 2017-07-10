@@ -335,7 +335,7 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 		screen.tower.setCards(msg.getFirstInfo().getTowers().getTowers().getIdCards(), true);
 		
 		//get personal board of the player
-		PersonalBoardDTO pbSearched = null;
+		PersonalBoardDTO pbSearched = msg.getPersonalBoard().get(0);
 		for(PersonalBoardDTO pbDTO: msg.getPersonalBoard())
 			if(pbDTO.getName().equals(screen.playerName))
 				pbSearched = pbDTO;

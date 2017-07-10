@@ -6,6 +6,12 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+
 
 /**
  * Hub where Rooms are made and managed. Has a queue used to put players together in new games. 
@@ -22,18 +28,19 @@ public class RoomCreator extends Thread implements Observer {
 	private Timer scheduler;
 	private static final int UPDATE_TIME= 600000;
 	private int period;
-	private Task task;
+	private final ScheduledExecutorService executor;
+	 ScheduledFuture<?> beeperHandle;
 	
 	
 	public RoomCreator(){
 		this.counter = 0;
 		this.roomHandler= new ArrayList<Room>();
 		this.playersInQueue= new ArrayList<ClientThread>();
-		this.task= new Task();
 		this.timer= new Timer();
 		scheduler= new Timer();
 		//every UPDATE_TIME milliseconds, a Room management routine is scheduled
 		scheduler.scheduleAtFixedRate(new Updater(), UPDATE_TIME, UPDATE_TIME); 
+		executor=Executors.newScheduledThreadPool(1);
 	}
 	
 	public void addPlayer(ClientThread s) throws FileNotFoundException{
@@ -52,11 +59,15 @@ public class RoomCreator extends Thread implements Observer {
 			
 		counter++;
 		
-		if (counter==2) //countdown to game start is set
-			timer.schedule(task, period);
+		if (counter==2) { //countdown to game start is set
 			
+			Task task= new Task();
+			beeperHandle = executor.schedule(task, period, TimeUnit.MILLISECONDS);
+		}
+		
 		if (counter==4){ //enough players for a new Room
-			task.cancel();
+			
+			beeperHandle.cancel(true);
 			counter=0;
 			System.out.println("New Room");
 			Room newRoom= new Room(playersInQueue);
@@ -175,7 +186,7 @@ public class RoomCreator extends Thread implements Observer {
 	 * @author Pietro Grotti
 	 *
 	 */
-	private class Task extends TimerTask{
+	protected class Task implements Runnable{
 
 		@Override
 		public void run() {
