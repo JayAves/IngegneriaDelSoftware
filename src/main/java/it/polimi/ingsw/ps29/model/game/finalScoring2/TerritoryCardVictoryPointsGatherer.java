@@ -5,7 +5,7 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class TerritoryVictoryPointsGatherer implements VictoryPointsGatherer{
+public class TerritoryCardVictoryPointsGatherer implements VictoryPointsGatherer{
 	
 	private HashMap < Integer, Resource> points;
 

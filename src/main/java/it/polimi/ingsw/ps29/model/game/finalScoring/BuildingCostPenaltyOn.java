@@ -10,12 +10,25 @@ public class BuildingCostPenaltyOn implements EndGameVictoryPointsGatherer{
 
 	@Override
 	public void getVictoryPoints(PersonalBoard board) {
-		int penalty;
+		
+		int totalAmount = 0;
+		ArrayList<Resource> cost = new ArrayList<Resource>();
 		ArrayList<Card> buildingCards = board.getCards("building");
 		for (Card card : buildingCards){
-			ArrayList<Resource> cost = card.getCost();
-			//da finire problema con arrayList
+			for (Resource res : card.getCost()){
+				if (res.getType().equals("stone") || res.getType().equals("wood"))
+					cost.add(res);
+			}	
 		}
+		
+		for (Resource res : cost){
+			totalAmount += res.getAmount();
+		}
+	
+		
+		Resource victoryAmount = new Resource("victory",totalAmount);
+		victoryAmount.negativeAmount();
+		board.getResources().updateResource(victoryAmount);
 		
 		
 	}
