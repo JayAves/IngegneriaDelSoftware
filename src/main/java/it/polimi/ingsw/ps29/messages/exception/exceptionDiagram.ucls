@@ -6,7 +6,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/NotEnoughMilitaryException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="182" x="316" y="317"/>    
+    <position height="-1" width="-1" x="402" y="93"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -17,7 +17,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/ServantsException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="180" x="538" y="317"/>    
+    <position height="-1" width="-1" x="401" y="205"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -28,7 +28,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/SpaceOccupiedException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="850" y="394"/>    
+    <position height="-1" width="-1" x="403" y="321"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/FamiliarBusyException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1072" y="411"/>    
+    <position height="-1" width="-1" x="398" y="438"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -50,7 +50,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/NotEnoughPowerfulException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1294" y="458"/>    
+    <position height="-1" width="-1" x="403" y="545"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -61,7 +61,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/RejectException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="180" x="1319" y="142"/>    
+    <position height="-1" width="-1" x="710" y="246"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -72,7 +72,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/FamiliarHereException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1519" y="441"/>    
+    <position height="-1" width="-1" x="1012" y="553"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -83,7 +83,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/ExpiredTimeException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1740" y="422"/>    
+    <position height="-1" width="-1" x="1013" y="439"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -94,7 +94,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/NotEnoughResourcesException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1971" y="404"/>    
+    <position height="-1" width="-1" x="1019" y="324"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -105,7 +105,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/FullCardBoardException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2203" y="391"/>    
+    <position height="-1" width="-1" x="1009" y="212"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -116,7 +116,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/messages/exception/TowerCoinMalusException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="180" x="2333" y="317"/>    
+    <position height="-1" width="-1" x="1009" y="100"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -124,43 +124,43 @@
     </display>  
   </class>  
   <generalization id="12">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="14">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="20">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
-  <generalization id="21">    
+  <generalization id="13">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="14">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="20">    
     <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

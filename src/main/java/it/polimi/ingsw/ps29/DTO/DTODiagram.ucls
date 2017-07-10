@@ -5,7 +5,7 @@
   <class id="1" language="java" name="it.polimi.ingsw.ps29.DTO.CardDTO" project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/DTO/CardDTO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="207" width="151" x="291" y="186"/>    
+    <position height="-1" width="-1" x="550" y="548"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -55,7 +55,7 @@
   <class id="6" language="java" name="it.polimi.ingsw.ps29.DTO.FamilyMemberDTO" project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/DTO/FamilyMemberDTO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="189" width="226" x="1383" y="186"/>    
+    <position height="-1" width="-1" x="1233" y="517"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   <class id="8" language="java" name="it.polimi.ingsw.ps29.DTO.GameBoardDTO" project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/DTO/GameBoardDTO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="297" width="402" x="1649" y="186"/>    
+    <position height="-1" width="-1" x="1331" y="801"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,18 +84,26 @@
   </class>  
   <association id="9">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="10" name="resources"/>      
-      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
+      <attribute id="10" name="tile">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="12">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="13" name="tile"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+      <attribute id="13" name="resources">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
