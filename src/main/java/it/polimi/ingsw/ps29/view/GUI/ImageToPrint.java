@@ -20,7 +20,7 @@ public class ImageToPrint extends JPanel {
 	private static final long serialVersionUID = -8468475933709036985L;
 
 	double imageHeight, imageWidth, marginX, marginY, imageRatio;
-	protected BufferedImage image;
+	protected transient BufferedImage image;
 	
 	public ImageToPrint(String path) {
 		image = loadImage(path);
@@ -39,7 +39,8 @@ public class ImageToPrint extends JPanel {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Could not load images");
+			Thread.currentThread().interrupt();
 		}
 		return result;
 	}

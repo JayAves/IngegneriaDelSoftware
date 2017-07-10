@@ -36,7 +36,8 @@ public class ConnectionFactory {
 			
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println("Failed to setup connection");
+				Thread.currentThread().interrupt();
 			}
 		}
 		return null;

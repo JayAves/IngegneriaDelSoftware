@@ -29,7 +29,7 @@ public class PrintTower extends PrintPersonal {
 	 */
 	private static final long serialVersionUID = -3591511333427114163L;
 	
-	private CoordinateHandlerSpaces coordSpaces;
+	private transient CoordinateHandlerSpaces coordSpaces;
 	private HashMap <Integer, ArrayList<FamilyMemberDTO>> coordFamiliar;
 	private ArrayList<Integer> valueDices = new ArrayList<Integer>();
 	private ArrayList<PlayerColor> playerOrder = new ArrayList<PlayerColor>();
