@@ -175,7 +175,7 @@
 "period" : "THIRD",
 "id" : 1,
     "effect": {
-        "effectType" : "TerritoryCardsPenaltyEffect",
+        "effectType" : "CharacterCardsPenaltyEffect",
         "effectData":{}
     }
 },
@@ -184,7 +184,7 @@
 "period" : "THIRD",
 "id" : 2,
     "effect": {
-        "effectType" : "CharacterCardsPenaltyEffect",
+        "effectType" : "VentureCardsPenaltyEffect",
         "effectData" :{}
     }
 },
@@ -200,7 +200,7 @@
 
 {
 "period" : "THIRD",
-"id" : 4,
+"id" : 6,
     "effect": {
         "effectType" : "BuildingCostsPenaltyEffect",
         "effectData" :{}
@@ -209,7 +209,7 @@
 
 {
 "period" : "THIRD",
-"id" : 5,
+"id" : 7,
     "effect": {
         "effectType" : "ResourcePenaltyEffect",
         "effectData" :{}
@@ -218,7 +218,7 @@
 
 {
 "period" : "THIRD",
-"id" : 6,
+"id" : 4,
     "effect": {
         "effectType" : "VictoryPointsPenaltyEffect",
         "effectData":{}
@@ -227,7 +227,7 @@
 
 {
 "period" : "THIRD",
-"id" : 7,
+"id" : 5,
     "effect": {
         "effectType" : "MilitaryPointsPenaltyEffect",
         "effectData":{}
