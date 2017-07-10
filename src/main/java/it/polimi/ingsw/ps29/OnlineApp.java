@@ -43,6 +43,8 @@ public class OnlineApp {
 		    	inputConnection = scanner.nextLine().toLowerCase();
 	    	} while(!inputConnection.equals("socket") && !inputConnection.equals("rmi")); 
 	    	
+	    
+	    	
 	    	System.out.println("\nInsert your username: ");
     		playerName= scanner.next();
     		
