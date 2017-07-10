@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceInterface;
 
 /**
- * Used in {@link Exchange}, checks if resources to pay can be paid.
+ * Used in  Exchange, checks if resources to pay can be paid.
  * @author Pietro Melzi
  *
  */

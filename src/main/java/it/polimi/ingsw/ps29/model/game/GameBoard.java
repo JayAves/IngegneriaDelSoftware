@@ -27,13 +27,14 @@ import it.polimi.ingsw.ps29.model.space.TowerArea;
 /**
  * Contains most of game's elements:
  * <ul>
- * 	<li> {@link Dice}	s
- * 	<li> {@link ActionSpace}	s
- * 	<li> {@link Player}	s in Order
- * 	<li> {@link LeaderCard}	s played
- *	<li> {@link	Card}	s and {@link ExcommunicationCard}	s
- *	<li> {@link Excommunication	} s received
- *	<li> {@link FaithTrack}
+ * 	<li> Dices
+ * 	<li> ActionSpaces
+ * 	<li> Players in Order
+ * 	<li> LeaderCards played
+ *	<li> Cards and ExcommunicationCards
+ *	<li> Excommunications received
+ *	<li> FaithTrack
+ *</ul>
  * <br>
  * 
  * @author Pietro Melzi

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * More compact and faster way to handle player resources' modifications.  Is assigned to every Player in his {@link PersonalBoard}.
+ * More compact and faster way to handle player resources' modifications.  Is assigned to every Player in his PersonalBoard.
  * @author Pietro Melzi
  * @author Giovanni Mele
  *
