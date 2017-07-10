@@ -52,7 +52,7 @@ public class BonusActionTest extends TestCase {
 	}
 	
 	@Test
-	public void testoo() {
+	public void test() {
 		assertEquals("Harvest", move.getSpace());
 		assertEquals("characterTower", move2.getSpace());
 		assertEquals(1, move2.getFloor());

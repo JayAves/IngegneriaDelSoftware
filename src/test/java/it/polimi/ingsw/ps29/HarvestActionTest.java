@@ -19,6 +19,10 @@ import junit.framework.TestCase;
 
 public class HarvestActionTest extends TestCase{
 	
+	public HarvestActionTest(String testName){
+		super(testName);
+	}
+	
 	Match model;
 	HarvestAction scndAction;
 	HarvestAction thrdAction;
