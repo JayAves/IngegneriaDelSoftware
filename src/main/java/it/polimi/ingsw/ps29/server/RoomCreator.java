@@ -22,13 +22,14 @@ public class RoomCreator extends Thread implements Observer {
 	private Timer scheduler;
 	private static final int UPDATE_TIME= 600000;
 	private int period;
+	private Task task;
 	
 	
 	public RoomCreator(){
 		this.counter = 0;
 		this.roomHandler= new ArrayList<Room>();
 		this.playersInQueue= new ArrayList<ClientThread>();
-		
+		this.task= new Task();
 		this.timer= new Timer();
 		scheduler= new Timer();
 		//every UPDATE_TIME milliseconds, a Room management routine is scheduled
@@ -52,17 +53,15 @@ public class RoomCreator extends Thread implements Observer {
 		counter++;
 		
 		if (counter==2) //countdown to game start is set
-			
-			timer.schedule(new Task(), period);
+			timer.schedule(task, period);
 			
 		if (counter==4){ //enough players for a new Room
+			task.cancel();
 			counter=0;
 			System.out.println("New Room");
 			Room newRoom= new Room(playersInQueue);
 			roomHandler.add(newRoom);
-			System.out.println(roomHandler.size());
 			playersInQueue.clear();
-			
 			newRoom.start();
 			
 		}
@@ -151,7 +150,7 @@ public class RoomCreator extends Thread implements Observer {
 		while (true){
 			
 			try {
-				sleep(1000);
+				sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				
@@ -181,7 +180,7 @@ public class RoomCreator extends Thread implements Observer {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-	
+			
 			if (counter>1) {
 				
 				counter=0;
@@ -194,7 +193,7 @@ public class RoomCreator extends Thread implements Observer {
 				
 				
 				try {
-					sleep(1000);
+					sleep(100);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Could not sleep!");

@@ -197,7 +197,7 @@ public class SocketClientThread extends ClientThread {
 				if (((InteractionMessage)o).getBi()) { //only for bidirectional messages
 					Task task= new Task();
 					beeperHandle = scheduler.schedule(task, thread.actionTimer, TimeUnit.MILLISECONDS);
-					System.out.println("Msg sended by: "+((InteractionMessage)o).getName());
+					System.out.println("Msg sent to: "+((InteractionMessage)o).getName());
 				}	
 				
 				if (o instanceof FinalScores)

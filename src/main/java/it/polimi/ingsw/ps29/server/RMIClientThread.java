@@ -63,6 +63,12 @@ public class RMIClientThread extends ClientThread {
 	public void run() {
 		
 		while(recentlyPoked) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				Thread.currentThread().interrupt();
+			}
 		}
 	}
 
@@ -105,7 +111,7 @@ public class RMIClientThread extends ClientThread {
 				if ((msg).getBi()) { //only for bidirectional messages
 					Task task= new Task();
 					beeperHandle = scheduler.schedule(task, actionTimer, TimeUnit.MILLISECONDS);
-					System.out.println("Msg sended by: "+((InteractionMessage)msg).getName());
+					System.out.println("Msg sent to: "+((InteractionMessage)msg).getName());
 					
 					}
 				
