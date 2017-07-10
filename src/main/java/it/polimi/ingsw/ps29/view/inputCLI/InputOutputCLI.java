@@ -59,13 +59,11 @@ public class InputOutputCLI implements InputOutput {
 			System.out.println(((RejectMessage)message).getException().getMessage());
 		
 		if (message instanceof PlayerInfoMessage) {
-			
 			if (!((PlayerInfoMessage) message).getTimeExpired())
 				System.out.println( "\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+" has left the Game!\n\n");
 				
 			else
 				System.out.println("\nPlayer "+ ((PlayerInfoMessage) message).getName().toUpperCase()+"'s time for action expired! he's now suspended from game\n\n");
-			
 		}
 		
 		if (message instanceof FinalScores) {

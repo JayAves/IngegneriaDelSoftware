@@ -22,6 +22,7 @@ import it.polimi.ingsw.ps29.messages.FinalScores;
 import it.polimi.ingsw.ps29.messages.FirstBoardInfo;
 import it.polimi.ingsw.ps29.messages.InfoForView;
 import it.polimi.ingsw.ps29.messages.InteractionMessage;
+import it.polimi.ingsw.ps29.messages.PlayerInfoMessage;
 import it.polimi.ingsw.ps29.messages.RejectMessage;
 import it.polimi.ingsw.ps29.messages.RestoreSituation;
 import it.polimi.ingsw.ps29.messages.TowersAndDicesForView;
@@ -70,6 +71,12 @@ public class InputOutputGUI implements InputOutput, Observer, Runnable {
 			JOptionPane.showMessageDialog(null, ((RejectMessage)message).getException().getMessage());
 		else if (message instanceof FinalScores)
 			printFinalScore((FinalScores)message);
+		else if (message instanceof PlayerInfoMessage) {
+			if (!((PlayerInfoMessage) message).getTimeExpired())
+				JOptionPane.showMessageDialog(null, "Player "+ ((PlayerInfoMessage) message).getName().toUpperCase()+" has left the Game!");				
+			else
+				JOptionPane.showMessageDialog(null, "Player "+ ((PlayerInfoMessage) message).getName().toUpperCase()+"'s time for action expired! he's now suspended from game");
+		}
 			
 	}
 	
