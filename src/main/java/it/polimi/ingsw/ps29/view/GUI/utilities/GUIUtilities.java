@@ -99,8 +99,7 @@ public class GUIUtilities {
 	        
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.err.println("Failed to read image from ImageIO");
-			Thread.currentThread().interrupt();
+			e.printStackTrace();
 		}
 		
 		return label;
@@ -116,8 +115,7 @@ public class GUIUtilities {
 	        
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.err.println("Failed to read image from ImageIO");
-			Thread.currentThread().interrupt();
+			e.printStackTrace();
 		}
 		
 		return label;

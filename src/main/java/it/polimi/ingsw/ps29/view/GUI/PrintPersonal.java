@@ -22,8 +22,8 @@ public class PrintPersonal extends ImageToPrint {
 	 */
 	private static final long serialVersionUID = 4636622009288644544L;
 	
-	protected transient StartCoordinates startCoord;
-	protected transient CoordinateHandlerCards coordCards;
+	protected StartCoordinates startCoord;
+	protected CoordinateHandlerCards coordCards;
 	private ArrayList<BufferedImage> cards;
 	private ArrayList<Integer> idCards = new ArrayList<Integer>();
 	int orW, orH;

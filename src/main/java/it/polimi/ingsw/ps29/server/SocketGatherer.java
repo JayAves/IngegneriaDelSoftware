@@ -34,7 +34,7 @@ public class SocketGatherer extends Observable implements Runnable{
 			
 		} catch (IOException e) {
 			System.err.println("Unable to start the server!");
-			
+			e.printStackTrace();
 		}
 		
 		clients= new ArrayList<SocketClientThread>();
@@ -72,12 +72,12 @@ public class SocketGatherer extends Observable implements Runnable{
 				
 				} catch (ClassNotFoundException e) {
 					System.err.println("Unable to convert in String!");
-					Thread.currentThread().interrupt();
+					e.printStackTrace();
 				}
 				
 			} catch (IOException e) {
 				System.err.println("Unable to add a user!");
-				Thread.currentThread().interrupt();
+				e.printStackTrace();
 			}
 		}
 		

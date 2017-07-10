@@ -29,7 +29,7 @@ public class LeaderPanel extends FromBoardPanel {
 	 */
 	private static final long serialVersionUID = -3975683472238980794L;
 	
-	private transient GUICore gui;
+	private GUICore gui;
 	private ArrayList<ArrayList<Object>> leaderSituation;
 	private ArrayList<JButton> possibilities = new ArrayList<JButton>();
 	private int selectedLeader = -1;

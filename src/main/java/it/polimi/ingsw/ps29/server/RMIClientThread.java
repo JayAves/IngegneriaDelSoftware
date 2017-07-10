@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps29.server;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -20,10 +21,10 @@ import it.polimi.ingsw.ps29.viewclient.RmiClientInterface;
  * @see ClientThread
  */
 
-public class RMIClientThread extends ClientThread {
+public class RMIClientThread extends ClientThread implements Serializable{
 
 	
-	
+	private static final long serialVersionUID = 2656528845360500313L;
 	protected String username;
 	protected boolean recentlyPoked;
 	private RmiClientInterface clientInterface;

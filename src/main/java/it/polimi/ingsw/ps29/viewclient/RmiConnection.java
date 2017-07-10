@@ -19,7 +19,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 	 */
 	private static final long serialVersionUID = 9143857205348640115L;
 	String playerName;
-	transient RmiServerInterface server;
+	RmiServerInterface server;
 	RmiClientInterface remoteRef;
 	private PlayerInfoMessage loginMessage;
 	boolean end=false;
