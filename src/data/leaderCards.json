@@ -79,7 +79,7 @@
    "resourceType":Coins,
    "resourceData":{
     "amount":18,
-    "type":"coins" } }],
+    "type":"coin" } }],
 "cardTypeRequirements" : [],
 "cardRequirements" : []
 },
@@ -95,13 +95,13 @@
 			"resourceType":"Coins",
 			"resourceData":{
 				"amount":3,
-				"type":"coins" }
+				"type":"coin" }
 	}]}},
 "requirements" : [{
    "resourceType":"Stones",
    "resourceData":{
     "amount":10,
-    "type":"stones" } }],
+    "type":"stone" } }],
 "cardTypeRequirements" : [],
 "cardRequirements" : []
 },
@@ -118,7 +118,7 @@
 			"resourceType":"Coins",
 			"resourceData":{
 				"amount":1,
-				"type":"coins" }
+				"type":"coin" }
 	},
     
      {
@@ -132,7 +132,7 @@
 			"resourceType":"Stones",
 			"resourceData":{
 				"amount":1,
-				"type":"stones" }
+				"type":"stone" }
 	}               
     ]}},
 "requirements" : [{

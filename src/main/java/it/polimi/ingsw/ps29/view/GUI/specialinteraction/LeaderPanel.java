@@ -88,7 +88,7 @@ public class LeaderPanel extends FromBoardPanel {
 						possibilities.get(0).setEnabled(true);
 						if ((boolean)leaderSituation.get(index).get(3)) {
 							possibilities.get(1).setEnabled(true);
-							possibilities.get(2).setEnabled(true);
+							possibilities.get(2).setEnabled(false);
 						}
 						else {
 							possibilities.get(1).setEnabled(false);
