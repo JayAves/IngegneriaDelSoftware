@@ -28,7 +28,7 @@ public class BonusActionState implements ActionState {
 
 	@Override
 	public ActionState afterAction(Match model) {
-		// aggiorna view
+		
 		return this;
 	}
 

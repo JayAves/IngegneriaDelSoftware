@@ -44,7 +44,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 			
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
+
 			System.err.println("Could not set up ClientInterface");
 			
 		}		
@@ -62,7 +62,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 			
 		
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+
 			System.out.println("Failed to add Client");
 			end=true;
 		}
@@ -71,7 +71,7 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+
 				Thread.currentThread().interrupt();
 			}
 		}

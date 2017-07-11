@@ -25,7 +25,7 @@ public class BuildingCard extends Card{
 	}
 
 	public int getProductionForce() {
-		// TODO Auto-generated method stub
+	
 		
 		return productionForce;
 	}

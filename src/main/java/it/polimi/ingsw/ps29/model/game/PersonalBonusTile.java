@@ -32,7 +32,7 @@ public class PersonalBonusTile {
 
 
 	public ArrayList<Resource> getHarvestBonus() {
-		// TODO Auto-generated method stub
+
 		return harvestBonus;
 
 	}

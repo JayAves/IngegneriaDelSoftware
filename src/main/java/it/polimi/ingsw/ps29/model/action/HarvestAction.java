@@ -29,7 +29,7 @@ public class HarvestAction extends Action {
 	public HarvestAction(Match model, Move move) {
 		super(model, move);
 		this.space = (ActivityArea) model.getBoard().getSpace(move.getSpace());
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
@@ -46,18 +46,18 @@ public class HarvestAction extends Action {
 		if(!space.isEmpty())
 			penalty = -3;
 		
-		//placement (se azione bonus non lo faccio)
+		//placement (except for BonusAction)
 		if(move.getFamiliar().getFamiliarColor()!=DiceColor.BONUS)
 			space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
-		//gestione bonus della tile
+		//hanling bonus from PersonalBonusTile
 		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getHarvestBonus();	
 		GainResourcesEffect bonusHarvestTile = new GainResourcesEffect(bonusFromTile);
 		bonusHarvestTile.performEffect(move.getPlayer());
 		
 		
 		ArrayList<Card> importedSlot= move.getPlayer().getPersonalBoard().getCards("territory");
-		//ciclo lettura effetti da personalBoard
+		//read effects from personalBoard
 		for(Card card: importedSlot) 
 			for(Effect effect: card.getPermanentEffects()) 
 				if (move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants() >=

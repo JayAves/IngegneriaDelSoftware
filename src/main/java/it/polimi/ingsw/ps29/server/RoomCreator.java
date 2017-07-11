@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class RoomCreator extends Thread implements Observer {
 	
 	private ArrayList<ClientThread> playersInQueue;
-	private int counter; //metodi su counter devono essere synchronized
+	private int counter; 
 	private ArrayList<Room> roomHandler;
 	private static Timer timer;
 	private Timer scheduler;
@@ -163,7 +163,6 @@ public class RoomCreator extends Thread implements Observer {
 			try {
 				sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				
 				System.out.println(e.getLocalizedMessage());
 				interrupt();

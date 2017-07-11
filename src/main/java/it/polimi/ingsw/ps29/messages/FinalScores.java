@@ -27,14 +27,14 @@ public class FinalScores extends InteractionMessage {
 
 	@Override
 	public void visit(VisitorMessages visitor) {
-		// TODO Auto-generated method stub
+
 		//not used
 		
 	}
 
 	@Override
 	public void receive(VisitorServerMessages visitor) {
-		// TODO Auto-generated method stub
+
 		visitor.receive(this);
 	}
 	

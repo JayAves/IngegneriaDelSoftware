@@ -31,6 +31,10 @@ import it.polimi.ingsw.ps29.model.game.Player;
 *			<li>- VictoryPointsPenaltyEffect
 *			<li>- ResourcePenaltyEffect
 *			<li>- MilitaryPointsPenaltyEffect
+*			<li>- VentureCardsPenaltyEffect
+*			<li>- AddGatherer
+*			<li>- RemoveGatherer
+*
 *		</ol>
 *	<h2>LEADERS:
 *		<ol>

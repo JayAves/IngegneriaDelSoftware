@@ -31,7 +31,7 @@ public class PlayerListener extends MouseAdapter {
 		if(((JButton) event.getSource()).getText().equals("Do Action!")) {
 			
 			if(gui.tower.getIndexSpacePressed() != -1) {
-				//noify to user the choice made
+				//notify to user the choice made
 				gui.console.append("\nFamiliar selected: "+gui.family.getSelection().getActionCommand()+
 						"\nNumber of Servants: "+gui.servants.getValue()+"\n\n");
 				

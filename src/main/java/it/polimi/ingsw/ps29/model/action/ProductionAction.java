@@ -55,27 +55,27 @@ public class ProductionAction extends Action {
 		if(!space.isEmpty() && !move.getPlayer().getLudovicoAriosto())
 			penalty = -3;
 		
-		//placement (se azione bonus non lo faccio)
+		//placement (excpet for BonusAction
 		if(move.getFamiliar().getFamiliarColor()!=DiceColor.BONUS)
 			space.placeFamiliar(move.getFamiliar(), move.getPlayer().getLudovicoAriosto());
 		
-		//memorizzo tutti gli effetti di scambio per i quali posso chiedere all'utente se li vuole attivare
+		//save all exchange options
 		ArrayList<ExchangeResourcesEffect> options = buildExchangeSupportVector();
 		
 		if(!options.isEmpty()) {
-			//salvo lo stato delle risorse e gli scambi che devo chiedere all'utente in una variabile di player
+			//save all resources states and the options in Player
 			ExchangeSupport support = new ExchangeSupport(options, move.getPlayer().getPersonalBoard().getResources());
-			//rimuovo tutti gli scambi che non sono possibili a causa delle risorse del giocatore
+			// remove all exchanges that player can't do
 			support.checkVector();
 			
 			if(!support.getOptions().isEmpty()) {
 				move.getPlayer().setSupport(support);
-				//creo lo stato con solo gli scambi che possono essere effettivemente fattibili
+				//state is created with only doable exchanges
 				state = new AskAboutExchangeState(move.getPlayer().getSupport().getOptions());
 			}
 		}
 				
-		//gestione bonus della tile
+		//handle bonus from PersonalBonuTile
 		ArrayList<Resource> bonusFromTile= move.getPlayer().getPersonalBoard().getPersonalBonusTile().getProductionBonus();	
 		GainResourcesEffect bonusProductionTile = new GainResourcesEffect(bonusFromTile);
 		bonusProductionTile.performEffect(move.getPlayer());
@@ -98,7 +98,7 @@ public class ProductionAction extends Action {
 		ArrayList<ExchangeResourcesEffect> options = new ArrayList<ExchangeResourcesEffect>();
 		for(Card card: move.getPlayer().getPersonalBoard().getCards("building"))
 			for(Effect effect: card.getPermanentEffects()) 
-				//se l'effetto è di tipo scambio e il valore della mossa è >= del valore della carta
+				//if effect is exchange, save it for following state
 				if(effect instanceof ExchangeResourcesEffect && ((BuildingCard)card).getProductionForce()<=
 						move.getFamiliar().getPower() + penalty + move.getPlayer().getFakeFamiliar().getProductionPower() + move.getServants())
 					options.add((ExchangeResourcesEffect)effect);

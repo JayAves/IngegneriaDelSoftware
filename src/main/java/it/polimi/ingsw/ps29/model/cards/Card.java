@@ -76,20 +76,7 @@ public abstract class Card {
 		return name;
 	}
 
-/*	@Override
-	public String toString() {
-		String msg = "Card name:" + name + ", period:" + period + ", type:" + type +"immediate: ";
-		for(Effect eff: immediateEffects)
-			msg+=eff.toString();
-		msg+=", permanent:";
-		for(Effect eff: permanentEffects)
-			msg+=eff.toString();
-		msg+=", cost: ";
-		for(Resource res: cost)
-			msg+=res.toString()+"";
-		return msg;
-	}
-*/
+
 
 	@Override
 	public String toString() {

@@ -26,7 +26,7 @@ public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card>
 
 	@Override
 	public Card deserialize(JsonElement el, Type cardType, JsonDeserializationContext context) throws JsonParseException {
-		// TODO Auto-generated method stub
+
 		JsonObject jsonObject = el.getAsJsonObject();
 	    String type = jsonObject.get("cardType").getAsString();
 	    JsonElement element = jsonObject.get("cardData");
@@ -43,7 +43,7 @@ public class CardAdapter implements JsonSerializer<Card>, JsonDeserializer<Card>
 
 	@Override
 	public JsonElement serialize(Card card, Type cardType, JsonSerializationContext context) {
-		// TODO Auto-generated method stub
+
 		JsonObject result = new JsonObject();
 	    result.add("cardType", new JsonPrimitive(card.getClass().getSimpleName()));
 	    result.add("cardData", context.serialize(card, card.getClass()));

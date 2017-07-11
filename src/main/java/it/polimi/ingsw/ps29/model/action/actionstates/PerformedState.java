@@ -16,21 +16,21 @@ public class PerformedState implements ActionState {
 
 	@Override
 	public ActionState beforeAction() {
-		// metodo chiamato prima di interazione con la view
-		//ho terminato l'azione: ne richiedo una da processare, imposto lo stato a to estabilish
+		// before interaction with View
+		//action is performed, next state is "ToEstablish"
 		return new ToEstablishState();
 	}
 
 	@Override
 	public ActionState afterAction(Match model) {
 		model.getBoard().changePlayerOrder();
-		//model.getBoard().setPlayersOrderMoved(true);
+		
 		return this;
 	}
 
 	@Override
 	public String getState() {
-		// TODO Auto-generated method stub
+
 		return state.toString().toLowerCase();
 	}
 

@@ -31,14 +31,14 @@ public class ExchangeResources {
 		
 		Player current = model.getBoard().getPlayerByName(msg.getName());
 		ExchangeResourcesEffect effect = msg.getExchange();
-		//se la condizione è true ho deciso di scambiare una risorsa
+		//if true it's because players chose to do exchange
 		if(msg.getChoice(0)<effect.getChoices().size()) {
 			ExchangeResourceHandler erh = effect.getChoices().get(msg.getChoice(0));
-			//aggiorno le vere risorse del player
+			//player's resources update
 			erh.performExchange(current.getPersonalBoard().getResources(), 
 					msg.getChoice(1), msg.getChoice(2));
 			
-			//devo aggiornare anche le outResourcesUpdated
+			//need to update outResourcesUpdated, too
 			if(msg.getChoice(1)==0) {
 				for(Resource resOut: erh.getResOut()) {
 					resOut.negativeAmount();

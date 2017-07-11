@@ -108,7 +108,7 @@ public class SocketConnection extends Connection {
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			Thread.currentThread().interrupt();
 		}
 	}

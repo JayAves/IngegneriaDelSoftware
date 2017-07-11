@@ -32,7 +32,7 @@ public class RMIGatherer extends Observable implements Serializable, Runnable{
 	}
 
 	public void startServer() {
-		// TODO Auto-generated method stub
+
 		try {
 			LocateRegistry.createRegistry(1099);	//Creates a registry on port 1099, the default one 
 		} catch (RemoteException e) {
@@ -73,7 +73,7 @@ public class RMIGatherer extends Observable implements Serializable, Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+
 		startServer();
 	}
 	

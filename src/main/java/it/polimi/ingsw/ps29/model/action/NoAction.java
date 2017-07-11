@@ -14,7 +14,7 @@ import it.polimi.ingsw.ps29.model.space.CouncilPalaceArea;
 
 	public NoAction(Match model, Move move) {
 		super(model, move);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	

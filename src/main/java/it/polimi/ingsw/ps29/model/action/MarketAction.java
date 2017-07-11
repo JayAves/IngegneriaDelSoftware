@@ -19,7 +19,7 @@ public class MarketAction extends Action{
 	public MarketAction(Match model, Move move) {
 		super(model, move);
 		this.space = (MarketArea) model.getBoard().getSpace(move.getSpace());
-		// TODO Auto-generated constructor stub
+
 	}
 
 	

@@ -37,16 +37,16 @@ public class TowerAction extends Action {
 		super(model, move);
 		this.space = (TowerArea) model.getBoard().getSpace(move.getSpace());
 		space.setPlacementFloor(move.getFloor());
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
 
 	@Override
 	public boolean isPlaceable() throws RejectException {
-		// TODO Auto-generated method stub
+
 		
-		//se è presente un familiare qualsiasi sulla torre e non si possono pagare tre monete
+		//if tower is not empty and you can't afford 3 coins
 		if(!space.isEmpty() && (!canAffordMalus() && !move.getPlayer().getBrunelleschi()))
 			throw new TowerCoinMalusException();
 		
@@ -82,14 +82,14 @@ public class TowerAction extends Action {
 
 	@Override
 	public void performAction() {
-		/*non considero l'effetto che blocca il bonus da torri...lo implementeremo in seguito*/
+		
 		
 		if ((!space.isEmpty() && !move.getPlayer().getBrunelleschi())) 
-			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pago le 3 monete
+			move.getPlayer().getPersonalBoard().getResources().updateResource(new Resource("coin",-3)); //pay 3 coins
 		
 		if(move.getFloor()>2) {
-			GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //leggo risorse dal piano, se non ne ha aggiungo null
-			effect.performEffect(move.getPlayer()); //aggiungo le risorse al player
+			GainResourcesEffect effect= new GainResourcesEffect (space.takeResource()); //add bonuses from high floor
+			effect.performEffect(move.getPlayer()); 
 		}
 		
 		move.getPlayer().getPersonalBoard().addCard(space.takeCard());
@@ -99,30 +99,30 @@ public class TowerAction extends Action {
 			//if I have permanent effects about discounts...
 			applyDiscounts(discountedCosts, move.getFamiliar().getFamiliarColor());
 			
-		for(Resource res: discountedCosts){  //pago costi
+		for(Resource res: discountedCosts){  //pay costs
 			res.negativeAmount();
 			move.getPlayer().getPersonalBoard().getResources().updateResource(res); 
 		}
 		
-		//gestione degli effetti immediati
+		//immediate effects
 		for(Effect immediateEffect : space.takeCard().getImmediateEffects()) 
 			
-			//se l'effetto è bonus cambio stato per gestirlo successivamente, eventualmente memorizzo sconti su risorse
+			//if there is a BonusActionEffect is kept apart for later
 			if (immediateEffect instanceof BonusActionEffect) {
 				state = new BonusActionState(((BonusActionEffect)immediateEffect).clone());
 				if (immediateEffect instanceof BonusPlacementEffect)
 					move.getPlayer().addSpecialPermanentEffects(immediateEffect);
 			}
 				
-			else //eseguo l'effetto immediato se non si tratta di una bonus action
+			else //perform any other effect
 				immediateEffect.performEffect(move.getPlayer());
 		
-		//gestione degli effetti permanenti per characters
+		//permanent effects in characters
 		if(move.getSpace().equals("characterTower")) 
 			for(Effect permanentEffect: space.takeCard().getPermanentEffects()) {
 				permanentEffect.performEffect(move.getPlayer());
 				
-				//se l'effetto prevede uno sconto permanente di risorse memorizzo in un ArrayList sul player
+				
 				if(permanentEffect instanceof EmpowermentPlacementEffect)
 					if (!((EmpowermentPlacementEffect) permanentEffect).getDiscount().isEmpty())
 						move.getPlayer().addSpecialPermanentEffects(permanentEffect);

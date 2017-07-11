@@ -115,7 +115,7 @@ public class SocketGatherer extends Observable implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+
 		startServer();
 		try {
 			Thread.sleep(100);
