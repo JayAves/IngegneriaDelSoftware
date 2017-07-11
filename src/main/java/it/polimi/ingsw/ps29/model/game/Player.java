@@ -32,6 +32,7 @@ import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
  * 		<li>{@link PersonalBoard} e {@link PersonalBonusTile}
  * 		<li>{@link ExcommunicationCard} if excommunicated
  * 		<li>{@link Effect}s from Leaders and Cards
+ * 		<li>{@link VictoryPointsGatherer}
  * 
  * @author Pietro Melzi
  * @author Pietro Grotti
@@ -144,6 +145,11 @@ public class Player {
 	}
 		
 	public void getFinalPoints(){
+		
+		if(finalScoring.get("victory")!= null){
+			finalScoring.get("victory").getVictoryPoints(board);
+			finalScoring.remove("victory");
+		}
 		
 		Set<String> keys =finalScoring.keySet();
 		
