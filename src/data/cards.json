@@ -2812,7 +2812,7 @@
 		{ "resources": [{
 			"resourceType":"VictoryPoints",
 			"resourceData":{
-				"amount":5,
+				"amount":4,
 				"type":"victory" }
 			}]}}],
 	"cost":[
@@ -3145,7 +3145,7 @@
 		{ "resources": [{
 			"resourceType":"FaithPoints",
 			"resourceData":{
-				"amount":6,
+				"amount":2,
 				"type":"faith" }
 	}]}}],
 	"permanentEffects":[{
@@ -3285,7 +3285,7 @@
 	"cost":[{
 			"resourceType": "Servants",
 			"resourceData":{
-				"amount":3,
+				"amount":2,
 				"type":"servant" }
 			},
            {
@@ -3406,7 +3406,7 @@
 {
 	"cardType": "VentureCard",
 	
-	"cardData":{"name": "Hiring mercenaries",
+	"cardData":{"name": "Hiring Mercenaries",
     "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",
