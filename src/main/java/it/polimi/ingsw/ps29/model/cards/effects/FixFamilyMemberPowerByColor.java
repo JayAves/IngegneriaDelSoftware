@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.model.game.DiceColor;
 import it.polimi.ingsw.ps29.model.game.Player;
 
 /**
- * LEADER: Set all familiars' power to 5.
+ * LEADER: Set all familiars' power to 5 or a customizable value.
  * @author Giovanni Mele
  *
  */

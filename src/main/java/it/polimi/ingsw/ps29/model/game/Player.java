@@ -47,7 +47,7 @@ public class Player {
 	private ExcommunicationCard [] excommunication;
 	private ExchangeSupport supportForExchange;
 	private ArrayList<Effect> specialPermanentEffects;
-	private HashMap <String, VictoryPointsGatherer> finalScoring2; 
+	private HashMap <String, VictoryPointsGatherer> finalScoring; 
 	private HashMap <String, VictoryPointsGatherer> finalPenalties; 
 	private boolean ventureCardsPenaltyOn;
 	private boolean vaticanReportPerformed;
@@ -73,10 +73,10 @@ public class Player {
 		sistoIV = false;
 		picoDellaMirandola = false;
 		
-		finalScoring2 = new HashMap<String, VictoryPointsGatherer>(); 
-	    finalScoring2.put("character", new CharacterCardVictoryPointsGatherer()); 
-	    finalScoring2.put("territory", new TerritoryCardVictoryPointsGatherer()); 
-	    finalScoring2.put("resources", new ResourcesVictoryPointsGatherer()); 
+		finalScoring = new HashMap<String, VictoryPointsGatherer>(); 
+	    finalScoring.put("character", new CharacterCardVictoryPointsGatherer()); 
+	    finalScoring.put("territory", new TerritoryCardVictoryPointsGatherer()); 
+	    finalScoring.put("resources", new ResourcesVictoryPointsGatherer()); 
 	     
 	    finalPenalties = new HashMap<String, VictoryPointsGatherer>(); 
 	    finalPenalties.put("military", new MilitaryPenaltyPointsGatherer()); 
@@ -145,10 +145,10 @@ public class Player {
 		
 	public void getFinalPoints(){
 		
-		Set<String> keys =finalScoring2.keySet();
+		Set<String> keys =finalScoring.keySet();
 		
 	for (String key : keys){
-		finalScoring2.get(key).getVictoryPoints(board);
+		finalScoring.get(key).getVictoryPoints(board);
 	}
 	}
 	
@@ -226,12 +226,12 @@ public class Player {
 	}
 	
 	public void removeGatherer( String gathererType){
-		finalScoring2.remove(gathererType);
+		finalScoring.remove(gathererType);
 	}
 	
 	public void addGatherer (String gathererType, int interval) {
 		((PenaltyGatherer) finalPenalties.get(gathererType)).setPenalty(interval);
-		finalScoring2.put( gathererType, finalPenalties.get(gathererType));
+		finalScoring.put( gathererType, finalPenalties.get(gathererType));
 	}
 
     

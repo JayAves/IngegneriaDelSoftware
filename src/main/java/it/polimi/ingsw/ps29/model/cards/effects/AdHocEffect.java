@@ -2,6 +2,12 @@ package it.polimi.ingsw.ps29.model.cards.effects;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 
+/** LEADER EFFECT: handles peculiar leader cards effect
+ * 
+ * @author Giovanni Mele
+ *
+ */
+
 public class AdHocEffect extends Effect{
 	
 	private String effectName;

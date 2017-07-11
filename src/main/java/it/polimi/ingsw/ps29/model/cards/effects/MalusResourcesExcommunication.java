@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import it.polimi.ingsw.ps29.model.game.resources.ResourceDecorator;
 
 /**
- * EXCOMMUNICATION
+ * EXCOMMUNICATION EFFECT Decorates a specific resource so that future gains are reduced by a constant
  * @author Giovanni Mele
  *
  */

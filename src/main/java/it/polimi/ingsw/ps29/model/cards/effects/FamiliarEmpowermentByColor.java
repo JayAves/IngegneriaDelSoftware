@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberPowerDecorator;
 
 /**
- * LEADER: Empowers some familiars, not necessarily all of them.
+ * EXCOMMUNICATION ANDLEADER EFFECT: Empowers some familiars, not necessarily all of them.
  * @author Giovanni Mele
  *
  */
