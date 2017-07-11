@@ -90,9 +90,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="it.polimi.ingsw.ps29.model.game.finalscoring.BuildingCostsPointsGatherer" 
+  <class id="9" language="java" name="it.polimi.ingsw.ps29.model.game.finalscoring.BuildingCostsPenaltyPointsGatherer" 
     project="ingegneriadelsoftware" 
-    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/finalscoring/BuildingCostsPointsGatherer.java" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/finalscoring/BuildingCostsPenaltyPointsGatherer.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="151" y="658"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

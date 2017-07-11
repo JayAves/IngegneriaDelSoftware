@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps29.model.cards.Card;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
-public class BuildingCostsPointsGatherer extends PenaltyGatherer{
+public class BuildingCostsPenaltyPointsGatherer extends PenaltyGatherer{
 
 	int interval = 1;
 	

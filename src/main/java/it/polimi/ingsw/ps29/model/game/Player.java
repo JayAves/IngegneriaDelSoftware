@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
-import it.polimi.ingsw.ps29.model.game.finalscoring.BuildingCostsPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.BuildingCostsPenaltyPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.finalscoring.CharacterCardVictoryPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.finalscoring.MilitaryPenaltyPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.finalscoring.PenaltyGatherer;
@@ -81,7 +81,7 @@ public class Player {
 	    finalPenalties = new HashMap<String, VictoryPointsGatherer>(); 
 	    finalPenalties.put("military", new MilitaryPenaltyPointsGatherer()); 
 	    finalPenalties.put("resourcepenalty", new ResourcePenaltyPointsGatherer()); 
-	    finalPenalties.put("cost", new BuildingCostsPointsGatherer()); 
+	    finalPenalties.put("cost", new BuildingCostsPenaltyPointsGatherer()); 
 	    finalPenalties.put("victory", new VictoryPenaltyPointsGatherer());
 	    
 	    
