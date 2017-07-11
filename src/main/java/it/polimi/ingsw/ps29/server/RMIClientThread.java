@@ -64,7 +64,7 @@ public class RMIClientThread extends ClientThread {
 		
 		while(recentlyPoked) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 
 				Thread.currentThread().interrupt();
@@ -96,8 +96,8 @@ public class RMIClientThread extends ClientThread {
 	
 	@Override
 	public void startInteraction(InteractionMessage msg) {
-
-		if (inGame){
+		if(inGame) {
+		
 			try {
 				
 				if (msg instanceof FirstBoardInfo) {
@@ -131,13 +131,16 @@ public class RMIClientThread extends ClientThread {
 				beeperHandle.cancel(false);
 			
 			inGame=false;
-			PlayerInfoMessage error= new PlayerInfoMessage(username);
-			setChanged();
-			notifyObservers(error);
+			
 			
 			}
 		}
 	}
+		
+	
+			
+			
+		
 	
 	/**
 	 * To notify Controller about a reconnected player who needs updated game situation

@@ -84,6 +84,8 @@ public class RmiConnection extends Connection implements RmiClientInterface {
 		// TODO Auto-generated method stub
 		try {
 			server.messageforMyThread(loginMessage.getToken(), msg);
+			
+			
 		
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

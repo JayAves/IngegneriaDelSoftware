@@ -41,6 +41,7 @@ import it.polimi.ingsw.ps29.model.game.roundstates.RoundState;
 import it.polimi.ingsw.ps29.model.game.roundstates.StateOfRoundIdentifier;
 import it.polimi.ingsw.ps29.model.game.roundstates.VaticanReportState;
 import it.polimi.ingsw.ps29.server.ClientThread;
+import it.polimi.ingsw.ps29.server.RMIClientThread;
 import it.polimi.ingsw.ps29.view.View;
 
 /**
@@ -122,6 +123,10 @@ public class Controller extends Observable implements Observer{
 			} 
 			
 			else 
+				if (view instanceof RMIClientThread) {
+					PlayerInfoMessage error= new PlayerInfoMessage(view.getClientName());
+					handlePlayerInfoMessage(error);
+				}
 				//set a familiar busy to ensure the correct flow of the game
 				inactivePlacement();
 		}
