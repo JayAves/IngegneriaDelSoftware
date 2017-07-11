@@ -12,15 +12,15 @@ import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.BuildingCostsPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.CharacterCardVictoryPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.MilitaryPenaltyPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.PenaltyGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.ResourcePenaltyPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.ResourcesVictoryPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.TerritoryCardVictoryPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.VictoryPenaltyPointsGatherer;
-import it.polimi.ingsw.ps29.model.game.finalScoring2.VictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.BuildingCostsPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.CharacterCardVictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.MilitaryPenaltyPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.PenaltyGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.ResourcePenaltyPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.ResourcesVictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.TerritoryCardVictoryPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.VictoryPenaltyPointsGatherer;
+import it.polimi.ingsw.ps29.model.game.finalscoring.VictoryPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.resources.Container;
 import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
 
@@ -144,14 +144,10 @@ public class Player {
 	}
 		
 	public void getFinalPoints(){
-		//ArrayList<VictoryPointsGatherer> finalGatherers = (ArrayList<VictoryPointsGatherer>) finalScoring2.values();
-		//for ( VictoryPointsGatherer gatherer : finalGatherers)
-			//gatherer.getVictoryPoints(board);
 		
 		Set<String> keys =finalScoring2.keySet();
 		
 	for (String key : keys){
-		System.out.println(finalScoring2.get(key));
 		finalScoring2.get(key).getVictoryPoints(board);
 	}
 	}

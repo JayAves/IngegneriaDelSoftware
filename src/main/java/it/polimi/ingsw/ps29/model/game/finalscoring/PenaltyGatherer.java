@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.game.finalScoring2;
+package it.polimi.ingsw.ps29.model.game.finalscoring;
 
 public abstract class PenaltyGatherer implements VictoryPointsGatherer{
 	

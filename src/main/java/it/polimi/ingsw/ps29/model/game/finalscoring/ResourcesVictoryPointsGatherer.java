@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps29.model.game.finalScoring2;
+package it.polimi.ingsw.ps29.model.game.finalscoring;
 
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
@@ -14,8 +14,6 @@ public class ResourcesVictoryPointsGatherer implements VictoryPointsGatherer{
                              board.getSpecificResource("coin").getAmount() +
                              board.getSpecificResource("stone").getAmount() +
                              board.getSpecificResource("servant").getAmount();
-		System.out.println(finalResources);
-		System.out.println(finalResources/INTERVAL);
 		Resource finalVictoryPoints = new Resource("victory", finalResources/INTERVAL);
 		board.getResources().updateResource(finalVictoryPoints);
 	}

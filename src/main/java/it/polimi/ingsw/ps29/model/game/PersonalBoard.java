@@ -97,7 +97,6 @@ public class PersonalBoard {
 			HashMap<String, Integer> requirements = card.getCardRequirements();
 			ArrayList<Resource> resources = new ArrayList<Resource>(); 
 			resources = card.getResourcesRequirements();
-			//System.out.println(resources );
 			boolean satisfiedc = true;
 			boolean satisfiedr = true;
 			if (!requirements.isEmpty()){
