@@ -122,14 +122,16 @@ public class Controller extends Observable implements Observer{
 				view.startInteraction (object);	
 			} 
 			
-			else 
+			else { 
 				if (view instanceof RMIClientThread) {
 					PlayerInfoMessage error= new PlayerInfoMessage(view.getClientName());
 					handlePlayerInfoMessage(error);
 				}
 				//set a familiar busy to ensure the correct flow of the game
 				inactivePlacement();
-		}
+		
+			}
+			}
 		
 		else {
 			System.out.println("All players are disconnected!");
