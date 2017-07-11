@@ -39,7 +39,6 @@ public class Room extends Thread implements Observer{
 			model= new Match(names);
 		
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			
 		}
 		

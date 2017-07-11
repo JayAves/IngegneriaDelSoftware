@@ -25,7 +25,7 @@ public class CouncilPalaceAction extends Action{
 	public CouncilPalaceAction(Match model, Move move) {
 		super(model, move);
 		this.space = (CouncilPalaceArea) model.getBoard().getSpace(move.getSpace());
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
@@ -42,8 +42,6 @@ public class CouncilPalaceAction extends Action{
 		ArrayList<Resource> councilBonus = new ArrayList<Resource> ();
 		councilBonus.add(new Coins(1));
 		councilBonus.add(new Privilege(1));
-		//l'array andrebbe creato da un'altra parte, con le risorse caricate da file
-		
 		GainResourcesEffect effect= new GainResourcesEffect(councilBonus);
 		effect.performEffect(move.getPlayer());
 		move.getFamiliar().setBusy(true);

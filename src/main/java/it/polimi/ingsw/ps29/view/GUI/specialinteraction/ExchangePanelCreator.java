@@ -29,7 +29,7 @@ public class ExchangePanelCreator extends PanelCreator {
 
 	public ExchangePanelCreator(GUICore gui, Exchange msg) {
 		super(gui, msg);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override

@@ -16,19 +16,19 @@ public class ToEstablishState implements ActionState {
 
 	@Override
 	public ActionState beforeAction() {
-		// TODO Auto-generated method stub
+
 		return this;
 	}
 
 	@Override
 	public ActionState afterAction(Match model) {
-		// TODO Auto-generated method stub
+
 		return this;
 	}
 
 	@Override
 	public String getState() {
-		// TODO Auto-generated method stub
+
 		return state.toString().toLowerCase();
 	}
 

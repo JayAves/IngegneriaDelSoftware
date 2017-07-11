@@ -6,7 +6,7 @@ public class FamiliarBusyException extends RejectException {
 		message = "Action rejected: the familiar you want to use is already busy!";
 	}
 
-	
+	//auto-generated serialVersionUID
 	private static final long serialVersionUID = 7844445028770171834L;
 
 }

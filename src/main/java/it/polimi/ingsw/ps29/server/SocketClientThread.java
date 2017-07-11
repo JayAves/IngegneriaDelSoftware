@@ -82,14 +82,7 @@ public class SocketClientThread extends ClientThread {
 				}
 		}
 		
-		/*while (newConnection) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				Thread.currentThread().interrupt();
-			}
-		}*/
+		
 		
 	}
 	
@@ -206,7 +199,7 @@ public class SocketClientThread extends ClientThread {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+
 					Thread.currentThread().interrupt();
 				}
 				

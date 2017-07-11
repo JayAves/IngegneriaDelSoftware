@@ -66,7 +66,7 @@ public class RMIClientThread extends ClientThread {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+
 				Thread.currentThread().interrupt();
 			}
 		}
@@ -74,7 +74,7 @@ public class RMIClientThread extends ClientThread {
 
 	@Override
 	public void stopClient() {
-		// TODO Auto-generated method stub
+
 		inGame=false;
 		recentlyPoked=false;
 		
@@ -82,7 +82,7 @@ public class RMIClientThread extends ClientThread {
 
 	@Override
 	public String getClientName() {
-		// TODO Auto-generated method stub
+
 		return username;
 	}
 
@@ -96,7 +96,7 @@ public class RMIClientThread extends ClientThread {
 	
 	@Override
 	public void startInteraction(InteractionMessage msg) {
-		// TODO Auto-generated method stub
+
 		if (inGame){
 			try {
 				
@@ -122,7 +122,7 @@ public class RMIClientThread extends ClientThread {
 				
 		
 			} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+
 			
 			System.err.println("Could not send message to client");
 			
@@ -144,7 +144,7 @@ public class RMIClientThread extends ClientThread {
 	 */
 	@Override
 	public void restoreSituation() {
-	// TODO Auto-generated method stub
+
 		RestoreSituation restoreSituation = new RestoreSituation(username);
 		setChanged();
 		notifyObservers(restoreSituation);
@@ -159,7 +159,7 @@ public class RMIClientThread extends ClientThread {
 
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
+
 			System.out.println("TIMER on the server EXPIRED");
 			RMIClientThread.this.setInGame(false);
 			PlayerInfoMessage msg= new PlayerInfoMessage(username);

@@ -28,14 +28,14 @@ public class LeaderAction extends Action{
 	public LeaderAction(Match model, Move move, ActionChoice choice) {
 		super(model, move);
 		this.choice = choice;
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
 
 	@Override
 	boolean isPlaceable() throws RejectException {
-		// TODO Auto-generated method stub
+
 		return true;
 	}
 	

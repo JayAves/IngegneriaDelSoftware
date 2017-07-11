@@ -15,9 +15,7 @@ import javax.swing.JPanel;
  */
 public class BasePanel extends JFrame {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 430086813582761130L;
 	
 	protected JPanel leftPanel;

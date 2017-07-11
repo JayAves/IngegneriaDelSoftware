@@ -15,20 +15,20 @@ public class RejectedState implements ActionState {
 
 	@Override
 	public ActionState beforeAction() {
-		// metodo chiamato appena prima di interazione con la view
-		//devo richiedere una nuova azione da processare, imposto lo stato a to estabilish
+		// before the interaction with view
+		//need to ask a new action 
 		return new ToEstablishState();
 	}
 
 	@Override
 	public ActionState afterAction(Match model) {
-		// TODO Auto-generated method stub
+		// players' order is not changed
 		return this;
 	}
 
 	@Override
 	public String getState() {
-		// TODO Auto-generated method stub
+
 		return state.toString().toLowerCase();
 	}
 

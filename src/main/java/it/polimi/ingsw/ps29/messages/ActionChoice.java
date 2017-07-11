@@ -58,7 +58,7 @@ public class ActionChoice extends InteractionMessage {
 
 	@Override
 	public void receive(VisitorServerMessages visitor) {
-		// TODO Auto-generated method stub
+
 		visitor.receive(this);
 	}
 

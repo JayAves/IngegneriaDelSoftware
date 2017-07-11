@@ -37,7 +37,7 @@ public class VaticanChoice extends InteractionMessage {
 
 	@Override
 	public void receive(it.polimi.ingsw.ps29.viewclient.Client.VisitorServerMessages visitor) {
-		// TODO Auto-generated method stub
+
 		visitor.receive(this);
 	}
 

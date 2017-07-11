@@ -167,7 +167,7 @@ public class Match extends Observable{
     	for(int i=0; i<players.size(); i++) {
     		int rnd= new Random().nextInt(tilez.length);
     		players.get(i).setPersonalBonusTile(tilez[rnd]); // random bonus tile
-    		//players.get(i).setPersonalBonusTile(tilez[0]);
+    		
     	}
     	
     	int startingCoins=5; 
