@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
 /**
- * Patter Decorator's realization for Resources.
+ * Patter Decorator's realization for Resources. gains are reduced or increased by a constant
  * @author Giovanni Mele
  *
  */

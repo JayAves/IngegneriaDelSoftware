@@ -5,6 +5,11 @@ import java.util.HashMap;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**adds victory points according to the number of character cards
+ * 
+ * @author Giovanni
+ *
+ */
 public class CharacterCardVictoryPointsGatherer implements VictoryPointsGatherer{
 	
 	private HashMap < Integer, Resource> points;

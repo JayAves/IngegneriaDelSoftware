@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-/**
+/**increase or decrease the familiar power by a constant. It affects all kinds of action.
  * 
  * @author Giovanni Mele
  *

@@ -3,6 +3,12 @@ package it.polimi.ingsw.ps29.model.game.finalscoring;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**Adds victory points according to the amount of some resources divided by an interval
+ * 
+ * @author Giovanni Mele
+ *
+ */
+
 public class ResourcesVictoryPointsGatherer implements VictoryPointsGatherer{
 	
 	private final int INTERVAL = 5;

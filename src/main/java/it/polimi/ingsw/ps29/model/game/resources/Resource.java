@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps29.model.game.resources;
 
 import java.io.Serializable;
 
-/**
+/**generic resource with methods to modify amount and compare the type
  * 
  * @author Pietro Melzi
  * @author Giovanni Mele

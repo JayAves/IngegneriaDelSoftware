@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps29.model.game.familymember;
 import it.polimi.ingsw.ps29.model.game.PlayerColor;
 import it.polimi.ingsw.ps29.model.game.DiceColor;
 
-/**
+/**interface to implement decorator pattern 
  * 
  * @author Giovanni Mele
  * @author Pietro Melzi

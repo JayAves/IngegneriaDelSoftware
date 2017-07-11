@@ -1,9 +1,14 @@
 package it.polimi.ingsw.ps29.model.game.finalscoring;
 
 import java.util.HashMap;
-
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
+
+/**adds victory points according to the number of territory cards
+ * 
+ * @author Giovanni Mele
+ *
+ */
 
 public class TerritoryCardVictoryPointsGatherer implements VictoryPointsGatherer{
 	

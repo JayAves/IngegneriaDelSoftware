@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.resources;
 
-/**
+/**generic resource interface used to implement decorator pattern
  * 
  * @author Giovanni Mele
  * @author Pietro Melzi

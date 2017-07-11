@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="it.polimi.ingsw.ps29.view.GUI.utilities.InteractionMessagesFunctions" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/view/GUI/utilities/InteractionMessagesFunctions.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="199" x="207" y="199"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="it.polimi.ingsw.ps29.view.GUI.utilities.PrintInfoFunctions" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/view/GUI/utilities/PrintInfoFunctions.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="373" x="446" y="199"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="it.polimi.ingsw.ps29.view.GUI.utilities.GUIUtilities" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/view/GUI/utilities/GUIUtilities.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="212" x="859" y="199"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

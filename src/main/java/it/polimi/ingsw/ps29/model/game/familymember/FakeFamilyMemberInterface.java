@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
 /**
- * 
+ * generic interface used to implement decorator pattern
  * @author Giovanni Mele
  *
  */

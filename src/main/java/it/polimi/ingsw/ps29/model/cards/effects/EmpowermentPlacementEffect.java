@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import it.polimi.ingsw.ps29.model.game.Player;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberCharacterTowerDecorator;
-import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberHarvestTowerDecorator;
-import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionTowerDecorator;
+import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberTerritoryTowerDecorator;
+import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberBuildingTowerDecorator;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberVenturesTowerDecorator;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
@@ -38,10 +38,10 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 		towerType = towerType.toLowerCase();
 		switch(towerType){
 		case "territory" :
-			player.setFakeFamiliar(new FakeFamilyMemberHarvestTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
+			player.setFakeFamiliar(new FakeFamilyMemberTerritoryTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
 		case "building" :
-			player.setFakeFamiliar(new FakeFamilyMemberProductionTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
+			player.setFakeFamiliar(new FakeFamilyMemberBuildingTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
 		case "character":
 			player.setFakeFamiliar(new FakeFamilyMemberCharacterTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
@@ -50,8 +50,8 @@ public class EmpowermentPlacementEffect extends EmpowermentActionEffect {
 			player.setFakeFamiliar(new FakeFamilyMemberVenturesTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;
 		case "all" :
-			player.setFakeFamiliar(new FakeFamilyMemberHarvestTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
-			player.setFakeFamiliar(new FakeFamilyMemberProductionTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
+			player.setFakeFamiliar(new FakeFamilyMemberTerritoryTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
+			player.setFakeFamiliar(new FakeFamilyMemberBuildingTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			player.setFakeFamiliar(new FakeFamilyMemberCharacterTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			player.setFakeFamiliar(new FakeFamilyMemberVenturesTowerDecorator(player.getFakeFamiliar(), diceEmpowerment));
 			break;

@@ -3,6 +3,12 @@ package it.polimi.ingsw.ps29.model.game.finalscoring;
 import it.polimi.ingsw.ps29.model.game.PersonalBoard;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 
+/**removes victory points according to the amount of some resources divided by a coefficient
+ * 
+ * @author Giovanni Mele
+ *
+ */
+
 public class ResourcePenaltyPointsGatherer extends PenaltyGatherer {
 	
 	int interval = 1;

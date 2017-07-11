@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps29.model.game.familymember;
 
-/**
+/**the power of the familiar is increased  or decreased by a modifier if placed on market space
  * 
  * @author Giovanni Mele
  *

@@ -6,7 +6,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="307" x="1364" y="70"/>    
+    <position height="-1" width="-1" x="807" y="188"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -17,53 +17,53 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberInterface.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="209" x="3444" y="533"/>    
+    <position height="-1" width="-1" x="1460" y="686"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="3" language="java" 
-    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberHarvestTowerDecorator" 
-    project="ingegneriadelsoftware" 
-    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberHarvestTowerDecorator.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="390" x="491" y="533"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="4" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface" 
+  <interface id="3" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface" 
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberInterface.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="352" y="511"/>    
+    <position height="-1" width="-1" x="421" y="188"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="5" language="java" 
-    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberProductionTowerDecorator" 
+  <class id="4" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberDecorator" 
     project="ingegneriadelsoftware" 
-    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberProductionTowerDecorator.java" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="403" x="921" y="533"/>    
+    <position height="-1" width="-1" x="1611" y="232"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberDecorator" 
+  <class id="5" language="java" 
+    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberBuildingTowerDecorator" 
     project="ingegneriadelsoftware" 
-    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberDecorator.java" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberBuildingTowerDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="261" x="3569" y="70"/>    
+    <position height="-1" width="-1" x="323" y="402"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" 
+    name="it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberTerritoryTowerDecorator" 
+    project="ingegneriadelsoftware" 
+    file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberTerritoryTowerDecorator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="320" y="544"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberVenturesTowerDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="396" x="1364" y="533"/>    
+    <position height="-1" width="-1" x="304" y="684"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -86,7 +86,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMemberPowerDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="307" x="3693" y="533"/>    
+    <position height="-1" width="-1" x="1758" y="605"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -97,7 +97,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMember.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="209" x="242" y="70"/>    
+    <position height="-1" width="-1" x="146" y="209"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -108,7 +108,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberProductionDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="372" x="1800" y="533"/>    
+    <position height="-1" width="-1" x="322" y="824"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -119,7 +119,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FamilyMember.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="209" x="3320" y="70"/>    
+    <position height="-1" width="-1" x="1234" y="294"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -130,7 +130,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberHarvestDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="359" x="2212" y="533"/>    
+    <position height="-1" width="-1" x="325" y="960"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -142,7 +142,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberCharacterTowerDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="400" x="2611" y="533"/>    
+    <position height="-1" width="-1" x="318" y="1098"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -153,7 +153,7 @@
     project="ingegneriadelsoftware" 
     file="/ingegneriadelsoftware/src/main/java/it/polimi/ingsw/ps29/model/game/familymember/FakeFamilyMemberMarketDecorator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="353" x="3051" y="533"/>    
+    <position height="-1" width="-1" x="1139" y="596"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -161,69 +161,75 @@
     </display>  
   </class>  
   <generalization id="15">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <realization id="18">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <realization id="20">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <realization id="21">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <generalization id="22">    
+    <bendpoint x="517" y="842"/>    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="23">    
+  <generalization id="16">    
+    <bendpoint x="529" y="433"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="17">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <generalization id="18">    
+    <bendpoint x="529" y="1090"/>    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="24">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="25" name="decoratedFamilyMember"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <generalization id="19">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="20">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="21" name="decoratedFamilyMember"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
+  <generalization id="23">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="24">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="28" name="decoratedFakeFamilyMember"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+      <attribute id="25" name="decoratedFakeFamilyMember"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="14"/>    
+  <generalization id="27">    
+    <bendpoint x="513" y="685"/>    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <realization id="31">    
-    <end type="SOURCE" refId="6"/>    
+  <generalization id="28">    
+    <bendpoint x="516" y="965"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="29">    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
+  <realization id="30">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <generalization id="31">    
+    <bendpoint x="512" y="541"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
+  <realization id="32">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
