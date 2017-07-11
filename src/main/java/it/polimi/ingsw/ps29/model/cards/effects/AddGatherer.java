@@ -23,5 +23,22 @@ public class AddGatherer extends Effect{
 		// TODO Auto-generated method stub
 		player.addGatherer(gathererType, interval);
 	}
+	
+	@Override
+	public String toString(){
+		String msg = "you will be penalized by ";
+		switch(gathererType){
+		case("victory") :msg +=  + interval +" victory point every five victory points";
+				break;
+		case("military") :msg += + interval +" victory point for each  military point";
+		    break;
+		case("cost") :msg +=  + interval +" victory point wood or stone in yor building cards costs";
+	    	break;
+		case("resourcepenalty") :msg +=  + interval +" victory point for each resource";
+    	    break;
+	}
+		return msg;
 
-}
+	}
+	
+	}

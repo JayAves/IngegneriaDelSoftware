@@ -51,7 +51,9 @@ public class LeaderAction extends Action{
 		return state;
 	}
 	
-
+/**
+ * leader cards will be moved in different decks depending on user choice
+ */
 	@Override
 	void performAction() {
 				

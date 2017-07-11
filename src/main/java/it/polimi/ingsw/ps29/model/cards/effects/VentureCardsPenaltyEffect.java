@@ -15,5 +15,13 @@ public class VentureCardsPenaltyEffect extends Effect{
 		// TODO Auto-generated method stub
 		player.setVentureCardPenalty();
 	
-}
+	}
+	
+	@Override
+	public String toString(){
+		String msg = "you won't get victory points from your venture cards ";
+
+		return msg;
+
+	}
 }

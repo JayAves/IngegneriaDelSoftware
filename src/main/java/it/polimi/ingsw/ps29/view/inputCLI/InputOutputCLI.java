@@ -326,9 +326,14 @@ public class InputOutputCLI implements InputOutput {
 		}
 		
 	}
+	/**
+	 * shows leader cards
+	 * @param leaderSituation
+	 * @return leadersituation with player choices
+	 */
 
 	public ArrayList<ArrayList<Object>> askLeader(ArrayList<ArrayList<Object>> leaderSituation) {
-		// TODO Auto-generated method stub
+		
 		int choice = 0;
 		int secondChoice = 0;
 		
@@ -366,7 +371,11 @@ public class InputOutputCLI implements InputOutput {
 		return leaderSituation;
 	}
 	
-	//print possible actions for leader cards
+	/**shows what is possible to do with a selected leader card
+	 * 
+	 * @param card
+	 * @return ArrayList with player choice
+	 */
 	private ArrayList<String> printCorrectOptions(ArrayList<Object> card){
 		ArrayList<String> toShow = new ArrayList<String>();
 		toShow.add("DO NOTHING");

@@ -73,7 +73,10 @@ public class RoundSetupState implements RoundState {
 		}
 		
 	}
-	
+	/**
+	 * allows the player to reactivate leader cards wich are not permanent
+	 * @param match
+	 */
 	private void flipLeaderCards(Match match){
 		for (Player player : match.getBoard().getPlayers()){
 			if (!player.getPersonalBoard().getActivatedLeaderCards().isEmpty()){

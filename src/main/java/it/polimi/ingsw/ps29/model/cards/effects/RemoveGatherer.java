@@ -21,5 +21,18 @@ public class RemoveGatherer extends Effect{
 		// TODO Auto-generated method stub
 		player.removeGatherer(gathererType);
 	}
+	
+	@Override
+	public String toString(){
+		String msg = "you won't get victory points for your ";
+		switch(gathererType){
+		case("territory") :msg += " territory cards";
+				break;
+		case("character") :msg +=" character cards";
+		    break;
+	}
+		return msg;
+
+	}
 
 }
