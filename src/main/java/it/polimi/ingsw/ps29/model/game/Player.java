@@ -55,7 +55,6 @@ public class Player {
 	private boolean ludovicoAriosto;
 	private boolean filippoBrunelleschi;
 	private boolean sistoIV;
-	private boolean picoDellaMirandola;
 	private boolean noMarket;
 
 	
@@ -72,7 +71,6 @@ public class Player {
 		ludovicoAriosto = false;
 		filippoBrunelleschi = false;
 		sistoIV = false;
-		picoDellaMirandola = false;
 		
 		finalScoring = new HashMap<String, VictoryPointsGatherer>(); 
 	    finalScoring.put("character", new CharacterCardVictoryPointsGatherer()); 
@@ -203,10 +201,6 @@ public class Player {
 		if (sistoIV == true){
 			this.getPersonalBoard().getResources().updateResource(new VictoryPoints(5));
 		}
-	}
-	
-	public void setPicoDellaMirandola(){
-		picoDellaMirandola = true;
 	}
 	
 	public void setNoMarket(){

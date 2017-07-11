@@ -3489,7 +3489,7 @@
 {
 	"cardType": "VentureCard",
 	
-	"cardData":{"name": "Building Towers",
+	"cardData":{"name": "Building the Towers",
     "neededPoints" : 0,
 	"period": "THIRD",
 	"type": "VENTURE",
