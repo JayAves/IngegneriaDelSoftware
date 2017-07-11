@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps29.model.game;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import it.polimi.ingsw.ps29.model.cards.ExcommunicationCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
@@ -11,7 +12,6 @@ import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FakeFamilyMemberInterface;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMember;
 import it.polimi.ingsw.ps29.model.game.familymember.FamilyMemberInterface;
-import it.polimi.ingsw.ps29.model.game.finalScoring.FinalScoring;
 import it.polimi.ingsw.ps29.model.game.finalScoring2.BuildingCostsPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.finalScoring2.CharacterCardVictoryPointsGatherer;
 import it.polimi.ingsw.ps29.model.game.finalScoring2.MilitaryPenaltyPointsGatherer;
@@ -32,7 +32,6 @@ import it.polimi.ingsw.ps29.model.game.resources.VictoryPoints;
  * 		<li>{@link PersonalBoard} e {@link PersonalBonusTile}
  * 		<li>{@link ExcommunicationCard} if excommunicated
  * 		<li>{@link Effect}s from Leaders and Cards
- * 		<li> {@link FinalScoring}
  * 
  * @author Pietro Melzi
  * @author Pietro Grotti
@@ -48,7 +47,6 @@ public class Player {
 	private ExcommunicationCard [] excommunication;
 	private ExchangeSupport supportForExchange;
 	private ArrayList<Effect> specialPermanentEffects;
-	private FinalScoring finalScoring;
 	private HashMap <String, VictoryPointsGatherer> finalScoring2; 
 	private HashMap <String, VictoryPointsGatherer> finalPenalties; 
 	private boolean ventureCardsPenaltyOn;
@@ -65,7 +63,6 @@ public class Player {
 		this.color = color;
 		this.board = new PersonalBoard(pbt);
 		initFamily();
-		finalScoring = new FinalScoring();
 		supportForExchange = new ExchangeSupport(new ArrayList<ExchangeResourcesEffect>(), new Container());
 		excommunication = new ExcommunicationCard [3];
 		specialPermanentEffects= new ArrayList<Effect>();
@@ -145,19 +142,18 @@ public class Player {
 	public void setSupport(ExchangeSupport support) {
 		this.supportForExchange = support;
 	}
-	
-	public void passPersonalBoard(){
-		finalScoring.setPersonalBoard(board);
-	}
-	
+		
 	public void getFinalPoints(){
-		finalScoring.calculateFinalScore();
+		//ArrayList<VictoryPointsGatherer> finalGatherers = (ArrayList<VictoryPointsGatherer>) finalScoring2.values();
+		//for ( VictoryPointsGatherer gatherer : finalGatherers)
+			//gatherer.getVictoryPoints(board);
+		
+		Set<String> keys =finalScoring2.keySet();
+		
+	for (String key : keys){
+		System.out.println(finalScoring2.get(key));
+		finalScoring2.get(key).getVictoryPoints(board);
 	}
-	
-	public void getFinalPoints2(){
-		ArrayList<VictoryPointsGatherer> finalGatherers = (ArrayList<VictoryPointsGatherer>) finalScoring2.values();
-		for ( VictoryPointsGatherer gatherer : finalGatherers)
-			gatherer.getVictoryPoints(board);
 	}
 	
 	public boolean getVentureCardPenalty(){
@@ -168,10 +164,6 @@ public class Player {
 		ventureCardsPenaltyOn = true;
 	}
 	
-	public FinalScoring getFinalScoring(){
-		return finalScoring;
-	}
-
 	public boolean isVaticanReportPerformed() {
 		return vaticanReportPerformed;
 	}

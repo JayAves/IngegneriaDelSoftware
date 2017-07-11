@@ -20,6 +20,8 @@ public void getVictoryPoints(PersonalBoard board) {
 		points.put(4, new Resource("victory", 10));
 		points.put(5, new Resource("victory", 15));
 		points.put(5, new Resource("victory", 21));
+		
+		if(points.get(board.getCards("character").size()) != null)
 	
 		board.getResources().updateResource(points.get(board.getCards("character").size()));
 	}

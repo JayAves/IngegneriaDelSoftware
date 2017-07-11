@@ -10,7 +10,8 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps29.model.cards.BuildingCard;
 import it.polimi.ingsw.ps29.model.cards.effects.Effect;
-import it.polimi.ingsw.ps29.model.cards.effects.XAddGatherer;
+import it.polimi.ingsw.ps29.model.cards.effects.AddGatherer;
+import it.polimi.ingsw.ps29.model.cards.effects.RemoveGatherer;
 import it.polimi.ingsw.ps29.model.game.Match;
 import it.polimi.ingsw.ps29.model.game.resources.Resource;
 import junit.framework.TestCase;
@@ -18,12 +19,13 @@ import junit.framework.TestCase;
 public class VictoryGathererTest extends TestCase{
 	
 	Match model;
+	int initialAmount;
 	
 	public VictoryGathererTest(String testName){
 		super(testName);
 	}
 	
-	/*@BeforeClass
+	@BeforeClass
 	public void setUp() throws FileNotFoundException{
 		
 		String player1 = "primo";
@@ -35,6 +37,8 @@ public class VictoryGathererTest extends TestCase{
 		names.add(player3);
 		
 		 model = new Match(names);
+		 
+		 initialAmount = model.getBoard().getPlayerByName(player1).getPersonalBoard().getSpecificResource("coin").getAmount();
 		 
 		 ArrayList<Resource> buildingCost = new ArrayList<Resource>();
 		 buildingCost.add(new Resource("wood", 3));
@@ -48,15 +52,22 @@ public class VictoryGathererTest extends TestCase{
 		 model.getBoard().getPlayerByName(player2).getPersonalBoard().getSpecificResource("military").modifyAmount(8);
 		 model.getBoard().getPlayerByName(player1).getPersonalBoard().getSpecificResource("servant").modifyAmount(8);
 		 model.getBoard().getPlayerByName(player3).getPersonalBoard().getSpecificResource("wood").modifyAmount(8);
-		 model.getBoard().getPlayerByName(player1).getPersonalBoard().addCard(new BuildingCard("stub", null, player3, 0, null, null, buildingCost, 0));
+		 model.getBoard().getPlayerByName(player1).getPersonalBoard().addCard(new BuildingCard("stub", null, "building", 0, null, null, buildingCost, 0));
 		 
-		 Effect excommunication = new XAddGatherer();
+		 Effect excommunication = new AddGatherer("cost", 1);
+		 excommunication.performEffect(model.getBoard().getPlayerByName(player1));
 		 
-	}*/
+		 Effect excommunication2 = new RemoveGatherer("territory");
+		 excommunication2.performEffect(model.getBoard().getPlayerByName(player1));
+		 
+		 model.getBoard().getPlayerByName(player1).getFinalPoints();
+		 
+	}
 
 	@Test
 	public void test() {
 		//fail("Not yet implemented");
+		assertEquals(-2, model.getBoard().getPlayerByName("primo").getPersonalBoard().getSpecificResource("victory").getAmount());
 	}
 
 }

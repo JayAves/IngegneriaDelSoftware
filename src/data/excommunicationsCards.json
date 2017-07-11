@@ -175,8 +175,8 @@
 "period" : "THIRD",
 "id" : 1,
     "effect": {
-        "effectType" : "CharacterCardsPenaltyEffect",
-        "effectData":{}
+        "effectType" : "RemoveGatherer",
+        "effectData":{"gathererType" : "character"}
     }
 },
 
@@ -193,8 +193,8 @@
 "period" : "THIRD",
 "id" : 3,
     "effect": {
-        "effectType" : "TerritoryCardsPenaltyEffect",
-        "effectData" :{}
+        "effectType" : "RemoveGatherer",
+        "effectData" :{"gathererType" : "territory"}
     }
 },
 
@@ -202,8 +202,9 @@
 "period" : "THIRD",
 "id" : 6,
     "effect": {
-        "effectType" : "BuildingCostsPenaltyEffect",
-        "effectData" :{}
+        "effectType" : "AddGatherer",
+        "effectData" :{"gathererType" : "cost",
+                       "interval" : 1}
     }
 },
 
@@ -211,8 +212,9 @@
 "period" : "THIRD",
 "id" : 7,
     "effect": {
-        "effectType" : "ResourcePenaltyEffect",
-        "effectData" :{}
+        "effectType" : "AddGatherer",
+        "effectData" :{"gathererType" : "resourcepenalty",
+                       "interval" : 1}
     }
 },
 
@@ -220,8 +222,9 @@
 "period" : "THIRD",
 "id" : 4,
     "effect": {
-        "effectType" : "VictoryPointsPenaltyEffect",
-        "effectData":{}
+        "effectType" : "AddGatherer",
+        "effectData":{"gathererType" : "victory",
+                       "interval" : 5}
     }
 },
 
@@ -229,8 +232,9 @@
 "period" : "THIRD",
 "id" : 5,
     "effect": {
-        "effectType" : "MilitaryPointsPenaltyEffect",
-        "effectData":{}
+        "effectType" : "AddGatherer",
+        "effectData":{"gathererType" : "military",
+                       "interval" : 1}
     }
 }
     

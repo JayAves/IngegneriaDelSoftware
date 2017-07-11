@@ -14,6 +14,8 @@ public class ResourcesVictoryPointsGatherer implements VictoryPointsGatherer{
                              board.getSpecificResource("coin").getAmount() +
                              board.getSpecificResource("stone").getAmount() +
                              board.getSpecificResource("servant").getAmount();
+		System.out.println(finalResources);
+		System.out.println(finalResources/INTERVAL);
 		Resource finalVictoryPoints = new Resource("victory", finalResources/INTERVAL);
 		board.getResources().updateResource(finalVictoryPoints);
 	}

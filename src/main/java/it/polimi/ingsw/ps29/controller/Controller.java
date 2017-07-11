@@ -434,7 +434,6 @@ public class Controller extends Observable implements Observer{
 	private void conclusion ()  {
 		
 		for (Player player : model.getBoard().getPlayers()) {
-			player.passPersonalBoard();
 			player.getFinalPoints();
 			
 			if (!player.getVentureCardPenalty())

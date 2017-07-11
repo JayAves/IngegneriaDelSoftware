@@ -11,8 +11,8 @@ import junit.framework.TestSuite;
 @RunWith(Suite.class)
 @SuiteClasses({ BonusActionTest.class, PrivilegesTest.class, BonusSpaceTest.class, DiscountEffectTest.class, 
 	CheckVectorExchangeTest.class, CleanTowerTest.class, CouncilPalaceTest.class, FamiliarEmpowermentTest.class,
-	FamilyMemberTest.class, FinalScoringTest.class, LeaderCardsTest.class, MalusResourcesTest.class, MilitaryTrackTest.class,
+	FamilyMemberTest.class, LeaderCardsTest.class, MalusResourcesTest.class, MilitaryTrackTest.class,
 	PerformExchangeTest.class, ProvaTest.class, ResourceExcommunicationTest.class, ResourcesTest.class, SatisfyRequirementsTest.class,
-	TowerActionTest.class})
+	TowerActionTest.class,VictoryGathererTest.class})
 
 public class AllTests{}

@@ -231,38 +231,52 @@ public class GameBoard{
 	}
 	
 	public void assignPointsForMilitaryTrack(){
+		
 		ArrayList<Player> firstPlayers = new ArrayList<Player>();
 		ArrayList<Player> secondPlayers = new ArrayList<Player>();
-		firstPlayers.add(playersOrder.get(0));
-		for (int i = 1; i < playersOrder.size(); i++){
-			if (playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > firstPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount()){
-				secondPlayers = firstPlayers;
+		ArrayList<Player> tempOrder = new ArrayList<Player>();
+		for (Player player :playersOrder)
+			tempOrder.add(player);
+		int tresHold = -1;
+		int tTresHold = -1;
+		for (int i = 0; i < tempOrder.size(); i++){
+			if (tempOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > tresHold){
 				firstPlayers.clear();
-				firstPlayers.add(playersOrder.get(i));
+				firstPlayers.add(tempOrder.get(i));
+				tresHold =tempOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount();
 			}
-			else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == firstPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
-				firstPlayers.add(playersOrder.get(i));
-			else{
-				if(secondPlayers.size() > 0){
-					if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount()){
-						secondPlayers.clear();
-						secondPlayers.add(playersOrder.get(i));
-					}
-					else if(playersOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() == secondPlayers.get(0).getPersonalBoard().getSpecificResource("military").getAmount())
-							secondPlayers.add(playersOrder.get(i));
-					}
-				else
-					secondPlayers.add(playersOrder.get(i));
+			else if(tempOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount()==tresHold){
+				 firstPlayers.add(tempOrder.get(i));
 			}
+			
+		}
+		
+		for (Player player : firstPlayers){
+			tempOrder.remove(player);
+		}
+		
+		for (int i = 0; i < tempOrder.size(); i++){
+			if (tempOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount() > tTresHold){
+				secondPlayers.clear();
+				secondPlayers.add(tempOrder.get(i));
+				tTresHold =tempOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount();
+			}
+			else if(tempOrder.get(i).getPersonalBoard().getSpecificResource("military").getAmount()==tTresHold){
+				secondPlayers.add(tempOrder.get(i));
+			}
+			
 		}
 		
 		for (Player player : firstPlayers)
 			player.getPersonalBoard().getResources().updateResource(new Resource("victory", 5));
-		for (Player player : secondPlayers)
-			player.getPersonalBoard().getResources().updateResource(new Resource("victory", 2));
+
+		for (Player player1 : secondPlayers)
+			player1.getPersonalBoard().getResources().updateResource(new Resource("victory", 2));
+		
 	}
 	
 	
 	
-}
+	}
+
 
